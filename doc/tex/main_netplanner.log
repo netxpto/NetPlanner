@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.9)  12 JAN 2018 10:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.9)  12 JAN 2018 11:25
 entering extended mode
 **./main_netplanner.tex
 (main_netplanner.tex
@@ -1331,12 +1331,12 @@ Overfull \hbox (7.33366pt too wide) in paragraph at lines 10--14
 [][] 
  []
 
-<./figures/RedeTeste.jpg, id=256, 572.1375pt x 195.73125pt>
+<./figures/RedeTeste.jpg, id=256, 587.94656pt x 274.77657pt>
 File: ./figures/RedeTeste.jpg Graphic file (type jpg)
 
 <use ./figures/RedeTeste.jpg>
 Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 24.
-(pdftex.def)             Requested size: 442.65375pt x 151.43628pt.
+(pdftex.def)             Requested size: 442.65375pt x 206.87433pt.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 41.
 Package babel Info: Redefining portuges shorthand "|
@@ -1662,7 +1662,7 @@ Overfull \hbox (7.33366pt too wide) in paragraph at lines 11--15
 File: ./figures/RedeTeste.jpg Graphic file (type jpg)
 <use ./figures/RedeTeste.jpg>
 Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 24.
-(pdftex.def)             Requested size: 442.65375pt x 151.43628pt.
+(pdftex.def)             Requested size: 442.65375pt x 206.87433pt.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 50.
 Package babel Info: Redefining portuges shorthand "|
@@ -2022,11 +2022,11 @@ Package babel Info: Redefining portuges shorthand "|
 File: ./figures/RedeTeste.jpg Graphic file (type jpg)
 <use ./figures/RedeTeste.jpg>
 Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 26.
-(pdftex.def)             Requested size: 442.65375pt x 151.43628pt.
+(pdftex.def)             Requested size: 442.65375pt x 206.87433pt.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 43.
+(babel)             in language  on input line 32.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 43.
+(babel)             in language  on input line 32.
  [42
 
 ]
@@ -2066,35 +2066,48 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--114
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 117.
+(babel)             in language  on input line 114.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 117.
+(babel)             in language  on input line 114.
 [43]
 File: ./figures/EON_Rede_Realista.jpg Graphic file (type jpg)
  <use ./figures/EON_Rede_Realista.jpg>
 Package pdftex.def Info: ./figures/EON_Rede_Realista.jpg used on input line 145
 .
 (pdftex.def)             Requested size: 442.65375pt x 272.44514pt.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 151.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 151.
- [44]
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 258.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 258.
+[44]
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 285.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 285.
  [45]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 258.
+(babel)             in language  on input line 285.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 258.
+(babel)             in language  on input line 285.
  [46]
+Overfull \vbox (141.18292pt too high) has occurred while \output is active []
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 311.
+(babel)             in language  on input line 285.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 311.
- [47]
+(babel)             in language  on input line 285.
+
+[47]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 364.
 Package babel Info: Redefining portuges shorthand "|
@@ -11330,7 +11343,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
 Here is how much of TeX's memory you used:
  28121 strings out of 493328
  505828 string characters out of 3139131
- 2399986 words of memory out of 3000000
+ 2399987 words of memory out of 3000000
  29603 multiletter control sequences out of 15000+200000
  26285 words of font info for 62 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -11354,7 +11367,7 @@ msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/
 Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/
 MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/urw/palatino/uplr8a.pfb>
-Output written on main_netplanner.pdf (1140 pages, 11030784 bytes).
+Output written on main_netplanner.pdf (1140 pages, 11034819 bytes).
 PDF statistics:
  7416 PDF objects out of 7423 (max. 8388607)
  1365 named destinations out of 1440 (max. 500000)
