@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.9)  12 JAN 2018 11:25
-=======
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6100 64-bit) (preloaded format=pdflatex 2017.2.15)  24 JAN 2018 11:46
->>>>>>> Develop.Tiago
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.9)  24 JAN 2018 13:07
 entering extended mode
 **./main_netplanner.tex
 (main_netplanner.tex
@@ -135,6 +131,30 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \mathdisplay@stack=\toks19
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\genmisc\kbordermatrix.sty"
+Package: kbordermatrix 2011/09/21 Bordered matrix with brackets
+\kbcolsep=\skip49
+\kbrowsep=\skip50
+\br@kwd=\skip51
+\k@bordht=\skip52
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\blkarray\blkarray.sty"
+Package: blkarray 2015/02/27 v0.07 Block array (dpc)
+\c@BAenumi=\count101
+\BA@col=\count102
+\BA@block@cnt=\count103
+\BA@final@box=\box28
+\BA@first@box=\box29
+\BA@colsep=\dimen116
+\BA@ftn=\toks20
+\BAextrarowheight=\dimen117
+\BAextraheightafterhline=\dimen118
+\BAarrayrulewidth=\dimen119
+\BAdoublerulesep=\dimen120
+\BAfootskip=\dimen121
+\BA@dashbox=\box30
+\BA@ddashbox=\box31
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
@@ -278,16 +298,9 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@mess@toks=\toks30
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
-<<<<<<< HEAD
 Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@colwidth=\skip70
 \multirow@cntb=\count113
-=======
-Package: multirow 2016/10/11 v2.1 Span multiple rows of a table
-\multirow@colwidth=\skip70
-\multirow@cnta=\count113
-\multirow@cntb=\count114
->>>>>>> Develop.Tiago
 \multirow@dima=\skip71
 \bigstrutjot=\dimen126
 )
@@ -355,22 +368,13 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen127
-<<<<<<< HEAD
 \Hy@linkcounter=\count114
 \Hy@pagecounter=\count115
-=======
-\Hy@linkcounter=\count115
-\Hy@pagecounter=\count116
->>>>>>> Develop.Tiago
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
 )
-<<<<<<< HEAD
 \Hy@SavedSpaceFactor=\count116
-=======
-\Hy@SavedSpaceFactor=\count117
->>>>>>> Develop.Tiago
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -381,19 +385,13 @@ Package hyperref Info: Hyper index ON on input line 4506.
 Package hyperref Info: Plain pages OFF on input line 4513.
 Package hyperref Info: Backreferencing OFF on input line 4518.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-<<<<<<< HEAD
 Package hyperref Info: Bookmarks ON on input line 4751.
 \c@Hy@tempcnt=\count117
-=======
-Package hyperref Info: Bookmarks ON on input line 4735.
-\c@Hy@tempcnt=\count118
->>>>>>> Develop.Tiago
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-<<<<<<< HEAD
 LaTeX Info: Redefining \url on input line 5104.
 \XeTeXLinkMargin=\dimen128
 \Fld@menulength=\count118
@@ -411,39 +409,14 @@ LaTeX Info: Redefining \pageref on input line 6432.
 \Hy@abspage=\count119
 \c@Item=\count120
 \c@Hfootnote=\count121
-=======
-LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen128
-\Fld@menulength=\count119
-\Field@Width=\dimen129
-\Fld@charsize=\dimen130
-Package hyperref Info: Hyper figures OFF on input line 6342.
-Package hyperref Info: Link nesting OFF on input line 6347.
-Package hyperref Info: Hyper index ON on input line 6350.
-Package hyperref Info: backreferencing OFF on input line 6357.
-Package hyperref Info: Link coloring OFF on input line 6362.
-Package hyperref Info: Link coloring with OCG OFF on input line 6367.
-Package hyperref Info: PDF/A mode OFF on input line 6372.
-LaTeX Info: Redefining \ref on input line 6412.
-LaTeX Info: Redefining \pageref on input line 6416.
-\Hy@abspage=\count120
-\c@Item=\count121
-\c@Hfootnote=\count122
->>>>>>> Develop.Tiago
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
-<<<<<<< HEAD
 File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
 \Fld@listcount=\count122
 \c@bookmark@seq@number=\count123
-=======
-File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
-\Fld@listcount=\count123
-\c@bookmark@seq@number=\count124
->>>>>>> Develop.Tiago
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
@@ -470,21 +443,12 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 \cmidrulesep=\dimen138
 \cmidrulekern=\dimen139
 \defaultaddspace=\dimen140
-<<<<<<< HEAD
 \@cmidla=\count124
 \@cmidlb=\count125
 \@aboverulesep=\dimen141
 \@belowrulesep=\dimen142
 \@thisruleclass=\count126
 \@lastruleclass=\count127
-=======
-\@cmidla=\count125
-\@cmidlb=\count126
-\@aboverulesep=\dimen141
-\@belowrulesep=\dimen142
-\@thisruleclass=\count127
-\@lastruleclass=\count128
->>>>>>> Develop.Tiago
 \@thisrulewidth=\dimen143
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\eurosym\eurosym.sty"
@@ -505,11 +469,7 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@toks=\toks32
 \XKV@tempa@toks=\toks33
 )
-<<<<<<< HEAD
 \XKV@depth=\count128
-=======
-\XKV@depth=\count129
->>>>>>> Develop.Tiago
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 ("C:\Program Files\MiKTeX 2.9\tex\latex\xfor\xfor.sty"
@@ -517,19 +477,11 @@ Package: xfor 2009/02/05 v1.05 (NLCT)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\substr\substr.sty"
 Package: substr 2009/10/20 v1.2 Handle substrings
-<<<<<<< HEAD
 \c@su@anzahl=\count129
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
 Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count130
-=======
-\c@su@anzahl=\count130
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.sty"
-Package: etoolbox 2017/01/02 v2.4 e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count131
->>>>>>> Develop.Tiago
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\datatool\datatool-base.sty"
 Package: datatool-base 2016/07/28 v2.27 (NLCT)
@@ -543,7 +495,6 @@ Package: fp 1995/04/02
 `Fixed Point Package', Version 0.8, April 2, 1995 (C) Michael Mehlich
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fp\defpattern.sty"
 Package: defpattern 1994/10/12
-<<<<<<< HEAD
 \actioncount=\count131
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-basic.sty"
@@ -557,21 +508,6 @@ Package: fp-basic 1996/05/13
 \FP@regb=\count138
 \FP@regs=\count139
 \FP@times=\count140
-=======
-\actioncount=\count132
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-basic.sty"
-Package: fp-basic 1996/05/13
-\FP@xs=\count133
-\FP@xia=\count134
-\FP@xib=\count135
-\FP@xfa=\count136
-\FP@xfb=\count137
-\FP@rega=\count138
-\FP@regb=\count139
-\FP@regs=\count140
-\FP@times=\count141
->>>>>>> Develop.Tiago
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-addons.sty"
 Package: fp-addons 1995/03/15
@@ -590,11 +526,7 @@ Package: fp-pas 1994/08/29
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-random.sty"
 Package: fp-random 1995/02/23
-<<<<<<< HEAD
 \FPseed=\count141
-=======
-\FPseed=\count142
->>>>>>> Develop.Tiago
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fp\fp-eqn.sty"
 Package: fp-eqn 1995/04/03
@@ -606,7 +538,6 @@ Package: fp-upn 1996/10/21
 Package: fp-eval 1995/04/03
 )))
 \@dtl@toks=\toks34
-<<<<<<< HEAD
 \@dtl@tmpcount=\count142
 \dtl@tmplength=\skip77
 \dtl@sortresult=\count143
@@ -618,26 +549,12 @@ Package: fp-eval 1995/04/03
 )
 \dtlcolumnnum=\count149
 \dtlrownum=\count150
-=======
-\@dtl@tmpcount=\count143
-\dtl@tmplength=\skip77
-\dtl@sortresult=\count144
-\@dtl@numgrpsepcount=\count145
-\@dtl@datatype=\count146
-\dtl@codeA=\count147
-\dtl@codeB=\count148
-\@dtl@foreach@level=\count149
-)
-\dtlcolumnnum=\count150
-\dtlrownum=\count151
->>>>>>> Develop.Tiago
 \@dtl@before=\toks35
 \@dtl@after=\toks36
 \@dtl@colhead=\toks37
 \dtlcurrentrow=\toks38
 \dtlbeforerow=\toks39
 \dtlafterrow=\toks40
-<<<<<<< HEAD
 \dtlforeachlevel=\count151
 \c@DTLrowi=\count152
 \c@DTLrowii=\count153
@@ -646,16 +563,6 @@ Package: fp-eval 1995/04/03
 \dtl@rowi=\count156
 \dtl@rowii=\count157
 \dtl@rowiii=\count158
-=======
-\dtlforeachlevel=\count152
-\c@DTLrowi=\count153
-\c@DTLrowii=\count154
-\c@DTLrowiii=\count155
-\c@DTLrow=\count156
-\dtl@rowi=\count157
-\dtl@rowii=\count158
-\dtl@rowiii=\count159
->>>>>>> Develop.Tiago
 \@dtl@curi=\toks41
 \@dtl@previ=\toks42
 \@dtl@nexti=\toks43
@@ -665,11 +572,7 @@ Package: fp-eval 1995/04/03
 \@dtl@curiii=\toks47
 \@dtl@previii=\toks48
 \@dtl@nextiii=\toks49
-<<<<<<< HEAD
 \@dtl@elements=\count159
-=======
-\@dtl@elements=\count160
->>>>>>> Develop.Tiago
 \@dtl@list=\toks50
 \@dtl@rowa=\toks51
 \@dtl@rowb=\toks52
@@ -677,13 +580,8 @@ Package: fp-eval 1995/04/03
 \@dtl@toksB=\toks54
 \@dtl@write=\write5
 \@dtl@read=\read2
-<<<<<<< HEAD
 \dtl@entrycr=\count160
 \dtl@omitlines=\count161
-=======
-\dtl@entrycr=\count161
-\dtl@omitlines=\count162
->>>>>>> Develop.Tiago
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\glossaries\base\glossaries.sty"
 Package: glossaries 2017/01/19 v4.29 (NLCT)
@@ -714,11 +612,7 @@ File: glossaries-portuges.ldf 2014/11/23 v1.0
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\glossaries-portuges\glossaries-portuges
 -noenc.ldf"))
-<<<<<<< HEAD
 \gls@level=\count162
-=======
-\gls@level=\count163
->>>>>>> Develop.Tiago
 \@gls@tmpb=\toks57
 \gls@tmplen=\skip78
 \glskeylisttok=\toks58
@@ -741,27 +635,16 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \LTright=\skip81
 \LTpre=\skip82
 \LTpost=\skip83
-<<<<<<< HEAD
 \LTchunksize=\count163
-=======
-\LTchunksize=\count164
->>>>>>> Develop.Tiago
 \LTcapwidth=\dimen144
 \LT@head=\box38
 \LT@firsthead=\box39
 \LT@foot=\box40
 \LT@lastfoot=\box41
-<<<<<<< HEAD
 \LT@cols=\count164
 \LT@rows=\count165
 \c@LT@tables=\count166
 \c@LT@chunks=\count167
-=======
-\LT@cols=\count165
-\LT@rows=\count166
-\c@LT@tables=\count167
-\c@LT@chunks=\count168
->>>>>>> Develop.Tiago
 \LT@p@ftn=\toks62
 )
 \glsdescwidth=\skip84
@@ -772,11 +655,7 @@ Package: glossary-super 2017/01/19 v4.29 (NLCT)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\supertabular\supertabular.sty"
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
-<<<<<<< HEAD
 \c@tracingst=\count168
-=======
-\c@tracingst=\count169
->>>>>>> Develop.Tiago
 \ST@wd=\dimen145
 \ST@rightskip=\skip86
 \ST@leftskip=\skip87
@@ -811,11 +690,7 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen161
 \caption@hangindent=\dimen162
 )
-<<<<<<< HEAD
 \c@ContinuedFloat=\count169
-=======
-\c@ContinuedFloat=\count170
->>>>>>> Develop.Tiago
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: longtable package is loaded.
@@ -831,22 +706,14 @@ Package caption Info: supertabular package is loaded.
 Package: tabulary 2014/06/11 v0.10 tabulary package (DPC)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\array.sty"
-<<<<<<< HEAD
 Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
-=======
-Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
->>>>>>> Develop.Tiago
 \col@sep=\dimen163
 \extrarowheight=\dimen164
 \NC@list=\toks63
 \extratabsurround=\skip90
 \backup@length=\skip91
 )
-<<<<<<< HEAD
 \TY@count=\count170
-=======
-\TY@count=\count171
->>>>>>> Develop.Tiago
 \TY@linewidth=\dimen165
 \tymin=\dimen166
 \tymax=\dimen167
@@ -863,7 +730,6 @@ Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
 \verbatim@in@stream=\read3
 ))
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\multicol.sty"
-<<<<<<< HEAD
 Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \c@tracingmulticols=\count171
 \mult@box=\box43
@@ -873,17 +739,6 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \doublecol@number=\count174
 \multicoltolerance=\count175
 \multicolpretolerance=\count176
-=======
-Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
-\c@tracingmulticols=\count172
-\mult@box=\box43
-\multicol@leftmargin=\dimen169
-\c@unbalance=\count173
-\c@collectmore=\count174
-\doublecol@number=\count175
-\multicoltolerance=\count176
-\multicolpretolerance=\count177
->>>>>>> Develop.Tiago
 \full@width=\dimen170
 \page@free=\dimen171
 \premulticols=\dimen172
@@ -914,23 +769,14 @@ Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 \@tempa=\box64
 \@tempa=\box65
 \@tempa=\box66
-<<<<<<< HEAD
 \c@columnbadness=\count177
 \c@finalcolumnbadness=\count178
-=======
-\c@columnbadness=\count178
-\c@finalcolumnbadness=\count179
->>>>>>> Develop.Tiago
 \last@try=\dimen175
 \multicolovershoot=\dimen176
 \multicolundershoot=\dimen177
 \mult@nat@firstbox=\box67
 \colbreak@box=\box68
-<<<<<<< HEAD
 \mc@col@check@num=\count179
-=======
-\mc@col@check@num=\count180
->>>>>>> Develop.Tiago
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tcolorbox\tcolorbox.sty"
 Package: tcolorbox 2017/07/05 version 4.10 text color boxes
@@ -976,17 +822,10 @@ x"
 \pgf@yc=\dimen187
 \w@pgf@writea=\write6
 \r@pgf@reada=\read4
-<<<<<<< HEAD
 \c@pgf@counta=\count180
 \c@pgf@countb=\count181
 \c@pgf@countc=\count182
 \c@pgf@countd=\count183
-=======
-\c@pgf@counta=\count181
-\c@pgf@countb=\count182
-\c@pgf@countc=\count183
-\c@pgf@countd=\count184
->>>>>>> Develop.Tiago
 \t@pgf@toka=\toks70
 \t@pgf@tokb=\toks71
 \t@pgf@tokc=\toks72
@@ -1005,13 +844,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.t
 ex"
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-<<<<<<< HEAD
 \pgfsyssoftpath@smallbuffer@items=\count184
 \pgfsyssoftpath@bigbuffer@items=\count185
-=======
-\pgfsyssoftpath@smallbuffer@items=\count185
-\pgfsyssoftpath@bigbuffer@items=\count186
->>>>>>> Develop.Tiago
 )
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.t
 ex"
@@ -1041,11 +875,7 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathutil.code.tex")
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathparser.code.tex"
 \pgfmath@dimen=\dimen188
-<<<<<<< HEAD
 \pgfmath@count=\count186
-=======
-\pgfmath@count=\count187
->>>>>>> Develop.Tiago
 \pgfmath@box=\box70
 \pgfmath@toks=\toks73
 \pgfmath@stack@operand=\toks74
@@ -1069,11 +899,7 @@ ex")
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfunctions.integerarit
 hmetics.code.tex")))
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\math\pgfmathfloat.code.tex"
-<<<<<<< HEAD
 \c@pgfmathroundto@lastzeros=\count187
-=======
-\c@pgfmathroundto@lastzeros=\count188
->>>>>>> Develop.Tiago
 ))
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
 "
@@ -1111,11 +937,7 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box71
 \pgf@hbox=\box72
 \pgf@layerbox@main=\box73
-<<<<<<< HEAD
 \pgf@picture@serial@count=\count188
-=======
-\pgf@picture@serial@count=\count189
->>>>>>> Develop.Tiago
 )
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.co
 de.tex"
@@ -1148,11 +970,7 @@ File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
 ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex"
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
 \pgf@max=\dimen268
-<<<<<<< HEAD
 \pgf@sys@shading@range@num=\count189
-=======
-\pgf@sys@shading@range@num=\count190
->>>>>>> Develop.Tiago
 ) ("C:\Program Files\MiKTeX 2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.te
 x"
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
@@ -1199,15 +1017,9 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@upperbox=\box77
 \tcb@lowerbox=\box78
 \tcb@phantombox=\box79
-<<<<<<< HEAD
 \c@tcbbreakpart=\count190
 \c@tcblayer=\count191
 \tcolorbox@number=\count192
-=======
-\c@tcbbreakpart=\count191
-\c@tcblayer=\count192
-\tcolorbox@number=\count193
->>>>>>> Develop.Tiago
 \tcb@temp=\box80
 \tcb@temp=\box81
 \tcb@temp=\box82
@@ -1220,24 +1032,15 @@ Package: pdfpages 2017/10/31 v0.5l Insert pages of external PDF documents (AM)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-<<<<<<< HEAD
 \calc@Acount=\count193
 \calc@Bcount=\count194
-=======
-\calc@Acount=\count194
-\calc@Bcount=\count195
->>>>>>> Develop.Tiago
 \calc@Adimen=\dimen271
 \calc@Bdimen=\dimen272
 \calc@Askip=\skip94
 \calc@Bskip=\skip95
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-<<<<<<< HEAD
 \calc@Ccount=\count195
-=======
-\calc@Ccount=\count196
->>>>>>> Develop.Tiago
 \calc@Cskip=\skip96
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.sty"
@@ -1252,11 +1055,7 @@ File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
 \AM@pagebox=\box84
 \AM@global@opts=\toks76
 \AM@toc@title=\toks77
-<<<<<<< HEAD
 \c@AM@survey=\count196
-=======
-\c@AM@survey=\count197
->>>>>>> Develop.Tiago
 \AM@templatesizebox=\box85
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\pdflscape.sty"
@@ -1315,7 +1114,6 @@ File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-<<<<<<< HEAD
 \scratchcounter=\count197
 \scratchdimen=\dimen275
 \scratchbox=\box86
@@ -1326,18 +1124,6 @@ File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 \MPscratchDim=\dimen276
 \MPnumerator=\count267
 \makeMPintoPDFobject=\count268
-=======
-\scratchcounter=\count198
-\scratchdimen=\dimen275
-\scratchbox=\box86
-\nofMPsegments=\count199
-\nofMParguments=\count266
-\everyMPshowfont=\toks78
-\MPscratchCnt=\count267
-\MPscratchDim=\dimen276
-\MPnumerator=\count268
-\makeMPintoPDFobject=\count269
->>>>>>> Develop.Tiago
 \everyMPtoPDFconversion=\toks79
 ) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1361,11 +1147,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-<<<<<<< HEAD
 \c@section@level=\count269
-=======
-\c@section@level=\count270
->>>>>>> Develop.Tiago
 )
 LaTeX Info: Redefining \ref on input line 10.
 LaTeX Info: Redefining \pageref on input line 10.
@@ -1414,24 +1196,14 @@ LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 2.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 55.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 55.
-=======
 (babel)             in language  on input line 33.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 33.
->>>>>>> Develop.Tiago
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-<<<<<<< HEAD
-l.55 ...k with High Traffic}{94}{subsection.5.3.2}
-=======
 l.33 ...ensioning using ILP}{38}{subsection.6.3.2}
->>>>>>> Develop.Tiago
                                                    [1
 
 ]
@@ -1571,29 +1343,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-<<<<<<< HEAD
-<./figures/RedeTeste.jpg, id=256, 587.94656pt x 274.77657pt>
-File: ./figures/RedeTeste.jpg Graphic file (type jpg)
-
-<use ./figures/RedeTeste.jpg>
-Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 24.
-(pdftex.def)             Requested size: 442.65375pt x 206.87433pt.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 41.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 41.
- [7
-=======
 
 Underfull \hbox (badness 10000) in paragraph at lines 42--43
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 95--98
-=======
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 51.
 
 
@@ -1674,7 +1429,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 54.
->>>>>>> Develop.Tiago
 
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 60.
@@ -1714,92 +1468,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
 
-<<<<<<< HEAD
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 115.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 115.
-[8] <./figures/EON_Rede_Realista.jpg, id=273, 603.0028pt x 371.13657pt>
-File: ./figures/EON_Rede_Realista.jpg Graphic file (type jpg)
-
-<use ./figures/EON_Rede_Realista.jpg>
-Package pdftex.def Info: ./figures/EON_Rede_Realista.jpg used on input line 144
-.
-(pdftex.def)             Requested size: 442.65375pt x 272.44514pt.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 150.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 150.
- [9 <./figures/EON_Rede_Realista.jpg>]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 257.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 257.
-
-[10]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 257.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 257.
- [11]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 310.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 310.
- [12]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 363.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 363.
- [13]
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
-=======
 
 Underfull \hbox (badness 10000) in paragraph at lines 100--101
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 371--374
-=======
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 115.
->>>>>>> Develop.Tiago
 
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 121.
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 375--377
-=======
->>>>>>> Develop.Tiago
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 121.
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 378--380
-=======
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 127.
->>>>>>> Develop.Tiago
 
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 133.
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 381--382
-=======
->>>>>>> Develop.Tiago
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 139.
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 2073) in paragraph at lines 394--395
-[]|\T1/ppl/m/n/10.95 Implement the di-men-si-o-ning of op-ti-cal networks in th
-e
-=======
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 139.
 
 
@@ -1848,7 +1540,6 @@ Package babel Info: Redefining portuges shorthand "|
 
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 58--62
 [][] 
->>>>>>> Develop.Tiago
  []
 
 
@@ -1856,15 +1547,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--66
 
  []
 
-<<<<<<< HEAD
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 397.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 397.
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 407--409
-=======
->>>>>>> Develop.Tiago
 
 Underfull \hbox (badness 4181) in paragraph at lines 67--68
 []\T1/ppl/m/n/10.95 The ob-jec-tive func-tion of fol-lowing the ILP is a CA-PEX
@@ -1874,26 +1556,14 @@ Underfull \hbox (badness 4181) in paragraph at lines 67--68
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 78.
 
-<<<<<<< HEAD
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 518.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 518.
-[16]
-=======
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 85.
-
->>>>>>> Develop.Tiago
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 85.
 
 
-<<<<<<< HEAD
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 529.
-=======
+LaTeX Warning: Command \textbackslash invalid in math mode on input line 85.
+
+
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 92.
->>>>>>> Develop.Tiago
 
 
 LaTeX Warning: Command \textbackslash invalid in math mode on input line 113.
@@ -1922,9 +1592,6 @@ Package babel Info: Redefining portuges shorthand "|
  (chapter/Heuristics.tex
 Cap\'{\i }tulo 5.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 566.
-=======
 (babel)             in language  on input line 3.
 )
 Package babel Info: Redefining portuges shorthand "|
@@ -1971,7 +1638,6 @@ Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 23.
 (pdftex.def)             Requested size: 442.65375pt x 201.70732pt.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 40.
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 40.
  [21
@@ -1991,9 +1657,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--97
 Underfull \hbox (badness 10000) in paragraph at lines 98--99
 
  []
-<<<<<<< HEAD
-
-=======
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 100--103
@@ -2031,14 +1694,9 @@ Overfull \hbox (7.33366pt too wide) in paragraph at lines 140--143
 Underfull \hbox (badness 10000) in paragraph at lines 152--154
 
  []
->>>>>>> Develop.Tiago
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<<<<<<< HEAD
-=======
-LaTeX Warning: `!h' float specifier changed to `!ht'.
->>>>>>> Develop.Tiago
 
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 184.
@@ -2065,9 +1723,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 233--234
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 613--614
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 255--258
 
  []
@@ -2084,18 +1739,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 264--265
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 267--268
->>>>>>> Develop.Tiago
 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 615.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 615.
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 615--616
-=======
 (babel)             in language  on input line 269.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 269.
@@ -2111,14 +1758,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 292--295
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 296--299
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 638--641
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 300--301
 
  []
@@ -2136,16 +1779,11 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 309.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 313.
->>>>>>> Develop.Tiago
 
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 315--318
 [][] 
  []
 
-<<<<<<< HEAD
-
-Underfull \hbox (badness 10000) in paragraph at lines 642--645
-=======
 <./figures/EON_Rede_Realista.jpg, id=644, 603.0028pt x 371.13657pt>
 File: ./figures/EON_Rede_Realista.jpg Graphic file (type jpg)
 
@@ -2195,99 +1833,51 @@ Underfull \hbox (badness 10000) in paragraph at lines 557--559
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 560--562
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 646--647
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 563--564
->>>>>>> Develop.Tiago
 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 648.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 648.
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 649--650
-=======
 (babel)             in language  on input line 572.
->>>>>>> Develop.Tiago
 
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 574--577
 [][] 
  []
 
-<<<<<<< HEAD
-
-Underfull \hbox (badness 10000) in paragraph at lines 651--652
-=======
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 578.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 578.
 [33]
 Underfull \hbox (badness 10000) in paragraph at lines 579--581
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 703--706
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 582--583
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 707--710
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 584--585
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 711--712
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 586--589
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 714--715
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 590--593
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 716--717
-
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 768--771
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 594--595
 
  []
@@ -2305,25 +1895,16 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 697--700
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 772--775
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 701--704
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 776--777
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 705--706
->>>>>>> Develop.Tiago
 
  []
 
@@ -2333,11 +1914,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 707.
 [34]
 
-<<<<<<< HEAD
-LaTeX Warning: Text page 21 contains only floats.
-=======
 LaTeX Warning: Text page 35 contains only floats.
->>>>>>> Develop.Tiago
 
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 707.
@@ -2348,50 +1925,24 @@ Package babel Info: Redefining portuges shorthand "|
 LaTeX Warning: Text page 36 contains only floats.
 
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 778.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 778.
-[22]
-=======
 (babel)             in language  on input line 707.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 707.
 [36]
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 707.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 786.
-) (sdf/transparent_with_1_plus_1_protection/transparent.tex
-=======
 (babel)             in language  on input line 711.
 ) (sdf/opaque/opaque_with_1_plus_1_protection.tex
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
-<<<<<<< HEAD
- [23]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 3.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 9.
-
-Underfull \hbox (badness 2073) in paragraph at lines 13--14
-[]|\T1/ppl/m/n/10.95 Implement the di-men-si-o-ning of op-ti-cal networks in th
-e
- []
-
-=======
  [37]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 6.
->>>>>>> Develop.Tiago
 
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 8--11
 [][] 
@@ -2399,12 +1950,6 @@ Overfull \hbox (7.33366pt too wide) in paragraph at lines 8--11
 
 File: ./figures/RedeTeste.jpg Graphic file (type jpg)
 <use ./figures/RedeTeste.jpg>
-<<<<<<< HEAD
-Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 24.
-(pdftex.def)             Requested size: 442.65375pt x 206.87433pt.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 50.
-=======
 Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 17.
 (pdftex.def)             Requested size: 442.65375pt x 201.70732pt.
 
@@ -2426,7 +1971,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--37
 
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 37.
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 37.
 [38
@@ -2435,11 +1979,6 @@ Package babel Info: Redefining portuges shorthand "|
 Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
-<<<<<<< HEAD
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
-=======
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 62--65
@@ -2453,7 +1992,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--69
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 70--71
->>>>>>> Develop.Tiago
 
  []
 
@@ -2501,13 +2039,7 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 116.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 362.
- [30]
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
-=======
 (babel)             in language  on input line 120.
->>>>>>> Develop.Tiago
 
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 122--125
 [][] 
@@ -2519,9 +2051,6 @@ Package pdftex.def Info: ./figures/EON_Rede_Realista.jpg used on input line 131
 .
 (pdftex.def)             Requested size: 442.65375pt x 272.44514pt.
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 370--372
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 135--139
 
  []
@@ -2564,48 +2093,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 159--162
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 163--164
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 373--376
-=======
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 214--215
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 377--379
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 216--217
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 218--221
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 2073) in paragraph at lines 393--394
-[]|\T1/ppl/m/n/10.95 Implement the di-men-si-o-ning of op-ti-cal networks in th
-e
- []
-
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 222--225
 
  []
@@ -2653,7 +2162,6 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 10.
->>>>>>> Develop.Tiago
 
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 12--15
 [][] 
@@ -2666,17 +2174,11 @@ Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 23.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 49.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 396.
-[31]
-Underfull \hbox (badness 10000) in paragraph at lines 406--408
-=======
 (babel)             in language  on input line 49.
  [46
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 93--96
->>>>>>> Develop.Tiago
 
  []
 
@@ -2685,23 +2187,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--98
 
  []
 
-<<<<<<< HEAD
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 438.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 438.
-[32]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 498.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 498.
- [33]
-=======
 
 Underfull \hbox (badness 10000) in paragraph at lines 99--102
 
  []
->>>>>>> Develop.Tiago
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 103--105
@@ -2718,14 +2207,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
-<<<<<<< HEAD
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 536.
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 536.
-
-=======
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 113.
 Package babel Info: Redefining portuges shorthand "|
@@ -2733,7 +2214,6 @@ Package babel Info: Redefining portuges shorthand "|
 [47]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 137.
->>>>>>> Develop.Tiago
 
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 139--142
 [][] 
@@ -2744,14 +2224,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 151--153
 
  []
 
-<<<<<<< HEAD
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 573.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 573.
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 576--577
-=======
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -2766,15 +2238,12 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 181.
 [48]
 Underfull \hbox (badness 10000) in paragraph at lines 214--215
->>>>>>> Develop.Tiago
 
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 216--217
 
-<<<<<<< HEAD
-=======
  []
 
 Package babel Info: Redefining portuges shorthand "|
@@ -2794,7 +2263,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 220--223
 
 Underfull \hbox (badness 10000) in paragraph at lines 224--227
 
->>>>>>> Develop.Tiago
  []
 
 
@@ -2820,14 +2288,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 281--284
 
  []
 
-<<<<<<< HEAD
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 594.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 594.
-[35]
-Underfull \hbox (badness 10000) in paragraph at lines 595--596
-=======
 
 Underfull \hbox (badness 10000) in paragraph at lines 285--288
 
@@ -2839,16 +2299,11 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 288.
 [50]
 Underfull \hbox (badness 10000) in paragraph at lines 289--293
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 618--619
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 294--295
->>>>>>> Develop.Tiago
 
  []
 
@@ -2866,13 +2321,8 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 307.
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 643--646
-
-=======
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 309--312
 [][] 
->>>>>>> Develop.Tiago
  []
 
 File: ./figures/EON_Rede_Realista.jpg Graphic file (type jpg)
@@ -2906,11 +2356,6 @@ Overfull \hbox (6.7681pt too wide) detected at line 462
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 488.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 650.
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 651--655
-=======
 (babel)             in language  on input line 488.
 [55]
 Package babel Info: Redefining portuges shorthand "|
@@ -2919,14 +2364,10 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 541.
  [56]
 Underfull \hbox (badness 10000) in paragraph at lines 547--548
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 656--657
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 549--551
 
  []
@@ -2938,16 +2379,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 552--555
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 556--558
->>>>>>> Develop.Tiago
 
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 659--660
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 559--560
->>>>>>> Develop.Tiago
 
  []
 
@@ -2958,8 +2394,6 @@ Overfull \hbox (7.33366pt too wide) in paragraph at lines 570--573
 [][] 
  []
 
-<<<<<<< HEAD
-=======
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 574.
 Package babel Info: Redefining portuges shorthand "|
@@ -2968,7 +2402,6 @@ Package babel Info: Redefining portuges shorthand "|
 Underfull \hbox (badness 10000) in paragraph at lines 575--577
 
  []
->>>>>>> Develop.Tiago
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 578--579
@@ -2988,8 +2421,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 582--585
 
 Underfull \hbox (badness 10000) in paragraph at lines 586--589
 
-<<<<<<< HEAD
-=======
  []
 
 
@@ -3000,7 +2431,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 590--594
 
 Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
->>>>>>> Develop.Tiago
  []
 
 
@@ -3009,13 +2439,8 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 646.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 727.
-[37]
-=======
 (babel)             in language  on input line 646.
 [58]
->>>>>>> Develop.Tiago
 
 LaTeX Warning: Text page 59 contains only floats.
 
@@ -3029,11 +2454,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 647--648
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 730--731
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 649--650
->>>>>>> Develop.Tiago
 
  []
 
@@ -3092,26 +2513,10 @@ Overfull \hbox (7.33366pt too wide) in paragraph at lines 8--11
 [][] 
  []
 
-<<<<<<< HEAD
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 11.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 17.
-File: ./figures/RedeTeste.jpg Graphic file (type jpg)
-<use ./figures/RedeTeste.jpg>
-Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 26.
-(pdftex.def)             Requested size: 442.65375pt x 206.87433pt.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 32.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 32.
- [42
-=======
 File: ./figures/RedeTeste.jpg Graphic file (type jpg)
 <use ./figures/RedeTeste.jpg>
 Package pdftex.def Info: ./figures/RedeTeste.jpg used on input line 17.
 (pdftex.def)             Requested size: 442.65375pt x 201.70732pt.
->>>>>>> Develop.Tiago
 
 Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
@@ -3146,11 +2551,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--42
  []
 
 
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 110--112
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 43--46
->>>>>>> Develop.Tiago
 
  []
 
@@ -3159,60 +2560,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--50
 
  []
 
-<<<<<<< HEAD
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 114.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 114.
-[43]
-File: ./figures/EON_Rede_Realista.jpg Graphic file (type jpg)
- <use ./figures/EON_Rede_Realista.jpg>
-Package pdftex.def Info: ./figures/EON_Rede_Realista.jpg used on input line 145
-.
-(pdftex.def)             Requested size: 442.65375pt x 272.44514pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 258.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 258.
-[44]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 285.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 285.
- [45]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 285.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 285.
- [46]
-Overfull \vbox (141.18292pt too high) has occurred while \output is active []
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 285.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 285.
-
-[47]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 364.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 364.
- [48]
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
-=======
 
 Underfull \hbox (badness 10000) in paragraph at lines 51--55
->>>>>>> Develop.Tiago
 
  []
 
@@ -3231,20 +2580,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
-<<<<<<< HEAD
-
-Underfull \hbox (badness 10000) in paragraph at lines 382--383
-
- []
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 391.
-
-Underfull \hbox (badness 2073) in paragraph at lines 395--396
-[]|\T1/ppl/m/n/10.95 Implement the di-men-si-o-ning of op-ti-cal networks in th
-e
- []
-=======
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 101.
 Package babel Info: Redefining portuges shorthand "|
@@ -3254,15 +2589,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--107
 
  []
 
->>>>>>> Develop.Tiago
 
 Underfull \hbox (badness 10000) in paragraph at lines 108--111
 
-<<<<<<< HEAD
-Overfull \hbox (7.33366pt too wide) in paragraph at lines 393--397
-[][] 
-=======
->>>>>>> Develop.Tiago
  []
 
 
@@ -3278,19 +2607,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 120.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 445.
-[50]
-Underfull \hbox (badness 10000) in paragraph at lines 464--465
-
- []
-
-
-LaTeX Warning: Command \textbackslash invalid in math mode on input line 502.
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 506.
-=======
 (babel)             in language  on input line 124.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 127.
@@ -3299,7 +2615,6 @@ Package babel Info: Redefining portuges shorthand "|
 [65]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 128.
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 132.
 
@@ -3334,10 +2649,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 159--162
  []
 
 
-<<<<<<< HEAD
-=======
 Underfull \hbox (badness 10000) in paragraph at lines 163--164
->>>>>>> Develop.Tiago
 
  []
 
@@ -3346,15 +2658,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
-<<<<<<< HEAD
-
-Underfull \hbox (badness 10000) in paragraph at lines 578--579
-
-=======
 
 Underfull \hbox (badness 10000) in paragraph at lines 167--170
 
->>>>>>> Develop.Tiago
  []
 
 
@@ -3372,10 +2678,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
-<<<<<<< HEAD
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 593.
-=======
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -3389,7 +2691,6 @@ LaTeX Warning: Text page 68 contains only floats.
 
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 231.
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 231.
 [68]
@@ -3428,15 +2729,11 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 300.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 617.
-=======
 (babel)             in language  on input line 300.
 [69]
 
 LaTeX Warning: Text page 70 contains only floats.
 
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 300.
 Package babel Info: Redefining portuges shorthand "|
@@ -3488,11 +2785,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 35.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 35.
-<<<<<<< HEAD
- [56
-=======
  [73
->>>>>>> Develop.Tiago
 
  <./figures/Net2Plan.pdf>]
 
@@ -3560,11 +2853,7 @@ Package pdftex.def Info: ./figures/Net2Plan_matrix.pdf used on input line 116.
 
 pdfTeX warning: pdflatex.exe (file ./figures/Net2Plan_Network.pdf): PDF inclusi
 on: found PDF version <1.7>, but at most version <1.5> allowed
-<<<<<<< HEAD
-<./figures/Net2Plan_Network.pdf, id=702, 1028.34187pt x 539.76656pt>
-=======
 <./figures/Net2Plan_Network.pdf, id=1022, 1028.34187pt x 539.76656pt>
->>>>>>> Develop.Tiago
 File: ./figures/Net2Plan_Network.pdf Graphic file (type pdf)
 
 <use ./figures/Net2Plan_Network.pdf>
@@ -9369,12 +8658,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
-<<<<<<< HEAD
-
-[1008]
-=======
  [1008]
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
 Package babel Info: Redefining portuges shorthand "|
@@ -9430,12 +8714,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
-<<<<<<< HEAD
-
-[1019]
-=======
  [1019]
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
 Package babel Info: Redefining portuges shorthand "|
@@ -9467,55 +8746,6 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
  [1025]
-<<<<<<< HEAD
-Underfull \hbox (badness 10000) in paragraph at lines 19627--19628
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19629--19630
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19631--19632
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19633--19670
-
- []
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 19670.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 19670.
-[1026]
-Underfull \hbox (badness 10000) in paragraph at lines 19671--19673
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19674--19675
-
- []
-
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 19702.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 19702.
-[1027]
-Underfull \hbox (badness 10000) in paragraph at lines 19702--19703
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19729--19730
-
- []
-
-=======
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
 Package babel Info: Redefining portuges shorthand "|
@@ -9536,20 +8766,9 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
  [1029]
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19618.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 19731.
-[1028]
-Underfull \hbox (badness 10000) in paragraph at lines 19758--19759
-
- []
-
-) (sdf/translucent_with_1_plus_1_protection/translucent_appendice.tex
-Underfull \hbox (badness 10000) in paragraph at lines 19760--1
-=======
 (babel)             in language  on input line 19618.
  [1030]
 Package babel Info: Redefining portuges shorthand "|
@@ -9629,13 +8848,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 19631--19632
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 19633--19670
->>>>>>> Develop.Tiago
 
  []
 
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-=======
 (babel)             in language  on input line 19670.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 19670.
@@ -9678,7 +8894,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 19760--1
  []
 
 Package babel Info: Redefining portuges shorthand "|
->>>>>>> Develop.Tiago
 (babel)             in language  on input line 1.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
@@ -9702,20 +8917,12 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
-<<<<<<< HEAD
- [1033]
-=======
  [1050]
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
-<<<<<<< HEAD
- [1034]
-=======
  [1051]
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining portuges shorthand "|
@@ -9730,11 +8937,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 1.
-<<<<<<< HEAD
- [1037]
-=======
  [1054]
->>>>>>> Develop.Tiago
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 3.
 
@@ -9760,13 +8963,8 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 31.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 29.
- [1038
-=======
 (babel)             in language  on input line 31.
  [1055
->>>>>>> Develop.Tiago
 
 ]
 \openout2 = `chapter/dissertations.aux'.
@@ -9784,11 +8982,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 18.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 18.
-<<<<<<< HEAD
-[1039
-=======
 [1056
->>>>>>> Develop.Tiago
 
 
 
@@ -9803,11 +8997,7 @@ Package babel Info: Redefining portuges shorthand "|
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5006, 597.50829pt x 845.0471pt>
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5326, 597.50829pt x 845.0471pt>
->>>>>>> Develop.Tiago
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 
 <use dissertations/2015_2016_Vasco_Braz.pdf>
@@ -9832,11 +9022,7 @@ DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5009, page=1, 597.50829pt x 845.047
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5329, page=1, 597.50829pt x 845.047
->>>>>>> Develop.Tiago
 1pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 1>
@@ -9871,22 +9057,14 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page1 used on 
 input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1040
-=======
  [1057
->>>>>>> Develop.Tiago
 
  <./dissertations/2015_2016_Vasco_Braz.pdf>]
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5031, page=2, 597.50829pt x 845.047
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5351, page=2, 597.50829pt x 845.047
->>>>>>> Develop.Tiago
 1pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 2>
@@ -9909,20 +9087,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page2 used on 
 input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1041 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1058 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5036, page=3, 597.50829pt x 845.047
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5356, page=3, 597.50829pt x 845.047
->>>>>>> Develop.Tiago
 1pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 3>
@@ -9945,20 +9115,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page3 used on 
 input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1042 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1059 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5046, page=4, 597.50829pt x 845.047
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5366, page=4, 597.50829pt x 845.047
->>>>>>> Develop.Tiago
 1pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 4>
@@ -9981,20 +9143,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page4 used on 
 input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1043 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1060 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5051, page=5, 597.50829pt x 845.047
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5371, page=5, 597.50829pt x 845.047
->>>>>>> Develop.Tiago
 1pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 5>
@@ -10017,20 +9171,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page5 used on 
 input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1044 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1061 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5057, page=6, 597.50829pt x 845.047
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5376, page=6, 597.50829pt x 845.047
->>>>>>> Develop.Tiago
 1pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 6>
@@ -10053,20 +9199,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page6 used on 
 input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1045 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1062 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5062, page=7, 597.50829pt x 845.047
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5382, page=7, 597.50829pt x 845.047
->>>>>>> Develop.Tiago
 1pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 7>
@@ -10089,20 +9227,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page7 used on 
 input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1046 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1063 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5067, page=8, 597.50829pt x 845.047
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5387, page=8, 597.50829pt x 845.047
->>>>>>> Develop.Tiago
 1pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 8>
@@ -10125,20 +9255,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page8 used on 
 input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1047 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1064 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5072, page=9, 597.50829pt x 845.047
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5392, page=9, 597.50829pt x 845.047
->>>>>>> Develop.Tiago
 1pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 9>
@@ -10161,20 +9283,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page9 used on 
 input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1048 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1065 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5077, page=10, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5397, page=10, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 10>
@@ -10197,20 +9311,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page10 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1049 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1066 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5082, page=11, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5402, page=11, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 11>
@@ -10233,20 +9339,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page11 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1050 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1067 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5088, page=12, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5407, page=12, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 12>
@@ -10269,20 +9367,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page12 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1051 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1068 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5093, page=13, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5413, page=13, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 13>
@@ -10305,20 +9395,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page13 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1052 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1069 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5098, page=14, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5418, page=14, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 14>
@@ -10341,20 +9423,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page14 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1053 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1070 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5103, page=15, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5423, page=15, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 15>
@@ -10377,20 +9451,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page15 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1054 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1071 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5118, page=16, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5438, page=16, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 16>
@@ -10413,20 +9479,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page16 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1055 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1072 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5123, page=17, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5443, page=17, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 17>
@@ -10449,20 +9507,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page17 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1056 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1073 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5134, page=18, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5453, page=18, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 18>
@@ -10485,20 +9535,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page18 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1057 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1074 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5139, page=19, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5459, page=19, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 19>
@@ -10521,20 +9563,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page19 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1058 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1075 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5144, page=20, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5464, page=20, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 20>
@@ -10557,20 +9591,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page20 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1059 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1076 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5149, page=21, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5469, page=21, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 21>
@@ -10593,20 +9619,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page21 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1060 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1077 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5154, page=22, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5474, page=22, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 22>
@@ -10629,20 +9647,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page22 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1061 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1078 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5159, page=23, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5479, page=23, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 23>
@@ -10665,20 +9675,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page23 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1062 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1079 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5168, page=24, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5487, page=24, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 24>
@@ -10701,20 +9703,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page24 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1063 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1080 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5173, page=25, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5493, page=25, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 25>
@@ -10737,20 +9731,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page25 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1064 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1081 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5178, page=26, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5498, page=26, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 26>
@@ -10773,20 +9759,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page26 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1065 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1082 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5183, page=27, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5503, page=27, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 27>
@@ -10809,20 +9787,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page27 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1066 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1083 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5188, page=28, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5508, page=28, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 28>
@@ -10845,20 +9815,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page28 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1067 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1084 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5199, page=29, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5519, page=29, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 29>
@@ -10881,20 +9843,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page29 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1068 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1085 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5268, page=30, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5587, page=30, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 30>
@@ -10917,20 +9871,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page30 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1069 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1086 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5291, page=31, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5611, page=31, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 31>
@@ -10953,20 +9899,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page31 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1070 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1087 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5302, page=32, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5622, page=32, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 32>
@@ -10989,20 +9927,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page32 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1071 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1088 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5370, page=33, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5690, page=33, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 33>
@@ -11025,20 +9955,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page33 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1072 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1089 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5555, page=34, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=5875, page=34, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 34>
@@ -11061,20 +9983,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page34 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1073 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1090 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=5810, page=35, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6130, page=35, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 35>
@@ -11097,20 +10011,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page35 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1074 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1091 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6191, page=36, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6510, page=36, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 36>
@@ -11133,20 +10039,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page36 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1075 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1092 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6199, page=37, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6519, page=37, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 37>
@@ -11169,20 +10067,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page37 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1076 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1093 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6204, page=38, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6524, page=38, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 38>
@@ -11205,20 +10095,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page38 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1077 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1094 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6209, page=39, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6529, page=39, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 39>
@@ -11241,20 +10123,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page39 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1078 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1095 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6214, page=40, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6534, page=40, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 40>
@@ -11277,20 +10151,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page40 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1079 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1096 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6222, page=41, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6542, page=41, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 41>
@@ -11313,20 +10179,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page41 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1080 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1097 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6248, page=42, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6567, page=42, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 42>
@@ -11349,20 +10207,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page42 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1081 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1098 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6256, page=43, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6576, page=43, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 43>
@@ -11385,20 +10235,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page43 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1082 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1099 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6261, page=44, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6581, page=44, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 44>
@@ -11421,20 +10263,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page44 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1083 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1100 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6271, page=45, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6591, page=45, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 45>
@@ -11457,20 +10291,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page45 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1084 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1101 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6279, page=46, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6599, page=46, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 46>
@@ -11493,20 +10319,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page46 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1085 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1102 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6293, page=47, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6613, page=47, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 47>
@@ -11529,20 +10347,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page47 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1086 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1103 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6302, page=48, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6621, page=48, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 48>
@@ -11565,20 +10375,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page48 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1087 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1104 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6307, page=49, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6627, page=49, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 49>
@@ -11601,20 +10403,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page49 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1088 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1105 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6312, page=50, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6632, page=50, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 50>
@@ -11637,20 +10431,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page50 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1089 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1106 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6375, page=51, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6695, page=51, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 51>
@@ -11673,20 +10459,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page51 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1090 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1107 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6458, page=52, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6778, page=52, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 52>
@@ -11709,20 +10487,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page52 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1091 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1108 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6557, page=53, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6877, page=53, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 53>
@@ -11745,20 +10515,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page53 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1092 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1109 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6566, page=54, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6885, page=54, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 54>
@@ -11781,20 +10543,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page54 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1093 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1110 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6574, page=55, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6894, page=55, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 55>
@@ -11817,20 +10571,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page55 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1094 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1111 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6585, page=56, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6905, page=56, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 56>
@@ -11853,20 +10599,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page56 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1095 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1112 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6593, page=57, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6913, page=57, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 57>
@@ -11889,20 +10627,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page57 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1096 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1113 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6601, page=58, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6921, page=58, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 58>
@@ -11925,20 +10655,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page58 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1097 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1114 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6612, page=59, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6932, page=59, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 59>
@@ -11961,20 +10683,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page59 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1098 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1115 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6627, page=60, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6946, page=60, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 60>
@@ -11997,20 +10711,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page60 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1099 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1116 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6632, page=61, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6952, page=61, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 61>
@@ -12033,20 +10739,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page61 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1100 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1117 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6637, page=62, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6957, page=62, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 62>
@@ -12069,20 +10767,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page62 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1101 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1118 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6645, page=63, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6965, page=63, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 63>
@@ -12105,20 +10795,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page63 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1102 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1119 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6653, page=64, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6973, page=64, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 64>
@@ -12141,20 +10823,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page64 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1103 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1120 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6664, page=65, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6984, page=65, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 65>
@@ -12177,20 +10851,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page65 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1104 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1121 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6670, page=66, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6989, page=66, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 66>
@@ -12213,20 +10879,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page66 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1105 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1122 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6675, page=67, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=6995, page=67, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 67>
@@ -12249,20 +10907,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page67 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1106 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1123 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6686, page=68, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7006, page=68, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 68>
@@ -12285,20 +10935,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page68 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1107 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1124 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6697, page=69, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7017, page=69, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 69>
@@ -12321,20 +10963,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page69 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1108 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1125 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6705, page=70, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7025, page=70, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 70>
@@ -12357,20 +10991,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page70 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1109 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1126 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6710, page=71, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7030, page=71, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 71>
@@ -12393,20 +11019,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page71 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1110 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1127 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6716, page=72, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7035, page=72, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 72>
@@ -12429,20 +11047,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page72 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1111 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1128 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6721, page=73, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7041, page=73, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 73>
@@ -12465,20 +11075,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page73 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1112 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1129 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6726, page=74, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7046, page=74, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 74>
@@ -12501,20 +11103,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page74 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1113 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1130 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6731, page=75, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7051, page=75, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 75>
@@ -12537,20 +11131,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page75 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1114 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1131 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6736, page=76, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7056, page=76, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 76>
@@ -12573,20 +11159,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page76 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1115 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1132 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6755, page=77, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7075, page=77, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 77>
@@ -12609,20 +11187,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page77 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1116 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1133 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6762, page=78, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7081, page=78, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 78>
@@ -12645,20 +11215,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page78 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1117 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1134 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6791, page=79, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7111, page=79, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 79>
@@ -12681,20 +11243,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page79 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1118 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1135 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6803, page=80, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7123, page=80, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 80>
@@ -12717,20 +11271,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page80 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1119 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1136 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6812, page=81, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7132, page=81, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 81>
@@ -12753,20 +11299,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page81 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1120 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1137 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6825, page=82, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7145, page=82, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 82>
@@ -12789,20 +11327,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page82 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1121 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1138 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6839, page=83, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7159, page=83, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 83>
@@ -12825,20 +11355,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page83 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1122 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1139 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6849, page=84, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7168, page=84, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 84>
@@ -12861,20 +11383,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page84 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1123 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1140 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6864, page=85, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7184, page=85, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 85>
@@ -12897,20 +11411,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page85 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1124 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1141 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6873, page=86, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7193, page=86, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 86>
@@ -12933,20 +11439,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page86 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1125 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1142 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6888, page=87, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7208, page=87, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 87>
@@ -12969,20 +11467,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page87 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1126 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1143 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6897, page=88, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7217, page=88, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 88>
@@ -13005,20 +11495,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page88 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1127 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1144 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6912, page=89, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7232, page=89, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 89>
@@ -13041,20 +11523,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page89 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1128 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1145 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6935, page=90, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7254, page=90, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 90>
@@ -13077,20 +11551,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page90 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1129 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1146 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6941, page=91, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7261, page=91, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 91>
@@ -13113,20 +11579,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page91 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1130 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1147 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6950, page=92, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7270, page=92, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 92>
@@ -13149,20 +11607,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page92 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1131 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1148 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6968, page=93, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7288, page=93, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 93>
@@ -13185,20 +11635,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page93 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1132 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1149 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6978, page=94, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7298, page=94, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 94>
@@ -13221,20 +11663,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page94 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1133 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1150 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=6992, page=95, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7312, page=95, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 95>
@@ -13257,20 +11691,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page95 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1134 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1151 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=7005, page=96, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7324, page=96, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 96>
@@ -13293,20 +11719,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page96 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1135 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1152 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=7014, page=97, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7334, page=97, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 97>
@@ -13329,20 +11747,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page97 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1136 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1153 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=7029, page=98, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7349, page=98, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 98>
@@ -13365,20 +11775,12 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page98 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1137 <./dissertations/2015_2016_Vasco_Braz.pdf>]
-=======
  [1154 <./dissertations/2015_2016_Vasco_Braz.pdf>]
->>>>>>> Develop.Tiago
 
 pdfTeX warning: pdflatex.exe (file ./dissertations/2015_2016_Vasco_Braz.pdf): P
 DF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 
-<<<<<<< HEAD
-<dissertations/2015_2016_Vasco_Braz.pdf, id=7044, page=99, 597.50829pt x 845.04
-=======
 <dissertations/2015_2016_Vasco_Braz.pdf, id=7364, page=99, 597.50829pt x 845.04
->>>>>>> Develop.Tiago
 71pt>
 File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
  <use dissertations/2015_2016_Vasco_Braz.pdf, page 99>
@@ -13401,23 +11803,14 @@ File: dissertations/2015_2016_Vasco_Braz.pdf Graphic file (type pdf)
 Package pdftex.def Info: dissertations/2015_2016_Vasco_Braz.pdf, page99 used on
  input line 20.
 (pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
-<<<<<<< HEAD
- [1138 <./dissertations/2015_2016_Vasco_Braz.pdf>])
-=======
  [1155 <./dissertations/2015_2016_Vasco_Braz.pdf>])
->>>>>>> Develop.Tiago
 No file main_netplanner.gls.
 No file main_netplanner.acr.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 65.
 Package babel Info: Redefining portuges shorthand "|
-<<<<<<< HEAD
-(babel)             in language  on input line 63.
-[1139
-=======
 (babel)             in language  on input line 65.
 [1156
->>>>>>> Develop.Tiago
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 65.
@@ -13429,19 +11822,6 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 65.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 65.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 65.
 Package rerunfilecheck Info: File `main_netplanner.out' has not changed.
-<<<<<<< HEAD
-(rerunfilecheck)             Checksum: 8C5C48C4A9FE329B2126EC0E51A876E3;3394.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 63.
- ) 
-Here is how much of TeX's memory you used:
- 28121 strings out of 493328
- 505828 string characters out of 3139131
- 2399987 words of memory out of 3000000
- 29603 multiletter control sequences out of 15000+200000
- 26285 words of font info for 62 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 58i,18n,94p,3550b,564s stack positions out of 5000i,500n,10000p,200000b,50000s
-=======
 (rerunfilecheck)             Checksum: 5EE5F6CEC44E2FE15859692E3134EBA7;6051.
 
 
@@ -13453,14 +11833,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 65.
  ) 
 Here is how much of TeX's memory you used:
- 28310 strings out of 493333
- 509282 string characters out of 3139194
- 2403577 words of memory out of 3000000
- 29699 multiletter control sequences out of 15000+200000
+ 28319 strings out of 493328
+ 509415 string characters out of 3139131
+ 2404054 words of memory out of 3000000
+ 29712 multiletter control sequences out of 15000+200000
  26285 words of font info for 62 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,18n,94p,3584b,564s stack positions out of 5000i,500n,10000p,200000b,50000s
->>>>>>> Develop.Tiago
+ 58i,18n,94p,3556b,564s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
@@ -13480,17 +11859,9 @@ msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/
 Program Files/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files/
 MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/urw/palatino/uplr8a.pfb>
-<<<<<<< HEAD
-Output written on main_netplanner.pdf (1140 pages, 11034819 bytes).
-PDF statistics:
- 7416 PDF objects out of 7423 (max. 8388607)
- 1365 named destinations out of 1440 (max. 500000)
- 1037 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
-Output written on main_netplanner.pdf (1157 pages, 11091217 bytes).
+Output written on main_netplanner.pdf (1157 pages, 11091209 bytes).
 PDF statistics:
  7748 PDF objects out of 8907 (max. 8388607)
  1422 named destinations out of 1440 (max. 500000)
  1293 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> Develop.Tiago
 
