@@ -1,12 +1,35 @@
-﻿2018-04-10
+﻿2018-04-24
 TO BE DONE
-	melhorar a parte da edição
 
-	obter resultados para os casos todos
+	melhorar o texto
 
-	escrever as conclusões para os casos todos
+	concluir o transparente
 
-	escrever os open issues para os casos todos
+	fazer o translúcido
+
+	refazer o analitico
+
+	fazer para uma rede realista o translúcido ( com e sem proteção, tráfico low, medium, high)
+
+Next meeting: quinta-feira, de manhã
+
+2018-04-17
+TO BE DONE
+	derivar uma expressão a partir das tabelas e comparar com a derivação analitica   **** Feito ****
+
+	modo transparente ver a formulação
+
+Next meeting: 24/4, 14h
+
+2018-04-10
+TO BE DONE
+	melhorar a parte da edição 							**** Feito ****
+
+	obter resultados para os casos todos 				**** Feito-(Opaq_Surv_e_Protec, Transp_Surv_e_Protec) ****
+
+	escrever as conclusões para os casos todos 			**** Feito-(Opaq_Surv_e_Protec) ****
+
+	escrever os open issues para os casos todos 		**** Feito-(Opaq_Surv_e_Protec) ****
 
 Next Meeting: 17/4, 9h
 
