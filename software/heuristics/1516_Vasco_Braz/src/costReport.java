@@ -21,25 +21,15 @@ import com.net2plan.interfaces.networkDesign.NetworkLayer;
 import com.net2plan.interfaces.networkDesign.Link;
 import com.net2plan.interfaces.networkDesign.Route;
 import com.net2plan.interfaces.networkDesign.Node;
-//import com.net2plan.libraries.GraphTheoryMetrics;
-//import com.net2plan.libraries.GraphUtils;
 import com.net2plan.utils.*;
-
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-//import java.io.BufferedReader;
-//import java.io.FileReader;
-//import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-//import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -98,6 +88,7 @@ public class costReport implements IReport
 		String type = upperLayer.getName();	
 		String transparent = "Logical Topology Transparent";
 		String opaque = "Logical Topology Opaque";
+		String translucent = "Logical Topology Translucent";
 
 		int portsTotalIn[] = new int[N];
 		int portsTotalOut[] = new int[N];
@@ -132,7 +123,6 @@ public class costReport implements IReport
 				String originNode1;
 				String destinationNode1;
 			
-				
 				double length = l.getLengthInKm();
 				if(l.getAttribute("nW") == null)
 					{
@@ -193,6 +183,7 @@ public class costReport implements IReport
 			long link[] = new long[netPlan.getNumberOfRoutes()];
 			long link1[] = new long[netPlan.getNumberOfRoutes()];
 			int i=0;
+			
 			for(long routeId:netPlan.getRouteIds(lowerLayer))
 			{
 				boolean added = false;
@@ -201,7 +192,6 @@ public class costReport implements IReport
 				Node out = r.getEgressNode();
 
 				Pair<Long, Long> nodePair = new Pair<Long,Long>(in.getId(), out.getId(), false);
-
 
 				for(int j=0 ; j<i ; j++)
 				{
@@ -223,7 +213,7 @@ public class costReport implements IReport
 
 			for(long nodeId : nodeIds)
 			{
-				
+
 				Node n = netPlan.getNodeFromId(nodeId);
 				String name = n.getName();
 				Set<Link>nodeLinksIncoming = n.getIncomingLinks(lowerLayer);
@@ -235,7 +225,9 @@ public class costReport implements IReport
 					Pair<Long,Long> nodePair = nodes.get(j);
 					if(nodePair.getFirst()==(int)nodeId)
 					{
-						if(type.equals(transparent)) portsTribIn[netPlan.getNodeFromId(nodeId).getIndex()] += (int) Math.ceil(trafficR[j]/80);
+						if(type.equals(transparent)) {
+							portsTribIn[netPlan.getNodeFromId(nodeId).getIndex()] += (int) Math.ceil(trafficR[j]/80);
+						}
 						if(type.equals(opaque))
 						{
 							int a=0;
@@ -248,11 +240,16 @@ public class costReport implements IReport
 								a++;
 							}
 						}
+						if(type.equals(translucent)) {
+							portsTribIn[netPlan.getNodeFromId(nodeId).getIndex()] += (int) Math.ceil(trafficR[j]/80);
+						}
 					}
 
 					if(nodePair.getSecond()==(int)nodeId)
 					{
-						if(type.equals(transparent)) portsTribOut[netPlan.getNodeFromId(nodeId).getIndex()] += (int) Math.ceil(trafficR[j]/80);
+						if(type.equals(transparent)) {
+							portsTribOut[netPlan.getNodeFromId(nodeId).getIndex()] += (int) Math.ceil(trafficR[j]/80);
+						}
 						if(type.equals(opaque))
 						{
 							int a=0;
@@ -264,6 +261,9 @@ public class costReport implements IReport
 								}
 								a++;
 							}
+						}
+						if(type.equals(translucent)) {
+							portsTribOut[netPlan.getNodeFromId(nodeId).getIndex()] += (int) Math.ceil(trafficR[j]/80);
 						}
 					}	    		
 				}
@@ -370,7 +370,7 @@ public class costReport implements IReport
 		double Padd = DoubleUtils.sum(portsTribIn);
 		double OLTCost = Double.parseDouble(reportParameters.get("OLT"))*lUsed;
 		double amplifiersCost = numberAmplifiers*Double.parseDouble(reportParameters.get("opticalAmplifier"));
-		double transponderCost = Double.parseDouble(reportParameters.get("Transponder")) * Tau * nOpticalChannels;  //Tau * nOpticalChannels
+		double transponderCost = Double.parseDouble(reportParameters.get("Transponder")) * Tau * nOpticalChannels;
 		double Cl = OLTCost + amplifiersCost + transponderCost;
 		double CostPLineElectrical = nOpticalChannels * Double.parseDouble(reportParameters.get("EXCPort")) * Tau;
 		double CostPLineOptical = nOpticalChannels * Double.parseDouble(reportParameters.get("OXCPort"));
@@ -398,7 +398,7 @@ public class costReport implements IReport
 			costInformationTable.append(String.format("<tr> <td><b>ODU2 Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", (int) ODU[2], (int) unitPriceODU[2], NumberFormat.getIntegerInstance().format(CostPTribODU[2])));
 			costInformationTable.append(String.format("<tr> <td><b>ODU3 Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", (int) ODU[3], (int) unitPriceODU[3], NumberFormat.getIntegerInstance().format(CostPTribODU[3])));
 			costInformationTable.append(String.format("<tr> <td><b>ODU4 Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", (int) ODU[4], (int) unitPriceODU[4], NumberFormat.getIntegerInstance().format(CostPTribODU[4])));
-			costInformationTable.append(String.format("<tr> <td><b>LR Transponders</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", NumberFormat.getIntegerInstance().format((IntUtils.sum(portsLineOut))), NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("EXCPort")) * Tau), NumberFormat.getIntegerInstance().format(CostPLineElectrical)));
+			costInformationTable.append(String.format("<tr> <td><b>Line Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", NumberFormat.getIntegerInstance().format((IntUtils.sum(portsLineOut))), NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("EXCPort")) * Tau), NumberFormat.getIntegerInstance().format(CostPLineElectrical)));
 			costInformationTable.append(String.format("<tr> <td rowspan=2><b>Optical</b></td> <td colspan=2><b>OXCs</b></td> <td>%s</td> <td>%s А</td> <td>%s А</td>",NumberFormat.getIntegerInstance().format(Coxc),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("OXC"))),NumberFormat.getIntegerInstance().format(Coxc)));
 			costInformationTable.append(String.format("<tr> <td colspan=2><b>Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>",NumberFormat.getIntegerInstance().format(Coxc),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("OXCPort"))),NumberFormat.getIntegerInstance().format(Coxc)));
 			costInformationTable.append(String.format("<tr> <th colspan=7><b>Total Network Cost</b></th> <td>%s</td>",NumberFormat.getIntegerInstance().format(Cl + Coxc + Cexc)));
@@ -427,6 +427,39 @@ public class costReport implements IReport
 			costInformationTable.append(String.format("<tr> <td rowspan=3><b>Optical</b></td> <td colspan=2><b>OXCs</b></td> <td>%s</td> <td>%s А</td> <td>%s А</td>",NumberFormat.getIntegerInstance().format(N),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("OXC"))), NumberFormat.getIntegerInstance().format(N * Double.parseDouble(reportParameters.get("OXC")))));
 			costInformationTable.append(String.format("<tr> <td colspan=2><b>LR Transponders</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", NumberFormat.getIntegerInstance().format(nOpticalChannels), NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("OXCPort"))), NumberFormat.getIntegerInstance().format(CostPLineOptical)));
 			costInformationTable.append(String.format("<tr> <td colspan=2><b>Add Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>",NumberFormat.getIntegerInstance().format(Padd),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("OXCPort"))), NumberFormat.getIntegerInstance().format(CostPaddOptical)));
+			costInformationTable.append(String.format("<tr> <th colspan=7><b>Total Network Cost</b></th> <td>%s</td>",NumberFormat.getIntegerInstance().format(Cl + Coxc + Cexc)));
+			costInformationTable.append("</table>");
+		
+		}
+		
+		if(type.equals(translucent))
+		{
+			// Restriзгo qd as portas de add sгo maiores que as portas de linha. A alterar
+			if(nOpticalChannels < Padd) {
+				CostPLineOptical = Padd * Double.parseDouble(reportParameters.get("OXCPort"));
+				nOpticalChannels = (int) Padd;
+				Cl = OLTCost + amplifiersCost + Double.parseDouble(reportParameters.get("Transponder")) * Tau * Padd;
+			}
+		
+			Coxc = CostPOXC + CostPLineOptical + CostPaddOptical;
+			Cexc = CostPEXC + CostPaddElectrical + CostPTribODU[0] + CostPTribODU[1] + CostPTribODU[2] + CostPTribODU[3] + CostPTribODU[4];
+			//Cexc = (Double.parseDouble(reportParameters.get("EXC"))*N)+(Padd*2*Tau*Double.parseDouble(reportParameters.get("EXCPort")));
+			
+			costInformationTable.append("<table border='1'>");
+			costInformationTable.append("<tr><th colspan=4><b>Category</b></th><th><b>Quantity</b></th><th><b>Unit Price</b></th><th><b>Cost</b></th><th><b>Total</b></th></tr>");
+			costInformationTable.append(String.format("<tr> <td rowspan=3><b>Link Cost</b></td> <td colspan=3><b>OLTs</b></td> <td>%s</td> <td>%s А</td> <td>%s А</td> <td rowspan=3>%s А</td>",Integer.toString(lUsed),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("OLT"))),NumberFormat.getIntegerInstance().format(OLTCost),NumberFormat.getIntegerInstance().format(Cl)));
+			costInformationTable.append(String.format("<tr> <td colspan=3><b>100 Gb/s Transceivers</b></td> <td>%s</td> <td>%s А/Gbit/s</td> <td>%s А</td>",Integer.toString(nOpticalChannels),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("Transponder"))),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("Transponder"))*Tau*nOpticalChannels)));
+			costInformationTable.append(String.format("<tr> <td colspan=3><b>Amplifiers</b></td> <td>%s</td> <td>%s А</td> <td>%s А</td>",NumberFormat.getIntegerInstance().format(numberAmplifiers),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("opticalAmplifier"))),NumberFormat.getIntegerInstance().format(amplifiersCost)));
+			costInformationTable.append(String.format("<tr> <td rowspan=10><b>Node Cost</b></td> <td colspan=2 rowspan=7><b>Electrical</b></td> <td><b>EXCs</b></td> <td>%s</td> <td>%s А</td> <td>%s А</td> <td rowspan=10>%s А</td>", NumberFormat.getIntegerInstance().format(N), NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("EXC"))), NumberFormat.getIntegerInstance().format(CostPEXC), NumberFormat.getIntegerInstance().format(Cexc + CostPOXC + CostPLineOptical + CostPaddOptical)));
+			costInformationTable.append(String.format("<tr> <td><b>ODU0 Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", (int) ODU[0], (int) unitPriceODU[0], NumberFormat.getIntegerInstance().format(CostPTribODU[0])));
+			costInformationTable.append(String.format("<tr> <td><b>ODU1 Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", (int) ODU[1], (int) unitPriceODU[1], NumberFormat.getIntegerInstance().format(CostPTribODU[1])));
+			costInformationTable.append(String.format("<tr> <td><b>ODU2 Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", (int) ODU[2], (int) unitPriceODU[2], NumberFormat.getIntegerInstance().format(CostPTribODU[2])));
+			costInformationTable.append(String.format("<tr> <td><b>ODU3 Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", (int) ODU[3], (int) unitPriceODU[3], NumberFormat.getIntegerInstance().format(CostPTribODU[3])));
+			costInformationTable.append(String.format("<tr> <td><b>ODU4 Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", (int) ODU[4], (int) unitPriceODU[4], NumberFormat.getIntegerInstance().format(CostPTribODU[4])));
+			costInformationTable.append(String.format("<tr> <td><b>Transponders</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", NumberFormat.getIntegerInstance().format(Padd), NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("EXCPort")) * Tau), NumberFormat.getIntegerInstance().format(CostPaddElectrical)));
+			costInformationTable.append(String.format("<tr> <td rowspan=3><b>Optical</b></td> <td colspan=2><b>OXCs</b></td> <td>%s</td> <td>%s А</td> <td>%s А</td>",NumberFormat.getIntegerInstance().format(N),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("OXC"))), NumberFormat.getIntegerInstance().format(N * Double.parseDouble(reportParameters.get("OXC")))));
+			costInformationTable.append(String.format("<tr> <td colspan=2><b>Line Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>", NumberFormat.getIntegerInstance().format(nOpticalChannels), NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("OXCPort"))), NumberFormat.getIntegerInstance().format(nOpticalChannels*Double.parseDouble(reportParameters.get("OXCPort")))));
+			costInformationTable.append(String.format("<tr> <td colspan=2><b>Add Ports</b></td> <td>%s</td> <td>%s А/port</td> <td>%s А</td>",NumberFormat.getIntegerInstance().format(Padd),NumberFormat.getIntegerInstance().format(Double.parseDouble(reportParameters.get("OXCPort"))), NumberFormat.getIntegerInstance().format(Padd*Double.parseDouble(reportParameters.get("OXCPort")))));
 			costInformationTable.append(String.format("<tr> <th colspan=7><b>Total Network Cost</b></th> <td>%s</td>",NumberFormat.getIntegerInstance().format(Cl + Coxc + Cexc)));
 			costInformationTable.append("</table>");
 		
