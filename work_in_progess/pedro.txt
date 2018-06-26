@@ -1,3 +1,47 @@
+2018-06-05
+TO BE DONE
+
+	- melhorar a documentação
+
+Next meeting: terça, 26/6, 17h
+
+
+
+
+2018-05-26
+TO BE DONE
+
+	- fazer o translúcido
+
+Next meeting: terça, 5/6, 16h30m
+
+
+2018-05-22
+TO BE DONE
+
+	- mais detalhe fluxograma para as heuristicas (opaco e transparente)
+		- relacionar com o código
+
+	- verificar o transparente
+
+	- fazer se possível o translúcido
+
+Next meeting: terça, 29/5, 16h30m
+
+
+2018-05-22
+TO BE DONE
+
+	- mais detalhe fluxograma para as heuristicas (opaco e transparente)
+
+	- melhor a edição do textto tabelas
+
+	- colocar na tabela de comparação
+
+	- começar a pensar no translucido
+
+Next meeting: terça, 22/5, 16h30m
+
 2018-05-03
 TO BE DONE
 
