@@ -2,6 +2,13 @@ trabalhar no ILP, open issues
 
 TO BE DONE
 
+	pull request (alterar este txt, apagar este comentário)
+	latex
+
+Next meeting: terça, 29/6, 16h  
+
+TO BE DONE
+
 	pull request (ler o documento pdf netxpto_main_anp.pdf -> netxpto_main_anp_eduardo.pdf a parte do Tiago)
 	latex
 
