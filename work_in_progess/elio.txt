@@ -1,0 +1,30 @@
+trabalhar no desenolvimento de heuristicas, considerando o modo opáco
+validar essas heuristicas usando os ILPs do Tiago
+desenvolver novas heuristicas considerando novas restrições
+avançarmos para o modo translucidio
+
+TO BE DONE
+
+	criar a conta no GitHub
+	instalar git na portatil
+	fazer o fork do netxpto/NetPlanner
+	fazer o pull para o portatil
+	
+	editar o doc, colocar lá o vosso nome, compilar 
+
+	git add / git commit
+	git push
+	pull request
+
+	ler aquilo que o Pedro fez
+
+	instalar o Net2Plan
+
+	correr os exemplos do Pedro
+
+	correr os ILPs do Tiago
+
+	comparar com os resultados do Tiago
+	
+
+Next meeting: terça, 26/6, 17h  
