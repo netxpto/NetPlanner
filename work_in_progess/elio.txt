@@ -4,6 +4,22 @@ desenvolver novas heuristicas considerando novas restrições
 avançarmos para o modo translucidio
 
 TO BE DONE
+2018-10-01
+
+	correr os exemplos do Pedro - opaque without survivability
+
+	- actualizar na documentar "correr em MAC"
+
+	correr os ILPs do Tiago - opaque without survivability
+
+	- actualizar na documentar "correr em MAC"
+
+	comparar com os resultados do Tiago 
+
+Next meeting: 8/10, 17h	
+
+2018-09-23
+TO BE DONE
 
 	criar a conta no GitHub
 	instalar git na portatil
@@ -20,11 +36,7 @@ TO BE DONE
 
 	instalar o Net2Plan
 
-	correr os exemplos do Pedro
 
-	correr os ILPs do Tiago
-
-	comparar com os resultados do Tiago
 	
 
 Next meeting: segunda, 1/10, 11h  
