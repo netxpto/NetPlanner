@@ -1,7 +1,19 @@
 trabalhar no desenolvimento de heuristicas, considerando o modo opáco
 validar essas heuristicas usando os ILPs do Tiago
 desenvolver novas heuristicas considerando novas restrições
+trabalhar no desenolvimento de heuristicas, considerando o modo opáco com proteção
 avançarmos para o modo translucidio
+
+
+TO BE DONE
+2018-10-08
+
+	- tentar resolver o problema do carregamento das matrizes de tráfego no Net2Plan
+
+	- vamos aumentar o tráfego de tal modo que a capacidade do sistema entre dois seja excedida, quero saber quais foram as que não conseguiram ser encaminhadas(bloqueio), 
+	indentificar as demands bloqueadas e os links onde ocorreu o bloqueio
+
+Next meeting: 15/10, 16h30m
 
 TO BE DONE
 2018-10-01
