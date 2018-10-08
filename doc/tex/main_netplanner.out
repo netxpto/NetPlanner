@@ -53,10 +53,4 @@
 \BOOKMARK [2][-]{subsection.9.2.1}{Physical Network Topology}{section.9.2}% 53
 \BOOKMARK [2][-]{subsection.9.2.2}{Dimensioning using ILP}{section.9.2}% 54
 \BOOKMARK [2][-]{subsection.9.2.3}{Dimensioning using Heuristics}{section.9.2}% 55
-\BOOKMARK [2][-]{subsection.9.2.4}{Comparative Analysis}{section.9.2}% 56
-\BOOKMARK [0][-]{chapter.10}{Appendices}{}% 57
-\BOOKMARK [1][-]{section.10.1}{Net2Plan Guide}{chapter.10}% 58
-\BOOKMARK [1][-]{section.10.2}{Installing LPSOLVE for using in MatLab}{chapter.10}% 59
-\BOOKMARK [1][-]{section.10.3}{Codify ILP in MatLab}{chapter.10}% 60
-\BOOKMARK [0][-]{chapter.11}{Master Dissertations}{}% 61
-\BOOKMARK [1][-]{section*.750}{Vasco Braz, Dimensioning and Optimization of Node Architecture in Optical Transport Networks, University of Aveiro, 2016}{chapter.11}% 62
+\
