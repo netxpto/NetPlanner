@@ -482,7 +482,7 @@ Following all the steps mentioned in the \ref{net2plan_guide}, applying the rout
  & \multicolumn{2}{ c |}{100 Gbits/s Transceivers} & 297 & 5 000 \euro/Gbit/s & 148 500 000 \euro & \\ \cline{2-6}
  & \multicolumn{2}{ c |}{Amplifiers} & 70 & 4 000 \euro & 280 000 \euro & \\
  \hline
- \multirow{9}{*}{\makecell{Node \\ Cost}} & \multirow{7}{*}{Electrical} & EXCs & 6 & 10 000 \euro & 60 000 \euro & \multirow{9}{*}{29 814 200 \euro} \\ \cline{3-6}
+ \multirow{9}{*}{\makecell{Node \\ Cost}} & \multirow{7}{*}{Electrical} & EXCs & 6 & 10 000 \euro & 60 000 \euro & \multirow{9}{*}{29 811 800 \euro} \\ \cline{3-6}
  & & ODU0 Ports & 1 200 & 10 \euro/port & 12 000 \euro & \\ \cline{3-6}
  & & ODU1 Ports & 1 000 & 15 \euro/port & 15 000 \euro & \\ \cline{3-6}
  & & ODU2 Ports & 320 & 30 \euro/port & 9 600 \euro & \\ \cline{3-6}
@@ -492,7 +492,7 @@ Following all the steps mentioned in the \ref{net2plan_guide}, applying the rout
  & \multirow{2}{*}{Optical} & OXCs & 0 & 20 000 \euro & 0 \euro & \\ \cline{3-6}
  & & Ports & 0 & 2 500 \euro/port & 0 \euro & \\
  \hline
- \multicolumn{6}{|| c |}{Total Network Cost} & 178 834 200 \euro \\
+ \multicolumn{6}{|| c |}{Total Network Cost} & 178 831 800 \euro \\
 \hline
 \end{tabular}
 \caption{Table with detailed description of CAPEX of Vasco's 2016 results.}
@@ -517,8 +517,8 @@ Once we have obtained the results for all the scenarios we will now draw some co
  Number of Tributary ports & 136 & 1 360 & 2 720 \\ \hline
  Number of Transceivers & 23 & 153 & 297 \\ \hline
  Link Cost & 12 020 000 \euro & 77 020 000 \euro & 149 020 000 \euro \\ \hline
- Node Cost & 2 362 590 \euro & 15 385 900 \euro & 29 814 200 \euro \\ \hline
- CAPEX & \textbf{14 382 590 \euro} & \textbf{92 405 900 \euro} & \textbf{178 834 200 \euro} \\ \hline
+ Node Cost & 2 362 590 \euro & 15 385 900 \euro & 29 811 800 \euro \\ \hline
+ CAPEX & \textbf{14 382 590 \euro} & \textbf{92 405 900 \euro} & \textbf{178 831 800 \euro} \\ \hline
  CAPEX/Gbit/s & \textbf{28 765 \euro/Gbit/s} & \textbf{18 481 \euro/Gbit/s} & \textbf{17 883 \euro/Gbit/s} \\
  \hline
 \end{tabular}
@@ -551,3 +551,14 @@ The creation of this model for any scenario, started with some considerations an
   \item Allowing multi-path routing.
   \subitem The presented model for all demands sharing the same node pairs have to follow the same path.
 \end{itemize} 
+
+\vspace{13pt}
+
+\subsubsection{Allow Blocking}
+
+\begin{tcolorbox}	
+	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+		\textbf{Student Name}   &:& \'Elio Coelho    (08/10/2018 - )\\
+		\textbf{Goal}           &:& Allow that some demands are not routed.
+	\end{tabular}
+\end{tcolorbox}

@@ -1,0 +1,204 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28300\viewh14820\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 ILP\
+\
+T = 36 Tbits/s\
+\pard\pardeftab720\partightenfactor0
+
+\f1 \cf0 \
+Model name:  '' - run #1    \
+Objective:   Minimize(R0)\
+ \
+SUBMITTED\
+Model size:      120 constraints,     480 variables,          824 non-zeros.\
+Sets:                                   0 GUB,                  0 SOS.\
+ \
+Using DUAL simplex for phase 1 and PRIMAL simplex for phase 2.\
+The primal and dual simplex pricing strategy set to 'Devex'.\
+ \
+The model is INFEASIBLE\
+lp_solve unsuccessful after 105 iter and a last best value of 1e+30\
+\
+ MEMO: lp_solve version 5.5.2.3 for 64 bit OS, with 64 bit REAL variables.\
+      In the total iteration count 105, 31 (29.5%) were bound flips.\
+      There were 3 refactorizations, 0 triggered by time and 1 by density.\
+       ... on average 24.7 major pivots per refactorization.\
+      The largest [LUSOL v2.2.1.0] fact(B) had 313 NZ entries, 1.0x largest basis.\
+      The maximum B&B level was 1, 0.0x MIP order, with 0 nodes explored.\
+      The constraint matrix inf-norm is 10260, with a dynamic range of 10260.\
+      Time to load data was 0.000 seconds, presolve used 0.000 seconds,\
+       ... 0.000 seconds in simplex solver, in total 0.000 seconds.\
+This problem is infeasible\
+\
+\
+RESULTS: Reference Network\
+\
+Scenario: Opaque without survivability - High Traffic\
+\
+--------------------------------------------------------\
+Information regarding LINKS: \
+--------------------------------------------------------\
+| Link between Node: | Optical channels: | Amplifiers: |\
+| Node 1 <-> Node 2  | 		 0 			 | 		 4     |\
+| Node 1 <-> Node 3  | 		 0 			 | 		 6     |\
+| Node 2 <-> Node 3  | 		 0 			 | 		 0     |\
+| Node 2 <-> Node 4  | 		 0 			 | 		 6     |\
+| Node 3 <-> Node 5  | 		 0 			 | 		 8     |\
+| Node 4 <-> Node 5  | 		 0 			 | 		 1     |\
+| Node 4 <-> Node 6  | 		 0 			 | 		 7     |\
+| Node 5 <-> Node 6  | 		 0 			 | 		 3     |\
+\
+------------------------------------------------------\
+Information regarding NODES:\
+------------------------------------------------------\
+Node: | Connections: | Line Ports: | Tributary Ports: |\
+  1   | 	 0 		| 	  0 	  | 	 2088 		 |\
+  2   | 	 0 		| 	  0 	  | 	 1656 		 |\
+  3   | 	 0 		| 	  0 	  | 	 1296 		 |\
+  4   | 	 0 		| 	  0 	  | 	 1440 		 |\
+  5   | 	 0 		| 	  0 	  | 	 1728 		 |\
+  6   | 	 0 		| 	  0 	  | 	 1584 		 |\
+\
+Detailed description of each node:\
+\
+Node 1:\
+	- Needs 0 line ports.\
+	- Needs 2088 tributary ports:\
+		 -Where 936 is the ODU0;\
+		 -Where 936 is the ODU1;\
+		 -Where 216 is the ODU2;\
+\
+Node 2:\
+	- Needs 0 line ports.\
+	- Needs 1656 tributary ports:\
+		 -Where 792 is the ODU0;\
+		 -Where 504 is the ODU1;\
+		 -Where 144 is the ODU2;\
+		 -Where 144 is the ODU3;\
+		 -Where 72 is the ODU4;\
+\
+Node 3:\
+	- Needs 0 line ports.\
+	- Needs 1296 tributary ports:\
+		 -Where 504 is the ODU0;\
+		 -Where 432 is the ODU1;\
+		 -Where 216 is the ODU2;\
+		 -Where 144 is the ODU3;\
+\
+Node 4:\
+	- Needs 0 line ports.\
+	- Needs 1440 tributary ports:\
+		 -Where 504 is the ODU0;\
+		 -Where 720 is the ODU1;\
+		 -Where 216 is the ODU2;\
+\
+Node 5:\
+	- Needs 0 line ports.\
+	- Needs 1728 tributary ports:\
+		 -Where 1008 is the ODU0;\
+		 -Where 288 is the ODU1;\
+		 -Where 288 is the ODU2;\
+		 -Where 72 is the ODU3;\
+		 -Where 72 is the ODU4;\
+\
+Node 6:\
+	- Needs 0 line ports.\
+	- Needs 1584 tributary ports:\
+		 -Where 576 is the ODU0;\
+		 -Where 720 is the ODU1;\
+		 -Where 72 is the ODU2;\
+		 -Where 72 is the ODU3;\
+		 -Where 144 is the ODU4;\
+\
+\
+-------------------------------------------------------------\
+Information regarding PATHS:\
+-------------------------------------------------------------\
+Path between Node1 <-> Node2:\
+\
+\
+Path between Node1 <-> Node3:\
+\
+\
+Path between Node1 <-> Node4:\
+\
+\
+Path between Node1 <-> Node5:\
+\
+\
+Path between Node1 <-> Node6:\
+-Link(4,2) -Link(4,5) \
+\
+Path between Node2 <-> Node3:\
+\
+\
+Path between Node2 <-> Node4:\
+\
+\
+Path between Node2 <-> Node5:\
+\
+\
+Path between Node2 <-> Node6:\
+\
+\
+Path between Node3 <-> Node4:\
+\
+\
+Path between Node3 <-> Node5:\
+\
+\
+Path between Node3 <-> Node6:\
+\
+\
+Path between Node4 <-> Node5:\
+\
+\
+Path between Node4 <-> Node6:\
+\
+\
+Path between Node5 <-> Node6:\
+\
+\
+\
+-------------------------------------------------------------\
+Information regarding CAPEX:\
+-------------------------------------------------------------\
+-------------------------------------------------------------\
+-------------------- Link Cost: -----------------------------\
+-------------------------------------------------------------\
+	|			   | number  | unit price   | cust      |\
+	| OLT:         |      0  |    15000 \'80   |     0 \'80  |\
+	| Transponders:|      0  |     5000 \'80   |     0 \'80 |\
+	| Amplifiers:  |      0  |     4000 \'80   |     0 \'80  |\
+-------------------------------------------------------------\
+	-- Total Link Cost:      0 \'80             \
+-------------------------------------------------------------\
+-------------------------------------------------------------\
+---------------------- Node Cost: ---------------------------\
+-------------------------------------------------------------\
+	|				    | number  | unit price   | cust      |\
+	| EXCs:|      6  |    10000 \'80   | 60000 \'80 |\
+	| Line Ports:|      0  |     1000 \'80   |     0 \'80 |\
+	| ODU0 Ports:|   4320  |        8 \'80   | 43200 \'80   |\
+	| ODU1 Ports:|   3600  |        6 \'80   | 54000 \'80   |\
+	| ODU2 Ports:|   1152  |        3 \'80   | 34560 \'80   |\
+	| ODU3 Ports:|    432  |    1.5e+00 \'80   | 25920 \'80   |\
+	| ODU4 Ports:|    288  |        1 \'80   | 28800 \'80   |\
+-------------------------------------------------------------\
+	--  Total Electrical:         246480 \'80             \
+-------------------------------------------------------------\
+	| OXCs:|      0  |    10000 \'80   |     0 \'80 |\
+	| OXC Ports:|      0  |     2500 \'80   |     0 \'80 |\
+-------------------------------------------------------------\
+	--  Total Optical:             0 \'80             \
+-------------------------------------------------------------\
+	-- Total Node Cost:  246480 \'80             \
+-------------------------------------------------------------\
+	------- Total Network Cost: 246480 \'80          \
+-------------------------------------------------------------\
+}
