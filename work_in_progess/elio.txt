@@ -6,6 +6,14 @@ avançarmos para o modo translucidio
 
 
 TO BE DONE
+2018-10-15
+
+	- Definir uma matriz de tráfego que origine bloqueio e depois encaminhar essa matriz à mão, desenvolver uma heuristica para resolver o problema automáticamente. 
+	Assumir um máximo de 4 canais óticos por sistema de transmissão.
+
+Next meeting: 22/10, 16h30m
+
+TO BE DONE
 2018-10-08
 
 	- tentar resolver o problema do carregamento das matrizes de tráfego no Net2Plan
