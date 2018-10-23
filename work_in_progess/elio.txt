@@ -6,6 +6,19 @@ avançarmos para o modo translucidio
 
 
 TO BE DONE
+2018-10-22
+
+	Considerar apenas tráfego entre 2 e 4, ODU4, 1,2,..10, com capacidade 4 canais por sistema de transmissão.
+	Objetivo é fazer um report com tráfego com tráfego encaminhado e tráfego não encaminhado.
+	no report também deve aparecer para cada link a capacidade máxima e a capacidade utilizada.
+
+	Colocar no documento um fluxograma + descrição da heuristica.
+
+	Passo seguinte: Permitir acrescentar novos sistemas de transmissão.
+
+Next meeting: 29/10, 16h30m.
+
+TO BE DONE
 2018-10-15
 
 	- Definir uma matriz de tráfego que origine bloqueio e depois encaminhar essa matriz à mão, desenvolver uma heuristica para resolver o problema automáticamente. 
