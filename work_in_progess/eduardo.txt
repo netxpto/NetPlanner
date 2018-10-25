@@ -7,6 +7,9 @@ avançarmos para o modo translucidio
 
 Workshop sobre Git & Latex, 7/nov: danielfpereira@ua.pt
 
+
+
+
 TO BE DONE
 
 	editar o doc, colocar lá o vosso nome, compilar 
