@@ -5,18 +5,23 @@ trabalhar no desenolvimento de heuristicas, considerando o modo opáco com proteç
 avançarmos para o modo translucidio
 
 
+
+
+
 TO BE DONE
-2018-10-22
+2018-10-29
+
+	Colocar no documento um fluxograma + descrição da heuristica.
+
 
 	Considerar apenas tráfego entre 2 e 4, ODU4, 1,2,..10, com capacidade 4 canais por sistema de transmissão.
 	Objetivo é fazer um report com tráfego com tráfego encaminhado e tráfego não encaminhado.
 	no report também deve aparecer para cada link a capacidade máxima e a capacidade utilizada.
-
-	Colocar no documento um fluxograma + descrição da heuristica.
-
+	
+	
 	Passo seguinte: Permitir acrescentar novos sistemas de transmissão.
 
-Next meeting: 29/10, 16h30m.
+Next meeting: 5/11, 16h30m.
 
 TO BE DONE
 2018-10-15
