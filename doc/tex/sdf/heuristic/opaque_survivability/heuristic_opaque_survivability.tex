@@ -552,113 +552,102 @@ The creation of this model for any scenario, started with some considerations an
   \subitem The presented model for all demands sharing the same node pairs have to follow the same path.
 \end{itemize} 
 
-\vspace{13pt}
+\newpage
+\vspace{11pt}
 
 \subsubsection{Allow Blocking}
 
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 		\textbf{Student Name}   &:& \'Elio Coelho    (08/10/2018 - )\\
-		\textbf{Goal}           &:& Allow that some demands are not routed.
+		\textbf{Goal}           &:& Allows blocking, i.e., some demands are not routed.
 	\end{tabular}
 \end{tcolorbox}
 
 \vspace{13pt}
 
-The traffic matrices for 1.2 Tbits/s:
+Considering only traffic between node 2 and node 4 and capacity of 4 optical channels per transmission system. \\
+
+The traffic matrices for 100 Gbits/s on node 2 -> node 4:
 
 \[
 ODU0=
 \begin{bmatrix}
-0 & 4 & 2 & 3 & 1 & 3 \\
-4 & 0 & 1 & 1 & 4 & 0 \\
-2 & 1 & 0 & 1 & 4 & 1 \\
-3 & 1 & 1 & 0 & 1 & 1 \\
-1 & 4 & 4 & 1 & 0 & 3 \\
-3 & 0 & 1 & 1 & 3 & 0
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
 \end{bmatrix}
 \qquad ODU1=
 \begin{bmatrix}
-0 & 2 & 4 & 2 & 1 & 4 \\
-2 & 0 & 0 & 3 & 1 & 1 \\
-4 & 0 & 0 & 1 & 1 & 0 \\
-2 & 3 & 1 & 0 & 1 & 3 \\
-1 & 1 & 1 & 1 & 0 & 1 \\
-4 & 1 & 0 & 3 & 1 & 0
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
 \end{bmatrix}
 \]
 \[
 ODU2=
 \begin{bmatrix}
-0 & 3 & 3 & 3 & 0 & 0 \\
-3 & 0 & 0 & 0 & 3 & 0 \\
-3 & 0 & 0 & 3 & 3 & 0 \\
-3 & 0 & 3 & 0 & 3 & 0 \\
-0 & 3 & 3 & 3 & 0 & 3 \\
-0 & 0 & 0 & 0 & 3 & 0
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
 \end{bmatrix}
 \qquad ODU3=
 \begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 3 & 0 & 0 & 3 \\
-0 & 3 & 0 & 0 & 3 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 3 & 0 & 0 & 0 \\
-0 & 3 & 0 & 0 & 0 & 0
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
 \end{bmatrix}
 \]
 \[
 ODU4=
 \begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 2 \\
+0 & 0 & 0 & 1 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 3 \\
-0 & 2 & 0 & 0 & 3 & 0
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
 \end{bmatrix}
 \]
 
-\vspace{17pt}
-Through these ODU's we can calculate the total network traffic:\\
-
-$T_1^0$ = 60x1.25 = 75 Gbits/s \qquad
-$T_1^1$ = 50x2.5 = 125 Gbits/s \qquad
-$T_1^2$ = 48x10 = 480 Gbits/s \\
-
-$T_1^3$ = 18x40 = 720 Gbits/s \qquad
-$T_1^4$ = 10x100 = 1000 Gbits/s \\
-
-$T_{1}$ = 75 + 125 + 480 + 720 + 1000 = 2400 Gbits/s \qquad
-$T$ = 2400/2 = \textbf{1.2 Tbits/s}\\
-
-Where the variable $T_1^x$ represents the unidirectional traffic of the ODUx, for example, $T_1^0$ represents the unidirectional traffic of the ODU0 and $T_1^1$ represents the unidirectional traffic of the ODU1. The variable $T_{1}$ represents the total of unidirectional traffic that is injected into the network and finally the variable $T$ represents the total of bidirectional traffic.\\
-
+\newpage
 \vspace{13pt}
 Results:
 
 \begin{table}[h!]
 	\centering
-	\begin{tabular}{|| c | c | c ||}
+	\begin{tabular}{|| c | c | c | c ||}
 		\hline
-		Node Pair & Wavelengths forward & Wavelengths backward\\
+		Node Pair & Wavelengths Forward & Wavelengths Backward & Remaining Capacity (Gbits) \\
 		\hline
-		Node 1 -> Node 2 & 1 & 1 \\
-		Node 2 -> Node 1 & 1 & 1 \\
-		Node 3 -> Node 2 & 2 & 2 \\
-		Node 2 -> Node 3 & 2 & 2 \\
-		Node 1 -> Node 3 & 1 & 1 \\
-		Node 3 -> Node 1 & 1 & 1 \\
-		Node 3 -> Node 5 & 2 & 3 \\
-		Node 5 -> Node 3 & 3 & 2 \\
-		Node 5 -> Node 6 & 4 & 4 \\
-		Node 6 -> Node 5 & 4 & 4 \\
-		Node 4 -> Node 6 & 4 & 4 \\
-		Node 6 -> Node 4 & 4 & 4 \\
-		Node 4 -> Node 5 & 1 & 1 \\
-		Node 5 -> Node 4 & 1 & 1 \\
-		Node 2 -> Node 4 & 5 & 5 \\
-		Node 4 -> Node 2 & 5 & 5 \\
+		Node 1 -> Node 2 & 0 & 0 & 400 \\
+		Node 2 -> Node 1 & 0 & 0 & 400 \\
+		Node 3 -> Node 2 & 0 & 0 & 400 \\
+		Node 2 -> Node 3 & 0 & 0 & 400 \\
+		Node 1 -> Node 3 & 0 & 0 & 400 \\
+		Node 3 -> Node 1 & 0 & 0 & 400 \\
+		Node 3 -> Node 5 & 0 & 0 & 400 \\
+		Node 5 -> Node 3 & 0 & 0 & 400 \\
+		Node 5 -> Node 6 & 0 & 0 & 400 \\
+		Node 6 -> Node 5 & 0 & 0 & 400 \\
+		Node 4 -> Node 6 & 0 & 0 & 400 \\
+		Node 6 -> Node 4 & 0 & 0 & 400 \\
+		Node 4 -> Node 5 & 0 & 0 & 400 \\
+		Node 5 -> Node 4 & 0 & 0 & 400 \\
+		Node 2 -> Node 4 & 1 & 0 & 300 \\
+		Node 4 -> Node 2 & 0 & 1 & 400 \\
 		\hline
 	\end{tabular}
 \end{table}
