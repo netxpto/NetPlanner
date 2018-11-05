@@ -49,7 +49,7 @@ public class costReport implements IReport
 	private void readFile() throws IOException {
 		
 		Scanner scan;
-	    File file = new File("C:/Users/Asus/Documents/algorithms/src/traffic.txt");
+	    File file = new File("C:\Users\ejfernandes\Desktop\Tese\Algoritmos Net2Plan\src\traffic.txt");
 	    int i=0;
 	    
 	    try {

@@ -47,7 +47,7 @@ public class grooming implements IAlgorithm {
 	private void readFile() throws IOException {
 
 		Scanner scan;
-		File file = new File("C:/Users/Asus/Documents/algorithms/src/opticalReach.txt");
+		File file = new File("C:\Users\ejfernandes\Desktop\Tese\Algoritmos Net2Plan\src\opticalReach.txt");
 
 		try {
 			scan = new Scanner(file);
