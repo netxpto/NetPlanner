@@ -46,7 +46,7 @@ public class joinTrafficMatrices implements IAlgorithm {
 	public void sendToFile(String entryfile) {
 
 		try {
-			String file = "C:/Users/Asus/Documents/algorithms/src/";
+			String file = "C:\Users\ejfernandes\Desktop\New Folder\NetPlanner\software\heuristics\1516_Vasco_Braz\src";
 			file += entryfile;
 			File traffic = new File(file);
 			FileOutputStream is = new FileOutputStream(traffic);
@@ -171,22 +171,22 @@ public class joinTrafficMatrices implements IAlgorithm {
 	public List<Triple<String, String, String>> getParameters() {
 		List<Triple<String, String, String>> parameters = new ArrayList<Triple<String, String, String>>();
 		parameters.add(Triple.of("trafficMatrix1",
-				"C:/Users/Asus/Documents/Universidade/Tese/heuristicas/without_protection/low_traffic/matrizes/ODU0.n2p",
+				"C:\Users\ejfernandes\Desktop\Tese\Matrizes de Tráfego\Low\ODU0.n2p",
 				"Path to ODU0 traffic matrix"));
 		parameters.add(Triple.of("trafficMatrix2",
-				"C:/Users/Asus/Documents/Universidade/Tese/heuristicas/without_protection/low_traffic/matrizes/ODU1.n2p",
+				"C:\Users\ejfernandes\Desktop\Tese\Matrizes de Tráfego\Low\ODU1.n2p",
 				"Path to ODU1 traffic matrix"));
 		parameters.add(Triple.of("trafficMatrix3",
-				"C:/Users/Asus/Documents/Universidade/Tese/heuristicas/without_protection/low_traffic/matrizes/ODU2.n2p",
+				"C:\Users\ejfernandes\Desktop\Tese\Matrizes de Tráfego\Low\ODU2.n2p",
 				"Path to ODU2 traffic matrix"));
 		parameters.add(Triple.of("trafficMatrix4",
-				"C:/Users/Asus/Documents/Universidade/Tese/heuristicas/without_protection/low_traffic/matrizes/ODU3.n2p",
+				"C:\Users\ejfernandes\Desktop\Tese\Matrizes de Tráfego\Low\ODU3.n2p",
 				"Path to ODU3 traffic matrix"));
 		parameters.add(Triple.of("trafficMatrix5",
-				"C:/Users/Asus/Documents/Universidade/Tese/heuristicas/without_protection/low_traffic/matrizes/ODU4.n2p",
+				"C:\Users\ejfernandes\Desktop\Tese\Matrizes de Tráfego\Low\ODU4.n2p",
 				"Path to ODU4 traffic matrix"));
 		parameters.add(Triple.of("trafficMatrix6",
-				"C:/Users/Asus/Documents/Universidade/Tese/heuristicas/without_protection/low_traffic/matrizes/ODUs.n2p",
+				"C:\Users\ejfernandes\Desktop\Tese\Matrizes de Tráfego\Low\ODUs.n2p",
 				"Path to file with new demands."));
 		return parameters;
 	}
