@@ -1,0 +1,758 @@
+<html>
+  <head>
+    <title>Network design report</title>
+    
+  </head>
+  <body><table border="0" cellpadding="1" cellspacing="1"
+       style="height: 120px; width: 100%; font-size: 20px; color: white; font-weight: bold; background-color: #1E73BE;">
+    <tr>
+        <td>
+            <table border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+                <tr>
+                    <td rowspan="2" style="width: 130px;"><img src="tmp_8671964568660236961.png" alt="Net2Plan logo"/></td>
+                    <td style="padding: 10px; font-size: 40px; color: white; font-weight: bold;">Net2Plan</td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; font-size: 20px; color: white; font-weight: bold;">The open-source network
+                        planner
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td style="padding: 10px; font-size: 40px; text-align: right; color: white; font-weight: bold;">Network design report
+        </td>
+    </tr>
+</table>
+
+    <h1>
+      Contents
+    </h1>
+    <ul>
+      <li>
+        <a href="#sectionIntroduction">Introduction</a>
+      </li>
+      <li>
+        <a href="#sectionLinkInformation">Detailed per-link description</a>
+      </li>
+      <li>
+        <a href="#sectionNodeInformation">Detailed per-node description</a>
+      </li>
+      <li>
+        <a href="#sectioncostInformation">Network Cost</a>
+      </li>
+    </ul>
+    <h1>
+      <a name="sectionIntroduction">Introduction
+</a>    </h1>
+    <p>
+      This report shows all the relevant information to obtain the network 
+      cost as well as the calculated values.
+    </p>
+    <h1>
+      <a name="sectionLinkInformation">Detailed per-link description
+</a>    </h1>
+    <center>
+      <table border="1">
+        <tr>
+          <th>
+            <b>Node Pair </b>
+          </th>
+          <th>
+            <b>Wavelengths forward </b>
+          </th>
+          <th>
+            <b>Wavelengths backward </b>
+          </th>
+          <th>
+            <b>Amplifiers forward </b>
+          </th>
+          <th>
+            <b>Amplifiers backward </b>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            Node 2 -&#187; Node 3
+          </td>
+          <td>
+            26
+          </td>
+          <td>
+            19
+          </td>
+          <td>
+            4
+          </td>
+          <td>
+            4
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 3 -&#187; Node 2
+          </td>
+          <td>
+            19
+          </td>
+          <td>
+            26
+          </td>
+          <td>
+            4
+          </td>
+          <td>
+            4
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 4 -&#187; Node 3
+          </td>
+          <td>
+            34
+          </td>
+          <td>
+            25
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            0
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 3 -&#187; Node 4
+          </td>
+          <td>
+            25
+          </td>
+          <td>
+            34
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            0
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 2 -&#187; Node 4
+          </td>
+          <td>
+            11
+          </td>
+          <td>
+            18
+          </td>
+          <td>
+            6
+          </td>
+          <td>
+            6
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 4 -&#187; Node 2
+          </td>
+          <td>
+            18
+          </td>
+          <td>
+            11
+          </td>
+          <td>
+            6
+          </td>
+          <td>
+            6
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 4 -&#187; Node 6
+          </td>
+          <td>
+            28
+          </td>
+          <td>
+            44
+          </td>
+          <td>
+            8
+          </td>
+          <td>
+            8
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 6 -&#187; Node 4
+          </td>
+          <td>
+            44
+          </td>
+          <td>
+            28
+          </td>
+          <td>
+            8
+          </td>
+          <td>
+            8
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 6 -&#187; Node 7
+          </td>
+          <td>
+            54
+          </td>
+          <td>
+            62
+          </td>
+          <td>
+            3
+          </td>
+          <td>
+            3
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 7 -&#187; Node 6
+          </td>
+          <td>
+            62
+          </td>
+          <td>
+            54
+          </td>
+          <td>
+            3
+          </td>
+          <td>
+            3
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 5 -&#187; Node 7
+          </td>
+          <td>
+            77
+          </td>
+          <td>
+            70
+          </td>
+          <td>
+            7
+          </td>
+          <td>
+            7
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 7 -&#187; Node 5
+          </td>
+          <td>
+            70
+          </td>
+          <td>
+            77
+          </td>
+          <td>
+            7
+          </td>
+          <td>
+            7
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 5 -&#187; Node 6
+          </td>
+          <td>
+            15
+          </td>
+          <td>
+            7
+          </td>
+          <td>
+            1
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 6 -&#187; Node 5
+          </td>
+          <td>
+            7
+          </td>
+          <td>
+            15
+          </td>
+          <td>
+            1
+          </td>
+          <td>
+            1
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 3 -&#187; Node 5
+          </td>
+          <td>
+            101
+          </td>
+          <td>
+            85
+          </td>
+          <td>
+            6
+          </td>
+          <td>
+            6
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 5 -&#187; Node 3
+          </td>
+          <td>
+            85
+          </td>
+          <td>
+            101
+          </td>
+          <td>
+            6
+          </td>
+          <td>
+            6
+          </td>
+        </tr>
+      </table>
+    </center>
+    <h1>
+      <a name="sectionNodeInformation">Detailed per-node description
+</a>    </h1>
+    <center>
+      <table border="1">
+        <tr>
+          <th>
+            <b>Name</b>
+          </th>
+          <th>
+            <b>Trib ports in</b>
+          </th>
+          <th>
+            <b>Trib ports out</b>
+          </th>
+          <th>
+            <b>Line Ports in</b>
+          </th>
+          <th>
+            <b>Line Ports out</b>
+          </th>
+          <th>
+            <b>Total Ports in</b>
+          </th>
+          <th>
+            <b>Total Ports out</b>
+          </th>
+        </tr>
+        <tr>
+          <td>
+            Node 2
+          </td>
+          <td>
+            46
+          </td>
+          <td>
+            46
+          </td>
+          <td>
+            37
+          </td>
+          <td>
+            37
+          </td>
+          <td>
+            83
+          </td>
+          <td>
+            83
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 3
+          </td>
+          <td>
+            134
+          </td>
+          <td>
+            134
+          </td>
+          <td>
+            145
+          </td>
+          <td>
+            145
+          </td>
+          <td>
+            279
+          </td>
+          <td>
+            279
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 4
+          </td>
+          <td>
+            78
+          </td>
+          <td>
+            78
+          </td>
+          <td>
+            80
+          </td>
+          <td>
+            80
+          </td>
+          <td>
+            158
+          </td>
+          <td>
+            158
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 5
+          </td>
+          <td>
+            38
+          </td>
+          <td>
+            38
+          </td>
+          <td>
+            177
+          </td>
+          <td>
+            177
+          </td>
+          <td>
+            215
+          </td>
+          <td>
+            215
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 6
+          </td>
+          <td>
+            120
+          </td>
+          <td>
+            120
+          </td>
+          <td>
+            105
+          </td>
+          <td>
+            105
+          </td>
+          <td>
+            225
+          </td>
+          <td>
+            225
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Node 7
+          </td>
+          <td>
+            164
+          </td>
+          <td>
+            164
+          </td>
+          <td>
+            132
+          </td>
+          <td>
+            132
+          </td>
+          <td>
+            296
+          </td>
+          <td>
+            296
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Total
+          </td>
+          <td>
+            580
+          </td>
+          <td>
+            580
+          </td>
+          <td>
+            676
+          </td>
+          <td>
+            676
+          </td>
+          <td>
+            1256
+          </td>
+          <td>
+            1256
+          </td>
+        </tr>
+      </table>
+    </center>
+    <h1>
+      <a name="sectioncostInformation">Network Cost
+</a>    </h1>
+    <center>
+      <table border="1">
+        <tr>
+          <th colspan="4">
+            <b>Category</b>
+          </th>
+          <th>
+            <b>Quantity</b>
+          </th>
+          <th>
+            <b>Unit Price</b>
+          </th>
+          <th>
+            <b>Cost</b>
+          </th>
+          <th>
+            <b>Total</b>
+          </th>
+        </tr>
+        <tr>
+          <td rowspan="3">
+            <b>Link Cost</b>
+          </td>
+          <td colspan="3">
+            <b>OLTs</b>
+          </td>
+          <td>
+            16
+          </td>
+          <td>
+            15,000 &#8364;
+          </td>
+          <td>
+            240,000 &#8364;
+          </td>
+          <td rowspan="3">
+            338,520,000 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <b>100 Gb/s Transceivers</b>
+          </td>
+          <td>
+            676
+          </td>
+          <td>
+            5,000 &#8364;/Gbit/s
+          </td>
+          <td>
+            338,000,000 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <b>Amplifiers</b>
+          </td>
+          <td>
+            70
+          </td>
+          <td>
+            4,000 &#8364;
+          </td>
+          <td>
+            280,000 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="9">
+            <b>Node Cost</b>
+          </td>
+          <td colspan="2" rowspan="7">
+            <b>Electrical</b>
+          </td>
+          <td>
+            <b>EXCs</b>
+          </td>
+          <td>
+            6
+          </td>
+          <td>
+            10,000 &#8364;
+          </td>
+          <td>
+            60,000 &#8364;
+          </td>
+          <td rowspan="9">
+            67,778,622 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>ODU0 Ports</b>
+          </td>
+          <td>
+            2748
+          </td>
+          <td>
+            10 &#8364;/port
+          </td>
+          <td>
+            27,480 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>ODU1 Ports</b>
+          </td>
+          <td>
+            2290
+          </td>
+          <td>
+            15 &#8364;/port
+          </td>
+          <td>
+            34,350 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>ODU2 Ports</b>
+          </td>
+          <td>
+            732
+          </td>
+          <td>
+            30 &#8364;/port
+          </td>
+          <td>
+            21,984 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>ODU3 Ports</b>
+          </td>
+          <td>
+            274
+          </td>
+          <td>
+            60 &#8364;/port
+          </td>
+          <td>
+            16,488 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>ODU4 Ports</b>
+          </td>
+          <td>
+            183
+          </td>
+          <td>
+            100 &#8364;/port
+          </td>
+          <td>
+            18,320 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b>Line Ports</b>
+          </td>
+          <td>
+            676
+          </td>
+          <td>
+            100,000 &#8364;/port
+          </td>
+          <td>
+            67,600,000 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td rowspan="2">
+            <b>Optical</b>
+          </td>
+          <td colspan="2">
+            <b>OXCs</b>
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            20,000 &#8364;
+          </td>
+          <td>
+            0 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <b>Ports</b>
+          </td>
+          <td>
+            0
+          </td>
+          <td>
+            2,500 &#8364;/port
+          </td>
+          <td>
+            0 &#8364;
+          </td>
+        </tr>
+        <tr>
+          <th colspan="7">
+            <b>Total Network Cost</b>
+          </th>
+          <td>
+            406,298,622
+          </td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>
+
