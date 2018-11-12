@@ -75,81 +75,82 @@
 \contentsline {subsubsection}{Result description}{291}{section*.501}
 \contentsline {subsubsection}{Conclusions}{304}{section*.530}
 \contentsline {subsubsection}{Opens Issues}{305}{section*.532}
-\contentsline {subsection}{\numberline {6.1.4}Transparent with 1+1 Protection}{306}{subsection.6.1.4}
-\contentsline {subsubsection}{Creation and join the traffic matrices}{309}{section*.534}
-\contentsline {subsubsection}{Creation of the physical topology}{310}{section*.537}
-\contentsline {subsubsection}{Creation of the logical topology}{310}{section*.539}
-\contentsline {subsubsection}{Creation of routes and aggregation of traffic}{312}{section*.543}
-\contentsline {subsubsection}{Calculation of the number of wavelengths per link}{315}{section*.549}
-\contentsline {subsubsection}{Network cost report}{317}{section*.552}
-\contentsline {subsubsection}{Result description}{318}{section*.554}
-\contentsline {subsubsection}{Conclusions}{330}{section*.582}
-\contentsline {subsubsection}{Opens Issues}{332}{section*.584}
-\contentsline {subsection}{\numberline {6.1.5}Translucent without Survivability}{333}{subsection.6.1.5}
-\contentsline {subsubsection}{Creation and join the traffic matrices}{335}{section*.586}
-\contentsline {subsubsection}{Creation of the physical topology}{336}{section*.589}
-\contentsline {subsubsection}{Creation of the logical topology}{336}{section*.591}
-\contentsline {subsubsection}{Creation of routes and aggregation of traffic}{338}{section*.595}
-\contentsline {subsubsection}{Calculation of the number of wavelengths per link}{341}{section*.599}
-\contentsline {subsubsection}{Network cost report}{342}{section*.602}
-\contentsline {subsubsection}{Result description}{343}{section*.604}
-\contentsline {subsubsection}{Conclusions}{356}{section*.633}
-\contentsline {subsubsection}{Opens Issues}{357}{section*.635}
-\contentsline {subsection}{\numberline {6.1.6}Translucent with 1+1 Protection}{358}{subsection.6.1.6}
-\contentsline {subsubsection}{Creation and join the traffic matrices}{361}{section*.637}
-\contentsline {subsubsection}{Creation of the physical topology}{362}{section*.640}
-\contentsline {subsubsection}{Creation of the logical topology}{362}{section*.642}
-\contentsline {subsubsection}{Creation of routes and aggregation of traffic}{364}{section*.646}
-\contentsline {subsubsection}{Calculation of the number of wavelengths per link}{368}{section*.652}
-\contentsline {subsubsection}{Network cost report}{369}{section*.655}
-\contentsline {subsubsection}{Result description}{370}{section*.657}
-\contentsline {subsubsection}{Conclusions}{382}{section*.685}
-\contentsline {subsubsection}{Opens Issues}{384}{section*.687}
-\contentsline {chapter}{\numberline {7}Analytical Models}{385}{chapter.7}
-\contentsline {section}{\numberline {7.1}CAPEX}{386}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Opaque without Survivability}{389}{subsection.7.1.1}
-\contentsline {subsubsection}{Model description}{389}{section*.689}
-\contentsline {subsubsection}{Result description}{389}{section*.690}
-\contentsline {subsection}{\numberline {7.1.2}Opaque with 1+1 Protection}{393}{subsection.7.1.2}
-\contentsline {subsubsection}{Model description}{393}{section*.691}
-\contentsline {subsubsection}{Result description}{393}{section*.692}
-\contentsline {subsection}{\numberline {7.1.3}Transparent without Survivability}{397}{subsection.7.1.3}
-\contentsline {subsubsection}{Model description}{397}{section*.693}
-\contentsline {subsubsection}{Result description}{397}{section*.694}
-\contentsline {subsection}{\numberline {7.1.4}Transparent with 1+1 Protection}{401}{subsection.7.1.4}
-\contentsline {subsubsection}{Model description}{401}{section*.695}
-\contentsline {subsubsection}{Result description}{401}{section*.696}
-\contentsline {subsection}{\numberline {7.1.5}Translucent without Survivability}{406}{subsection.7.1.5}
-\contentsline {subsection}{\numberline {7.1.6}Translucent with 1+1 Protection}{407}{subsection.7.1.6}
-\contentsline {chapter}{\numberline {8}Comparative Analysis}{408}{chapter.8}
-\contentsline {section}{\numberline {8.1}Opaque without Survivability}{409}{section.8.1}
-\contentsline {section}{\numberline {8.2}Opaque with 1+1 Protection}{410}{section.8.2}
-\contentsline {section}{\numberline {8.3}Transparent without Survivability}{411}{section.8.3}
-\contentsline {section}{\numberline {8.4}Transparent with 1+1 Protection}{412}{section.8.4}
-\contentsline {section}{\numberline {8.5}Translucent without Survivability}{413}{section.8.5}
-\contentsline {section}{\numberline {8.6}Translucent with 1+1 Protection}{414}{section.8.6}
-\contentsline {chapter}{\numberline {9}Case Studies}{415}{chapter.9}
-\contentsline {section}{\numberline {9.1}Opaque without Survivability - European Optical Network}{416}{section.9.1}
-\contentsline {subsection}{\numberline {9.1.1}Physical Network Topology}{416}{subsection.9.1.1}
-\contentsline {subsection}{\numberline {9.1.2}Dimensioning using Analytical Model}{422}{subsection.9.1.2}
-\contentsline {subsection}{\numberline {9.1.3}Dimensioning using ILP}{424}{subsection.9.1.3}
-\contentsline {subsection}{\numberline {9.1.4}Dimensioning using Heuristics}{426}{subsection.9.1.4}
-\contentsline {subsubsection}{Heuristics Results}{426}{section*.709}
-\contentsline {subsection}{\numberline {9.1.5}Comparative Analysis}{426}{subsection.9.1.5}
-\contentsline {section}{\numberline {9.2}Opaque with 1+1 Protection - European Optical Network}{428}{section.9.2}
-\contentsline {subsection}{\numberline {9.2.1}Physical Network Topology}{428}{subsection.9.2.1}
-\contentsline {subsection}{\numberline {9.2.2}Dimensioning using ILP}{428}{subsection.9.2.2}
-\contentsline {subsection}{\numberline {9.2.3}Dimensioning using Heuristics}{432}{subsection.9.2.3}
-\contentsline {subsubsection}{Heuristics Results}{432}{section*.713}
-\contentsline {subsection}{\numberline {9.2.4}Comparative Analysis}{432}{subsection.9.2.4}
-\contentsline {chapter}{\numberline {10}Appendices}{433}{chapter.10}
-\contentsline {section}{\numberline {10.1}Net2Plan Guide}{434}{section.10.1}
-\contentsline {subsubsection}{Join Traffic Matrices Algorithm}{453}{section*.746}
-\contentsline {subsubsection}{Logical Topology Algorithm}{453}{section*.748}
-\contentsline {subsubsection}{Grooming Algorithm}{454}{section*.750}
-\contentsline {section}{\numberline {10.2}Installing LPSOLVE for using in MatLab}{457}{section.10.2}
-\contentsline {subsection}{\numberline {10.2.1}Windows}{457}{subsection.10.2.1}
-\contentsline {subsection}{\numberline {10.2.2}macOS}{458}{subsection.10.2.2}
-\contentsline {section}{\numberline {10.3}Codify ILP in MatLab}{459}{section.10.3}
-\contentsline {chapter}{\numberline {11}Master Dissertations}{463}{chapter.11}
-\contentsline {section}{Vasco Braz, Dimensioning and Optimization of Node Architecture in Optical Transport Networks, University of Aveiro, 2016}{464}{section*.757}
+\contentsline {subsubsection}{Allow Blocking}{306}{section*.533}
+\contentsline {subsection}{\numberline {6.1.4}Transparent with 1+1 Protection}{307}{subsection.6.1.4}
+\contentsline {subsubsection}{Creation and join the traffic matrices}{310}{section*.535}
+\contentsline {subsubsection}{Creation of the physical topology}{311}{section*.538}
+\contentsline {subsubsection}{Creation of the logical topology}{311}{section*.540}
+\contentsline {subsubsection}{Creation of routes and aggregation of traffic}{313}{section*.544}
+\contentsline {subsubsection}{Calculation of the number of wavelengths per link}{316}{section*.550}
+\contentsline {subsubsection}{Network cost report}{318}{section*.553}
+\contentsline {subsubsection}{Result description}{319}{section*.555}
+\contentsline {subsubsection}{Conclusions}{331}{section*.583}
+\contentsline {subsubsection}{Opens Issues}{333}{section*.585}
+\contentsline {subsection}{\numberline {6.1.5}Translucent without Survivability}{334}{subsection.6.1.5}
+\contentsline {subsubsection}{Creation and join the traffic matrices}{336}{section*.587}
+\contentsline {subsubsection}{Creation of the physical topology}{337}{section*.590}
+\contentsline {subsubsection}{Creation of the logical topology}{337}{section*.592}
+\contentsline {subsubsection}{Creation of routes and aggregation of traffic}{339}{section*.596}
+\contentsline {subsubsection}{Calculation of the number of wavelengths per link}{342}{section*.600}
+\contentsline {subsubsection}{Network cost report}{343}{section*.603}
+\contentsline {subsubsection}{Result description}{344}{section*.605}
+\contentsline {subsubsection}{Conclusions}{357}{section*.634}
+\contentsline {subsubsection}{Opens Issues}{358}{section*.636}
+\contentsline {subsection}{\numberline {6.1.6}Translucent with 1+1 Protection}{359}{subsection.6.1.6}
+\contentsline {subsubsection}{Creation and join the traffic matrices}{362}{section*.638}
+\contentsline {subsubsection}{Creation of the physical topology}{363}{section*.641}
+\contentsline {subsubsection}{Creation of the logical topology}{363}{section*.643}
+\contentsline {subsubsection}{Creation of routes and aggregation of traffic}{365}{section*.647}
+\contentsline {subsubsection}{Calculation of the number of wavelengths per link}{369}{section*.653}
+\contentsline {subsubsection}{Network cost report}{370}{section*.656}
+\contentsline {subsubsection}{Result description}{371}{section*.658}
+\contentsline {subsubsection}{Conclusions}{383}{section*.686}
+\contentsline {subsubsection}{Opens Issues}{385}{section*.688}
+\contentsline {chapter}{\numberline {7}Analytical Models}{386}{chapter.7}
+\contentsline {section}{\numberline {7.1}CAPEX}{387}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Opaque without Survivability}{390}{subsection.7.1.1}
+\contentsline {subsubsection}{Model description}{390}{section*.690}
+\contentsline {subsubsection}{Result description}{390}{section*.691}
+\contentsline {subsection}{\numberline {7.1.2}Opaque with 1+1 Protection}{394}{subsection.7.1.2}
+\contentsline {subsubsection}{Model description}{394}{section*.692}
+\contentsline {subsubsection}{Result description}{394}{section*.693}
+\contentsline {subsection}{\numberline {7.1.3}Transparent without Survivability}{398}{subsection.7.1.3}
+\contentsline {subsubsection}{Model description}{398}{section*.694}
+\contentsline {subsubsection}{Result description}{398}{section*.695}
+\contentsline {subsection}{\numberline {7.1.4}Transparent with 1+1 Protection}{402}{subsection.7.1.4}
+\contentsline {subsubsection}{Model description}{402}{section*.696}
+\contentsline {subsubsection}{Result description}{402}{section*.697}
+\contentsline {subsection}{\numberline {7.1.5}Translucent without Survivability}{407}{subsection.7.1.5}
+\contentsline {subsection}{\numberline {7.1.6}Translucent with 1+1 Protection}{408}{subsection.7.1.6}
+\contentsline {chapter}{\numberline {8}Comparative Analysis}{409}{chapter.8}
+\contentsline {section}{\numberline {8.1}Opaque without Survivability}{410}{section.8.1}
+\contentsline {section}{\numberline {8.2}Opaque with 1+1 Protection}{411}{section.8.2}
+\contentsline {section}{\numberline {8.3}Transparent without Survivability}{412}{section.8.3}
+\contentsline {section}{\numberline {8.4}Transparent with 1+1 Protection}{413}{section.8.4}
+\contentsline {section}{\numberline {8.5}Translucent without Survivability}{414}{section.8.5}
+\contentsline {section}{\numberline {8.6}Translucent with 1+1 Protection}{415}{section.8.6}
+\contentsline {chapter}{\numberline {9}Case Studies}{416}{chapter.9}
+\contentsline {section}{\numberline {9.1}Opaque without Survivability - European Optical Network}{417}{section.9.1}
+\contentsline {subsection}{\numberline {9.1.1}Physical Network Topology}{417}{subsection.9.1.1}
+\contentsline {subsection}{\numberline {9.1.2}Dimensioning using Analytical Model}{423}{subsection.9.1.2}
+\contentsline {subsection}{\numberline {9.1.3}Dimensioning using ILP}{425}{subsection.9.1.3}
+\contentsline {subsection}{\numberline {9.1.4}Dimensioning using Heuristics}{427}{subsection.9.1.4}
+\contentsline {subsubsection}{Heuristics Results}{427}{section*.710}
+\contentsline {subsection}{\numberline {9.1.5}Comparative Analysis}{427}{subsection.9.1.5}
+\contentsline {section}{\numberline {9.2}Opaque with 1+1 Protection - European Optical Network}{429}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Physical Network Topology}{429}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}Dimensioning using ILP}{429}{subsection.9.2.2}
+\contentsline {subsection}{\numberline {9.2.3}Dimensioning using Heuristics}{433}{subsection.9.2.3}
+\contentsline {subsubsection}{Heuristics Results}{433}{section*.714}
+\contentsline {subsection}{\numberline {9.2.4}Comparative Analysis}{433}{subsection.9.2.4}
+\contentsline {chapter}{\numberline {10}Appendices}{434}{chapter.10}
+\contentsline {section}{\numberline {10.1}Net2Plan Guide}{435}{section.10.1}
+\contentsline {subsubsection}{Join Traffic Matrices Algorithm}{454}{section*.747}
+\contentsline {subsubsection}{Logical Topology Algorithm}{454}{section*.749}
+\contentsline {subsubsection}{Grooming Algorithm}{455}{section*.751}
+\contentsline {section}{\numberline {10.2}Installing LPSOLVE for using in MatLab}{458}{section.10.2}
+\contentsline {subsection}{\numberline {10.2.1}Windows}{458}{subsection.10.2.1}
+\contentsline {subsection}{\numberline {10.2.2}macOS}{459}{subsection.10.2.2}
+\contentsline {section}{\numberline {10.3}Codify ILP in MatLab}{460}{section.10.3}
+\contentsline {chapter}{\numberline {11}Master Dissertations}{464}{chapter.11}
+\contentsline {section}{Vasco Braz, Dimensioning and Optimization of Node Architecture in Optical Transport Networks, University of Aveiro, 2016}{465}{section*.758}
