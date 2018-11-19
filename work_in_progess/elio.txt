@@ -1,0 +1,87 @@
+trabalhar no desenolvimento de heuristicas, considerando o modo opáco
+validar essas heuristicas usando os ILPs do Tiago
+desenvolver novas heuristicas considerando novas restrições
+trabalhar no desenolvimento de heuristicas, considerando o modo opáco com proteção
+avançarmos para o modo translucidio
+
+
+Workshop sobre Git & Latex, 14/nov: danielfpereira@ua.pt
+
+
+TO BE DONE
+2018-11-05
+
+	fazer o fluxograma, assumindo encaminhamento sempre "shortest-path com bloqueio", minimizar a quantidade de tráfego (Gbps) que vai ser bloqueado.
+
+Next meeting: 12-nov, 16h30m
+
+TO BE DONE
+2018-10-29
+
+	Colocar no documento um fluxograma + descrição da heuristica.
+
+
+	Considerar apenas tráfego entre 2 e 4, ODU4, 1,2,..10, com capacidade 4 canais por sistema de transmissão.
+	Objetivo é fazer um report com tráfego com tráfego encaminhado e tráfego não encaminhado.
+	no report também deve aparecer para cada link a capacidade máxima e a capacidade utilizada.
+	
+	
+	Passo seguinte: Permitir acrescentar novos sistemas de transmissão.
+
+Next meeting: 5/11, 16h30m.
+
+TO BE DONE
+2018-10-15
+
+	- Definir uma matriz de tráfego que origine bloqueio e depois encaminhar essa matriz à mão, desenvolver uma heuristica para resolver o problema automáticamente. 
+	Assumir um máximo de 4 canais óticos por sistema de transmissão.
+
+Next meeting: 22/10, 16h30m
+
+TO BE DONE
+2018-10-08
+
+	- tentar resolver o problema do carregamento das matrizes de tráfego no Net2Plan
+
+	- vamos aumentar o tráfego de tal modo que a capacidade do sistema entre dois seja excedida, quero saber quais foram as que não conseguiram ser encaminhadas(bloqueio), 
+	indentificar as demands bloqueadas e os links onde ocorreu o bloqueio
+
+Next meeting: 15/10, 16h30m
+
+TO BE DONE
+2018-10-01
+
+	correr os exemplos do Pedro - opaque without survivability
+
+	- actualizar na documentar "correr em MAC"
+
+	correr os ILPs do Tiago - opaque without survivability
+
+	- actualizar na documentar "correr em MAC"
+
+	comparar com os resultados do Tiago 
+
+Next meeting: 8/10, 17h	
+
+2018-09-23
+TO BE DONE
+
+	criar a conta no GitHub
+	instalar git na portatil
+	fazer o fork do netxpto/NetPlanner
+	fazer o pull para o portatil
+	
+	editar o doc, colocar lá o vosso nome, compilar 
+
+	git add / git commit
+	git push
+	pull request
+
+	ler aquilo que o Pedro fez
+
+	instalar o Net2Plan
+
+
+	
+
+Next meeting: segunda, 1/10, 11h  

@@ -3,10 +3,12 @@
 \subsection{Transparent without Survivability}\label{heuristic_Transp_Survivability}
 \begin{tcolorbox}	
 \begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-\textbf{Student Name}  &:& Pedro Coelho    (01/03/2018 - )\\
+\textbf{Student Name}  	&:& Eduardo Fernandes    (20/10/2018 - )\\
+	&:& Pedro Coelho    (01/03/2018 - )\\
 \textbf{Goal}          &:& Implement the heuristic model for the transparent transport mode without survivability.
 \end{tabular}
 \end{tcolorbox}
+
 
 \vspace{11pt}
 In the transparent transport mode (single-hop approach), the signals travel through the network in the optical domain between lightpaths. One advantage of this transport mode is that these networks require optical switching. This enables the realization of ongoing optical connections throughout several links without OEO (optical-electrical-optical) conversions. However, there are performed some conversions in some intermediate nodes.
@@ -577,3 +579,27 @@ The creation of this model for any scenario, started with some considerations an
   \item Allow multiple transmission system.
   \subitem The presented model for each link only supports one transmission system.
 \end{itemize}
+
+
+\newpage
+\vspace{11pt}
+
+\subsubsection{Allow Blocking}
+
+\begin{tcolorbox}	
+	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+		\textbf{Student Name}   &:& Eduardo Fernandes    (09/11/2018 - )\\
+		\textbf{Goal}           &:& Allows blocking, i.e., creation of a model that supports a partial solution where some demands are not routed (are blocked).
+	\end{tabular}
+\end{tcolorbox}
+
+\vspace{11pt}
+In the figure below is presented a fluxogram that represents the heuristcs approach implemented behind the algorithms. The algorithms are made in Java and used in a programming software called Eclipse. They are also tested in an open-source network program called Net2Plan. In the Net2Plan guide section \ref{net2plan_guide} there is an explanation on how to use and test them in this network planner.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm]{sdf/heuristic/transparent_survivability/figures/Fluxograma}
+	\caption{Fluxogram with the steps performed in the transparent without survivability transport mode approach with the possibility of blocking.}
+	\label{fluxogram_transparent_surv}
+\end{figure}
+

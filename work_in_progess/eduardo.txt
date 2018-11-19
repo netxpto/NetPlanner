@@ -1,8 +1,82 @@
-trabalhar no ILP, open issues
+trabalhar no desenolvimento de heuristicas, considerando o modo transparente
+validar essas heuristicas usando os ILPs do Tiago
+desenvolver novas heuristicas considerando novas restrições
+avançarmos para o modo translucidio
+
+
+
+Workshop sobre Git & Latex, 14/nov: danielfpereira@ua.pt
+
+
+
+TO BE DONE
+2018-11-05
+
+	fazer o fluxograma, assumindo encaminhamento sempre "shortest-path com bloqueio", minimizar a quantidade de tráfego (Gbps) que vai ser bloqueado.
+
+Next meeting: 12-nov, 16h30m
+
+
+TO BE DONE
+2018-10-25
+
+	Levar a uma situação de bloqueio, número máximo de canais por sistema 4
+
+	Considerar apenas tráfego entre 2 e 4, ODU4, 1,2,..10, com capacidade 4 canais por sistema de transmissão.
+
+	Objetivo é fazer um report com tráfego com tráfego encaminhado e tráfego não encaminhado.
+	no report também deve aparecer para cada link a capacidade máxima e a capacidade utilizada.
+
+	Colocar no documento um fluxograma + descrição da heuristica.
+
+	Passo seguinte: Permitir acrescentar novos sistemas de transmissão.
+
+Next meeting: 16h30m, 29/10
 
 TO BE DONE
 
-	pull request (ler o documento pdf netxpto_main_anp.pdf -> netxpto_main_anp_eduardo.pdf a parte do Tiago)
-	latex
+	editar o doc, colocar lá o vosso nome, compilar 
 
-Next meeting: terça, 26/6, 17h  
+	git add / git commit
+	git push
+	pull request
+
+	ler aquilo que o Pedro fez
+
+	instalar o Net2Plan
+
+	correr os exemplos do Pedro
+
+	correr os ILPs do Tiago
+
+	comparar com os resultados do Tiago
+	
+	modo transpareten sem proteção.
+
+Next meeting: 22/10, 16h30m  
+
+TO BE DONE
+
+	criar a conta no GitHub
+	instalar git na portatil
+	fazer o fork do netxpto/NetPlanner
+	fazer o pull para o portatil
+	
+	editar o doc, colocar lá o vosso nome, compilar 
+
+	git add / git commit
+	git push
+	pull request
+
+	ler aquilo que o Pedro fez
+
+	instalar o Net2Plan
+
+	correr os exemplos do Pedro
+
+	correr os ILPs do Tiago
+
+	comparar com os resultados do Tiago
+	
+
+Next meeting: segunda, 1/10, 11h  

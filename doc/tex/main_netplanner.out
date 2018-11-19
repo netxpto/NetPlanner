@@ -57,6 +57,8 @@
 \BOOKMARK [0][-]{chapter.10}{Appendices}{}% 57
 \BOOKMARK [1][-]{section.10.1}{Net2Plan Guide}{chapter.10}% 58
 \BOOKMARK [1][-]{section.10.2}{Installing LPSOLVE for using in MatLab}{chapter.10}% 59
-\BOOKMARK [1][-]{section.10.3}{Codify ILP in MatLab}{chapter.10}% 60
-\BOOKMARK [0][-]{chapter.11}{Master Dissertations}{}% 61
-\BOOKMARK [1][-]{section*.750}{Vasco Braz, Dimensioning and Optimization of Node Architecture in Optical Transport Networks, University of Aveiro, 2016}{chapter.11}% 62
+\BOOKMARK [2][-]{subsection.10.2.1}{Windows}{section.10.2}% 60
+\BOOKMARK [2][-]{subsection.10.2.2}{macOS}{section.10.2}% 61
+\BOOKMARK [1][-]{section.10.3}{Codify ILP in MatLab}{chapter.10}% 62
+\BOOKMARK [0][-]{chapter.11}{Master Dissertations}{}% 63
+\BOOKMARK [1][-]{section*.759}{Vasco Braz, Dimensioning and Optimization of Node Architecture in Optical Transport Networks, University of Aveiro, 2016}{chapter.11}% 64
