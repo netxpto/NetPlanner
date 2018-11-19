@@ -570,7 +570,7 @@ In the figure below it is shown a fluxogram with the description of the opaque w
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/fluxogram_opaque_surv}
+	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/Opaque_Diagram}
 	\caption{Fluxogram with the steps performed in the opaque without survivability transport mode approach.}
 	\label{fluxogram_opaque_surv}
 \end{figure}
@@ -579,25 +579,6 @@ In the figure below it is shown a fluxogram with the description of the opaque w
 
 \vspace{11pt}
 In the opaque without survivability transport mode the routing algorithm starts with going through all the demands, create bidirectional routes (in this case the primary paths) based on the shortest path Dijkstra algorithm and then search the candidate routes for the respective demand. In this report it is used the shortest path type in hops. These routes are ordered sequentially and the shortest one per each demand is the primary path. The demands from the lower layer are removed and then saved in the upper layer. After this step, it is needed to set the traffic demands into the candidate routes that will integrate the network.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=14cm]{sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv1}
-	\caption{Creation of routes and aggregation of traffic for the opaque without survivability transport mode. The candidate routes are searched by the shortest path type method and the offered traffic demands are set into these routes.}
-	\label{grooming_opaque_surv1}
-\end{figure}
-
-\subsubsection{Calculation of the number of wavelengths per link}
-
-\vspace{11pt}
-The final step of the routing and grooming algorithms is to calculate the number of wavelengths per link for the whole network. The algorithm starts with going through all the links and getting the capacity based on the traffic per demand. The total carried traffic in the link will be divided by the wavelength capacity and it is now possible to obtain the number of wavelengths per link.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv2}
-	\caption{Calculation of the number of wavelengths per link for the opaque transport mode. The link capacity is based on the traffic per demand.}
-	\label{grooming_opaque_surv2}
-\end{figure}
 
 \vspace{13pt}
 
