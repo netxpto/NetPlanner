@@ -5,16 +5,28 @@ avançarmos para o modo translucidio
 
 
 
-Workshop sobre Git & Latex, 14/nov: danielfpereira@ua.pt
 
+Workshop sobre Git & Latex, 14/nov: danielfpereira@ua.pt. 15h
 
 
 TO BE DONE
-2018-11-05
+2018-11-19
+
+	resolver à mão o problema simples, tendo em conta o fluxograma e indicando em cada ponto a informação que sai
 
 	fazer o fluxograma, assumindo encaminhamento sempre "shortest-path com bloqueio", minimizar a quantidade de tráfego (Gbps) que vai ser bloqueado.
 
-Next meeting: 12-nov, 16h30m
+Next meeting: 26-nov, 16h30m
+
+
+TO BE DONE
+2018-11-12
+
+	colocar o fluxograma no documento
+	resolver à mão o problema simples
+	fazer o fluxograma, assumindo encaminhamento sempre "shortest-path com bloqueio", minimizar a quantidade de tráfego (Gbps) que vai ser bloqueado.
+
+Next meeting: 19-nov, 16h30m
 
 
 TO BE DONE
