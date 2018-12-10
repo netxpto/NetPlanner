@@ -53,6 +53,7 @@
 \contentsline {subsubsection}{Conclusions}{249}{section*.419}
 \contentsline {subsubsection}{Opens Issues}{250}{section*.421}
 \contentsline {subsubsection}{Allow Blocking}{252}{section*.422}
+<<<<<<< HEAD
 \contentsline {subsection}{\numberline {6.1.2}Opaque with 1+1 Protection}{254}{subsection.6.1.2}
 \contentsline {subsubsection}{Creation and join the traffic matrices}{256}{section*.425}
 \contentsline {subsubsection}{Creation of the physical topology}{257}{section*.428}
@@ -74,6 +75,29 @@
 \contentsline {subsubsection}{Conclusions}{302}{section*.525}
 \contentsline {subsubsection}{Opens Issues}{303}{section*.527}
 \contentsline {subsubsection}{Allow Blocking}{304}{section*.528}
+=======
+\contentsline {subsection}{\numberline {6.1.2}Opaque with 1+1 Protection}{253}{subsection.6.1.2}
+\contentsline {subsubsection}{Creation and join the traffic matrices}{255}{section*.425}
+\contentsline {subsubsection}{Creation of the physical topology}{256}{section*.428}
+\contentsline {subsubsection}{Creation of the logical topology}{256}{section*.430}
+\contentsline {subsubsection}{Creation of routes and aggregation of traffic}{258}{section*.434}
+\contentsline {subsubsection}{Calculation of the number of wavelengths per link}{260}{section*.438}
+\contentsline {subsubsection}{Network cost report}{261}{section*.441}
+\contentsline {subsubsection}{Result description}{263}{section*.443}
+\contentsline {subsubsection}{Conclusions}{275}{section*.474}
+\contentsline {subsubsection}{Opens Issues}{277}{section*.476}
+\contentsline {subsection}{\numberline {6.1.3}Transparent without Survivability}{278}{subsection.6.1.3}
+\contentsline {subsubsection}{Creation and join the traffic matrices}{280}{section*.478}
+\contentsline {subsubsection}{Creation of the physical topology}{281}{section*.481}
+\contentsline {subsubsection}{Creation of the logical topology}{281}{section*.483}
+\contentsline {subsubsection}{Creation of routes and aggregation of traffic}{283}{section*.487}
+\contentsline {subsubsection}{Calculation of the number of wavelengths per link}{285}{section*.491}
+\contentsline {subsubsection}{Network cost report}{287}{section*.494}
+\contentsline {subsubsection}{Result description}{288}{section*.496}
+\contentsline {subsubsection}{Conclusions}{301}{section*.525}
+\contentsline {subsubsection}{Opens Issues}{302}{section*.527}
+\contentsline {subsubsection}{Allow Blocking}{303}{section*.528}
+>>>>>>> Eduardo
 \contentsline {subsection}{\numberline {6.1.4}Transparent with 1+1 Protection}{305}{subsection.6.1.4}
 \contentsline {subsubsection}{Creation and join the traffic matrices}{308}{section*.531}
 \contentsline {subsubsection}{Creation of the physical topology}{309}{section*.534}
