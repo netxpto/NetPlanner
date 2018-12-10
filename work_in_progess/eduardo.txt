@@ -10,6 +10,14 @@ Workshop sobre Git & Latex, 14/nov: danielfpereira@ua.pt. 15h
 
 
 TO BE DONE
+2018-12-03
+
+	- documentar o procedimento para tratar o caso simples no netxpto.pdf
+	- definir à saída de cada bloco a estrutura de dados que vou usar (matriz)
+
+Next meeting: 10/12, 16h30m
+
+TO BE DONE
 2018-11-19
 
 	resolver à mão o problema simples, tendo em conta o fluxograma e indicando em cada ponto a informação que sai
