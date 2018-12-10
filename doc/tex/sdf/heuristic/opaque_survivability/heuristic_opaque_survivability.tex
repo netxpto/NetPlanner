@@ -575,5 +575,23 @@ In the figure below it is shown a fluxogram with the description of the opaque w
 	\label{fluxogram_opaque_surv}
 \end{figure}
 
+\textbf{A}: A matrix (queue) that contains all the demands in an order defined previously by the scheduler and ready to be routed in the network. Here we have information about every demand which contains an index associated to it (so it can be identified), the type of ODU and the number of hops of the shortest-path associated to.
 
+\textbf{B}: Here we have the demand that at a certain time is on top of the queue and so it will be the first to be processed.
+
+\textbf{C}: A matrix (also a queue) with the k shortest paths for the demand being processed at the time.
+
+\textbf{D}: Here we have the path that at a certain time is on top of the queue and so it will be the first to be tried.
+
+\textbf{E}: Here will be created 30 matrices (one for each possible combination of node pairs) each one with k shortest paths for a certain pair of nodes.
+
+\textbf{F}: A matrix (6x6) which contains detailed information about the number of transport systems and optical channels existent between every possible combination of node pairs.
+
+\textbf{G}: Vectors that contain the number of available optical channels between a pair of nodes and the demands transported by that same link.
+
+\textbf{H}: Matrix that contains demands already routed in our network.
+
+\textbf{I}: Matrix that contains demands blocked routed in our network.
+
+\textbf{J}: Matrix that contains routed demands already sorted in order to their number of hops per path.
 
