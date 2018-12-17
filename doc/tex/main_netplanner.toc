@@ -150,5 +150,3 @@
 \contentsline {subsection}{\numberline {10.2.1}Windows}{457}{subsection.10.2.1}
 \contentsline {subsection}{\numberline {10.2.2}macOS}{458}{subsection.10.2.2}
 \contentsline {section}{\numberline {10.3}Codify ILP in MatLab}{459}{section.10.3}
-\contentsline {chapter}{\numberline {11}Master Dissertations}{463}{chapter.11}
-\contentsline {section}{Vasco Braz, Dimensioning and Optimization of Node Architecture in Optical Transport Networks, University of Aveiro, 2016}{464}{section*.754}
