@@ -575,23 +575,53 @@ In the figure below it is shown a fluxogram with the description of the opaque w
 	\label{fluxogram_opaque_surv}
 \end{figure}
 
-\textbf{A}: A matrix (queue) that contains all the demands in an order defined previously by the scheduler and ready to be routed in the network. Here we have information about every demand which contains an index associated to it (so it can be identified), the type of ODU and the number of hops of the shortest-path associated to.
+\textbf{A}: An ordered queue that contains all the demands in an order defined previously by the
+scheduler and ready to be routed in the network. Here we have information about every
+demand which contains an index associated to it (so it can be identified), the ODU type, its height and the source and destination nodes.
 
-\textbf{B}: Here we have the demand that at a certain time is on top of the queue and so it will be the first to be processed.
+\textit{Demand}\\
+index: 1...N\\
+height: real\\
+sourceNode\\
+destinationNode\\
+oduType
 
-\textbf{C}: A matrix (also a queue) with the k shortest paths for the demand being processed at the time.
+\textbf{B}: A ordered queue with the k shortest Optical paths for the demand being processed atthat time.
 
-\textbf{D}: Here we have the path that at a certain time is on top of the queue and so it will be the first to be tried.
+\textit{Optical Path} \\
+Index\\
+Links Used: Array of integers with 16 slots, whose value will be 1/0 depending on if they are being used or not.\\
 
-\textbf{E}: Here will be created 30 matrices (one for each possible combination of node pairs) each one with k shortest paths for a certain pair of nodes.
+\textbf{C}: Creation of the network links with a certain number of optical channels and capacity per channel.
 
-\textbf{F}: A matrix (6x6) which contains detailed information about the number of transport systems and optical channels existent between every possible combination of node pairs.
+\textit{Link}\\
+Index 
+Number of Optical channels: integer\\
+Optical Channel capacity: integer\\
+Optical Channel: array of integers\\
+Source node\\
+Destination node\\
+Boolean blocking = false; (true == if link can´t route a demand)\\
 
-\textbf{G}: Vectors that contain the number of available optical channels between a pair of nodes and the demands transported by that same link.
+\textbf{D}: Here we have the path that at a certain time is on top of the queue and so it will be thefirst to be tried.\\
 
-\textbf{H}: Matrix that contains demands already routed in our network.
+\textbf{E}: Signal that contains demands blocked in our network.\\
 
-\textbf{I}: Matrix that contains demands blocked routed in our network.
+\textbf{F}: The demand is associated to a path and a route is created.\\
 
-\textbf{J}: Matrix that contains routed demands already sorted in order to their number of hops per path.
+\textit{Demand-Path}\\
+Demand Index: integer\\
+Path Index: integer
+
+\textit{Route} 
+Index: integer\\
+Array\\
+
+\textit{Demand-Path-Route}\\
+
+Demand Index: integer\\
+Path Index: integer\\
+Route Index:\\
+
+\textbf{G}: Signal that contains demands routed in our network.
 
