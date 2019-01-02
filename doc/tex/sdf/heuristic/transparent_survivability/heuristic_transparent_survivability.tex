@@ -604,26 +604,17 @@ The creation of this model for any scenario, started with some considerations an
 \end{figure}
 
 
-
-A: An ordered queue that contains all the demands in an order defined previously by the
-scheduler and ready to be routed in the network. Here we have information about every
-demand which contains an index associated to it (so it can be identified), the ODU type, its height and the source and destination nodes. \\
-\\
 Demand\\
 index: 1...N\\
 height: real\\
 source Node \\
 destination Node\\ 
-oduType \\
 
-B: A ordered queue with the k shortest Optical paths for the demand being processed at
-that time.\\
+oduType \\
 
 Optical Path 
 Index
 Links Used: Array of integers with 16 slots, whose value will be 1/0 depending on if they are being used or not.\\
-
-C: Creation of the network links with a certain number of optical channels and capacity per channel.\\
 
 Link\\
 Index\\
@@ -634,12 +625,7 @@ Source node \\
 Destination node \\
 Boolean blocking = false; (true == if link cant route a demand)\\
 
-D: Here we have the path that at a certain time is on top of the queue and so it will be the
-first to be tried.
 
-E: Signal that contains demands blocked in our network.
-
-F: The demand is associated to a path and a route is created.\\
 
 Demand-Path\\
 Demand Index: integer\\
@@ -655,6 +641,6 @@ Demand Index: integer
 Path Index: integer
 Route Index:\\
 
-G: Signal that contains demands routed in our network.
+
 
 
