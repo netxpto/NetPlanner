@@ -5,7 +5,15 @@ trabalhar no desenolvimento de heuristicas, considerando o modo opáco com proteç
 avançarmos para o modo translucidio
 
 
-Workshop sobre Git & Latex, 14/nov: danielfpereira@ua.pt. 15h
+TO BE DONE
+2018-01-02
+
+	- diagrama de blocos (no nivel mais alto tem 9 blocos)
+	- para cada bloco, sinais de entrada e de saída, os parametros de entrada e as variaveis de estado
+	- identificar quais os blocos que serão super blocos
+	- resolver para o exemplo simples
+
+Next meeting: 7/1, 16h30m-17h30
 
 TO BE DONE
 2018-12-03

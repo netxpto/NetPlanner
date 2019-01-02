@@ -1,5 +1,6 @@
-[0] Config.pm:302> INFO - This is Biber 2.11
-[1] Config.pm:305> INFO - Logfile is 'main_netplanner.blg'
-[84] biber-MSWIN64:313> INFO - === 
-[949] Utils.pm:209> ERROR - Cannot find control file 'main_netplanner.bcf'! - Did latex run successfully on your .tex file before you ran biber?
-[949] Biber.pm:114> INFO - ERRORS: 1
+This is BibTeX, Version 0.99dThe top-level auxiliary file: main_netplanner.aux
+A level-1 auxiliary file: chapter/heuristics.aux
+The style file: ieeetr.bst
+I found no \citation commands---while reading file main_netplanner.aux
+I found no \bibdata command---while reading file main_netplanner.aux
+(There were 2 error messages)
