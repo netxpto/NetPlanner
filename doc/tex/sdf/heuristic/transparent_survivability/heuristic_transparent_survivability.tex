@@ -615,7 +615,7 @@ Also there is a Path Tester, in which a list of paths previously associated to t
 	\label{fluxogram_transparent_surv}
 \end{figure}
 
-Here the main difference is that the super block 'Path tester' is divided in two sub blocks ('Demand path generator' and 'Available capacity') in order to better understand their exact functions.
+Here the main difference is the decomposition of the two super blocks 'Path tester' which is divided in three sub blocks ('Demand path generator', 'Available capacity' and 'Link capacity refresh') and the 'Physical Topology generator' block, divided in two other blocks, all of this in order to better understand their exact functions.
 
 \begin{table}[H]
 	\centering
@@ -625,12 +625,9 @@ Here the main difference is that the super block 'Path tester' is divided in two
 		\hline
 		demands & ??? \\ \hline
 		links & ??? \\ \hline
-		linksFull & ??? \\ \hline
-		paths & ???  \\ \hline
+		discardPath & ??? \\ \hline
+		logicalTopology & ??? \\ \hline
 		layer1 & ??? \\ \hline
-		layer2 & ???\\ \hline
-		intructions1 & ??? \\ \hline
-		intructions2 & ??? \\ \hline
 		demandListOfPaths & ???  \\ \hline
 		demandId & ???  \\ \hline
 		demandPath & ??? \\ \hline
@@ -638,8 +635,9 @@ Here the main difference is that the super block 'Path tester' is divided in two
 		demandsRouted & ??? \\ \hline
 		demandsBlocked & ??? \\ \hline
 		update & ??? \\ \hline
-		searchNextDemand & ??? \\ \hline
-		searchNextPath & ??? \\ \hline
+		nextDemand & ??? \\ \hline
+		nextPath & ??? \\ \hline
+		reportInfo & ??? \\ \hline
 	\end{tabular}
 	\caption{System Signals.}
 	\label{system_signals}
@@ -664,6 +662,7 @@ Here the main difference is that the super block 'Path tester' is divided in two
 		Physical topology & Non defined & Physical links scheme of the network  \\ \hline
 		Transport systems & 1 & Transport systems connecting each pair of nodes  \\ \hline
 		Optical channels & 100 & Optical channels per transport system\\ \hline
+		Optical channel capacity & 100 Gbps & Physical capacity of each channel\\ \hline 
 	\end{tabular}
 	\caption{System input parameters.}
 	\label{system_input}
@@ -676,21 +675,44 @@ Here the main difference is that the super block 'Path tester' is divided in two
 		Block & Input parameters & Input signals \\
 		\hline
 		Scheduler & ODU0...4, Routing ordering rule & None  \\ \hline
-		Logical topology gen & Transport mode & layer1 \\ \hline
-		Physical topology gen & Physical topology & linksFull \\ \hline
-		Optical channel layer & Optical channels, Tranport systems & layer1, instructions2, update \\ \hline
-		Path searcher & Number of paths, Criterion & demands, searchNextDemand  \\ \hline
-		Path generator & None & instructions, layer2  \\ \hline
-		Demand path gen & None & demandListOfPaths, searchNextPath \\ \hline
-		Sink (Blocking) & None & demandId \\ \hline
+		Logical topology gen & Transport mode & None \\ \hline
+		Physical topology gen & Physical topology & None \\ \hline
+		Optical channel layer & Optical channels, Transport systems, channel capacity & layer1 \\ \hline
+		Path generator & Number of paths, Criterion & demands, logicalToplogy, discardPath, nextDemand \\ \hline
+		Demand path gen & None & demandListOfPaths, nextPath \\ \hline
+		Sink (Blocking) & None & demandPathRoute \\ \hline
 		Sink (Routed) & None & demandId 		\\ \hline
-		Available capacity & None & demandPath, links \\ \hline
+		Available capacity & None & demandPath, links, update \\ \hline
 		Links capacity refresh & None & demandPathRoute	\\ \hline
+		Cost report & None & reportInfo \\ \hline
 	\end{tabular}
 	\caption{Blocks input parameters and signals.}
 	\label{blocks_input}
 \end{table}
 
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		Block & State variables & Output signals \\
+		\hline
+		Scheduler &  & demands  \\ \hline
+		Logical topology gen &  & logicalTopology \\ \hline
+		Physical topology gen &  & layer1 \\ \hline
+		Optical channel layer &  & links \\ \hline
+		Path generator & lightpaths & demandListOfPaths  \\ \hline
+		Demand path gen &  & demandPath, demandId \\ \hline
+		Sink (Blocking) &  & demandsBlocked \\ \hline
+		Sink (Routed) &  & demandsRouted		\\ \hline
+		Available capacity & opticalPath, link & demandPathRoute, nextPath \\ \hline
+		Links capacity refresh &  & update, demandPathRoute	\\ \hline
+		Cost report &  & None \\ \hline
+	\end{tabular}
+	\caption{Blocks input parameters and signals.}
+	\label{blocks_input}
+\end{table}
 % Blocks entry paramenters and signal (describe them)
 
 In figure xxx2 one can see ... descrever melhor o diagrama
@@ -814,38 +836,45 @@ The demands are first ordered in the Scheduler block considering the entry varia
 	\begin{tabular}{| c | c | c | c | c |}
 		
 		\hline
-		 demandIndex & height  & sourceNode & destinationNode & oduType \\
+		 demandIndex  & sourceNode & destinationNode & oduType \\
 		\hline\hline
 		
-		1 & ? & 2 & 4 & 4 \\ \hline
-		2 & ? & 2 & 4 & 4 \\ \hline
-		3 & ? & 2 & 4 & 4 \\ \hline
-		4 & ? & 2 & 4 & 4 \\ \hline
-		5 & ? & 2 & 4 & 4 \\ \hline
-		6 & ? & 2 & 4 & 4 \\ \hline
-		7 & ? & 2 & 4 & 4 \\ \hline
-		8 & ? & 2 & 4 & 4 \\ \hline
-		9 & ? & 2 & 4 & 4 \\ \hline
+		1 & 2 & 4 & 4 \\ \hline
+		2 & 2 & 4 & 4 \\ \hline
+		3 & 2 & 4 & 4 \\ \hline
+		4 & 2 & 4 & 4 \\ \hline
+		5 & 2 & 4 & 4 \\ \hline
+		6 & 2 & 4 & 4 \\ \hline
+		7 & 2 & 4 & 4 \\ \hline
+		8 & 2 & 4 & 4 \\ \hline
+		9 & 2 & 4 & 4 \\ \hline
 
 	\end{tabular}
 	\caption{Demands queue generated in the Scheduler block.}
 	\label{scheduler_example}
 \end{table} 
 
+The demands presented int the previous table will be processed by that same order.
 For the first demand here it is what is going to happen:
+
+First of all a set of shortest paths will be selected based on the logical topology of our network. The paths selected and their number will depend on some entry variables.
+Once our shortest path is chosen, one must test the same starting by analysing if there is already an entry on our list of lightpath established. If there is none between that same pair of nodes or if the ones existent do not have capacity to transport our demand we must create a new entrance, that is, create a new lightpath between our demands source and destination nodes. \\
+In this particular case as the list of lightpaths is initially void we must a create a new lightpath between nodes 2 and 4.  
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{| c | c | c | c |}
+	\begin{tabular}{| c | c | c | c | c |}
 	
 	\hline
-	numberOfPaths & Criterion  & sourceNode & destinationNode \\
+	ligthpathIndex & sourceNode & destinationNode & capacity (ODU0s) & wavelength \\
 	\hline
-	3 & Hops & 2 & 4 \\ \hline
+	 1 & 2 & 4 & 80 & 1 \\ \hline
 	\end{tabular}
-	\caption{instructions1 signal.}
-	\label{instructions1_example}
+	\caption{lightpath variable.}
+	\label{lightpath_example}
 \end{table}
+
+In order to test the physical capacity of the ligthpath first we need to test the optical path that constitutes the very same.
 
 \begin{table}[H]
 	\centering
