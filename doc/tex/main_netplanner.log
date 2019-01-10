@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.20)  10 JAN 2019 13:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.20)  10 JAN 2019 13:28
 entering extended mode
 **./main_netplanner.tex
 (main_netplanner.tex
@@ -3542,21 +3542,26 @@ gures/fluxogramaSemGroomingHighLevel.pdf): PDF inclusion: invalid other resourc
 e which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming.pdf, id=
-1035, 1233.64882pt x 659.5842pt>
+1035, 1233.60875pt x 659.46375pt>
 File: sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming.pdf
  Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming.pdf>
 
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/fluxog
 ramaSemGrooming.pdf  used on input line 613.
-(pdftex.def)             Requested size: 455.24408pt x 243.39821pt.
+(pdftex.def)             Requested size: 455.24408pt x 243.36382pt.
 
 Overfull \hbox (12.59033pt too wide) in paragraph at lines 613--614
  [][] 
  []
 
 [83 <./sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming.pd
-f>]
+f
+
+pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
+gures/fluxogramaSemGrooming.pdf): PDF inclusion: invalid other resource which i
+s no dict (key 'ProcSets', type <array>); ignored.
+>]
 Overfull \hbox (63.0645pt too wide) in paragraph at lines 648--667
  [][] 
  []
@@ -5682,7 +5687,7 @@ al/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/ejfernande
 s/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Use
 rs/ejfernandes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplri
 8a.pfb>
-Output written on main_netplanner.pdf (171 pages, 3091546 bytes).
+Output written on main_netplanner.pdf (171 pages, 3091541 bytes).
 PDF statistics:
  2196 PDF objects out of 2487 (max. 8388607)
  532 named destinations out of 1000 (max. 500000)
