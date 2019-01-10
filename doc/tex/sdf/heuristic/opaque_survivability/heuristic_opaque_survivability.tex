@@ -566,62 +566,118 @@ The creation of this model for any scenario, started with some considerations an
 
 \vspace{13pt}
 
-In the figure below it is shown a fluxogram with the description of the opaque without survivability transport mode approach.
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/fluxograma}
-	\caption{Fluxogram with the steps performed in the opaque without survivability transport mode approach.}
+	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/fluxogramaTopLevel}
+	\caption{High level diagram of the algorithms performed.}
 	\label{fluxogram_opaque_surv}
 \end{figure}
 
-\textbf{A}: An ordered queue that contains all the demands in an order defined previously by the
-scheduler and ready to be routed in the network. Here we have information about every
-demand which contains an index associated to it (so it can be identified), the ODU type, its height and the source and destination nodes.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/fluxogramaLowLevel}
+	\caption{Low level diagram of the algorithms performed.}
+    \label{fluxogram_opaque_surv}
+\end{figure}
 
-\textit{Demand}\\
-index: 1...N\\
-height: real\\
-sourceNode\\
-destinationNode\\
-oduType
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\textbf{Parameter} & \textbf{Default value} & \textbf{Description} \\
+		\hline
+		ODU0 & 0 Gbit/s & ODU0 demands  \\ \hline
+		ODU1 & 0 Gbit/s & ODU1 demands  \\ \hline
+		ODU2 & 0 Gbit/s & ODU2 demands  \\ \hline
+		ODU3 & 0 Gbit/s & ODU3 demands  \\ \hline
+		ODU4 & 0 Gbit/s & ODU4 demands  \\ \hline
+		Routing Ordering Rule & Down (ODU4...ODU0) & Order by which demands will be sorted  \\ \hline
+		Number of Paths & 3 & Number of paths created between a pair of nodes  \\ \hline
+		Criterion & Hops & Shortest path type \\ \hline
+		Transport Mode & Non defined & Opaque, Transparent or Translucid modes	\\ \hline
+		Physical Topology & Non defined & Physical links scheme of the network  \\ \hline
+		Transport Systems & 1 & Number of transport systems connecting each pair of nodes  \\ \hline
+		Optical Channels & 100 & Number of optical channels per transport system \\ \hline
+		Optical Channel Capacity & 100 Gbit/s & Capacity of each optical channel \\ \hline
+	\end{tabular}
+	\caption{System input parameters.}
+	\label{system_input}
+\end{table}
 
-\textbf{B}: A ordered queue with the k shortest Optical paths for the demand being processed atthat time.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		\textbf{Signal name} & \textbf{Description of the signal} \\
+		\hline
+		\multicolumn{1}{|c|}{demand} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ sourceNode\\ destinationNode\\ oduType\\ restorationMethod\end{tabular}} \\ \hline
+		logicaltopology & ??? \\ \hline
+		\multicolumn{1}{|c|}{demandListOfPaths} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ pathIndex\\ linkIndex\\ Hops\end{tabular}} \\ \hline
+		\multicolumn{1}{|c|}{path} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}pathIndex\\ linkIndex\\ Hops\end{tabular}} \\ \hline
+		physicaltopology & ??? \\ \hline
+		demandIndex & ??? \\ \hline
+		\multicolumn{1}{|c|}{demandPath} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ pathIndex\\ linkIndex\\ Hops\end{tabular}} \\ \hline
+		nextPath & ??? \\ \hline
+		\multicolumn{1}{|c|}{demandPathRoute}  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ linkIndex\\ opticalChannelsUsed\end{tabular}} \\ \hline
+	\end{tabular}
+	\caption{System Signals.}
+	\label{system_signals}
+\end{table}
 
-\textit{Optical Path} \\
-Index\\
-Links Used: Array of integers with 16 slots, whose value will be 1/0 depending on if they are being used or not.\\
 
-\textbf{C}: Creation of the network links with a certain number of optical channels and capacity per channel.
+\textit{demand}\\
+demandIndex \\
+sourceNode \\
+destinationNode \\
+oduType \\
+restorationMethod \\
 
-\textit{Link}\\
-Index 
-Number of Optical channels: integer\\
-Optical Channel capacity: integer\\
-Optical Channel: array of integers\\
-Source node\\
-Destination node\\
-Boolean blocking = false; (true == if link can´t route a demand)\\
+\textit{demandListOfPaths}\\
+demandIndex \\
+pathIndex \\
+linkIndex \\
+Hops \\
 
-\textbf{D}: Here we have the path that at a certain time is on top of the queue and so it will be thefirst to be tried.\\
+\textit{demandPath}\\
+demandIndex \\
+pathIndex \\
+linkIndex \\
+Hops \\
 
-\textbf{E}: Signal that contains demands blocked in our network.\\
+\textit{demandPathRoute}\\
+demandIndex \\
+linkIndex \\
+opticalChannelsUsed \\
 
-\textbf{F}: The demand is associated to a path and a route is created.\\
+\textit{links} \\
+linkIndex \\
+opticalchannelCapacity \\
 
-\textit{Demand-Path}\\
-Demand Index: integer\\
-Path Index: integer
+\textit{paths}\\
+pathIndex \\
+linkIndex \\
+Hops \\
 
-\textit{Route} 
-Index: integer\\
-Array\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		\textbf{Block} & \textbf{State variables} \\
+		\hline
+		Scheduler & ??  \\ \hline
+		Logical Topology Generator & ?? \\ \hline
+		Physical Topology Generator & ??\\ \hline
+		Path Generator & logicaltopology  \\ \hline
+		Path Tester & physicaltopology \\ \hline
+		Demand Path Generator & ?? \\ \hline
+		Sink (Blocking) & ?? \\ \hline
+		Sink (Routed) & ?? \\ \hline
+		Available Capacity & ?? \\ \hline
+		Link Capacity Refresh & ??	\\ \hline
+	\end{tabular}
+	\caption{Blocks state variables.}
+	\label{blocks_input}
+\end{table}
 
-\textit{Demand-Path-Route}\\
 
-Demand Index: integer\\
-Path Index: integer\\
-Route Index:\\
-
-\textbf{G}: Signal that contains demands routed in our network.
 
