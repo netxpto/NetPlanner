@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.20)  8 JAN 2019 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.20)  10 JAN 2019 13:24
 entering extended mode
 **./main_netplanner.tex
 (main_netplanner.tex
@@ -1423,7 +1423,7 @@ File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
 
 
 Writing index file main_netplanner.idx
-(main_netplanner.aux (chapter/reference_network.aux) (chapter/heuristics.aux
+(main_netplanner.aux (chapter/heuristics.aux
 
 LaTeX Warning: Label `fluxogram_opaque_surv' multiply defined.
 
@@ -1439,6 +1439,9 @@ LaTeX Warning: Label `grooming_opaque_surv3' multiply defined.
 
 
 LaTeX Warning: Label `fluxogram_transparent_surv' multiply defined.
+
+
+LaTeX Warning: Label `blocks_input' multiply defined.
 
 ))
 \openout1 = `main_netplanner.aux'.
@@ -1562,143 +1565,15 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.28 \include{chapter/reference_network}
-                                         [1
+l.30 \include{chapter/heuristics}
+                                  [1
 
 ]
-\openout2 = `chapter/reference_network.aux'.
-
- (chapter/reference_network.tex
-Cap\'{\i }tulo 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 5--7
-
- []
-
-(sdf/reference_network/reference_network.tex [2
-
-
-]
-Overfull \hbox (7.33366pt too wide) in paragraph at lines 5--8
-[][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 11--15
-
- []
-
-
-
-pdfTeX warning: pdflatex.exe (file ./sdf/reference_network/figures/RedeTeste.pd
-f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<sdf/reference_network/figures/RedeTeste.pdf, id=91, 566.59679pt x 227.6505pt>
-File: sdf/reference_network/figures/RedeTeste.pdf Graphic file (type pdf)
-<use sdf/reference_network/figures/RedeTeste.pdf>
-Package pdftex.def Info: sdf/reference_network/figures/RedeTeste.pdf  used on i
-nput line 18.
-(pdftex.def)             Requested size: 442.65375pt x 177.8515pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--25
-
- []
-
-[3
-
- <./sdf/reference_network/figures/RedeTeste.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
-
- []
-
-
-Overfull \hbox (7.33366pt too wide) in paragraph at lines 62--65
-[][] 
- []
-
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 75.
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 134--137
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 138--140
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--143
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
-
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 203--204
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--208
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 209--211
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--214
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 274--276
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 277--279
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--283
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 284--285
-
- []
-
-)) [7]
 \openout2 = `chapter/heuristics.aux'.
 
  (chapter/heuristics.tex
-Cap\'{\i }tulo 2.
-(sdf/heuristic/heuristic_CAPEX.tex [8
-
+Cap\'{\i }tulo 1.
+(sdf/heuristic/heuristic_CAPEX.tex [2
 
 
 ]
@@ -1707,7 +1582,7 @@ Overfull \hbox (7.33366pt too wide) in paragraph at lines 5--9
  []
 
 
-LaTeX Warning: Reference `Capex' on page 9 undefined on input line 12.
+LaTeX Warning: Reference `Capex' on page 3 undefined on input line 12.
 
 LaTeX Font Info:    Try loading font information for OMS+ppl on input line 27.
 
@@ -1717,15 +1592,15 @@ File: omsppl.fd
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
- [9
+ [3
 
 ]
 
-LaTeX Warning: Reference `exc_design' on page 10 undefined on input line 70.
+LaTeX Warning: Reference `exc_design' on page 4 undefined on input line 70.
 
-[10]
+[4]
 
-LaTeX Warning: Reference `oxc_design' on page 11 undefined on input line 107.
+LaTeX Warning: Reference `oxc_design' on page 5 undefined on input line 107.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 125--126
@@ -1733,7 +1608,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 125--126
  []
 
 ) (sdf/heuristic/opaque_survivability/heuristic_opaque_survivability.tex
-[11] [12]
+[5] [6]
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 3.
+
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 5--10
 [][] 
  []
@@ -1744,7 +1622,7 @@ Underfull \hbox (badness 1264) in paragraph at lines 13--14
 there are per-for-med OEO (optical-
  []
 
-[13
+[7
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 46--48
@@ -1752,10 +1630,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--48
  []
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 14 undefined on input line 57
-.
+LaTeX Warning: Reference `net2plan_guide' on page 8 undefined on input line 57.
 
-<sdf/heuristic/opaque_survivability/figures/fluxogram_opaque_surv.pdf, id=188, 
+
+<sdf/heuristic/opaque_survivability/figures/fluxogram_opaque_surv.pdf, id=109, 
 571.13374pt x 225.84375pt>
 File: sdf/heuristic/opaque_survivability/figures/fluxogram_opaque_surv.pdf Grap
 hic file (type pdf)
@@ -1768,13 +1646,17 @@ Overfull \hbox (12.59033pt too wide) in paragraph at lines 63--64
  [][] 
  []
 
-[14 <./sdf/heuristic/opaque_survivability/figures/fluxogram_opaque_surv.pdf
+[8 <./sdf/heuristic/opaque_survivability/figures/fluxogram_opaque_surv.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /fluxogram_opaque_surv.pdf): PDF inclusion: invalid other resource which is no 
 dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_survivability/figures/join_matrices_odus.pdf, id=211, 308
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 9 undefined on in
+put line 72.
+
+<sdf/heuristic/opaque_survivability/figures/join_matrices_odus.pdf, id=131, 308
 .15125pt x 229.85875pt>
 File: sdf/heuristic/opaque_survivability/figures/join_matrices_odus.pdf Graphic
  file (type pdf)
@@ -1787,7 +1669,7 @@ es_odus.pdf  used on input line 76.
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /traffic_matrices.pdf): PDF inclusion: found PDF version <1.7>, but at most ver
 sion <1.5> allowed
-<sdf/heuristic/opaque_survivability/figures/traffic_matrices.pdf, id=212, 326.7
+<sdf/heuristic/opaque_survivability/figures/traffic_matrices.pdf, id=132, 326.7
 2063pt x 256.70906pt>
 File: sdf/heuristic/opaque_survivability/figures/traffic_matrices.pdf Graphic f
 ile (type pdf)
@@ -1795,13 +1677,13 @@ ile (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/traffic_mat
 rices.pdf  used on input line 83.
 (pdftex.def)             Requested size: 227.62204pt x 178.84511pt.
-[15 <./sdf/heuristic/opaque_survivability/figures/join_matrices_odus.pdf
+[9 <./sdf/heuristic/opaque_survivability/figures/join_matrices_odus.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /join_matrices_odus.pdf): PDF inclusion: invalid other resource which is no dic
 t (key 'ProcSets', type <array>); ignored.
 > <./sdf/heuristic/opaque_survivability/figures/traffic_matrices.pdf>]
-<sdf/heuristic/opaque_survivability/figures/allowed_physical.pdf, id=226, 580.1
+<sdf/heuristic/opaque_survivability/figures/allowed_physical.pdf, id=146, 580.1
 675pt x 264.99pt>
 File: sdf/heuristic/opaque_survivability/figures/allowed_physical.pdf Graphic f
 ile (type pdf)
@@ -1810,7 +1692,7 @@ Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/allowed_phy
 sical.pdf  used on input line 96.
 (pdftex.def)             Requested size: 341.43306pt x 155.95053pt.
 <sdf/heuristic/opaque_survivability/figures/logical_topology_creation_opaque.pd
-f, id=228, 391.4625pt x 126.4725pt>
+f, id=148, 391.4625pt x 126.4725pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_creation_opaq
 ue.pdf Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_creation_opaqu
@@ -1818,14 +1700,14 @@ e.pdf>
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_creation_opaque.pdf  used on input line 108.
 (pdftex.def)             Requested size: 426.79134pt x 137.89473pt.
- [16 <./sdf/heuristic/opaque_survivability/figures/allowed_physical.pdf
+ [10 <./sdf/heuristic/opaque_survivability/figures/allowed_physical.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /allowed_physical.pdf): PDF inclusion: invalid other resource which is no dict 
 (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/opaque_survivability/figures/logical_topology_load_opaque.pdf, i
-d=240, 313.17pt x 203.76125pt>
+d=160, 313.17pt x 203.76125pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_load_opaque.p
 df Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_load_opaque.pd
@@ -1833,7 +1715,7 @@ f>
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_load_opaque.pdf  used on input line 115.
 (pdftex.def)             Requested size: 312.9803pt x 203.64569pt.
-<sdf/heuristic/opaque_survivability/figures/allowed_optical.pdf, id=241, 580.16
+<sdf/heuristic/opaque_survivability/figures/allowed_optical.pdf, id=161, 580.16
 75pt x 264.99pt>
 File: sdf/heuristic/opaque_survivability/figures/allowed_optical.pdf Graphic fi
 le (type pdf)
@@ -1841,7 +1723,7 @@ le (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/allowed_opt
 ical.pdf  used on input line 122.
 (pdftex.def)             Requested size: 284.52756pt x 129.9554pt.
- [17 <./sdf/heuristic/opaque_survivability/figures/logical_topology_creation_op
+ [11 <./sdf/heuristic/opaque_survivability/figures/logical_topology_creation_op
 aque.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
@@ -1859,7 +1741,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /allowed_optical.pdf): PDF inclusion: invalid other resource which is no dict (
 key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv1.pdf, id=258, 
+<sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv1.pdf, id=178, 
 448.67625pt x 222.8325pt>
 File: sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv1.pdf Grap
 hic file (type pdf)
@@ -1872,13 +1754,13 @@ Overfull \hbox (13.43817pt too wide) in paragraph at lines 141--154
  [][] 
  []
 
-[18 <./sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv1.pdf
+[12 <./sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv1.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /grooming_opaque_surv1.pdf): PDF inclusion: invalid other resource which is no 
 dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv2.pdf, id=270, 
+<sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv2.pdf, id=190, 
 590.205pt x 128.48pt>
 File: sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv2.pdf Grap
 hic file (type pdf)
@@ -1891,7 +1773,7 @@ Overfull \hbox (12.59033pt too wide) in paragraph at lines 165--166
  [][] 
  []
 
-<sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv3.pdf, id=271, 
+<sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv3.pdf, id=191, 
 312.16624pt x 225.84375pt>
 File: sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv3.pdf Grap
 hic file (type pdf)
@@ -1899,7 +1781,7 @@ hic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/grooming_op
 aque_surv3.pdf  used on input line 172.
 (pdftex.def)             Requested size: 312.9803pt x 226.43935pt.
-[19 <./sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv2.pdf
+[13 <./sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /grooming_opaque_surv2.pdf): PDF inclusion: invalid other resource which is no 
@@ -1910,7 +1792,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /grooming_opaque_surv3.pdf): PDF inclusion: invalid other resource which is no 
 dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_survivability/figures/cost_report_opaque.pdf, id=286, 320
+<sdf/heuristic/opaque_survivability/figures/cost_report_opaque.pdf, id=206, 320
 .19624pt x 279.0425pt>
 File: sdf/heuristic/opaque_survivability/figures/cost_report_opaque.pdf Graphic
  file (type pdf)
@@ -1918,12 +1800,21 @@ File: sdf/heuristic/opaque_survivability/figures/cost_report_opaque.pdf Graphic
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/cost_report
 _opaque.pdf  used on input line 185.
 (pdftex.def)             Requested size: 284.52756pt x 247.96382pt.
- [20 <./sdf/heuristic/opaque_survivability/figures/cost_report_opaque.pdf
+ [14 <./sdf/heuristic/opaque_survivability/figures/cost_report_opaque.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /cost_report_opaque.pdf): PDF inclusion: invalid other resource which is no dic
 t (key 'ProcSets', type <array>); ignored.
 >]
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 15 undefined on i
+nput line 193.
+
+
+LaTeX Warning: Reference `Reference_Network_Traffic' on page 15 undefined on in
+put line 193.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 193--195
 
  []
@@ -1932,6 +1823,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 193--195
 Underfull \hbox (badness 10000) in paragraph at lines 196--198
 
  []
+
+
+LaTeX Warning: Reference `low_scenario' on page 15 undefined on input line 199.
+
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 199--200
@@ -1950,55 +1845,55 @@ le (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/allowed_opt
 ical.pdf  used on input line 210.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-[21]
-<sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_low.pdf, id=3
-04, 587.19376pt x 264.99pt>
+[15]
+<sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_low.pdf, id=2
+21, 587.19376pt x 264.99pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_low.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_low.pdf>
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu0_low.pdf  used on input line 217.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
-<sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_low.pdf, id=3
-05, 589.20125pt x 263.98625pt>
+<sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_low.pdf, id=2
+22, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_low.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_low.pdf>
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu1_low.pdf  used on input line 224.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [22 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_low.pd
+ [16 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_low.pd
 f
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /logical_topology_odu0_low.pdf): PDF inclusion: invalid other resource which is
  no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_low.pdf, id=3
-15, 590.205pt x 261.97874pt>
+<sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_low.pdf, id=2
+32, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_low.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_low.pdf>
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu2_low.pdf  used on input line 231.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
-<sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_low.pdf, id=3
-16, 590.205pt x 261.97874pt>
+<sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_low.pdf, id=2
+33, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_low.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_low.pdf>
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu3_low.pdf  used on input line 238.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
-<sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_low.pdf, id=3
-17, 590.205pt x 261.97874pt>
+<sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_low.pdf, id=2
+34, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_low.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_low.pdf>
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu4_low.pdf  used on input line 245.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [23 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_low.pd
+ [17 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_low.pd
 f
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
@@ -2015,7 +1910,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /logical_topology_odu3_low.pdf): PDF inclusion: invalid other resource which is
  no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_survivability/figures/physical_topology.pdf, id=334, 580.
+<sdf/heuristic/opaque_survivability/figures/physical_topology.pdf, id=251, 580.
 1675pt x 264.99pt>
 File: sdf/heuristic/opaque_survivability/figures/physical_topology.pdf Graphic 
 file (type pdf)
@@ -2025,7 +1920,7 @@ pology.pdf  used on input line 252.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 24 undefined on input line 25
+LaTeX Warning: Reference `net2plan_guide' on page 18 undefined on input line 25
 7.
 
 
@@ -2046,7 +1941,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 289--290
 
  []
 
-[24 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_low.pdf
+[18 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_low.pdf
 
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
@@ -2061,10 +1956,14 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 Overfull \vbox (77.5891pt too high) has occurred while \output is active []
 
 
-[25]
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 316--318
 
  []
+
+
+LaTeX Warning: Reference `medium_traffic_scenario' on page 20 undefined on inpu
+t line 319.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 319--320
@@ -2084,7 +1983,7 @@ Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/allowed_opt
 ical.pdf  used on input line 330.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_medium.pdf, i
-d=360, 587.19376pt x 264.99pt>
+d=276, 587.19376pt x 264.99pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_medium.p
 df Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_medium.pd
@@ -2092,9 +1991,9 @@ f>
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu0_medium.pdf  used on input line 337.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
-[26]
+[20]
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_medium.pdf, i
-d=367, 589.20125pt x 263.98625pt>
+d=283, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_medium.p
 df Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_medium.pd
@@ -2103,7 +2002,7 @@ Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu1_medium.pdf  used on input line 344.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_medium.pdf, i
-d=368, 590.205pt x 261.97874pt>
+d=284, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_medium.p
 df Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_medium.pd
@@ -2112,7 +2011,7 @@ Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu2_medium.pdf  used on input line 351.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_medium.pdf, i
-d=369, 590.205pt x 261.97874pt>
+d=285, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_medium.p
 df Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_medium.pd
@@ -2120,7 +2019,7 @@ f>
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu3_medium.pdf  used on input line 358.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [27 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_medium
+ [21 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_medium
 .pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
@@ -2140,7 +2039,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
  is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_medium.pdf, i
-d=386, 590.205pt x 261.97874pt>
+d=302, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_medium.p
 df Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_medium.pd
@@ -2156,7 +2055,7 @@ pology.pdf  used on input line 372.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 28 undefined on input line 37
+LaTeX Warning: Reference `net2plan_guide' on page 22 undefined on input line 37
 7.
 
 
@@ -2164,7 +2063,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 377--378
 
  []
 
-[28 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_medium.
+[22 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_medium.
 pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
@@ -2187,6 +2086,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 409--411
  []
 
 
+LaTeX Warning: Reference `high_traffic_scenario' on page 23 undefined on input 
+line 412.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 412--413
 
  []
@@ -2197,7 +2100,7 @@ ile (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/allowed_phy
 sical.pdf  used on input line 416.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-[29]
+[23]
 File: sdf/heuristic/opaque_survivability/figures/allowed_optical.pdf Graphic fi
 le (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/allowed_optical.pdf>
@@ -2205,7 +2108,7 @@ Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/allowed_opt
 ical.pdf  used on input line 423.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_high.pdf, id=
-408, 587.19376pt x 264.99pt>
+323, 587.19376pt x 264.99pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_high.pdf
  Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_high.pdf>
@@ -2213,9 +2116,9 @@ File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_high.pdf
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu0_high.pdf  used on input line 430.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
- [30]
+ [24]
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_high.pdf, id=
-416, 589.20125pt x 263.98625pt>
+331, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_high.pdf
  Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu1_high.pdf>
@@ -2224,7 +2127,7 @@ Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu1_high.pdf  used on input line 437.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_high.pdf, id=
-417, 590.205pt x 261.97874pt>
+332, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_high.pdf
  Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu2_high.pdf>
@@ -2233,7 +2136,7 @@ Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu2_high.pdf  used on input line 444.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_high.pdf, id=
-418, 590.205pt x 261.97874pt>
+333, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_high.pdf
  Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_high.pdf>
@@ -2241,7 +2144,7 @@ File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_high.pdf
 Package pdftex.def Info: sdf/heuristic/opaque_survivability/figures/logical_top
 ology_odu3_high.pdf  used on input line 451.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [31 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_high.p
+ [25 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu0_high.p
 df
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
@@ -2259,7 +2162,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 s no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_high.pdf, id=
-435, 590.205pt x 261.97874pt>
+350, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_high.pdf
  Graphic file (type pdf)
 <use sdf/heuristic/opaque_survivability/figures/logical_topology_odu4_high.pdf>
@@ -2275,7 +2178,7 @@ pology.pdf  used on input line 465.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 32 undefined on input line 47
+LaTeX Warning: Reference `net2plan_guide' on page 26 undefined on input line 47
 0.
 
 
@@ -2283,7 +2186,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 470--471
 
  []
 
-[32 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_high.pd
+[26 <./sdf/heuristic/opaque_survivability/figures/logical_topology_odu3_high.pd
 f
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
@@ -2304,12 +2207,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 506--507
 
  []
 
-[33] [34] [35]
+[27] [28] [29]
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 561--565
 [][] 
  []
 
-<sdf/heuristic/opaque_survivability/figures/fluxograma.pdf, id=469, 1170.3725pt
+<sdf/heuristic/opaque_survivability/figures/fluxograma.pdf, id=384, 1170.3725pt
  x 752.8125pt>
 File: sdf/heuristic/opaque_survivability/figures/fluxograma.pdf Graphic file (t
 ype pdf)
@@ -2322,7 +2225,7 @@ Overfull \hbox (12.59033pt too wide) in paragraph at lines 573--574
  [][] 
  []
 
-[36 <./sdf/heuristic/opaque_survivability/figures/fluxograma.pdf
+[30 <./sdf/heuristic/opaque_survivability/figures/fluxograma.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_survivability/figures
 /fluxograma.pdf): PDF inclusion: invalid other resource which is no dict (key '
@@ -2367,12 +2270,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 646--652
 
  []
 
-) (sdf/heuristic/opaque_protection/heuristic_opaque_protection.tex [37]
+) (sdf/heuristic/opaque_protection/heuristic_opaque_protection.tex [31]
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 5--10
 [][] 
  []
 
-[38
+[32
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 47--49
@@ -2380,10 +2283,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--49
  []
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 39 undefined on input line 58
+LaTeX Warning: Reference `net2plan_guide' on page 33 undefined on input line 58
 .
 
-<sdf/heuristic/opaque_protection/figures/fluxogram_opaque_protec.pdf, id=503, 5
+<sdf/heuristic/opaque_protection/figures/fluxogram_opaque_protec.pdf, id=418, 5
 71.13374pt x 348.30125pt>
 File: sdf/heuristic/opaque_protection/figures/fluxogram_opaque_protec.pdf Graph
 ic file (type pdf)
@@ -2396,13 +2299,17 @@ Overfull \hbox (12.59033pt too wide) in paragraph at lines 64--65
  [][] 
  []
 
-[39 <./sdf/heuristic/opaque_protection/figures/fluxogram_opaque_protec.pdf
+[33 <./sdf/heuristic/opaque_protection/figures/fluxogram_opaque_protec.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/fl
 uxogram_opaque_protec.pdf): PDF inclusion: invalid other resource which is no d
 ict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_protection/figures/join_matrices_odus.pdf, id=525, 308.15
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 34 undefined on i
+nput line 73.
+
+<sdf/heuristic/opaque_protection/figures/join_matrices_odus.pdf, id=439, 308.15
 125pt x 229.85875pt>
 File: sdf/heuristic/opaque_protection/figures/join_matrices_odus.pdf Graphic fi
 le (type pdf)
@@ -2415,7 +2322,7 @@ odus.pdf  used on input line 77.
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/tr
 affic_matrices.pdf): PDF inclusion: found PDF version <1.7>, but at most versio
 n <1.5> allowed
-<sdf/heuristic/opaque_protection/figures/traffic_matrices.pdf, id=526, 326.7206
+<sdf/heuristic/opaque_protection/figures/traffic_matrices.pdf, id=440, 326.7206
 3pt x 256.70906pt>
 File: sdf/heuristic/opaque_protection/figures/traffic_matrices.pdf Graphic file
  (type pdf)
@@ -2423,13 +2330,13 @@ File: sdf/heuristic/opaque_protection/figures/traffic_matrices.pdf Graphic file
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/traffic_matric
 es.pdf  used on input line 84.
 (pdftex.def)             Requested size: 227.62204pt x 178.84511pt.
-[40 <./sdf/heuristic/opaque_protection/figures/join_matrices_odus.pdf
+[34 <./sdf/heuristic/opaque_protection/figures/join_matrices_odus.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/jo
 in_matrices_odus.pdf): PDF inclusion: invalid other resource which is no dict (
 key 'ProcSets', type <array>); ignored.
 > <./sdf/heuristic/opaque_protection/figures/traffic_matrices.pdf>]
-<sdf/heuristic/opaque_protection/figures/allowed_physical.pdf, id=540, 580.1675
+<sdf/heuristic/opaque_protection/figures/allowed_physical.pdf, id=454, 580.1675
 pt x 264.99pt>
 File: sdf/heuristic/opaque_protection/figures/allowed_physical.pdf Graphic file
  (type pdf)
@@ -2438,7 +2345,7 @@ Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/allowed_physic
 al.pdf  used on input line 97.
 (pdftex.def)             Requested size: 341.43306pt x 155.95053pt.
 <sdf/heuristic/opaque_protection/figures/logical_topology_creation_opaque.pdf, 
-id=542, 391.4625pt x 126.4725pt>
+id=456, 391.4625pt x 126.4725pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_creation_opaque.
 pdf Graphic file (type pdf)
 <use sdf/heuristic/opaque_protection/figures/logical_topology_creation_opaque.p
@@ -2446,21 +2353,21 @@ df>
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_creation_opaque.pdf  used on input line 109.
 (pdftex.def)             Requested size: 426.79134pt x 137.89473pt.
- [41 <./sdf/heuristic/opaque_protection/figures/allowed_physical.pdf
+ [35 <./sdf/heuristic/opaque_protection/figures/allowed_physical.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/al
 lowed_physical.pdf): PDF inclusion: invalid other resource which is no dict (ke
 y 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_protection/figures/logical_topology_load_opaque.pdf, id=5
-54, 313.17pt x 203.76125pt>
+<sdf/heuristic/opaque_protection/figures/logical_topology_load_opaque.pdf, id=4
+68, 313.17pt x 203.76125pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_load_opaque.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_protection/figures/logical_topology_load_opaque.pdf>
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_load_opaque.pdf  used on input line 116.
 (pdftex.def)             Requested size: 312.9803pt x 203.64569pt.
-<sdf/heuristic/opaque_protection/figures/allowed_optical.pdf, id=555, 580.1675p
+<sdf/heuristic/opaque_protection/figures/allowed_optical.pdf, id=469, 580.1675p
 t x 264.99pt>
 File: sdf/heuristic/opaque_protection/figures/allowed_optical.pdf Graphic file 
 (type pdf)
@@ -2468,7 +2375,7 @@ File: sdf/heuristic/opaque_protection/figures/allowed_optical.pdf Graphic file
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/allowed_optica
 l.pdf  used on input line 123.
 (pdftex.def)             Requested size: 284.52756pt x 129.9554pt.
- [42 <./sdf/heuristic/opaque_protection/figures/logical_topology_creation_opaqu
+ [36 <./sdf/heuristic/opaque_protection/figures/logical_topology_creation_opaqu
 e.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
@@ -2485,7 +2392,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/al
 lowed_optical.pdf): PDF inclusion: invalid other resource which is no dict (key
  'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_protection/figures/grooming_opaque_protec1.pdf, id=573, 4
+<sdf/heuristic/opaque_protection/figures/grooming_opaque_protec1.pdf, id=487, 4
 45.665pt x 341.275pt>
 File: sdf/heuristic/opaque_protection/figures/grooming_opaque_protec1.pdf Graph
 ic file (type pdf)
@@ -2493,8 +2400,8 @@ ic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/grooming_opaqu
 e_protec1.pdf  used on input line 136.
 (pdftex.def)             Requested size: 398.33858pt x 305.03564pt.
- [43]
-<sdf/heuristic/opaque_protection/figures/grooming_opaque_protec2.pdf, id=579, 4
+ [37]
+<sdf/heuristic/opaque_protection/figures/grooming_opaque_protec2.pdf, id=493, 4
 81.8pt x 198.7425pt>
 File: sdf/heuristic/opaque_protection/figures/grooming_opaque_protec2.pdf Graph
 ic file (type pdf)
@@ -2507,7 +2414,7 @@ Overfull \hbox (35.29416pt too wide) in paragraph at lines 150--167
  [][] 
  []
 
-[44 <./sdf/heuristic/opaque_protection/figures/grooming_opaque_protec1.pdf
+[38 <./sdf/heuristic/opaque_protection/figures/grooming_opaque_protec1.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/gr
 ooming_opaque_protec1.pdf): PDF inclusion: invalid other resource which is no d
@@ -2518,7 +2425,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/gr
 ooming_opaque_protec2.pdf): PDF inclusion: invalid other resource which is no d
 ict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_protection/figures/grooming_opaque_protec3.pdf, id=592, 5
+<sdf/heuristic/opaque_protection/figures/grooming_opaque_protec3.pdf, id=506, 5
 90.205pt x 128.48pt>
 File: sdf/heuristic/opaque_protection/figures/grooming_opaque_protec3.pdf Graph
 ic file (type pdf)
@@ -2531,7 +2438,7 @@ Overfull \hbox (12.59033pt too wide) in paragraph at lines 178--179
  [][] 
  []
 
-<sdf/heuristic/opaque_protection/figures/grooming_opaque_protec4.pdf, id=593, 3
+<sdf/heuristic/opaque_protection/figures/grooming_opaque_protec4.pdf, id=507, 3
 16.18124pt x 227.85126pt>
 File: sdf/heuristic/opaque_protection/figures/grooming_opaque_protec4.pdf Graph
 ic file (type pdf)
@@ -2539,13 +2446,13 @@ ic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/grooming_opaqu
 e_protec4.pdf  used on input line 185.
 (pdftex.def)             Requested size: 312.9803pt x 225.55952pt.
-[45 <./sdf/heuristic/opaque_protection/figures/grooming_opaque_protec3.pdf
+[39 <./sdf/heuristic/opaque_protection/figures/grooming_opaque_protec3.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/gr
 ooming_opaque_protec3.pdf): PDF inclusion: invalid other resource which is no d
 ict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_protection/figures/cost_report_opaque.pdf, id=605, 320.19
+<sdf/heuristic/opaque_protection/figures/cost_report_opaque.pdf, id=519, 320.19
 624pt x 279.0425pt>
 File: sdf/heuristic/opaque_protection/figures/cost_report_opaque.pdf Graphic fi
 le (type pdf)
@@ -2553,17 +2460,26 @@ le (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/cost_report_op
 aque.pdf  used on input line 198.
 (pdftex.def)             Requested size: 284.52756pt x 247.96382pt.
- [46 <./sdf/heuristic/opaque_protection/figures/grooming_opaque_protec4.pdf
+ [40 <./sdf/heuristic/opaque_protection/figures/grooming_opaque_protec4.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/gr
 ooming_opaque_protec4.pdf): PDF inclusion: invalid other resource which is no d
 ict (key 'ProcSets', type <array>); ignored.
->] [47 <./sdf/heuristic/opaque_protection/figures/cost_report_opaque.pdf
+>] [41 <./sdf/heuristic/opaque_protection/figures/cost_report_opaque.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/co
 st_report_opaque.pdf): PDF inclusion: invalid other resource which is no dict (
 key 'ProcSets', type <array>); ignored.
 >]
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 42 undefined on i
+nput line 206.
+
+
+LaTeX Warning: Reference `Reference_Network_Traffic' on page 42 undefined on in
+put line 206.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 206--208
 
  []
@@ -2572,6 +2488,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 206--208
 Underfull \hbox (badness 10000) in paragraph at lines 209--211
 
  []
+
+
+LaTeX Warning: Reference `low_scenario' on page 42 undefined on input line 212.
+
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 212--213
@@ -2590,8 +2510,8 @@ File: sdf/heuristic/opaque_protection/figures/allowed_optical.pdf Graphic file
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/allowed_optica
 l.pdf  used on input line 223.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-[48]
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu0_low.pdf, id=632,
+[42]
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu0_low.pdf, id=543,
  587.19376pt x 264.99pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu0_low.pdf Gra
 phic file (type pdf)
@@ -2599,7 +2519,7 @@ phic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu0_low.pdf  used on input line 230.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu1_low.pdf, id=633,
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu1_low.pdf, id=544,
  589.20125pt x 263.98625pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu1_low.pdf Gra
 phic file (type pdf)
@@ -2607,13 +2527,13 @@ phic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu1_low.pdf  used on input line 237.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [49 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu0_low.pdf
+ [43 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu0_low.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
 gical_topology_odu0_low.pdf): PDF inclusion: invalid other resource which is no
  dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu2_low.pdf, id=643,
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu2_low.pdf, id=554,
  590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu2_low.pdf Gra
 phic file (type pdf)
@@ -2621,7 +2541,7 @@ phic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu2_low.pdf  used on input line 244.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu3_low.pdf, id=644,
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu3_low.pdf, id=555,
  590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu3_low.pdf Gra
 phic file (type pdf)
@@ -2629,7 +2549,7 @@ phic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu3_low.pdf  used on input line 251.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu4_low.pdf, id=645,
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu4_low.pdf, id=556,
  590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu4_low.pdf Gra
 phic file (type pdf)
@@ -2637,7 +2557,7 @@ phic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu4_low.pdf  used on input line 258.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [50 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu1_low.pdf
+ [44 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu1_low.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
 gical_topology_odu1_low.pdf): PDF inclusion: invalid other resource which is no
@@ -2653,7 +2573,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
 gical_topology_odu3_low.pdf): PDF inclusion: invalid other resource which is no
  dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_protection/figures/physical_topology.pdf, id=662, 580.167
+<sdf/heuristic/opaque_protection/figures/physical_topology.pdf, id=573, 580.167
 5pt x 264.99pt>
 File: sdf/heuristic/opaque_protection/figures/physical_topology.pdf Graphic fil
 e (type pdf)
@@ -2661,7 +2581,7 @@ e (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/physical_topol
 ogy.pdf  used on input line 265.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-<sdf/heuristic/opaque_protection/figures/optical_topology_low.pdf, id=663, 580.
+<sdf/heuristic/opaque_protection/figures/optical_topology_low.pdf, id=574, 580.
 1675pt x 264.99pt>
 File: sdf/heuristic/opaque_protection/figures/optical_topology_low.pdf Graphic 
 file (type pdf)
@@ -2671,7 +2591,7 @@ gy_low.pdf  used on input line 272.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 51 undefined on input line 27
+LaTeX Warning: Reference `net2plan_guide' on page 45 undefined on input line 27
 7.
 
 
@@ -2679,7 +2599,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 277--278
 
  []
 
-[51 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu4_low.pdf
+[45 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu4_low.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
 gical_topology_odu4_low.pdf): PDF inclusion: invalid other resource which is no
@@ -2699,10 +2619,14 @@ Overfull \hbox (21.01709pt too wide) in paragraph at lines 281--305
  [][] 
  []
 
-[52]
+[46]
 Underfull \hbox (badness 10000) in paragraph at lines 310--312
 
  []
+
+
+LaTeX Warning: Reference `medium_traffic_scenario' on page 47 undefined on inpu
+t line 313.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 313--314
@@ -2721,17 +2645,17 @@ File: sdf/heuristic/opaque_protection/figures/allowed_optical.pdf Graphic file
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/allowed_optica
 l.pdf  used on input line 324.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu0_medium.pdf, id=6
-88, 587.19376pt x 264.99pt>
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu0_medium.pdf, id=5
+98, 587.19376pt x 264.99pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu0_medium.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_protection/figures/logical_topology_odu0_medium.pdf>
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu0_medium.pdf  used on input line 331.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
-[53]
+[47]
 <sdf/heuristic/opaque_protection/figures/logical_topology_odu1_medium.pdf, id=6
-95, 589.20125pt x 263.98625pt>
+05, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu1_medium.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_protection/figures/logical_topology_odu1_medium.pdf>
@@ -2739,7 +2663,7 @@ Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu1_medium.pdf  used on input line 338.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
 <sdf/heuristic/opaque_protection/figures/logical_topology_odu2_medium.pdf, id=6
-96, 590.205pt x 261.97874pt>
+06, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu2_medium.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_protection/figures/logical_topology_odu2_medium.pdf>
@@ -2747,14 +2671,14 @@ Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu2_medium.pdf  used on input line 345.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/opaque_protection/figures/logical_topology_odu3_medium.pdf, id=6
-97, 590.205pt x 261.97874pt>
+07, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu3_medium.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_protection/figures/logical_topology_odu3_medium.pdf>
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu3_medium.pdf  used on input line 352.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [54 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu0_medium.pd
+ [48 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu0_medium.pd
 f
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
@@ -2771,8 +2695,8 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
 gical_topology_odu2_medium.pdf): PDF inclusion: invalid other resource which is
  no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu4_medium.pdf, id=7
-15, 590.205pt x 261.97874pt>
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu4_medium.pdf, id=6
+25, 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu4_medium.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/opaque_protection/figures/logical_topology_odu4_medium.pdf>
@@ -2785,7 +2709,7 @@ e (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/physical_topol
 ogy.pdf  used on input line 366.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-<sdf/heuristic/opaque_protection/figures/optical_topology_medium.pdf, id=716, 5
+<sdf/heuristic/opaque_protection/figures/optical_topology_medium.pdf, id=626, 5
 80.1675pt x 264.99pt>
 File: sdf/heuristic/opaque_protection/figures/optical_topology_medium.pdf Graph
 ic file (type pdf)
@@ -2793,7 +2717,7 @@ ic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/optical_topolo
 gy_medium.pdf  used on input line 373.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
- [55 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu3_medium.pd
+ [49 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu3_medium.pd
 f
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
@@ -2806,7 +2730,7 @@ gical_topology_odu4_medium.pdf): PDF inclusion: invalid other resource which is
  no dict (key 'ProcSets', type <array>); ignored.
 >]
 
-LaTeX Warning: Reference `net2plan_guide' on page 56 undefined on input line 37
+LaTeX Warning: Reference `net2plan_guide' on page 50 undefined on input line 37
 8.
 
 
@@ -2825,11 +2749,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 410--412
  []
 
 
+LaTeX Warning: Reference `high_traffic_scenario' on page 50 undefined on input 
+line 413.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 413--414
 
  []
 
-[56 <./sdf/heuristic/opaque_protection/figures/optical_topology_medium.pdf
+[50 <./sdf/heuristic/opaque_protection/figures/optical_topology_medium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/op
 tical_topology_medium.pdf): PDF inclusion: invalid other resource which is no d
@@ -2847,7 +2775,7 @@ File: sdf/heuristic/opaque_protection/figures/allowed_optical.pdf Graphic file
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/allowed_optica
 l.pdf  used on input line 424.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu0_high.pdf, id=742
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu0_high.pdf, id=651
 , 587.19376pt x 264.99pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu0_high.pdf Gr
 aphic file (type pdf)
@@ -2855,8 +2783,8 @@ aphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu0_high.pdf  used on input line 431.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
- [57]
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu1_high.pdf, id=749
+ [51]
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu1_high.pdf, id=658
 , 589.20125pt x 263.98625pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu1_high.pdf Gr
 aphic file (type pdf)
@@ -2864,7 +2792,7 @@ aphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu1_high.pdf  used on input line 438.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu2_high.pdf, id=750
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu2_high.pdf, id=659
 , 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu2_high.pdf Gr
 aphic file (type pdf)
@@ -2872,7 +2800,7 @@ aphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu2_high.pdf  used on input line 445.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu3_high.pdf, id=751
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu3_high.pdf, id=660
 , 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu3_high.pdf Gr
 aphic file (type pdf)
@@ -2880,7 +2808,7 @@ aphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/logical_topolo
 gy_odu3_high.pdf  used on input line 452.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [58 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu0_high.pdf
+ [52 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu0_high.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
 gical_topology_odu0_high.pdf): PDF inclusion: invalid other resource which is n
@@ -2896,7 +2824,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
 gical_topology_odu2_high.pdf): PDF inclusion: invalid other resource which is n
 o dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/opaque_protection/figures/logical_topology_odu4_high.pdf, id=768
+<sdf/heuristic/opaque_protection/figures/logical_topology_odu4_high.pdf, id=677
 , 590.205pt x 261.97874pt>
 File: sdf/heuristic/opaque_protection/figures/logical_topology_odu4_high.pdf Gr
 aphic file (type pdf)
@@ -2910,7 +2838,7 @@ e (type pdf)
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/physical_topol
 ogy.pdf  used on input line 466.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-<sdf/heuristic/opaque_protection/figures/optical_topology_high.pdf, id=769, 580
+<sdf/heuristic/opaque_protection/figures/optical_topology_high.pdf, id=678, 580
 .1675pt x 264.99pt>
 File: sdf/heuristic/opaque_protection/figures/optical_topology_high.pdf Graphic
  file (type pdf)
@@ -2918,7 +2846,7 @@ File: sdf/heuristic/opaque_protection/figures/optical_topology_high.pdf Graphic
 Package pdftex.def Info: sdf/heuristic/opaque_protection/figures/optical_topolo
 gy_high.pdf  used on input line 473.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
- [59 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu3_high.pdf
+ [53 <./sdf/heuristic/opaque_protection/figures/logical_topology_odu3_high.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/lo
 gical_topology_odu3_high.pdf): PDF inclusion: invalid other resource which is n
@@ -2930,7 +2858,7 @@ gical_topology_odu4_high.pdf): PDF inclusion: invalid other resource which is n
 o dict (key 'ProcSets', type <array>); ignored.
 >]
 
-LaTeX Warning: Reference `net2plan_guide' on page 60 undefined on input line 47
+LaTeX Warning: Reference `net2plan_guide' on page 54 undefined on input line 47
 8.
 
 
@@ -2948,14 +2876,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 514--515
 
  []
 
-[60 <./sdf/heuristic/opaque_protection/figures/optical_topology_high.pdf
+[54 <./sdf/heuristic/opaque_protection/figures/optical_topology_high.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/opaque_protection/figures/op
 tical_topology_high.pdf): PDF inclusion: invalid other resource which is no dic
 t (key 'ProcSets', type <array>); ignored.
->] [61])
+>] [55])
 (sdf/heuristic/transparent_survivability/heuristic_transparent_survivability.te
-x [62]
+x [56]
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 5--10
 [][] 
  []
@@ -2975,7 +2903,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--39
 
  []
 
-[63
+[57
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 65--67
@@ -2983,11 +2911,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--67
  []
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 64 undefined on input line 69
+LaTeX Warning: Reference `net2plan_guide' on page 58 undefined on input line 69
 .
 
 <sdf/heuristic/transparent_survivability/figures/fluxogram_transparent_surv.pdf
-, id=824, 571.13374pt x 225.84375pt>
+, id=733, 571.13374pt x 225.84375pt>
 File: sdf/heuristic/transparent_survivability/figures/fluxogram_transparent_sur
 v.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/fluxogram_transparent_surv
@@ -3000,14 +2928,18 @@ Overfull \hbox (12.59033pt too wide) in paragraph at lines 75--76
  [][] 
  []
 
-[64 <./sdf/heuristic/transparent_survivability/figures/fluxogram_transparent_su
+[58 <./sdf/heuristic/transparent_survivability/figures/fluxogram_transparent_su
 rv.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
 gures/fluxogram_transparent_surv.pdf): PDF inclusion: invalid other resource wh
 ich is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/transparent_survivability/figures/join_matrices_odus.pdf, id=845
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 59 undefined on i
+nput line 84.
+
+<sdf/heuristic/transparent_survivability/figures/join_matrices_odus.pdf, id=753
 , 308.15125pt x 229.85875pt>
 File: sdf/heuristic/transparent_survivability/figures/join_matrices_odus.pdf Gr
 aphic file (type pdf)
@@ -3020,7 +2952,7 @@ atrices_odus.pdf  used on input line 88.
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
 gures/traffic_matrices.pdf): PDF inclusion: found PDF version <1.7>, but at mos
 t version <1.5> allowed
-<sdf/heuristic/transparent_survivability/figures/traffic_matrices.pdf, id=846, 
+<sdf/heuristic/transparent_survivability/figures/traffic_matrices.pdf, id=754, 
 326.72063pt x 256.70906pt>
 File: sdf/heuristic/transparent_survivability/figures/traffic_matrices.pdf Grap
 hic file (type pdf)
@@ -3028,13 +2960,13 @@ hic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/traffi
 c_matrices.pdf  used on input line 95.
 (pdftex.def)             Requested size: 227.62204pt x 178.84511pt.
-[65 <./sdf/heuristic/transparent_survivability/figures/join_matrices_odus.pdf
+[59 <./sdf/heuristic/transparent_survivability/figures/join_matrices_odus.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
 gures/join_matrices_odus.pdf): PDF inclusion: invalid other resource which is n
 o dict (key 'ProcSets', type <array>); ignored.
 > <./sdf/heuristic/transparent_survivability/figures/traffic_matrices.pdf>]
-<sdf/heuristic/transparent_survivability/figures/allowed_physical.pdf, id=860, 
+<sdf/heuristic/transparent_survivability/figures/allowed_physical.pdf, id=768, 
 580.1675pt x 264.99pt>
 File: sdf/heuristic/transparent_survivability/figures/allowed_physical.pdf Grap
 hic file (type pdf)
@@ -3043,7 +2975,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/allowe
 d_physical.pdf  used on input line 108.
 (pdftex.def)             Requested size: 341.43306pt x 155.95053pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_creation_tran
-sparent.pdf, id=862, 590.205pt x 191.71625pt>
+sparent.pdf, id=770, 590.205pt x 191.71625pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_creation
 _transparent.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_creation_
@@ -3052,14 +2984,14 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_creation_transparent.pdf  used on input line 121.
 (pdftex.def)             Requested size: 426.79134pt x 138.6382pt.
 
-[66 <./sdf/heuristic/transparent_survivability/figures/allowed_physical.pdf
+[60 <./sdf/heuristic/transparent_survivability/figures/allowed_physical.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
 gures/allowed_physical.pdf): PDF inclusion: invalid other resource which is no 
 dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_survivability/figures/logical_topology_load_transpar
-ent.pdf, id=875, 320.19624pt x 204.765pt>
+ent.pdf, id=783, 320.19624pt x 204.765pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_load_tra
 nsparent.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_load_tran
@@ -3067,7 +2999,7 @@ sparent.pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_load_transparent.pdf  used on input line 128.
 (pdftex.def)             Requested size: 284.52756pt x 181.95906pt.
-<sdf/heuristic/transparent_survivability/figures/allowed_optical.pdf, id=876, 5
+<sdf/heuristic/transparent_survivability/figures/allowed_optical.pdf, id=784, 5
 45.03625pt x 252.945pt>
 File: sdf/heuristic/transparent_survivability/figures/allowed_optical.pdf Graph
 ic file (type pdf)
@@ -3075,7 +3007,7 @@ ic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/allowe
 d_optical.pdf  used on input line 135.
 (pdftex.def)             Requested size: 284.52756pt x 132.04549pt.
- [67 <./sdf/heuristic/transparent_survivability/figures/logical_topology_creati
+ [61 <./sdf/heuristic/transparent_survivability/figures/logical_topology_creati
 on_transparent.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3094,7 +3026,7 @@ gures/allowed_optical.pdf): PDF inclusion: invalid other resource which is no d
 ict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv1.pdf
-, id=893, 418.56375pt x 209.78375pt>
+, id=801, 418.56375pt x 209.78375pt>
 File: sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv
 1.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv1
@@ -3103,7 +3035,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/groomi
 ng_transparent_surv1.pdf  used on input line 147.
 (pdftex.def)             Requested size: 398.33858pt x 199.64552pt.
 <sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv2.pdf
-, id=894, 434.62375pt x 298.11375pt>
+, id=802, 434.62375pt x 298.11375pt>
 File: sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv
 2.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv2
@@ -3111,7 +3043,7 @@ File: sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/groomi
 ng_transparent_surv2.pdf  used on input line 154.
 (pdftex.def)             Requested size: 398.33858pt x 273.23993pt.
- [68 <./sdf/heuristic/transparent_survivability/figures/grooming_transparent_su
+ [62 <./sdf/heuristic/transparent_survivability/figures/grooming_transparent_su
 rv1.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3122,7 +3054,7 @@ Overfull \hbox (15.39824pt too wide) in paragraph at lines 161--180
  [][] 
  []
 
-[69 <./sdf/heuristic/transparent_survivability/figures/grooming_transparent_sur
+[63 <./sdf/heuristic/transparent_survivability/figures/grooming_transparent_sur
 v2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3130,7 +3062,7 @@ gures/grooming_transparent_surv2.pdf): PDF inclusion: invalid other resource wh
 ich is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv3.pdf
-, id=913, 343.2825pt x 169.63374pt>
+, id=821, 343.2825pt x 169.63374pt>
 File: sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv
 3.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv3
@@ -3139,7 +3071,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/groomi
 ng_transparent_surv3.pdf  used on input line 192.
 (pdftex.def)             Requested size: 369.88582pt x 182.77979pt.
 <sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv4.pdf
-, id=914, 312.16624pt x 225.84375pt>
+, id=822, 312.16624pt x 225.84375pt>
 File: sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv
 4.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv4
@@ -3147,13 +3079,13 @@ File: sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/groomi
 ng_transparent_surv4.pdf  used on input line 199.
 (pdftex.def)             Requested size: 312.9803pt x 226.43935pt.
- [70 <./sdf/heuristic/transparent_survivability/figures/grooming_transparent_su
+ [64 <./sdf/heuristic/transparent_survivability/figures/grooming_transparent_su
 rv3.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
 gures/grooming_transparent_surv3.pdf): PDF inclusion: invalid other resource wh
 ich is no dict (key 'ProcSets', type <array>); ignored.
->] [71 <./sdf/heuristic/transparent_survivability/figures/grooming_transparent_
+>] [65 <./sdf/heuristic/transparent_survivability/figures/grooming_transparent_
 surv4.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3161,7 +3093,7 @@ gures/grooming_transparent_surv4.pdf): PDF inclusion: invalid other resource wh
 ich is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_survivability/figures/cost_report_transparent.pdf, i
-d=933, 320.19624pt x 279.0425pt>
+d=841, 320.19624pt x 279.0425pt>
 File: sdf/heuristic/transparent_survivability/figures/cost_report_transparent.p
 df Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/cost_report_transparent.pd
@@ -3169,13 +3101,22 @@ f>
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/cost_r
 eport_transparent.pdf  used on input line 212.
 (pdftex.def)             Requested size: 284.52756pt x 247.96382pt.
- [72 <./sdf/heuristic/transparent_survivability/figures/cost_report_transparent
+ [66 <./sdf/heuristic/transparent_survivability/figures/cost_report_transparent
 .pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
 gures/cost_report_transparent.pdf): PDF inclusion: invalid other resource which
  is no dict (key 'ProcSets', type <array>); ignored.
 >]
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 67 undefined on i
+nput line 220.
+
+
+LaTeX Warning: Reference `Reference_Network_Traffic' on page 67 undefined on in
+put line 220.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 220--222
 
  []
@@ -3184,6 +3125,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 220--222
 Underfull \hbox (badness 10000) in paragraph at lines 223--225
 
  []
+
+
+LaTeX Warning: Reference `low_scenario' on page 67 undefined on input line 226.
+
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 226--227
@@ -3202,9 +3147,9 @@ ic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/allowe
 d_optical.pdf  used on input line 237.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[73]
+[67]
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_low.pdf,
- id=952, 587.19376pt x 264.99pt>
+ id=857, 587.19376pt x 264.99pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_low.
@@ -3213,7 +3158,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu0_low.pdf  used on input line 244.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_low.pdf,
- id=953, 589.20125pt x 263.98625pt>
+ id=858, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_low.
@@ -3221,7 +3166,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu1_low.pdf  used on input line 251.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [74 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_l
+ [68 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_l
 ow.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3229,7 +3174,7 @@ gures/logical_topology_odu0_low.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_low.pdf,
- id=963, 590.205pt x 261.97874pt>
+ id=868, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_low.
@@ -3238,7 +3183,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu2_low.pdf  used on input line 258.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_low.pdf,
- id=964, 590.205pt x 261.97874pt>
+ id=869, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_low.
@@ -3247,7 +3192,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu3_low.pdf  used on input line 265.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_low.pdf,
- id=965, 590.205pt x 261.97874pt>
+ id=870, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_low.
@@ -3255,7 +3200,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu4_low.pdf  used on input line 272.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [75 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_l
+ [69 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_l
 ow.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3274,7 +3219,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
 gures/logical_topology_odu3_low.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/transparent_survivability/figures/physical_topology.pdf, id=982,
+<sdf/heuristic/transparent_survivability/figures/physical_topology.pdf, id=887,
  580.1675pt x 264.99pt>
 File: sdf/heuristic/transparent_survivability/figures/physical_topology.pdf Gra
 phic file (type pdf)
@@ -3284,7 +3229,7 @@ al_topology.pdf  used on input line 279.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 76 undefined on input line 28
+LaTeX Warning: Reference `net2plan_guide' on page 70 undefined on input line 28
 4.
 
 
@@ -3297,7 +3242,7 @@ Overfull \hbox (25.16078pt too wide) in paragraph at lines 288--313
  [][] 
  []
 
-[76 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_lo
+[70 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_lo
 w.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3322,6 +3267,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--347
  []
 
 
+LaTeX Warning: Reference `medium_traffic_scenario' on page 71 undefined on inpu
+t line 348.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 348--349
 
  []
@@ -3332,11 +3281,11 @@ hic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/allowe
 d_physical.pdf  used on input line 352.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-[77]
+[71]
 Overfull \vbox (124.1536pt too high) has occurred while \output is active []
 
 
-[78]
+[72]
 File: sdf/heuristic/transparent_survivability/figures/allowed_optical.pdf Graph
 ic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/allowed_optical.pdf>
@@ -3344,7 +3293,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/allowe
 d_optical.pdf  used on input line 359.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_medium.p
-df, id=1013, 587.19376pt x 264.99pt>
+df, id=917, 587.19376pt x 264.99pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_medi
@@ -3353,7 +3302,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu0_medium.pdf  used on input line 366.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_medium.p
-df, id=1014, 589.20125pt x 263.98625pt>
+df, id=918, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_medi
@@ -3361,7 +3310,7 @@ um.pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu1_medium.pdf  used on input line 373.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [79 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_m
+ [73 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_m
 edium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3369,7 +3318,7 @@ gures/logical_topology_odu0_medium.pdf): PDF inclusion: invalid other resource
 which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_medium.p
-df, id=1024, 590.205pt x 261.97874pt>
+df, id=928, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_medi
@@ -3378,7 +3327,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu2_medium.pdf  used on input line 380.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_medium.p
-df, id=1025, 590.205pt x 261.97874pt>
+df, id=929, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_medi
@@ -3387,7 +3336,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu3_medium.pdf  used on input line 387.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_medium.p
-df, id=1026, 590.205pt x 261.97874pt>
+df, id=930, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_medi
@@ -3395,7 +3344,7 @@ um.pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu4_medium.pdf  used on input line 394.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [80 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_m
+ [74 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_m
 edium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3422,7 +3371,7 @@ al_topology.pdf  used on input line 401.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 81 undefined on input line 40
+LaTeX Warning: Reference `net2plan_guide' on page 75 undefined on input line 40
 6.
 
 
@@ -3435,7 +3384,7 @@ Overfull \hbox (25.16078pt too wide) in paragraph at lines 410--435
  [][] 
  []
 
-[81 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_me
+[75 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_me
 dium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3445,6 +3394,10 @@ which is no dict (key 'ProcSets', type <array>); ignored.
 Underfull \hbox (badness 10000) in paragraph at lines 439--441
 
  []
+
+
+LaTeX Warning: Reference `high_traffic_scenario' on page 76 undefined on input 
+line 442.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 442--443
@@ -3463,9 +3416,9 @@ ic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/allowe
 d_optical.pdf  used on input line 453.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[82]
+[76]
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_high.pdf
-, id=1061, 587.19376pt x 264.99pt>
+, id=964, 587.19376pt x 264.99pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_high
@@ -3474,7 +3427,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu0_high.pdf  used on input line 460.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_high.pdf
-, id=1062, 589.20125pt x 263.98625pt>
+, id=965, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_high
@@ -3482,7 +3435,7 @@ h.pdf Graphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu1_high.pdf  used on input line 467.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [83 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_h
+ [77 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_h
 igh.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3490,7 +3443,7 @@ gures/logical_topology_odu0_high.pdf): PDF inclusion: invalid other resource wh
 ich is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_high.pdf
-, id=1072, 590.205pt x 261.97874pt>
+, id=975, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_high
@@ -3499,7 +3452,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu2_high.pdf  used on input line 474.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_high.pdf
-, id=1073, 590.205pt x 261.97874pt>
+, id=976, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_high
@@ -3508,7 +3461,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu3_high.pdf  used on input line 481.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_high.pdf
-, id=1074, 590.205pt x 261.97874pt>
+, id=977, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_high
@@ -3516,7 +3469,7 @@ h.pdf Graphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/logica
 l_topology_odu4_high.pdf  used on input line 488.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [84 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_h
+ [78 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_h
 igh.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3543,7 +3496,7 @@ al_topology.pdf  used on input line 495.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 85 undefined on input line 50
+LaTeX Warning: Reference `net2plan_guide' on page 79 undefined on input line 50
 0.
 
 
@@ -3556,7 +3509,7 @@ Overfull \hbox (36.11076pt too wide) in paragraph at lines 504--529
  [][] 
  []
 
-[85 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_hi
+[79 <./sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_hi
 gh.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
@@ -3567,124 +3520,125 @@ Underfull \hbox (badness 10000) in paragraph at lines 536--537
 
  []
 
-[86] [87]
+[80] [81]
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 590--594
 [][] 
  []
 
 <sdf/heuristic/transparent_survivability/figures/fluxogramaSemGroomingHighLevel
-.pdf, id=1116, 1141.26375pt x 594.22pt>
+.pdf, id=1019, 960.58875pt x 644.4075pt>
 File: sdf/heuristic/transparent_survivability/figures/fluxogramaSemGroomingHigh
 Level.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/fluxogramaSemGroomingHighL
 evel.pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/fluxog
 ramaSemGroomingHighLevel.pdf  used on input line 601.
-(pdftex.def)             Requested size: 426.79134pt x 222.2154pt.
+(pdftex.def)             Requested size: 426.79134pt x 286.31303pt.
+[82 <./sdf/heuristic/transparent_survivability/figures/fluxogramaSemGroomingHig
+hLevel.pdf
+
+pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
+gures/fluxogramaSemGroomingHighLevel.pdf): PDF inclusion: invalid other resourc
+e which is no dict (key 'ProcSets', type <array>); ignored.
+>]
 <sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming.pdf, id=
-1117, 1233.64882pt x 666.57025pt>
+1035, 1233.64882pt x 659.5842pt>
 File: sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming.pdf
  Graphic file (type pdf)
 <use sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming.pdf>
 
 Package pdftex.def Info: sdf/heuristic/transparent_survivability/figures/fluxog
 ramaSemGrooming.pdf  used on input line 613.
-(pdftex.def)             Requested size: 455.24408pt x 245.97618pt.
+(pdftex.def)             Requested size: 455.24408pt x 243.39821pt.
 
 Overfull \hbox (12.59033pt too wide) in paragraph at lines 613--614
  [][] 
  []
 
-[88 <./sdf/heuristic/transparent_survivability/figures/fluxogramaSemGroomingHig
-hLevel.pdf
-
-pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_survivability/fi
-gures/fluxogramaSemGroomingHighLevel.pdf): PDF inclusion: invalid other resourc
-e which is no dict (key 'ProcSets', type <array>); ignored.
->] [89 <./sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming
-.pdf>]
-Overfull \hbox (50.01228pt too wide) in paragraph at lines 650--668
+[83 <./sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming.pd
+f>]
+Overfull \hbox (63.0645pt too wide) in paragraph at lines 648--667
  [][] 
  []
 
 
-Overfull \hbox (50.75629pt too wide) in paragraph at lines 674--690
+Overfull \hbox (214.67586pt too wide) in paragraph at lines 673--689
  [][] 
  []
 
-[90]
-Underfull \hbox (badness 10000) in paragraph at lines 698--703
+[84]
+Underfull \hbox (badness 10000) in paragraph at lines 720--725
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 704--705
+Underfull \hbox (badness 10000) in paragraph at lines 726--727
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 706--709
+Underfull \hbox (badness 10000) in paragraph at lines 728--731
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 710--718
+Underfull \hbox (badness 10000) in paragraph at lines 732--740
+
+ []
+
+[85]
+Underfull \hbox (badness 10000) in paragraph at lines 743--746
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 721--724
+Underfull \hbox (badness 10000) in paragraph at lines 747--750
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 725--728
-
- []
-
-[91]
-Underfull \hbox (badness 10000) in paragraph at lines 729--730
+Underfull \hbox (badness 10000) in paragraph at lines 751--752
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 731--734
+Underfull \hbox (badness 10000) in paragraph at lines 753--756
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 735--738
+Underfull \hbox (badness 10000) in paragraph at lines 757--760
+
+ []
+
+[86]
+Underfull \hbox (badness 10000) in paragraph at lines 818--819
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 796--797
+Underfull \hbox (badness 10000) in paragraph at lines 820--823
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 798--801
+Underfull \hbox (badness 10000) in paragraph at lines 824--826
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 802--804
+Underfull \hbox (badness 10000) in paragraph at lines 827--829
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 805--807
+Underfull \hbox (badness 10000) in paragraph at lines 830--831
 
  []
 
-[92]
-Underfull \hbox (badness 10000) in paragraph at lines 808--809
-
- []
-
-[93] [94])
+[87] [88] [89])
 (sdf/heuristic/transparent_protection/heuristic_transparent_protection.tex
-[95]
+[90]
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 4--8
 [][] 
  []
@@ -3704,7 +3658,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--35
 
  []
 
-[96
+[91
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 50--52
@@ -3717,11 +3671,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 61--63
  []
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 97 undefined on input line 65
+LaTeX Warning: Reference `net2plan_guide' on page 92 undefined on input line 65
 .
 
 <sdf/heuristic/transparent_protection/figures/fluxogram_transparent_protec.pdf,
- id=1204, 571.13374pt x 348.30125pt>
+ id=1112, 571.13374pt x 348.30125pt>
 File: sdf/heuristic/transparent_protection/figures/fluxogram_transparent_protec
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/fluxogram_transparent_protec.
@@ -3734,14 +3688,18 @@ Overfull \hbox (12.59033pt too wide) in paragraph at lines 71--72
  [][] 
  []
 
-[97] [98 <./sdf/heuristic/transparent_protection/figures/fluxogram_transparent_
+[92] [93 <./sdf/heuristic/transparent_protection/figures/fluxogram_transparent_
 protec.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/fluxogram_transparent_protec.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/transparent_protection/figures/join_matrices_odus.pdf, id=1229, 
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 94 undefined on i
+nput line 80.
+
+<sdf/heuristic/transparent_protection/figures/join_matrices_odus.pdf, id=1136, 
 308.15125pt x 229.85875pt>
 File: sdf/heuristic/transparent_protection/figures/join_matrices_odus.pdf Graph
 ic file (type pdf)
@@ -3754,7 +3712,7 @@ ices_odus.pdf  used on input line 84.
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/traffic_matrices.pdf): PDF inclusion: found PDF version <1.7>, but at most v
 ersion <1.5> allowed
-<sdf/heuristic/transparent_protection/figures/traffic_matrices.pdf, id=1230, 32
+<sdf/heuristic/transparent_protection/figures/traffic_matrices.pdf, id=1137, 32
 6.72063pt x 256.70906pt>
 File: sdf/heuristic/transparent_protection/figures/traffic_matrices.pdf Graphic
  file (type pdf)
@@ -3762,13 +3720,13 @@ File: sdf/heuristic/transparent_protection/figures/traffic_matrices.pdf Graphic
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/traffic_m
 atrices.pdf  used on input line 91.
 (pdftex.def)             Requested size: 227.62204pt x 178.84511pt.
-[99 <./sdf/heuristic/transparent_protection/figures/join_matrices_odus.pdf
+[94 <./sdf/heuristic/transparent_protection/figures/join_matrices_odus.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/join_matrices_odus.pdf): PDF inclusion: invalid other resource which is no d
 ict (key 'ProcSets', type <array>); ignored.
 > <./sdf/heuristic/transparent_protection/figures/traffic_matrices.pdf>]
-<sdf/heuristic/transparent_protection/figures/allowed_physical.pdf, id=1244, 58
+<sdf/heuristic/transparent_protection/figures/allowed_physical.pdf, id=1151, 58
 0.1675pt x 264.99pt>
 File: sdf/heuristic/transparent_protection/figures/allowed_physical.pdf Graphic
  file (type pdf)
@@ -3777,7 +3735,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/allowed_p
 hysical.pdf  used on input line 104.
 (pdftex.def)             Requested size: 341.43306pt x 155.95053pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_creation_transpa
-rent.pdf, id=1246, 590.205pt x 191.71625pt>
+rent.pdf, id=1153, 590.205pt x 191.71625pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_creation_tr
 ansparent.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_creation_tra
@@ -3786,14 +3744,14 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_creation_transparent.pdf  used on input line 117.
 (pdftex.def)             Requested size: 426.79134pt x 138.6382pt.
 
-[100 <./sdf/heuristic/transparent_protection/figures/allowed_physical.pdf
+[95 <./sdf/heuristic/transparent_protection/figures/allowed_physical.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/allowed_physical.pdf): PDF inclusion: invalid other resource which is no dic
 t (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_protection/figures/logical_topology_load_transparent
-.pdf, id=1258, 320.19624pt x 204.765pt>
+.pdf, id=1165, 320.19624pt x 204.765pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_load_transp
 arent.pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_load_transpa
@@ -3801,7 +3759,7 @@ rent.pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_load_transparent.pdf  used on input line 124.
 (pdftex.def)             Requested size: 284.52756pt x 181.95906pt.
-<sdf/heuristic/transparent_protection/figures/allowed_optical.pdf, id=1259, 545
+<sdf/heuristic/transparent_protection/figures/allowed_optical.pdf, id=1166, 545
 .03625pt x 252.945pt>
 File: sdf/heuristic/transparent_protection/figures/allowed_optical.pdf Graphic 
 file (type pdf)
@@ -3809,8 +3767,8 @@ file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/allowed_o
 ptical.pdf  used on input line 131.
 (pdftex.def)             Requested size: 284.52756pt x 132.04549pt.
- [101 <./sdf/heuristic/transparent_protection/figures/logical_topology_creation
-_transparent.pdf
+ [96 <./sdf/heuristic/transparent_protection/figures/logical_topology_creation_
+transparent.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/logical_topology_creation_transparent.pdf): PDF inclusion: invalid other res
@@ -3828,7 +3786,7 @@ es/allowed_optical.pdf): PDF inclusion: invalid other resource which is no dict
  (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_protection/figures/grooming_transparent_protec1.pdf,
- id=1276, 418.56375pt x 209.78375pt>
+ id=1184, 418.56375pt x 209.78375pt>
 File: sdf/heuristic/transparent_protection/figures/grooming_transparent_protec1
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/grooming_transparent_protec1.
@@ -3837,7 +3795,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/grooming_
 transparent_protec1.pdf  used on input line 144.
 (pdftex.def)             Requested size: 398.33858pt x 199.64552pt.
 <sdf/heuristic/transparent_protection/figures/grooming_transparent_protec2.pdf,
- id=1277, 502.87875pt x 328.22626pt>
+ id=1185, 502.87875pt x 328.22626pt>
 File: sdf/heuristic/transparent_protection/figures/grooming_transparent_protec2
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/grooming_transparent_protec2.
@@ -3845,15 +3803,15 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/grooming_
 transparent_protec2.pdf  used on input line 151.
 (pdftex.def)             Requested size: 398.33858pt x 259.99205pt.
- [102 <./sdf/heuristic/transparent_protection/figures/grooming_transparent_prot
-ec1.pdf
+ [97 <./sdf/heuristic/transparent_protection/figures/grooming_transparent_prote
+c1.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/grooming_transparent_protec1.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_protection/figures/grooming_transparent_protec3.pdf,
- id=1288, 433.62pt x 316.18124pt>
+ id=1195, 433.62pt x 316.18124pt>
 File: sdf/heuristic/transparent_protection/figures/grooming_transparent_protec3
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/grooming_transparent_protec3.
@@ -3861,15 +3819,15 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/grooming_
 transparent_protec3.pdf  used on input line 158.
 (pdftex.def)             Requested size: 398.33858pt x 290.47054pt.
- [103 <./sdf/heuristic/transparent_protection/figures/grooming_transparent_prot
-ec2.pdf
+ [98 <./sdf/heuristic/transparent_protection/figures/grooming_transparent_prote
+c2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/grooming_transparent_protec2.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_protection/figures/grooming_transparent_protec4.pdf,
- id=1297, 391.4625pt x 125.46875pt>
+ id=1204, 391.4625pt x 125.46875pt>
 File: sdf/heuristic/transparent_protection/figures/grooming_transparent_protec4
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/grooming_transparent_protec4.
@@ -3882,8 +3840,8 @@ Overfull \hbox (32.11848pt too wide) in paragraph at lines 172--199
  [][] 
  []
 
-[104 <./sdf/heuristic/transparent_protection/figures/grooming_transparent_prote
-c3.pdf
+[99 <./sdf/heuristic/transparent_protection/figures/grooming_transparent_protec
+3.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/grooming_transparent_protec3.pdf): PDF inclusion: invalid other resource whi
@@ -3896,7 +3854,7 @@ es/grooming_transparent_protec4.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_protection/figures/grooming_transparent_protec5.pdf,
- id=1310, 343.2825pt x 169.63374pt>
+ id=1217, 343.2825pt x 169.63374pt>
 File: sdf/heuristic/transparent_protection/figures/grooming_transparent_protec5
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/grooming_transparent_protec5.
@@ -3904,9 +3862,9 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/grooming_
 transparent_protec5.pdf  used on input line 210.
 (pdftex.def)             Requested size: 369.88582pt x 182.77979pt.
- [105]
+ [100]
 <sdf/heuristic/transparent_protection/figures/grooming_transparent_protec6.pdf,
- id=1317, 313.17pt x 224.84pt>
+ id=1224, 313.17pt x 224.84pt>
 File: sdf/heuristic/transparent_protection/figures/grooming_transparent_protec6
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/grooming_transparent_protec6.
@@ -3914,7 +3872,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/grooming_
 transparent_protec6.pdf  used on input line 217.
 (pdftex.def)             Requested size: 312.9803pt x 224.7125pt.
- [106 <./sdf/heuristic/transparent_protection/figures/grooming_transparent_prot
+ [101 <./sdf/heuristic/transparent_protection/figures/grooming_transparent_prot
 ec5.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -3928,20 +3886,29 @@ es/grooming_transparent_protec6.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_protection/figures/cost_report_transparent.pdf, id=1
-331, 320.19624pt x 279.0425pt>
+238, 320.19624pt x 279.0425pt>
 File: sdf/heuristic/transparent_protection/figures/cost_report_transparent.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/cost_report_transparent.pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/cost_repo
 rt_transparent.pdf  used on input line 230.
 (pdftex.def)             Requested size: 284.52756pt x 247.96382pt.
- [107 <./sdf/heuristic/transparent_protection/figures/cost_report_transparent.p
+ [102 <./sdf/heuristic/transparent_protection/figures/cost_report_transparent.p
 df
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/cost_report_transparent.pdf): PDF inclusion: invalid other resource which is
  no dict (key 'ProcSets', type <array>); ignored.
 >]
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 103 undefined on 
+input line 238.
+
+
+LaTeX Warning: Reference `Reference_Network_Traffic' on page 103 undefined on i
+nput line 238.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 238--240
 
  []
@@ -3950,6 +3917,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 238--240
 Underfull \hbox (badness 10000) in paragraph at lines 241--243
 
  []
+
+
+LaTeX Warning: Reference `low_scenario' on page 103 undefined on input line 244
+.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 244--245
@@ -3968,9 +3939,9 @@ file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/allowed_o
 ptical.pdf  used on input line 255.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[108]
+[103]
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu0_low.pdf, id
-=1350, 587.19376pt x 264.99pt>
+=1254, 587.19376pt x 264.99pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu0_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu0_low.pdf
@@ -3979,7 +3950,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu0_low.pdf  used on input line 262.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu1_low.pdf, id
-=1351, 589.20125pt x 263.98625pt>
+=1255, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu1_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu1_low.pdf
@@ -3987,7 +3958,7 @@ f Graphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu1_low.pdf  used on input line 269.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [109 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu0_low
+ [104 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu0_low
 .pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -3995,7 +3966,7 @@ es/logical_topology_odu0_low.pdf): PDF inclusion: invalid other resource which
 is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu2_low.pdf, id
-=1361, 590.205pt x 261.97874pt>
+=1265, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu2_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu2_low.pdf
@@ -4004,7 +3975,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu2_low.pdf  used on input line 276.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu3_low.pdf, id
-=1362, 590.205pt x 261.97874pt>
+=1266, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu3_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu3_low.pdf
@@ -4013,7 +3984,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu3_low.pdf  used on input line 283.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu4_low.pdf, id
-=1363, 590.205pt x 261.97874pt>
+=1267, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu4_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu4_low.pdf
@@ -4021,7 +3992,7 @@ f Graphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu4_low.pdf  used on input line 290.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [110 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu1_low
+ [105 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu1_low
 .pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -4040,7 +4011,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
 es/logical_topology_odu3_low.pdf): PDF inclusion: invalid other resource which 
 is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/transparent_protection/figures/physical_topology.pdf, id=1380, 5
+<sdf/heuristic/transparent_protection/figures/physical_topology.pdf, id=1284, 5
 80.1675pt x 264.99pt>
 File: sdf/heuristic/transparent_protection/figures/physical_topology.pdf Graphi
 c file (type pdf)
@@ -4050,7 +4021,7 @@ topology.pdf  used on input line 297.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 111 undefined on input line 3
+LaTeX Warning: Reference `net2plan_guide' on page 106 undefined on input line 3
 02.
 
 
@@ -4063,7 +4034,7 @@ Overfull \hbox (25.16078pt too wide) in paragraph at lines 306--331
  [][] 
  []
 
-[111 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu4_low.
+[106 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu4_low.
 pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -4078,6 +4049,10 @@ ct (key 'ProcSets', type <array>); ignored.
 Underfull \hbox (badness 10000) in paragraph at lines 335--337
 
  []
+
+
+LaTeX Warning: Reference `medium_traffic_scenario' on page 107 undefined on inp
+ut line 338.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 338--339
@@ -4096,9 +4071,9 @@ file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/allowed_o
 ptical.pdf  used on input line 349.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[112]
+[107]
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu0_medium.pdf,
- id=1402, 587.19376pt x 264.99pt>
+ id=1305, 587.19376pt x 264.99pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu0_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu0_medium.
@@ -4107,7 +4082,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu0_medium.pdf  used on input line 356.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu1_medium.pdf,
- id=1403, 589.20125pt x 263.98625pt>
+ id=1306, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu1_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu1_medium.
@@ -4115,7 +4090,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu1_medium.pdf  used on input line 363.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [113 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu0_med
+ [108 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu0_med
 ium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -4123,7 +4098,7 @@ es/logical_topology_odu0_medium.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu2_medium.pdf,
- id=1413, 590.205pt x 261.97874pt>
+ id=1317, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu2_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu2_medium.
@@ -4132,7 +4107,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu2_medium.pdf  used on input line 370.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu3_medium.pdf,
- id=1414, 590.205pt x 261.97874pt>
+ id=1318, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu3_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu3_medium.
@@ -4141,7 +4116,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu3_medium.pdf  used on input line 377.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu4_medium.pdf,
- id=1415, 590.205pt x 261.97874pt>
+ id=1319, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu4_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu4_medium.
@@ -4149,7 +4124,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu4_medium.pdf  used on input line 384.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [114 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu1_med
+ [109 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu1_med
 ium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -4176,7 +4151,7 @@ topology.pdf  used on input line 391.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 115 undefined on input line 3
+LaTeX Warning: Reference `net2plan_guide' on page 110 undefined on input line 3
 96.
 
 
@@ -4189,7 +4164,7 @@ Overfull \hbox (36.11076pt too wide) in paragraph at lines 400--425
  [][] 
  []
 
-[115 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu4_medi
+[110 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu4_medi
 um.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -4199,6 +4174,10 @@ ch is no dict (key 'ProcSets', type <array>); ignored.
 Underfull \hbox (badness 10000) in paragraph at lines 429--431
 
  []
+
+
+LaTeX Warning: Reference `high_traffic_scenario' on page 111 undefined on input
+ line 432.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 432--433
@@ -4217,9 +4196,9 @@ file (type pdf)
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/allowed_o
 ptical.pdf  used on input line 443.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[116]
+[111]
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu0_high.pdf, i
-d=1451, 587.19376pt x 264.99pt>
+d=1353, 587.19376pt x 264.99pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu0_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu0_high.pd
@@ -4228,7 +4207,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu0_high.pdf  used on input line 450.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu1_high.pdf, i
-d=1452, 589.20125pt x 263.98625pt>
+d=1354, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu1_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu1_high.pd
@@ -4236,7 +4215,7 @@ f>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu1_high.pdf  used on input line 457.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [117 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu0_hig
+ [112 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu0_hig
 h.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -4244,7 +4223,7 @@ es/logical_topology_odu0_high.pdf): PDF inclusion: invalid other resource which
  is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu2_high.pdf, i
-d=1462, 590.205pt x 261.97874pt>
+d=1364, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu2_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu2_high.pd
@@ -4253,7 +4232,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu2_high.pdf  used on input line 464.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu3_high.pdf, i
-d=1463, 590.205pt x 261.97874pt>
+d=1365, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu3_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu3_high.pd
@@ -4262,7 +4241,7 @@ Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu3_high.pdf  used on input line 471.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/transparent_protection/figures/logical_topology_odu4_high.pdf, i
-d=1464, 590.205pt x 261.97874pt>
+d=1366, 590.205pt x 261.97874pt>
 File: sdf/heuristic/transparent_protection/figures/logical_topology_odu4_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/transparent_protection/figures/logical_topology_odu4_high.pd
@@ -4270,7 +4249,7 @@ f>
 Package pdftex.def Info: sdf/heuristic/transparent_protection/figures/logical_t
 opology_odu4_high.pdf  used on input line 478.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [118 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu1_hig
+ [113 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu1_hig
 h.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -4297,7 +4276,7 @@ topology.pdf  used on input line 485.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 119 undefined on input line 4
+LaTeX Warning: Reference `net2plan_guide' on page 114 undefined on input line 4
 90.
 
 
@@ -4310,7 +4289,7 @@ Overfull \hbox (36.11076pt too wide) in paragraph at lines 494--519
  [][] 
  []
 
-[119 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu4_high
+[114 <./sdf/heuristic/transparent_protection/figures/logical_topology_odu4_high
 .pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent_protection/figur
@@ -4319,16 +4298,16 @@ es/logical_topology_odu4_high.pdf): PDF inclusion: invalid other resource which
 >]
 
 LaTeX Warning: Reference `table_comparative_transparent_protec_heuristic' on pa
-ge 120 undefined on input line 526.
+ge 115 undefined on input line 526.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 526--527
 
  []
 
-[120] [121])
+[115] [116])
 (sdf/heuristic/translucent_survivability/heuristic_translucent_survivability.te
-x [122]
+x [117]
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 5--9
 [][] 
  []
@@ -4354,7 +4333,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--36
 
  []
 
-[123
+[118
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 51--53
@@ -4362,7 +4341,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--53
  []
 
 <sdf/heuristic/translucent_survivability/figures/fluxogram_translucent_surv.pdf
-, id=1526, 571.13374pt x 300.12125pt>
+, id=1428, 571.13374pt x 300.12125pt>
 File: sdf/heuristic/translucent_survivability/figures/fluxogram_translucent_sur
 v.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/fluxogram_translucent_surv
@@ -4370,15 +4349,19 @@ v.pdf Graphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/fluxog
 ram_translucent_surv.pdf  used on input line 70.
 (pdftex.def)             Requested size: 426.79134pt x 224.27065pt.
-[124 <./sdf/heuristic/translucent_survivability/figures/fluxogram_translucent_s
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 119 undefined on 
+input line 78.
+
+[119 <./sdf/heuristic/translucent_survivability/figures/fluxogram_translucent_s
 urv.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
 gures/fluxogram_translucent_surv.pdf): PDF inclusion: invalid other resource wh
 ich is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/translucent_survivability/figures/join_matrices_odus.pdf, id=154
-7, 308.15125pt x 229.85875pt>
+<sdf/heuristic/translucent_survivability/figures/join_matrices_odus.pdf, id=144
+8, 308.15125pt x 229.85875pt>
 File: sdf/heuristic/translucent_survivability/figures/join_matrices_odus.pdf Gr
 aphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/join_matrices_odus.pdf>
@@ -4390,7 +4373,7 @@ atrices_odus.pdf  used on input line 82.
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
 gures/traffic_matrices.pdf): PDF inclusion: found PDF version <1.7>, but at mos
 t version <1.5> allowed
-<sdf/heuristic/translucent_survivability/figures/traffic_matrices.pdf, id=1548,
+<sdf/heuristic/translucent_survivability/figures/traffic_matrices.pdf, id=1449,
  326.72063pt x 256.70906pt>
 File: sdf/heuristic/translucent_survivability/figures/traffic_matrices.pdf Grap
 hic file (type pdf)
@@ -4398,13 +4381,13 @@ hic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/traffi
 c_matrices.pdf  used on input line 89.
 (pdftex.def)             Requested size: 227.62204pt x 178.84511pt.
-[125 <./sdf/heuristic/translucent_survivability/figures/join_matrices_odus.pdf
+[120 <./sdf/heuristic/translucent_survivability/figures/join_matrices_odus.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
 gures/join_matrices_odus.pdf): PDF inclusion: invalid other resource which is n
 o dict (key 'ProcSets', type <array>); ignored.
 > <./sdf/heuristic/translucent_survivability/figures/traffic_matrices.pdf>]
-<sdf/heuristic/translucent_survivability/figures/allowed_physical.pdf, id=1562,
+<sdf/heuristic/translucent_survivability/figures/allowed_physical.pdf, id=1464,
  580.1675pt x 264.99pt>
 File: sdf/heuristic/translucent_survivability/figures/allowed_physical.pdf Grap
 hic file (type pdf)
@@ -4413,7 +4396,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/allowe
 d_physical.pdf  used on input line 102.
 (pdftex.def)             Requested size: 341.43306pt x 155.95053pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_creation_tran
-slucent.pdf, id=1564, 593.21625pt x 255.95625pt>
+slucent.pdf, id=1466, 593.21625pt x 255.95625pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_creation
 _translucent.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_creation_
@@ -4426,14 +4409,14 @@ Overfull \hbox (41.04309pt too wide) in paragraph at lines 115--116
  [][] 
  []
 
-[126 <./sdf/heuristic/translucent_survivability/figures/allowed_physical.pdf
+[121 <./sdf/heuristic/translucent_survivability/figures/allowed_physical.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
 gures/allowed_physical.pdf): PDF inclusion: invalid other resource which is no 
 dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_survivability/figures/logical_topology_load_transluc
-ent.pdf, id=1577, 317.185pt x 204.765pt>
+ent.pdf, id=1478, 317.185pt x 204.765pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_load_tra
 nslucent.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_load_tran
@@ -4441,7 +4424,7 @@ slucent.pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_load_translucent.pdf  used on input line 122.
 (pdftex.def)             Requested size: 256.0748pt x 165.32756pt.
-<sdf/heuristic/translucent_survivability/figures/allowed_optical.pdf, id=1578, 
+<sdf/heuristic/translucent_survivability/figures/allowed_optical.pdf, id=1479, 
 545.03625pt x 252.945pt>
 File: sdf/heuristic/translucent_survivability/figures/allowed_optical.pdf Graph
 ic file (type pdf)
@@ -4449,7 +4432,7 @@ ic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/allowe
 d_optical.pdf  used on input line 129.
 (pdftex.def)             Requested size: 341.43306pt x 158.45303pt.
- [127 <./sdf/heuristic/translucent_survivability/figures/logical_topology_creat
+ [122 <./sdf/heuristic/translucent_survivability/figures/logical_topology_creat
 ion_translucent.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4463,7 +4446,7 @@ gures/logical_topology_load_translucent.pdf): PDF inclusion: invalid other reso
 urce which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv1.pdf
-, id=1591, 481.8pt x 370.38374pt>
+, id=1492, 481.8pt x 370.38374pt>
 File: sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv
 1.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv1
@@ -4476,14 +4459,14 @@ Overfull \hbox (41.04309pt too wide) in paragraph at lines 141--142
  [][] 
  []
 
-[128 <./sdf/heuristic/translucent_survivability/figures/allowed_optical.pdf
+[123 <./sdf/heuristic/translucent_survivability/figures/allowed_optical.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
 gures/allowed_optical.pdf): PDF inclusion: invalid other resource which is no d
 ict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv2.pdf
-, id=1601, 550.055pt x 364.36125pt>
+, id=1502, 550.055pt x 364.36125pt>
 File: sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv
 2.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv2
@@ -4491,7 +4474,7 @@ File: sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/groomi
 ng_translucent_surv2.pdf  used on input line 148.
 (pdftex.def)             Requested size: 426.79134pt x 282.72174pt.
- [129 <./sdf/heuristic/translucent_survivability/figures/grooming_translucent_s
+ [124 <./sdf/heuristic/translucent_survivability/figures/grooming_translucent_s
 urv1.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4502,7 +4485,7 @@ Overfull \hbox (49.84697pt too wide) in paragraph at lines 155--182
  [][] 
  []
 
-[130 <./sdf/heuristic/translucent_survivability/figures/grooming_translucent_su
+[125 <./sdf/heuristic/translucent_survivability/figures/grooming_translucent_su
 rv2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4510,7 +4493,7 @@ gures/grooming_translucent_surv2.pdf): PDF inclusion: invalid other resource wh
 ich is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv3.pdf
-, id=1619, 343.2825pt x 169.63374pt>
+, id=1520, 343.2825pt x 169.63374pt>
 File: sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv
 3.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv3
@@ -4519,7 +4502,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/groomi
 ng_translucent_surv3.pdf  used on input line 193.
 (pdftex.def)             Requested size: 312.9803pt x 154.65942pt.
 <sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv4.pdf
-, id=1620, 312.16624pt x 225.84375pt>
+, id=1521, 312.16624pt x 225.84375pt>
 File: sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv
 4.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv4
@@ -4527,7 +4510,7 @@ File: sdf/heuristic/translucent_survivability/figures/grooming_translucent_surv
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/groomi
 ng_translucent_surv4.pdf  used on input line 200.
 (pdftex.def)             Requested size: 227.62204pt x 164.68192pt.
- [131 <./sdf/heuristic/translucent_survivability/figures/grooming_translucent_s
+ [126 <./sdf/heuristic/translucent_survivability/figures/grooming_translucent_s
 urv3.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4541,7 +4524,7 @@ gures/grooming_translucent_surv4.pdf): PDF inclusion: invalid other resource wh
 ich is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_survivability/figures/cost_report_translucent.pdf, i
-d=1635, 320.19624pt x 279.0425pt>
+d=1537, 320.19624pt x 279.0425pt>
 File: sdf/heuristic/translucent_survivability/figures/cost_report_translucent.p
 df Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/cost_report_translucent.pd
@@ -4549,13 +4532,22 @@ f>
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/cost_r
 eport_translucent.pdf  used on input line 212.
 (pdftex.def)             Requested size: 284.52756pt x 247.96382pt.
- [132 <./sdf/heuristic/translucent_survivability/figures/cost_report_translucen
+ [127 <./sdf/heuristic/translucent_survivability/figures/cost_report_translucen
 t.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
 gures/cost_report_translucent.pdf): PDF inclusion: invalid other resource which
  is no dict (key 'ProcSets', type <array>); ignored.
 >]
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 128 undefined on 
+input line 220.
+
+
+LaTeX Warning: Reference `Reference_Network_Traffic' on page 128 undefined on i
+nput line 220.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 220--222
 
  []
@@ -4564,6 +4556,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 220--222
 Underfull \hbox (badness 10000) in paragraph at lines 223--225
 
  []
+
+
+LaTeX Warning: Reference `low_scenario' on page 128 undefined on input line 226
+.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 226--227
@@ -4582,9 +4578,9 @@ ic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/allowe
 d_optical.pdf  used on input line 237.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[133]
+[128]
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_low.pdf,
- id=1654, 587.19376pt x 264.99pt>
+ id=1552, 587.19376pt x 264.99pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_low.
@@ -4593,7 +4589,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu0_low.pdf  used on input line 244.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_low.pdf,
- id=1655, 589.20125pt x 263.98625pt>
+ id=1553, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_low.
@@ -4601,7 +4597,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu1_low.pdf  used on input line 251.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [134 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_
+ [129 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_
 low.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4609,7 +4605,7 @@ gures/logical_topology_odu0_low.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu2_low.pdf,
- id=1665, 590.205pt x 261.97874pt>
+ id=1563, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu2_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu2_low.
@@ -4618,7 +4614,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu2_low.pdf  used on input line 258.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu3_low.pdf,
- id=1666, 590.205pt x 261.97874pt>
+ id=1564, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu3_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu3_low.
@@ -4627,7 +4623,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu3_low.pdf  used on input line 265.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_low.pdf,
- id=1667, 590.205pt x 261.97874pt>
+ id=1565, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_low
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_low.
@@ -4635,7 +4631,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu4_low.pdf  used on input line 272.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [135 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_
+ [130 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_
 low.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4654,7 +4650,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
 gures/logical_topology_odu3_low.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/translucent_survivability/figures/physical_topology.pdf, id=1684
+<sdf/heuristic/translucent_survivability/figures/physical_topology.pdf, id=1582
 , 580.1675pt x 264.99pt>
 File: sdf/heuristic/translucent_survivability/figures/physical_topology.pdf Gra
 phic file (type pdf)
@@ -4664,7 +4660,7 @@ al_topology.pdf  used on input line 279.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 136 undefined on input line 2
+LaTeX Warning: Reference `net2plan_guide' on page 131 undefined on input line 2
 84.
 
 
@@ -4677,7 +4673,7 @@ Overfull \hbox (19.68579pt too wide) in paragraph at lines 288--313
  [][] 
  []
 
-[136 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_l
+[131 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_l
 ow.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4702,6 +4698,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--347
  []
 
 
+LaTeX Warning: Reference `medium_traffic_scenario' on page 132 undefined on inp
+ut line 348.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 348--349
 
  []
@@ -4712,11 +4712,11 @@ hic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/allowe
 d_physical.pdf  used on input line 352.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
-[137]
+[132]
 Overfull \vbox (124.1536pt too high) has occurred while \output is active []
 
 
-[138]
+[133]
 File: sdf/heuristic/translucent_survivability/figures/allowed_optical.pdf Graph
 ic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/allowed_optical.pdf>
@@ -4724,7 +4724,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/allowe
 d_optical.pdf  used on input line 359.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_medium.p
-df, id=1715, 587.19376pt x 264.99pt>
+df, id=1612, 587.19376pt x 264.99pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_medi
@@ -4733,7 +4733,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu0_medium.pdf  used on input line 366.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_medium.p
-df, id=1716, 589.20125pt x 263.98625pt>
+df, id=1613, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_medi
@@ -4741,7 +4741,7 @@ um.pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu1_medium.pdf  used on input line 373.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [139 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_
+ [134 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_
 medium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4749,7 +4749,7 @@ gures/logical_topology_odu0_medium.pdf): PDF inclusion: invalid other resource
 which is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu2_medium.p
-df, id=1726, 590.205pt x 261.97874pt>
+df, id=1623, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu2_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu2_medi
@@ -4758,7 +4758,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu2_medium.pdf  used on input line 380.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu3_medium.p
-df, id=1727, 590.205pt x 261.97874pt>
+df, id=1624, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu3_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu3_medi
@@ -4767,7 +4767,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu3_medium.pdf  used on input line 387.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_medium.p
-df, id=1728, 590.205pt x 261.97874pt>
+df, id=1625, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_med
 ium.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_medi
@@ -4775,7 +4775,7 @@ um.pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu4_medium.pdf  used on input line 394.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [140 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_
+ [135 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_
 medium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4802,7 +4802,7 @@ al_topology.pdf  used on input line 401.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 141 undefined on input line 4
+LaTeX Warning: Reference `net2plan_guide' on page 136 undefined on input line 4
 06.
 
 
@@ -4815,7 +4815,7 @@ Overfull \hbox (25.16078pt too wide) in paragraph at lines 410--435
  [][] 
  []
 
-[141 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_m
+[136 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_m
 edium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4825,6 +4825,10 @@ which is no dict (key 'ProcSets', type <array>); ignored.
 Underfull \hbox (badness 10000) in paragraph at lines 439--441
 
  []
+
+
+LaTeX Warning: Reference `high_traffic_scenario' on page 137 undefined on input
+ line 442.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 442--443
@@ -4843,9 +4847,9 @@ ic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/allowe
 d_optical.pdf  used on input line 453.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[142]
+[137]
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_high.pdf
-, id=1763, 587.19376pt x 264.99pt>
+, id=1659, 587.19376pt x 264.99pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_high
@@ -4854,7 +4858,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu0_high.pdf  used on input line 460.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_high.pdf
-, id=1764, 589.20125pt x 263.98625pt>
+, id=1660, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_high
@@ -4862,7 +4866,7 @@ h.pdf Graphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu1_high.pdf  used on input line 467.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [143 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_
+ [138 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu0_
 high.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4870,7 +4874,7 @@ gures/logical_topology_odu0_high.pdf): PDF inclusion: invalid other resource wh
 ich is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu2_high.pdf
-, id=1774, 590.205pt x 261.97874pt>
+, id=1671, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu2_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu2_high
@@ -4879,7 +4883,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu2_high.pdf  used on input line 474.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu3_high.pdf
-, id=1775, 590.205pt x 261.97874pt>
+, id=1672, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu3_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu3_high
@@ -4888,7 +4892,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu3_high.pdf  used on input line 481.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_high.pdf
-, id=1776, 590.205pt x 261.97874pt>
+, id=1673, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_hig
 h.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_high
@@ -4896,7 +4900,7 @@ h.pdf Graphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_survivability/figures/logica
 l_topology_odu4_high.pdf  used on input line 488.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [144 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_
+ [139 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu1_
 high.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4923,7 +4927,7 @@ al_topology.pdf  used on input line 495.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 145 undefined on input line 5
+LaTeX Warning: Reference `net2plan_guide' on page 140 undefined on input line 5
 00.
 
 
@@ -4936,7 +4940,7 @@ Overfull \hbox (25.16078pt too wide) in paragraph at lines 504--529
  [][] 
  []
 
-[145 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_h
+[140 <./sdf/heuristic/translucent_survivability/figures/logical_topology_odu4_h
 igh.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_survivability/fi
@@ -4947,9 +4951,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 536--537
 
  []
 
-[146])
+[141])
 (sdf/heuristic/translucent_protection/heuristic_translucent_protection.tex
-[147]
+[142]
 Overfull \hbox (7.33366pt too wide) in paragraph at lines 5--9
 [][] 
  []
@@ -4975,7 +4979,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--36
 
  []
 
-[148
+[143
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 51--53
@@ -4988,11 +4992,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--64
  []
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 149 undefined on input line 6
+LaTeX Warning: Reference `net2plan_guide' on page 144 undefined on input line 6
 6.
 
 <sdf/heuristic/translucent_protection/figures/fluxogram_translucent_protec.pdf,
- id=1835, 571.13374pt x 378.41376pt>
+ id=1731, 571.13374pt x 378.41376pt>
 File: sdf/heuristic/translucent_protection/figures/fluxogram_translucent_protec
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/fluxogram_translucent_protec.
@@ -5005,14 +5009,18 @@ Overfull \hbox (12.59033pt too wide) in paragraph at lines 72--73
  [][] 
  []
 
-[149] [150 <./sdf/heuristic/translucent_protection/figures/fluxogram_translucen
+[144] [145 <./sdf/heuristic/translucent_protection/figures/fluxogram_translucen
 t_protec.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
 es/fluxogram_translucent_protec.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/translucent_protection/figures/join_matrices_odus.pdf, id=1861, 
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 146 undefined on 
+input line 81.
+
+<sdf/heuristic/translucent_protection/figures/join_matrices_odus.pdf, id=1756, 
 308.15125pt x 229.85875pt>
 File: sdf/heuristic/translucent_protection/figures/join_matrices_odus.pdf Graph
 ic file (type pdf)
@@ -5025,7 +5033,7 @@ ices_odus.pdf  used on input line 85.
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
 es/traffic_matrices.pdf): PDF inclusion: found PDF version <1.7>, but at most v
 ersion <1.5> allowed
-<sdf/heuristic/translucent_protection/figures/traffic_matrices.pdf, id=1862, 32
+<sdf/heuristic/translucent_protection/figures/traffic_matrices.pdf, id=1757, 32
 6.72063pt x 256.70906pt>
 File: sdf/heuristic/translucent_protection/figures/traffic_matrices.pdf Graphic
  file (type pdf)
@@ -5033,13 +5041,13 @@ File: sdf/heuristic/translucent_protection/figures/traffic_matrices.pdf Graphic
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/traffic_m
 atrices.pdf  used on input line 92.
 (pdftex.def)             Requested size: 227.62204pt x 178.84511pt.
-[151 <./sdf/heuristic/translucent_protection/figures/join_matrices_odus.pdf
+[146 <./sdf/heuristic/translucent_protection/figures/join_matrices_odus.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
 es/join_matrices_odus.pdf): PDF inclusion: invalid other resource which is no d
 ict (key 'ProcSets', type <array>); ignored.
 > <./sdf/heuristic/translucent_protection/figures/traffic_matrices.pdf>]
-<sdf/heuristic/translucent_protection/figures/allowed_physical.pdf, id=1876, 58
+<sdf/heuristic/translucent_protection/figures/allowed_physical.pdf, id=1771, 58
 0.1675pt x 264.99pt>
 File: sdf/heuristic/translucent_protection/figures/allowed_physical.pdf Graphic
  file (type pdf)
@@ -5048,7 +5056,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/allowed_p
 hysical.pdf  used on input line 105.
 (pdftex.def)             Requested size: 341.43306pt x 155.95053pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_creation_translu
-cent.pdf, id=1878, 593.21625pt x 255.95625pt>
+cent.pdf, id=1773, 593.21625pt x 255.95625pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_creation_tr
 anslucent.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_creation_tra
@@ -5061,14 +5069,14 @@ Overfull \hbox (41.04309pt too wide) in paragraph at lines 118--119
  [][] 
  []
 
-[152 <./sdf/heuristic/translucent_protection/figures/allowed_physical.pdf
+[147 <./sdf/heuristic/translucent_protection/figures/allowed_physical.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
 es/allowed_physical.pdf): PDF inclusion: invalid other resource which is no dic
 t (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_protection/figures/logical_topology_load_translucent
-.pdf, id=1890, 317.185pt x 204.765pt>
+.pdf, id=1785, 317.185pt x 204.765pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_load_transl
 ucent.pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_load_translu
@@ -5076,7 +5084,7 @@ cent.pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_load_translucent.pdf  used on input line 125.
 (pdftex.def)             Requested size: 256.0748pt x 165.32756pt.
-<sdf/heuristic/translucent_protection/figures/allowed_optical.pdf, id=1891, 545
+<sdf/heuristic/translucent_protection/figures/allowed_optical.pdf, id=1786, 545
 .03625pt x 252.945pt>
 File: sdf/heuristic/translucent_protection/figures/allowed_optical.pdf Graphic 
 file (type pdf)
@@ -5084,7 +5092,7 @@ file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/allowed_o
 ptical.pdf  used on input line 132.
 (pdftex.def)             Requested size: 341.43306pt x 158.45303pt.
- [153 <./sdf/heuristic/translucent_protection/figures/logical_topology_creation
+ [148 <./sdf/heuristic/translucent_protection/figures/logical_topology_creation
 _translucent.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5096,14 +5104,14 @@ cent.pdf
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
 es/logical_topology_load_translucent.pdf): PDF inclusion: invalid other resourc
 e which is no dict (key 'ProcSets', type <array>); ignored.
->] [154 <./sdf/heuristic/translucent_protection/figures/allowed_optical.pdf
+>] [149 <./sdf/heuristic/translucent_protection/figures/allowed_optical.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
 es/allowed_optical.pdf): PDF inclusion: invalid other resource which is no dict
  (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_protection/figures/grooming_translucent_protec1.pdf,
- id=1913, 282.05376pt x 330.23375pt>
+ id=1808, 282.05376pt x 330.23375pt>
 File: sdf/heuristic/translucent_protection/figures/grooming_translucent_protec1
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/grooming_translucent_protec1.
@@ -5112,7 +5120,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/grooming_
 translucent_protec1.pdf  used on input line 145.
 (pdftex.def)             Requested size: 284.52756pt x 333.15552pt.
 <sdf/heuristic/translucent_protection/figures/grooming_translucent_protec2.pdf,
- id=1914, 593.21625pt x 298.11375pt>
+ id=1809, 593.21625pt x 298.11375pt>
 File: sdf/heuristic/translucent_protection/figures/grooming_translucent_protec2
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/grooming_translucent_protec2.
@@ -5125,7 +5133,7 @@ Overfull \hbox (41.04309pt too wide) in paragraph at lines 152--153
  [][] 
  []
 
-[155 <./sdf/heuristic/translucent_protection/figures/grooming_translucent_prote
+[150 <./sdf/heuristic/translucent_protection/figures/grooming_translucent_prote
 c1.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5133,7 +5141,7 @@ es/grooming_translucent_protec1.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_protection/figures/grooming_translucent_protec3.pdf,
- id=1923, 549.05125pt x 289.08pt>
+ id=1819, 549.05125pt x 289.08pt>
 File: sdf/heuristic/translucent_protection/figures/grooming_translucent_protec3
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/grooming_translucent_protec3.
@@ -5147,7 +5155,7 @@ Overfull \hbox (41.04309pt too wide) in paragraph at lines 159--160
  []
 
 <sdf/heuristic/translucent_protection/figures/grooming_translucent_protec4.pdf,
- id=1924, 412.54124pt x 148.555pt>
+ id=1820, 412.54124pt x 148.555pt>
 File: sdf/heuristic/translucent_protection/figures/grooming_translucent_protec4
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/grooming_translucent_protec4.
@@ -5155,7 +5163,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/grooming_
 translucent_protec4.pdf  used on input line 166.
 (pdftex.def)             Requested size: 426.79134pt x 153.68884pt.
-[156 <./sdf/heuristic/translucent_protection/figures/grooming_translucent_prote
+[151 <./sdf/heuristic/translucent_protection/figures/grooming_translucent_prote
 c2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5172,7 +5180,7 @@ Overfull \hbox (51.21463pt too wide) in paragraph at lines 173--206
  [][] 
  []
 
-[157 <./sdf/heuristic/translucent_protection/figures/grooming_translucent_prote
+[152 <./sdf/heuristic/translucent_protection/figures/grooming_translucent_prote
 c4.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5180,7 +5188,7 @@ es/grooming_translucent_protec4.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_protection/figures/grooming_translucent_protec5.pdf,
- id=1947, 423.5825pt x 123.46124pt>
+ id=1842, 423.5825pt x 123.46124pt>
 File: sdf/heuristic/translucent_protection/figures/grooming_translucent_protec5
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/grooming_translucent_protec5.
@@ -5189,7 +5197,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/grooming_
 translucent_protec5.pdf  used on input line 217.
 (pdftex.def)             Requested size: 341.43306pt x 99.52077pt.
 <sdf/heuristic/translucent_protection/figures/grooming_translucent_protec6.pdf,
- id=1948, 313.17pt x 224.84pt>
+ id=1843, 313.17pt x 224.84pt>
 File: sdf/heuristic/translucent_protection/figures/grooming_translucent_protec6
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/grooming_translucent_protec6.
@@ -5197,7 +5205,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/grooming_
 translucent_protec6.pdf  used on input line 224.
 (pdftex.def)             Requested size: 256.0748pt x 183.85536pt.
- [158 <./sdf/heuristic/translucent_protection/figures/grooming_translucent_prot
+ [153 <./sdf/heuristic/translucent_protection/figures/grooming_translucent_prot
 ec5.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5211,20 +5219,29 @@ es/grooming_translucent_protec6.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_protection/figures/cost_report_translucent.pdf, id=1
-963, 320.19624pt x 279.0425pt>
+858, 320.19624pt x 279.0425pt>
 File: sdf/heuristic/translucent_protection/figures/cost_report_translucent.pdf 
 Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/cost_report_translucent.pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/cost_repo
 rt_translucent.pdf  used on input line 236.
 (pdftex.def)             Requested size: 284.52756pt x 247.96382pt.
- [159 <./sdf/heuristic/translucent_protection/figures/cost_report_translucent.p
+ [154 <./sdf/heuristic/translucent_protection/figures/cost_report_translucent.p
 df
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
 es/cost_report_translucent.pdf): PDF inclusion: invalid other resource which is
  no dict (key 'ProcSets', type <array>); ignored.
 >]
+
+LaTeX Warning: Reference `Reference_Network_Topology' on page 155 undefined on 
+input line 244.
+
+
+LaTeX Warning: Reference `Reference_Network_Traffic' on page 155 undefined on i
+nput line 244.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 244--246
 
  []
@@ -5233,6 +5250,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 244--246
 Underfull \hbox (badness 10000) in paragraph at lines 247--249
 
  []
+
+
+LaTeX Warning: Reference `low_scenario' on page 155 undefined on input line 250
+.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 250--251
@@ -5251,9 +5272,9 @@ file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/allowed_o
 ptical.pdf  used on input line 261.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[160]
+[155]
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu0_low.pdf, id
-=1981, 587.19376pt x 264.99pt>
+=1873, 587.19376pt x 264.99pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu0_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu0_low.pdf
@@ -5262,7 +5283,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu0_low.pdf  used on input line 268.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu1_low.pdf, id
-=1982, 589.20125pt x 263.98625pt>
+=1874, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu1_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu1_low.pdf
@@ -5270,7 +5291,7 @@ f Graphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu1_low.pdf  used on input line 275.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [161 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu0_low
+ [156 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu0_low
 .pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5278,7 +5299,7 @@ es/logical_topology_odu0_low.pdf): PDF inclusion: invalid other resource which
 is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu2_low.pdf, id
-=1992, 590.205pt x 261.97874pt>
+=1885, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu2_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu2_low.pdf
@@ -5287,7 +5308,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu2_low.pdf  used on input line 282.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu3_low.pdf, id
-=1993, 590.205pt x 261.97874pt>
+=1886, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu3_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu3_low.pdf
@@ -5296,7 +5317,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu3_low.pdf  used on input line 289.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu4_low.pdf, id
-=1994, 590.205pt x 261.97874pt>
+=1887, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu4_low.pd
 f Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu4_low.pdf
@@ -5304,7 +5325,7 @@ f Graphic file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu4_low.pdf  used on input line 296.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [162 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu1_low
+ [157 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu1_low
 .pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5323,7 +5344,7 @@ pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
 es/logical_topology_odu3_low.pdf): PDF inclusion: invalid other resource which 
 is no dict (key 'ProcSets', type <array>); ignored.
 >]
-<sdf/heuristic/translucent_protection/figures/physical_topology.pdf, id=2012, 5
+<sdf/heuristic/translucent_protection/figures/physical_topology.pdf, id=1904, 5
 80.1675pt x 264.99pt>
 File: sdf/heuristic/translucent_protection/figures/physical_topology.pdf Graphi
 c file (type pdf)
@@ -5333,7 +5354,7 @@ topology.pdf  used on input line 303.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 163 undefined on input line 3
+LaTeX Warning: Reference `net2plan_guide' on page 158 undefined on input line 3
 08.
 
 
@@ -5346,7 +5367,7 @@ Overfull \hbox (25.16078pt too wide) in paragraph at lines 312--337
  [][] 
  []
 
-[163 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu4_low.
+[158 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu4_low.
 pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5361,6 +5382,10 @@ ct (key 'ProcSets', type <array>); ignored.
 Underfull \hbox (badness 10000) in paragraph at lines 341--343
 
  []
+
+
+LaTeX Warning: Reference `medium_traffic_scenario' on page 159 undefined on inp
+ut line 344.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 344--345
@@ -5379,9 +5404,9 @@ file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/allowed_o
 ptical.pdf  used on input line 355.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[164]
+[159]
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu0_medium.pdf,
- id=2034, 587.19376pt x 264.99pt>
+ id=1925, 587.19376pt x 264.99pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu0_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu0_medium.
@@ -5390,7 +5415,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu0_medium.pdf  used on input line 362.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu1_medium.pdf,
- id=2035, 589.20125pt x 263.98625pt>
+ id=1926, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu1_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu1_medium.
@@ -5398,7 +5423,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu1_medium.pdf  used on input line 369.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [165 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu0_med
+ [160 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu0_med
 ium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5406,7 +5431,7 @@ es/logical_topology_odu0_medium.pdf): PDF inclusion: invalid other resource whi
 ch is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu2_medium.pdf,
- id=2045, 590.205pt x 261.97874pt>
+ id=1936, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu2_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu2_medium.
@@ -5415,7 +5440,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu2_medium.pdf  used on input line 376.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu3_medium.pdf,
- id=2046, 590.205pt x 261.97874pt>
+ id=1937, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu3_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu3_medium.
@@ -5424,7 +5449,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu3_medium.pdf  used on input line 383.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu4_medium.pdf,
- id=2047, 590.205pt x 261.97874pt>
+ id=1938, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu4_medium
 .pdf Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu4_medium.
@@ -5432,7 +5457,7 @@ pdf>
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu4_medium.pdf  used on input line 390.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [166 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu1_med
+ [161 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu1_med
 ium.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5459,7 +5484,7 @@ topology.pdf  used on input line 397.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 167 undefined on input line 4
+LaTeX Warning: Reference `net2plan_guide' on page 162 undefined on input line 4
 02.
 
 
@@ -5472,7 +5497,7 @@ Overfull \hbox (25.16078pt too wide) in paragraph at lines 406--431
  [][] 
  []
 
-[167 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu4_medi
+[162 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu4_medi
 um.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5482,6 +5507,10 @@ ch is no dict (key 'ProcSets', type <array>); ignored.
 Underfull \hbox (badness 10000) in paragraph at lines 435--437
 
  []
+
+
+LaTeX Warning: Reference `high_traffic_scenario' on page 163 undefined on input
+ line 438.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 438--439
@@ -5500,9 +5529,9 @@ file (type pdf)
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/allowed_o
 ptical.pdf  used on input line 449.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
-[168]
+[163]
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu0_high.pdf, i
-d=2083, 587.19376pt x 264.99pt>
+d=1973, 587.19376pt x 264.99pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu0_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu0_high.pd
@@ -5511,7 +5540,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu0_high.pdf  used on input line 456.
 (pdftex.def)             Requested size: 369.88582pt x 166.92032pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu1_high.pdf, i
-d=2084, 589.20125pt x 263.98625pt>
+d=1974, 589.20125pt x 263.98625pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu1_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu1_high.pd
@@ -5519,7 +5548,7 @@ f>
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu1_high.pdf  used on input line 463.
 (pdftex.def)             Requested size: 369.88582pt x 165.7241pt.
- [169 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu0_hig
+ [164 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu0_hig
 h.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5527,7 +5556,7 @@ es/logical_topology_odu0_high.pdf): PDF inclusion: invalid other resource which
  is no dict (key 'ProcSets', type <array>); ignored.
 >]
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu2_high.pdf, i
-d=2094, 590.205pt x 261.97874pt>
+d=1984, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu2_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu2_high.pd
@@ -5536,7 +5565,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu2_high.pdf  used on input line 470.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu3_high.pdf, i
-d=2095, 590.205pt x 261.97874pt>
+d=1985, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu3_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu3_high.pd
@@ -5545,7 +5574,7 @@ Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu3_high.pdf  used on input line 477.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
 <sdf/heuristic/translucent_protection/figures/logical_topology_odu4_high.pdf, i
-d=2096, 590.205pt x 261.97874pt>
+d=1986, 590.205pt x 261.97874pt>
 File: sdf/heuristic/translucent_protection/figures/logical_topology_odu4_high.p
 df Graphic file (type pdf)
 <use sdf/heuristic/translucent_protection/figures/logical_topology_odu4_high.pd
@@ -5553,7 +5582,7 @@ f>
 Package pdftex.def Info: sdf/heuristic/translucent_protection/figures/logical_t
 opology_odu4_high.pdf  used on input line 484.
 (pdftex.def)             Requested size: 369.88582pt x 164.18802pt.
- [170 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu1_hig
+ [165 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu1_hig
 h.pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5580,7 +5609,7 @@ topology.pdf  used on input line 491.
 (pdftex.def)             Requested size: 369.88582pt x 168.94606pt.
 
 
-LaTeX Warning: Reference `net2plan_guide' on page 171 undefined on input line 4
+LaTeX Warning: Reference `net2plan_guide' on page 166 undefined on input line 4
 96.
 
 
@@ -5593,7 +5622,7 @@ Overfull \hbox (36.11076pt too wide) in paragraph at lines 500--525
  [][] 
  []
 
-[171 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu4_high
+[166 <./sdf/heuristic/translucent_protection/figures/logical_topology_odu4_high
 .pdf
 
 pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/translucent_protection/figur
@@ -5604,20 +5633,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 532--533
 
  []
 
-[172] [173])) [174]
+[167] [168])) [169]
 No file main_netplanner.gls.
 No file main_netplanner.acr.
-[175
+[170
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 68.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 68.
- (main_netplanner.aux (chapter/reference_network.aux)
-(chapter/heuristics.aux))
+ (main_netplanner.aux (chapter/heuristics.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 68.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 68.
 Package rerunfilecheck Info: File `main_netplanner.out' has not changed.
-(rerunfilecheck)             Checksum: D80D49C6C49744B189B6E679C4D4C66A;1080.
+(rerunfilecheck)             Checksum: 41B92B8FF225F63EBC84714B1949C38E;610.
 
 
 LaTeX Warning: There were undefined references.
@@ -5628,10 +5656,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 68.
  ) 
 Here is how much of TeX's memory you used:
- 40035 strings out of 492970
- 957668 string characters out of 3123929
- 1176802 words of memory out of 3000000
- 42490 multiletter control sequences out of 15000+200000
+ 39995 strings out of 492970
+ 956464 string characters out of 3123929
+ 1172802 words of memory out of 3000000
+ 42475 multiletter control sequences out of 15000+200000
  25611 words of font info for 60 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,17n,98p,2034b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -5654,9 +5682,9 @@ al/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/ejfernande
 s/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Use
 rs/ejfernandes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplri
 8a.pfb>
-Output written on main_netplanner.pdf (176 pages, 3206055 bytes).
+Output written on main_netplanner.pdf (171 pages, 3091546 bytes).
 PDF statistics:
- 2309 PDF objects out of 2487 (max. 8388607)
- 544 named destinations out of 1000 (max. 500000)
- 1015 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2196 PDF objects out of 2487 (max. 8388607)
+ 532 named destinations out of 1000 (max. 500000)
+ 962 words of extra memory for PDF output out of 10000 (max. 10000000)
 
