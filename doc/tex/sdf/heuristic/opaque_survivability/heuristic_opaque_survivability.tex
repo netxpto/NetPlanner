@@ -573,32 +573,27 @@ The creation of this model for any scenario, started with some considerations an
 	\label{fluxogram_opaque_surv}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/fluxogramaLowLevel}
-	\caption{Low level diagram of the algorithms performed.}
-    \label{fluxogram_opaque_surv}
-\end{figure}
-
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c |}
 		\hline
 		\textbf{Parameter} & \textbf{Default value} & \textbf{Description} \\
-		\hline
+		\hline\hline
 		ODU0 & 0 Gbit/s & ODU0 demands  \\ \hline
 		ODU1 & 0 Gbit/s & ODU1 demands  \\ \hline
 		ODU2 & 0 Gbit/s & ODU2 demands  \\ \hline
 		ODU3 & 0 Gbit/s & ODU3 demands  \\ \hline
 		ODU4 & 0 Gbit/s & ODU4 demands  \\ \hline
-		Routing Ordering Rule & Down (ODU4...ODU0) & Order by which demands will be sorted  \\ \hline
+		Demands Ordering Criterion & Down (ODU4...ODU0) & Order by which demands will be sorted  \\ \hline
 		Number of Paths & 3 & Number of paths created between a pair of nodes  \\ \hline
 		Criterion & Hops & Shortest path type \\ \hline
-		Transport Mode & Non defined & Opaque, Transparent or Translucid modes	\\ \hline
+		Transport Mode & Non defined & Opaque, Transparent or Translucid modes    \\ \hline
 		Physical Topology & Non defined & Physical links scheme of the network  \\ \hline
 		Transport Systems & 1 & Number of transport systems connecting each pair of nodes  \\ \hline
 		Optical Channels & 100 & Number of optical channels per transport system \\ \hline
 		Optical Channel Capacity & 100 Gbit/s & Capacity of each optical channel \\ \hline
+		Light Path & & \\ \hline
+		Light Path Establishion Criterion & & \\ \hline 
 	\end{tabular}
 	\caption{System input parameters.}
 	\label{system_input}
@@ -609,75 +604,136 @@ The creation of this model for any scenario, started with some considerations an
 	\begin{tabular}{| c | c |}
 		\hline
 		\textbf{Signal name} & \textbf{Description of the signal} \\
-		\hline
-		\multicolumn{1}{|c|}{demand} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ sourceNode\\ destinationNode\\ oduType\\ restorationMethod\end{tabular}} \\ \hline
-		logicaltopology & ??? \\ \hline
+		\hline\hline
+		\multicolumn{1}{|c|}{demands} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}lc@{}}demandIndex\\ sourceNode\\ destinationNode\\ oduType\\ restorationMethod\end{tabular}} \\ \hline
+		logicaltopology & adjacent matrix \\ \hline
+		\multicolumn{1}{|c|}{physicaltopology}  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}linkIndex\\ capacity (ODU0)\end{tabular}} \\ \hline
 		\multicolumn{1}{|c|}{demandListOfPaths} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ pathIndex\\ linkIndex\\ Hops\end{tabular}} \\ \hline
 		\multicolumn{1}{|c|}{path} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}pathIndex\\ linkIndex\\ Hops\end{tabular}} \\ \hline
-		physicaltopology & ??? \\ \hline
-		demandIndex & ??? \\ \hline
-		\multicolumn{1}{|c|}{demandPath} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ pathIndex\\ linkIndex\\ Hops\end{tabular}} \\ \hline
-		nextPath & ??? \\ \hline
+		\multicolumn{1}{|c|}{lightPath}        & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}lightPathIndex\\ sourceNode\\ destinationNode\\ capacity (ODU0)\\ wavelenght\\ logicalLinks\end{tabular}} \\ \hline
+		demandIndex & integer \\ \hline
 		\multicolumn{1}{|c|}{demandPathRoute}  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ linkIndex\\ opticalChannelsUsed\end{tabular}} \\ \hline
 	\end{tabular}
 	\caption{System Signals.}
 	\label{system_signals}
 \end{table}
 
-
-\textit{demand}\\
-demandIndex \\
-sourceNode \\
-destinationNode \\
-oduType \\
-restorationMethod \\
-
-\textit{demandListOfPaths}\\
-demandIndex \\
-pathIndex \\
-linkIndex \\
-Hops \\
-
-\textit{demandPath}\\
-demandIndex \\
-pathIndex \\
-linkIndex \\
-Hops \\
-
-\textit{demandPathRoute}\\
-demandIndex \\
-linkIndex \\
-opticalChannelsUsed \\
-
-\textit{links} \\
-linkIndex \\
-opticalchannelCapacity \\
-
-\textit{paths}\\
-pathIndex \\
-linkIndex \\
-Hops \\
-
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c |}
 		\hline
 		\textbf{Block} & \textbf{State variables} \\
-		\hline
-		Scheduler & ??  \\ \hline
-		Logical Topology Generator & ?? \\ \hline
-		Physical Topology Generator & ??\\ \hline
+		\hline\hline
+		Scheduler & ODU1, ODU2, ODU3, ODU4  \\ \hline
+		Logical Topology Generator &  \\ \hline
+		Physical Topology Generator & \\ \hline
 		Path Generator & logicaltopology  \\ \hline
 		Path Tester & physicaltopology \\ \hline
-		Demand Path Generator & ?? \\ \hline
-		Sink (Blocking) & ?? \\ \hline
-		Sink (Routed) & ?? \\ \hline
-		Available Capacity & ?? \\ \hline
-		Link Capacity Refresh & ??	\\ \hline
+		Sink (Blocking) &  \\ \hline
+		Sink (Routed) &  \\ \hline
 	\end{tabular}
 	\caption{Blocks state variables.}
 	\label{blocks_input}
 \end{table}
 
+\pagebreak
 
+\textbf{Example:} \\
+\\
+Having just 4 optical channels per transmission system, each with a capacity of 100 Gbps, and the following traffic model.
 
+These traffic matrices are represented by ODU0, ODU1, ODU2, ODU3 and ODU4 where each one has a certain bit rate.
+The ODU0 corresponds to 1.25 Gbits/s, the ODU1 corresponds to 2.5 Gbits/s, the ODU2 corresponds to 10 Gbits/s, the ODU3 corresponds to 40 Gbits/s and finally the ODU4 corresponds to 100 Gbits/s.
+As we can see below, these arrays are bi-directional because they are symmetric arrays and as such, the traffic sent in a certain direction must be the same traffic sent in that opposite direction.
+
+\[
+ODU0=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\qquad ODU1=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+\[
+ODU2=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\qquad ODU3=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+\[
+ODU4=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 9 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 9 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+
+\vspace{17pt}
+Through these ODU's we can calculate the total network traffic for this specific scenario:\\
+
+$T_1^0$ = 0x1.25 = 0 Gbits/s \qquad
+$T_1^1$ = 0x2.5 = 0 Gbits/s \qquad
+$T_1^2$ = 0x10 = 0 Gbits/s \\
+
+$T_1^3$ = 0x40 = 0 Gbits/s \quad
+$T_1^4$ = 18x100 = 1800 Gbits/s \\
+
+$T_{1}$ = 0 + 0 + 0 + 0 + 1800 = 1800 Gbits/s \qquad
+$T$ = 1800/2 = \textbf{900 Gbits/s}\\
+
+Where the variable $T_1^x$ represents the unidirectional traffic of the ODUx, for example, $T_1^0$ represents the unidirectional traffic of the ODU0 and $T_1^1$ represents the unidirectional traffic of the ODU1. The variable $T_{1}$ represents the total of unidirectional traffic that is injected into the network and finally the variable $T$ represents the total of bidirectional traffic.\\
+
+The demands are first ordered in the Scheduler block considering the entry variable, Routing ordering rule (type of ODU), in a single queue.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		
+		\hline
+		demandIndex  & sourceNode & destinationNode & oduType & restorationMethod \\
+		\hline\hline
+		
+		1 & 2 & 4 & 4 & No \\ \hline
+		2 & 2 & 4 & 4 & No \\ \hline
+		3 & 2 & 4 & 4 & No \\ \hline
+		4 & 2 & 4 & 4 & No \\ \hline
+		5 & 2 & 4 & 4 & No \\ \hline
+		6 & 2 & 4 & 4 & No \\ \hline
+		7 & 2 & 4 & 4 & No \\ \hline
+		8 & 2 & 4 & 4 & No \\ \hline
+		9 & 2 & 4 & 4 & No \\ \hline
+		
+	\end{tabular}
+	\caption{Demands queue generated in the Scheduler block.}
+	\label{scheduler_example}
+\end{table} 
