@@ -594,28 +594,28 @@ The creation of this model for any scenario, started with some considerations an
 \end{tcolorbox}
 
  \vspace{11pt}
- In figure xxx1 a top level diagram is presented in which it is represented the heuristcs approach implemented behind the developed algorithms. Next on figure on figure xxx2 the same diagram is presented but in a lower level approach with more detailed information related to the so called super blocks, those that perform more complex functions.
+ In figure 1.112 a top level diagram is presented in which it is represented the heuristcs approach implemented behind the developed algorithms. %Next on figure on figure xxx2 the same diagram is presented but in a lower level approach with more detailed information related to the so called super blocks, those that perform more complex functions.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=15cm]{sdf/heuristic/transparent_survivability/figures/fluxogramaSemGroomingHighLevel}
-	\caption{High level diagram of the algorithms performed.}
+	\caption{High level diagram of the heuristic algorithm performed.}
 	\label{fluxogram_transparent_surv}
 \end{figure}
 
-As it is shown in figure xxx1, we must have a Scheduler block which will be responsible for the creation of an ordered queue containing all the demands entering this network, in an order previously defined (based on the demands ODU type), and ready to be routed. 
-In order to route those demands there will also be the necessity of a Path Generator block which as its own name implies will creates a list of paths for each demand between its source and destination nodes, through information received by the Path searcher block. 
-Also there is a Path Tester, in which a list of paths previously associated to the demand being processed at the time are tested in order to check their availability in terms of optical capacity in each of the necessary links, and a Logical and Physical Topology Generators. The information about this network links capacity previously mentioned is innitially provided by the Optical Channel Layer block and then after will be continuously updated in the Link Capacity Refresh block.
+As it is shown in figure 1.112, we must have a Scheduler block which will be responsible for the creation of an ordered queue containing all the demands entering this network, in an order previously defined (based on the demands ODU type), and ready to be routed. 
+In order to route those demands there will also be the necessity of a Path Generator block which as its own name implies will create a list of logical paths for each demand between its source and destination nodes, through information received by the Logical Topology Generator block. 
+Also here the list of paths previously associated to the demand being processed at the time are tested in order to check their availability in terms of physical capacity in each of the necessary links that comprise the optical path, and a Logical and Physical Topology Generators. The information about this network links capacity previously mentioned is innitially provided by the Physical Topology Generator block and then after will be continuously updated in the Path Tester block.
 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=16cm]{sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming}
-	\caption{Low level diagram of the algorithms performed.}
-	\label{fluxogram_transparent_surv}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=16cm]{sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming}
+%	\caption{Low level diagram of the algorithms performed.}
+%	\label{fluxogram_transparent_surv}
+%\end{figure}
 
-Here the main difference is the decomposition of the two super blocks 'Path tester' which is divided in three sub blocks ('Demand path generator', 'Available capacity' and 'Link capacity refresh') and the 'Physical Topology generator' block, divided in two other blocks, all of this in order to better understand their exact functions.
+%Here the main difference is the decomposition of the two super blocks 'Path tester' which is divided in three sub blocks ('Demand path generator', 'Available capacity' and 'Link capacity refresh') and the 'Physical Topology generator' block, divided in two other blocks, all of this in order to better understand their exact functions.
 
 \begin{table}[H]
 	\centering
@@ -623,25 +623,180 @@ Here the main difference is the decomposition of the two super blocks 'Path test
 		\hline
 		Signal name & Signal type \\ % it is missing the description of the signals
 		\hline
-		demands & ??? \\ \hline
-		links & ??? \\ \hline
-		discardPath & ??? \\ \hline
-		logicalTopology & ??? \\ \hline
-		layer1 & ??? \\ \hline
-		demandListOfPaths & ???  \\ \hline
-		demandId & ???  \\ \hline
-		demandPath & ??? \\ \hline
-		demandPathRoute & ??? \\ \hline
-		demandsRouted & ??? \\ \hline
-		demandsBlocked & ??? \\ \hline
-		update & ??? \\ \hline
-		nextDemand & ??? \\ \hline
-		nextPath & ??? \\ \hline
-		reportInfo & ??? \\ \hline
+		demands &  \\ \hline
+		path &  \\ \hline
+		%layer1 & \\ \hline
+		physicalTopology & \\ \hline
+		logicalTopology &  \\ \hline
+		demandListOfPaths &   \\ \hline
+		demandId &   \\ \hline
+		%demandPath & ??? \\ \hline
+		demandPathRoute & \\ \hline
+		%demandsRouted & ??? \\ \hline
+		%demandsBlocked & ??? \\ \hline
+		%update & ??? \\ \hline
+		%nextDemand & ??? \\ \hline
+		%nextPath & ??? \\ \hline
+		%reportInfo & ??? \\ \hline
 	\end{tabular}
 	\caption{System Signals.}
 	\label{system_signals}
 \end{table}
+\textbf{Signals} 
+\\
+\\
+\underline{demands}
+\\ 
+This is the output signal of the Scheduler block, it is a matrix in where each entrie constitutes a demand.\\
+\begin{table}[H]
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Demand Index & Source Node & Destination node & ODU Type & Restoration Method \\ \hline
+		1...N        & 1...6       & 1...6            & 0...4    &                    \\ \hline
+	\end{tabular}
+		\caption{Constitution of a demand.}
+	\label{demand_variable}
+\end{table}
+
+\underline{logicalTopology}\\
+\\
+This is the output signal of the Logical topology generator block, it is a matrix where every logical connection existent in the network is displayed. In this particular case we are studying the transparent trasnport node so our logical toplogy will be the following.\\
+
+\[
+logicalTopology=
+\begin{bmatrix}
+0 & 1 & 1 & 1 & 1 & 1 \\
+1 & 0 & 1 & 1 & 1 & 1 \\
+1 & 1 & 0 & 1 & 1 & 1 \\
+1 & 1 & 1 & 0 & 1 & 1 \\
+1 & 1 & 1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 & 1 & 0
+\end{bmatrix}
+\]
+
+\underline{physicalTopology}\\
+\\
+Here the information about every connection existent between nodes, every link and their capacity initially existent is sent to the Path tester block together with the list of the light paths previously established in the network.
+
+\begin{table}[H]
+		\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{Index} & \multicolumn{1}{l|}{Optical channel} & \multicolumn{1}{l|}{Capacity (ODU0s)} & \multicolumn{1}{l|}{Wavelength} & \multicolumn{1}{l|}{Source node} & \multicolumn{1}{l|}{Destination node} \\ \hline
+		\multirow{3}{*}{1...16}     & 1                                    & 80                                    & null                            & null                             & null                                  \\ \cline{2-6} 
+		& ...                                  & ...                                   & ...                             & ...                              & ...                                   \\ \cline{2-6} 
+		& 100                                  & 80                                    & null                            & null                             & null                                  \\ \hline
+	\end{tabular}
+	\caption{Link variable.}
+	\label{link_example}
+\end{table}
+
+\begin{table}[H]
+		\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		Index                   & Source node                & Destination node           & Capacity (ODU0s)        & Wavelength & Logical links                  \\ \hline
+		\multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{1...6} & \multicolumn{1}{c|}{1...6} & \multicolumn{1}{c|}{80} & \multicolumn{1}{c|}{1...100} & \multicolumn{1}{c|}{[1,...,N]}\\ \hline
+	\end{tabular}
+	\caption{Light path variable.}
+	\label{lightpath_example}
+\end{table}
+
+A light path can be constituted by one or more logical links which can also be formed by more than one physical link.
+\underline{demandListOfPaths}\\
+\\
+Inside of the Path generator block a list of logical paths associated to a pair of source and destination nodes will be created and set into this block output signal. This paths will depend directly of the logical topology of the network and on availability of the links (some of them may have already been discarded).
+
+
+\begin{table}[H]
+		\centering
+	\begin{tabular}{|c|c|l|l|}
+		\hline
+		Demand index           & \multicolumn{3}{c|}{Path index} \\ \hline
+		\multirow{3}{*}{1...N} & \multicolumn{3}{c|}{x}          \\ \cline{2-4} 
+		& \multicolumn{3}{c|}{x+1}        \\ \cline{2-4} 
+		& \multicolumn{3}{c|}{x+2}        \\ \hline
+	\end{tabular}
+	\caption{demandListOfPaths signal.}
+	\label{demandListOfPaths_example}
+\end{table}
+%\underline{demandPath}\\
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|c|c|l|l|}
+%		\hline
+%		Demand Index & \multicolumn{3}{c|}{1...N} \\ \hline
+%		Path Index   & \multicolumn{3}{c|}{1...N} \\ \hline
+%	\end{tabular}
+%	\caption{demandPath signal.}
+%	\label{demandPath_example}
+%\end{table}
+Knowing the list of possible logical shortest paths associated to a demand (Dijkstra algotithm), the physical capacity of the optical paths that constitute those logical connections have to be tested. That will occur in the next block of this diagram, the path tester block.\\
+If there is already an entry in the light path table and if the remaining capacity of that light path, already established, is sufficient to route the demand then our demand is added to that same light path and a demandPathRoute signal is created with information regarding to the demand/path index, route and wavelength used by that same demand. If on the other side the logical path being test isn´t enough to process a certain demand or if there no light path established between that pair of source and destination nodes than an attempt to create another light path entry will be made. If it occurs successfully than a new light path is established in our network and the demand is routed through that same but if there is no possibility of creating a new light path between those nodes than our logical path will have to be ignored and cutted of and a next shortest logical path must be tested in the same manner. In order to in further iterations that full path not be considered a path signal should be created to inform the path generator block that those paths must not be considered, this will make the algorithm more efficient. If finally we can not route our demand though none of the logical paths selected then a blocking state occurs, the demand is not routed and a demandsBlocked signal is created. Then finally a report is created to obtain a detailed estimation of the network Capex
+based on user defined equipment costs present on table 1.28.\\ \\
+\underline{path}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Path Index & Source Node & Destination Node & Logical links & Hops\\ \hline
+		1...N      & 1...6       & 1...6  & [1,...,N]  & 1...N       \\ \hline
+	\end{tabular}
+	\caption{path signal.}
+	\label{path_signal}
+\end{table}
+
+\underline{demandPathRoute}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Demand Index           & Path Index             & Link Index                       & 1...16                   \\ \hline
+		\multirow{2}{*}{1...N} & \multirow{2}{*}{1...N} & \multirow{2}{*}{Optical Channel} & \multirow{2}{*}{0...100} \\
+		&                        &                                  &                          \\ \hline
+	\end{tabular}
+	\caption{demandPathRoute signal.}
+	\label{demandPathRoute_signal}
+\end{table}
+%\underline{demandsBlocked}\\
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|c|c|}
+%		\hline
+%		Demand Index & 1...N \\ \hline
+%	\end{tabular}
+%	\caption{demandsBlocked signal.}
+%	\label{demandsBlocked_signal}
+%\end{table}
+\underline{demandId}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Demand Index & 1...N \\ \hline
+	\end{tabular}
+	\caption{demandId signal.}
+	\label{demandId_signal}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Equipment         & Costs      \\ \hline
+		OLT               & 15000\euro     \\ \hline
+		Transponder       & 5000\euro/GB   \\ \hline
+		Optical Amplifier & 4000\euro      \\ \hline
+		EXC               & 10000\euro     \\ \hline
+		OXC               & 20000\euro     \\ \hline
+		EXC Port          & 1000\euro/GB/s \\ \hline
+		OXC Port          & 2500\euro/port \\ \hline
+	\end{tabular}
+\caption{Equipment costs.}
+\label{equipment_costs}
+\end{table}
+
+
 
 \begin{table}[H]
 	\centering
@@ -657,12 +812,14 @@ Here the main difference is the decomposition of the two super blocks 'Path test
 		ODU3 & 0 Gbit/s & ODU3 demands  \\ \hline
 		ODU4 & 0 Gbit/s & ODU4 demands  \\ \hline
 		Criterion & Hops & Shortest path type \\ \hline
-		Transport mode & Non defined & Opaque, Transparent or Translucid modes
+		Transport mode & Null & Opaque, Transparent or Translucid modes
 		 \\ \hline
-		Physical topology & Non defined & Physical links scheme of the network  \\ \hline
+		Physical topology & Null & Physical links scheme of the network  \\ \hline
 		Transport systems & 1 & Transport systems connecting each pair of nodes  \\ \hline
 		Optical channels & 100 & Optical channels per transport system\\ \hline
-		Optical channel capacity & 100 Gbps & Physical capacity of each channel\\ \hline 
+		Optical channel capacity & 100 Gbps & Physical capacity of each channel\\ \hline
+		Light path	& Null & Light paths previously established \\ \hline
+		LP establishion criterion & to define & to define \\ \hline
 	\end{tabular}
 	\caption{System input parameters.}
 	\label{system_input}
@@ -675,22 +832,19 @@ Here the main difference is the decomposition of the two super blocks 'Path test
 		Block & Input parameters & Input signals \\
 		\hline
 		Scheduler & ODU0...4, Routing ordering rule & None  \\ \hline
-		Logical topology gen & Transport mode & None \\ \hline
-		Physical topology gen & Physical topology & None \\ \hline
-		Optical channel layer & Optical channels, Transport systems, channel capacity & layer1 \\ \hline
-		Path generator & Number of paths, Criterion & demands, logicalToplogy, discardPath, nextDemand \\ \hline
-		Demand path gen & None & demandListOfPaths, nextPath \\ \hline
+		Logical Topology Gen & Transport mode, Physical topology & None \\ \hline
+		Physical Topology Gen & PhyT, OChs, TSys, Och capacity, LP & None \\ \hline
+		Path Generator & Number of paths, Criterion &  logicalToplogy, path \\ \hline
+		Path Tester & LP establishion criterion & demandListOfPaths, physicalTopology \\ \hline
 		Sink (Blocking) & None & demandPathRoute \\ \hline
 		Sink (Routed) & None & demandId 		\\ \hline
-		Available capacity & None & demandPath, links, update \\ \hline
-		Links capacity refresh & None & demandPathRoute	\\ \hline
-		Cost report & None & reportInfo \\ \hline
+	%	Available capacity & None & demandPath, links, update \\ \hline
+	%	Links capacity refresh & None & demandPathRoute	\\ \hline
+	%	Cost report & None & reportInfo \\ \hline
 	\end{tabular}
 	\caption{Blocks input parameters and signals.}
 	\label{blocks_input}
 \end{table}
-
-
 
 \begin{table}[H]
 	\centering
@@ -698,63 +852,22 @@ Here the main difference is the decomposition of the two super blocks 'Path test
 		\hline
 		Block & State variables & Output signals \\
 		\hline
-		Scheduler &  & demands  \\ \hline
-		Logical topology gen &  & logicalTopology \\ \hline
-		Physical topology gen &  & layer1 \\ \hline
-		Optical channel layer &  & links \\ \hline
-		Path generator & lightpaths & demandListOfPaths  \\ \hline
-		Demand path gen &  & demandPath, demandId \\ \hline
-		Sink (Blocking) &  & demandsBlocked \\ \hline
-		Sink (Routed) &  & demandsRouted		\\ \hline
-		Available capacity & opticalPath, link & demandPathRoute, nextPath \\ \hline
-		Links capacity refresh &  & update, demandPathRoute	\\ \hline
-		Cost report &  & None \\ \hline
+		Scheduler & Entry variables & demands  \\ \hline
+		Logical Topology Generator & None & logicalTopology \\ \hline
+		Physical Topology Generator & None & physicalTopology \\ \hline
+		Path Generator & logicalTopology & demandListOfPaths  \\ \hline
+		Path Tester & lightPaths, links & demandPathRoute, demandId \\ \hline
+		Sink (Blocking) & None & None \\ \hline
+		Sink (Routed) & None & None		\\ \hline
+		%Available capacity & opticalPath, link & demandPathRoute, nextPath \\ \hline
+		%Links capacity refresh &  & update, demandPathRoute	\\ \hline
+		%Cost report &  & None \\ \hline
 	\end{tabular}
 	\caption{Blocks input parameters and signals.}
 	\label{blocks_input}
 \end{table}
-% Blocks entry paramenters and signal (describe them)
-
-In figure xxx2 one can see ... descrever melhor o diagrama
-
-demands\\
-index: 1...N\\
-height: real\\
-source Node \\
-destination Node\\ 
-
-oduType \\
-
-Optical Path 
-Index
-Links Used: Array of integers with 16 slots, whose value will be 1/0 depending on if they are being used or not.\\
-
-Link\\
-Index\\
-Number of Optical channels: integer\\
-Optical Channel capacity: integer\\
-Optical Channel: array of integers\\
-Source node \\
-Destination node \\
-Boolean blocking = false; (true == if link cant route a demand)\\
-
-
-
-Demand-Path\\
-Demand Index: integer\\
-Path Index: integer\\
-
-Route\\
-Index: integer\\
-Array\\
-
-Demand-Path-Route\\
-
-Demand Index: integer
-Path Index: integer
-Route Index:\\
-
-Example: \\
+\clearpage
+\textbf{Example:}  \\
 \\
 Having just 4 optical channels per transmission system, each with a capacity of 100 Gbps, and the following traffic model.
 
@@ -836,177 +949,96 @@ The demands are first ordered in the Scheduler block considering the entry varia
 	\begin{tabular}{| c | c | c | c | c |}
 		
 		\hline
-		 demandIndex  & sourceNode & destinationNode & oduType \\
-		\hline\hline
+		 Demand Index  & Source Node & Destination Node & ODU Type & Restoration Method \\
+		\hline
 		
-		1 & 2 & 4 & 4 \\ \hline
-		2 & 2 & 4 & 4 \\ \hline
-		3 & 2 & 4 & 4 \\ \hline
-		4 & 2 & 4 & 4 \\ \hline
-		5 & 2 & 4 & 4 \\ \hline
-		6 & 2 & 4 & 4 \\ \hline
-		7 & 2 & 4 & 4 \\ \hline
-		8 & 2 & 4 & 4 \\ \hline
-		9 & 2 & 4 & 4 \\ \hline
+		1 & 2 & 4 & 4 & No\\ \hline
+		2 & 2 & 4 & 4 & No\\ \hline
+		3 & 2 & 4 & 4 & No\\ \hline
+		4 & 2 & 4 & 4 & No\\ \hline
+		5 & 2 & 4 & 4 & No\\ \hline
+		6 & 2 & 4 & 4 & No\\ \hline
+		7 & 2 & 4 & 4 & No\\ \hline
+		8 & 2 & 4 & 4 & No\\ \hline
+		9 & 2 & 4 & 4 & No\\ \hline
 
 	\end{tabular}
 	\caption{Demands queue generated in the Scheduler block.}
 	\label{scheduler_example}
 \end{table} 
 
-The demands presented int the previous table will be processed by that same order.
+The demands presented in the previous table will be processed by that order.
 For the first demand here it is what is going to happen:
 
-First of all a set of shortest paths will be selected based on the logical topology of our network. The paths selected and their number will depend on some entry variables.
-Once our shortest path is chosen, one must test the same starting by analysing if there is already an entry on our list of lightpath established. If there is none between that same pair of nodes or if the ones existent do not have capacity to transport our demand we must create a new entrance, that is, create a new lightpath between our demands source and destination nodes. \\
-In this particular case as the list of lightpaths is initially void we must a create a new lightpath between nodes 2 and 4.  
+First of all a set of shortest paths will be selected based on the logical topology of our network. The paths selected and how many will depend on some entry variables.
+Once our shortest logical path is chosen, we must test the same starting by analysing if there is already an entry on our list of lightpaths established in the network. If there is none between that same pair of nodes or if the ones existents do not have capacity to transport our demand we must try to create a new entry, that is, create a new lightpath between our demands source and destination nodes. \\
+In this particular case as the list of lightpaths is initially void we must a create a new lightpath between nodes 2 and 4, if possible.  
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{| c | c | c | c | c |}
-	
-	\hline
-	ligthpathIndex & sourceNode & destinationNode & capacity (ODU0s) & wavelength \\
-	\hline
-	 1 & 2 & 4 & 80 & 1 \\ \hline
+	\begin{tabular}{|c|c|l|l|}
+		\hline
+		Demand index           & \multicolumn{3}{c|}{Path index} \\ \hline
+		\multirow{3}{*}{1} & \multicolumn{3}{c|}{1}          \\ \cline{2-4} 
+		& \multicolumn{3}{c|}{2}        \\ \cline{2-4} 
+		& \multicolumn{3}{c|}{3}        \\ \hline
 	\end{tabular}
-	\caption{lightpath variable.}
+	\caption{demandListOfPaths signal.}
+	\label{demandListOfPaths_example}
+\end{table}
+
+Lets now analyze path number 1, supposedly the shortest one.\\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Path Index & Source Node & Destination Node & Logical links & Hops\\ \hline
+		1      & 2       & 4  & 2  & 1       \\ \hline
+	\end{tabular}
+	\caption{Path variable.}
+	\label{path_variable}
+\end{table}
+
+Since it's constituted only by physical link 2 we must test its capacity, 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{Index} & \multicolumn{1}{l|}{Optical channel} & \multicolumn{1}{l|}{Capacity (ODU0s)} & \multicolumn{1}{l|}{Wavelength} & \multicolumn{1}{l|}{Source node} & \multicolumn{1}{l|}{Destination node} \\ \hline
+		\multirow{3}{*}{1...16}     & 1                                    & 0                                    & 1                            & 2                             & 4                                  \\ \cline{2-6} 
+		& ...                                  & ...                                   & ...                             & ...                              & ...                                   \\ \cline{2-6} 
+		& 9                                  & 80                                    & null                            & null                             & null                                  \\ \hline
+	\end{tabular}
+	\caption{Link variable.}
+	\label{link_example}
+\end{table}
+
+Once initially link 2 is completely empty we will use optical channel 1 to establish our light path number 1, the remaining channels stay the same.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		Index                   & Source node                & Destination node           & Capacity (ODU0s)        & Wavelength & Logical links                  \\ \hline
+		\multicolumn{1}{|c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{[2]}\\ \hline
+	\end{tabular}
+	\caption{New Light path established between nodes 2 and 4.}
 	\label{lightpath_example}
 \end{table}
 
-In order to test the physical capacity of the ligthpath first we need to test the optical path that constitutes the very same.
-
+Next a new demandPathRoute signal is created, which informs us through where demand 1 is routed (links and optical channels used). This will be helpful to update the available capacity of all the links of the network, which will be performed in the Path Tester block.
 \begin{table}[H]
 	\centering
-	\begin{tabular}{| c | c | c|}
-		
+	\begin{tabular}{|c|c|c|c|}
 		\hline
-		pathIndex & linksID & Hops\\ \hline
-		1 &  [2] & 1\\ \hline
-		2 &  [7,5,8] & 3\\ \hline
-		3 &  [1,6,5,8] & 4\\ \hline
-	\end{tabular}
-	\caption{paths signal.}
-	\label{paths_example}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c | c|}
-		
-		\hline
-		demandIndex & pathIndex & linksID & Hops\\ \hline
-		1 & 1 &  [2] & 1\\ \hline
-		1 & 2 &  [7,5,8] & 3\\ \hline
-		1 & 3 &  [1,6,5,8] & 4\\ \hline
-		
-	\end{tabular}
-	\caption{demandListOfPaths signal.}
-	\label{demandListOfPahts_example}
-\end{table}
-
-The first candidate path found in this case will be the shortest path for demand 1 (pathIndex = 1), and so it must be tested.
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c | c|}
-		
-		\hline
-		demandIndex & pathIndex & linksID & Hops\\ \hline
-		1 & 1 &  2 & 1\\ \hline
-		
-	\end{tabular}
-	\caption{demandPath signal for the first demand.}
-	\label{demandPath_example}
-\end{table}
-
-In order to test the links that make part of pathIndex = 1 there is a need to create another signal, instructions2, and send it to the Optical channel layer block. In this particular case we will only teste link number 2 whichs constitutes path number 1.
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c |}
-		
-		\hline
-		linksID	& 2 \\ \hline
-		
-	\end{tabular}
-	\caption{instructions2 signal.}
-	\label{instructions2_example}
-\end{table}
-
-The response of this block will be sent in another signal, links, which informs the block responsible for the assess of the available capacity of the state of the links that constitute the path being tested at the moment.
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c | c|}
-		\hline
-		link & \multicolumn{3}{| c |}{opticalChannelCapacity} \\ \hline
-		\hline
-		2 & 80 & ... & 80 \\ \hline
-		
-	\end{tabular}
-	\caption{links signal.}
-	\label{links_example}
-\end{table}
-
-In this case as all the optical channels are fully available it is possible to route demand 1 through path 1.
-
-Then it is created another signal, demandPathRoute, which informs us through where demand 1 is routed (links and optical channels used). This will be helpful to update the available capacity of all the links of the network, which will be performed in the next block named 'Links capacity refresh'. Here two different signals will be generated for different purposes.
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c|}
-		\hline
-		demandIndex & linkIndex & opticalChannelsUsed \\ \hline
-		1 & 2 & 1 \\ \hline
-		
+		Demand Index           & Path Index             & Link Index                       & 2                   \\ \hline
+		\multirow{2}{*}{1} & \multirow{2}{*}{1} & \multirow{2}{*}{Optical Channel} & \multirow{2}{*}{1} \\
+		&                        &                                  &                          \\ \hline
 	\end{tabular}
 	\caption{demandPathRoute signal.}
-	\label{demandPathRoute_example}
-\end{table}
+	\label{demandPathRoute_signal}
+\end{table} 
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c |}
-		
-		\hline
-		linksID & 0 \\ \hline
-		
-	\end{tabular}
-	\caption{linksFull signal.}
-	\label{linksFull_example}
-\end{table}
+The same thing will happen for the next 3 demands. When processing demand number 5 the shortest logical path is completely full so we must find a next new shortest logical path
 
-The linksFull signal will be sent the 'Physical topology generator' block in order to exclude, if needed, a certain links from the list of the available ones. This will result in the creation of new physical and logical topologies. In this particular case the value sent would be 0 because there was no need to retrieve a link.
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c | c|}
-		\hline
-		link & \multicolumn{3}{| c |}{opticalChannelCapacity} \\ \hline
-		\hline
-		2 & 0 & 80 & ... \\ \hline
-		
-	\end{tabular}
-	\caption{update signal.}
-	\label{update_example}
-\end{table}
-
-The update signal is reponsible for sending information to the 'Optical channel layer' block informing it of the capacity that was used to route demand 1 in order to update the capacity of the network links for correct future uses.
-
-So as demand 1 was successfully routed it is sent a signal, demandInfo, to the next block (Sink) to refresh the list of routed demands in order to be presented in the final cost report. (Equal to demandPathRoute signal ??) 
-
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c|}
-		\hline
-		demandIndex & linkIndex & opticalChannelsUsed \\ \hline
-		1 & 2 & 1 \\ \hline
-		
-	\end{tabular}
-	\caption{demandInfo signal.}
-	\label{demandInfo_example}
-\end{table}
-
-Next we will search for the next demand of the queue generated by the 'Scheduler' block, that is, the demand with the following demandIndex. If there is none that means that all demands have already been processed and so we can proceed to the final cost report.
