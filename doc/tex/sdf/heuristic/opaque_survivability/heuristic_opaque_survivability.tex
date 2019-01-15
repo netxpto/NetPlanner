@@ -566,47 +566,85 @@ The creation of this model for any scenario, started with some considerations an
 
 \vspace{13pt}
 
-In the figure below it is shown a fluxogram with the description of the opaque without survivability transport mode approach.
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/fluxogram_opaque_surv}
-	\caption{Fluxogram with the steps performed in the opaque without survivability transport mode approach.}
+	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/fluxogramaTopLevel}
+	\caption{High level diagram of the algorithms performed.}
 	\label{fluxogram_opaque_surv}
 \end{figure}
 
-\subsubsection{Creation of routes and aggregation of traffic}
-
-\vspace{11pt}
-In the opaque without survivability transport mode the routing algorithm starts with going through all the demands, create bidirectional routes (in this case the primary paths) based on the shortest path Dijkstra algorithm and then search the candidate routes for the respective demand. In this report it is used the shortest path type in hops. These routes are ordered sequentially and the shortest one per each demand is the primary path. The demands from the lower layer are removed and then saved in the upper layer. After this step, it is needed to set the traffic demands into the candidate routes that will integrate the network.
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
-	\includegraphics[width=14cm]{sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv1}
-	\caption{Creation of routes and aggregation of traffic for the opaque without survivability transport mode. The candidate routes are searched by the shortest path type method and the offered traffic demands are set into these routes.}
-	\label{grooming_opaque_surv1}
-\end{figure}
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\textbf{Parameter} & \textbf{Default value} & \textbf{Description} \\
+		\hline\hline
+		ODU0 & 0 Gbit/s & ODU0 demands  \\ \hline
+		ODU1 & 0 Gbit/s & ODU1 demands  \\ \hline
+		ODU2 & 0 Gbit/s & ODU2 demands  \\ \hline
+		ODU3 & 0 Gbit/s & ODU3 demands  \\ \hline
+		ODU4 & 0 Gbit/s & ODU4 demands  \\ \hline
+		Demands Ordering Criterion & Down (ODU4...ODU0) & Order by which demands will be sorted  \\ \hline
+		Number of Paths & 3 & Number of paths created between a pair of nodes  \\ \hline
+		Criterion & Hops & Shortest path type \\ \hline
+		Transport Mode & Non defined & Opaque, Transparent or Translucid modes    \\ \hline
+		Physical Topology & Non defined & Physical links scheme of the network  \\ \hline
+		Transport Systems & 1 & Number of transport systems connecting each pair of nodes  \\ \hline
+		Optical Channels & 100 & Number of optical channels per transport system \\ \hline
+		Optical Channel Capacity & 100 Gbit/s & Capacity of each optical channel \\ \hline
+		Light Path & & \\ \hline
+		Light Path Establishion Criterion & & \\ \hline 
+	\end{tabular}
+	\caption{System input parameters.}
+	\label{system_input}
+\end{table}
 
-\subsubsection{Calculation of the number of wavelengths per link}
-
-\vspace{11pt}
-The final step of the routing and grooming algorithms is to calculate the number of wavelengths per link for the whole network. The algorithm starts with going through all the links and getting the capacity based on the traffic per demand. The total carried traffic in the link will be divided by the wavelength capacity and it is now possible to obtain the number of wavelengths per link.
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
-	\includegraphics[width=16cm]{sdf/heuristic/opaque_survivability/figures/grooming_opaque_surv2}
-	\caption{Calculation of the number of wavelengths per link for the opaque transport mode. The link capacity is based on the traffic per demand.}
-	\label{grooming_opaque_surv2}
-\end{figure}
+	\begin{tabular}{| c | c |}
+		\hline
+		\textbf{Signal name} & \textbf{Description of the signal} \\
+		\hline\hline
+		\multicolumn{1}{|c|}{demands} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}lc@{}}demandIndex\\ sourceNode\\ destinationNode\\ oduType\\ restorationMethod\end{tabular}} \\ \hline
+		logicaltopology & adjacent matrix \\ \hline
+		\multicolumn{1}{|c|}{physicaltopology}  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}linkIndex\\ capacity (ODU0)\end{tabular}} \\ \hline
+		\multicolumn{1}{|c|}{demandListOfPaths} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ pathIndex\\ linkIndex\\ Hops\end{tabular}} \\ \hline
+		\multicolumn{1}{|c|}{path} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}pathIndex\\ linkIndex\\ Hops\end{tabular}} \\ \hline
+		\multicolumn{1}{|c|}{lightPath}        & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}lightPathIndex\\ sourceNode\\ destinationNode\\ capacity (ODU0)\\ wavelenght\\ logicalLinks\end{tabular}} \\ \hline
+		demandIndex & integer \\ \hline
+		\multicolumn{1}{|c|}{demandPathRoute}  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}l@{}}demandIndex\\ linkIndex\\ opticalChannelsUsed\end{tabular}} \\ \hline
+	\end{tabular}
+	\caption{System Signals.}
+	\label{system_signals}
+\end{table}
 
-\vspace{13pt}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		\textbf{Block} & \textbf{State variables} \\
+		\hline\hline
+		Scheduler & ODU1, ODU2, ODU3, ODU4  \\ \hline
+		Logical Topology Generator &  \\ \hline
+		Physical Topology Generator & \\ \hline
+		Path Generator & logicaltopology  \\ \hline
+		Path Tester & physicaltopology \\ \hline
+		Sink (Blocking) &  \\ \hline
+		Sink (Routed) &  \\ \hline
+	\end{tabular}
+	\caption{Blocks state variables.}
+	\label{blocks_input}
+\end{table}
 
-\newpage
-\vspace{11pt}
+\pagebreak
 
-Considering only traffic between node 2 and node 4 and capacity of 4 optical channels per transmission system. \\
+\textbf{Example:} \\
+\\
+Having just 4 optical channels per transmission system, each with a capacity of 100 Gbps, and the following traffic model.
 
-The traffic matrices for 100 Gbits/s on node 2 -> node 4:
+These traffic matrices are represented by ODU0, ODU1, ODU2, ODU3 and ODU4 where each one has a certain bit rate.
+The ODU0 corresponds to 1.25 Gbits/s, the ODU1 corresponds to 2.5 Gbits/s, the ODU2 corresponds to 10 Gbits/s, the ODU3 corresponds to 40 Gbits/s and finally the ODU4 corresponds to 100 Gbits/s.
+As we can see below, these arrays are bi-directional because they are symmetric arrays and as such, the traffic sent in a certain direction must be the same traffic sent in that opposite direction.
 
 \[
 ODU0=
@@ -652,41 +690,50 @@ ODU2=
 ODU4=
 \begin{bmatrix}
 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 9 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 9 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0
 \end{bmatrix}
 \]
 
-\newpage
-\vspace{13pt}
-Results:
+\vspace{17pt}
+Through these ODU's we can calculate the total network traffic for this specific scenario:\\
 
-\begin{table}[h!]
+$T_1^0$ = 0x1.25 = 0 Gbits/s \qquad
+$T_1^1$ = 0x2.5 = 0 Gbits/s \qquad
+$T_1^2$ = 0x10 = 0 Gbits/s \\
+
+$T_1^3$ = 0x40 = 0 Gbits/s \quad
+$T_1^4$ = 18x100 = 1800 Gbits/s \\
+
+$T_{1}$ = 0 + 0 + 0 + 0 + 1800 = 1800 Gbits/s \qquad
+$T$ = 1800/2 = \textbf{900 Gbits/s}\\
+
+Where the variable $T_1^x$ represents the unidirectional traffic of the ODUx, for example, $T_1^0$ represents the unidirectional traffic of the ODU0 and $T_1^1$ represents the unidirectional traffic of the ODU1. The variable $T_{1}$ represents the total of unidirectional traffic that is injected into the network and finally the variable $T$ represents the total of bidirectional traffic.\\
+
+The demands are first ordered in the Scheduler block considering the entry variable, Routing ordering rule (type of ODU), in a single queue.
+
+\begin{table}[H]
 	\centering
-	\begin{tabular}{|| c | c | c | c ||}
+	\begin{tabular}{| c | c | c | c | c |}
+		
 		\hline
-		Node Pair & Wavelengths Forward & Wavelengths Backward & Remaining Capacity (Gbits) \\
-		\hline
-		Node 1 -> Node 2 & 0 & 0 & 400 \\
-		Node 2 -> Node 1 & 0 & 0 & 400 \\
-		Node 3 -> Node 2 & 0 & 0 & 400 \\
-		Node 2 -> Node 3 & 0 & 0 & 400 \\
-		Node 1 -> Node 3 & 0 & 0 & 400 \\
-		Node 3 -> Node 1 & 0 & 0 & 400 \\
-		Node 3 -> Node 5 & 0 & 0 & 400 \\
-		Node 5 -> Node 3 & 0 & 0 & 400 \\
-		Node 5 -> Node 6 & 0 & 0 & 400 \\
-		Node 6 -> Node 5 & 0 & 0 & 400 \\
-		Node 4 -> Node 6 & 0 & 0 & 400 \\
-		Node 6 -> Node 4 & 0 & 0 & 400 \\
-		Node 4 -> Node 5 & 0 & 0 & 400 \\
-		Node 5 -> Node 4 & 0 & 0 & 400 \\
-		Node 2 -> Node 4 & 1 & 0 & 300 \\
-		Node 4 -> Node 2 & 0 & 1 & 400 \\
-		\hline
+		demandIndex  & sourceNode & destinationNode & oduType & restorationMethod \\
+		\hline\hline
+		
+		1 & 2 & 4 & 4 & No \\ \hline
+		2 & 2 & 4 & 4 & No \\ \hline
+		3 & 2 & 4 & 4 & No \\ \hline
+		4 & 2 & 4 & 4 & No \\ \hline
+		5 & 2 & 4 & 4 & No \\ \hline
+		6 & 2 & 4 & 4 & No \\ \hline
+		7 & 2 & 4 & 4 & No \\ \hline
+		8 & 2 & 4 & 4 & No \\ \hline
+		9 & 2 & 4 & 4 & No \\ \hline
+		
 	\end{tabular}
-\end{table}
-
+	\caption{Demands queue generated in the Scheduler block.}
+	\label{scheduler_example}
+\end{table} 
