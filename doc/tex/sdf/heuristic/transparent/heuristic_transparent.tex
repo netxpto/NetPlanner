@@ -72,7 +72,7 @@ In the next pages it will be described all the steps performed to obtain the fin
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=16cm]{sdf/heuristic/transparent_survivability/figures/fluxogram_transparent_surv}
+\includegraphics[width=16cm]{sdf/heuristic/transparent/figures/fluxogram_transparent_surv}
 \caption{Fluxogram with the steps performed in the transparent without survivability transport mode approach.}
 \label{fluxogram_transp_surv}
 \end{figure}
@@ -85,14 +85,14 @@ The first step is to create the traffic matrices based on the reference network 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=7cm]{sdf/heuristic/transparent_survivability/figures/join_matrices_odus}
+\includegraphics[width=7cm]{sdf/heuristic/transparent/figures/join_matrices_odus}
 \caption{Join the 5 ODU traffic matrices into 1 single file "ODUs". The 5 traffic demands from the traffic matrices previously created are joined into 1 file to load it later on Net2Plan.}
 \label{join_matrices_odus_transp_protec}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=8cm]{sdf/heuristic/transparent_survivability/figures/traffic_matrices}
+\includegraphics[width=8cm]{sdf/heuristic/transparent/figures/traffic_matrices}
 \caption{Load of the join traffic matrices algorithm for the transparent transport mode on Net2Plan. It is defined the 5 paths to load the 5 ODU traffic matrices and the last path is the one where will be saved the file that joins all 5 the traffic demands.}
 \label{traffic_matrices_transp_surv_ref}
 \end{figure}
@@ -105,7 +105,7 @@ The next step is to create the allowed physical topology of the network in Net2P
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=12cm]{sdf/heuristic/transparent_survivability/figures/allowed_physical}
+\includegraphics[width=12cm]{sdf/heuristic/transparent/figures/allowed_physical}
 \caption{Allowed physical topology. The allowed physical topology is defined by the duct and sites in the field. It is assumed that each duct supports up to 1 bidirectional transmission system and each site supports up to 1 node.}
 \label{allowed_physical_surv_transp}
 \end{figure}
@@ -118,21 +118,21 @@ The allowed physical and optical topologies, the logical topologies for all ODUs
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=15cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_creation_transparent}
+\includegraphics[width=15cm]{sdf/heuristic/transparent/figures/logical_topology_creation_transparent}
 \caption{Java code of the logical topology approach for the transparent transport mode. The logical layer is created by adding direct links between all end nodes. The new layer is now the transparent logical topology of the network.}
 \label{logical_topology_creation_transparent_surv}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_load_transparent}
+\includegraphics[width=10cm]{sdf/heuristic/transparent/figures/logical_topology_load_transparent}
 \caption{Load of the logical topology algorithm for the transparent transport mode.}
 \label{logical_topology_load_transparent_surv}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{sdf/heuristic/transparent_survivability/figures/allowed_optical}
+\includegraphics[width=10cm]{sdf/heuristic/transparent/figures/allowed_optical}
 \caption{Allowed optical topology. It is assumed that each connections between demands supports up to 100 lightpaths.}
 \label{allowed_optical_surv_transparent}
 \end{figure}
@@ -144,14 +144,14 @@ After a network topology is created, it is now time to set the routing algorithm
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=14cm]{sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv1}
+\includegraphics[width=14cm]{sdf/heuristic/transparent/figures/grooming_transparent_surv1}
 \caption{Creation of routes and aggregation of traffic for the transparent without survivability transport mode. The candidate routes are searched by the shortest path type method and the offered traffic demands are set into these routes.}
 \label{grooming_transparent_surv1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=14cm]{sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv2}
+\includegraphics[width=14cm]{sdf/heuristic/transparent/figures/grooming_transparent_surv2}
 \caption{Creation of routes and aggregation of traffic for the transparent without survivability transport mode. The traffic demands are set into the candidate primary path routes found earlier.}
 \label{grooming_transparent_surv2}
 \end{figure}
@@ -189,14 +189,14 @@ The final step of the routing and grooming algorithms is to calculate the number
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv3}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/grooming_transparent_surv3}
 \caption{Calculation of the number of wavelengths per link for the transparent transport mode. The link capacity is reserved based on the previous traffic aggregation.}
 \label{grooming_transparent_surv3}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=11cm]{sdf/heuristic/transparent_survivability/figures/grooming_transparent_surv4}
+\includegraphics[width=11cm]{sdf/heuristic/transparent/figures/grooming_transparent_surv4}
 \caption{Load of the grooming algorithm for the transparent without survivability transport mode. The total number of routes per demand is set to 10, the user can define if the model is with or without protection, the shortest path type is set to "hops" \ and the capacity per wavelength is used 100 optical channels.}
 \label{grooming_transparent_surv4}
 \end{figure}
@@ -209,7 +209,7 @@ In order to obtain the network CAPEX results, the formulas needed to calculate t
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{sdf/heuristic/transparent_survivability/figures/cost_report_transparent}
+\includegraphics[width=10cm]{sdf/heuristic/transparent/figures/cost_report_transparent}
 \caption{Load of the cost report algorithm on Net2Plan. The result view is an HTML page with the network optical and electrical components and their costs.}
 \label{cost_report_transparent_surv}
 \end{figure}
@@ -227,56 +227,56 @@ In this scenario we have to take into account the traffic calculated in \ref{low
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/allowed_physical}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/allowed_physical}
 \caption{Allowed physical topology. The allowed physical topology is defined by the duct and sites in the field. It is assumed that each duct supports up to 1 bidirectional transmission system and each site supports up to 1 node.}
 \label{allowed_physical_surv_ref_low_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/allowed_optical}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/allowed_optical}
 \caption{Allowed optical topology. The allowed optical topology is defined by the transport mode (transparent transport mode in this case). It is assumed that each connections between demands supports up to 100 lightpaths.}
 \label{allowed_optical_surv_ref_low_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_low}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu0_low}
 \caption{ODU0 logical topology defined by the ODU0 traffic matrix.}
 \label{logical_ODU0_surv_ref_low_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_low}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu1_low}
 \caption{ODU1 logical topology defined by the ODU1 traffic matrix.}
 \label{logical_ODU1_surv_ref_low_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_low}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu2_low}
 \caption{ODU2 logical topology defined by the ODU2 traffic matrix.}
 \label{logical_ODU2_surv_ref_low_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_low}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu3_low}
 \caption{ODU3 logical topology defined by the ODU3 traffic matrix.}
 \label{logical_ODU3_surv_ref_low_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_low}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu4_low}
 \caption{ODU4 logical topology defined by the ODU4 traffic matrix.}
 \label{logical_ODU4_surv_ref_low_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/physical_topology}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/physical_topology}
 \caption{Physical topology after dimensioning.}
 \label{physical_topology_surv_ref_low_heuristic_transparent}
 \end{figure}
@@ -349,56 +349,56 @@ In this scenario we have to take into account the traffic calculated in \ref{med
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/allowed_physical}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/allowed_physical}
 \caption{Allowed physical topology. The allowed physical topology is defined by the duct and sites in the field. It is assumed that each duct supports up to 1 bidirectional transmission system and each site supports up to 1 node.}
 \label{allowed_physical_surv_ref_medium_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/allowed_optical}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/allowed_optical}
 \caption{Allowed optical topology. The allowed optical topology is defined by the transport mode (transparent transport mode in this case). It is assumed that each connections between demands supports up to 100 lightpaths.}
 \label{allowed_optical_surv_ref_medium_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_medium}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu0_medium}
 \caption{ODU0 logical topology defined by the ODU0 traffic matrix.}
 \label{logical_ODU0_surv_ref_medium_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_medium}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu1_medium}
 \caption{ODU1 logical topology defined by the ODU1 traffic matrix.}
 \label{logical_ODU1_surv_ref_medium_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_medium}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu2_medium}
 \caption{ODU2 logical topology defined by the ODU2 traffic matrix.}
 \label{logical_ODU2_surv_ref_medium_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_medium}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu3_medium}
 \caption{ODU3 logical topology defined by the ODU3 traffic matrix.}
 \label{logical_ODU3_surv_ref_medium_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_medium}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu4_medium}
 \caption{ODU4 logical topology defined by the ODU4 traffic matrix.}
 \label{logical_ODU4_surv_ref_medium_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/physical_topology}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/physical_topology}
 \caption{Physical topology after dimensioning.}
 \label{physical_topology_surv_ref_medium_heuristic_transparent}
 \end{figure}
@@ -443,56 +443,56 @@ In this scenario we have to take into account the traffic calculated in \ref{hig
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/allowed_physical}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/allowed_physical}
 \caption{Allowed physical topology. The allowed physical topology is defined by the duct and sites in the field. It is assumed that each duct supports up to 1 bidirectional transmission system and each site supports up to 1 node.}
 \label{allowed_physical_surv_ref_high_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/allowed_optical}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/allowed_optical}
 \caption{Allowed optical topology. The allowed optical topology is defined by the transport mode (transparent transport mode in this case). It is assumed that each connections between demands supports up to 100 lightpaths.}
 \label{allowed_optical_surv_ref_high_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu0_high}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu0_high}
 \caption{ODU0 logical topology defined by the ODU0 traffic matrix.}
 \label{logical_ODU0_surv_ref_high_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu1_high}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu1_high}
 \caption{ODU1 logical topology defined by the ODU1 traffic matrix.}
 \label{logical_ODU1_surv_ref_high_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu2_high}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu2_high}
 \caption{ODU2 logical topology defined by the ODU2 traffic matrix.}
 \label{logical_ODU2_surv_ref_high_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu3_high}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu3_high}
 \caption{ODU3 logical topology defined by the ODU3 traffic matrix.}
 \label{logical_ODU3_surv_ref_high_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/logical_topology_odu4_high}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logical_topology_odu4_high}
 \caption{ODU4 logical topology defined by the ODU4 traffic matrix.}
 \label{logical_ODU4_surv_ref_high_heuristic_transparent}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/physical_topology}
+\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/physical_topology}
 \caption{Physical topology after dimensioning.}
 \label{physical_topology_surv_ref_high_heuristic_transparent}
 \end{figure}
@@ -598,18 +598,18 @@ The creation of this model for any scenario, started with some considerations an
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=15cm]{sdf/heuristic/transparent_survivability/figures/fluxogramaSemGroomingHighLevel}
+	\includegraphics[width=15cm]{sdf/heuristic/transparent/figures/fluxogramaSemGroomingHighLevel}
 	\caption{High level diagram of the heuristic algorithm performed.}
 	\label{fluxogram_transparent_surv}
 \end{figure}
 
-As it is shown in figure 1.112, it is needed a Scheduler block which will be responsible for the creation of an ordered queue containing all the demands entering this network, in an order previously defined (based on the demands ODU type), and ready to be routed. 
-In order to route those demands there will also be the necessity of a Path Generator block which as its own name implies will create a list of logical paths for each demand between its source and destination nodes, through information received by the Logical Topology Generator block. Next in the Path Tester block where the list of paths previously associated to a demand are tested in order to check their availability in terms of physical capacity in each of the necessary links that comprise the light path used. A Logical and Physical Topology Generators are also needed, the first in order to create the matrix of possible logical connections between nodes and the other to inform us about this network links capacity which will after be continuously updated in the Path Tester block. Finally there are two remaining Sink blocks one to store demands that were routed and their correspondent information and the other to register blocked demands. Both are very usefull to store the information that will later on be present in the final cost report. 
+As it is shown in figure 1.112, it is needed a Scheduler block which will be responsible for the creation of an ordered queue containing all the demands entering this network, in an order previously defined (based on the demands ODU type), and ready to be routed.
+In order to route those demands there will also be the necessity of a Path Generator block which as its own name implies will create a list of logical paths for each demand between its source and destination nodes, through information received by the Logical Topology Generator block. Next in the Path Tester block where the list of paths previously associated to a demand are tested in order to check their availability in terms of physical capacity in each of the necessary links that comprise the light path used. A Logical and Physical Topology Generators are also needed, the first in order to create the matrix of possible logical connections between nodes and the other to inform us about this network links capacity which will after be continuously updated in the Path Tester block. Finally there are two remaining Sink blocks one to store demands that were routed and their correspondent information and the other to register blocked demands. Both are very usefull to store the information that will later on be present in the final cost report.
 
 
 %\begin{figure}[H]
 %	\centering
-%	\includegraphics[width=16cm]{sdf/heuristic/transparent_survivability/figures/fluxogramaSemGrooming}
+%	\includegraphics[width=16cm]{sdf/heuristic/transparent/figures/fluxogramaSemGrooming}
 %	\caption{Low level diagram of the algorithms performed.}
 %	\label{fluxogram_transparent_surv}
 %\end{figure}
@@ -642,11 +642,11 @@ In order to route those demands there will also be the necessity of a Path Gener
 	\label{system_signals}
 \end{table}
 	Table 1.20 presents the system signals as well as their type.\\ \\
- \textbf{Signal Types} 
-\\ 
+ \textbf{Signal Types}
+\\
 \\
 \underline{demand}
-\\ 
+\\
 \begin{table}[H]
 	\begin{tabular}{|c|c|c|c|l|}
 		\hline
@@ -655,8 +655,8 @@ In order to route those demands there will also be the necessity of a Path Gener
 	\end{tabular}
 	\caption{Constitution of a demand.}
 	\label{demand_variable}
-\end{table} 
-N represents the number of nodes present in the network.\\ \\ 
+\end{table}
+N represents the number of nodes present in the network.\\ \\
 \underline{logicalTopology}\\
 \\
 This is the output signal of the Logical topology generator block, it has a matrix NxN where every logical connection existent between nodes in the network is displayed. In this particular case we are studying the transparent trasnport node so our logical toplogy will be the one presented in table 1.23. In addition here will occur the creation structures corresponding to our network logical links and light paths.\\
@@ -773,8 +773,8 @@ Inside of the Path Generator block a list of logical paths associated to a pair 
 	\begin{tabular}{|c|c|l|l|}
 		\hline
 		Demand index           & \multicolumn{3}{c|}{Path index} \\ \hline
-		\multirow{3}{*}{1...$\infty$} & \multicolumn{3}{c|}{x}          \\ \cline{2-4} 
-		& \multicolumn{3}{c|}{x+1}        \\ \cline{2-4} 
+		\multirow{3}{*}{1...$\infty$} & \multicolumn{3}{c|}{x}          \\ \cline{2-4}
+		& \multicolumn{3}{c|}{x+1}        \\ \cline{2-4}
 		& \multicolumn{3}{c|}{x+2}        \\ \hline
 	\end{tabular}
 	\caption{demandListOfPaths signal.}
@@ -996,7 +996,7 @@ The demands are first ordered in the Scheduler block considering the entry varia
 	\end{tabular}
 	\caption{Demands queue generated in the Scheduler block.}
 	\label{scheduler_example}
-\end{table} 
+\end{table}
 
 The demands presented in the previous table will be processed from the lowest to highest index.
 \\ \\
@@ -1004,11 +1004,11 @@ The demands presented in the previous table will be processed from the lowest to
 
 First of all a set of shortest logical paths will be selected based on the logical topology of our network. The paths selected and how many will depend on entry variables, Criterion and Number of Paths, respectively.
 Once our shortest logical path is chosen, we must test the same starting by analysing if there is already an entry on our list of light paths established in the network for that logical link or set of links. If there is none or if the existents do not have enough capacity left to transport our demand an effort must be made to create a new entry, that is, create a new lightpath in that logical link or set of links. \\
-In this particular case as the list of lightpaths is initially void we must a create a new lightpath using the direct logical link between nodes 2 and 4, if possible. 
+In this particular case as the list of lightpaths is initially void we must a create a new lightpath using the direct logical link between nodes 2 and 4, if possible.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=13cm]{sdf/heuristic/transparent_survivability/figures/allowed_optical}
+	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/allowed_optical}
 	\caption{Allowed optical topology. The allowed optical topology is defined by the transport mode (transparent transport mode in this case). It is assumed that each connections between demands supports up to 4 lightpaths (100 Gbps each).}
 	\label{allowed_optical_surv_ref_high_heuristic_transparent}
 \end{figure}
@@ -1018,8 +1018,8 @@ In this particular case as the list of lightpaths is initially void we must a cr
 	\begin{tabular}{|c|c|l|l|}
 		\hline
 		Demand index           & \multicolumn{3}{c|}{Path index} \\ \hline
-		\multirow{3}{*}{1} & \multicolumn{3}{c|}{1}          \\ \cline{2-4} 
-		& \multicolumn{3}{c|}{2}        \\ \cline{2-4} 
+		\multirow{3}{*}{1} & \multicolumn{3}{c|}{1}          \\ \cline{2-4}
+		& \multicolumn{3}{c|}{2}        \\ \cline{2-4}
 		& \multicolumn{3}{c|}{3}        \\ \hline
 	\end{tabular}
 	\caption{demandListOfPaths signal.}
@@ -1054,16 +1054,16 @@ Since it's constituted only by logical link 2 we must test its capacity in order
 \end{table}
 
 Since its the first light path to be established in this network the index will be equal to 1. In order to see if there is enough capacity to create this light path we will need to test the physical links that constitutes the very same, in this particular example link number 2.\\
- 
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		Link Index & Light Path Number & Physical Links  & Wavelenght & Capacity (ODU0s) \\ \hline
-		2          & 1                 & {[}01000000{]} & 1 & 80    \\ 	\hline 
+		2          & 1                 & {[}01000000{]} & 1 & 80    \\ 	\hline
 	\end{tabular}
 	\caption{Light path 1.}
-	\label{lightpath_example} 
+	\label{lightpath_example}
 \end{table}
 \begin{table}[H]
 		\centering
@@ -1105,7 +1105,7 @@ So the final values of these variables after processing demand 1 will be.
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		Link Index & Light Path Number & Physical Links  & Wavelenght & Capacity (ODU0s) \\ \hline
-		2          & 1                 & {[}01000000{]} & 1 & 0    \\ 	\hline 
+		2          & 1                 & {[}01000000{]} & 1 & 0    \\ 	\hline
 	\end{tabular}
 	\caption{Light path 1.}
 	\label{lightpath_example}
