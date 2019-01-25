@@ -844,9 +844,8 @@ If there is already an entry in the light path table and if the remaining capaci
 	\begin{tabular}{|c|c|c|}
 		\hline
 		\textbf{Parameter} & \textbf{Default value} & \textbf{Description}                                                                                           \\ \hline
-		Number of Paths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes.\end{tabular}           \\ \hline
-		Demand Index                                                                 & None          & Initial value of demand index.                                                                       \\ \hline
-		Routing Ordering Rule                                                        & ODU4...ODU0   & \begin{tabular}[c]{@{}c@{}}Order by which demands will be\\ sorted.\end{tabular}                     \\ \hline
+		Number of Paths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes.\end{tabular}           \\  \hline
+		Routing Ordering Rule                                                        & 0   & \begin{tabular}[c]{@{}l@{}}0 - Descending order\\ 1 - Ascending order\\ 2 - Other\end{tabular} \\ \hline                    
 		ODU0                                                                         & Null          & ODU0 demands.                                                                                        \\ \hline
 		ODU1                                                                         & Null          & ODU1 demands.                                                                                        \\ \hline
 		ODU2                                                                         & Null          & ODU2 demands.                                                                                        \\ \hline
@@ -869,7 +868,7 @@ If there is already an entry in the light path table and if the remaining capaci
 	\begin{tabular}{|c|c|c|}
 		\hline
 		\textbf{Block}                                                               & \textbf{Input Parameters}                                                                                                         & \textbf{Input Signals}                                                                \\ \hline
-		Scheduler                                                             & \begin{tabular}[c]{@{}c@{}}ODU0, ODU1,ODU2, ODU3, ODU4,\\  Demand Index, Routing Odering Rule\end{tabular}                 & None                                                                         \\ \hline
+		Scheduler                                                             & \begin{tabular}[c]{@{}c@{}}ODU0, ODU1,ODU2, ODU3, ODU4,\\ Routing Odering Rule\end{tabular}                 & None                                                                         \\ \hline
 		\begin{tabular}[c]{@{}c@{}}Logical Topology\\ Generator\end{tabular}  & \begin{tabular}[c]{@{}c@{}}Transport Mode, Physical\\ Topology\end{tabular}                                                & None                                                                         \\ \hline
 		\begin{tabular}[c]{@{}c@{}}Physical Topology\\ Generator\end{tabular} & \begin{tabular}[c]{@{}c@{}}Physical Topology, Optical Channels,\\ Transport Systems, Optical Channel Capacity\end{tabular} & None                                                                         \\ \hline
 		Path Generator                                                        & Number of Paths, Criterion                                                                                                 & \begin{tabular}[c]{@{}c@{}}LogicalTopology,\\ RemovedPaths\end{tabular}      \\ \hline

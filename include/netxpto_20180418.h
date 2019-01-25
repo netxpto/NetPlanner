@@ -21,6 +21,7 @@ const double PI = 3.1415926535897932384;		// Value of pi
 const double SPEED_OF_LIGHT = 299792458;		// Speed of light in vaccum
 const double PLANCK_CONSTANT = 6.626070040e-34; // NIST
 const int MAX_NUMBER_OF_PATHS = 2;
+const int NUMBER_OF_NODES = 6;
 
 using namespace std;
 
@@ -33,13 +34,14 @@ typedef struct { t_real probabilityAmplitude;  t_real polarization; } t_photon;
 typedef struct { t_photon path[MAX_NUMBER_OF_PATHS]; } t_photon_mp;
 typedef struct { t_complex_xy path[MAX_NUMBER_OF_PATHS]; } t_photon_mp_xy;
 typedef complex<t_real> t_iqValues;
+typedef struct { t_integer matrix[NUMBER_OF_NODES][NUMBER_OF_NODES]; } t_matrix;
+
 typedef struct {
 	string messageType;
 	string messageDataLength; 
 	string messageData; 
 	int size() { return 3; }
 } t_message;
-
 enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, PhotonValueMPXY, Message};
 
 
@@ -64,10 +66,10 @@ class Signal {
 	long int firstValueToBeSaved{ 1 };				// First value (>= 1) to be saved
 	bool saveSignal{ true };
 
-	string type;							// Signal type
+	string type;									// Signal type
 	signal_value_type valueType;					// Signal samples type
 
-	string fileName{ "" };						// Name of the file where data values are going to be saved
+	string fileName{ "" };							// Name of the file where data values are going to be saved
 	string folderName{ "signals" };					// folder where signals are going to be saved by default
 
 
@@ -193,6 +195,12 @@ public:
 	void setCentralWavelength(double cWavelength){ centralWavelength = cWavelength; centralFrequency = SPEED_OF_LIGHT / centralWavelength; }
 	double getCentralWavelength(){ return centralWavelength; }
 
+};
+// SIGNAL TYPES
+class demand : public Signal {
+public:
+	demand(string fName) { setFileName(fName); }
+	demand() {}
 };
 
 
