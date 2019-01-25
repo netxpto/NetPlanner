@@ -1,7 +1,7 @@
 # ifndef SCHEDULER_H_
 # define SCHEDULER_H_
 
-/*
+
 # include <vector>
 # include <complex>
 # include <fstream>
@@ -13,10 +13,10 @@
 # include <vector>
 # include <algorithm> 
 # include <random>
-#include <chrono>
-*/
+# include <chrono>
 
-# include "netxpto_20180118.h"
+
+# include "C:\Users\ejfernandes\Desktop\New folder\NetPlanner\include\netxpto_20180418.h"
 
 //enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros };
 
@@ -64,8 +64,24 @@ class Scheduler : public Block {
 
 	void setODU0(BinarySourceMode m) {mode = m;}
 	BinarySourceMode const getODU0(void) { return mode; };
+
+	void setODU1(BinarySourceMode m) { mode = m; }
+	BinarySourceMode const getODU1(void) { return mode; };
+
+	void setODU2(BinarySourceMode m) { mode = m; }
+	BinarySourceMode const getODU2(void) { return mode; };
+
+	void setODU3(BinarySourceMode m) { mode = m; }
+	BinarySourceMode const getODU3(void) { return mode; };
+
+	void setODU4(BinarySourceMode m) { mode = m; }
+	BinarySourceMode const getODU4(void) { return mode; };
+
+	void setDemandsOrderingRule(BinarySourceMode m) { mode = m; }
+	BinarySourceMode const setDemandsOrderingRule(void) { return mode; };
+
 	
-	void setProbabilityOfZero(double pZero) { probabilityOfZero = pZero; };
+	/*void setProbabilityOfZero(double pZero) { probabilityOfZero = pZero; };
 	double const getProbabilityOfZero(void) { return probabilityOfZero; };
 
 	void setBitStream(string bStream) { bitStream = bStream; };
@@ -78,7 +94,7 @@ class Scheduler : public Block {
 	int const getPatternLength(void) { return patternLength; }
 	
 	void setBitPeriod(double bPeriod);
-	double const getBitPeriod(void) { return bitPeriod; }
+	double const getBitPeriod(void) { return bitPeriod; }*/
 
 };
 
