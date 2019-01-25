@@ -16,7 +16,7 @@
 # include <chrono>
 
 
-# include "C:\Users\ejfernandes\Desktop\New folder\NetPlanner\include\netxpto_20180418.h"
+# include "..\include\netxpto_20180815.h"
 
 //enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros };
 
@@ -43,26 +43,25 @@ class Scheduler : public Block {
 	int posBitStream{ 0 };
 
 	 // Input parameters
-	 std::default_random_engine generator;
-	 BinarySourceMode mode{ PseudoRandom };
-	 double probabilityOfZero{ 0.5 };
-	 int patternLength{ 7 };
-	 string bitStream{ "0100011101010101" };
-	 long int numberOfBits{ -1 };
-	 double bitPeriod{ 1.0 / 100e9 };
+	t_matrix odu0{};
+	t_matrix ODU1{};
+	t_matrix ODU2{};
+	t_matrix ODU3{};
+	t_matrix ODU4{};
+	t_integer OrderingRule{ 0 };
 
 
  public:
 
 	// Methods
 	Scheduler() {};
-	Scheduler(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig){};
+	Scheduler(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig){};
 
 	void initialize(void);
 	
 	bool runBlock(void);
 
-	void setODU0(BinarySourceMode m) {mode = m;}
+	void setODU0(t_matrix od0) {odu0 = od0;}
 	BinarySourceMode const getODU0(void) { return mode; };
 
 	void setODU1(BinarySourceMode m) { mode = m; }

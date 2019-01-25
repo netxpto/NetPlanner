@@ -1,6 +1,26 @@
-# include "C:\Users\ejfernandes\Desktop\New folder\NetPlanner\include\netxpto_20180418.h"
-# include "C:\Users\ejfernandes\Desktop\New folder\NetPlanner\include\scheduler_20190122.h"
-//# include "../../include/sink_20180815.h"
+# include "..\..\..\include\netxpto_20180815.h"
+# include "..\..\..\include\scheduler_20190122.h"
+# include "..\..\..\include\sink_20180815.h"
+
+
+const int NUMBER_OF_NODES = 6;
+
+typedef struct { t_integer matrix[NUMBER_OF_NODES][NUMBER_OF_NODES]; } t_matrix;
+
+class Demand : public Signal {
+
+public:
+	Demand() : Signal() { Signal::setBuffer(); }
+	Demand(string fileName) : Signal(fileName) { setBuffer(); }
+	Demand(string fileName, t_unsigned_long bLength) : Signal(fileName, bLength) { setBuffer(); }
+	Demand(string fileName, string folderName) : Signal(fileName, folderName) { setBuffer(); }
+	Demand(string fileName, string folderName, t_unsigned_long bLength) : Signal(fileName, folderName, bLength) { setBuffer(); }
+	Demand(t_unsigned_long bLength) : Signal(bLength) { setBuffer(); }
+
+private:
+
+	
+};
 
 //##########################################################################################
 //######################## Simulation Input Parameters #####################################
@@ -21,7 +41,7 @@ t_integer OrderingRule{ 0 };
 int main()
 {
 
-	demand SchedulerOut{ "SchedulerOut.sgn" };
+	Demand SchedulerOut{ "SchedulerOut.sgn" };
 	Scheduler Scheduler_{ {},{ &SchedulerOut} };
 	Scheduler_.setODU0(ODU0);
 	Scheduler_.setODU1(ODU1);
