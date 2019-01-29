@@ -38,11 +38,12 @@ double bitPeriod{ 1.0 / 100e9 };
  
 class Scheduler : public Block {
 
-	// State variables
+	// State variables ODU0, ODU1, ODU2, ODU3, ODU4
+	/*
 	std::vector<int> acumul;
 	int posBitStream{ 0 };
 
-	 // Input parameters
+	 // Input parameters  ODU0, ODU1, ODU2, ODU3, ODU4, Demands Ordering Criterion
 	 std::default_random_engine generator;
 	 BinarySourceMode mode{ PseudoRandom };
 	 double probabilityOfZero{ 0.5 };
@@ -50,7 +51,7 @@ class Scheduler : public Block {
 	 string bitStream{ "0100011101010101" };
 	 long int numberOfBits{ -1 };
 	 double bitPeriod{ 1.0 / 100e9 };
-
+	*/
 
  public:
 
