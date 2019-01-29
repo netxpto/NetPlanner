@@ -112,6 +112,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\lib\netxpto_20180815.cpp" />
+    <ClCompile Include="..\..\..\lib\scheduler_20190122.cpp" />
     <ClCompile Include="transparent_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>

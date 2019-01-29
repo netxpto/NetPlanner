@@ -21,6 +21,9 @@
     <ClCompile Include="..\..\..\lib\netxpto_20180815.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\lib\scheduler_20190122.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\netxpto_20180815.h">
