@@ -14,87 +14,95 @@
 # include <algorithm> 
 # include <random>
 # include <chrono>
+const int NUMBER_OF_NODES = 6;
 
 
 # include "..\include\netxpto_20180815.h"
 
-//enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros };
-
 using namespace std;
 
-/* Generates a bit stream. Three types of sources are implemented (Random, PseudoRandom, DeterministicCyclic). In the Random mode the probability of generate a "0" is
-going to be probabilityOfZero and probability of "1" is given by 1-probabilityOfZero. In the PseudoRandom mode, a PRBS sequence is generated with period
-2^patternLength-1. In the DeterministicCyclic mode it is generated the sequence specified by bitStream.
-If numberOfBits = -1 it generates an arbitrary large number of bits, otherwise the bit stream length equals numberOfBits.
-The input parameter bitPerido specifies the bit period.
-INPUT PARAMETERS:
-BinarySourceMode type{ PseudoRandom };
-double probabilityOfZero{ 0.5 };
-int patternLength{ 7 };
-string bitStream{ "01" };
-long int numberOfBits{ -1 };
-double bitPeriod{ 1.0 / 100e9 };
-*/
  
 class Scheduler : public Block {
 
 	// State variables
-	std::vector<int> acumul;
-	int posBitStream{ 0 };
+	t_integer demandIndex = { 0 };
+	t_integer sourceNode = { 0 };
+	t_integer destinationNode = { 0 };
+	t_integer oduType = { 0 };
+	t_integer restorationMethod = { 0 };
 
 	 // Input parameters
-	t_matrix odu0{};
-	t_matrix ODU1{};
-	t_matrix ODU2{};
-	t_matrix ODU3{};
-	t_matrix ODU4{};
-	t_integer OrderingRule{ 0 };
+	t_matrix odu0{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+	t_matrix odu1{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+	t_matrix odu2{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+	t_matrix odu3{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+	t_matrix odu4{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+	t_integer orderingRule{ 0 };
 
 
  public:
 
-	// Methods
+	// Methods (Constructors)
 	Scheduler() {};
 	Scheduler(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig){};
 
 	void initialize(void);
-	
 	bool runBlock(void);
 
 	void setODU0(t_matrix od0) {odu0 = od0;}
-	BinarySourceMode const getODU0(void) { return mode; };
+	t_matrix const getODU0(void) { return odu0; };
 
-	void setODU1(BinarySourceMode m) { mode = m; }
-	BinarySourceMode const getODU1(void) { return mode; };
-
-	void setODU2(BinarySourceMode m) { mode = m; }
-	BinarySourceMode const getODU2(void) { return mode; };
-
-	void setODU3(BinarySourceMode m) { mode = m; }
-	BinarySourceMode const getODU3(void) { return mode; };
-
-	void setODU4(BinarySourceMode m) { mode = m; }
-	BinarySourceMode const getODU4(void) { return mode; };
-
-	void setDemandsOrderingRule(BinarySourceMode m) { mode = m; }
-	BinarySourceMode const setDemandsOrderingRule(void) { return mode; };
-
+	void setODU1(t_matrix od1) { odu1 = od1; }
+	t_matrix const getODU1(void) { return odu1; };
 	
-	/*void setProbabilityOfZero(double pZero) { probabilityOfZero = pZero; };
-	double const getProbabilityOfZero(void) { return probabilityOfZero; };
+	void setODU2(t_matrix od2) { odu2 = od2; }
+	t_matrix const getODU2(void) { return odu2; };
 
-	void setBitStream(string bStream) { bitStream = bStream; };
-	string const getBitStream(void) { return bitStream; };
+	void setODU3(t_matrix od3) { odu3 = od3; }
+	t_matrix const getODU3(void) { return odu3; };
 
-	void setNumberOfBits(long int nOfBits) { numberOfBits = nOfBits; };
-	long int const getNumberOfBits(void) { return numberOfBits; };
+	void setODU4(t_matrix od4) { odu4 = od4; }
+	t_matrix const getODU4(void) { return odu4; };
 
-	void setPatternLength(int pLength) { patternLength = pLength; };
-	int const getPatternLength(void) { return patternLength; }
-	
-	void setBitPeriod(double bPeriod);
-	double const getBitPeriod(void) { return bitPeriod; }*/
+	void setDemandsOrderingRule(t_integer rule) { orderingRule= rule; }
+	t_integer const setDemandsOrderingRule(void) { return orderingRule; };
 
+private:
+	// LÓGICA DO BLOCO SCHEDULER
+	if (orderingRule == 0) // ODU4 to ODU0
+	{
+		//############################ ODU4 ####################################
+
+		for (int linha = 0; linha < NUMBER_OF_NODES; linha++)
+		{
+			for (int coluna = 0; j < NUMBER_OF_NODES; cooluna++)
+			{
+				while (odu4.matrix[linha][coluna]>0) // If there are demands to be processed between this pair of nodes
+				{
+					// Creates new a Demand signal
+					// Class demand has to be included here ?
+
+					demandIndex = demandIndex;
+					sourceNode = { linha+1 };
+					destinationNode = { coluna+1 };
+					oduType = { 4 };
+					restorationMethod = { 0 }; // Always 0, meaning no protection
+
+					odu4.matrix[linha][coluna]--; // A demand was processed
+					demandIndex++;
+				}
+			}
+		}
+		// The same for ODUs 3,2,1 and 0
+	}
+	else if (orderingRule == 1) // ODU0 to ODU4
+	{
+
+	}
+	else // Other
+	{
+
+	}
 };
 
 # endif
