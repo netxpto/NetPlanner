@@ -1,40 +1,25 @@
 # include "..\..\..\include\netxpto_20180815.h"
+# include "..\..\..\include\header_netxpto.h"
 # include "..\..\..\include\scheduler_20190122.h"
 # include "..\..\..\include\sink_20180815.h"
 
 
 const int NUMBER_OF_NODES = 6;
 
-typedef struct { t_integer matrix[NUMBER_OF_NODES][NUMBER_OF_NODES]; } t_matrix;
 
-class Demand : public Signal {
-
-public:
-	Demand() : Signal() { Signal::setBuffer(); }
-	Demand(string fileName) : Signal(fileName) { setBuffer(); }
-	Demand(string fileName, t_unsigned_long bLength) : Signal(fileName, bLength) { setBuffer(); }
-	Demand(string fileName, string folderName) : Signal(fileName, folderName) { setBuffer(); }
-	Demand(string fileName, string folderName, t_unsigned_long bLength) : Signal(fileName, folderName, bLength) { setBuffer(); }
-	Demand(t_unsigned_long bLength) : Signal(bLength) { setBuffer(); }
-
-private:
-	t_integer demandIndex = { 0 };
-	t_integer sourceNode = { 0 };
-	t_integer destinationNode = { 0 };
-	t_integer oduType = { 0 };
-	t_integer restorationMethod = { 0 };
-};
 
 //##########################################################################################
 //######################## Simulation Input Parameters #####################################
 //##########################################################################################
 
-// INICIALIZAR TODAS AS MATRIZES DE ODU0s
+// Traffic
 t_matrix odu0{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 t_matrix odu1{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 t_matrix odu2{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 t_matrix odu3{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 t_matrix odu4{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+
+// Demand ordering rule
 t_integer orderingRule{ 0 };
 
 //##########################################################################################
@@ -79,14 +64,13 @@ int main()
 
     
 	System MainSystem{
-									// BLOCKS
-									&Scheduler_,
-                        			&Sink_
+			// BLOCKS
+			&Scheduler_,
+            &Sink_
 	};
 	
 	MainSystem.run();
 	MainSystem.terminate();
 
-	System("pause");
 	return 0;
 }

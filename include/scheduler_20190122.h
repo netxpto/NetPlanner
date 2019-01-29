@@ -2,6 +2,7 @@
 # define SCHEDULER_H_
 
 
+/*
 # include <vector>
 # include <complex>
 # include <fstream>
@@ -14,31 +15,29 @@
 # include <algorithm> 
 # include <random>
 # include <chrono>
-const int NUMBER_OF_NODES = 6;
-
+*/
 
 # include "..\include\netxpto_20180815.h"
+# include "..\include\header_netxpto.h"
 
 using namespace std;
+
 
  
 class Scheduler : public Block {
 
-	// State variables
-	t_integer demandIndex = { 0 };
-	t_integer sourceNode = { 0 };
-	t_integer destinationNode = { 0 };
-	t_integer oduType = { 0 };
-	t_integer restorationMethod = { 0 };
-
-	 // Input parameters
+	// State variables + Input Parameters
+	t_integer demandIndex{ 0 };
+	t_integer numberOfDemands{ 0 };
 	t_matrix odu0{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 	t_matrix odu1{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 	t_matrix odu2{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 	t_matrix odu3{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 	t_matrix odu4{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
-	t_integer orderingRule{ 0 };
 
+	// Input Parameters
+	t_integer orderingRule{ 0 };
+	t_integer numberOfNodes{ 0 };
 
  public:
 
@@ -68,41 +67,7 @@ class Scheduler : public Block {
 	t_integer const setDemandsOrderingRule(void) { return orderingRule; };
 
 private:
-	// LÓGICA DO BLOCO SCHEDULER
-	if (orderingRule == 0) // ODU4 to ODU0
-	{
-		//############################ ODU4 ####################################
 
-		for (int linha = 0; linha < NUMBER_OF_NODES; linha++)
-		{
-			for (int coluna = 0; j < NUMBER_OF_NODES; cooluna++)
-			{
-				while (odu4.matrix[linha][coluna]>0) // If there are demands to be processed between this pair of nodes
-				{
-					// Creates new a Demand signal
-					// Class demand has to be included here ?
-
-					demandIndex = demandIndex;
-					sourceNode = { linha+1 };
-					destinationNode = { coluna+1 };
-					oduType = { 4 };
-					restorationMethod = { 0 }; // Always 0, meaning no protection
-
-					odu4.matrix[linha][coluna]--; // A demand was processed
-					demandIndex++;
-				}
-			}
-		}
-		// The same for ODUs 3,2,1 and 0
-	}
-	else if (orderingRule == 1) // ODU0 to ODU4
-	{
-
-	}
-	else // Other
-	{
-
-	}
 };
 
 # endif
