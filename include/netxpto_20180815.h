@@ -212,18 +212,18 @@ private:
 
 	/* Circular buffer state variables */
 	void* buffer{ nullptr };											// Pointer to buffer
-	t_unsigned inPosition{ 0 };									// Next position for the buffer input values
-	t_unsigned outPosition{ 0 };									// Next position for the buffer output values
+	t_unsigned inPosition{ 0 };											// Next position for the buffer input values
+	t_unsigned outPosition{ 0 };										// Next position for the buffer output values
 	bool bufferEmpty{ true };											// Flag bufferEmpty
 	bool bufferFull{ false };											// Flag bufferFull
-	const t_unsigned bufferLength{ DEFAULT_BUFFER_LENGTH };		// Buffer length
+	const t_unsigned bufferLength{ DEFAULT_BUFFER_LENGTH };				// Buffer length
 
 	t_unsigned_long numberOfSavedValues{ 0 };							// Number of saved values
 	t_unsigned_long count;												// Number of values that have already entered in the buffer
 
 	/* Input Parameters */
 
-	t_unsigned_long firstValueToBeSaved{ 1 };						// First value (>= 1) to be saved
+	t_unsigned_long firstValueToBeSaved{ 1 };				// First value (>= 1) to be saved
 	bool saveSignal{ false };
 
 	string type;											// Signal type

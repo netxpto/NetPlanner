@@ -18,8 +18,11 @@ public:
 	Demand(t_unsigned_long bLength) : Signal(bLength) { setBuffer(); }
 
 private:
-
-	
+	t_integer demandIndex = { 0 };
+	t_integer sourceNode = { 0 };
+	t_integer destinationNode = { 0 };
+	t_integer oduType = { 0 };
+	t_integer restorationMethod = { 0 };
 };
 
 //##########################################################################################
@@ -27,12 +30,12 @@ private:
 //##########################################################################################
 
 // INICIALIZAR TODAS AS MATRIZES DE ODU0s
-t_matrix ODU0{};
-t_matrix ODU1{};
-t_matrix ODU2{};
-t_matrix ODU3{};
-t_matrix ODU4{};
-t_integer OrderingRule{ 0 };
+t_matrix odu0{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+t_matrix odu1{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+t_matrix odu2{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+t_matrix odu3{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+t_matrix odu4{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+t_integer orderingRule{ 0 };
 
 //##########################################################################################
 //##########################################################################################
@@ -43,12 +46,12 @@ int main()
 
 	Demand SchedulerOut{ "SchedulerOut.sgn" };
 	Scheduler Scheduler_{ {},{ &SchedulerOut} };
-	Scheduler_.setODU0(ODU0);
-	Scheduler_.setODU1(ODU1);
-	Scheduler_.setODU2(ODU2);
-	Scheduler_.setODU3(ODU3);
-	Scheduler_.setODU4(ODU4);
-	Scheduler_.setDemandsOrderingRule(OrderingRule);
+	Scheduler_.setODU0(odu0);
+	Scheduler_.setODU1(odu1);
+	Scheduler_.setODU2(odu2);
+	Scheduler_.setODU3(odu3);
+	Scheduler_.setODU4(odu4);
+	Scheduler_.setDemandsOrderingRule(orderingRule);
 
 	/*
 		logicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn" };
@@ -71,6 +74,7 @@ int main()
 		Sink Sink_Blocking_{ { &BlockedDemands },{} };
 		Sink Sink_Routed_{ { &RoutedDemands },{} };
 	*/
+
 	Sink Sink_{ {&SchedulerOut},{} };
 
     
@@ -83,6 +87,6 @@ int main()
 	MainSystem.run();
 	MainSystem.terminate();
 
-	system("pause");
+	System("pause");
 	return 0;
 }
