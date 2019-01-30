@@ -1,6 +1,7 @@
 # ifndef HEADER_H_
 # define HEADER_H_
 
+
 typedef struct { t_integer matrix[NUMBER_OF_NODES][NUMBER_OF_NODES]; } t_matrix;
 
 class Demand : public Signal {
@@ -18,7 +19,6 @@ public:
 
 
 
-private:
 	t_integer demandIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };

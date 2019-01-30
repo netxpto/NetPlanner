@@ -4,7 +4,7 @@
 # include "..\..\..\include\sink_20180815.h"
 
 
-const int NUMBER_OF_NODES = 6;
+//const int NUMBER_OF_NODES = 6;
 
 
 
