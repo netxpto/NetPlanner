@@ -18,13 +18,13 @@
     <ClCompile Include="transparent_sdf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\lib\netxpto_20180815.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\lib\scheduler_20190122.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\sink_20180815.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\netxpto_20190130.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,10 +32,10 @@
     <ClInclude Include="..\..\..\include\scheduler_20190122.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\netxpto_20180815.h">
+    <ClInclude Include="..\..\..\include\sink_20180815.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\sink_20180815.h">
+    <ClInclude Include="..\..\..\include\netxpto_20190130.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

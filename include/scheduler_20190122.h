@@ -17,7 +17,7 @@
 # include <chrono>
 */
 
-# include "..\include\netxpto_20180815.h"
+# include "..\include\netxpto_20190130.h"
 
 
 using namespace std;
@@ -27,8 +27,8 @@ using namespace std;
 class Scheduler : public Block {
 
 	// State variables + Input Parameters
-	t_integer demandIndex{ 0 };
-	t_integer numberOfDemands{ 0 };
+	t_integer_long demandIndex{ 0 };
+	t_integer_long numberOfDemands{ 0 };
 	t_matrix odu0{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 	t_matrix odu1{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
 	t_matrix odu2{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
@@ -75,71 +75,73 @@ class Scheduler : public Block {
 		return nodes;
 	};
 
-	t_integer calculateNumberOfDemands() 
+	t_integer calculateNumberOfDemands()
 	{
-/*		t_integer demands { 0 };
-		t_integer linha{ 0 };
-		t_integer coluna{ 0 };
+		/*		t_integer demands { 0 };
+				t_integer linha{ 0 };
+				t_integer coluna{ 0 };
 
-		//##################### ODU0 ###############################################
-		for (linha = 0; linha < numberOfNodes; linha++)
-		{
-			for (coluna = 0; coluna < numberOfNodes; coluna++)
-			{
-				while (odu0.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+				//##################### ODU0 ###############################################
+				for (linha = 0; linha < numberOfNodes; linha++)
 				{
-					demands++;
+					for (coluna = 0; coluna < numberOfNodes; coluna++)
+					{
+						while (odu0.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+						{
+							demands++;
+						}
+					}
 				}
-			}
-		}
-		//##################### ODU1 ###############################################
-		for (linha = 0; linha < numberOfNodes; linha++)
-		{
-			for (coluna = 0; coluna < numberOfNodes; coluna++)
-			{
-				while (odu1.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+				//##################### ODU1 ###############################################
+				for (linha = 0; linha < numberOfNodes; linha++)
 				{
-					demands++;
+					for (coluna = 0; coluna < numberOfNodes; coluna++)
+					{
+						while (odu1.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+						{
+							demands++;
+						}
+					}
 				}
-			}
-		}
-		//##################### ODU2 ###############################################
-		for (linha = 0; linha < numberOfNodes; linha++)
-		{
-			for (coluna = 0; coluna < numberOfNodes; coluna++)
-			{
-				while (odu2.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+				//##################### ODU2 ###############################################
+				for (linha = 0; linha < numberOfNodes; linha++)
 				{
-					demands++;
+					for (coluna = 0; coluna < numberOfNodes; coluna++)
+					{
+						while (odu2.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+						{
+							demands++;
+						}
+					}
 				}
-			}
-		}
-		//##################### ODU3 ###############################################
-		for (linha = 0; linha < numberOfNodes; linha++)
-		{
-			for (coluna = 0; coluna < numberOfNodes; coluna++)
-			{
-				while (odu3.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+				//##################### ODU3 ###############################################
+				for (linha = 0; linha < numberOfNodes; linha++)
 				{
-					demands++;
+					for (coluna = 0; coluna < numberOfNodes; coluna++)
+					{
+						while (odu3.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+						{
+							demands++;
+						}
+					}
 				}
-			}
-		}
-		//##################### ODU4 ###############################################
-		for (linha = 0; linha < numberOfNodes; linha++)
-		{
-			for (coluna = 0; coluna < numberOfNodes; coluna++)
-			{
-				while (odu4.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+				//##################### ODU4 ###############################################
+				for (linha = 0; linha < numberOfNodes; linha++)
 				{
-					demands++;
+					for (coluna = 0; coluna < numberOfNodes; coluna++)
+					{
+						while (odu4.matrix[linha][coluna] > 0) // If there are demands to be processed between this pair of nodes
+						{
+							demands++;
+						}
+					}
 				}
-			}
-		}
-		return demands;
+				return demands;
+			};
+		*/
+		return 0;
 	};
-*/
-
+	
 };
 
 # endif
