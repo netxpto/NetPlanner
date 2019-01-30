@@ -18,7 +18,7 @@
 */
 
 # include "..\include\netxpto_20180815.h"
-# include "..\include\header_netxpto.h"
+
 
 using namespace std;
 
@@ -77,7 +77,7 @@ class Scheduler : public Block {
 
 	t_integer calculateNumberOfDemands() 
 	{
-		t_integer demands { 0 };
+/*		t_integer demands { 0 };
 		t_integer linha{ 0 };
 		t_integer coluna{ 0 };
 
@@ -138,7 +138,8 @@ class Scheduler : public Block {
 		}
 		return demands;
 	};
-	
+*/
+
 };
 
 # endif

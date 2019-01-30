@@ -13,7 +13,7 @@
 #include  <cctype> 
 #include  <locale> 
 */
-# include "..\include\netxpto_20180815.h"
+# include "../include/netxpto_20180815.h"
 
 
 using namespace std;

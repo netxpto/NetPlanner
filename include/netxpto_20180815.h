@@ -13,13 +13,13 @@
 # include <chrono>
 # include <cmath>
 # include <complex>
-# include  <cctype> 
+# include <cctype> 
 # include <ctime>
-# include  <filesystem>
+# include <filesystem>
 # include <fstream>
 # include <functional>	
 # include <iostream>
-# include  <locale>
+# include <locale>
 # include <map>
 # include <random>
 # include <sstream>
@@ -38,6 +38,7 @@
 using t_unsigned_long = unsigned long int;
 using t_unsigned = unsigned int;
 using t_integer = int;
+using t_matrix = int;
 
 
 // ####################################################################################################
@@ -84,7 +85,19 @@ using t_photon_mp_xy = struct { t_complex_xy_mp path[MAX_NUMBER_OF_PATHS]; };
 using t_iqValues = complex<t_real>;
 using t_message = struct {	string messageType;	string messageDataLength; 	string messageData; int size() { return 3; }};
 
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message };
+using t_demand = struct { 
+					t_integer demandIndex{ 0 };
+					t_integer sourceNode{ 0 };
+					t_integer destinationNode{ 0 };
+					t_integer oduType{ 0 };
+					t_integer restorationMethod{ 0 };
+
+					void setDemandIndex(t_integer dIndex) { demandIndex = dIndex; }
+					t_integer getDemandIndex() { return demandIndex; }
+				};
+
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand };
+
 
 // #######################################################################################################
 // #
@@ -105,7 +118,7 @@ std::ostream& operator<<(std::ostream &out, const complex<T> &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -352,6 +365,7 @@ using TimeContinuousAmplitudeContinuousReal = BaseSignal<t_real, signal_type::Ti
 using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, signal_value_type::t_complex_xy>;
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
+using Demand = BaseSignal<t_demand, signal_type::Demand, signal_value_type::t_demand>;
 
 
 /*
