@@ -1,10 +1,6 @@
-# include "..\..\..\include\netxpto_20180815.h"
-# include "..\..\..\include\header_netxpto.h"
+# include "..\..\..\include\netxpto_20190130.h"
 # include "..\..\..\include\scheduler_20190122.h"
 # include "..\..\..\include\sink_20180815.h"
-
-
-const int NUMBER_OF_NODES = 6;
 
 
 

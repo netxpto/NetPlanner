@@ -13,7 +13,7 @@
 #include  <cctype> 
 #include  <locale> 
 */
-# include "..\include\netxpto_20180815.h"
+# include "..\include\netxpto_20190130.h"
 
 
 using namespace std;
@@ -394,14 +394,11 @@ void SuperBlock::initialize(void){
 	*/
 };
 
-bool SuperBlock::runBlock() {
+bool SuperBlock::runBlock(string signalPath) {
 
-	bool alive = superBlockSystem.run();
+//	bool alive = superBlockSystem.run();
 
 	/////////////////////////////////
-
-
-
 	/*2018-04-18*/
 	//Creates the signals folder if it doesn't exist
 	if (!experimental::filesystem::is_directory(signalPath) || !experimental::filesystem::exists(signalPath)) {
@@ -410,41 +407,42 @@ bool SuperBlock::runBlock() {
 	//Debug information
 	clock_t start;
 	string separator = "|";
-	if (logValue && openFile)
-		logFile.open("./" + signalPath + "/" + logFileName);
+	if (superBlockSystem.getLogValue() && superBlockSystem.getOpenFile())
+		logFileSP.open("./" + signalPath + "/" + superBlockSystem.getLogFileName());
 	//Writes which input parameters have been 
-	logFile << "The following input parameters were loaded from the configuration file:" << endl;
-	for (string p : loadedInputParameters) {
-		logFile << p << endl;
+	logFileSP << "The following input parameters were loaded from the configuration file:" << endl;
+	for (string p : superBlockSystem.getLoadedInputParameters()) {
+		logFileSP << p << endl;
 	}
 	//logFile << "-------------------------------------------------------" << endl;
 
 	bool systemAlive{ false };
+	vector<Block *> SystemBlocks = superBlockSystem.getSystemBlocks();
 
 	for (unsigned int i = 0; i < SystemBlocks.size(); i++) {
 			// Writes debug information
-			if (logValue) {
+			if (superBlockSystem.getLogValue()) {
 				time_t t_now = time(0);
 				struct tm now;
 				localtime_s(&now, &t_now);
 				char buffer[20];
 				snprintf(buffer, 20, "%04d-%02d-%02d %02d:%02d:%02d", 1900 + now.tm_year, now.tm_mon + 1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec);
-				logFile << "-----------------------------------------------------------------\n";
-				logFile << "########## " << string(typeid(*SystemBlocks[i]).name()).substr(6) << " ##########" << endl; // Prints block name e.g. "Add"
-				logFile << "Block start time: " << buffer << endl;
+				logFileSP << "-----------------------------------------------------------------\n";
+				logFileSP << "########## " << string(typeid(*SystemBlocks[i]).name()).substr(6) << " ##########" << endl; // Prints block name e.g. "Add"
+				logFileSP << "Block start time: " << buffer << endl;
 				// Prints line for each input signal in the current block being executed
-				logFile << "Input Signals: " << endl;
+				logFileSP << "Input Signals: " << endl;
 				for (Signal *b : SystemBlocks[i]->inputSignals) {
 					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					logFileSP << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
 						<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
 				}
 				// Prints line for each output signal in the current block being executed
-				logFile << "Output Signals: " << endl;
+				logFileSP << "Output Signals: " << endl;
 				for (Signal *b : SystemBlocks[i]->outputSignals) {
 					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					logFileSP << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
 						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
 				}
@@ -455,35 +453,36 @@ bool SuperBlock::runBlock() {
 			systemAlive = (systemAlive || aux);
 			if (systemAlive) systemAlive = true;
 
-			if (logValue)
+			if (superBlockSystem.getLogValue())
+
 			{
-				logFile << "-----------------------------------------------------------------\n";
-				logFile << "Elapsed time: " << (float)(clock() - start) << " milliseconds" << endl;
-				logFile << "-----------------------------------------------------------------\n";
+				logFileSP << "-----------------------------------------------------------------\n";
+				logFileSP << "Elapsed time: " << (float)(clock() - start) << " milliseconds" << endl;
+				logFileSP << "-----------------------------------------------------------------\n";
 				// Prints line for each input signal in the current block being executed
-				logFile << "Input Signals: " << endl;
+				logFileSP << "Input Signals: " << endl;
 				for (Signal *b : SystemBlocks[i]->inputSignals) {
 					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					logFileSP << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
 						<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
 				}
 				// Prints line for each output signal in the current block being executed
-				logFile << "Output Signals: " << endl;
+				logFileSP << "Output Signals: " << endl;
 				for (Signal *b : SystemBlocks[i]->outputSignals) {
 					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					logFileSP << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
 						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
 				}
-				logFile << endl << endl;
+				logFileSP << endl << endl;
 			}
 		}
 
 	////////////////////////////////
 
 	// isto \E9 para ser limpo mas por qualquer motivo sem isto n\E3o compila!
-	bool proceed{ false };
+	bool proceed{ true };
 
 	do {
 
@@ -515,14 +514,14 @@ bool SuperBlock::runBlock() {
 				}
 				break;
 
-/*			case signal_value_type::t_real:
+			case signal_value_type::t_real:
 				for (int j = 0; j < length; j++) {
 					t_real signalValue;
 					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
 					outputSignals[i]->bufferPut(signalValue);
 				}
 				break;
-*/
+
 			case signal_value_type::t_complex:
 				for (int j = 0; j < length; j++) {
 					t_complex signalValue;
@@ -544,8 +543,6 @@ bool SuperBlock::runBlock() {
 						outputSignals[i]->bufferPut(signalValueXY);
 					}
 				break;
-
-
 /*			case signal_value_type::t_message:
 				for (int j = 0; j < length; j++) {
 					t_message signalValue;
@@ -553,6 +550,13 @@ bool SuperBlock::runBlock() {
 					outputSignals[i]->bufferPut(signalValue);
 				}
 				break;*/
+				case signal_value_type::t_demand:
+					for (int j = 0; j < length; j++) {
+						t_demand signalDemand;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalDemand);
+						outputSignals[i]->bufferPut(signalDemand);
+					}
+					break;
 			default:
 				cerr << "ERRO: netxpto_20180815.cpp (SuperBlock)" << "\n";
 				return false;
@@ -561,7 +565,7 @@ bool SuperBlock::runBlock() {
 		
 	} while (proceed);
 	
-	return alive;
+	return systemAlive;
 }
 
 

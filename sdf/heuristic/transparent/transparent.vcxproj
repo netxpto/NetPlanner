@@ -111,12 +111,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\lib\netxpto_20180815.cpp" />
+    <ClCompile Include="..\..\..\lib\netxpto_20190130.cpp" />
     <ClCompile Include="..\..\..\lib\scheduler_20190122.cpp" />
+    <ClCompile Include="..\..\..\lib\sink_20180815.cpp" />
     <ClCompile Include="transparent_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\netxpto_20180815.h" />
+    <ClInclude Include="..\..\..\include\netxpto_20190130.h" />
     <ClInclude Include="..\..\..\include\scheduler_20190122.h" />
     <ClInclude Include="..\..\..\include\sink_20180815.h" />
   </ItemGroup>
