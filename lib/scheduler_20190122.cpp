@@ -1,16 +1,13 @@
 # include "..\include\scheduler_20190122.h"
-# include "..\include\header_netxpto.h"
+
 
 using namespace std;
 
+t_demand generateDemand(t_integer orderingRule);
 
 void Scheduler::initialize(void){
 
 	numberOfOutputSignals = (int) outputSignals.size();
-
-	for (auto i = 0; i < numberOfOutputSignals; ++i) {
-		outputSignals[i]-> // ?
-	};
 
 	setNumberOfNodes(calculateNumberOfNodes());
 	setNumberOfDemands(calculateNumberOfDemands());
@@ -19,24 +16,27 @@ void Scheduler::initialize(void){
 
 bool Scheduler::runBlock(void) {
 
-	long int space = outputSignals[0]->space();
+	t_integer_long space = outputSignals[0]->space();
 
 	if (space == 0) return false; // If there is not space available in the buffer to process another demand
 
-	int process = min(space, numberOfDemands);
+	int process = std::min(space, numberOfDemands);
 
 	for (int k = 1; k <= process; k++)
 	{
-		Demand outputDemand = generateDemand(orderingRule);
-		outputSignals[0]->putSignal(outputDemand);
+		t_demand outputDemand = generateDemand(orderingRule);
+		outputSignals[0]->bufferPut((t_demand) outputDemand);
 		numberOfDemands--;
 	}
 
 	return true;
 }
 
-Demand generateDemand(t_integer orderingRule)
+t_demand generateDemand(t_integer orderingRule)
 {
+
+	t_demand dem;
+	/*
 	t_integer linha { 0 };
 	t_integer coluna{ 0 };
 
@@ -93,8 +93,9 @@ Demand generateDemand(t_integer orderingRule)
 	{
 	};
 
-
-	return true;
+	*/
+	return dem;
+	
 }
 
 
