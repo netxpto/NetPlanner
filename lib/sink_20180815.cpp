@@ -2,7 +2,7 @@
 
 bool Sink::runBlock(void)
 {
-	int ready = inputSignals[0]->ready();
+	int ready = inputSignals[0]->ready(); // number of samples in the buffer ready to be processed
 
 	int process;
 	if (numberOfSamples >= 0) {

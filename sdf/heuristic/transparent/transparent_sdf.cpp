@@ -9,11 +9,40 @@
 //##########################################################################################
 
 // Traffic
-t_matrix odu0{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
-t_matrix odu1{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
-t_matrix odu2{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
-t_matrix odu3{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
-t_matrix odu4{ {0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0},{0,0,0,0,0,0} };
+t_matrix odu0{	std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0} };
+
+t_matrix odu1{	std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0} };
+
+t_matrix odu2{	std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0} };
+
+t_matrix odu3{	std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0} };
+
+t_matrix odu4{	std::vector<int>{1,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0},
+				std::vector<int>{0,0,0,0,0,0} };
 
 // Demand ordering rule
 t_integer orderingRule{ 0 };
