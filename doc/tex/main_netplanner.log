@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.20)  23 JAN 2019 12:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.20)  2 FEB 2019 17:38
 entering extended mode
 **./main_netplanner.tex
 (main_netplanner.tex
@@ -3510,14 +3510,19 @@ Overfull \hbox (7.33366pt too wide) in paragraph at lines 590--594
  []
 
 <sdf/heuristic/transparent/figures/fluxogramaSemGroomingHighLevel.pdf, id=1019,
- 852.06331pt x 593.3367pt>
+ 852.18375pt x 543.02875pt>
 File: sdf/heuristic/transparent/figures/fluxogramaSemGroomingHighLevel.pdf Grap
 hic file (type pdf)
 <use sdf/heuristic/transparent/figures/fluxogramaSemGroomingHighLevel.pdf>
 Package pdftex.def Info: sdf/heuristic/transparent/figures/fluxogramaSemGroomin
 gHighLevel.pdf  used on input line 601.
-(pdftex.def)             Requested size: 426.79134pt x 297.20178pt.
-[82 <./sdf/heuristic/transparent/figures/fluxogramaSemGroomingHighLevel.pdf>]
+(pdftex.def)             Requested size: 426.79134pt x 271.96114pt.
+[82 <./sdf/heuristic/transparent/figures/fluxogramaSemGroomingHighLevel.pdf
+
+pdfTeX warning: pdflatex.exe (file ./sdf/heuristic/transparent/figures/fluxogra
+maSemGroomingHighLevel.pdf): PDF inclusion: invalid other resource which is no 
+dict (key 'ProcSets', type <array>); ignored.
+>]
 Underfull \hbox (badness 10000) in paragraph at lines 644--658
 
  []
@@ -3603,49 +3608,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 821--823
  []
 
 [86] [87] [88]
-Underfull \hbox (badness 10000) in paragraph at lines 900--903
+Underfull \hbox (badness 10000) in paragraph at lines 901--904
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 961--962
+Underfull \hbox (badness 10000) in paragraph at lines 962--963
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 963--966
+Underfull \hbox (badness 10000) in paragraph at lines 964--967
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 967--969
+Underfull \hbox (badness 10000) in paragraph at lines 968--970
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 970--972
+Underfull \hbox (badness 10000) in paragraph at lines 971--973
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 973--974
+Underfull \hbox (badness 10000) in paragraph at lines 974--975
 
  []
 
 [89
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1000--1003
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1004
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1000--1003
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1004
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1000--1003
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1004
 
  []
 
@@ -3653,30 +3658,30 @@ File: sdf/heuristic/transparent/figures/allowed_optical.pdf Graphic file (type
 pdf)
 <use sdf/heuristic/transparent/figures/allowed_optical.pdf>
 Package pdftex.def Info: sdf/heuristic/transparent/figures/allowed_optical.pdf 
- used on input line 1010.
+ used on input line 1011.
 (pdftex.def)             Requested size: 369.88582pt x 171.66068pt.
 [90]
-Underfull \hbox (badness 10000) in paragraph at lines 1028--1029
+Underfull \hbox (badness 10000) in paragraph at lines 1029--1030
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1053
+Underfull \hbox (badness 10000) in paragraph at lines 1042--1054
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1041--1053
+Underfull \hbox (badness 10000) in paragraph at lines 1042--1054
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1055--1056
+Underfull \hbox (badness 10000) in paragraph at lines 1056--1057
 
  []
 
 [91]
-Underfull \hbox (badness 10000) in paragraph at lines 1089--1100
+Underfull \hbox (badness 10000) in paragraph at lines 1090--1101
 
  []
 
@@ -5726,7 +5731,7 @@ al/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Users/ejfernande
 s/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplr8a.pfb><C:/Use
 rs/ejfernandes/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/palatino/uplri
 8a.pfb>
-Output written on main_netplanner.pdf (174 pages, 3110247 bytes).
+Output written on main_netplanner.pdf (174 pages, 3109889 bytes).
 PDF statistics:
  2222 PDF objects out of 2487 (max. 8388607)
  546 named destinations out of 1000 (max. 500000)

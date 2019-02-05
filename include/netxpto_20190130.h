@@ -39,7 +39,7 @@ using t_unsigned_long = unsigned long int;
 using t_unsigned = unsigned int;
 using t_integer = int;
 using t_integer_long = long int;
-using t_matrix = std::vector<std::vector<int>>;
+using t_matrix = std::vector<std::vector<int> >; // 2d vector of integers
 
 
 // ####################################################################################################
@@ -49,7 +49,7 @@ using t_matrix = std::vector<std::vector<int>>;
 // ####################################################################################################
 
 const int MAX_NAME_SIZE = 256;					// Maximum size of names (file names,..)
-const t_integer MAX_BUFFER_LENGTH = 10000;			// Maximum Signal buffer length
+const t_integer MAX_BUFFER_LENGTH = 10000;		// Maximum Signal buffer length
 const int DEFAULT_BUFFER_LENGTH = 512;
 const int MAX_TOPOLOGY_SIZE = 100;				// Maximum System topology size 
 const int MAX_TAPS = 1000;						// Maximum Taps Number
