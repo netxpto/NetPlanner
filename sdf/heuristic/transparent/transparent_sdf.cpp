@@ -37,7 +37,7 @@ t_matrix odu3{	std::vector<int>{0,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0} };
 
-t_matrix odu4{	std::vector<int>{0,0,0,0,0,0},
+t_matrix odu4{	std::vector<int>{1,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0},

@@ -30,45 +30,15 @@ class Scheduler : public Block {
 	t_integer_long demandIndex{ 0 };
 	t_integer_long numberOfDemands{ 0 };
 
-	t_matrix odu0{  std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0} };
-
-	t_matrix odu1{  std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0} };
-
-	t_matrix odu2{  std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0} };
-
-	t_matrix odu3{  std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0} };
-
-	t_matrix odu4{  std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0},
-					std::vector<int>{0,0,0,0,0,0} };
-
+	t_matrix odu0, odu1, odu2, odu3, odu4;
 
 	// Input Parameters
 	t_integer orderingRule{ 0 };
 	t_integer numberOfNodes{ 0 };
+
+	bool generateDemand(t_integer orderingRule, t_demand &dem);
+	t_integer calculateNumberOfNodes();
+	t_integer calculateNumberOfDemands();
 
 public:
 
