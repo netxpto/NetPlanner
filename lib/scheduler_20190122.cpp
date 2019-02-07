@@ -70,7 +70,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 		}
 
 		//############################ ODU3 ####################################
-		line = 0;
+		line = 0 ;
 		while (line < numberOfNodes && !findDemand)
 		{
 			t_integer column{ 0 };
@@ -168,22 +168,19 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 			}
 			line++;
 		}
-
+		
 	}
+	/*
 	else if (orderingRule == 1) // ODU0 to ODU4
 	{
 
 		//############################ ODU0 ####################################
-		t_integer line{ 0 };
-		while (line < numberOfNodes && !findDemand)
+		for (line = 0; line < numberOfNodes; line++)
 		{
-			t_integer column{ 0 };
-			while (column < numberOfNodes && !findDemand)
+			for (column = 0; column < numberOfNodes; column++)
 			{
 				if (odu0[line][column] != 0) // If there are demands to be processed between this pair of nodes
 				{
-					findDemand = true;
-
 					dem.demandIndex = demandIndex;
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
@@ -192,22 +189,17 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 
 					odu0[line][column]--; // A demand was processed
 					demandIndex++;
+					return dem;
 				}
-				column++;
 			}
-			line++;
 		}
 		//############################ ODU1 ####################################
-		line = 0;
-		while (line < numberOfNodes && !findDemand)
+		for (line = 0; line < numberOfNodes; line++)
 		{
-			t_integer column{ 0 };
-			while (column < numberOfNodes && !findDemand)
+			for (column = 0; column < numberOfNodes; column++)
 			{
 				if (odu1[line][column] != 0) // If there are demands to be processed between this pair of nodes
 				{
-					findDemand = true;
-
 					dem.demandIndex = demandIndex;
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
@@ -216,22 +208,17 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 
 					odu1[line][column]--; // A demand was processed
 					demandIndex++;
+					return dem;
 				}
-				column++;
 			}
-			line++;
 		}
 		//############################ ODU2 ####################################
-		line = 0;
-		while (line < numberOfNodes && !findDemand)
+		for (line = 0; line < numberOfNodes; line++)
 		{
-			t_integer column{ 0 };
-			while (column < numberOfNodes && !findDemand)
+			for (column = 0; column < numberOfNodes; column++)
 			{
 				if (odu2[line][column] != 0) // If there are demands to be processed between this pair of nodes
 				{
-					findDemand = true;
-
 					dem.demandIndex = demandIndex;
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
@@ -240,22 +227,17 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 
 					odu2[line][column]--; // A demand was processed
 					demandIndex++;
+					return dem;
 				}
-				column++;
 			}
-			line++;
 		}
 		//############################ ODU3 ####################################
-		line = 0;
-		while (line < numberOfNodes && !findDemand)
+		for (line = 0; line < numberOfNodes; line++)
 		{
-			t_integer column{ 0 };
-			while (column < numberOfNodes && !findDemand)
+			for (column = 0; column < numberOfNodes; column++)
 			{
 				if (odu3[line][column] != 0) // If there are demands to be processed between this pair of nodes
 				{
-					findDemand = true;
-
 					dem.demandIndex = demandIndex;
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
@@ -264,22 +246,17 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 
 					odu3[line][column]--; // A demand was processed
 					demandIndex++;
+					return dem;
 				}
-				column++;
 			}
-			line++;
 		}
 		//############################ ODU4 ####################################
-		line = 0;
-		while ((line < numberOfNodes) && (!findDemand))
+		for (line = 0; line < numberOfNodes; line++)
 		{
-			t_integer column{ 0 };
-			while ((column < numberOfNodes) && (!findDemand))
+			for (column = 0; column < numberOfNodes; column++)
 			{
 				if (odu4[line][column] != 0) // If there are demands to be processed between this pair of nodes
 				{
-					findDemand = true;
-
 					dem.demandIndex = demandIndex;
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
@@ -288,14 +265,13 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 
 					odu4[line][column]--; // A demand was processed
 					demandIndex++;
+					return dem;
 				}
-				column++;
 			}
-			line++;
 		}
-
-		return findDemand;
 	}
+	*/
+	return findDemand;
 }
 
 t_integer Scheduler::calculateNumberOfNodes()	{ return sizeof(odu0); };
