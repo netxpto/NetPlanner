@@ -24,9 +24,9 @@ bool Scheduler::runBlock(void) {
 
 	t_integer_long space = outputSignals[0]->space(); // signal buffer space 
 
-	if (space == 0) return false; // If there is no more space available in the buffer to process another demand
-
 	int process = std::min(space, numberOfDemands);
+
+	if (process == 0) return false;
 
 	for (int k = 1; k <= process; k++)
 	{
