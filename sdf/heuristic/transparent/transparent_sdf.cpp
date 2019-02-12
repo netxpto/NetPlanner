@@ -9,21 +9,44 @@
 //##########################################################################################
 
 // Traffic
-t_matrix odu0{	std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0} };
+t_matrix odu0(6, std::vector<int>(6, 1));
+t_matrix odu1(6, std::vector<int>(6, 1));
+t_matrix odu2(6, std::vector<int>(6, 1));
+t_matrix odu3(6, std::vector<int>(6, 1));
+t_matrix odu4(6, std::vector<int>(6, 1));
 
-t_matrix odu1{	std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0},
-				std::vector<int>{0,0,0,0,0,0} };
-
-t_matrix odu2{	std::vector<int>{0,0,0,0,0,0},
+/*t_matrix odu0{	{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0} };
+t_matrix odu1{ {0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0} };
+t_matrix odu2{ {0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0} };
+t_matrix odu3{ {0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0} };
+t_matrix odu4{ {0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0},
+				{0,0,0,0,0,0} };
+				*/
+/*t_matrix odu2{	std::vector<int>{0,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0},
@@ -43,7 +66,7 @@ t_matrix odu4{	std::vector<int>{1,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0},
 				std::vector<int>{0,0,0,0,0,0} };
-
+*/
 // Demand ordering rule
 t_integer orderingRule{ 0 };
 
@@ -54,7 +77,8 @@ t_integer orderingRule{ 0 };
 int main()
 {
 
-	Demand SchedulerOut{ "SchedulerOut.sgn" };
+	Demand SchedulerOut{ "SchedulerOut.sgn", 64 };
+	SchedulerOut.setSaveInAscii(true);
 	Scheduler Scheduler_{ {},{ &SchedulerOut} };
 	Scheduler_.setODU0(odu0);
 	Scheduler_.setODU1(odu1);
@@ -86,6 +110,7 @@ int main()
 	*/
 
 	Sink Sink_{ {&SchedulerOut},{} };
+	Sink_.setDisplayNumberOfSamples(true);
 
     
 	System MainSystem{
@@ -96,6 +121,8 @@ int main()
 	
 	MainSystem.run();
 	MainSystem.terminate();
+
+	system("pause");
 
 	return 0;
 }

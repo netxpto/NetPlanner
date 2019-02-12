@@ -74,12 +74,36 @@ void Signal::bufferPut(T value)
 
 			if (firstValueToBeSaved <= bufferLength)
 			{
-				char *ptr = (char *)buffer;
-				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(T);
-				ofstream fileHandler{ "./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app };
-				fileHandler.write(ptr, (bufferLength - (firstValueToBeSaved - 1)) * sizeof(T));
-				fileHandler.close();
-				firstValueToBeSaved = 1;
+				if (!saveInAscii)
+				{
+					char *ptr = (char *)buffer;
+					ptr = ptr + (firstValueToBeSaved - 1) * sizeof(T);
+					ofstream fileHandler{ "./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app };
+					fileHandler.write(ptr, (bufferLength - (firstValueToBeSaved - 1)) * sizeof(T));
+					fileHandler.close();
+					firstValueToBeSaved = 1;
+				}
+				else
+				{
+					t_demand *ptr = (t_demand *)buffer;
+					ptr = ptr + (firstValueToBeSaved - 1);
+					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+					for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
+						fileHandler << ptr->demandIndex;
+						fileHandler << "\t";
+						fileHandler << ptr->sourceNode;
+						fileHandler << "\t";
+						fileHandler << ptr->destinationNode;
+						fileHandler << "\t";
+						fileHandler << ptr->oduType;
+						fileHandler << "\t";
+						fileHandler << ptr->restorationMethod;
+						fileHandler << "\n";
+						ptr++;
+					}
+					fileHandler.close();
+					setFirstValueToBeSaved(1);
+				}
 			}
 			else
 			{
@@ -124,9 +148,9 @@ void Signal::writeHeader(){
 
 	if (headerWritten) return;
 
-	ofstream headerFile;
-
 	if (saveSignal && (!fileName.empty())) {
+
+		ofstream headerFile;
 
 		headerFile.open("./" + folderName + "/" + fileName, ios::out);
 

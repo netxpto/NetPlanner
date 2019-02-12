@@ -24,9 +24,9 @@ bool Scheduler::runBlock(void) {
 
 	t_integer_long space = outputSignals[0]->space(); // signal buffer space 
 
-	if (space == 0) return false; // If there is no more space available in the buffer to process another demand
-
 	int process = std::min(space, numberOfDemands);
+
+	if (process == 0) return false;
 
 	for (int k = 1; k <= process; k++)
 	{
@@ -274,7 +274,11 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 	return findDemand;
 }
 
-t_integer Scheduler::calculateNumberOfNodes()	{ return sizeof(odu0); };
+t_integer Scheduler::calculateNumberOfNodes()	
+{ 
+	t_integer nodes = odu0[0].size() ;
+	return nodes;
+};
 
 t_integer Scheduler::calculateNumberOfDemands()
 {
@@ -287,10 +291,7 @@ t_integer Scheduler::calculateNumberOfDemands()
 	{
 		for (column = 0; column < numberOfNodes; column++)
 		{
-			while (odu0[line][column] > 0) // If there are demands to be processed between this pair of nodes
-			{
-				demands++;
-			}
+				demands+= odu0[line][column];
 		}
 	}
 	//##################### ODU1 ###############################################
@@ -298,10 +299,7 @@ t_integer Scheduler::calculateNumberOfDemands()
 	{
 		for (column = 0; column < numberOfNodes; column++)
 		{
-			while (odu1[line][column] > 0) // If there are demands to be processed between this pair of nodes
-			{
-				demands++;
-			}
+			demands += odu1[line][column];
 		}
 	}
 	//##################### ODU2 ###############################################
@@ -309,10 +307,7 @@ t_integer Scheduler::calculateNumberOfDemands()
 	{
 		for (column = 0; column < numberOfNodes; column++)
 		{
-			while (odu2[line][column] > 0) // If there are demands to be processed between this pair of nodes
-			{
-				demands++;
-			}
+			demands += odu2[line][column];
 		}
 	}
 	//##################### ODU3 ###############################################
@@ -320,10 +315,7 @@ t_integer Scheduler::calculateNumberOfDemands()
 	{
 		for (column = 0; column < numberOfNodes; column++)
 		{
-			while (odu3[line][column] > 0) // If there are demands to be processed between this pair of nodes
-			{
-				demands++;
-			}
+			demands += odu3[line][column];
 		}
 	}
 	//##################### ODU4 ###############################################
@@ -331,10 +323,7 @@ t_integer Scheduler::calculateNumberOfDemands()
 	{
 		for (column = 0; column < numberOfNodes; column++)
 		{
-			while (odu4[line][column] > 0) // If there are demands to be processed between this pair of nodes
-			{
-				demands++;
-			}
+			demands += odu4[line][column];
 		}
 	}
 	return demands;
