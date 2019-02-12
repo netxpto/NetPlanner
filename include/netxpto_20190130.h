@@ -39,8 +39,8 @@ using t_unsigned_long = unsigned long int;
 using t_unsigned = unsigned int;
 using t_integer = int;
 using t_integer_long = long int;
-using t_matrix = std::vector<std::vector<int> >; // 2d vector of integers
-
+//using t_matrix = std::vector<std::vector<int> >; // 2d vector of integers
+typedef std::vector<std::vector<int> > t_matrix;
 
 // ####################################################################################################
 // #
