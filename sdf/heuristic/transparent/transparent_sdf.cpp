@@ -77,7 +77,8 @@ t_integer orderingRule{ 0 };
 int main()
 {
 
-	Demand SchedulerOut{ "SchedulerOut.sgn" };
+	Demand SchedulerOut{ "SchedulerOut.sgn", 64 };
+	SchedulerOut.setSaveInAscii(true);
 	Scheduler Scheduler_{ {},{ &SchedulerOut} };
 	Scheduler_.setODU0(odu0);
 	Scheduler_.setODU1(odu1);
@@ -109,6 +110,7 @@ int main()
 	*/
 
 	Sink Sink_{ {&SchedulerOut},{} };
+	Sink_.setDisplayNumberOfSamples(true);
 
     
 	System MainSystem{
@@ -119,6 +121,8 @@ int main()
 	
 	MainSystem.run();
 	MainSystem.terminate();
+
+	system("pause");
 
 	return 0;
 }

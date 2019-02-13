@@ -111,6 +111,13 @@ std::ostream& operator<<(std::ostream &out, const complex<T> &cx)
 	return out;
 }
 
+template<typename T>
+std::ostream& operator<<(std::ostream &out, const t_demand &cx)
+{
+	out << cx.demandIndex;
+	return out;
+}
+
 // ####################################################################################################
 // #
 // # NetXpto enuerate class types
@@ -218,6 +225,9 @@ public:
 	void setCentralWavelength(double cWavelength) { centralWavelength = cWavelength; centralFrequency = SPEED_OF_LIGHT / centralWavelength; }
 	double getCentralWavelength() const { return centralWavelength; }
 
+	void setSaveInAscii(bool sInAscii) { saveInAscii = sInAscii; }
+	bool getSaveInAscii() const { return saveInAscii; }
+
 	template<typename t, signal_type sType, signal_value_type vType> friend class BaseSignal;
 
 private:
@@ -244,6 +254,8 @@ private:
 	string fileName{ "" };							// Name of the file where data values are going to be saved
 	string folderName{ "signals" };					// folder where signals are going to be saved by default
 	bool headerWritten{ false };
+	
+	bool saveInAscii{ false };
 
 	long int numberOfValuesToBeSaved{ -1 };			// Number of values to be saved, if -1 all values are going to be saved
 
