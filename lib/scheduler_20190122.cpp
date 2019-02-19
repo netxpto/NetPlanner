@@ -12,6 +12,7 @@ void Scheduler::initialize(void){
 
 	setNumberOfNodes(calculateNumberOfNodes());
 	setNumberOfDemands(calculateNumberOfDemands());
+	
 
 	numberOfNodes = getNumberOfNodes();				// Returns the number of nodes
 	numberOfDemands = getNumberOfDemands();			// Returns the total number of existent demands
@@ -22,11 +23,11 @@ void Scheduler::initialize(void){
 
 bool Scheduler::runBlock(void) {
 
-	t_integer_long space = outputSignals[0]->space(); // signal buffer space 
+	t_integer_long space = outputSignals[0]->space();	// Buffer free space 
 
 	int process = std::min(space, numberOfDemands);
 
-	if (process == 0) return false;
+	if (process == 0) return false;						// When 0 all demands were processed
 
 	for (int k = 1; k <= process; k++)
 	{
@@ -170,107 +171,132 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 		}
 		
 	}
-	/*
+
 	else if (orderingRule == 1) // ODU0 to ODU4
 	{
-
-		//############################ ODU0 ####################################
-		for (line = 0; line < numberOfNodes; line++)
+	//############################ ODU0 ####################################
+	t_integer line{ 0 };
+	while (line < numberOfNodes && !findDemand)
+	{
+		t_integer column{ 0 };
+		while (column < numberOfNodes && !findDemand)
 		{
-			for (column = 0; column < numberOfNodes; column++)
+			if (odu0[line][column] != 0) // If there are demands to be processed between this pair of nodes
 			{
-				if (odu0[line][column] != 0) // If there are demands to be processed between this pair of nodes
-				{
-					dem.demandIndex = demandIndex;
-					dem.sourceNode = { line + 1 };
-					dem.destinationNode = { column + 1 };
-					dem.oduType = { 0 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+				findDemand = true;
 
-					odu0[line][column]--; // A demand was processed
-					demandIndex++;
-					return dem;
-				}
-			}
-		}
-		//############################ ODU1 ####################################
-		for (line = 0; line < numberOfNodes; line++)
-		{
-			for (column = 0; column < numberOfNodes; column++)
-			{
-				if (odu1[line][column] != 0) // If there are demands to be processed between this pair of nodes
-				{
-					dem.demandIndex = demandIndex;
-					dem.sourceNode = { line + 1 };
-					dem.destinationNode = { column + 1 };
-					dem.oduType = { 1 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+				dem.demandIndex = demandIndex;
+				dem.sourceNode = { line + 1 };
+				dem.destinationNode = { column + 1 };
+				dem.oduType = { 0 };
+				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
 
-					odu1[line][column]--; // A demand was processed
-					demandIndex++;
-					return dem;
-				}
+				odu0[line][column]--; // A demand was processed
+				demandIndex++;
 			}
+			column++;
 		}
-		//############################ ODU2 ####################################
-		for (line = 0; line < numberOfNodes; line++)
-		{
-			for (column = 0; column < numberOfNodes; column++)
-			{
-				if (odu2[line][column] != 0) // If there are demands to be processed between this pair of nodes
-				{
-					dem.demandIndex = demandIndex;
-					dem.sourceNode = { line + 1 };
-					dem.destinationNode = { column + 1 };
-					dem.oduType = { 2 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
-
-					odu2[line][column]--; // A demand was processed
-					demandIndex++;
-					return dem;
-				}
-			}
-		}
-		//############################ ODU3 ####################################
-		for (line = 0; line < numberOfNodes; line++)
-		{
-			for (column = 0; column < numberOfNodes; column++)
-			{
-				if (odu3[line][column] != 0) // If there are demands to be processed between this pair of nodes
-				{
-					dem.demandIndex = demandIndex;
-					dem.sourceNode = { line + 1 };
-					dem.destinationNode = { column + 1 };
-					dem.oduType = { 3 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
-
-					odu3[line][column]--; // A demand was processed
-					demandIndex++;
-					return dem;
-				}
-			}
-		}
-		//############################ ODU4 ####################################
-		for (line = 0; line < numberOfNodes; line++)
-		{
-			for (column = 0; column < numberOfNodes; column++)
-			{
-				if (odu4[line][column] != 0) // If there are demands to be processed between this pair of nodes
-				{
-					dem.demandIndex = demandIndex;
-					dem.sourceNode = { line + 1 };
-					dem.destinationNode = { column + 1 };
-					dem.oduType = { 4 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
-
-					odu4[line][column]--; // A demand was processed
-					demandIndex++;
-					return dem;
-				}
-			}
-		}
+		line++;
 	}
-	*/
+
+	//############################ ODU1 ####################################
+	line = 0;
+	while (line < numberOfNodes && !findDemand)
+	{
+		t_integer column{ 0 };
+		while (column < numberOfNodes && !findDemand)
+		{
+			if (odu1[line][column] != 0) // If there are demands to be processed between this pair of nodes
+			{
+				findDemand = true;
+
+				dem.demandIndex = demandIndex;
+				dem.sourceNode = { line + 1 };
+				dem.destinationNode = { column + 1 };
+				dem.oduType = { 1 };
+				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+
+				odu1[line][column]--; // A demand was processed
+				demandIndex++;
+			}
+			column++;
+		}
+		line++;
+	}
+	//############################ ODU2 ####################################
+	line = 0;
+	while (line < numberOfNodes && !findDemand)
+	{
+		t_integer column{ 0 };
+		while (column < numberOfNodes && !findDemand)
+		{
+			if (odu2[line][column] != 0) // If there are demands to be processed between this pair of nodes
+			{
+				findDemand = true;
+
+				dem.demandIndex = demandIndex;
+				dem.sourceNode = { line + 1 };
+				dem.destinationNode = { column + 1 };
+				dem.oduType = { 2 };
+				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+
+				odu2[line][column]--; // A demand was processed
+				demandIndex++;
+			}
+			column++;
+		}
+		line++;
+	}
+	//############################ ODU3 ####################################
+	line = 0;
+	while (line < numberOfNodes && !findDemand)
+	{
+		t_integer column{ 0 };
+		while (column < numberOfNodes && !findDemand)
+		{
+			if (odu3[line][column] != 0) // If there are demands to be processed between this pair of nodes
+			{
+				findDemand = true;
+
+				dem.demandIndex = demandIndex;
+				dem.sourceNode = { line + 1 };
+				dem.destinationNode = { column + 1 };
+				dem.oduType = { 3 };
+				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+
+				odu3[line][column]--; // A demand was processed
+				demandIndex++;
+			}
+			column++;
+		}
+		line++;
+	}
+	//############################ ODU4 ####################################
+	line=0;
+	while ((line < numberOfNodes) && (!findDemand))
+	{
+		t_integer column{ 0 };
+		while ((column < numberOfNodes) && (!findDemand))
+		{
+			if (odu4[line][column] != 0) // If there are demands to be processed between this pair of nodes
+			{
+				findDemand = true;
+
+				dem.demandIndex = demandIndex;
+				dem.sourceNode = { line + 1 };
+				dem.destinationNode = { column + 1 };
+				dem.oduType = { 4 };
+				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+
+				odu4[line][column]--; // A demand was processed
+				demandIndex++;
+			}
+			column++;
+		}
+		line++;
+	}
+	}
+	
 	return findDemand;
 }
 
