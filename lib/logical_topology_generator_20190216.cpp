@@ -1,15 +1,15 @@
-# include "..\include\logical_top_Gen_20190216.h"
+# include "..\include\logical_topology_generator_20190216.h"
 
 //using namespace std;
 
-void Logical_Topology_Generator::initialize(void) {
+void LogicalTopologyGenerator::initialize(void) {
 
 	numberOfOutputSignals = (int)outputSignals.size();
 	std::string transportMode = getTransportMode();
 
 }
 
-bool Logical_Topology_Generator::runBlock(void) {
+bool LogicalTopologyGenerator::runBlock(void) {
 	
 	t_logical_topolgy output;
 	t_matrix outputTopology;

@@ -20,7 +20,7 @@
 
 using namespace std;
 
-class Logical_Topology_Generator : public Block {
+class LogicalTopologyGenerator : public Block {
 
 	// Input Parameters
 	std::string transportMode;
@@ -35,8 +35,8 @@ class Logical_Topology_Generator : public Block {
 public:
 
 	// Methods (Constructors)
-	Logical_Topology_Generator() {};
-	Logical_Topology_Generator(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
+	LogicalTopologyGenerator() {};
+	LogicalTopologyGenerator(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
 
 
 	void initialize(void);
