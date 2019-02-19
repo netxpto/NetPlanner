@@ -52,7 +52,7 @@ t_integer Signal::space() {
 }
 
 template<typename T>							
-void Signal::bufferPut(T value) 
+void Signal::bufferPut(T value)
 {
 	(static_cast<T *>(buffer))[inPosition] = value;
 
@@ -65,6 +65,7 @@ void Signal::bufferPut(T value)
 
 	bufferEmpty = false;
 	bufferFull = inPosition == outPosition;
+
 
 	if (bufferFull)
 	{
@@ -85,22 +86,25 @@ void Signal::bufferPut(T value)
 				}
 				else
 				{
+
 					t_demand *ptr = (t_demand *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
 					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 					for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
+						fileHandler << "\t\t";
 						fileHandler << ptr->demandIndex;
-						fileHandler << "\t";
+						fileHandler << "\t\t\t";
 						fileHandler << ptr->sourceNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t\t";
 						fileHandler << ptr->destinationNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t\t";
 						fileHandler << ptr->oduType;
-						fileHandler << "\t";
+						fileHandler << "\t\t\t";
 						fileHandler << ptr->restorationMethod;
 						fileHandler << "\n";
 						ptr++;
 					}
+					setBufferEmpty(true);
 					fileHandler.close();
 					setFirstValueToBeSaved(1);
 				}
@@ -111,8 +115,54 @@ void Signal::bufferPut(T value)
 			}
 		}
 	}
-}
+	/*else if (!bufferFull && ready() > 0 && finish)
+	{
+		t_integer initialRemaining = ready();
 
+		if (saveSignal)
+		{
+			if (!headerWritten) writeHeader();
+
+			if (firstValueToBeSaved <= bufferLength)
+			{
+				if (!saveInAscii)
+				{
+					char *ptr = (char *)buffer;
+					ptr = ptr + (firstValueToBeSaved - 1) * sizeof(T);
+					ofstream fileHandler{ "./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app };
+					fileHandler.write(ptr, (bufferLength - (firstValueToBeSaved - 1)) * sizeof(T));
+					fileHandler.close();
+					firstValueToBeSaved = 1;
+				}
+				else
+				{
+					t_demand *ptr = (t_demand *)buffer;
+					ptr = ptr + (firstValueToBeSaved - 1);
+					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+					for (auto dmd = firstValueToBeSaved; dmd < initialRemaining; dmd++) {
+						fileHandler << "\t\t";
+						fileHandler << ptr->demandIndex;
+						fileHandler << "\t\t\t";
+						fileHandler << ptr->sourceNode;
+						fileHandler << "\t\t\t";
+						fileHandler << ptr->destinationNode;
+						fileHandler << "\t\t\t";
+						fileHandler << ptr->oduType;
+						fileHandler << "\t\t\t";
+						fileHandler << ptr->restorationMethod;
+						fileHandler << "\n";
+						ptr++;
+					}
+
+
+					fileHandler.close();
+					setFirstValueToBeSaved(1);
+				}
+			}
+
+		}
+	}*/
+}
 
 template<typename T>
 void Signal::bufferGet(T* valueAddr) {
@@ -159,7 +209,13 @@ void Signal::writeHeader(){
 		headerFile << "Sampling Period (s): " << getSamplingPeriod() << "\n";
 
 		headerFile << "// ### HEADER TERMINATOR ###\n";
-
+		headerFile << "==========================================================================================================================\n";
+		headerFile << "||     Demand Index     |";
+		headerFile << "|     Source Node      |";
+		headerFile << "|   Destination Node   |";
+		headerFile << "|       ODU Type       |";
+		headerFile << "|  Restoration Method  ||\n";
+		headerFile << "==========================================================================================================================\n";
 		headerFile.close();
 
 		headerWritten = true;
@@ -312,7 +368,32 @@ void Signal::close() {
 			ofstream fileHandler;
 			fileHandler.open("./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app);
 
-			if (type == "Binary") {
+//################## Changed 19-02-1019 ##################################		
+			if (type == "Demand") {
+				t_demand *ptr = (t_demand *)buffer;
+				ptr = ptr + (firstValueToBeSaved - 1);
+				//bool stop {false};
+				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
+						fileHandler << "\t\t";
+						fileHandler << ptr->demandIndex;
+						fileHandler << "\t\t\t";
+						fileHandler << ptr->sourceNode;
+						fileHandler << "\t\t\t";
+						fileHandler << ptr->destinationNode;
+						fileHandler << "\t\t\t";
+						fileHandler << ptr->oduType;
+						fileHandler << "\t\t\t";
+						fileHandler << ptr->restorationMethod;
+						fileHandler << "\n";
+						ptr++;
+				}
+				//fileHandler.close();
+				setFirstValueToBeSaved(1);
+			}
+//#########################################################################
+
+			else if (type == "Binary") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_binary));
 			}
@@ -581,8 +662,15 @@ bool SuperBlock::runBlock(string signalPath) {
 						outputSignals[i]->bufferPut(signalDemand);
 					}
 					break;
+				case signal_value_type::t_logical_topology:
+					for (int j = 0; j < length; j++) {
+						t_logical_topolgy signalLogicalTopology;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalLogicalTopology);
+						outputSignals[i]->bufferPut(signalLogicalTopology);
+					}
+					break;
 			default:
-				cerr << "ERRO: netxpto_20180815.cpp (SuperBlock)" << "\n";
+				cerr << "ERRO: netxpto_20190130.cpp (SuperBlock)" << "\n";
 				return false;
 			}
 		}

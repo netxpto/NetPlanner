@@ -39,7 +39,7 @@ using t_unsigned_long = unsigned long int;
 using t_unsigned = unsigned int;
 using t_integer = int;
 using t_integer_long = long int;
-//using t_matrix = std::vector<std::vector<int> >; // 2d vector of integers
+
 typedef std::vector<std::vector<int> > t_matrix;
 
 // ####################################################################################################
@@ -86,7 +86,7 @@ using t_photon_mp_xy = struct { t_complex_xy_mp path[MAX_NUMBER_OF_PATHS]; };
 using t_iqValues = complex<t_real>;
 using t_message = struct {	string messageType;	string messageDataLength; 	string messageData; int size() { return 3; }};
 
-using t_demand = struct {
+using t_demand = struct {						// Signal type Demand structure creation
 	t_integer demandIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
@@ -97,7 +97,14 @@ using t_demand = struct {
 	t_integer getDemandIndex() { return demandIndex; }
 };
 
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand };
+using t_logical_topolgy = struct {		// Signal type logicalTopology structure creation
+
+	t_matrix logicalConnections;
+};
+
+// Existent signals
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology }; 
+
 // #######################################################################################################
 // #
 // # Operator << overloading
@@ -124,7 +131,7 @@ std::ostream& operator<<(std::ostream &out, const t_demand &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -239,6 +246,7 @@ private:
 	bool bufferEmpty{ true };											// Flag bufferEmpty
 	bool bufferFull{ false };											// Flag bufferFull
 	const t_unsigned bufferLength{ DEFAULT_BUFFER_LENGTH };		// Buffer length
+	bool finish {false};
 
 	t_unsigned_long numberOfSavedValues{ 0 };							// Number of saved values
 	t_unsigned_long count;												// Number of values that have already entered in the buffer
@@ -363,6 +371,9 @@ private:
 			case signal_type::Demand:
 				typeName = "Demand";
 				break;
+			case signal_type::LogicalTopology:
+				typeName = "LogicalTopology";
+				break;
 			default:
 				cout << "Error: netxpto_20180815.h - typeName not defined\n";
 		}
@@ -380,6 +391,7 @@ using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, sig
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
 using Demand = BaseSignal<t_demand, signal_type::Demand, signal_value_type::t_demand>;
+using LogicalTopology = BaseSignal<t_logical_topolgy, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
 
 /*
 class TimeDiscrete : public Signal {
