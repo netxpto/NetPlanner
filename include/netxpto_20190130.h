@@ -131,7 +131,7 @@ std::ostream& operator<<(std::ostream &out, const t_demand &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, logicalTopology };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -371,8 +371,8 @@ private:
 			case signal_type::Demand:
 				typeName = "Demand";
 				break;
-			case signal_type::logicalTopology:
-				typeName = "logicalTopology";
+			case signal_type::LogicalTopology:
+				typeName = "LogicalTopology";
 				break;
 			default:
 				cout << "Error: netxpto_20180815.h - typeName not defined\n";
@@ -391,7 +391,7 @@ using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, sig
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
 using Demand = BaseSignal<t_demand, signal_type::Demand, signal_value_type::t_demand>;
-using logicalTopology = BaseSignal<t_logical_topolgy, signal_type::logicalTopology, signal_value_type::t_logical_topology>;
+using LogicalTopology = BaseSignal<t_logical_topolgy, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
 
 /*
 class TimeDiscrete : public Signal {

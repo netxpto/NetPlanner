@@ -27,7 +27,7 @@
     <ClCompile Include="..\..\..\lib\netxpto_20190130.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\lib\logical_Top_Gen_20190216.cpp">
+    <ClCompile Include="..\..\..\lib\logical_topology_generator_20190216.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="..\..\..\include\netxpto_20190130.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\logical_top_Gen_20190216.h">
+    <ClInclude Include="..\..\..\include\logical_topology_generator_20190216.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
