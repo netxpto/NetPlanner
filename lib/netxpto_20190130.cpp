@@ -189,9 +189,12 @@ void Signal::writeHeader() {
 
 		headerFile.open("./" + folderName + "/" + fileName, ios::out);
 
+		///////////////////////////////////////////////////////////////////////
 		headerFile << "Signal type: " << getType() << "\n";
 		headerFile << "Symbol Period (s): " << getSymbolPeriod() << "\n";
 		headerFile << "Sampling Period (s): " << getSamplingPeriod() << "\n";
+		//////////////////////////////////////////////////////////////////////
+
 
 		headerFile << "// ### HEADER TERMINATOR ###\n";
 		headerFile.close();
@@ -404,18 +407,17 @@ void Signal::close() {
 			}
 //#########################################################################
 			else if (type == "LogicalTopology") {
-				t_logical_topolgy *ptr = (t_logical_topolgy *)buffer;
+				t_matrix *ptr = (t_matrix *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
 				{
-					for (t_integer line = 0; line < (ptr->logicalConnections)[0].max_size(); line++)
+					for (size_t line = 0; line < (*ptr)[0].size(); line++)
 					{
-						for (t_integer column = 0; column < (ptr->logicalConnections)[0].max_size(); column++)
+						for (size_t column = 0; column < (*ptr)[0].size(); column++)
 						{
 							fileHandler << "\t";
-							fileHandler << (ptr->logicalConnections)[line][column];
-							ptr++;
+							fileHandler << (*ptr)[line][column];
 						}
 						fileHandler << "\n";
 					}
@@ -694,7 +696,7 @@ bool SuperBlock::runBlock(string signalPath) {
 					break;
 				case signal_value_type::t_logical_topology:
 					for (int j = 0; j < length; j++) {
-						t_logical_topolgy signalLogicalTopology;
+						t_matrix signalLogicalTopology;
 						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalLogicalTopology);
 						outputSignals[i]->bufferPut(signalLogicalTopology);
 					}

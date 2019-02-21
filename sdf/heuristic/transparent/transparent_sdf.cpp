@@ -49,15 +49,15 @@ t_matrix odu4{	{0,0,0,0,0,0},
 t_integer orderingRule{ 0 };
 
 // Physical topology
-t_matrix physicalTopology{ {0,1,0,0,0,1},
-						   {1,0,1,0,0,1},
-						   {0,1,0,1,1,0},
-						   {0,0,1,0,1,0},
-						   {0,0,1,1,0,1},
-						   {1,1,0,0,1,0} };
+t_matrix physicalTopology{  {0,1,0,0,0,1},
+							{1,0,1,0,0,1},
+							{0,1,0,1,1,0},
+							{0,0,1,0,1,0},
+							{0,0,1,1,0,1},
+							{1,1,0,0,1,0} };
 
 // Transport mode
-std::string transportMode{"transparent"};
+transport_mode transportMode{transport_mode::transparent};
 
 //##########################################################################################
 //##########################################################################################
@@ -112,10 +112,9 @@ int main()
 	System MainSystem{
 			// BLOCKS
 			&Scheduler_,
-			&LogicalTopologyGenerator_,
 			&SinkScheduler_,
+			&LogicalTopologyGenerator_,
 			&SinkLogicalTopology_
-			
 	};
 	
 	MainSystem.run();
