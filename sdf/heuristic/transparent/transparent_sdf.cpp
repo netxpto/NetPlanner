@@ -46,7 +46,7 @@ t_matrix odu4{	{0,0,0,0,0,0},
 				{0,0,0,10,1,0} };
 				
 // Demand ordering rule
-t_integer orderingRule{ 1 };
+t_integer orderingRule{ 0 };
 
 // Physical topology
 t_matrix physicalTopology{ {0,1,0,0,0,1},
@@ -66,7 +66,7 @@ std::string transportMode{"transparent"};
 int main()
 {
 
-	Demand SchedulerOut{ "SchedulerOut.sgn", 10};
+	Demand SchedulerOut{ "SchedulerOut.sgn", 100};
 	SchedulerOut.setSaveInAscii(true);
 	Scheduler Scheduler_{ {},{ &SchedulerOut} };
 	Scheduler_.setODU0(odu0);
@@ -112,9 +112,9 @@ int main()
 	System MainSystem{
 			// BLOCKS
 			&Scheduler_,
-			//&LogicalTopologyGenerator_,
-			&SinkScheduler_//,
-			//&SinkLogicalTopology_
+			&LogicalTopologyGenerator_,
+			&SinkScheduler_,
+			&SinkLogicalTopology_
 			
 	};
 	

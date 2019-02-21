@@ -173,6 +173,8 @@ public:
 	// File manipulation
 	void writeHeader();								// Opens the signal file in the default signals directory, \signals, and writes the signal header
 	void writeHeader(string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
+	void writeHeaderDemand();						// Added 20/02/2019 : Opens the signal file in the default signals directory, \signals, and writes the header for "Demand" signals
+	void writeHeaderLogicalTopology();				// Added 20/02/2019 : Opens the signal file in the default signals directory, \signals, and writes the header for "LogicalTopology" signals
 
 	// Buffer and File manipulation
 	void close();									// Empty the signal buffer and close the signal file

@@ -71,8 +71,12 @@ void Signal::bufferPut(T value)
 	{
 		if (saveSignal)
 		{
-			if (!headerWritten) writeHeader();
-
+			if (!headerWritten)
+			{
+				if (type == "Demand") { writeHeaderDemand(); }
+				else if (type == "LogicalTopology") { writeHeaderLogicalTopology(); }
+				else { writeHeader(); }
+			}
 			if (firstValueToBeSaved <= bufferLength)
 			{
 				if (!saveInAscii)
@@ -115,53 +119,7 @@ void Signal::bufferPut(T value)
 			}
 		}
 	}
-	/*else if (!bufferFull && ready() > 0 && finish)
-	{
-		t_integer initialRemaining = ready();
-
-		if (saveSignal)
-		{
-			if (!headerWritten) writeHeader();
-
-			if (firstValueToBeSaved <= bufferLength)
-			{
-				if (!saveInAscii)
-				{
-					char *ptr = (char *)buffer;
-					ptr = ptr + (firstValueToBeSaved - 1) * sizeof(T);
-					ofstream fileHandler{ "./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app };
-					fileHandler.write(ptr, (bufferLength - (firstValueToBeSaved - 1)) * sizeof(T));
-					fileHandler.close();
-					firstValueToBeSaved = 1;
-				}
-				else
-				{
-					t_demand *ptr = (t_demand *)buffer;
-					ptr = ptr + (firstValueToBeSaved - 1);
-					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-					for (auto dmd = firstValueToBeSaved; dmd < initialRemaining; dmd++) {
-						fileHandler << "\t\t";
-						fileHandler << ptr->demandIndex;
-						fileHandler << "\t\t\t";
-						fileHandler << ptr->sourceNode;
-						fileHandler << "\t\t\t";
-						fileHandler << ptr->destinationNode;
-						fileHandler << "\t\t\t";
-						fileHandler << ptr->oduType;
-						fileHandler << "\t\t\t";
-						fileHandler << ptr->restorationMethod;
-						fileHandler << "\n";
-						ptr++;
-					}
-
-
-					fileHandler.close();
-					setFirstValueToBeSaved(1);
-				}
-			}
-
-		}
-	}*/
+	
 }
 
 template<typename T>
@@ -194,7 +152,54 @@ void Signal::bufferGet() {
 }
 
 
-void Signal::writeHeader(){
+void Signal::writeHeaderDemand(){
+
+	if (headerWritten) return;
+
+	if (saveSignal && (!fileName.empty())) {
+
+		ofstream headerFile;
+
+		headerFile.open("./" + folderName + "/" + fileName, ios::out);
+
+		headerFile << "Signal type: " << getType() << "\n";
+		headerFile << "Symbol Period (s): " << getSymbolPeriod() << "\n";
+		headerFile << "Sampling Period (s): " << getSamplingPeriod() << "\n";
+
+		headerFile << "// ### HEADER TERMINATOR ###\n";
+		headerFile << "==========================================================================================================================\n";
+		headerFile << "||     Demand Index     |";
+		headerFile << "|     Source Node      |";
+		headerFile << "|   Destination Node   |";
+		headerFile << "|       ODU Type       |";
+		headerFile << "|  Restoration Method  ||\n";
+		headerFile << "==========================================================================================================================\n";
+		headerFile.close();
+
+		headerWritten = true;
+	}
+};
+void Signal::writeHeader() {
+
+	if (headerWritten) return;
+
+	if (saveSignal && (!fileName.empty())) {
+
+		ofstream headerFile;
+
+		headerFile.open("./" + folderName + "/" + fileName, ios::out);
+
+		headerFile << "Signal type: " << getType() << "\n";
+		headerFile << "Symbol Period (s): " << getSymbolPeriod() << "\n";
+		headerFile << "Sampling Period (s): " << getSamplingPeriod() << "\n";
+
+		headerFile << "// ### HEADER TERMINATOR ###\n";
+		headerFile.close();
+
+		headerWritten = true;
+	}
+};
+void Signal::writeHeaderLogicalTopology() {
 
 	if (headerWritten) return;
 
@@ -360,7 +365,13 @@ void Signal::close() {
 
 	if (saveSignal && (inPosition >= firstValueToBeSaved)) {
 
-		if (!headerWritten) writeHeader();
+		//if (!headerWritten) writeHeader();
+		if (!headerWritten)
+		{
+			if (type == "Demand") { writeHeaderDemand(); }
+			else if (type == "LogicalTopology") { writeHeaderLogicalTopology(); }
+			else { writeHeader(); }
+		}
 
 		if (!(type == "Message")) {
 			char* ptr = (char *)buffer;
@@ -392,7 +403,26 @@ void Signal::close() {
 				setFirstValueToBeSaved(1);
 			}
 //#########################################################################
-
+			else if (type == "LogicalTopology") {
+				t_logical_topolgy *ptr = (t_logical_topolgy *)buffer;
+				ptr = ptr + (firstValueToBeSaved - 1);
+				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
+				{
+					for (t_integer line = 0; line < (ptr->logicalConnections)[0].max_size(); line++)
+					{
+						for (t_integer column = 0; column < (ptr->logicalConnections)[0].max_size(); column++)
+						{
+							fileHandler << "\t";
+							fileHandler << (ptr->logicalConnections)[line][column];
+							ptr++;
+						}
+						fileHandler << "\n";
+					}
+				}
+				//fileHandler.close();
+				setFirstValueToBeSaved(1);
+			}
 			else if (type == "Binary") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_binary));
