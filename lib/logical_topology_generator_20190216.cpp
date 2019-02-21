@@ -45,7 +45,5 @@ bool LogicalTopologyGenerator::runBlock(void) {
 		cout << "Error: logical_Top_Gen_20190216.h - Transport Mode not defined\n";
 	}
 
-	outputSignals[0]->bufferPut((t_logical_topolgy)output);
-
 	return true;
 };
