@@ -4,41 +4,27 @@
 
 void LogicalTopologyGenerator::initialize(void) {
 
-	numberOfOutputSignals = (int)outputSignals.size();
-	std::string transportMode = getTransportMode();
-
 }
 
 bool LogicalTopologyGenerator::runBlock(void) {
 	
-	t_logical_topolgy output;
-	t_matrix outputTopology;
 
-	if (transportMode == "opaque" || transportMode == "OPAQUE")
+	if (!generate)
+		return false;
+	else 
+		generate = false;
+
+	if (transportMode == transport_mode::opaque)
 	{
-		outputTopology == physicalTopology;
-		output.logicalConnections = outputTopology;
-
-		outputSignals[0]->bufferPut((t_logical_topolgy)output);
+		outputSignals[0]->bufferPut((t_matrix) physicalTopology);
 	}	
-	else if (transportMode == "transparent" || transportMode == "TRANSPARENT")  // Considering all nodes transparent
+	else if (transportMode == transport_mode::transparent)  // Considering all nodes transparent
 	{
-		for (t_integer line = 0; line < output.logicalConnections[0].size(); line++)
-		{
-			for (t_integer column = 0; column < output.logicalConnections[0].size(); column++)
-			{
-				if (line == column) 
-				{ 
-					output.logicalConnections[line][column] = 0; 
-				}
-				else
-				{
-					output.logicalConnections[line][column] = 1;
-				}
-			}
-		}
-
-		outputSignals[0]->bufferPut((t_logical_topolgy)output);
+		t_matrix outputTopology;
+		outputTopology.resize(physicalTopology[0].size(), vector<int>(physicalTopology[0].size(),1));
+		for (size_t k = 0; k < physicalTopology[0].size(); k++) outputTopology[k][k] = 0;
+				
+		outputSignals[0]->bufferPut((t_matrix) outputTopology);
 	}
 	else
 	{

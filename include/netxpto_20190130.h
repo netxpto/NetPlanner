@@ -21,6 +21,7 @@
 # include <iostream>
 # include <locale>
 # include <map>
+# include <math.h>
 # include <random>
 # include <sstream>
 # include <vector>
@@ -97,13 +98,11 @@ using t_demand = struct {						// Signal type Demand structure creation
 	t_integer getDemandIndex() { return demandIndex; }
 };
 
-using t_logical_topolgy = struct {		// Signal type logicalTopology structure creation
-
-	t_matrix logicalConnections;
-};
 
 // Existent signals
 enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology }; 
+
+enum class transport_mode { opaque, transparent };
 
 // #######################################################################################################
 // #
@@ -393,7 +392,7 @@ using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, sig
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
 using Demand = BaseSignal<t_demand, signal_type::Demand, signal_value_type::t_demand>;
-using LogicalTopology = BaseSignal<t_logical_topolgy, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
+using LogicalTopology = BaseSignal<t_matrix, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
 
 /*
 class TimeDiscrete : public Signal {
