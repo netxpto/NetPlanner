@@ -2,6 +2,7 @@
 # include "..\..\..\include\scheduler_20190122.h"
 # include "..\..\..\include\sink_20180815.h"
 # include "..\..\..\include\logical_topology_generator_20190216.h"
+# include "..\..\..\include\physical_topology_generator_20190227.h"
 
 
 
@@ -9,7 +10,8 @@
 //######################## Simulation Input Parameters #####################################
 //##########################################################################################
 
-// Traffic
+// Traffic in terms of ODU0s
+
 t_matrix odu0{	{0,1,1,1,1,1},
 				{1,0,1,1,1,1},
 				{1,1,0,1,1,1},
@@ -59,6 +61,15 @@ t_matrix physicalTopology{  {0,1,0,0,0,1},
 // Transport mode
 transport_mode transportMode{transport_mode::transparent};
 
+// Optical channels per transport system
+t_integer opticalChannelsPerTransportSystem {4}; // 4 optical channels per transport system
+
+// Transport systems
+t_integer transportSystems {1}; // 1 transport system between each par of nodes
+
+// Optical channels capacity
+t_integer opticalChannelCapacity {80}; // In this case each channel supports up to 80 ODU0s
+
 //##########################################################################################
 //##########################################################################################
 //##########################################################################################
@@ -81,17 +92,26 @@ int main()
 	SinkScheduler_.setDisplayNumberOfSamples(true);
 
 
-	LogicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn", 32 };
+	LogicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn", 1 };
+	LogicalTopologyOut.setSaveInAscii(true);
 	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{&LogicalTopologyOut} };
 	LogicalTopologyGenerator_.setTransportMode(transportMode);
 	LogicalTopologyGenerator_.setPhysicalTopology(physicalTopology);
 
 	Sink SinkLogicalTopology_{ { &LogicalTopologyOut },{} };
 	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
-/*
-		physicalTopology PhysicalTopologyOut{ "PhysicalTopologyOut.sgn" };
-		Physical Physical_Topology_Generator_{ {},{&PhysicalTopology} };
 
+	PhysicalTopology PhysicalTopologyOut{ "PhysicalTopologyOut.sgn", 1 };
+	PhysicalTopologyOut.setSaveInAscii(true);
+	PhysicalTopologyGenerator PhysicalTopologyGenerator_{ {},{&PhysicalTopologyOut} };
+	PhysicalTopologyGenerator_.setOpticalChannels(opticalChannelsPerTransportSystem);
+	PhysicalTopologyGenerator_.setPhysicalTopology(physicalTopology);
+	PhysicalTopologyGenerator_.setTransportSystems(transportSystems);
+	PhysicalTopologyGenerator_.setOpticalChannelCapacity(opticalChannelCapacity);
+
+	Sink SinkPhysicalTopology_{ { &PhysicalTopologyOut },{} };
+	SinkPhysicalTopology_.setDisplayNumberOfSamples(true);
+/*
 
 		demandListOfPaths PathGeneratorOut{ "PathGeneratorOut.sgn" };
 		path RemovedPaths{ "RemovedPaths.sgn" };
@@ -114,7 +134,10 @@ int main()
 			&Scheduler_,
 			&SinkScheduler_,
 			&LogicalTopologyGenerator_,
-			&SinkLogicalTopology_
+			&SinkLogicalTopology_,
+			&PhysicalTopologyGenerator_,
+			&SinkPhysicalTopology_
+
 	};
 	
 	MainSystem.run();

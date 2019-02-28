@@ -5,8 +5,8 @@
 # include <complex>
 # include <fstream>
 # include <iostream>
-//# include <math.h>
-//# include <stdio.h>
+# include <math.h>
+# include <stdio.h>
 # include <string>
 # include <strstream>
 # include <vector>
