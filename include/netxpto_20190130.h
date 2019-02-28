@@ -21,6 +21,7 @@
 # include <iostream>
 # include <locale>
 # include <map>
+# include <math.h>
 # include <random>
 # include <sstream>
 # include <vector>
@@ -41,6 +42,7 @@ using t_integer = int;
 using t_integer_long = long int;
 
 typedef std::vector<std::vector<int> > t_matrix;
+
 
 // ####################################################################################################
 // #
@@ -97,13 +99,55 @@ using t_demand = struct {						// Signal type Demand structure creation
 	t_integer getDemandIndex() { return demandIndex; }
 };
 
-using t_logical_topolgy = struct {		// Signal type logicalTopology structure creation
-
-	t_matrix logicalConnections;
+using t_logical_links = struct {			// Logical links data structure
+	t_integer linkIndex{ 0 };
+	t_integer linkSourceNode{ 0 };
+	t_integer linkDestinationNode{ 0 };
+	t_integer numberOfLightPaths{ 0 };
 };
 
+using t_light_paths = struct {				// Light pahts data structure
+	t_integer linkIndex{ 0 };
+	t_integer lightPathNumber{ 0 };
+	std::vector<int> physicalLinks{ 0 };
+	t_integer wavelength{ 0 };
+};
+
+using t_logical_topology = struct {			// Logical Topology signal data structure
+	t_matrix logicalTopology{ 0 };
+	std::vector<t_logical_links> logicalLinks;	// List of logical links
+	std::vector<t_light_paths> lightPaths;		// List of light paths
+
+};
+
+using t_physical_link = struct {			// Logical Topology signal data structure
+	t_integer linkIndex{ 0 };				// Link Index
+	t_integer linkSourceNode{ 0 };			
+	t_integer linkDestinationNode{ 0 };
+	t_integer numberOfOpticalChannels{ 0 }; // Number of optical channels per physical link
+
+};
+
+using t_optical_channel = struct {			// Logical Topology signal data structure
+	t_integer linkIndex{ 0 };				// Physical link index
+	t_integer opticalChannelNumber{ 0 };	// Number of the optical channel
+	t_integer capacity{ 0 };				// In terms of ODU0s
+	t_integer wavelengtht{ 0 };
+	t_integer sourceNode{ 0 };				// Source node of the physical link
+	t_integer destinationNode{ 0 };			// Destination node of the physical link
+
+};
+using t_physical_topology = struct {					// Physical Topology signal data structure
+	std::vector<t_physical_link> physicalLinks;			// List of physical links
+	std::vector<t_optical_channel> opticalChannels;		// List of optical channels
+
+};
+
+
 // Existent signals
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology }; 
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology }; 
+
+enum class transport_mode { opaque, transparent };
 
 // #######################################################################################################
 // #
@@ -131,7 +175,7 @@ std::ostream& operator<<(std::ostream &out, const t_demand &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology, PhysicalTopology };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -161,7 +205,27 @@ public:
 	explicit Signal(t_unsigned_long bLength) : bufferLength{ bLength } {};
 
 	// Signal destructors
-	~Signal() { if (!(valueType == signal_value_type::t_message)) { delete[] buffer; }; };	
+	~Signal() 
+	{ 
+		/*
+		if (!(valueType == signal_value_type::t_message))
+		{ 
+			if (valueType == signal_value_type::t_logical_topology)
+			{
+				delete[] buffer;
+			}
+			else if(valueType == signal_value_type::t_demand)
+			{ 
+				delete[] buffer; }
+
+			else if (valueType == signal_value_type::t_physical_topology)
+			{
+				delete[] buffer;
+			}
+			 
+		};
+		*/
+	};
 
 	// Buffer manipulation funtions
 	t_integer ready();										// Returns the number of samples in the buffer ready to be processed
@@ -173,7 +237,7 @@ public:
 	// File manipulation
 	void writeHeader();								// Opens the signal file in the default signals directory, \signals, and writes the signal header
 	void writeHeader(string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
-
+	
 	// Buffer and File manipulation
 	void close();									// Empty the signal buffer and close the signal file
 
@@ -374,6 +438,9 @@ private:
 			case signal_type::LogicalTopology:
 				typeName = "LogicalTopology";
 				break;
+			case signal_type::PhysicalTopology:
+				typeName = "PhysicalTopology";
+				break;
 			default:
 				cout << "Error: netxpto_20180815.h - typeName not defined\n";
 		}
@@ -391,7 +458,8 @@ using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, sig
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
 using Demand = BaseSignal<t_demand, signal_type::Demand, signal_value_type::t_demand>;
-using LogicalTopology = BaseSignal<t_logical_topolgy, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
+using LogicalTopology = BaseSignal<t_logical_topology, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
+using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
 
 /*
 class TimeDiscrete : public Signal {

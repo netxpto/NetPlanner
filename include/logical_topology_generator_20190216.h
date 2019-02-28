@@ -5,8 +5,8 @@
 # include <complex>
 # include <fstream>
 # include <iostream>
-//# include <math.h>
-//# include <stdio.h>
+# include <math.h>
+# include <stdio.h>
 # include <string>
 # include <strstream>
 # include <vector>
@@ -23,14 +23,11 @@ using namespace std;
 class LogicalTopologyGenerator : public Block {
 
 	// Input Parameters
-	std::string transportMode;
-	t_matrix physicalTopology;
+	transport_mode transportMode{ transport_mode::opaque };
+	t_matrix physicalTopology{ {0} };
 
 	// State variables
-	t_logical_topolgy logicalTopology;
-	bool change{ false }; // When Path tester bock is implemented there is a possibility of occuring changes in the logical topology 
-
-
+	bool generate{ true };
 
 public:
 
@@ -42,10 +39,10 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setTransportMode(std::string str) { transportMode = str; }
-	std::string getTransportMode(void) { return transportMode; };
+	void setTransportMode(transport_mode tMode) { transportMode = tMode; }
+	transport_mode getTransportMode(void) { return transportMode; };
 
-	void setPhysicalTopology(t_matrix phy) { physicalTopology = phy; }
+	void setPhysicalTopology(t_matrix pTopology) { physicalTopology = pTopology; }
 	t_matrix getPhysicalTopology(void) { return physicalTopology; };
 };
 

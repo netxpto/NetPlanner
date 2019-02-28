@@ -7,8 +7,8 @@
 # include <complex>
 # include <fstream>
 # include <iostream>
-//# include <math.h>
-//# include <stdio.h>
+# include <math.h>
+# include <stdio.h>
 # include <string>
 # include <strstream>
 # include <vector>
@@ -68,10 +68,10 @@ public:
 	void setDemandsOrderingRule(t_integer rule) { orderingRule = rule; }
 	t_integer const setDemandsOrderingRule(void) { return orderingRule; };
 
-	void setNumberOfNodes(t_integer nodes) { numberOfNodes = nodes; }
+	void setNumberOfNodes(size_t nodes) { numberOfNodes = nodes; }
 	void setNumberOfDemands(t_integer number) { numberOfDemands = number; }
 
-	t_integer getNumberOfNodes() { return numberOfNodes; };
+	size_t getNumberOfNodes() { return numberOfNodes; };
 	t_integer getNumberOfDemands() { return numberOfDemands; };
 	t_integer getDemandIndex() { return demandIndex; };
 	t_integer getDemandOrderingRule() { return orderingRule; };
