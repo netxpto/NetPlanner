@@ -83,7 +83,7 @@ int main()
 	LogicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn"};
 	LogicalTopologyOut.setSaveInAscii(true);
 
-	PhysicalTopology PhysicalTopologyOut{ "PhysicalTopologyOut.sgn"};
+	PhysicalTopology PhysicalTopologyOut{ "PhysicalTopologyOut.sgn", 1};
 	PhysicalTopologyOut.setSaveInAscii(true);
 
 	/* Blocks Decalration */
