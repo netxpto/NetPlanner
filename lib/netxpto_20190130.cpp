@@ -549,7 +549,7 @@ void Signal::close() {
 				{
 					//################### PRINT PHYSICAL LINKS ######################
 
-					for (size_t k = 0; k < (*ptr).physicalLinks.size(); k++)
+					for (t_integer k = 0; k < (t_integer) (*ptr).physicalLinks.size(); k++)
 					{
 						fileHandler << (*ptr).physicalLinks[k].linkIndex;
 						fileHandler << "\t";
@@ -560,7 +560,7 @@ void Signal::close() {
 						fileHandler << (*ptr).physicalLinks[k].numberOfOpticalChannels;
 						fileHandler << "\n";
 
-						for (size_t i = 0; i < (*ptr).physicalLinks[k].numberOfOpticalChannels; i++)
+						for (t_integer i = 0; i < (t_integer) (*ptr).physicalLinks[k].numberOfOpticalChannels; i++)
 						{
 							fileHandler << (*ptr).opticalChannels[i].linkIndex;
 							fileHandler << "\t";

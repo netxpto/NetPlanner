@@ -34,11 +34,11 @@ class Scheduler : public Block {
 
 	// Input Parameters
 	t_integer orderingRule{ 0 }; // By default descending ordering rule (ODU4 ... ODU0)
-	size_t numberOfNodes{ 0 };
+	t_integer numberOfNodes{ 0 };
 
 	// Functions that need access to this class variables values in the main cpp file
 	bool generateDemand(t_integer orderingRule, t_demand &dem);
-	size_t calculateNumberOfNodes();
+	t_integer calculateNumberOfNodes();
 	t_integer calculateNumberOfDemands();
 
 public:

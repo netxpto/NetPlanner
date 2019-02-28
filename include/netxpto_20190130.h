@@ -112,12 +112,14 @@ using t_light_paths = struct {				// Light pahts data structure
 	std::vector<int> physicalLinks{ 0 };
 	t_integer wavelength{ 0 };
 };
+
 using t_logical_topology = struct {			// Logical Topology signal data structure
-	t_matrix logicalTopology { 0 };
+	t_matrix logicalTopology{ 0 };
 	std::vector<t_logical_links> logicalLinks;	// List of logical links
 	std::vector<t_light_paths> lightPaths;		// List of light paths
 
 };
+
 using t_physical_link = struct {			// Logical Topology signal data structure
 	t_integer linkIndex{ 0 };				// Link Index
 	t_integer linkSourceNode{ 0 };			
@@ -204,11 +206,13 @@ public:
 
 	// Signal destructors
 	~Signal() 
-	{ if (!(valueType == signal_value_type::t_message))
+	{ 
+		/*
+		if (!(valueType == signal_value_type::t_message))
 		{ 
 			if (valueType == signal_value_type::t_logical_topology)
 			{
-			//	delete[] buffer;
+				delete[] buffer;
 			}
 			else if(valueType == signal_value_type::t_demand)
 			{ 
@@ -216,10 +220,11 @@ public:
 
 			else if (valueType == signal_value_type::t_physical_topology)
 			{
-			//	delete[] buffer;
+				delete[] buffer;
 			}
 			 
 		};
+		*/
 	};
 
 	// Buffer manipulation funtions
