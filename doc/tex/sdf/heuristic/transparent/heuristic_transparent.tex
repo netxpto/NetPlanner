@@ -622,13 +622,13 @@ In order to route those demands there will also be the necessity of a Path Gener
 		\hline
 		Signal name & Signal type \\ % it is missing the description of the signals
 		\hline
-		SchedulerOut &  demand\\ \hline
-		LogicalTopology &  logicalTopology\\ \hline
+		SchedulerOut &  Demand\\ \hline
+		LogicalTopologyOut &  LogicalTopology\\ \hline
 		%layer1 & \\ \hline
-		PhysicalTopology & physicalTopology\\ \hline
-		PathGeneratorOut &  demandListOfPaths\\ \hline
-		RemovedPaths &   path\\ \hline
-		BlockedDemands &   demand\\ \hline
+		PhysicalTopologyOut & PhysicalTopology\\ \hline
+		PathGeneratorOut &  DemandListOfPaths\\ \hline
+		RemovedPaths &   Path\\ \hline
+		BlockedDemands &   Demand\\ \hline
 		%demandPath & ??? \\ \hline
 		RoutedDemands & demandPathRoute\\ \hline
 		%demandsRouted & ??? \\ \hline
@@ -645,19 +645,19 @@ In order to route those demands there will also be the necessity of a Path Gener
  \textbf{Signal Types}
 \\
 \\
-\underline{demand}
+\underline{Demand}
 \\
 \begin{table}[H]
 	\begin{tabular}{|c|c|c|c|l|}
 		\hline
-		Demand Index & Source Node & Destination Node & ODU Type & \multicolumn{1}{c|}{Restoration Method}                                                 \\ \hline
-		1...$\infty$       & 1...N       & 1...N            & 0...4    & \begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\\ 2 - Restoration\end{tabular} \\ \hline
+		demandIndex & sourceNode & destinationNode &  oduType & \multicolumn{1}{c|}{restorationMethod}                                                 \\ \hline
+		0...$\infty$       & 1...N       & 1...N            & 0...4    & \begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\\ 2 - Restoration\end{tabular} \\ \hline
 	\end{tabular}
 	\caption{Constitution of a demand.}
 	\label{demand_variable}
 \end{table}
 N represents the number of nodes present in the network.\\ \\
-\underline{logicalTopology}\\
+\underline{LogicalTopology}\\
 \\
 This is the output signal of the Logical topology generator block, it has a matrix NxN where every logical connection existent between nodes in the network is displayed. In this particular case we are studying the transparent trasnport node so our logical toplogy will be the one presented in table 1.23. In addition here will occur the creation structures corresponding to our network logical links and light paths.\\
 
@@ -696,16 +696,16 @@ This is the output signal of the Logical topology generator block, it has a matr
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Index & Link Source Node & Link Destination Node & Number of Light Paths \\ \hline
-		1     & 1...N            & 1...N                 & -1                 \\ \hline
+		linkIndex & linkSourceNode & linkDestinationNode & numberofLightPaths \\ \hline
+		1     & 1...N            & 1...N                 & 0...N                 \\ \hline
 		...   & ...              & ...                   & ...                   \\ \hline
-		LO    & 1...N            & 1...N                 & -1                 \\ \hline
+		LO    & 1...N            & 1...N                 & 0...N                 \\ \hline
 	\end{tabular}
 	\caption{Logical link variable.}
 	\label{logicalLink_variable}
 \end{table}
 
-LO represents the number of logical links present in the network.\\ \\
+LO represents the number of logical links present in the network. Initially there will be none.\\ \\
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -721,7 +721,7 @@ LO represents the number of logical links present in the network.\\ \\
 LP represents the number of light paths established in the network.\\
 OC represents the number optical channels existent in each physical link.\\
 The Physical Links variable inside of the light paths represents the links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain light path.\\ \\
-\underline{physicalTopology}\\
+\underline{PhysicalTopology}\\
 \\
 Here the information about every physical connection existent between nodes and their capacity initially existent is sent to the Path tester block where later on will be updated.
 
@@ -729,7 +729,7 @@ Here the information about every physical connection existent between nodes and 
 		\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Index & Link Source Node & Link Destination Node & Number of Optical Channels \\ \hline
+		linkIndex & linkSourceNode & linkDestinationNode & numberOfOpticalChannels \\ \hline
 		1     & 1...N            & 1...N                 & OC                        \\ \hline
 		...   & ...              & ...                   & ...                        \\ \hline
 		L     & 1...N            & 1...N                 & OC                        \\ \hline
@@ -742,7 +742,7 @@ Here the information about every physical connection existent between nodes and 
 	\centering
 	\begin{tabular}{|c|c|c|c|c|c|}
 		\hline
-		Link Index & \begin{tabular}[c]{@{}c@{}}Optical Channel\\  Number\end{tabular} & \begin{tabular}[c]{@{}c@{}}Capacity \\ (ODU0s)\end{tabular} & Wavelenght & \begin{tabular}[c]{@{}c@{}}Source\\  Node\end{tabular} & \begin{tabular}[c]{@{}c@{}}Destination\\  Node\end{tabular} \\ \hline
+		linkIndex & \begin{tabular}[c]{@{}c@{}}opticalChannel\\ Number\end{tabular} & \begin{tabular}[c]{@{}c@{}}Capacity \\ (ODU0s)\end{tabular} & wavelenght & \begin{tabular}[c]{@{}c@{}}sourceNode\end{tabular} & \begin{tabular}[c]{@{}c@{}}destinationNode\end{tabular} \\ \hline
 		1...L      & 1...OC                                                           &                                                           & 1...OC    & 1...N                                                  & 1...N                                                       \\ \hline
 	\end{tabular}
 	\caption{Optical channel variable.}
@@ -750,13 +750,13 @@ Here the information about every physical connection existent between nodes and 
 \end{table}
 
 
-\underline{path}\\
+\underline{Path}\\
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		Path Index & Source Node & Destination Node & Logical links & Hops\\ \hline
+		pathIndex & sourceNode & destinationNode & logicalLinks & hops\\ \hline
 		& 1...N       & 1...N  & [0/1...0/1]  &    \\ \hline
 	\end{tabular}
 	\caption{Path type signal.}

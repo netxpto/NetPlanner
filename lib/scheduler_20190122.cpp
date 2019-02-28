@@ -300,9 +300,9 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 	return findDemand;
 }
 
-t_integer Scheduler::calculateNumberOfNodes()	
+size_t Scheduler::calculateNumberOfNodes()	
 { 
-	t_integer nodes = odu0[0].size() ;
+	size_t nodes = odu0[0].size() ;
 	return nodes;
 };
 
