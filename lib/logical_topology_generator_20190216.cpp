@@ -26,9 +26,9 @@ bool LogicalTopologyGenerator::runBlock(void) {
 
 // For each existent logical connection it creates a logical link structure 
 
-		for (t_integer line = 0; line < outputOpaque.logicalTopology[0].size(); line++)
+		for (t_integer line = 0; line < (t_integer) outputOpaque.logicalTopology[0].size(); line++)
 		{
-			for (t_integer column = 0; column < outputOpaque.logicalTopology[0].size(); column++)
+			for (t_integer column = 0; column < (t_integer) outputOpaque.logicalTopology[0].size(); column++)
 			{
 				if (outputOpaque.logicalTopology[line][column] == 1)
 				{
@@ -60,9 +60,9 @@ bool LogicalTopologyGenerator::runBlock(void) {
 
 //######### CREATES LOGICAL LINKS ########################
 
-		for (t_integer line = 0; line < outputTransparent.logicalTopology[0].size(); line++)
+		for (t_integer line = 0; line < (t_integer) outputTransparent.logicalTopology[0].size(); line++)
 		{
-			for (t_integer column = 0; column < outputTransparent.logicalTopology[0].size(); column++)
+			for (t_integer column = 0; column < (t_integer) outputTransparent.logicalTopology[0].size(); column++)
 			{
 				if (outputTransparent.logicalTopology[line][column] == 1)
 				{

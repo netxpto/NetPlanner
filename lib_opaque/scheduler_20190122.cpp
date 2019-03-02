@@ -1,10 +1,8 @@
-# include "..\include\scheduler_20190122.h"
-
+# include "..\include_opaque\scheduler_20190122.h"
 
 using namespace std;
 
 //	Global variables needed to generate a demand signal
-
 
 void Scheduler::initialize(void){
 
@@ -13,12 +11,10 @@ void Scheduler::initialize(void){
 	setNumberOfNodes(calculateNumberOfNodes());
 	setNumberOfDemands(calculateNumberOfDemands());
 	
-
 	numberOfNodes = getNumberOfNodes();				// Returns the number of nodes
 	numberOfDemands = getNumberOfDemands();			// Returns the total number of existent demands
 	demandIndex = getDemandIndex();					// Returns demandIndex value
 	orderingRule = getDemandOrderingRule();			// Returns orderingRule value
-
 }
 
 bool Scheduler::runBlock(void) {

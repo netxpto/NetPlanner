@@ -19,9 +19,9 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 	t_integer k{ 0 };
 
 
-	for (t_integer line=0; line < physicalTopology[0].size(); line++)
+	for (t_integer line=0; line < (t_integer) physicalTopology[0].size(); line++)
 	{
-		for (t_integer column=0; column < physicalTopology[0].size(); column++)
+		for (t_integer column=0; column < (t_integer) physicalTopology[0].size(); column++)
 		{
 //################ CREATES PHYSICAL LINKS #######################################################
 			if (physicalTopology[line][column] == 1)
