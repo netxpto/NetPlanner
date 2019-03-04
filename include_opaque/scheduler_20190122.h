@@ -1,14 +1,12 @@
 # ifndef SCHEDULER_H_
 # define SCHEDULER_H_
 
-
-
 # include <vector>
 # include <complex>
 # include <fstream>
 # include <iostream>
-# include <math.h>
-# include <stdio.h>
+//# include <math.h>
+//# include <stdio.h>
 # include <string>
 # include <strstream>
 # include <vector>
@@ -16,14 +14,10 @@
 # include <random>
 # include <chrono>
 
-
-# include "..\include\netxpto_20190130.h"
-
+# include "netxpto_20190130.h"
 
 using namespace std;
 
-
- 
 class Scheduler : public Block {
 
 	// State variables + Input Parameters
@@ -68,10 +62,10 @@ public:
 	void setDemandsOrderingRule(t_integer rule) { orderingRule = rule; }
 	t_integer const setDemandsOrderingRule(void) { return orderingRule; };
 
-	void setNumberOfNodes(size_t nodes) { numberOfNodes = nodes; }
+	void setNumberOfNodes(t_integer nodes) { numberOfNodes = nodes; }
 	void setNumberOfDemands(t_integer number) { numberOfDemands = number; }
 
-	size_t getNumberOfNodes() { return numberOfNodes; };
+	t_integer getNumberOfNodes() { return numberOfNodes; };
 	t_integer getNumberOfDemands() { return numberOfDemands; };
 	t_integer getDemandIndex() { return demandIndex; };
 	t_integer getDemandOrderingRule() { return orderingRule; };

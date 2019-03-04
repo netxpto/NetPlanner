@@ -83,9 +83,22 @@ t_integer numberOfPaths{ 3 }; // 3 shortest paths are attributed to each demand
 
 int main()
 {
+<<<<<<< HEAD
 
 	Demand SchedulerOut{ "SchedulerOut.sgn",20};
+=======
+	/* Signals Declaration */
+	Demand SchedulerOut{ "SchedulerOut.sgn"};
+>>>>>>> e11538b821bdf73656577e62b284e97a4f82a335
 	SchedulerOut.setSaveInAscii(true);
+
+	LogicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn"};
+	LogicalTopologyOut.setSaveInAscii(true);
+
+	PhysicalTopology PhysicalTopologyOut{ "PhysicalTopologyOut.sgn", 1};
+	PhysicalTopologyOut.setSaveInAscii(true);
+
+	/* Blocks Decalration */
 	Scheduler Scheduler_{ {},{ &SchedulerOut} };
 	Scheduler_.setODU0(odu0);
 	Scheduler_.setODU1(odu1);
@@ -94,13 +107,15 @@ int main()
 	Scheduler_.setODU4(odu4);
 	Scheduler_.setDemandsOrderingRule(orderingRule);
 
-	
 	Sink SinkScheduler_{ { &SchedulerOut },{} };
 	SinkScheduler_.setDisplayNumberOfSamples(true);
 
+<<<<<<< HEAD
 
 	LogicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn" };
 	LogicalTopologyOut.setSaveInAscii(true);
+=======
+>>>>>>> e11538b821bdf73656577e62b284e97a4f82a335
 	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{&LogicalTopologyOut} };
 	LogicalTopologyGenerator_.setTransportMode(transportMode);
 	LogicalTopologyGenerator_.setPhysicalTopology(physicalTopology);
@@ -108,8 +123,11 @@ int main()
 	Sink SinkLogicalTopology_{ { &LogicalTopologyOut },{} };
 	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
 
+<<<<<<< HEAD
 	PhysicalTopology PhysicalTopologyOut{ "PhysicalTopologyOut.sgn" };
 	PhysicalTopologyOut.setSaveInAscii(true);
+=======
+>>>>>>> e11538b821bdf73656577e62b284e97a4f82a335
 	PhysicalTopologyGenerator PhysicalTopologyGenerator_{ {},{&PhysicalTopologyOut} };
 	PhysicalTopologyGenerator_.setOpticalChannels(opticalChannelsPerTransportSystem);
 	PhysicalTopologyGenerator_.setPhysicalTopology(physicalTopology);
@@ -144,6 +162,7 @@ int main()
 	//Sink Sink_logical_{ {&LogicalTopologyOut},{} };
     
 	System MainSystem{
+<<<<<<< HEAD
 		// BLOCKS
 		&Scheduler_,
 		&SinkScheduler_,
@@ -154,10 +173,35 @@ int main()
 		//&PathGenerator_,
 		//&SinkPathGenerator_
 
+=======
+			// BLOCKS
+			&Scheduler_,
+			&SinkScheduler_,
+>>>>>>> e11538b821bdf73656577e62b284e97a4f82a335
 	};
 	
 	MainSystem.run();
 	MainSystem.terminate();
+
+	System MainSystem1{
+		&LogicalTopologyGenerator_,
+		&SinkLogicalTopology_,
+	};
+
+	MainSystem1.run();
+	MainSystem1.terminate();
+
+
+	System MainSystem2{
+		// BLOCKS
+		&PhysicalTopologyGenerator_,
+		&SinkPhysicalTopology_
+	};
+
+	MainSystem2.run();
+	MainSystem2.terminate();
+
+
 
 	system("pause");
 

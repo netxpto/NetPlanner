@@ -566,240 +566,321 @@ The creation of this model for any scenario, started with some considerations an
 
 \vspace{13pt}
 
-In the figure below it is shown a fluxogram with the description of the opaque transport mode approach.
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=16cm]{sdf/heuristic/opaque/figures/fluxogram_opaque}
-	\caption{Fluxogram with the steps performed in the opaque transport mode approach.}
+	\includegraphics[width=16cm]{sdf/heuristic/opaque/figures/fluxogram_Opaque}
+	\caption{Simulation Diagram}
 	\label{fluxogram_opaque}
 \end{figure}
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|}
+	\begin{tabular}{| c | c | c | c |}
 		\hline
-		\textbf{Parameter} & \textbf{Default value} & \textbf{Description}                                                                                           \\ \hline
-		ODU0                                                                         & Null          & ODU0 demands                                                                                        \\ \hline
-		ODU1                                                                         & Null          & ODU1 demands                                                                                        \\ \hline
-		ODU2                                                                         & Null          & ODU2 demands                                                                                        \\ \hline
-		ODU3                                                                         & Null          & ODU3 demands                                                                                        \\ \hline
-		ODU4                                                                         & Null          & ODU4 demands                                                                                        \\ \hline
-		Demands Ordering Criterion                                                        & ODU4...ODU0   & \begin{tabular}[c]{@{}c@{}}Order by which demands will be\\ sorted\end{tabular}                     \\ \hline
-		Number of Paths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes\end{tabular}           \\ \hline
-		Criterion                                                                    & Hops          & Shortest path type                                                                                  \\ \hline
-		Transport Mode                                                               & Null          & \begin{tabular}[c]{@{}c@{}}Opaque, transparent or translucent\\ modes\end{tabular}                   \\ \hline
-		Physical Topology                                                            & Null          & \begin{tabular}[c]{@{}c@{}}Physical connections of the\\ network\end{tabular}                       \\ \hline
-		Optical Channels                                                             & 100           & \begin{tabular}[c]{@{}c@{}}Optical channels per transport \\ system\end{tabular}                    \\ \hline
-		Transport Systems                                                            & 1             & \begin{tabular}[c]{@{}c@{}}Number of transport systems\\ connecting each pair of nodes\end{tabular} \\ \hline
-		\begin{tabular}[c]{@{}c@{}}Optical Channel\\ Capacity\end{tabular}           & 100 Gbps      & \begin{tabular}[c]{@{}c@{}}Physical capacity of each \\ channel\end{tabular}                        \\ \hline
-		\begin{tabular}[c]{@{}c@{}}Light Path \\ Establishion Criterion\end{tabular} & to define     & to define                                                                                            \\ \hline
+		\textbf{Input Parameter} & \textbf{Default Value} & \textbf{Type} & \textbf{Description}                                                                                \\ \hline
+		odu0                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU0 demands \\ matrix\end{tabular}                                      \\ \hline
+		odu1                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU1 demands \\ matrix\end{tabular}                                      \\ \hline
+		odu2                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU2 demands \\ matrix\end{tabular}                                      \\ \hline
+		odu3                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU3 demands \\ matrix\end{tabular}                                      \\ \hline
+		odu4                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU4 demands \\ matrix\end{tabular}                                      \\ \hline
+		numberOfNodes            & 0                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of network \\ nodes\end{tabular}                                  \\ \hline
+		orderingRule             & 0                      & integer       & \begin{tabular}[c]{@{}c@{}}Demands ordering rule:\\ 0 - ODU4 to ODU0\\ 1 - ODU0 to ODU4\end{tabular}\\ \hline
+		transportMode            & opaque                 & string        & \begin{tabular}[c]{@{}c@{}}Transport mode:\\ opaque \\ transparent \\ translucent\end{tabular}      \\ \hline
+		physicalTopology         &                        & matrix        & \begin{tabular}[c]{@{}c@{}}Adjacency matrix of the \\ physical network\end{tabular}                 \\ \hline
+		opticalChannels          & 100                    & integer       & \begin{tabular}[c]{@{}c@{}}Number of optical channels \\ per link\end{tabular}                      \\ \hline
+		transmissionSystems      & 1                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of transmission \\ systems\end{tabular}                           \\ \hline
+		opticalChannelCapacity   & 100                    & integer       & \begin{tabular}[c]{@{}c@{}}Capacity of each optical \\ channel in Gbps\end{tabular}                 \\ \hline
+		numberOfPaths            & 3                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of short paths created \\ between each pair of nodes\end{tabular} \\ \hline
+		shortestPathType         & hops                   & string        & \begin{tabular}[c]{@{}c@{}}Shortest path type: \\ hops \\ km\end{tabular}                           \\ \hline
+		lightPathCriterion       &                        &               &                                                                                                     \\ \hline
 	\end{tabular}
-	\caption{System input parameters.}
-	\label{system_input_opaque}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|}
-		\hline
-		\textbf{Block}                                                               & \textbf{Input Parameters}                                                                                                         & \textbf{Input Signals}                                                                \\ \hline
-		Scheduler                                                             & \begin{tabular}[c]{@{}c@{}}ODU0, ODU1,ODU2, ODU3, ODU4,\\   Demands Odering Criterion\end{tabular}                 & None                                                                         \\ \hline
-		\begin{tabular}[c]{@{}c@{}}Logical Topology\\ Generator\end{tabular}  & \begin{tabular}[c]{@{}c@{}}Transport Mode, Physical\\ Topology\end{tabular}                                                & None                                                                         \\ \hline
-		\begin{tabular}[c]{@{}c@{}}Physical Topology\\ Generator\end{tabular} & \begin{tabular}[c]{@{}c@{}}Physical Topology, Optical Channels,\\ Transport Systems, Optical Channel Capacity\end{tabular} & None                                                                         \\ \hline
-		Path Generator                                                        & Number of Paths, Criterion                                                                                                 & \begin{tabular}[c]{@{}c@{}}LogicalTopology,\\ RemovedPaths\end{tabular}      \\ \hline
-		Path Tester                                                           & Ligh Path Establishion Criterion                                                                                           & \begin{tabular}[c]{@{}c@{}}PathGeneratorOut,\\ PhysicalTopology\end{tabular} \\ \hline
-		Sink (Blocking)                                                       & None                                                                                                                       & BlockedDemands                                                               \\ \hline
-		Sink (Routed)                                                         & None                                                                                                                       & RoutedDemands                                                                \\ \hline
-	\end{tabular}
-	\caption{Blocks input parameters and signals.}
-	\label{blocks_input}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|}
-		\hline
-		\textbf{Block }                                                      & \textbf{State Variables}                                                        \\ \hline
-		Scheduler                                                             & ODU0, ODU1, ODU2, ODU3, ODU4      								 \\ \hline
-		Logical Topology Generator                                  & Logical Topology Matrix                                                        \\ \hline
-		Physical Topology Generator								  & Physical Topology Matrix                                                      \\ \hline
-		Path Generator                                                   & Logical Topology Matrix, Logical Link, Light Path                      \\ \hline
-		Path Tester                                                            & Physical Topology Matrix, Link, Optical Channel					 \\ \hline
-		Sink (Blocking)                                                       & None                                                                  \\ \hline
-		Sink (Routed)                                                         & None                                                                   \\ \hline
-	\end{tabular}
-	\caption{Blocks state variables.}
-	\label{blocks_state_variables_opaque}
+	\caption{System Input Parameters}
+	\label{system_input_parameters_opaque}
 \end{table}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c |}
 		\hline
-		\textbf{Signal Name} &\textbf{ Signal Type} \\ 
-		\hline
-		SchedulerOut &  demand\\ \hline
-		LogicalTopology &  logicalTopology\\ \hline
-		PhysicalTopology & physicalTopology\\ \hline
-		PathGeneratorOut &  demandListOfPaths\\ \hline
-		RemovedPaths &   path\\ \hline
-		BlockedDemands &   demand\\ \hline
-		RoutedDemands & demandPathRoute\\ \hline
+		\textbf{Signal Name} & \textbf{Signal Type}\\ \hline
+		SchedulerOut         & Demand              \\ \hline
+		LogicalTopologyOut   & LogicalTopology     \\ \hline
+		PhysicalTopologyOut  & PhysicalTopology    \\ \hline
+		PathGeneratorOut     & DemandListOfPaths   \\ \hline
+		RemovedPaths         & Path                \\ \hline
+		RoutedDemands        & DemandPathRoute     \\ \hline
+		BlockedDemands       & Demand              \\ \hline
 	\end{tabular}
-	\caption{System Signals.}
+	\caption{System Signals}
 	\label{system_signals_opaque}
 \end{table}
 
-\textbf{Signal Types}
-\\
-\\
-\underline{demand}
-\\
-\begin{table}[H]
-	\begin{tabular}{|c|c|c|c|l|}
-		\hline
-		Demand Index & Source Node & Destination Node & ODU Type & \multicolumn{1}{c|}{Restoration Method}                                                 \\ \hline
-		1...$\infty$       & 1...N       & 1...N            & 0...4    & \begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\\ 2 - Restoration\end{tabular} \\ \hline
-	\end{tabular}
-	\caption{Constitution of a demand.}
-	\label{demand_variable}
-\end{table}
-N represents the number of nodes present in the network.\\ \\
-\underline{logicalTopology}\\
-\\
-This is the output signal of the Logical topology generator block, it has a matrix NxN where every logical connection existent between nodes in the network is displayed. In this particular case we are studying the opaque trasnport node so our logical toplogy will be the one presented in table 1.13. In addition here will occur the creation structures corresponding to our network logical links and light paths.\\
+\textbf{Demand}
 
 \begin{table}[H]
-	\centering	
-	\begin{tabular}{|c|c|c|c|c|c|c|}
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
 		\hline
-		\multicolumn{1}{|l|}{Nodes} & 1   & 2   & 3   & 4   & 5   & 6   \\ \hline
-		1                           & \textbf{0}   & 0/1 & 0/1 & 0/1 & 0/1 & 0/1 \\ \hline
-		2                           & 0/1 & \textbf{0}   & 0/1 & 0/1 & 0/1 & 0/1 \\ \hline
-		3                           & 0/1 & 0/1 & \textbf{0}   & 0/1 & 0/1 & 0/1 \\ \hline
-		4                           & 0/1 & 0/1 & 0/1 & \textbf{0}   & 0/1 & 0/1 \\ \hline
-		5                           & 0/1 & 0/1 & 0/1 & 0/1 & \textbf{0}   & 0/1 \\ \hline
-		6                           & 0/1 & 0/1 & 0/1 & 0/1 & 0/1 & \textbf{0}   \\ \hline
+%		\textbf{demandIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{oduType} & \textbf{restorationMethod}\\ \hline
+		\begin{tabular}[c]{@{}c@{}}\textbf{demandIndex} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{sourceNode} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{destinationNode} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{oduType} \\ (integer)\end{tabular} &\begin{tabular}[c]{@{}c@{}}\textbf{restorationMethod} \\ (integer)\end{tabular} \\ \hline
+		1...D                & 1...N               & 1...N                    & 0...4            & \begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\end{tabular}\\ \hline
 	\end{tabular}
-	\caption{Logical Topology Matrix.}
-	\label{logical_topology}
+	\caption{Demand Structure}
+	\label{demand_structure}
 \end{table}
+
+D = numberOfDemands, N = numberOfNodes\\
+
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{| c | c | c | c | c |}
+%		\hline
+%		\begin{tabular}[c]{@{}c@{}}\textbf{demandIndex} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{sourceNode} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{destinationNode} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{oduType} \\ (integer)\end{tabular} &\begin{tabular}[c]{@{}c@{}}\textbf{restorationMethod} \\ (integer)\end{tabular} \\ 
+%		\hline
+%		\begin{tabular}[c]{@{}c@{}}1\\ ...\\ numberOfDemands\end{tabular} & \begin{tabular}[c]{@{}c@{}}1\\ ...\\ numberOfNodes\end{tabular} & \begin{tabular}[c]{@{}c@{}}1\\ ...\\ numberOfNodes\end{tabular} & \begin{tabular}[c]{@{}c@{}}0\\ ...\\ 4\end{tabular} & \begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\end{tabular} \\ \hline
+%	\end{tabular}
+%	\caption{Demand Structure}
+%	\label{demand_structure}
+%\end{table}
+
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{| c | c | c | c | c |}
+%		\hline
+%		\textbf{Node} & 1   & ... & ... & N  \\ \hline
+%		1             & 0   & 0/1 & 0/1 & 0/1\\ \hline
+%		...           & 0/1 & 0   & 0/1 & 0/1\\ \hline
+%		...           & 0/1 & 0/1 & 0   & 0/1\\ \hline
+%		N 			  & 0/1 & 0/1 & 0/1 & 0  \\ \hline
+%	\end{tabular}
+%	\caption{LogicalTopology Structure}
+%	\label{logical_structure}
+%\end{table}
+%
+%N = numberOfNodes\\
+%
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{| c | c | c | c | c |}
+%		\hline
+%		\textbf{Node} & 1 & ... & ... & N\\ \hline
+%		1             & 0 & C   & C   & C\\ \hline
+%		...           & C & 0   & C   & C\\ \hline
+%		...           & C & C   & 0   & C\\ \hline
+%		N             & C & C   & C   & 0\\ \hline
+%	\end{tabular}
+%	\caption{PhysicalTopology Structure}
+%	\label{physical_structure}
+%\end{table}
+%
+%N = numberOfNodes, C = Capacity = opticalChannels * opticalChannelCapacity\\
+
+\textbf{LogicalTopology}
+
 \begin{table}[H]
-	\centering	
-	\begin{tabular}{|c|c|c|c|c|c|c|}
+	\centering
+	\begin{tabular}{| c | c | c | c |}
 		\hline
-		\multicolumn{1}{|l|}{Nodes} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
-		1                           & \textbf{0}   & 1 & 1 & 0 & 0 & 0 \\ \hline
-		2                           & 1 & \textbf{0}   & 1 & 1 & 0 & 0 \\ \hline
-		3                           & 1 & 1 & \textbf{0}   & 0 & 1 & 0 \\ \hline
-		4                           & 0 & 1 & 0 & \textbf{0}   & 1 & 1 \\ \hline
-		5                           & 0 & 0 & 1 & 1 & \textbf{0}   & 1 \\ \hline
-		6                           & 0 & 0 & 0 & 1 & 1 & \textbf{0}   \\ \hline
+		\begin{tabular}[c]{@{}c@{}}\textbf{index} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{linkSourceNode} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{linkDestinationNode} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{numberOfLightPaths} \\ (integer)\end{tabular} \\ \hline
+		1                & 1...N               & 1...N                    & -1            \\ \hline
+		...				 & 1...N               & 1...N                    & -1           \\ \hline
+		L				 & 1...N               & 1...N                    & -1            \\ \hline	
 	\end{tabular}
-	\caption{Opaque Topology Matrix.}
-	\label{Opaque_logical_topology}
+	\caption{Logical Link Structure}
+	\label{logical_link_structure}
+\end{table}
+
+L = numberOfLogicalLinks, N = numberOfNodes \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\begin{tabular}[c]{@{}c@{}}\textbf{linkIndex} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{linkPathNumber} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{physicalLinks} \\ ()\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{wavelength} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (integer)\end{tabular} \\ \hline
+		1            & 1          & \begin{tabular}[c]{@{}c@{}}\textbf{[0/1...0/1]} \\ (1...L)\end{tabular}        &     &        \\ \hline
+		...			 & ...        & \begin{tabular}[c]{@{}c@{}}\textbf{[0/1...0/1]} \\ (1...L)\end{tabular}        &     &        \\ \hline
+		1		     & LP         & \begin{tabular}[c]{@{}c@{}}\textbf{[0/1...0/1]} \\ (1...L)\end{tabular}        &     &        \\ \hline
+		...			 & ...        &\begin{tabular}[c]{@{}c@{}}\textbf{[0/1...0/1]} \\ (1...L)\end{tabular}         &     &        \\ \hline
+		L		     & LP         & \begin{tabular}[c]{@{}c@{}}\textbf{[0/1...0/1]} \\ (1...L)\end{tabular}        &     &        \\ \hline	
+	\end{tabular}
+	\caption{Light Path Structure}
+	\label{light_path_structure}
+\end{table}
+
+L = numberOfLogicalLinks, LP = numberOfLightPaths \\
+
+\textbf{PhysicalTopology}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c |}
+		\hline
+		\begin{tabular}[c]{@{}c@{}}\textbf{index} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{linkSourceNode} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{linkDestinationNode} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{numberOfOpticalChannels} \\ (integer)\end{tabular} \\ \hline
+		1                & 1...N               & 1...N                    & OC           \\ \hline
+		...				 & 1...N               & 1...N                    & OC           \\ \hline
+		L				 & 1...N               & 1...N                    & OC           \\ \hline	
+	\end{tabular}
+	\caption{Physical Link Structure}
+	\label{physical_link_structure}
+\end{table}
+
+L = numberOfPhysicalLinks, N = numberOfNodes, OC = numberOfOpticalChannels \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c|  c|}
+		\hline
+		\begin{tabular}[c]{@{}c@{}}\textbf{linkIndex} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{opticalChannelNumber} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{wavelength} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{sourceNode} \\ (integer)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{destinationNode} \\ (integer)\end{tabular}\\ \hline
+		1            & 1          &        &          & 1...N         & 1...N            \\ \hline
+		...			 & ...        &        &          & 1...N         & 1...N            \\ \hline
+		1		     & OC         &        &          & 1...N         & 1...N            \\ \hline
+		...			 & ...        &        &          & 1...N         & 1...N            \\ \hline
+		L		     & OC         &        &          & 1...N         & 1...N            \\ \hline	
+	\end{tabular}
+	\caption{Optical Channel Structure}
+	\label{optical_channel_structure}
+\end{table}
+
+L = numberOfPhysicalLinks, OC = numberOfOpticalChannels, N = numberOfNodes \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c |}
+		\hline
+		\textbf{Block}             & \textbf{Description}\\ \hline
+		Scheduler\_                &                     \\ \hline
+		LogicalTopologyGenerator\_ &                     \\ \hline
+		PhysicalTopologyGenerator\_&                     \\ \hline
+		PathGenerator\_            &                     \\ \hline
+		PathTester\_               &                     \\ \hline
+		SinkRouted\_               &                     \\ \hline
+		SinkBlocked\_              &                     \\ \hline
+	\end{tabular}
+	\caption{System Blocks}
+	\label{system_blocks}
+\end{table}
+
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{| c | c |}
+%		\hline
+%		\textbf{Block}              & \textbf{State Variables} 																				\\ \hline
+%		Scheduler\_                 & \begin{tabular}[c]{@{}c@{}}odu1 \\ odu2 \\ odu3 \\ odu4 \\ demandIndex \\ numberOfDemands\end{tabular}\\ \hline
+%		LogicalTopologyGenerator\_  &  																								        \\ \hline
+%		PhysicalTopologyGenerator\_ & 																						                \\ \hline
+%		PathGenerator\_             &  																						                \\ \hline
+%		PathTester\_                &   						                                                                            \\ \hline
+%		SinkRouted\_                & None																	                                \\ \hline
+%		SinkBlocked\_               & None 																								    \\ \hline
+%	\end{tabular}
+%	\caption{Blocks State Variables}
+%	\label{blocks_state_variables_opaque}
+%\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\textbf{Input Parameters}   & \textbf{State Variables} & \textbf{Output Signal}\\ \hline
+		\begin{tabular}[c]{@{}c@{}}odu1 \\ odu2 \\ odu3 \\ odu4 \\ orderingRule \\ numberOfNodes\end{tabular} & \begin{tabular}[c]{@{}c@{}}odu1 \\ odu2 \\ odu3 \\ odu4 \\ demandIndex \\ numberOfDemands\end{tabular} & SchedulerOut\\ \hline
+	\end{tabular}
+	\caption{Scheduler\_ Block}
+	\label{scheduler_block_opaque}
 \end{table}
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{| c | c | c |}
 		\hline
-		Index & Link Source Node & Link Destination Node & Number of Light Paths \\ \hline
-		1     & 1...N            & 1...N                 & -1                 \\ \hline
-		...   & ...              & ...                   & ...                   \\ \hline
-		LO    & 1...N            & 1...N                 & -1                 \\ \hline
+		\textbf{Input Parameters}                                                 & \textbf{State Variables} & \textbf{Output Signal}\\ \hline
+		\begin{tabular}[c]{@{}c@{}}transportMode \\ physicalTopology  \\ numberOfNodes\end{tabular} &        & LogicalTopologyOut    \\ \hline
 	\end{tabular}
-	\caption{Logical link variable.}
-	\label{logicalLink_variable}
-\end{table}
-
-LO represents the number of logical links present in the network.\\ \\
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		Link Index & Light Path Number & Physical Links  & Wavelenght & Capacity (ODU0s) \\ \hline
-		1          & 1                 & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
-		...        & ...               & ...             & ...        &                  \\ \hline
-		LO         & LP                & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
-	\end{tabular}
-	\caption{Light path variable.}
-	\label{lightpath_example}
-\end{table}
-LP represents the number of light paths established in the network.\\
-OC represents the number optical channels existent in each physical link.\\
-The Physical Links variable inside of the light paths represents the links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain light path.\\ \\
-\underline{physicalTopology}\\
-\\
-Here the information about every physical connection existent between nodes and their capacity initially existent is sent to the Path tester block where later on will be updated.
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|c|}
-		\hline
-		Index & Link Source Node & Link Destination Node & Number of Optical Channels \\ \hline
-		1     & 1...N            & 1...N                 & OC                        \\ \hline
-		...   & ...              & ...                   & ...                        \\ \hline
-		L     & 1...N            & 1...N                 & OC                        \\ \hline
-	\end{tabular}
-	\caption{Link variable.}
-	\label{link_example}
+	\caption{LogicalTopologyGenerator\_ Block}
+	\label{logical_block_opaque}
 \end{table}
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|c|c|c|}
+	\begin{tabular}{| c | c | c |}
 		\hline
-		Link Index & \begin{tabular}[c]{@{}c@{}}Optical Channel\\  Number\end{tabular} & \begin{tabular}[c]{@{}c@{}}Capacity \\ (ODU0s)\end{tabular} & Wavelenght & \begin{tabular}[c]{@{}c@{}}Source\\  Node\end{tabular} & \begin{tabular}[c]{@{}c@{}}Destination\\  Node\end{tabular} \\ \hline
-		1...L      & 1...OC                                                           &                                                           & 1...OC    & 1...N                                                  & 1...N                                                       \\ \hline
+		\textbf{Input Parameters}                                                                                                    & \textbf{State Variables} & \textbf{Output Signal}\\ \hline
+		\begin{tabular}[c]{@{}c@{}}physicalTopology \\ opticalChannels \\ transmissionSystems \\ opticalChannelCapacity \\ numberOfNodes\end{tabular} &                          & PhysicalTopologyOut   \\ \hline
 	\end{tabular}
-	\caption{Optical channel variable.}
-	\label{opticalChannel_example}
+	\caption{PhysicalTopologyGenerator\_ Block}
+	\label{physical_block_opaque}
 \end{table}
-
-
-\underline{path}\\
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|c|c|}
+	\begin{tabular}{| c | c | c | c |}
 		\hline
-		Path Index & Source Node & Destination Node & Logical links & Hops\\ \hline
-		& 1...N       & 1...N  & [0/1...0/1]  &    \\ \hline
+		\textbf{Input Parameters}                                                 & \textbf{Input Signals}                                                                     & \textbf{State Variables} & \textbf{Output Signal}         \\ \hline
+		\begin{tabular}[c]{@{}c@{}}numberOfPaths \\ shortestPathType\end{tabular} & \begin{tabular}[c]{@{}c@{}}SchedulerOut \\ LogicalTopologyOut \\ RemovedPaths\end{tabular} &                          & PathGeneratorOut\\ \hline
 	\end{tabular}
-	\caption{Path type signal.}
-	\label{path_signal}
+	\caption{PathGenerator\_ Block}
+	\label{path_generator_block_opaque}
 \end{table}
-The Logical links variable represents the logical links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain path.\\ \\
-\underline{demandListOfPaths}\\
-\\
-Inside of the Path Generator block a list of logical paths associated to a pair of source and destination nodes will be created. This paths will depend directly on the logical topology of the network and on the availability of the links.
-
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|l|l|}
+	\begin{tabular}{| c | c | c | c |}
 		\hline
-		Demand index           & \multicolumn{3}{c|}{Path index} \\ \hline
-		\multirow{3}{*}{1...$\infty$} & \multicolumn{3}{c|}{x}          \\ \cline{2-4}
-		& \multicolumn{3}{c|}{x+1}        \\ \cline{2-4}
-		& \multicolumn{3}{c|}{x+2}        \\ \hline
+		\textbf{Input Parameter}  & \textbf{Input Signals}                                                          & \textbf{State Variables} & \textbf{Output Signals}\\ \hline
+		lightPathCriterion        & \begin{tabular}[c]{@{}c@{}}PathGeneratorOut \\ PhysicalTopologyOut\end{tabular} &                          & \begin{tabular}[c]{@{}c@{}}RemovedPaths \\ RoutedDemands \\ BlockedDemands\end{tabular}\\ \hline
 	\end{tabular}
-	\caption{demandListOfPaths signal.}
-	\label{demandListOfPaths_example}
+	\caption{PathTester\_ Block}
+	\label{path_tester_block_opaque}
 \end{table}
 
-\underline{demandPathRoute}\\
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{| c |}
 		\hline
-		Demand Index           & Path Index             & Physical Link Index                       & 1...L                   \\ \hline
-		\multirow{2}{*}{1...N} & \multirow{2}{*}{1...N} & \multirow{2}{*}{Optical Channel} & \multirow{2}{*}{1...OC} \\
-		&                        &                                  &                          \\ \hline
+		\textbf{Input Signal}\\ \hline
+		RoutedDemands        \\ \hline
 	\end{tabular}
-	\caption{demandPathRoute signal.}
-	\label{demandPathRoute_signal}
+	\caption{SinkRouted\_ Block}
+	\label{sink_routed_block_opaque}
 \end{table}
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c |}
+		\hline
+		\textbf{Input Signal}\\ \hline
+		BlockedDemands       \\ \hline
+	\end{tabular}
+	\caption{SinkBlocked\_ Block}
+	\label{sink_blocked_block_opaque}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\textbf{File Name}                        & \textbf{Description} & Status\\ \hline
+		netxpto\_20190130.h                       &                      &       \\ \hline
+		scheduler\_20190122.h                     &                      &       \\ \hline
+		logical\_topology\_generator\_20190216.h  &                      &       \\ \hline
+		physical\_topology\_generator\_20190221.h &                      &       \\ \hline
+		sink\_20180815.h                          &                      &       \\ \hline
+	\end{tabular}
+	\caption{Header Files}
+	\label{header_files_opaque}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\textbf{File Name}                          & \textbf{Description} & Status\\ \hline
+		netxpto\_20190130.cpp                       &                      &       \\ \hline
+		opaque\_sdf.cpp                             &                      &       \\ \hline
+		scheduler\_20190122.cpp                     &                      &       \\ \hline
+		logical\_topology\_generator\_20190216.cpp  &                      &       \\ \hline
+		physical\_topology\_generator\_20190221.cpp &                      &       \\ \hline
+		sink\_20180815.cpp                          &                      &       \\ \hline
+	\end{tabular}
+	\caption{Source Files}
+	\label{source_files_opaque}
+\end{table}
