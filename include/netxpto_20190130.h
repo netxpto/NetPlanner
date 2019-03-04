@@ -140,12 +140,23 @@ using t_physical_topology = struct {					// Physical Topology signal data struct
 	std::vector<t_optical_channel> opticalChannels;		// List of optical channels
 
 };
-
+using t_path = struct {
+	t_integer pathIndex { 0 };
+	t_integer sourceNode{ 0 };
+	t_integer destinationNode{ 0 };
+	std::vector<int> logicalLinks;
+	t_integer hops{ 0 };
+};
+using t_demand_list_of_paths = struct {
+	t_demand demand;					// Demand being processed
+	std::vector<t_path> selectedPaths;	// Vector of possible paths
+};
 
 // Existent signals
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology }; 
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology, t_path, t_demand_list_of_paths }; 
 
 enum class transport_mode { opaque, transparent };
+enum class criterion { hops, distance }; // The shortest path type will be selected depending on one of those
 
 // #######################################################################################################
 // #
@@ -173,7 +184,7 @@ std::ostream& operator<<(std::ostream &out, const t_demand &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology, PhysicalTopology };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology, PhysicalTopology, Path, DemandListOfPaths };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -436,6 +447,12 @@ private:
 			case signal_type::PhysicalTopology:
 				typeName = "PhysicalTopology";
 				break;
+			case signal_type::Path:
+				typeName = "Path";
+				break;
+			case signal_type::DemandListOfPaths:
+					typeName = "DemandListOfPaths";
+					break;
 			default:
 				cout << "Error: netxpto_20180815.h - typeName not defined\n";
 		}
@@ -455,6 +472,8 @@ using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPX
 using Demand = BaseSignal<t_demand, signal_type::Demand, signal_value_type::t_demand>;
 using LogicalTopology = BaseSignal<t_logical_topology, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
 using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
+using Path = BaseSignal<t_path, signal_type::Path, signal_value_type::t_path>;
+using DemandListOfPahts = BaseSignal<t_demand_list_of_paths, signal_type::DemandListOfPaths, signal_value_type::t_demand_list_of_paths>;
 
 /*
 class TimeDiscrete : public Signal {

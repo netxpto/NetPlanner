@@ -545,39 +545,46 @@ void Signal::close() {
 				ptr = ptr + (firstValueToBeSaved - 1);
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
-				for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+				t_integer opticalChannel{ 0 }; // initial optical channel index
+
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
 				{
 					//################### PRINT PHYSICAL LINKS ######################
 
-					for (size_t k = 0; k < (*ptr).physicalLinks.size(); k++)
+					for (size_t physicalLink = 0; physicalLink < (*ptr).physicalLinks.size(); physicalLink++)
 					{
-						fileHandler << (*ptr).physicalLinks[k].linkIndex;
+						fileHandler << (*ptr).physicalLinks[physicalLink].linkIndex;
 						fileHandler << "\t";
-						fileHandler << (*ptr).physicalLinks[k].linkSourceNode;
+						fileHandler << (*ptr).physicalLinks[physicalLink].linkSourceNode;
 						fileHandler << "\t";
-						fileHandler << (*ptr).physicalLinks[k].linkDestinationNode;
+						fileHandler << (*ptr).physicalLinks[physicalLink].linkDestinationNode;
 						fileHandler << "\t";
-						fileHandler << (*ptr).physicalLinks[k].numberOfOpticalChannels;
+						fileHandler << (*ptr).physicalLinks[physicalLink].numberOfOpticalChannels;
 						fileHandler << "\n";
 
-						for (size_t i = 0; i < (*ptr).physicalLinks[k].numberOfOpticalChannels; i++)
-						{
-							fileHandler << (*ptr).opticalChannels[i].linkIndex;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].opticalChannelNumber;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].capacity;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].wavelengtht;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].sourceNode;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].destinationNode;
-							fileHandler << "\n";
-						}
 					}
 					fileHandler << "\n";
+					fileHandler << "\n";
+					fileHandler << "\n";
+					fileHandler << "\n";
+
+					for (size_t i = 0; i < (*ptr).opticalChannels.size(); i++)  // Cover all optical channels from all physical links created
+					{
+						fileHandler << (*ptr).opticalChannels[i].linkIndex;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[i].opticalChannelNumber;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[i].capacity;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[i].wavelengtht;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[i].sourceNode;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[i].destinationNode;
+						fileHandler << "\n";
+					}
 				}
+				//ptr++;
 				setFirstValueToBeSaved(1);
 			}
 			else if (type == "Binary") {
@@ -861,6 +868,20 @@ bool SuperBlock::runBlock(string signalPath) {
 						t_physical_topology signalPhysicalTopology;
 						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPhysicalTopology);
 						outputSignals[i]->bufferPut(signalPhysicalTopology);
+					}
+					break;
+				case signal_value_type::t_path:
+					for (int j = 0; j < length; j++) {
+						t_path signalPath;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPath);
+						outputSignals[i]->bufferPut(signalPath);
+					}
+					break;
+				case signal_value_type::t_demand_list_of_paths:
+					for (int j = 0; j < length; j++) {
+						t_demand_list_of_paths signalDemandListOfPaths;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalDemandListOfPaths);
+						outputSignals[i]->bufferPut(signalDemandListOfPaths);
 					}
 					break;
 			default:
