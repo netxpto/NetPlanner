@@ -551,11 +551,7 @@ void Signal::close() {
 				{
 					//################### PRINT PHYSICAL LINKS ######################
 
-<<<<<<< HEAD
 					for (size_t physicalLink = 0; physicalLink < (*ptr).physicalLinks.size(); physicalLink++)
-=======
-					for (t_integer k = 0; k < (t_integer) (*ptr).physicalLinks.size(); k++)
->>>>>>> e11538b821bdf73656577e62b284e97a4f82a335
 					{
 						fileHandler << (*ptr).physicalLinks[physicalLink].linkIndex;
 						fileHandler << "\t";
@@ -583,7 +579,6 @@ void Signal::close() {
 							fileHandler << (*ptr).opticalChannels[i].destinationNode;
 							fileHandler << "\n";
 						}
->>>>>>> e11538b821bdf73656577e62b284e97a4f82a335
 					}
 					fileHandler << "\n";
 					fileHandler << "\n";
