@@ -757,37 +757,44 @@ Here the information about every physical connection existent between nodes and 
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		pathIndex & sourceNode & destinationNode & logicalLinks & hops\\ \hline
-		& 1...N       & 1...N  & [0/1...0/1]  &    \\ \hline
+		0...$\infty$& 1...N       & 1...N  & [0/1...0/1]  &    \\ \hline
 	\end{tabular}
 	\caption{Path type signal.}
 	\label{path_signal}
 \end{table}
 The Logical links variable represents the logical links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain path.\\ \\
-\underline{demandListOfPaths}\\
+\underline{DemandListOfPaths}\\
 \\
-Inside of the Path Generator block a list of logical paths associated to a pair of source and destination nodes will be created. This paths will depend directly on the logical topology of the network and on the availability of the links.
+Inside of the Path Generator block a list of logical paths associated to a certain demand and so to a pair of source and destination nodes will be created. This paths will depend directly on the logical topology of the network and on the availability of the links that constitute the same. A DemandListOfPaths type signal will include in it's structure a demand signal and a set of N (defined by the user) shortest path signals that will later on be tested in order to process the demand. 
 
 
 \begin{table}[H]
 		\centering
-	\begin{tabular}{|c|c|l|l|}
+	\begin{tabular}{|lcccccl|}
 		\hline
-		Demand index           & \multicolumn{3}{c|}{Path index} \\ \hline
-		\multirow{3}{*}{1...$\infty$} & \multicolumn{3}{c|}{x}          \\ \cline{2-4}
-		& \multicolumn{3}{c|}{x+1}        \\ \cline{2-4}
-		& \multicolumn{3}{c|}{x+2}        \\ \hline
+		& \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                 & \multicolumn{1}{l}{}                                                                                         &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{demandIndex}  & \multicolumn{1}{c|}{sourceNode}             & \multicolumn{1}{c|}{destinationNode}        & \multicolumn{1}{c|}{oduType}         & \multicolumn{1}{c|}{restorationMethod}                                                                       &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0...$\infty$} & \multicolumn{1}{c|}{1...N}                  & \multicolumn{1}{c|}{1...N}                  & \multicolumn{1}{c|}{0...4}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\\ 2 - Restoration\end{tabular}} &  \\ \cline{2-6}
+		& \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                 & \multicolumn{1}{l}{}                                                                                         &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{pathIndex}    & \multicolumn{1}{c|}{sourceNode}             & \multicolumn{1}{c|}{destinationNode}        & \multicolumn{1}{c|}{logicalLinks}    & \multicolumn{1}{c|}{hops}                                                                                    &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0...$\infty$} & \multicolumn{1}{c|}{\multirow{3}{*}{1...N}} & \multicolumn{1}{c|}{\multirow{3}{*}{1...N}} & \multicolumn{1}{c|}{{[}0/1...0/1{]}} & \multicolumn{1}{c|}{1...H}                                                                                   &  \\ \cline{2-2} \cline{5-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{...}          & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{{[}0/1...0/1{]}} & \multicolumn{1}{c|}{1...H}                                                                                   &  \\ \cline{2-2} \cline{5-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0...$\infty$} & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{{[}0/1...0/1{]}} & \multicolumn{1}{c|}{1...H}                                                                                   &  \\ \cline{2-6}
+		& \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                 & \multicolumn{1}{l}{}                                                                                         &  \\ \hline
 	\end{tabular}
-	\caption{demandListOfPaths signal.}
+	\caption{DemandListOfPaths type signal.}
 	\label{demandListOfPaths_example}
 \end{table}
 
+H representing the possible maximum number of hops in the network.\\
+\\
 \underline{demandPathRoute}\\
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
 		Demand Index           & Path Index             & Physical Link Index                       & 1...L                   \\ \hline
-		\multirow{2}{*}{1...N} & \multirow{2}{*}{1...N} & \multirow{2}{*}{Optical Channel} & \multirow{2}{*}{1...OC} \\
+		\multirow{2}{*}{0...N} & \multirow{2}{*}{0...N} & \multirow{2}{*}{Optical Channel} & \multirow{2}{*}{1...OC} \\
 		&                        &                                  &                          \\ \hline
 	\end{tabular}
 	\caption{demandPathRoute signal.}

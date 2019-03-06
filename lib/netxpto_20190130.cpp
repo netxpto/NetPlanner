@@ -549,7 +549,7 @@ void Signal::close() {
 				{
 					//################### PRINT PHYSICAL LINKS ######################
 
-					for (t_integer k = 0; k < (t_integer) (*ptr).physicalLinks.size(); k++)
+					for (t_integer k = 0; k < (t_integer)(*ptr).physicalLinks.size(); k++)
 					{
 						fileHandler << (*ptr).physicalLinks[k].linkIndex;
 						fileHandler << "\t";
@@ -560,7 +560,7 @@ void Signal::close() {
 						fileHandler << (*ptr).physicalLinks[k].numberOfOpticalChannels;
 						fileHandler << "\n";
 
-						for (t_integer i = 0; i < (t_integer) (*ptr).physicalLinks[k].numberOfOpticalChannels; i++)
+						for (t_integer i = 0; i < (t_integer)(*ptr).physicalLinks[k].numberOfOpticalChannels; i++)
 						{
 							fileHandler << (*ptr).opticalChannels[i].linkIndex;
 							fileHandler << "\t";
@@ -861,6 +861,20 @@ bool SuperBlock::runBlock(string signalPath) {
 						t_physical_topology signalPhysicalTopology;
 						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPhysicalTopology);
 						outputSignals[i]->bufferPut(signalPhysicalTopology);
+					}
+					break;
+				case signal_value_type::t_path:
+					for (int j = 0; j < length; j++) {
+						t_path signalPath;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPath);
+						outputSignals[i]->bufferPut(signalPath);
+					}
+					break;
+				case signal_value_type::t_demand_list_of_paths:
+					for (int j = 0; j < length; j++) {
+						t_demand_list_of_paths signalDemandListOfPaths;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalDemandListOfPaths);
+						outputSignals[i]->bufferPut(signalDemandListOfPaths);
 					}
 					break;
 			default:
