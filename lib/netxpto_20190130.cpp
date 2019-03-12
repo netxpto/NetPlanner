@@ -214,6 +214,58 @@ void Signal::bufferPut(T value)
 							fileHandler.close();
 							setFirstValueToBeSaved(1);
 						}
+						else if (type == "DemandListOfPaths") {
+							t_demand_list_of_paths *ptr = (t_demand_list_of_paths *)buffer;
+							ptr = ptr + (firstValueToBeSaved - 1);
+
+							ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+							for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
+								//Print demand
+								fileHandler << "Demand";
+								fileHandler << (*ptr).demand.demandIndex;
+								fileHandler << "\t";
+								fileHandler << (*ptr).demand.sourceNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).demand.destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).demand.oduType;
+								fileHandler << "\t";
+								fileHandler << (*ptr).demand.restorationMethod;
+								fileHandler << "\n";
+								fileHandler << "\n";
+								// Print list of paths
+								for (t_integer i=0; i<((*ptr).selectedPaths.size()); i++)
+								{
+									fileHandler << "pathIndex	source	destination";
+									fileHandler << "\n";
+									fileHandler << "\n";
+									fileHandler << (*ptr).selectedPaths[i].pathIndex;
+									fileHandler << "\t";
+									fileHandler << (*ptr).selectedPaths[i].sourceNode;
+									fileHandler << "\t";
+									fileHandler << (*ptr).selectedPaths[i].destinationNode;
+									fileHandler << "\n";
+									fileHandler << "\n";
+									fileHandler << "logical links";
+									fileHandler << "\n";
+									fileHandler << "\n";
+									for (t_integer j = 0; j < (*ptr).selectedPaths[i].logicalLinks.size(); j++)
+									{
+										fileHandler << (*ptr).selectedPaths[i].logicalLinks[j];
+									}
+									fileHandler << "\n";
+									fileHandler << "\n";
+									fileHandler << "hops";
+									fileHandler << "\n";
+									fileHandler << "\n";
+									fileHandler << (*ptr).selectedPaths[i].hops;
+
+								}
+								ptr++;
+							}
+							fileHandler.close();
+							setFirstValueToBeSaved(1);
+						}
 					}
 				}
 			else
@@ -309,7 +361,13 @@ void Signal::writeHeader() {
 			headerFile << "\n";
 			headerFile << "\n";
 		}
-
+		else if (getType() == "DemandListOfPaths")
+		{
+			headerFile << "Signal type: " << getType() << "\n";
+			headerFile << "======================================================\n";
+			headerFile << "||   DEMAND AND CORRESPONDENT LIST OF PATHS   ||\n";
+			headerFile << "======================================================\n";
+		}
 		headerFile << "//	 ### HEADER TERMINATOR ###\n";
 		headerFile << "\n";
 		headerFile.close();
@@ -549,7 +607,7 @@ void Signal::close() {
 				{
 					//################### PRINT PHYSICAL LINKS ######################
 
-					for (t_integer k = 0; k < (t_integer) (*ptr).physicalLinks.size(); k++)
+					for (t_integer k = 0; k < (t_integer)(*ptr).physicalLinks.size(); k++)
 					{
 						fileHandler << (*ptr).physicalLinks[k].linkIndex;
 						fileHandler << "\t";
@@ -560,7 +618,7 @@ void Signal::close() {
 						fileHandler << (*ptr).physicalLinks[k].numberOfOpticalChannels;
 						fileHandler << "\n";
 
-						for (t_integer i = 0; i < (t_integer) (*ptr).physicalLinks[k].numberOfOpticalChannels; i++)
+						for (t_integer i = 0; i < (t_integer)(*ptr).physicalLinks[k].numberOfOpticalChannels; i++)
 						{
 							fileHandler << (*ptr).opticalChannels[i].linkIndex;
 							fileHandler << "\t";
@@ -863,6 +921,20 @@ bool SuperBlock::runBlock(string signalPath) {
 						outputSignals[i]->bufferPut(signalPhysicalTopology);
 					}
 					break;
+				case signal_value_type::t_path:
+					for (int j = 0; j < length; j++) {
+						t_path signalPath;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPath);
+						outputSignals[i]->bufferPut(signalPath);
+					}
+					break;
+				case signal_value_type::t_demand_list_of_paths:
+					for (int j = 0; j < length; j++) {
+						t_demand_list_of_paths signalDemandListOfPaths;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalDemandListOfPaths);
+						outputSignals[i]->bufferPut(signalDemandListOfPaths);
+					}
+					break;
 			default:
 				cerr << "ERRO: netxpto_20190130.cpp (SuperBlock)" << "\n";
 				return false;
@@ -873,6 +945,10 @@ bool SuperBlock::runBlock(string signalPath) {
 	
 	return systemAlive;
 }
+
+
+
+
 
 
 void SuperBlock::terminate() {

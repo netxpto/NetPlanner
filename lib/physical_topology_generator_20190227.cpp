@@ -33,7 +33,7 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 				output.physicalLinks.push_back(outputLinks);
 
 //#################### CREATES THE OPTICAL CHANNELS OF EACH PHYSICAL LINK #######################
-				for (t_integer channel = 0; channel < opticalChannelsPerTransportSystem; channel++)
+				for (t_integer channel = 0; channel < opticalChannels; channel++)
 				{
 					outputChannels.linkIndex = k;
 					outputChannels.opticalChannelNumber = channel+1;
