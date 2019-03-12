@@ -186,7 +186,7 @@ std::ostream& operator<<(std::ostream &out, const t_demand &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology, PhysicalTopology, Path, DemandListOfPaths };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology, PhysicalTopology, /*Path,*/ DemandListOfPaths };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -452,9 +452,9 @@ private:
 			case signal_type::PhysicalTopology:
 				typeName = "PhysicalTopology";
 				break;
-			case signal_type::Path:
+			/*case signal_type::Path:
 				typeName = "Path";
-				break;
+				break;*/
 			case signal_type::DemandListOfPaths:
 					typeName = "DemandListOfPaths";
 					break;
@@ -477,7 +477,7 @@ using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPX
 using Demand = BaseSignal<t_demand, signal_type::Demand, signal_value_type::t_demand>;
 using LogicalTopology = BaseSignal<t_logical_topology, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
 using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
-using Path = BaseSignal<t_path, signal_type::Path, signal_value_type::t_path>;
+//using Path = BaseSignal<t_path, signal_type::Path, signal_value_type::t_path>;
 using DemandListOfPahts = BaseSignal<t_demand_list_of_paths, signal_type::DemandListOfPaths, signal_value_type::t_demand_list_of_paths>;
 
 /*

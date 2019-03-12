@@ -21,7 +21,6 @@ bool LogicalTopologyGenerator::runBlock(void) {
 		t_light_paths outputLights;
 		t_integer k{ 0 };
 		 
-
 		outputOpaque.logicalTopology = physicalTopology;
 
 // For each existent logical connection it creates a logical link structure 

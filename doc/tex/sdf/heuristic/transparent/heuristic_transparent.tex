@@ -603,8 +603,13 @@ The creation of this model for any scenario, started with some considerations an
 	\label{fluxogram_transparent_surv}
 \end{figure}
 
-As it is shown in figure 1.112, it is needed a Scheduler block which will be responsible for the creation of an ordered queue containing all the demands entering this network, in an order previously defined (based on the demands ODU type), and ready to be routed.
-In order to route those demands there will also be the necessity of a Path Generator block which as its own name implies will create a list of logical paths for each demand between its source and destination nodes, through information received by the Logical Topology Generator block. Next in the Path Tester block where the list of paths previously associated to a demand are tested in order to check their availability in terms of physical capacity in each of the necessary links that comprise the light path used. A Logical and Physical Topology Generators are also needed, the first in order to create the matrix of possible logical connections between nodes and the other to inform us about this network links capacity which will after be continuously updated in the Path Tester block. Finally there are two remaining Sink blocks one to store demands that were routed and their correspondent information and the other to register blocked demands. Both are very usefull to store the information that will later on be present in the final cost report.
+\Large Summary explanation \\ \\
+
+\normalsize As it is shown in \ref{fluxogram_transparent_surv}, it is needed a Scheduler\_  block which will be responsible for the creation of an ordered queue containing all the demands entering this network, in an order previously defined (based on the demands ODU type), and ready to be routed.
+In order to route those demands there will also be the necessity of a PathGenerator\_  block which as its own name implies will create a list of the shortest logical paths for each demand between its source and destination nodes, through information received by the LogicalTopologyGenerator\_  block. Next, in the PathTester\_  block the list of paths previously associated to a demand are tested in order to check their availability in terms of physical and grooming capacity in each of the necessary links that comprise the light path used. A LogicalTopologyGenerator\_  and a PhysicalTopologyGenerator\_  are then also needed, the first in order to create the matrix of possible logical connections between nodes and the structure of each of those logical links, and the other to create structures for every physical links which in turn are constituded by many optical channels. Both will further on be continuously updated in the PathTester\_  block. Finally, there are two remaining Sink blocks one to store demands that were routed (SinkRouted\_ ) and their correspondent information and the other to register blocked demands (SinkBlocking\_ ). Both are very useful to store the information that will later on be present in the final cost report.\\\\
+Knowing the list of possible shortest logical paths associated to a demand (through Dijkstra algotithm), the capacity of the physical links that constitute those logical connections have to be tested. That will occur in the next block of the diagram, the PathTester\_  block.\\ \\ \\
+
+If there is already an entry in the light path table and if the remaining capacity of that light path, already established, is sufficient to route the demand then our demand is added to that same light path and a demandPathRoute signal is created with information regarding to the demand/path index, route and wavelength used by that same demand. If on the other side the logical path being tested has not enough capacity to process a certain demand or if there is no light path established between that pair of source and destination nodes than an attempt to create another light path entry will be made. If it occurs successfully than a new light path is established in our network and the demand is routed through that same but if there is no possibility of creating a new light path between those nodes than our logical path will have to be ignored and cutted of, and so a next shortest logical path must be tested in the same manner. In order to in further iterations that full path not be considered a path type signal (RemovedPaths) should be created to inform the Path Generator block that those paths must not be considered, this will make the algorithm more efficient. If finally we can not route our demand though none of the logical paths selected then a blocking state occurs, the demand is not routed and a demandsBlocked signal is created. Then finally a cost report is created to obtain a detailed estimation of the network Capex based on user defined equipment costs present on table 1.28.\\ \\
 
 
 %\begin{figure}[H]
@@ -615,22 +620,24 @@ In order to route those demands there will also be the necessity of a Path Gener
 %\end{figure}
 
 %Here the main difference is the decomposition of the two super blocks 'Path tester' which is divided in three sub blocks ('Demand path generator', 'Available capacity' and 'Link capacity refresh') and the 'Physical Topology generator' block, divided in two other blocks, all of this in order to better understand their exact functions.
+\clearpage
+\textbf{Signal Types}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c |}
 		\hline
-		Signal name & Signal type \\ % it is missing the description of the signals
+		 \textbf{Signal name} &  \textbf{Signal type} \\ % it is missing the description of the signals
 		\hline
 		SchedulerOut &  Demand\\ \hline
 		LogicalTopologyOut &  LogicalTopology\\ \hline
 		%layer1 & \\ \hline
 		PhysicalTopologyOut & PhysicalTopology\\ \hline
 		PathGeneratorOut &  DemandListOfPaths\\ \hline
-		RemovedPaths &   Path\\ \hline
+		RemovePath &   PathRemoval\\ \hline
 		BlockedDemands &   Demand\\ \hline
 		%demandPath & ??? \\ \hline
-		RoutedDemands & demandPathRoute\\ \hline
+		RoutedDemands & DemandPathRoute\\ \hline
 		%demandsRouted & ??? \\ \hline
 		%demandsBlocked & ??? \\ \hline
 		%update & ??? \\ \hline
@@ -642,15 +649,13 @@ In order to route those demands there will also be the necessity of a Path Gener
 	\label{system_signals}
 \end{table}
 	Table 1.20 presents the system signals as well as their type.\\ \\
- \textbf{Signal Types}
-\\
-\\
+
 \underline{Demand}
 \\
 \begin{table}[H]
 	\begin{tabular}{|c|c|c|c|l|}
 		\hline
-		demandIndex & sourceNode & destinationNode &  oduType & \multicolumn{1}{c|}{restorationMethod}                                                 \\ \hline
+		\textbf{demandIndex} & \textbf{sourceNode} & \textbf{destinationNode} &  \textbf{oduType} & \multicolumn{1}{c|}{\textbf{restorationMethod}}                                                 \\ \hline
 		0...$\infty$       & 1...N       & 1...N            & 0...4    & \begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\\ 2 - Restoration\end{tabular} \\ \hline
 	\end{tabular}
 	\caption{Constitution of a demand.}
@@ -659,13 +664,13 @@ In order to route those demands there will also be the necessity of a Path Gener
 N represents the number of nodes present in the network.\\ \\
 \underline{LogicalTopology}\\
 \\
-This is the output signal of the Logical topology generator block, it has a matrix NxN where every logical connection existent between nodes in the network is displayed. In this particular case we are studying the transparent trasnport node so our logical toplogy will be the one presented in table 1.23. In addition here will occur the creation structures corresponding to our network logical links and light paths.\\
+This is the output signal of the LogicalTopologyGenerator\_  block, it has a matrix NxN where every logical connection existent between nodes in the network is displayed. In this particular case we are studying the transparent trasnport node so our logical toplogy will be the one presented in table \ref{Transparentlogical_topology}. In addition here will occur the creation structures corresponding to our network logical links.\\
 
 \begin{table}[H]
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
-		\multicolumn{1}{|l|}{Nodes} & 1   & 2   & 3   & 4   & 5   & 6   \\ \hline
+		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6   \\ \hline
 		1                           & \textbf{0}   & 0/1 & 0/1 & 0/1 & 0/1 & 0/1 \\ \hline
 		2                           & 0/1 & \textbf{0}   & 0/1 & 0/1 & 0/1 & 0/1 \\ \hline
 		3                           & 0/1 & 0/1 & \textbf{0}   & 0/1 & 0/1 & 0/1 \\ \hline
@@ -673,14 +678,14 @@ This is the output signal of the Logical topology generator block, it has a matr
 		5                           & 0/1 & 0/1 & 0/1 & 0/1 & \textbf{0}   & 0/1 \\ \hline
 		6                           & 0/1 & 0/1 & 0/1 & 0/1 & 0/1 & \textbf{0}   \\ \hline
 	\end{tabular}
-	\caption{Logical Topology Matrix.}
+	\caption{Possible logical Topology Matrix.}
 	\label{logical_topology}
 \end{table}
 \begin{table}[H]
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
-		\multicolumn{1}{|l|}{Nodes} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
+		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
 		1                           & \textbf{0}   & 1 & 1 & 1 & 1 & 1 \\ \hline
 		2                           & 1 & \textbf{0}   & 1 & 1 & 1 & 1 \\ \hline
 		3                           & 1 & 1 & \textbf{0}   & 1 & 1 & 1 \\ \hline
@@ -696,76 +701,90 @@ This is the output signal of the Logical topology generator block, it has a matr
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		linkIndex & linkSourceNode & linkDestinationNode & numberofLightPaths \\ \hline
-		1     & 1...N            & 1...N                 & 0...N                 \\ \hline
+		\textbf{linkIndex} & \textbf{linkSourceNode} & \textbf{linkDestinationNode} & \textbf{numberofLightPaths} \\ \hline
+		0     & 1...N            & 1...N                 & 0...N                 \\ \hline
 		...   & ...              & ...                   & ...                   \\ \hline
-		LO    & 1...N            & 1...N                 & 0...N                 \\ \hline
+		LO - 1    & 1...N            & 1...N                 & 0...N                 \\ \hline
 	\end{tabular}
 	\caption{Logical link variable.}
 	\label{logicalLink_variable}
 \end{table}
 
 LO represents the number of logical links present in the network. Initially there will be none.\\ \\
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		Link Index & Light Path Number & Physical Links  & Wavelenght & Capacity (ODU0s) \\ \hline
-		1          & 1                 & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
-		...        & ...               & ...             & ...        &                  \\ \hline
-		LO         & LP                & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
-	\end{tabular}
-	\caption{Light path variable.}
-	\label{lightpath_example}
-\end{table}
-LP represents the number of light paths established in the network.\\
-OC represents the number optical channels existent in each physical link.\\
-The Physical Links variable inside of the light paths represents the links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain light path.\\ \\
+
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|c|c|c|c|c|}
+%		\hline
+%		Link Index & Light Path Number & Physical Links  & Wavelenght & Capacity (ODU0s) \\ \hline
+%		1          & 1                 & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
+%		...        & ...               & ...             & ...        &                  \\ \hline
+%		LO         & LP                & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
+%	\end{tabular}
+%	\caption{Light path variable.}
+%	\label{lightpath_example}
+%\end{table}
+%LP represents the number of light paths established in the network.\\
+%OC represents the number optical channels existent in each physical link.\\
+%The Physical Links variable inside of the light paths represents the links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain light path.\\ \\
 \underline{PhysicalTopology}\\
 \\
-Here the information about every physical connection existent between nodes and their capacity initially existent is sent to the Path tester block where later on will be updated.
+Here the information related to every existent physical connection between nodes is thoroughly created and sent to the PathTester\_  block where later on will be updated if needed. Different structures are created for the existent physical links (based on the adjency matrix) and optical channels that constitute those same links, as can be seen below on tables \ref{link_example} and \ref{opticalChannel_example}.
 
 \begin{table}[H]
 		\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		linkIndex & linkSourceNode & linkDestinationNode & numberOfOpticalChannels \\ \hline
-		1     & 1...N            & 1...N                 & OC                        \\ \hline
+		\textbf{linkIndex} & \textbf{linkSourceNode} & \textbf{linkDestinationNode} & \textbf{numberOfOpticalChannels} \\ \hline
+		0     & 1...N            & 1...N                 & OC                        \\ \hline
 		...   & ...              & ...                   & ...                        \\ \hline
-		L     & 1...N            & 1...N                 & OC                        \\ \hline
+		L - 1     & 1...N            & 1...N                 & OC                        \\ \hline
 	\end{tabular}
 	\caption{Link variable.}
 	\label{link_example}
 \end{table}
+L represents the number of physical links existent in the network.\\
+OC represents the number optical channels existent in each physical link.\\
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|c|}
 		\hline
-		linkIndex & \begin{tabular}[c]{@{}c@{}}opticalChannel\\ Number\end{tabular} & \begin{tabular}[c]{@{}c@{}}Capacity \\ (ODU0s)\end{tabular} & wavelenght & \begin{tabular}[c]{@{}c@{}}sourceNode\end{tabular} & \begin{tabular}[c]{@{}c@{}}destinationNode\end{tabular} \\ \hline
-		1...L      & 1...OC                                                           &                                                           & 1...OC    & 1...N                                                  & 1...N                                                       \\ \hline
+		\textbf{linkIndex} & \begin{tabular}[c]{@{}c@{}}\textbf{opticalChannel}\\ \textbf{Number}\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ \textbf{(ODU0s)}\end{tabular} & \textbf{wavelenght} & \begin{tabular}[c]{@{}c@{}}\textbf{sourceNode}\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{destinationNode}\end{tabular} \\ \hline
+		0...L - 1      & 1...OC                                                           &                                                           & 1...OC    & 1...N                                                  & 1...N                                                       \\ \hline
 	\end{tabular}
 	\caption{Optical channel variable.}
 	\label{opticalChannel_example}
 \end{table}
 
-
-\underline{Path}\\
-
+\underline{RemovePath}\\
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|}
 		\hline
-		pathIndex & sourceNode & destinationNode & logicalLinks & hops\\ \hline
-		0...$\infty$& 1...N       & 1...N  & [0/1...0/1]  &    \\ \hline
+		\textbf{oduType} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{removedLinks} \\ \hline
+		0...4   & 1...N      & 1...N           & [0/1...0/1]       \\ \hline
 	\end{tabular}
-	\caption{Path type signal.}
-	\label{path_signal}
+	\caption{RemovePath signal.}
+	\label{removepath_example}
 \end{table}
-The Logical links variable represents the logical links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain path.\\ \\
+The removedLinks variable represents each of the logical links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are eliminated.\\ \\
+%\underline{Path}\\
+
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|c|c|c|c|c|}
+%		\hline
+%		pathIndex & sourceNode & destinationNode & logicalLinks & hops\\ \hline
+%		0...$\infty$& 1...N       & 1...N  & [0/1...0/1]  &    \\ \hline
+%	\end{tabular}
+%	\caption{Path type signal.}
+%	\label{path_signal}
+%\end{table}
+%The Logical links variable represents the logical links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain path.\\ \\
 \underline{DemandListOfPaths}\\
 \\
-Inside of the Path Generator block a list of logical paths associated to a certain demand and so to a pair of source and destination nodes will be created. This paths will depend directly on the logical topology of the network and on the availability of the links that constitute the same. A DemandListOfPaths type signal will include in it's structure a demand signal and a set of N (defined by the user) shortest path signals that will later on be tested in order to process the demand. 
+Inside of the PathGenerator\_  block a list of logical paths associated to a certain demand and so to a pair of source and destination nodes will be created. This paths will depend directly on the logical topology of the network and on the availability of the links that constitute the same. A DemandListOfPaths type signal will include in it's structure a demand structure and a set of N (defined by the user) shortest path structures that will later on be tested in order to process the demand. 
 
 
 \begin{table}[H]
@@ -773,33 +792,39 @@ Inside of the Path Generator block a list of logical paths associated to a certa
 	\begin{tabular}{|lcccccl|}
 		\hline
 		& \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                 & \multicolumn{1}{l}{}                                                                                         &  \\ \cline{2-6}
-		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{demandIndex}  & \multicolumn{1}{c|}{sourceNode}             & \multicolumn{1}{c|}{destinationNode}        & \multicolumn{1}{c|}{oduType}         & \multicolumn{1}{c|}{restorationMethod}                                                                       &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\textbf{demandIndex}}  & \multicolumn{1}{c|}{\textbf{sourceNode}}             & \multicolumn{1}{c|}{\textbf{destinationNode}}        & \multicolumn{1}{c|}{\textbf{oduType}}         & \multicolumn{1}{c|}{\textbf{restorationMethod} }                                                                      &  \\ \cline{2-6}
 		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0...$\infty$} & \multicolumn{1}{c|}{1...N}                  & \multicolumn{1}{c|}{1...N}                  & \multicolumn{1}{c|}{0...4}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\\ 2 - Restoration\end{tabular}} &  \\ \cline{2-6}
 		& \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                 & \multicolumn{1}{l}{}                                                                                         &  \\ \cline{2-6}
-		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{pathIndex}    & \multicolumn{1}{c|}{sourceNode}             & \multicolumn{1}{c|}{destinationNode}        & \multicolumn{1}{c|}{logicalLinks}    & \multicolumn{1}{c|}{hops}                                                                                    &  \\ \cline{2-6}
-		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0...$\infty$} & \multicolumn{1}{c|}{\multirow{3}{*}{1...N}} & \multicolumn{1}{c|}{\multirow{3}{*}{1...N}} & \multicolumn{1}{c|}{{[}0/1...0/1{]}} & \multicolumn{1}{c|}{1...H}                                                                                   &  \\ \cline{2-2} \cline{5-6}
-		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{...}          & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{{[}0/1...0/1{]}} & \multicolumn{1}{c|}{1...H}                                                                                   &  \\ \cline{2-2} \cline{5-6}
-		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0...$\infty$} & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{{[}0/1...0/1{]}} & \multicolumn{1}{c|}{1...H}                                                                                   &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\textbf{pathIndex}}    & \multicolumn{1}{c|}{\textbf{sourceNode}}             & \multicolumn{1}{c|}{\textbf{destinationNode}}        & \multicolumn{1}{c|}{\textbf{\textbf{logicalLinks}}}    & \multicolumn{1}{c|}{\textbf{hops}}                                                                                    &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0...$\infty$} & \multicolumn{1}{c|}{\multirow{3}{*}{1...N}} & \multicolumn{1}{c|}{\multirow{3}{*}{1...N}} & \multicolumn{1}{c|}{{[}0/1...0/1{]}} & \multicolumn{1}{c|}{H}                                                                                   &  \\ \cline{2-2} \cline{5-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{...}          & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{{[}0/1...0/1{]}} & \multicolumn{1}{c|}{H}                                                                                   &  \\ \cline{2-2} \cline{5-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0...$\infty$} & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{{[}0/1...0/1{]}} & \multicolumn{1}{c|}{H}                                                                                   &  \\ \cline{2-6}
 		& \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                 & \multicolumn{1}{l}{}                                                                                         &  \\ \hline
 	\end{tabular}
 	\caption{DemandListOfPaths type signal.}
 	\label{demandListOfPaths_example}
 \end{table}
 
-H representing the possible maximum number of hops in the network.\\
+H represents the number of hops of a specific path.\\
 \\
-\underline{demandPathRoute}\\
+\underline{DemandPathRoute}\\
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|c|}
+	\begin{tabular}{|ccccc|}
 		\hline
-		Demand Index           & Path Index             & Physical Link Index                       & 1...L                   \\ \hline
-		\multirow{2}{*}{0...N} & \multirow{2}{*}{0...N} & \multirow{2}{*}{Optical Channel} & \multirow{2}{*}{1...OC} \\
-		&                        &                                  &                          \\ \hline
+		&                                        &                                   &                          &                       \\ \cline{2-3}
+		\multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\textbf{demandIndex}}       & \multicolumn{1}{c|}{\textbf{pahtIndex}}    &                          &                       \\ \cline{2-3}
+		\multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{0...$\infty$}      & \multicolumn{1}{c|}{0...$\infty$} &                          &                       \\ \cline{2-3}
+		&                                        &                                   &                          &                       \\ \cline{2-4}
+		\multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\textbf{physicalLinkIndex}} & \multicolumn{1}{c|}{0...L - 1}    & \multicolumn{1}{c|}{...} &                       \\ \cline{2-4}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\textbf{opticalChannel}}    & \multicolumn{1}{c|}{1...CO}       & \multicolumn{1}{c|}{...} & \multicolumn{1}{l|}{} \\ \cline{2-4}
+		\multicolumn{1}{|l}{}  & \multicolumn{1}{l}{}                   & \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}     & \multicolumn{1}{l|}{} \\ \hline
 	\end{tabular}
-	\caption{demandPathRoute signal.}
+	\caption{DemandPathRoute signal type.}
 	\label{demandPathRoute_signal}
 \end{table}
+
+This signal is only generated in the case of path with pathIndex being successfully tested which means it is going to be used in order to route the our demand with index demandindex. The physical links that constitute that logical link and the optical channels used in each of the links are specified in this signal, so the we have a thorough analysis of all the processe of routing a demand through the network. All the information will be present in the final report.\\ \\ END OF THIS SECTION
 %\underline{demandsBlocked}\\
 %\begin{table}[H]
 %	\centering
@@ -825,8 +850,7 @@ H representing the possible maximum number of hops in the network.\\
 %	\caption{demandPath signal.}
 %	\label{demandPath_example}
 %\end{table}
-Knowing the list of possible shortest logical paths associated to a demand (Dijkstra algotithm), the capacity of the physical links that constitute those logical connections have to be tested. That will occur in the next block of the diagram, the Path Tester block.\\ \\
-If there is already an entry in the light path table and if the remaining capacity of that light path, already established, is sufficient to route the demand then our demand is added to that same light path and a demandPathRoute signal is created with information regarding to the demand/path index, route and wavelength used by that same demand. If on the other side the logical path being tested has not enough capacity to process a certain demand or if there is no light path established between that pair of source and destination nodes than an attempt to create another light path entry will be made. If it occurs successfully than a new light path is established in our network and the demand is routed through that same but if there is no possibility of creating a new light path between those nodes than our logical path will have to be ignored and cutted of, and so a next shortest logical path must be tested in the same manner. In order to in further iterations that full path not be considered a path type signal (RemovedPaths) should be created to inform the Path Generator block that those paths must not be considered, this will make the algorithm more efficient. If finally we can not route our demand though none of the logical paths selected then a blocking state occurs, the demand is not routed and a demandsBlocked signal is created. Then finally a cost report is created to obtain a detailed estimation of the network Capex based on user defined equipment costs present on table 1.28.\\ \\
+Equipment Costs
 
 \begin{table}[H]
 	\centering
@@ -851,21 +875,20 @@ If there is already an entry in the light path table and if the remaining capaci
 	\begin{tabular}{|c|c|c|}
 		\hline
 		\textbf{Parameter} & \textbf{Default value} & \textbf{Description}                                                                                           \\ \hline
-		Number of Paths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes.\end{tabular}           \\  \hline
-		Number of Nodes                                                              & 0             & \begin{tabular}[c]{@{}c@{}}Number of nodes  present\\ in this network.\end{tabular}           \\  \hline
-		Routing Ordering Rule                                                        & 0   & \begin{tabular}[c]{@{}l@{}}0 - Descending order\\ 1 - Ascending order\end{tabular} \\ \hline                    
-		ODU0                                                                         & Null          & ODU0 demands.                                                                                        \\ \hline
-		ODU1                                                                         & Null          & ODU1 demands.                                                                                        \\ \hline
-		ODU2                                                                         & Null          & ODU2 demands.                                                                                        \\ \hline
-		ODU3                                                                         & Null          & ODU3 demands.                                                                                        \\ \hline
-		ODU4                                                                         & Null          & ODU4 demands.                                                                                        \\ \hline
-		Criterion                                                                    & Hops          & Shortest path type.                                                                                  \\ \hline
-		Transport Mode                                                               & Null          & \begin{tabular}[c]{@{}c@{}}Opaque, transparent or translucid\\ modes.\end{tabular}                   \\ \hline
-		Physical Topology                                                            & Null          & \begin{tabular}[c]{@{}c@{}}Physical connections of the\\ network.\end{tabular}                       \\ \hline
-		Transport Systems                                                            & 1             & \begin{tabular}[c]{@{}c@{}}Number of transport systems\\ connecting each pair of nodes.\end{tabular} \\ \hline
-		Optical Channels                                                             & 100           & \begin{tabular}[c]{@{}c@{}}Optical channels per transport \\ system.\end{tabular}                    \\ \hline
-		\begin{tabular}[c]{@{}c@{}}Optical Channel\\ Capacity\end{tabular}           & 100 Gbps      & \begin{tabular}[c]{@{}c@{}}Physical capacity of each \\ channel.\end{tabular}                        \\ \hline
-		\begin{tabular}[c]{@{}c@{}}Light Path \\ Establishion Criterion\end{tabular} & to define     & to define                                                                                            \\ \hline
+		numberOfPaths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes.\end{tabular}                      \\  \hline
+		orderingRule                                                        & 0   & \begin{tabular}[c]{@{}l@{}}0 - Descending order\\ 1 - Ascending order\end{tabular} \\ \hline                    
+		odu0                                                                         & Null          & ODU0 demands.                                                                                        \\ \hline
+		odu1                                                                         & Null          & ODU1 demands.                                                                                        \\ \hline
+		odu2                                                                         & Null          & ODU2 demands.                                                                                        \\ \hline
+		odu3                                                                         & Null          & ODU3 demands.                                                                                        \\ \hline
+		odu4                                                                         & Null          & ODU4 demands.                                                                                        \\ \hline
+		criterion                                                                    & Hops          & Shortest path type.                                                                                  \\ \hline
+		transportMode                                                               & Null          & \begin{tabular}[c]{@{}c@{}}Opaque, transparent or translucid\\ modes.\end{tabular}                   \\ \hline
+		adjacenceMatrix                                                            & Null          & \begin{tabular}[c]{@{}c@{}}Physical connections of the\\ network.\end{tabular}                       \\ \hline
+		transportSystems                                                            & 1             & \begin{tabular}[c]{@{}c@{}}Number of transport systems\\ connecting each pair of nodes.\end{tabular} \\ \hline
+		opticalChannels                                                             & 100           & \begin{tabular}[c]{@{}c@{}}Optical channels per transport \\ system.\end{tabular}                    \\ \hline
+		\begin{tabular}[c]{@{}c@{}}opticalChannelCapacity\end{tabular}           & 100 Gbps      & \begin{tabular}[c]{@{}c@{}}Physical capacity of each \\ channel.\end{tabular}                        \\ \hline
+		\begin{tabular}[c]{@{}c@{}}lightPathCriterion\end{tabular} & to define     & \begin{tabular}[c]{@{}c@{}}Maximum number of hops in a physical\\   path to establish a logical link.\end{tabular} \\ \hline                                                                                             %\\ \hline
 	\end{tabular}
 	\caption{System input parameters.}
 	\label{system_input}
@@ -876,13 +899,13 @@ If there is already an entry in the light path table and if the remaining capaci
 	\begin{tabular}{|c|c|c|}
 		\hline
 		\textbf{Block}                                                               & \textbf{Input Parameters}                                                                                                         & \textbf{Input Signals}                                                                \\ \hline
-		Scheduler                                                             & \begin{tabular}[c]{@{}c@{}}ODU0, ODU1,ODU2, ODU3, ODU4,\\ Routing Odering Rule, Number of Nodes\end{tabular}                 & None                                                                         \\ \hline
-		\begin{tabular}[c]{@{}c@{}}Logical Topology\\ Generator\end{tabular}  & \begin{tabular}[c]{@{}c@{}}Transport Mode, Physical\\ Topology\end{tabular}                                                & None                                                                         \\ \hline
-		\begin{tabular}[c]{@{}c@{}}Physical Topology\\ Generator\end{tabular} & \begin{tabular}[c]{@{}c@{}}Physical Topology, Optical Channels,\\ Transport Systems, Optical Channel Capacity\end{tabular} & None                                                                         \\ \hline
-		Path Generator                                                        & Number of Paths, Criterion                                                                                                 & \begin{tabular}[c]{@{}c@{}}LogicalTopology,\\ RemovedPaths\end{tabular}      \\ \hline
-		Path Tester                                                           & Ligh Path Establishion Criterion                                                                                           & \begin{tabular}[c]{@{}c@{}}PathGeneratorOut,\\ PhysicalTopology\end{tabular} \\ \hline
-		Sink (Blocking)                                                       & None                                                                                                                       & BlockedDemands                                                               \\ \hline
-		Sink (Routed)                                                         & None                                                                                                                       & RoutedDemands                                                                \\ \hline
+		Scheduler\_                                                               & \begin{tabular}[c]{@{}c@{}}odu0, odu1,odu2, odu3, odu4,\\ orderingRule\end{tabular}                 & None                                                                         \\ \hline
+		\begin{tabular}[c]{@{}c@{}}logicalTopologyGenerator\_  \end{tabular}  & \begin{tabular}[c]{@{}c@{}}transportMode, adjacenceMatrix\end{tabular}                                                & None                                                                         \\ \hline
+		\begin{tabular}[c]{@{}c@{}}PhysicalTopologyGenerator\_  \end{tabular} & \begin{tabular}[c]{@{}c@{}}adjacenceMatrix, opticalChannels,\\ transportSystems, opticalChannelCapacity\end{tabular} & None                                                                         \\ \hline
+		PathGenerator\_                                                          & numberOfPaths, criterion                                                                                                 & \begin{tabular}[c]{@{}c@{}}LogicalTopologyOut,\\ RemovePath\end{tabular}      \\ \hline
+		PathTester\_                                                            & lighPathCriterion                                                                                           & \begin{tabular}[c]{@{}c@{}}PathGeneratorOut,\\ PhysicalTopologyOut\end{tabular} \\ \hline
+		SinkBlocking\_                                                         & None                                                                                                                       & BlockedDemands                                                               \\ \hline
+		SinkRouted\_                                                           & None                                                                                                                       & RoutedDemands                                                                \\ \hline
 	\end{tabular}
 	\caption{Blocks input parameters and signals.}
 	\label{blocks_input}
@@ -893,17 +916,34 @@ If there is already an entry in the light path table and if the remaining capaci
 	\begin{tabular}{|c|c|c|}
 	\hline
 	\textbf{Block }                                                                & \textbf{State Variables}                                                                             & \textbf{Output Signals}                                                          \\ \hline
-	Scheduler                                                             & \begin{tabular}[c]{@{}c@{}}ODU0, ODU1, ODU2, ODU3,\\ ODU4, Demand Index, \\Number of Demands\end{tabular}        & SchedulerOut                                                            \\ \hline
-	\begin{tabular}[c]{@{}c@{}}Logical Topology\\ Generator\end{tabular}  & Logical Topology Matrix                                                                     & LogicalTopology                                                         \\ \hline
-	\begin{tabular}[c]{@{}c@{}}Physical Topology\\ Generator\end{tabular} & Physical Topology Matrix                                                                    & PhysicalTopology                                                        \\ \hline
-	Path Generator                                                        & \begin{tabular}[c]{@{}c@{}}Logical Topology Matrix,\\ Logical Link, Light Path\end{tabular} & PathGeneratorOut                                                        \\ \hline
-	Path Tester                                                           & \begin{tabular}[c]{@{}c@{}}Physical Topology Matrix,\\ Link, Optical Channel\end{tabular}   & \begin{tabular}[c]{@{}c@{}}RoutedDemands,\\ BlockedDemands\end{tabular} \\ \hline
-	Sink (Blocking)                                                       & None                                                                                        & None                                                                    \\ \hline
-	Sink (Routed)                                                         & None                                                                                        & None                                                                    \\ \hline
+	Scheduler\_                                                               & \begin{tabular}[c]{@{}c@{}}odu0, odu1, odu2, odu3, odu4, demandIndex, \\numberOfDemands\end{tabular}        & SchedulerOut                                                            \\ \hline
+	\begin{tabular}[c]{@{}c@{}}LogicalTopologyGenerator\_  \end{tabular}  &  generate                                                                      & LogicalTopologyOut                                                         \\ \hline
+	\begin{tabular}[c]{@{}c@{}}PhysicalTopologyGenerator\_  \end{tabular} & generate                                                                    & PhysicalTopologyOut                                                        \\ \hline
+	PathGenerator\_                                                          & \begin{tabular}[c]{@{}c@{}}currentLogicalTopology\end{tabular} & PathGeneratorOut                                                        \\ \hline
+	PathTester\_                                                             & \begin{tabular}[c]{@{}c@{}}currentPhysicalTopology, \\ lightPaths\end{tabular}   & \begin{tabular}[c]{@{}c@{}}RoutedDemands,\\ BlockedDemands\end{tabular} \\ \hline
+	SinkBlocking\_                                                         & None                                                                                        & None                                                                    \\ \hline
+	SinkRouted\_                                                           & None                                                                                        & None                                                                    \\ \hline
 \end{tabular}
 	\caption{Blocks state variables and output signals.}
 	\label{blocks_input}
 \end{table}
+
+Another important structure that we should mention is a state variable of the PathTester\_  block, lightPaths, represented below on table \ref{lightpath_example}.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Link Index & Light Path Number & Physical Links  & Wavelenght & Capacity (ODU0s) \\ \hline
+		0          & 1                 & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
+		...        & ...               & ...             & ...        &                  \\ \hline
+		LO - 1         & LP                & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
+	\end{tabular}
+	\caption{Light path variable.}
+	\label{lightpath_example}
+\end{table}
+LP represents the number of light paths established in the network.\\
+OC represents the number optical channels existent in each physical link.\\
+The Physical Links variable inside of the light paths represents the links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain light path.\\ \\
 \clearpage
 \textbf{Example:}  \\
 \\
@@ -980,16 +1020,17 @@ $T$ = 1800/2 = \textbf{900 Gbits/s}\\
 
 Where the variable $T_1^x$ represents the unidirectional traffic of the ODUx, for example, $T_1^0$ represents the unidirectional traffic of the ODU0 and $T_1^1$ represents the unidirectional traffic of the ODU1. The variable $T_{1}$ represents the total of unidirectional traffic that is injected into the network and finally the variable $T$ represents the total of bidirectional traffic.\\
 
-The demands are first ordered in the Scheduler block considering the entry variable, Routing ordering rule (type of ODU), in a single queue. These demands will constitute the SchedulerOut signal.
+The demands are first ordered in the Scheduler\_   block considering the entry variable, orderingRule (type of ODU), in a single queue. These demands will constitute the SchedulerOut signal.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c | c | c |}
 		
 		\hline
-		 Demand Index  & Source Node & Destination Node & ODU Type & Restoration Method \\
+		 demandIndex  & sourceNode & destinationNode & oduType & restorationMethod \\
 		\hline
 		
+		0 & 2 & 4 & 4 & 0\\ \hline
 		1 & 2 & 4 & 4 & 0\\ \hline
 		2 & 2 & 4 & 4 & 0\\ \hline
 		3 & 2 & 4 & 4 & 0\\ \hline
@@ -998,78 +1039,66 @@ The demands are first ordered in the Scheduler block considering the entry varia
 		6 & 2 & 4 & 4 & 0\\ \hline
 		7 & 2 & 4 & 4 & 0\\ \hline
 		8 & 2 & 4 & 4 & 0\\ \hline
-		9 & 2 & 4 & 4 & 0\\ \hline
 
 	\end{tabular}
-	\caption{Demands queue generated in the Scheduler block.}
+	\caption{Demands queue generated in the Scheduler\_  block.}
 	\label{scheduler_example}
 \end{table}
 
-The demands presented in the previous table will be processed from the lowest to highest index.
+The demands presented in the previous table will be processed from the lowest to the highest index.
 \\ \\
-\textbf{Demand 1}\\ \\
+\textbf{Demand 0}\\ \\
 
-First of all a set of shortest logical paths will be selected based on the logical topology of our network. The paths selected and how many will depend on entry variables, Criterion and Number of Paths, respectively.
-Once our shortest logical path is chosen, we must test the same starting by analysing if there is already an entry on our list of light paths established in the network for that logical link or set of links. If there is none or if the existents do not have enough capacity left to transport our demand an effort must be made to create a new entry, that is, create a new lightpath in that logical link or set of links. \\
-In this particular case as the list of lightpaths is initially void we must a create a new lightpath using the direct logical link between nodes 2 and 4, if possible.
+First of all a set of shortest logical paths will be selected based on the logical topology of our network. The paths selected and how many will depend on entry variables, criterion and numberOfPaths, respectively (using Dijkstra algorithm).
+Once our first shortests logical paths are chosen, a DemandListOfPaths signal is created with information regarding the demand being processed and the paths associated to it. Those paths are formed by one or more logical links which in their turn are constituted by one or more physical links. Those paths are tested in order one by one at the PathTester\_  block.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/allowed_optical}
-	\caption{Allowed optical topology. The allowed optical topology is defined by the transport mode (transparent transport mode in this case). It is assumed that each connections between demands supports up to 4 lightpaths (100 Gbps each).}
-	\label{allowed_optical_surv_ref_high_heuristic_transparent}
-\end{figure}
+% IMAGEM DA TOPOLOGIA TRANSPARENTE
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|l|l|}
+	\begin{tabular}{|lcccccl|}
 		\hline
-		Demand index           & \multicolumn{3}{c|}{Path index} \\ \hline
-		\multirow{3}{*}{1} & \multicolumn{3}{c|}{1}          \\ \cline{2-4}
-		& \multicolumn{3}{c|}{2}        \\ \cline{2-4}
-		& \multicolumn{3}{c|}{3}        \\ \hline
+		& \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                 & \multicolumn{1}{l}{}                                                                                         &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\textbf{demandIndex}}  & \multicolumn{1}{c|}{\textbf{sourceNode}}             & \multicolumn{1}{c|}{\textbf{destinationNode}}        & \multicolumn{1}{c|}{\textbf{oduType}}         & \multicolumn{1}{c|}{\textbf{restorationMethod} }                                                                      &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{2}                  & \multicolumn{1}{c|}{3}                  & \multicolumn{1}{c|}{4}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}0 - None\end{tabular}} &  \\ \cline{2-6}
+		& \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                 & \multicolumn{1}{l}{}                                                                                         &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\textbf{pathIndex}}    & \multicolumn{1}{c|}{\textbf{sourceNode}}             & \multicolumn{1}{c|}{\textbf{destinationNode}}        & \multicolumn{1}{c|}{\textbf{\textbf{logicalLinks}}}    & \multicolumn{1}{c|}{\textbf{hops}}                                                                                    &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{\multirow{3}{*}{2}} & \multicolumn{1}{c|}{\multirow{3}{*}{3}} & \multicolumn{1}{c|}{{[}6{]}} & \multicolumn{1}{c|}{1}                                                                                   &  \\ \cline{2-2} \cline{5-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{1}          & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{{[}7, 17{]}} & \multicolumn{1}{c|}{2}                                                                                   &  \\ \cline{2-2} \cline{5-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{}                       & \multicolumn{1}{c|}{{[}8, 22{]}} & \multicolumn{1}{c|}{2}                                                                                   &  \\ \cline{2-6}
+		& \multicolumn{1}{l}{}              & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                        & \multicolumn{1}{l}{}                 & \multicolumn{1}{l}{}                                                                                         &  \\ \hline
 	\end{tabular}
-	\caption{demandListOfPaths signal.}
+	\caption{DemandListOfPaths type signal.}
 	\label{demandListOfPaths_example}
 \end{table}
 
-Lets now analyze path number 1, supposedly the shortest one.\\
+Lets now analyze path number 0, supposedly the shortest one.\\
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		Path Index & Source Node & Destination Node & Logical links & Hops\\ \hline
-		1& 2       & 4  & [010000...]  &  1  \\ \hline
-	\end{tabular}
-	\caption{Path type signal.}
-	\label{path_signal}
-\end{table}
 
-Since it's constituted only by logical link 2 we must test its capacity in order to analyse the possibility of constituting a new ligth path in logical link number 2.	\\
+Since it's constituted only by logical link number 6 we must test its capacity in order to analyse the possibility of constituting a new ligth path in logical link number 6.	\\
 \\
 \underline{Initial values}\\
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
 		\hline
-		Index & Link Source Node & Link Destination Node & Number of Light Paths \\ \hline
-		2     & 2           & 4                 & 0                \\  \hline
+		linkIndex & linkSourceNode & linkDestinationNode & numberOfLightPaths \\ \hline
+		6     & 2           & 3                 & 0                \\  \hline
 	\end{tabular}
-	\caption{Logical link 2.}
+	\caption{Logical link number 6.}
 	\label{logicalLink_variable}
 \end{table}
 
-Since its the first light path to be established in this network the index will be equal to 1. In order to see if there is enough capacity to create this light path we will need to test the physical links that constitutes the very same, in this particular example link number 2.\\
+Since it will be the first light path to be established in this logical link the lightPathNumber will be equal to 0. In order to see if there is enough capacity to create this light path we will need to test the physical links that constitutes the logical links used, in this case link 6.\\ Those physical links are also found through Dijkstra algorithm.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		Link Index & Light Path Number & Physical Links  & Wavelenght & Capacity (ODU0s) \\ \hline
-		2          & 1                 & {[}01000000{]} & 1 & 80    \\ 	\hline
+		linkIndex & Light Path Number & Physical Links  & Wavelenght & Capacity (ODU0s) \\ \hline
+		6          & 0                 & {[}01000000{]} & 1 & 80    \\ 	\hline
 	\end{tabular}
-	\caption{Light path 1.}
+	\caption{Light path number 0.}
 	\label{lightpath_example}
 \end{table}
 \begin{table}[H]
