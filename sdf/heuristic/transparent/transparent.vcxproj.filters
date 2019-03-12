@@ -33,6 +33,9 @@
     <ClCompile Include="..\..\..\lib\physical_topology_generator_20190227.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\lib\path_generator_20190302.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\scheduler_20190122.h">
@@ -48,6 +51,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\physical_topology_generator_20190227.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\path_generator_20190302.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\Dijkstra_20190309.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
