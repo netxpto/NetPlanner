@@ -86,7 +86,7 @@ using t_photon_mp_xy = struct { t_complex_xy_mp path[MAX_NUMBER_OF_PATHS]; };
 using t_iqValues = complex<t_real>;
 using t_message = struct {	string messageType;	string messageDataLength; 	string messageData; int size() { return 3; }};
 
-using t_demand = struct {						// Signal type Demand structure creation
+using t_demand = struct {						        // Signal type Demand structure creation
 	t_integer demandIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
@@ -107,15 +107,15 @@ using t_demand = struct {						// Signal type Demand structure creation
 using t_light_path = struct {
 	t_integer linkIndex{ 0 };
 	t_integer lightPathNumber{ 0 };
-	//physicalLinks;
+	std::vector<int> physicalLinks{ 0 };
 	t_integer wavelenght{ 0 };
 	t_integer capacity{ 0 };
-
 };
 
-using t_logical_topology = struct {				// Signal type LogicalTopology structure creation 
-	t_logical_link logicalLink;
-	t_light_path lightPath;
+using t_logical_topology = struct {				          // Signal type LogicalTopology structure creation 
+	t_matrix logicalTopology;
+	std::vector<t_logical_link> logicalLinks;
+	//std::vector<t_light_path> lightPaths;
 };
 
 using t_physical_link = struct {
@@ -123,9 +123,6 @@ using t_physical_link = struct {
 	t_integer linkSourceNode{ 0 };
 	t_integer linkDestinationNode{ 0 };
 	t_integer numberOfOpticalChannels{ 0 };
-
-	void setIndex(t_integer indx) { index = indx; }
-	t_integer getIndex() { return index; }
 };
 
 using t_optical_channel = struct {
@@ -135,19 +132,28 @@ using t_optical_channel = struct {
 	t_integer wavelenght{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
-
-	void setLinkIndex(t_integer lIndex) { linkIndex = lIndex; }
-	t_integer getLinkIndex() { return linkIndex; }
 };		
 
-using t_physical_topology = struct {			// Signal type PhysicalTopology structure creation
-	t_physical_link physicalLink;
-	t_optical_channel opticalChannel;
+using t_physical_topology = struct {			          // Signal type PhysicalTopology structure creation
+	std::vector<t_physical_link> physicalLinks;
+	std::vector<t_optical_channel> opticalChannels;
 };
 
+using t_path = struct {			          // Signal type Path structure creation
+	t_integer pathIndex{ 0 };
+	t_integer sourceNode{ 0 };
+	t_integer destinationNode{ 0 };
+	std::vector<int> logicalLinks{ 0 };
+	t_integer hops{ 0 };
+};
+
+using t_demand_list_of_paths = struct {			          // Signal type DemandListOfPaths structure creation
+	t_demand demand;
+	std::vector<t_path> paths;
+};
 
 // Existent signals
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_logical_link, t_light_path, t_physical_topology, t_physical_link, t_optical_channel }; 
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology, t_path, t_demand_list_of_paths }; 
 
 // #######################################################################################################
 // #
@@ -175,7 +181,7 @@ std::ostream& operator<<(std::ostream &out, const t_demand &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology, LogicalLink, LightPath, PhysicalTopology, PhysicalLink, OpticalChannel };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology, PhysicalTopology, Path, DemandListOfPaths };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -215,9 +221,7 @@ public:
 	void bufferGet();
 
 	// File manipulation
-	void writeHeaderDemand();				// Opens the signal file in the default signals directory, \signals, and writes the signal header
-	void writeHeaderLogicalTopology();
-	void writeHeaderPhysicalTopology();
+	void writeHeader();				                // Opens the signal file in the default signals directory, \signals, and writes the signal header
 	void writeHeader(string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
 
 	// Buffer and File manipulation
@@ -423,6 +427,12 @@ private:
 			case signal_type::PhysicalTopology:
 				typeName = "PhysicalTopology";
 				break;
+			case signal_type::Path:
+				typeName = "Path";
+				break;
+			case signal_type::DemandListOfPaths:
+				typeName = "DemandListOfPaths";
+				break;
 			default:
 				cout << "Error: netxpto_20180830.h - typeName not defined\n";
 		}
@@ -440,10 +450,11 @@ using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, sig
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
 using Demand = BaseSignal<t_demand, signal_type::Demand, signal_value_type::t_demand>;
-using LogicalTopology = BaseSignal<t_logical_link, signal_type::LogicalTopology, signal_value_type::t_logical_link>;
-using PhysicalTopology = BaseSignal<t_physical_link, signal_type::PhysicalTopology, signal_value_type::t_physical_link>;
-//using PhysicalLink = BaseSignal<t_physical_link, signal_type::PhysicalLink, signal_value_type::t_physical_link>;
-//using OpticalLink = BaseSignal<t_optical_channel, signal_type::OpticalChannel, signal_value_type::t_optical_channel>;
+using LogicalTopology = BaseSignal<t_logical_topology, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
+using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
+using Path = BaseSignal<t_path, signal_type::Path, signal_value_type::t_path>;
+using DemandListOfPaths = BaseSignal<t_demand_list_of_paths, signal_type::DemandListOfPaths, signal_value_type::t_demand_list_of_paths>;
+
 
 /*
 class TimeDiscrete : public Signal {
