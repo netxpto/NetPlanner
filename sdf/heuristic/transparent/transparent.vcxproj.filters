@@ -56,5 +56,8 @@
     <ClInclude Include="..\..\..\include\path_generator_20190302.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include\Dijkstra_20190309.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

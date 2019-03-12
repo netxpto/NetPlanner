@@ -24,8 +24,9 @@ using namespace std;
 
 class PathGenerator : public Block {
 
-	// State variables + Input Parameters
-
+	// State variables 
+	t_logical_topology currentLogicalTopology; // Saves logical topology before exiting this block
+	
 
 	// Input Parameters (default values)
 	criterion Criterion{ criterion::hops }; 
@@ -48,6 +49,8 @@ public:
 	void setNumberOfPaths(t_integer numb) { numberOfPaths = numb; }
 	t_integer getNumberOfPaths(void) { return numberOfPaths; };
 
+private:
+	long int processedSamples{ 0 };
 };
 
 # endif

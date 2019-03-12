@@ -21,12 +21,13 @@ class PhysicalTopologyGenerator : public Block {
 
 	// Input Parameters
 	t_matrix physicalTopology{ {0} };
-	t_integer opticalChannelsPerTransportSystem{ 0 };
+	t_integer opticalChannels{ 0 };
 	t_integer transportSystems{ 0 };		// Number of transport systems between each pair of nodes
 	t_integer opticalChannelCapacity{ 0 };  // In terms of ODU0s
 
 	// State variables
-	bool generate{ true };
+	bool generate{ true }; 
+	
 
 public:
 
@@ -39,8 +40,8 @@ public:
 	bool runBlock(void);
 
 
-	void setOpticalChannels(t_integer channels) { opticalChannelsPerTransportSystem = channels; }; // Number of optical channels per transport system
-	t_integer getOpticalChannels(void) { return opticalChannelsPerTransportSystem; };
+	void setOpticalChannels(t_integer channels) { opticalChannels = channels; }; // Number of optical channels per transport system
+	t_integer getOpticalChannels(void) { return opticalChannels; };
 
 	void setPhysicalTopology(t_matrix pTopology) { physicalTopology = pTopology; } // Physical topology
 	t_matrix getPhysicalTopology(void) { return physicalTopology; };
