@@ -16,21 +16,22 @@
 
 # include "netxpto_20190130.h"
 
-//using namespace std;
 
 class LogicalTopologyGenerator : public Block {
 
 	// State variables + Input Parameters
 	t_integer index{ 0 };
 	t_integer_long numberOfLinks{ 0 };
-	t_integer numberOfLightPaths{ 0 };
 	
 	// Input Parameters
 	std::string transportMode;
 	t_matrix physicalTopology;
 	t_integer numberOfNodes{ 0 };
 	
-	bool generateLogicalLinkOpaque(t_logical_link & lLO);
+	// State variables
+	bool generate{ true };
+	bool generateLogicalLinkOpaque(t_logical_link &lLink);
+
 	t_integer calculateNumberOfNodes();
 	t_integer calculateNumberOfLinks();
 

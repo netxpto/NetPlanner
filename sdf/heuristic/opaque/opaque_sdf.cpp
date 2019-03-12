@@ -3,7 +3,7 @@
 # include "..\..\..\include_opaque\sink_20180815.h"
 # include "..\..\..\include_opaque\logical_topology_generator_20190216.h"
 # include "..\..\..\include_opaque\physical_topology_generator_20190221.h"
-
+# include "..\..\..\include_opaque\path_generator_20190307.h"
 
 
 //##########################################################################################
@@ -52,7 +52,6 @@ t_integer orderingRule{ 0 };
 // Transport mode
 std::string transportMode{ "opaque" };
 
-
 // Adjacency matrix of the physical network 
 t_matrix physicalTopology{ {0,1,1,0,0,0},
 						   {1,0,1,1,0,0},
@@ -61,14 +60,21 @@ t_matrix physicalTopology{ {0,1,1,0,0,0},
 						   {0,0,1,1,0,1},
 						   {0,0,0,1,1,0} };
 
-// Number of optical channels per link
-t_integer opticalChannels{ 100 };
-
 // Number of transmission systems
 t_integer transmissionSystems{ 1 };
 
-// Capacity of each optical channel in Gbps
-t_integer opticalChannelCapacity{ 100 };
+// Number of optical channels per link
+t_integer opticalChannels{ 100 };
+
+// Capacity of each optical channel in ODU0s
+t_integer opticalChannelCapacity{ 80 };
+
+// Shortest path type: hops or km
+std::string shortestPathType{ "hops" };
+
+// Number of short paths 
+t_integer numberOfPaths{ 3 };
+
 
 //##########################################################################################
 //##########################################################################################
@@ -76,9 +82,23 @@ t_integer opticalChannelCapacity{ 100 };
 
 int main()
 {
-
+	/* Signals Declaration */
 	Demand SchedulerOut{ "SchedulerOut.sgn", 10};
 	SchedulerOut.setSaveInAscii(true);
+	
+	LogicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn", 32 };
+	LogicalTopologyOut.setSaveInAscii(true);
+
+	PhysicalTopology PhysicalTopologyOut{ "PhysicalTopologyOut.sgn" };
+	PhysicalTopologyOut.setSaveInAscii(true);
+	
+	Path RemovedPaths{ "RemovedPaths.sgn" };
+	RemovedPaths.setSaveInAscii(true);
+
+	DemandListOfPaths PathGeneratorOut{ "PathGeneratorOut.sgn" };
+	PathGeneratorOut.setSaveInAscii(true);
+
+	/* Blocks Declaration */
 	Scheduler Scheduler_{ {},{ &SchedulerOut} };
 	Scheduler_.setODU0(odu0);
 	Scheduler_.setODU1(odu1);
@@ -90,16 +110,14 @@ int main()
 	Sink SinkScheduler_{ { &SchedulerOut },{} };
 	SinkScheduler_.setDisplayNumberOfSamples(true);
 
-	LogicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn", 32 };
-	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{&LogicalTopologyOut} };
+	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{ &LogicalTopologyOut } };
 	LogicalTopologyGenerator_.setTransportMode(transportMode);
 	LogicalTopologyGenerator_.setPhysicalTopology(physicalTopology);
 
 	Sink SinkLogicalTopology_{ { &LogicalTopologyOut },{} };
 	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
 
-	PhysicalTopology PhysicalTopologyOut{ "PhysicalTopologyOut.sgn", 32 };
-	PhysicalTopologyGenerator PhysicalTopologyGenerator_{ {},{&PhysicalTopologyOut} };
+	PhysicalTopologyGenerator PhysicalTopologyGenerator_{ {},{ &PhysicalTopologyOut } };
 	PhysicalTopologyGenerator_.setPhysicalTopology(physicalTopology);
 	PhysicalTopologyGenerator_.setOpticalChannels(opticalChannels);
 	PhysicalTopologyGenerator_.setTransmissionSystems(transmissionSystems);
@@ -108,11 +126,15 @@ int main()
 	Sink SinkPhysicalTopology_{ { &PhysicalTopologyOut },{} };
 	SinkPhysicalTopology_.setDisplayNumberOfSamples(true);
 
-	/*
-		demandListOfPaths PathGeneratorOut{ "PathGeneratorOut.sgn" };
-		path RemovedPaths{ "RemovedPaths.sgn" };
-		Generator Path_Generator_{ { &SchedulerOut, &LogicalTopology, &RemovedPaths },{ &PathGeneratorOut} };
+	PathGenerator PathGenerator_{ { &SchedulerOut, &LogicalTopologyOut },{ &PathGeneratorOut } };
+	//PathGenerator PathGenerator_{ { &SchedulerOut, &LogicalTopologyOut, &RemovedPaths },{ &PathGeneratorOut } };
+	PathGenerator_.setNumberOfPaths(numberOfPaths);
+	PathGenerator_.setShortestPathType(shortestPathType);
 
+	Sink SinkPathGenerator_{ { &PathGeneratorOut },{} };
+	SinkPathGenerator_.setDisplayNumberOfSamples(true);
+	
+	/*
 		demandPathRoute RoutedDemands{ "RoutedDemands.sgn" };
 		demand BlockedDemands{ "BlockedDemands.sgn" };
 		Tester Path_Tester_{ { &PathGeneratorOut, &PhysicalTopology},{ &BlockedDemands, &RoutedDemands} };
@@ -125,10 +147,12 @@ int main()
 			// BLOCKS
 			&Scheduler_,
 			&SinkScheduler_,
-			//&LogicalTopologyGenerator_,
-			//&SinkLogicalTopology_,
+			&LogicalTopologyGenerator_,
+			&SinkLogicalTopology_,
 			&PhysicalTopologyGenerator_,
-			&SinkPhysicalTopology_
+			&SinkPhysicalTopology_,
+			//&PathGenerator_,
+			//&SinkPathGenerator_
 	};
 	
 	MainSystem.run();

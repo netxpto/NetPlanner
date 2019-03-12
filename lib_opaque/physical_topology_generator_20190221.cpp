@@ -1,68 +1,82 @@
 #include "..\include_opaque\physical_topology_generator_20190221.h"
 
-using namespace std;
-
 void PhysicalTopologyGenerator::initialize(void) {
 
-	numberOfOutputSignals = (int)outputSignals.size();
-	
-	setNumberOfNodes(calculateNumberOfNodes());
-	setNumberOfLinks(calculateNumberOfLinks());
-
-	numberOfNodes = getNumberOfNodes();
-	numberOfLinks = getNumberOfLinks();
-	index = getIndex();
 }
 
 bool PhysicalTopologyGenerator::runBlock(void) {
 
-	t_integer_long space = outputSignals[0]->space();		// Buffer free space 
+	if (!generate)
+		return false;
+	else
+		generate = false;
+
+	t_physical_topology outputPhysicalTopology;
+	t_physical_link outputPhysicalLink;
+	t_optical_channel outputOpticalChannel;
 	
-	//t_integer_long z = (numberOfLinks * ( 1 + opticalChannels));
-	//t_integer_long z = (numberOfLinks * opticalChannels);
-	int process = std::min(space, numberOfLinks);
+	t_integer index{ 0 };
+	t_integer line{ 0 };
 
-	if (process == 0) return false;						
-
-	for (int k = 1; k <= process; k++) 
+	while (line < physicalTopology[0].size())
 	{
-		t_physical_link outputPhysicalLink;
-		generatePhysicalLink(outputPhysicalLink);
-		
-		//t_optical_channel outputOpticalChannel;
-		//generateOpticalChannel(outputOpticalChannel);
+		t_integer column{ 0 };
+		while (column < physicalTopology[0].size())
+		{
+			if (physicalTopology[line][column] == 1)
+			{
+				outputPhysicalLink.index = index;
+				outputPhysicalLink.linkSourceNode = { line + 1 };
+				outputPhysicalLink.linkDestinationNode = { column + 1 };
+				outputPhysicalLink.numberOfOpticalChannels = opticalChannels;
+				outputPhysicalTopology.physicalLinks.push_back(outputPhysicalLink);
 
-		//t_physical_topology outputPhysicalTopology;
-		//outputPhysicalTopology.physicalLink = outputPhysicalLink;
-		//outputPhysicalTopology.opticalLink = outputOpticalLink;
+				physicalTopology[line][column]--;
+				index++;
 
-		//outputSignals[0]->bufferPut((t_physical_topology)outputPhysicalTopology);
-		//outputSignals[0]->bufferPut((t_optical_channel)outputOpticalChannel);
-		outputSignals[0]->bufferPut((t_physical_link)outputPhysicalLink);
-		//z--;
-		numberOfLinks--;
+				t_integer channel{ 0 };
+				while (channel < opticalChannels)
+				{
+					outputOpticalChannel.linkIndex = { index - 1 };
+					outputOpticalChannel.opticalChannelNumber = { channel + 1 };
+					outputOpticalChannel.capacity = opticalChannelCapacity;
+					outputOpticalChannel.wavelenght = { 0 };
+					outputOpticalChannel.sourceNode = { line + 1 };
+					outputOpticalChannel.destinationNode = { column + 1 };
+					outputPhysicalTopology.opticalChannels.push_back(outputOpticalChannel);
+
+					channel++;
+				}
+			}
+			column++;
+		}
+		line++;
 	}
+	
+	outputSignals[0]->bufferPut((t_physical_topology)outputPhysicalTopology);	
+		
 	return true;
 };
 
-bool PhysicalTopologyGenerator::generatePhysicalLink(t_physical_link &pl) {
+/*
+bool PhysicalTopologyGenerator::generatePhysicalLink(t_physical_link &pLink) {
 
-	bool findLink{ false };
+	bool findPhysicalLink{ false };
 
 	t_integer line{ 0 };
-	while ((line < numberOfNodes) && (!findLink)) 
+	while ((line < numberOfNodes) && (!findPhysicalLink)) 
 	{
 		t_integer column{ 0 };
-		while ((column < numberOfNodes) && (!findLink)) 
+		while ((column < numberOfNodes) && (!findPhysicalLink)) 
 		{
 			if (physicalTopology[line][column] == 1) 
 			{
-				findLink = true;
+				findPhysicalLink = true;
 
-				pl.index = index;
-				pl.linkSourceNode = { line + 1 };
-				pl.linkDestinationNode = { column + 1 };
-				pl.numberOfOpticalChannels = opticalChannels;
+				pLink.index = index;
+				pLink.linkSourceNode = { line + 1 };
+				pLink.linkDestinationNode = { column + 1 };
+				pLink.numberOfOpticalChannels = opticalChannels;
 
 				physicalTopology[line][column]--;
 				index++;
@@ -71,36 +85,35 @@ bool PhysicalTopologyGenerator::generatePhysicalLink(t_physical_link &pl) {
 		}
 		line++;
 	}
-	return findLink;
+	return findPhysicalLink;
 }
 
-/*
-bool PhysicalTopologyGenerator::generateOpticalChannel(t_optical_channel &och) {
+bool PhysicalTopologyGenerator::generateOpticalChannel(t_optical_channel &oChannel) {
 
-	bool findOch{ false };
+	bool findOpticalChannel{ false };
 
 	t_integer linkIndex{ 0 };
-	while ((linkIndex < numberOfLinks) && (!findOch)) 
+	while ((linkIndex < numberOfLinks) && (!findOpticalChannel)) 
 	{
-		int k = 0;
-		while ((k < opticalChannels) && (!findOch)) 
+		int channel = 0;
+		while ((channel < opticalChannels) && (!findOpticalChannel)) 
 		{
-			findOch = true;
+			findOpticalChannel = true;
 
-			och.linkIndex = linkIndex;
-			och.opticalChannelNumber = { k + 1 };
-			och.capacity = opticalChannelCapacity;
-			och.wavelenght = { 0 };
-			och.sourceNode = { 0 };
-			och.destinationNode = { 0 };
+			oChannel.linkIndex = linkIndex;
+			oChannel.opticalChannelNumber = { channel + 1 };
+			oChannel.capacity = opticalChannelCapacity;
+			oChannel.wavelenght = { 0 };
+			oChannel.sourceNode = { 0 };
+			oChannel.destinationNode = { 0 };
 			
-			k++;
+			channel++;
 		}
 		linkIndex++;
 	}
-	return findOch;
+	return findOpticalChannel;
 }
-*/
+
 
 t_integer PhysicalTopologyGenerator::calculateNumberOfNodes() {
 
@@ -123,3 +136,4 @@ t_integer PhysicalTopologyGenerator::calculateNumberOfLinks() {
 	}
 	return links;
 };
+*/
