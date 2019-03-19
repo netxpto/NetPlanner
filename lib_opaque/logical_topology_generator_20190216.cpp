@@ -19,10 +19,10 @@ bool LogicalTopologyGenerator::runBlock(void) {
 	else
 		generate = false;
 
-	if (transportMode == "opaque")
-	{
+	if (transportMode == "opaque") {
+
 		t_logical_topology outputLogicalTopologyOpaque;
-		outputLogicalTopologyOpaque.logicalTopology = physicalTopology;
+		outputLogicalTopologyOpaque.logicalTopology = adjacencyMatrix;
 
 		t_integer_long space = outputSignals[0]->space();	// Buffer free space 
 
@@ -30,23 +30,27 @@ bool LogicalTopologyGenerator::runBlock(void) {
 
 		if (process == 0) return false;						
 
-		for (int k = 1; k <= process; k++)
-		{
+		for (int k = 1; k <= process; k++) {
+
 			t_logical_link outputLogicalLinkOpaque;
 			generateLogicalLinkOpaque(outputLogicalLinkOpaque);
 
 			outputLogicalTopologyOpaque.logicalLinks.push_back(outputLogicalLinkOpaque);
+
 		}
 
 		outputSignals[0]->bufferPut((t_logical_topology)outputLogicalTopologyOpaque);
+
 	}
 
 	else {
 
 		std::cout << "Error: logical_topology_generator_20190216.h - Transport Mode not opaque\n";
+
 	}
 	
 	return true;
+
 };
 
 bool LogicalTopologyGenerator::generateLogicalLinkOpaque(t_logical_link &lLink) {
@@ -54,13 +58,13 @@ bool LogicalTopologyGenerator::generateLogicalLinkOpaque(t_logical_link &lLink) 
 	bool findLogicalLink{ false };
 
 	t_integer line{ 0 };
-	while ((line < numberOfNodes) && (!findLogicalLink))
-	{
+	while ((line < numberOfNodes) && (!findLogicalLink)) {
+
 		t_integer column{ 0 };
-		while ((column < numberOfNodes) && (!findLogicalLink))
-		{
-			if (physicalTopology[line][column] == 1)
-			{
+		while ((column < numberOfNodes) && (!findLogicalLink)) {
+
+			if (adjacencyMatrix[line][column] == 1) {
+
 				findLogicalLink = true;
 
 				lLink.index = index;
@@ -68,33 +72,36 @@ bool LogicalTopologyGenerator::generateLogicalLinkOpaque(t_logical_link &lLink) 
 				lLink.linkDestinationNode = { column + 1 };
 				lLink.numberOfLightPaths = 0;
 
-				physicalTopology[line][column]--;
+				adjacencyMatrix[line][column]--;
 				index++;
 			}
 			column++;
 		}
 		line++;
 	}
+
 	return findLogicalLink;
+
 }
 
 t_integer LogicalTopologyGenerator::calculateNumberOfNodes() {
 
-	t_integer nodes = physicalTopology[0].size();
-
+	t_integer nodes = adjacencyMatrix[0].size();
 	return nodes;
+
 };
 
 t_integer LogicalTopologyGenerator::calculateNumberOfLinks() {
 
 	t_integer links{ 0 };
+	for (t_integer line = 0; line < numberOfNodes; line++) {
 
-	for (t_integer line = 0; line < numberOfNodes; line++)
-	{
-		for (t_integer column = 0; column < numberOfNodes; column++)
-		{
-			links += physicalTopology[line][column];
+		for (t_integer column = 0; column < numberOfNodes; column++) {
+
+			links += adjacencyMatrix[line][column];
 		}
 	}
+
 	return links;
+
 };

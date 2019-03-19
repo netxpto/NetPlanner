@@ -1,18 +1,6 @@
 # ifndef PHYSICAL_TOPOLOGY_GENERATOR_H_
 # define PHYSICAL_TOPOLOGY_GENERATOR_H_
 
-# include <vector>
-# include <complex>
-# include <fstream>
-# include <iostream>
-//# include <math.h>
-//# include <stdio.h>
-# include <string>
-# include <strstream>
-# include <vector>
-# include <algorithm> 
-# include <random>
-# include <chrono>
 
 # include "netxpto_20190130.h"
 
@@ -20,7 +8,7 @@
 class PhysicalTopologyGenerator : public Block {
 
 	// Input Parameters
-	t_matrix physicalTopology;
+	t_matrix adjacencyMatrix;
 	t_integer transmissionSystems{ 0 };
 	t_integer opticalChannels{ 0 };
 	t_integer opticalChannelCapacity{ 0 };
@@ -37,8 +25,8 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setPhysicalTopology(t_matrix pTopology) { physicalTopology = pTopology; }
-	t_matrix getPhysicalTopology(void) { return physicalTopology; };
+	void setAdjacencyMatrix(t_matrix aMatrix) { adjacencyMatrix = aMatrix; }
+	t_matrix getAdjacencyMatrix(void) { return adjacencyMatrix; };
 
 	void setTransmissionSystems(t_integer tSystems) { transmissionSystems = tSystems; }
 	t_integer getTransmissionSystems(void) { return transmissionSystems; }; 
