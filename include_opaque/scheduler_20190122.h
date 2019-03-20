@@ -1,22 +1,9 @@
-# ifndef SCHEDULER_H_
-# define SCHEDULER_H_
+#ifndef SCHEDULER_H_
+#define SCHEDULER_H_
 
-# include <vector>
-# include <complex>
-# include <fstream>
-# include <iostream>
-//# include <math.h>
-//# include <stdio.h>
-# include <string>
-# include <strstream>
-# include <vector>
-# include <algorithm> 
-# include <random>
-# include <chrono>
 
-# include "netxpto_20190130.h"
+#include "netxpto_20190130.h"
 
-using namespace std;
 
 class Scheduler : public Block {
 

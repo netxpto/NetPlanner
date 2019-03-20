@@ -30,9 +30,6 @@
     <ClInclude Include="..\..\..\include_opaque\sink_20180815.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include_opaque\path_generator_20190307.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\lib_opaque\logical_topology_generator_20190216.cpp">
@@ -51,9 +48,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="opaque_sdf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\lib_opaque\path_generator_20190307.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

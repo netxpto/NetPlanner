@@ -1,18 +1,3 @@
-/*
-# include <complex>
-# include <fstream>
-# include <iostream>
-# include <cmath>
-# include <iostream>
-# include <string>
-# include <strstream>
-# include <algorithm>
-# include <ctime>
-#include  <filesystem>
-#include  <functional>  
-#include  <cctype> 
-#include  <locale> 
-*/
 # include "..\include_opaque\netxpto_20190130.h"
 
 
@@ -99,51 +84,13 @@ void Signal::bufferPut(T value)
 							fileHandler << "\t";
 							fileHandler << ptr->oduType;
 							fileHandler << "\t";
-							fileHandler << ptr->restorationMethod;
+							fileHandler << ptr->survivabilityMethod;
 							fileHandler << "\n";
 							ptr++;
 						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
-					}/*
-					else if (type == "LogicalTopology") {
-						t_logical_topology *ptr = (t_logical_topology *)buffer;
-						ptr = ptr + (firstValueToBeSaved - 1);
-						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-						for (auto lTopology = firstValueToBeSaved; lTopology <= outPosition; lTopology++) {
-							fileHandler << ptr->logicalLinks.index;
-							fileHandler << "\t";
-							fileHandler << ptr->logicalLinks.linkSourceNode;
-							fileHandler << "\t";
-							fileHandler << ptr->logicalLinks.linkDestinationNode;
-							fileHandler << "\t";
-							fileHandler << ptr->logicalLinks.numberOfLightPaths;
-							fileHandler << "\n";
-							ptr++;
-						}
-						fileHandler.close();
-						setFirstValueToBeSaved(1);
-					}
-
-					else if (type == "PhysicalTopology") {
-						t_physical_topology *ptr = (t_physical_topology *)buffer;
-						ptr = ptr + (firstValueToBeSaved - 1);
-						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-						for (auto pTopology = firstValueToBeSaved; pTopology <= outPosition; pTopology++) {
-							fileHandler << ptr->physicalLinks.index;
-							fileHandler << "\t";
-							fileHandler << ptr->physicalLinks.linkSourceNode;
-							fileHandler << "\t";
-							fileHandler << ptr->physicalLinks.linkDestinationNode;
-							fileHandler << "\t";
-							fileHandler << ptr->physicalLinks.numberOfOpticalChannels;
-							fileHandler << "\n";
-							ptr++;
-						}
-						fileHandler.close();
-						setFirstValueToBeSaved(1);
-					}
-					*/
+					} 
 				}
 			}
 			else
@@ -364,7 +311,7 @@ void Signal::close() {
 						fileHandler << "\t";
 						fileHandler << ptr->oduType;
 						fileHandler << "\t";
-						fileHandler << ptr->restorationMethod;
+						fileHandler << ptr->survivabilityMethod;
 						fileHandler << "\n";
 						ptr++;
 				}
@@ -377,8 +324,11 @@ void Signal::close() {
 				
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 				for (auto lTopology = firstValueToBeSaved; lTopology <= outPosition; lTopology++) {
-					for (t_integer line = 0; line < ptr->logicalTopology[0].size(); line++) {
-						for (t_integer column = 0; column < ptr->logicalTopology[0].size(); column++) {
+
+					t_integer nodes = ptr->logicalTopology[0].size();
+					for (t_integer line = 0; line < nodes ; line++) {
+
+						for (t_integer column = 0; column < nodes; column++) {
 
 							fileHandler << ptr->logicalTopology[line][column];
 							fileHandler << "\t";
@@ -387,18 +337,17 @@ void Signal::close() {
 					}
 					fileHandler << "\n\n\n";
 				
-					for (t_integer links = 0; links < ptr->logicalLinks.size(); links++) {
+					for (t_logical_link& lLink : ptr->logicalLinks) {
 						
-						fileHandler << ptr->logicalLinks[links].index;
+						fileHandler << lLink.index;
 						fileHandler << "\t";
-						fileHandler << ptr->logicalLinks[links].linkSourceNode;
+						fileHandler << lLink.linkSourceNode;
 						fileHandler << "\t";
-						fileHandler << ptr->logicalLinks[links].linkDestinationNode;
+						fileHandler << lLink.linkDestinationNode;
 						fileHandler << "\t";
-						fileHandler << ptr->logicalLinks[links].numberOfLightPaths;
+						fileHandler << lLink.numberOfLightPaths;
 						fileHandler << "\n";
 					}
-					
 				}
 				setFirstValueToBeSaved(1);
 			}
@@ -409,6 +358,7 @@ void Signal::close() {
 				
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 				for (auto pt = firstValueToBeSaved; pt <= outPosition; pt++) {
+
 					for (t_physical_link& pLink : ptr->physicalLinks) {
 					
 						fileHandler << pLink.index;
@@ -432,28 +382,9 @@ void Signal::close() {
 						fileHandler << oChannel.capacity;
 						fileHandler << "\t";
 						fileHandler << oChannel.wavelenght;
-						fileHandler << "\t";
-						fileHandler << oChannel.sourceNode;
-						fileHandler << "\t";
-						fileHandler << oChannel.destinationNode;
 						fileHandler << "\n";
 					}
 				}
-				setFirstValueToBeSaved(1);
-			}
-			
-			else if (type == "DemandListOfPaths") {
-				t_demand_list_of_paths *ptr = (t_demand_list_of_paths *)buffer;
-				ptr = ptr + (firstValueToBeSaved - 1);
-
-				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto dmdlop = firstValueToBeSaved; dmdlop <= outPosition; dmdlop++) {
-						fileHandler << ptr->demand.demandIndex;
-						fileHandler << "\t";
-						fileHandler << ptr->demand.sourceNode;
-						fileHandler << "\n";
-				}
-				
 				setFirstValueToBeSaved(1);
 			}
 		
