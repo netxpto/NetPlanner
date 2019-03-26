@@ -584,7 +584,7 @@ The creation of this model for any scenario, started with some considerations an
 \newpage
 \vspace{11pt}
 
-\subsubsection{Allow Blocking}
+\chapter{Allow blocking}
 
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
@@ -603,6 +603,32 @@ The creation of this model for any scenario, started with some considerations an
 	\label{fluxogram_transparent_surv}
 \end{figure}
 
+\section{Concepts}
+
+\section{System inputs}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Parameter} & \textbf{Default value} & \textbf{Description}                                                                                           \\ \hline                   
+		odu0                                                                         & Null          & ODU0 demands.                                                                                        \\ \hline
+		odu1                                                                         & Null          & ODU1 demands.                                                                                        \\ \hline
+		odu2                                                                         & Null          & ODU2 demands.                                                                                        \\ \hline
+		odu3                                                                         & Null          & ODU3 demands.                                                                                        \\ \hline
+		odu4                                                                         & Null          & ODU4 demands.                                                                                        \\ \hline
+		orderingRule                                                        & 0   & \begin{tabular}[c]{@{}l@{}}0 - ODU4 to ODU0\\ 1 - ODU0 to ODU4\end{tabular} \\ \hline 
+		transportMode                                                               & Null          & \begin{tabular}[c]{@{}c@{}}Opaque, transparent or translucid.\end{tabular}                   \\ \hline
+		adjacenceMatrix                                                            & Null          & \begin{tabular}[c]{@{}c@{}}Physical connections of the\\ network.\end{tabular}                       \\ \hline
+		transportSystems                                                            & 1             & \begin{tabular}[c]{@{}c@{}}Number of transport systems\\ connecting each pair of nodes.\end{tabular} \\ \hline
+		opticalChannels                                                             & 100           & \begin{tabular}[c]{@{}c@{}}Optical channels per transport \\ system.\end{tabular}                    \\ \hline
+		\begin{tabular}[c]{@{}c@{}}opticalChannelCapacity\end{tabular}           & 100 Gbps      & \begin{tabular}[c]{@{}c@{}}Physical capacity of each \\ optical channel.\end{tabular}                        \\ \hline
+		%\begin{tabular}[c]{@{}c@{}}lightPathCriterion\end{tabular} & to define     & \begin{tabular}[c]{@{}c@{}}Maximum number of hops in a physical\\   path to establish a logical link.\end{tabular} \\ \hline       
+		criterion                                                                    & Hops          & Shortest path type.                                                                                  \\             \hline                                                                     
+		numberOfPaths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes.\end{tabular}                      \\  \hline    
+	\end{tabular}
+	\caption{System input parameters.}
+	\label{system_input}
+\end{table}
 %\Large Summary explanation \\ \\
 
 %\normalsize As it is shown in \ref{fluxogram_transparent_surv}, it is needed a Scheduler\_  block which will be responsible for the creation of an ordered queue containing all the demands entering this network, in an order previously defined (based on the demands ODU type), and ready to be routed.
@@ -620,8 +646,8 @@ The creation of this model for any scenario, started with some considerations an
 %\end{figure}
 
 %Here the main difference is the decomposition of the two super blocks 'Path tester' which is divided in three sub blocks ('Demand path generator', 'Available capacity' and 'Link capacity refresh') and the 'Physical Topology generator' block, divided in two other blocks, all of this in order to better understand their exact functions.
-\clearpage
-\textbf{System signals}
+
+\section{System signals}
 
 \begin{table}[H]
 	\centering
@@ -629,44 +655,34 @@ The creation of this model for any scenario, started with some considerations an
 		\hline
 		 \textbf{Signal name} &  \textbf{Signal type} \\ % it is missing the description of the signals
 		\hline
-		SchedulerOut &  Demand\\ \hline
-		RoutingOut & Demand\\ \hline
+		SchedulerOut &  DemandRequest\\ \hline
 		LogicalGeneratorOut &  LogicalTopology\\ \hline
-		%layer1 & \\ \hline
-		LogicalManagerRequestOut & RoutingRequest\\ \hline
-		LogicalManagerResponseOut &  RoutedOrBlocked\\ \hline
-		PhysicalManagerOut &   RoutingResponse\\ \hline
-		BlockedDemands &   Demand\\ \hline
-		%demandPath & ??? \\ \hline
-		RoutedDemands & DemandPathRoute\\ \hline
-		%demandsRouted & ??? \\ \hline
-		%demandsBlocked & ??? \\ \hline
-		%update & ??? \\ \hline
-		%nextDemand & ??? \\ \hline
-		%nextPath & ??? \\ \hline
-		%reportInfo & ??? \\ \hline
+		PhysicalGeneratorOut & PhysicalTopology\\ \hline
+		LogicalManagerRequest & PathRequest\\ \hline
+		PhysicalManagerOut & PathRequestRouted\\ \hline
+		LogicalManagerOut &  DemandRequestRouted\\ \hline
 	\end{tabular}
 	\caption{System Signals.}
 	\label{system_signals}
 \end{table}
-	Table 1.20 presents the system signals as well as their type.\\ \\
+	Table \ref{system_signals} presents the system signals as well as their type.\\ \\
 
-\underline{Demand}
-\\
+\subsection{DemandRequest}
+
 \begin{table}[H]
 	\begin{tabular}{|c|c|c|c|l|}
 		\hline
 		\textbf{demandIndex} & \textbf{sourceNode} & \textbf{destinationNode} &  \textbf{oduType} & \multicolumn{1}{c|}{\textbf{survivabilityMethod}}                                                 \\ \hline
-		0...$\infty$       & 1...N       & 1...N            & 0...4    & \begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\\ 2 - Restoration\end{tabular} \\ \hline
+		0...D-1       & 1...N       & 1...N            & 0...4    & \begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\\ 2 - Restoration\end{tabular} \\ \hline
 	\end{tabular}
-	\caption{Constitution of a demand.}
-	\label{demand_variable}
+	\caption{Constitution of a DemandRequest type signal.}
+	\label{DemandRequest_variable}
 \end{table}
-N represents the number of nodes present in the network.\\ \\
-\underline{LogicalTopology}\\
-\\
+D represents the total number of demands entering the network.\\
+N represents the number of nodes present in the network.
 %This is the output signal of the LogicalTopologyGenerator\_  block, it has a matrix NxN where every logical connection existent between nodes in the network is displayed. In this particular case we are studying the transparent trasnport node so our logical toplogy will be the one presented in table \ref{Transparentlogical_topology}. In addition here will occur the creation structures corresponding to our network logical links.\\
-Logical topology matrix
+\subsection{LogicalTopology}
+
 \begin{table}[H]
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|c|c|}
@@ -679,11 +695,22 @@ Logical topology matrix
 		5                           & 0/X & 0/X & 0/X & 0/X & \textbf{0}   & 0/X \\ \hline
 		6                           & 0/X & 0/X & 0/X & 0/X & 0/X & \textbf{0}   \\ \hline
 	\end{tabular}
-	\caption{Possible logical Topology Matrix.}
+	\caption{Allowed logical topology matrix.}
 	\label{logical_topology}
 \end{table}
-X represents the number of possible Optical Multiplexing Systems (OMS) between each pair of nodes. Initially there is none but as demands are being processed and we start to build our network OMS will be established and used to route those demands.\\
-For example, in our case as all nodes are transparent and as can there only be one OMS per pair of nodes our logical topology matrix will be the one presented below in figure \ref{Transparentlogical_topology}.
+
+A network topology represents how the links and the nodes of the network interconnect with each other. More specifically this topology can be represented by a matrix that contains all logical connections existent between nodes and is created in an upper layer relatively to the physical topology. Below, in figure \ref{allowed_optical_surv_transparent} there is a graphical representation of the same matrix.\\ \\
+X represents  ??%the number of connections that is possible to establish between a pair of nodes.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{sdf/heuristic/transparent/figures/logicalTopology}
+	\caption{Allowed logical topology graph.}
+	\label{allowed_optical_surv_transparent2}
+\end{figure}
+
+
+In the transparent transport mode each node connects to each other creating direct links between all nodes in the network, which can be seen below in figure \ref{Transparentlogical_topology}.
 \begin{table}[H]
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|c|c|}
@@ -696,7 +723,7 @@ For example, in our case as all nodes are transparent and as can there only be o
 		5                           & 1 & 1 & 1 & 1 & \textbf{0}   & 1 \\ \hline
 		6                           & 1 & 1 & 1 & 1 & 1 & \textbf{0}   \\ \hline
 	\end{tabular}
-	\caption{Transparent Topology Matrix.}
+	\caption{Logical topology matrix for transparent transport mode.}
 	\label{Transparentlogical_topology}
 \end{table}
 
@@ -716,51 +743,108 @@ For example, in our case as all nodes are transparent and as can there only be o
 %LP represents the number of light paths established in the network.\\
 %OC represents the number optical channels existent in each physical link.\\
 %The Physical Links variable inside of the light paths represents the links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain light path.\\ \\
-\underline{RoutingRequest}\\
-\\
+\subsection{PhysicalTopology}
+Based on the adjacence matrix representations of this network, presented below in table \ref{Adjacence_Matrix} and figure \ref{allowed_physical_surv_transp}, it is notable that our network consists in 6 nodes and 8 bidirectional optical multiplexing systems.
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
-		opticalChannelIndex & sourceNode & destinationNode \\ \hline
-		0...OCI              & 1...N      & 1...N           \\ \hline
+		\textbf{Nodes} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+		1     & \textbf{0} & 1 & 0 & 0 & 0 & 1 \\ \hline
+		2     & 1 & \textbf{0} & 1 & 0 & 0 & 1 \\ \hline
+		3     & 0 & 1 & \textbf{0} & 1 & 1 & 0 \\ \hline
+		4     & 0 & 0 & 1 & \textbf{0} & 1 & 0 \\ \hline
+		5     & 0 & 0 & 1 & 1 & \textbf{0} & 1 \\ \hline
+		6     & 1 & 1 & 0 & 0 & 1 & \textbf{0} \\ \hline
 	\end{tabular}
-	\caption{RoutingRequest type signal.}
-	\label{RoutingRequest}
+	\caption{Physical topology adjacence matrix.}
+	\label{Adjacence_Matrix}
 \end{table}
 
-OCI represents the possible maximum index of an optical channel in this network.\\ \\
-\underline{RoutingResponse}\\
-\begin{table}[H]
+\begin{figure}[H]
 	\centering
-\begin{tabular}{|c|}
-	\hline
-	wavelenght \\ \hline
-	1...OC     \\ \hline
-\end{tabular}
-	\caption{RoutingResponse type signal.}
-	\label{RoutingResponse}
-\end{table}
+	\includegraphics[width=12cm]{sdf/heuristic/transparent/figures/physicalTopology}
+	\caption{Allowed physical topology.}
+	\label{allowed_physical_surv_transp}
+\end{figure}
 
-OC represents the number of optical channels per OMS.\\ \\
-This signal returns, if possible, a common wavelength available for all the optical channels that will constitute the light path that we are trying to create. If there is no common waveleghts then wavelenght will assume value 0 which means that is not possible to create a light path through these links.\\ \\
+The allowed physical topology is defined by the duct and sites in the field. It is assumed that each duct supports up to 1 bidirectional transmission system and each site supports up to 1 node. Based on the previous information a data structure is created for each of the optical multiplexing systems.
 
-\underline{RoutedOrBlocked}\\
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		demandIndex & pathIndex & lighPathsIndex & OpticalChannelsIndex & wavelength \\ \hline
-		0...D-1       & 0...P-1     & 0...L-1          & 0...OCI              & 1...OC     \\ \hline
+		OMSIndex & sourceNode & destinatioNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable  \\ \hline
+		0        & 1...N      & 1...N          & OC                                                        & {[}1...OC{]} \\ \hline
+		...      &            &                & ...                                                           & ...          \\ \hline
+		L-1      & 1...N      & 1...N          & OC                                                        & {[}1...OC{]} \\ \hline
 	\end{tabular}
-	\caption{RoutedOrBlocked type signal.}
-	\label{RoutingResponse}
+	\caption{PhysicalTopology type signal.}
+	\label{PhysicalGeneratorOut}
 \end{table}
 
-D represents the total number of demands entering th network.\\
-P represents the total number of paths established.\\
-L represents the total number of light paths established.\\
-\\ All these parameters, except demandIndex, will assume value -1 in the case a demand is blocked.
+OC represents the number of optical channels present in a physical link.\\
+L represent the total number of existent physical links.\\
+
+Here all OMS existent in the network are genereated and associated to a certain index. The structure of the signal includes information about each OMS source and destination nodes and also about the number of channels and which wavelenghts are available to be assigned.  
+
+\subsection{PathRequest}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		sourceNode & intermediateNodes & destinationNode\\ \hline
+		1...N      & 1...N             & 1...N          \\ \hline
+	\end{tabular}
+	\caption{PathRequest type signal.}
+	\label{PathRequest}
+\end{table}
+
+The PathRequest type signal will be sent into the PhysicalTopologyManager\_  block asking for a path to be created between source and destination nodes. In order establish that path one or more light paths are required. In this specific case, transparent transport mode, only direct logical connections will be taken into account and so all paths created will be formed by only one direct light path. This means that there will be no intermediate nodes. %The numberOfPaths variable will establish the number of possible conversions of each lightPath in a set of physical links in Dijkstra algorithm applied in the PhysicalTopologyManager\_  block. If none of those conversions enables the formation of a lightpath then that logical connection is cutted off of the logical topology matrix of our network.
+
+
+
+\subsection{PathRequestRouted}
+
+
+\begin{table}[H]
+		\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+	\hline
+	routed                                                                 & \multicolumn{2}{c|}{lightPath}                  & \multicolumn{2}{c|}{opticalChannels} & \multirow{2}{*}{wavelength} \\ \cline{1-5}
+	\multirow{5}{*}{\begin{tabular}[c]{@{}c@{}}true/\\ false\end{tabular}} & sourceNode             & destinationNode        & sourceNode     & destinationNode     &                             \\ \cline{2-6} 
+	& \multirow{2}{*}{1...N} & \multirow{2}{*}{1...N} & 1...N          & 1...N               & \multirow{2}{*}{1...OC}     \\ \cline{4-5}
+	&                        &                        & ....           & ....                &                             \\ \cline{2-6} 
+	& \multirow{2}{*}{...}   & \multirow{2}{*}{...}   & 1...N          & 1...N               & \multirow{2}{*}{1...OC}     \\ \cline{4-5}
+	&                        &                        & ...            & ...                 &                             \\ \hline
+\end{tabular}
+	\caption{PathRequestRouted type signal.}
+	\label{pathRequestRouted}
+\end{table}
+This signal represents the response that the PhysicalTopologyManager\_  block sends back when asked to establish a path. It is formed by one boolean variable "routed"  which will return true in the case a demand is routed correctly through the network, validating the remaining information, or false in the case it is not, which means no path was created to route the demand and so the other fields of this structure will be void. Also this signal contains information about each of the light paths needed to establish the path required in the case it is possible to do so. A PathRequestRouted signal can contain one or many light paths if more than one is needed.
+\subsection{DemandRequestRouted}
+
+\begin{table}[H]
+	\centering
+\begin{tabular}{|c|c|c|c|c|c|}
+	\hline
+	demandIndex              & routed                                                                 & pathIndex                & lightPathIndex           & opticalChannelIndex & wavelenght              \\ \hline
+	\multirow{4}{*}{0...D-1} & \multirow{4}{*}{\begin{tabular}[c]{@{}c@{}}true/\\ false\end{tabular}} & \multirow{4}{*}{0...P-1} & \multirow{2}{*}{1...LP-1} & 1...TOC-1           & \multirow{2}{*}{1...OC} \\ \cline{5-5}
+	&                                                                        &                          &                          & ...                 &                         \\ \cline{4-6} 
+	&                                                                        &                          & \multirow{2}{*}{...}     & 1-TOC-1             & \multirow{2}{*}{1...OC} \\ \cline{5-5}
+	&                                                                        &                          &                          & ...                 &                         \\ \hline
+\end{tabular}
+	\caption{DemandRequestRouted type signal.}
+\label{DemandRequestRouted}
+\end{table}
+
+D represents the total number of demands entering the network.\\
+P represents the total number of paths existent.\\
+LP represents the total number of lightPaths existent.\\
+TOC represents the total number of opticalChannels existent.\\ \\
+
+This signal contains information regarding one demand and whether it was routed or not. In the case variable "routed" assumes a true value it is presented in the final block (SinkRoutedOrBlocked\_ ) of the diagram of figure \ref{fluxogram_transparent_surv} information about the path used, also the lightPaths  and opticalChannels that constitute it and the wavelength used in each of those lightPaths. In the case where variable "routed" assumes value false only the information about the demandIndex is presented meaning that that demand was blocked.
 
 %\underline{Path}\\
 
@@ -776,7 +860,7 @@ L represents the total number of light paths established.\\
 %\end{table}
 %The Logical links variable represents the logical links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain path.\\ \\
 
-Equipment Costs
+
 
 \begin{table}[H]
 	\centering
@@ -795,30 +879,7 @@ Equipment Costs
 	\label{equipment_costs}
 \end{table}
 
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|}
-		\hline
-		\textbf{Parameter} & \textbf{Default value} & \textbf{Description}                                                                                           \\ \hline
-		numberOfPaths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes.\end{tabular}                      \\  \hline
-		orderingRule                                                        & 0   & \begin{tabular}[c]{@{}l@{}}0 - Descending order\\ 1 - Ascending order\end{tabular} \\ \hline                    
-		odu0                                                                         & Null          & ODU0 demands.                                                                                        \\ \hline
-		odu1                                                                         & Null          & ODU1 demands.                                                                                        \\ \hline
-		odu2                                                                         & Null          & ODU2 demands.                                                                                        \\ \hline
-		odu3                                                                         & Null          & ODU3 demands.                                                                                        \\ \hline
-		odu4                                                                         & Null          & ODU4 demands.                                                                                        \\ \hline
-		criterion                                                                    & Hops          & Shortest path type.                                                                                  \\ \hline
-		transportMode                                                               & Null          & \begin{tabular}[c]{@{}c@{}}Opaque, transparent or translucid\\ modes.\end{tabular}                   \\ \hline
-		adjacenceMatrix                                                            & Null          & \begin{tabular}[c]{@{}c@{}}Physical connections of the\\ network.\end{tabular}                       \\ \hline
-		transportSystems                                                            & 1             & \begin{tabular}[c]{@{}c@{}}Number of transport systems\\ connecting each pair of nodes.\end{tabular} \\ \hline
-		opticalChannels                                                             & 100           & \begin{tabular}[c]{@{}c@{}}Optical channels per transport \\ system.\end{tabular}                    \\ \hline
-		\begin{tabular}[c]{@{}c@{}}opticalChannelCapacity\end{tabular}           & 100 Gbps      & \begin{tabular}[c]{@{}c@{}}Physical capacity of each \\ channel.\end{tabular}                        \\ \hline
-		\begin{tabular}[c]{@{}c@{}}lightPathCriterion\end{tabular} & to define     & \begin{tabular}[c]{@{}c@{}}Maximum number of hops in a physical\\   path to establish a logical link.\end{tabular} \\ \hline                                                                                             %\\ \hline
-	\end{tabular}
-	\caption{System input parameters.}
-	\label{system_input}
-\end{table}
+\section{Blocks input parameters and signals}
 
 \begin{table}[H]
 	\centering
@@ -826,55 +887,55 @@ Equipment Costs
 		\hline
 		\textbf{Block}                                                               & \textbf{Input Parameters}                                                                                                         & \textbf{Input Signals}                                                                \\ \hline
 		Scheduler\_                                                               & \begin{tabular}[c]{@{}c@{}}odu0, odu1,odu2, odu3, odu4,\\ orderingRule\end{tabular}                 & None                                                                         \\ \hline
-		\begin{tabular}[c]{@{}c@{}}logicalTopologyGenerator\_  \end{tabular}  & \begin{tabular}[c]{@{}c@{}}transportMode, adjacenceMatrix\end{tabular}                                                & None                                                                         \\ \hline
-		\begin{tabular}[c]{@{}c@{}}PhysicalTopologyGenerator\_  \end{tabular} & \begin{tabular}[c]{@{}c@{}}adjacenceMatrix, opticalChannels,\\ transportSystems, opticalChannelCapacity\end{tabular} & None                                                                         \\ \hline
-		PathGenerator\_                                                          & numberOfPaths, criterion                                                                                                 & \begin{tabular}[c]{@{}c@{}}LogicalTopologyOut,\\ RemovePath\end{tabular}      \\ \hline
-		PathTester\_                                                            & lighPathCriterion                                                                                           & \begin{tabular}[c]{@{}c@{}}PathGeneratorOut,\\ PhysicalTopologyOut\end{tabular} \\ \hline
-		SinkBlocking\_                                                         & None                                                                                                                       & BlockedDemands                                                               \\ \hline
-		SinkRouted\_                                                           & None                                                                                                                       & RoutedDemands                                                                \\ \hline
+		\begin{tabular}[c]{@{}c@{}}LogicalTopologyGenerator\_  \end{tabular}  & \begin{tabular}[c]{@{}c@{}}transportMode, adjacenceMatrix\end{tabular}                                                & None \\ \hline          
+		\begin{tabular}[c]{@{}c@{}}PhysicalTopologyGenerator\_  \end{tabular}  & \begin{tabular}[c]{@{}c@{}}adjacenceMatrix, transportSystems,\\ opticalChannels, opticalChannelsCapacity \end{tabular}                                                & None                                                                    \\ \hline
+		\begin{tabular}[c]{@{}c@{}}LogicalTopologyManager\_  \end{tabular} & \begin{tabular}[c]{@{}c@{}}None\end{tabular} & \begin{tabular}[c]{@{}c@{}} SchedulerOut, \\LogicalTopologyOut, \\PhysicalManagerOut \end{tabular}                                                                        \\ \hline
+		PhysicalTopologyManager\_                                                          & \begin{tabular}[c]{@{}c@{}}criterion, numberOfPaths\end{tabular}                                                                                                & \begin{tabular}[c]{@{}c@{}}LogicalManagerRequest,\\ PhysicalGeneratorOut \end{tabular}     \\ \hline
+		SinkRoutedOrBlocked\_                                                              & None                                                                                         & LogicalManagerOut \\ \hline
+
 	\end{tabular}
 	\caption{Blocks input parameters and signals.}
 	\label{blocks_input}
 \end{table}
 
+
+\section{Blocks state variables and output signals}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|}
 	\hline
 	\textbf{Block }                                                                & \textbf{State Variables}                                                                             & \textbf{Output Signals}                                                          \\ \hline
-	Scheduler\_                                                               & \begin{tabular}[c]{@{}c@{}}odu0, odu1, odu2, odu3, odu4, demandIndex, \\numberOfDemands\end{tabular}        & SchedulerOut                                                            \\ \hline
+	Scheduler\_                                                               & \begin{tabular}[c]{@{}c@{}}odu0, odu1, odu2, odu3, odu4, \\ demandIndex, \\numberOfDemands\end{tabular}        & SchedulerOut                                                            \\ \hline
 	\begin{tabular}[c]{@{}c@{}}LogicalTopologyGenerator\_  \end{tabular}  &  generate                                                                      & LogicalTopologyOut                                                         \\ \hline
-	\begin{tabular}[c]{@{}c@{}}PhysicalTopologyGenerator\_  \end{tabular} & generate                                                                    & PhysicalTopologyOut                                                        \\ \hline
-	PathGenerator\_                                                          & \begin{tabular}[c]{@{}c@{}}currentLogicalTopology\end{tabular} & PathGeneratorOut                                                        \\ \hline
-	PathTester\_                                                             & \begin{tabular}[c]{@{}c@{}}currentPhysicalTopology, \\ lightPaths\end{tabular}   & \begin{tabular}[c]{@{}c@{}}RoutedDemands,\\ BlockedDemands\end{tabular} \\ \hline
-	SinkBlocking\_                                                         & None                                                                                        & None                                                                    \\ \hline
-	SinkRouted\_                                                           & None                                                                                        & None                                                                    \\ \hline
+	\begin{tabular}[c]{@{}c@{}}PhysicalTopologyGenerator\_  \end{tabular}  &  generate                                                                      & PhysicalTopologyOut                                                         \\ \hline
+	\begin{tabular}[c]{@{}c@{}}LogicalTopologyManager\_  \end{tabular} & 	\begin{tabular}[c]{@{}c@{}}paths, lightPaths,\\ opticalChannels \end{tabular}                                                                  & \begin{tabular}[c]{@{}c@{}}LogicalManagerRequest,\\    LogicalManagerOut \end{tabular}                                                   \\ \hline
+	PhysicalTopologyManager\_                                                          & \begin{tabular}[c]{@{}c@{}}opticalMultiplexingSystems\end{tabular} & PhysicalManagerOut                                                       \\ \hline
+	SinkRoutedOrBlocked\_                                                             & None   & None \\ \hline
 \end{tabular}
 	\caption{Blocks state variables and output signals.}
 	\label{blocks_input}
 \end{table}
 
-Another important structure that we should mention is a state variable of the PathTester\_  block, lightPaths, represented below on table \ref{lightpath_example}.
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		Link Index & Light Path Number & Physical Links  & Wavelenght & Capacity (ODU0s) \\ \hline
-		0          & 1                 & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
-		...        & ...               & ...             & ...        &                  \\ \hline
-		LO - 1         & LP                & {[}0/1...0/1{]} & 1...OC     &                  \\ \hline
-	\end{tabular}
-	\caption{Light path variable.}
-	\label{lightpath_example}
-\end{table}
-LP represents the number of light paths established in the network.\\
-OC represents the number optical channels existent in each physical link.\\
-The Physical Links variable inside of the light paths represents the links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain light path.\\ \\
-\clearpage
-\textbf{Example:}  \\
-\\
-Having just 4 optical channels per transmission system, each with a capacity of 100 Gbps, and the following set of demands.
 
+\section{Example}
+\\
+\textbf{Physical Topology}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/physicalTopology}
+	\caption{Allowed physical topology.}
+	\label{allowed_physical_example}
+\end{figure}
+\textbf{Logical Topology}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logicalTopology}
+	\caption{Transparent logical topology.}
+	\label{allowed_logical_example}
+\end{figure}
+
+Having just 3 optical channels per OMS, each with a capacity of 100 Gbps, and the following set of demands.\\\\
+\textbf{Demands}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -887,15 +948,63 @@ Having just 4 optical channels per transmission system, each with a capacity of 
 		4           & 1          & 5               & 4       & 0                   \\ \hline
 		5           & 1          & 5               & 4       & 0                   \\ \hline
 		6           & 1          & 5               & 4       & 0                   \\ \hline
-		7           & 1          & 5               & 4       & 0                   \\ \hline
-		8           & 1          & 5               & 4       & 0                   \\ \hline
-		9           & 4          & 2               & 3       & 0                   \\ \hline
-		10          & 4          & 2               & 3       & 0                   \\ \hline
+		7           & 3          & 5               & 3       & 0                   \\ \hline
+		8           & 3          & 5               & 3       & 0                   \\ \hline
 	\end{tabular}
 	\caption{Demands ordered by Scheduler\_  block.}
 	\label{scheduler_example}
 \end{table}
-
+\clearpage
+\textbf{PathRequest signals}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c|c|}
+		\cline{2-4}
+		\multicolumn{1}{l|}{}          & \multicolumn{3}{c|}{PathRequest signals}         \\ \cline{2-4} 
+		\multicolumn{1}{l|}{}          & sourceNode & intermediateNodes & destinationNode \\ \hline
+		\multicolumn{1}{|l|}{Demand 0} & 1          & 0                 & 5               \\ \hline
+		\multicolumn{1}{|c|}{Demand 1} & 1          & 0                 & 5               \\ \hline
+		\multicolumn{1}{|c|}{Demand 2} & 1          & 0                 & 5               \\ \hline
+		\multicolumn{1}{|c|}{Demand 3} & 1          & 0                 & 5               \\ \hline
+		\multicolumn{1}{|c|}{Demand 4} & 1          & 0                 & 5               \\ \hline
+		\multicolumn{1}{|c|}{Demand 5} & 1          & 0                 & 5               \\ \hline
+		\multicolumn{1}{|c|}{Demand 6} & 1          & 0                 & 5               \\ \hline
+		\multicolumn{1}{|c|}{Demand 7} & 3          & 0                 & 5               \\ \hline
+	\end{tabular}
+	\caption{PathRequest signals generated.}
+	\label{pathrequest_example}
+\end{table}
+\textbf{PathRequestRouted signals}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c|}
+		\cline{2-7}
+		\multicolumn{1}{l|}{}                           & \multirow{2}{*}{routed} & \multicolumn{2}{c|}{lightPath}          & \multicolumn{2}{c|}{opticalChannels} & \multirow{2}{*}{wavelenght} \\ \cline{3-6}
+		\multicolumn{1}{l|}{}                           &                         & sourceNode         & destinationNode    & sourceNode     & destinationNode     &                             \\ \hline
+		\multicolumn{1}{|l|}{\multirow{2}{*}{Demand 0}} & \multirow{2}{*}{true}   & \multirow{2}{*}{1} & \multirow{2}{*}{5} & 1              & 6                   & \multirow{2}{*}{1}          \\ \cline{5-6}
+		\multicolumn{1}{|l|}{}                          &                         &                    &                    & 6              & 5                   &                             \\ \hline
+		\multicolumn{1}{|l|}{\multirow{2}{*}{Demand 1}} & \multirow{2}{*}{true}   & \multirow{2}{*}{1} & \multirow{2}{*}{5} & 1              & 6                   & \multirow{2}{*}{2}          \\ \cline{5-6}
+		\multicolumn{1}{|l|}{}                          &                         &                    &                    & 6              & 5                   &                             \\ \hline
+		\multicolumn{1}{|c|}{\multirow{2}{*}{Demand 2}} & \multirow{2}{*}{true}   & \multirow{2}{*}{1} & \multirow{2}{*}{5} & 1              & 6                   & \multirow{2}{*}{3}          \\ \cline{5-6}
+		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 6              & 5                   &                             \\ \hline
+		\multicolumn{1}{|c|}{\multirow{3}{*}{Demand 3}} & \multirow{3}{*}{true}   & \multirow{3}{*}{1} & \multirow{3}{*}{5} & 1              & 2                   & \multirow{3}{*}{1}          \\ \cline{5-6}
+		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 2              & 3                   &                             \\ \cline{5-6}
+		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 3              & 5                   &                             \\ \hline
+		\multicolumn{1}{|c|}{\multirow{3}{*}{Demand 4}} & \multirow{3}{*}{true}   & \multirow{3}{*}{1} & \multirow{3}{*}{5} & 1              & 2                   & \multirow{3}{*}{2}          \\ \cline{5-6}
+		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 2              & 3                   &                             \\ \cline{5-6}
+		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 3              & 5                   &                             \\ \hline
+		\multicolumn{1}{|c|}{\multirow{3}{*}{Demand 5}} & \multirow{3}{*}{true}   & \multirow{3}{*}{1} & \multirow{3}{*}{5} & 1              & 2                   & \multirow{3}{*}{3}          \\ \cline{5-6}
+		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 2              & 3                   &                             \\ \cline{5-6}
+		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 3              & 5                   &                             \\ \hline
+		\multicolumn{1}{|c|}{Demand 6}                  & false                   & 0                  & 0                  & 0              & 0                   & 0                           \\ \hline
+		\multicolumn{1}{|c|}{\multirow{2}{*}{Demand 7}} & \multirow{2}{*}{true}   & \multirow{2}{*}{3} & \multirow{2}{*}{5} & 3              & 4                   & \multirow{2}{*}{1}          \\ \cline{5-6}
+		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 4              & 5                   &                             \\ \hline
+	\end{tabular}
+	\caption{PathRequestRouted signals.}
+	\label{pathRequestRouted_example}
+\end{table}
+\clearpage
+\textbf{Paths}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -907,32 +1016,12 @@ Having just 4 optical channels per transmission system, each with a capacity of 
 		3         & 1          & 5               & 0                                                          & 3               \\ \hline
 		4         & 1          & 5               & 0                                                          & 4               \\ \hline
 		5         & 1          & 5               & 0                                                          & 5               \\ \hline
-		6         & 1          & 5               & 0                                                          & 6               \\ \hline
-		7         & 1          & 7               & 0                                                          & 7               \\ \hline
-		8         & 4          & 2               &  16                                        & 8               \\ \hline
+		6         & 3          & 5               &  16                                        & 6               \\ \hline
 	\end{tabular}
 	\caption{Paths state variable from LogicalTopologyManager\_  block.}
 	\label{paths_example}
 \end{table}
-
-\begin{table}[H]
-	\centering
-\begin{tabular}{|lcllcllcll|}
-	\hline
-	\multicolumn{10}{|c|}{Dijkstra (Logical matrix)}                                                                                                                                                           \\ \hline
-	& \multicolumn{1}{l}{}          &          &                       & \multicolumn{1}{l}{}          &          &                       & \multicolumn{1}{l}{}          &          &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{(1-\textgreater{}5)} & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(2-\textgreater{}5)} & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(4-\textgreater{}2)} &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{(1,5)}               & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(2,5)}               & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(4,2)}               &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{(1,2);(2,5)}         & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(2,1) ; (1,5)}       & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(4,1) ; (1,2)}       &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{(1,3);(3,5)}         & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(2,3) ; (3,5)}       & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(4,3) ; (3,2)}       &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-	& \multicolumn{1}{l}{}          &          &                       & \multicolumn{1}{l}{}          &          &                       & \multicolumn{1}{l}{}          &          &  \\ \hline
-\end{tabular}
-	\caption{Shortest logical paths given by Dijkstra algorithm.}
-	\label{dijkstra_example}
-\end{table}
-
-
-
+\textbf{Light paths}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -941,33 +1030,16 @@ Having just 4 optical channels per transmission system, each with a capacity of 
 		0              & 1          & 5               & 0                   & 0,1                  \\ \hline
 		1              & 1          & 5               & 0                   & 2,3                  \\ \hline
 		2              & 1          & 5               & 0                   & 4,5                  \\ \hline
-		3              & 1          & 5               & 0                   & 6,7                  \\ \hline
-		4              & 1          & 5               & 0                   & 8,9,10               \\ \hline
-		5              & 1          & 5               & 0                   & 11,12,13             \\ \hline
-		6              & 1          & 5               & 0                   & 14,15,16             \\ \hline
-		7              & 1          & 5               & 0                   & 17,18,19             \\ \hline
-		8              & 4          & 2               & 16 & 20,21                \\ \hline
+		3              & 1          & 5               & 0                   & 6,7,9                  \\ \hline
+		4              & 1          & 5               & 0                   & 9,10,11               \\ \hline
+		5              & 1          & 5               & 0                   & 12,13,14             \\ \hline
+		6              & 3          & 5               & 16                  & 15,16             \\ \hline
 	\end{tabular}
 	\caption{Light paths state variable from LogicalTopologyManager\_  block.}
 	\label{lightPaths_example}
 \end{table}
-
-\begin{table}[H]	
-	\centering
-	\begin{tabular}{|lcllcllcll|}
-		\hline
-		\multicolumn{10}{|c|}{Dijkstra (Physical matrix)}                                                                                                                                                          \\ \hline
-		& \multicolumn{1}{l}{}          &          &                       & \multicolumn{1}{l}{}          &          &                       & \multicolumn{1}{l}{}          &          &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-		\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{(1-\textgreater{}5)} & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(2-\textgreater{}5)} & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(4-\textgreater{}2)} &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-		\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{(1,6);(6,5)}         & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(2,3);(3,5)}         & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(4,3);(4,2)}         &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-		\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{(1,2);(2,3);(3,5)}   & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(2,6);(6,5)}         & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(4,5);(5,3);(5,2)}   &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-		\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{(1,2);(2,6);(6,5)}   & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(2,1);(1,6);(6,5)}   & \multicolumn{1}{l|}{} & \multicolumn{2}{c|}{(4,5);(5,6);(6,2)}   &  \\ \cline{2-3} \cline{5-6} \cline{8-9}
-		& \multicolumn{1}{l}{}          &          &                       & \multicolumn{1}{l}{}          &          &                       & \multicolumn{1}{l}{}          &          &  \\ \hline
-	\end{tabular}
-	\caption{Shortest physical paths given by Dijkstra algorithm.}
-	\label{dijkstra2_example}
-\end{table}
-
+\clearpage
+\textbf{Optical Channels}
 
 \begin{table}[H]
 	\centering
@@ -980,54 +1052,45 @@ Having just 4 optical channels per transmission system, each with a capacity of 
 		3                   & 6          & 5               & 0                & 1  &2          \\ \hline
 		4                   & 1          & 6               & 0                & 2  &3          \\ \hline
 		5                   & 6          & 5               & 0                & 2   &3         \\ \hline
-		6                   & 1          & 6               & 0                & 3   &4         \\ \hline
-		7                   & 6          & 5               & 0                & 3    &4        \\ \hline
-		8                   & 1          & 2               & 0                & 4   &1         \\ \hline
-		9                   & 2          & 3               & 0                & 4     &1       \\ \hline
-		10                  & 3          & 5               & 0                & 4     &1       \\ \hline
-		11                  & 1          & 2               & 0                & 5    &2        \\ \hline
-		12                  & 2          & 3               & 0                & 5     &2       \\ \hline
-		13                  & 3          & 5               & 0                & 5     &2       \\ \hline
-		14                  & 1          & 2               & 0                & 6      &3      \\ \hline
-		15                  & 2          & 3               & 0                & 6      &3      \\ \hline
-		16                  & 3          & 5               & 0                & 6      &3      \\ \hline
-		17                  & 1          & 2               & 0                & 7      &4      \\ \hline
-		18                  & 2          & 3               & 0                & 7       &4     \\ \hline
-		19                  & 3          & 5               & 0                & 7      &4      \\ \hline
-		20                  & 4          & 3               & 0                & 9,10    &1     \\ \hline
-		21                  & 3          & 2               & 0                & 9,10    &1     \\ \hline
+		6                   & 1          & 2               & 0                & 3   &1         \\ \hline
+		7                   & 2          & 3               & 0                & 3    &1        \\ \hline
+		8                   & 3          & 5               & 0                & 3   &1         \\ \hline
+		9                   & 1          & 2               & 0                & 4   &2         \\ \hline
+		10                   & 2          & 3               & 0                & 4    &2        \\ \hline
+		11                   & 3          & 5               & 0                & 4   &2         \\ \hline
+		12                   & 1          & 2               & 0                & 5   &3         \\ \hline
+		13                   & 2          & 3               & 0                & 5    &3        \\ \hline
+		14                   & 3          & 5               & 0                & 5   &3         \\ \hline
+		15					&3			&4					&16				&7,8	&1			\\ \hline
+		16					&4 			&5 					&16				&7,8	&1 \\ \hline
+		
 	\end{tabular}
 	\caption{Optical channels state variable from LogicalTopologyManager\_  block.}
 	\label{opticalChannels_example}
 \end{table}
-
+\clearpage
+\textbf{Optical Multiplexing Systems}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		omsIndex           & sourceNode         & destinationNode    & \begin{tabular}[c]{@{}c@{}}capacity\\  (channels available)\end{tabular} & \begin{tabular}[c]{@{}c@{}}opticalChannelsIndex / \\ wavelength\end{tabular} \\ \hline
-		\multirow{4}{*}{0} & \multirow{4}{*}{1} & \multirow{4}{*}{6} & \multirow{4}{*}{0}                                                       & 0 / 1                                                                        \\ \cline{5-5} 
-		&                    &                    &                                                                          & 2 / 2                                                                        \\ \cline{5-5} 
-		&                    &                    &                                                                          & 4 / 3                                                                        \\ \cline{5-5} 
-		&                    &                    &                                                                          & 6 / 4                                                                        \\ \hline
-		\multirow{4}{*}{1} & \multirow{4}{*}{6} & \multirow{4}{*}{5} & \multirow{4}{*}{0}                                                       & 1 / 1                                                                        \\ \cline{5-5} 
-		&                    &                    &                                                                          & 3 / 2                                                                        \\ \cline{5-5} 
-		&                    &                    &                                                                          & 5 / 3                                                                        \\ \cline{5-5} 
-		&                    &                    &                                                                          & 7 / 4                                                                        \\ \hline
-		\multirow{4}{*}{2} & \multirow{4}{*}{1} & \multirow{4}{*}{2} & \multirow{4}{*}{0}                                                       & 8 / 1                                                                        \\ \cline{5-5} 
-		&                    &                    &                                                                          & 11 / 2                                                                       \\ \cline{5-5} 
-		&                    &                    &                                                                          & 14 / 3                                                                       \\ \cline{5-5} 
-		&                    &                    &                                                                          & 17 / 4                                                                       \\ \hline
-		\multirow{4}{*}{3} & \multirow{4}{*}{2} & \multirow{4}{*}{3} & \multirow{4}{*}{0}                                                       & 9 / 1                                                                        \\ \cline{5-5} 
-		&                    &                    &                                                                          & 12 / 2                                                                       \\ \cline{5-5} 
-		&                    &                    &                                                                          & 15 / 3                                                                       \\ \cline{5-5} 
-		&                    &                    &                                                                          & 18 / 4                                                                       \\ \hline
-		\multirow{4}{*}{4} & \multirow{4}{*}{3} & \multirow{4}{*}{5} & \multirow{4}{*}{0}                                                       & 10 / 1                                                                       \\ \cline{5-5} 
-		&                    &                    &                                                                          & 13 / 2                                                                       \\ \cline{5-5} 
-		&                    &                    &                                                                          & 16 / 3                                                                       \\ \cline{5-5} 
-		&                    &                    &                                                                          & 19 / 4                                                                       \\ \hline
-		5                  & 4                  & 3                  & 3                                                                        & 20 / 1                                                                       \\ \hline
-		6                  & 3                  & 2                  & 3                                                                        & 21 / 1                                                                       \\ \hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels available)\end{tabular} & \begin{tabular}[c]{@{}c@{}}wavelenghts\\ (available)\end{tabular} \\ \hline
+		0        & 1          & 2               & 0                                                                       & 0                                                                 \\ \hline
+		1        & 1          & 6               & 0                                                                       & 0                                                                 \\ \hline
+		2        & 2          & 1               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
+		3        & 2          & 3               & 0                                                                       & 0                                                                 \\ \hline
+		4        & 2          & 6               & 0                                                                       & {[}1 2 3{]}                                                       \\ \hline
+		5        & 3          & 2               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
+		6        & 3          & 4               & 2                                                                       & {[}2 3{]}                                                         \\ \hline
+		7        & 3          & 5               & 0                                                                       & 0                                                                 \\ \hline
+		8        & 4          & 3               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
+		9        & 4          & 5               & 2                                                                       & {[}2 3{]}                                                         \\ \hline
+		10       & 5          & 3               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
+		11       & 5          & 4               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
+		12       & 5          & 6               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
+		13       & 6          & 1               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
+		14       & 6          & 2               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
+		15       & 6          & 5               & 0                                                                       & 0                                                                 \\ \hline
 	\end{tabular}
 	\caption{Optical multiplexing systems state variable from PhysicalTopologyManager\_  block.}
 	\label{OMS_example}
@@ -1035,23 +1098,18 @@ Having just 4 optical channels per transmission system, each with a capacity of 
 
 \Large Final report\\ \\
 
-\normalsize It is possible to see below in figure \ref{routing_result} that of the total 11 demands only the demand with index 8 was not routed (was blocked) while the rest were routed correctly through the network.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=15cm]{sdf/heuristic/transparent/figures/routingResultExample}
-\caption{Final physical topology of the network after routing all the demands in the example.}
-\label{routing_result}
-\end{figure}
-
-The first 4 demands with a corresponding index from 0 to 3 were routed through links (1,6) and (6,5) until all the optical channels of both optical multiplexing systems were full. The next 4 demands were routed through links (1,2), (2,3) and (3,5), again until that all the optical channels of all the links were fully operating. In consequence of that demand with index number 8 was blocked by our network because of the lack of physical capacity of the optical multiplexing systems. The last 2 demands (9 and 10) were routed through links (4,3) and (3,2). 
-
+\normalsize Of the total 9 demands only the demand with index 6 was not routed (was blocked) while the rest were routed correctly through the network.
+\clearpage
+\textbf{Physical topology after dimensioning}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=15cm]{sdf/heuristic/transparent/figures/logicalTopologyAfter}
-	\caption{Final logical topology of the network after routing all the demands in the example.}
-	\label{routing_result}
-\end{figure}
+	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/physicalAfterDimensioning}
+	\caption{Physical topology after dimensioning.}
+\end{figure} 
 
-Demands 0 to 7 are routed through logical link (1,5). Then this link is cutted of because all of its capacity is already being used. As there is also not enough capacity to establish logical links (1,2) and (2,5) they are also eliminated. The same will occur with logical links (1,3) and (3,5). The last 2 demands (9 and 10) were routed through logical link (4,2). 
-
+\textbf{Logical topology after dimensioning}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logicalAfterDimensioning}
+	\caption{Logical topology after dimensioning.}
+\end{figure} 
