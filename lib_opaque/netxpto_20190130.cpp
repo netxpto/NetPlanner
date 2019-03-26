@@ -71,8 +71,8 @@ void Signal::bufferPut(T value)
 				}
 				else
 				{
-					if (type == "Demand") {
-						t_demand *ptr = (t_demand *)buffer;
+					if (type == "DemandRequest") {
+						t_demand_request *ptr = (t_demand_request *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
@@ -297,8 +297,8 @@ void Signal::close() {
 			ofstream fileHandler;
 			fileHandler.open("./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app);
 
-			if (type == "Demand") {
-				t_demand *ptr = (t_demand *)buffer;
+			if (type == "DemandRequest") {
+				t_demand_request *ptr = (t_demand_request *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 				
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
@@ -319,71 +319,23 @@ void Signal::close() {
 			}
 
 			else if (type == "LogicalTopology") {
-				t_logical_topology *ptr = (t_logical_topology *)buffer;
+				t_matrix *ptr = (t_matrix *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 				
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 				for (auto lTopology = firstValueToBeSaved; lTopology <= outPosition; lTopology++) {
 
-					t_integer nodes = ptr->logicalTopology[0].size();
+					t_integer nodes = (*ptr)[0].size();
 					for (t_integer line = 0; line < nodes ; line++) {
 
 						for (t_integer column = 0; column < nodes; column++) {
 
-							fileHandler << ptr->logicalTopology[line][column];
+							fileHandler << (*ptr)[line][column];
 							fileHandler << "\t";
 						}
 						fileHandler << "\n";
 					}
-					fileHandler << "\n\n\n";
-				
-					for (t_logical_link& lLink : ptr->logicalLinks) {
-						
-						fileHandler << lLink.index;
-						fileHandler << "\t";
-						fileHandler << lLink.linkSourceNode;
-						fileHandler << "\t";
-						fileHandler << lLink.linkDestinationNode;
-						fileHandler << "\t";
-						fileHandler << lLink.numberOfLightPaths;
-						fileHandler << "\n";
-					}
-				}
-				setFirstValueToBeSaved(1);
-			}
-
-			else if (type == "PhysicalTopology") {	
-				t_physical_topology *ptr = (t_physical_topology *)buffer;
-				ptr = ptr + (firstValueToBeSaved - 1);
-				
-				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto pt = firstValueToBeSaved; pt <= outPosition; pt++) {
-
-					for (t_physical_link& pLink : ptr->physicalLinks) {
 					
-						fileHandler << pLink.index;
-						fileHandler << "\t";
-						fileHandler << pLink.linkSourceNode;
-						fileHandler << "\t";
-						fileHandler << pLink.linkDestinationNode;
-						fileHandler << "\t";
-						fileHandler << pLink.numberOfOpticalChannels;
-						fileHandler << "\n";
-					}
-
-					fileHandler << "\n\n\n";
-
-					for (t_optical_channel& oChannel : ptr->opticalChannels) {
-					
-						fileHandler << oChannel.linkIndex;
-						fileHandler << "\t";
-						fileHandler << oChannel.opticalChannelNumber;
-						fileHandler << "\t";
-						fileHandler << oChannel.capacity;
-						fileHandler << "\t";
-						fileHandler << oChannel.wavelenght;
-						fileHandler << "\n";
-					}
 				}
 				setFirstValueToBeSaved(1);
 			}
@@ -650,25 +602,18 @@ bool SuperBlock::runBlock(string signalPath) {
 					outputSignals[i]->bufferPut(signalValue);
 				}
 				break;*/
-				case signal_value_type::t_demand:
+				case signal_value_type::t_demand_request:
 					for (int j = 0; j < length; j++) {
-						t_demand signalDemand;
+						t_demand_request signalDemand;
 						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalDemand);
 						outputSignals[i]->bufferPut(signalDemand);
 					}
 					break;
 				case signal_value_type::t_logical_topology:
 					for (int j = 0; j < length; j++) {
-						t_logical_topology signalLogicalTopology;
+						t_matrix signalLogicalTopology;
 						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalLogicalTopology);
 						outputSignals[i]->bufferPut(signalLogicalTopology);
-					}
-					break;
-				case signal_value_type::t_physical_topology:
-					for (int j = 0; j < length; j++) {
-						t_physical_topology signalPhysicalTopology;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPhysicalTopology);
-						outputSignals[i]->bufferPut(signalPhysicalTopology);
 					}
 					break;
 			

@@ -7,21 +7,13 @@
 
 class LogicalTopologyGenerator : public Block {
 
-	// State variables + Input Parameters
-	t_integer index{ 0 };
-	t_integer_long numberOfLinks{ 0 };
-	
 	// Input Parameters
 	std::string transportMode;
 	t_matrix adjacencyMatrix;
-	t_integer numberOfNodes{ 0 };
 	
 	// State variables
 	bool generate{ true };
-	bool generateLogicalLinkOpaque(t_logical_link &lLink);
-
-	t_integer calculateNumberOfNodes();
-	t_integer calculateNumberOfLinks();
+	
 
 public:
 
@@ -37,13 +29,6 @@ public:
 
 	void setAdjacencyMatrix(t_matrix aMatrix) { adjacencyMatrix = aMatrix; }
 	t_matrix getAdjacencyMatrix(void) { return adjacencyMatrix; };
-
-	void setNumberOfNodes(t_integer nNodes) { numberOfNodes = nNodes; }
-	void setNumberOfLinks(t_integer nLinks) { numberOfLinks = nLinks; }
-
-	t_integer getNumberOfNodes() { return numberOfNodes; };
-	t_integer getNumberOfLinks() { return numberOfLinks; };
-	t_integer getIndex() { return index; };
 
 };
 
