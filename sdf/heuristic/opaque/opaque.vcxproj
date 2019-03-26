@@ -117,14 +117,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include_opaque\logical_topology_generator_20190216.h" />
     <ClInclude Include="..\..\..\include_opaque\netxpto_20190130.h" />
-    <ClInclude Include="..\..\..\include_opaque\physical_topology_generator_20190221.h" />
     <ClInclude Include="..\..\..\include_opaque\scheduler_20190122.h" />
     <ClInclude Include="..\..\..\include_opaque\sink_20180815.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\lib_opaque\logical_topology_generator_20190216.cpp" />
     <ClCompile Include="..\..\..\lib_opaque\netxpto_20190130.cpp" />
-    <ClCompile Include="..\..\..\lib_opaque\physical_topology_generator_20190221.cpp" />
     <ClCompile Include="..\..\..\lib_opaque\scheduler_20190122.cpp" />
     <ClCompile Include="..\..\..\lib_opaque\sink_20180815.cpp" />
     <ClCompile Include="opaque_sdf.cpp" />

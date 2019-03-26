@@ -27,9 +27,9 @@ bool Scheduler::runBlock(void) {
 
 	for (int k = 1; k <= process; k++) {
 
-		t_demand outputDemand;
+		t_demand_request outputDemand;
 		generateDemand(orderingRule, outputDemand);
-		outputSignals[0]->bufferPut((t_demand) outputDemand);
+		outputSignals[0]->bufferPut((t_demand_request) outputDemand);
 		numberOfDemands--;
 
 	}
@@ -38,7 +38,7 @@ bool Scheduler::runBlock(void) {
 
 }
 
-bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem) {
+bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 
 	bool findDemand{ false };
 
