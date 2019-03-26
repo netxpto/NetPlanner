@@ -610,21 +610,21 @@ The creation of this model for any scenario, started with some considerations an
 	\centering
 	\begin{tabular}{|c|c|c|}
 		\hline
-		\textbf{Parameter} & \textbf{Default value} & \textbf{Description}                                                                                           \\ \hline                   
+		\textbf{Parameter} & \textbf{Default value} & \textbf{Description}                                                                                           \\ \hline
 		odu0                                                                         & Null          & ODU0 demands.                                                                                        \\ \hline
 		odu1                                                                         & Null          & ODU1 demands.                                                                                        \\ \hline
 		odu2                                                                         & Null          & ODU2 demands.                                                                                        \\ \hline
 		odu3                                                                         & Null          & ODU3 demands.                                                                                        \\ \hline
 		odu4                                                                         & Null          & ODU4 demands.                                                                                        \\ \hline
-		orderingRule                                                        & 0   & \begin{tabular}[c]{@{}l@{}}0 - ODU4 to ODU0\\ 1 - ODU0 to ODU4\end{tabular} \\ \hline 
+		orderingRule                                                        & 0   & \begin{tabular}[c]{@{}l@{}}0 - ODU4 to ODU0\\ 1 - ODU0 to ODU4\end{tabular} \\ \hline
 		transportMode                                                               & Null          & \begin{tabular}[c]{@{}c@{}}Opaque, transparent or translucid.\end{tabular}                   \\ \hline
 		adjacenceMatrix                                                            & Null          & \begin{tabular}[c]{@{}c@{}}Physical connections of the\\ network.\end{tabular}                       \\ \hline
 		transportSystems                                                            & 1             & \begin{tabular}[c]{@{}c@{}}Number of transport systems\\ connecting each pair of nodes.\end{tabular} \\ \hline
 		opticalChannels                                                             & 100           & \begin{tabular}[c]{@{}c@{}}Optical channels per transport \\ system.\end{tabular}                    \\ \hline
 		\begin{tabular}[c]{@{}c@{}}opticalChannelCapacity\end{tabular}           & 100 Gbps      & \begin{tabular}[c]{@{}c@{}}Physical capacity of each \\ optical channel.\end{tabular}                        \\ \hline
-		%\begin{tabular}[c]{@{}c@{}}lightPathCriterion\end{tabular} & to define     & \begin{tabular}[c]{@{}c@{}}Maximum number of hops in a physical\\   path to establish a logical link.\end{tabular} \\ \hline       
-		criterion                                                                    & Hops          & Shortest path type.                                                                                  \\             \hline                                                                     
-		numberOfPaths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes.\end{tabular}                      \\  \hline    
+		%\begin{tabular}[c]{@{}c@{}}lightPathCriterion\end{tabular} & to define     & \begin{tabular}[c]{@{}c@{}}Maximum number of hops in a physical\\   path to establish a logical link.\end{tabular} \\ \hline
+		criterion                                                                    & Hops          & Shortest path type.                                                                                  \\             \hline
+		numberOfPaths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes.\end{tabular}                      \\  \hline
 	\end{tabular}
 	\caption{System input parameters.}
 	\label{system_input}
@@ -786,7 +786,7 @@ The allowed physical topology is defined by the duct and sites in the field. It 
 OC represents the number of optical channels present in a physical link.\\
 L represent the total number of existent physical links.\\
 
-Here all OMS existent in the network are genereated and associated to a certain index. The structure of the signal includes information about each OMS source and destination nodes and also about the number of channels and which wavelenghts are available to be assigned.  
+Here all OMS existent in the network are genereated and associated to a certain index. The structure of the signal includes information about each OMS source and destination nodes and also about the number of channels and which wavelenghts are available to be assigned.
 
 \subsection{PathRequest}
 
@@ -813,9 +813,9 @@ The PathRequest type signal will be sent into the PhysicalTopologyManager\_  blo
 \begin{tabular}{|c|c|c|c|c|c|}
 	\hline
 	routed                                                                 & \multicolumn{2}{c|}{lightPath}                  & \multicolumn{2}{c|}{opticalChannels} & \multirow{2}{*}{wavelength} \\ \cline{1-5}
-	\multirow{5}{*}{\begin{tabular}[c]{@{}c@{}}true/\\ false\end{tabular}} & sourceNode             & destinationNode        & sourceNode     & destinationNode     &                             \\ \cline{2-6} 
+	\multirow{5}{*}{\begin{tabular}[c]{@{}c@{}}true/\\ false\end{tabular}} & sourceNode             & destinationNode        & sourceNode     & destinationNode     &                             \\ \cline{2-6}
 	& \multirow{2}{*}{1...N} & \multirow{2}{*}{1...N} & 1...N          & 1...N               & \multirow{2}{*}{1...OC}     \\ \cline{4-5}
-	&                        &                        & ....           & ....                &                             \\ \cline{2-6} 
+	&                        &                        & ....           & ....                &                             \\ \cline{2-6}
 	& \multirow{2}{*}{...}   & \multirow{2}{*}{...}   & 1...N          & 1...N               & \multirow{2}{*}{1...OC}     \\ \cline{4-5}
 	&                        &                        & ...            & ...                 &                             \\ \hline
 \end{tabular}
@@ -831,7 +831,7 @@ This signal represents the response that the PhysicalTopologyManager\_  block se
 	\hline
 	demandIndex              & routed                                                                 & pathIndex                & lightPathIndex           & opticalChannelIndex & wavelenght              \\ \hline
 	\multirow{4}{*}{0...D-1} & \multirow{4}{*}{\begin{tabular}[c]{@{}c@{}}true/\\ false\end{tabular}} & \multirow{4}{*}{0...P-1} & \multirow{2}{*}{1...LP-1} & 1...TOC-1           & \multirow{2}{*}{1...OC} \\ \cline{5-5}
-	&                                                                        &                          &                          & ...                 &                         \\ \cline{4-6} 
+	&                                                                        &                          &                          & ...                 &                         \\ \cline{4-6}
 	&                                                                        &                          & \multirow{2}{*}{...}     & 1-TOC-1             & \multirow{2}{*}{1...OC} \\ \cline{5-5}
 	&                                                                        &                          &                          & ...                 &                         \\ \hline
 \end{tabular}
@@ -887,7 +887,7 @@ This signal contains information regarding one demand and whether it was routed 
 		\hline
 		\textbf{Block}                                                               & \textbf{Input Parameters}                                                                                                         & \textbf{Input Signals}                                                                \\ \hline
 		Scheduler\_                                                               & \begin{tabular}[c]{@{}c@{}}odu0, odu1,odu2, odu3, odu4,\\ orderingRule\end{tabular}                 & None                                                                         \\ \hline
-		\begin{tabular}[c]{@{}c@{}}LogicalTopologyGenerator\_  \end{tabular}  & \begin{tabular}[c]{@{}c@{}}transportMode, adjacenceMatrix\end{tabular}                                                & None \\ \hline          
+		\begin{tabular}[c]{@{}c@{}}LogicalTopologyGenerator\_  \end{tabular}  & \begin{tabular}[c]{@{}c@{}}transportMode, adjacenceMatrix\end{tabular}                                                & None \\ \hline
 		\begin{tabular}[c]{@{}c@{}}PhysicalTopologyGenerator\_  \end{tabular}  & \begin{tabular}[c]{@{}c@{}}adjacenceMatrix, transportSystems,\\ opticalChannels, opticalChannelsCapacity \end{tabular}                                                & None                                                                    \\ \hline
 		\begin{tabular}[c]{@{}c@{}}LogicalTopologyManager\_  \end{tabular} & \begin{tabular}[c]{@{}c@{}}None\end{tabular} & \begin{tabular}[c]{@{}c@{}} SchedulerOut, \\LogicalTopologyOut, \\PhysicalManagerOut \end{tabular}                                                                        \\ \hline
 		PhysicalTopologyManager\_                                                          & \begin{tabular}[c]{@{}c@{}}criterion, numberOfPaths\end{tabular}                                                                                                & \begin{tabular}[c]{@{}c@{}}LogicalManagerRequest,\\ PhysicalGeneratorOut \end{tabular}     \\ \hline
@@ -918,7 +918,7 @@ This signal contains information regarding one demand and whether it was routed 
 
 
 \section{Example}
-\\
+%
 \textbf{Physical Topology}
 \begin{figure}[H]
 	\centering
@@ -960,7 +960,7 @@ Having just 3 optical channels per OMS, each with a capacity of 100 Gbps, and th
 	\centering
 	\begin{tabular}{c|c|c|c|}
 		\cline{2-4}
-		\multicolumn{1}{l|}{}          & \multicolumn{3}{c|}{PathRequest signals}         \\ \cline{2-4} 
+		\multicolumn{1}{l|}{}          & \multicolumn{3}{c|}{PathRequest signals}         \\ \cline{2-4}
 		\multicolumn{1}{l|}{}          & sourceNode & intermediateNodes & destinationNode \\ \hline
 		\multicolumn{1}{|l|}{Demand 0} & 1          & 0                 & 5               \\ \hline
 		\multicolumn{1}{|c|}{Demand 1} & 1          & 0                 & 5               \\ \hline
@@ -1105,11 +1105,11 @@ Having just 3 optical channels per OMS, each with a capacity of 100 Gbps, and th
 	\centering
 	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/physicalAfterDimensioning}
 	\caption{Physical topology after dimensioning.}
-\end{figure} 
+\end{figure}
 
 \textbf{Logical topology after dimensioning}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logicalAfterDimensioning}
 	\caption{Logical topology after dimensioning.}
-\end{figure} 
+\end{figure}
