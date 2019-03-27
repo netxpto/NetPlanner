@@ -18,7 +18,7 @@ class Scheduler : public Block {
 	t_integer numberOfNodes{ 0 };
 
 	// Functions that need access to this class variables values in the main cpp file
-	bool generateDemand(t_integer orderingRule, t_demand &dem);
+	bool generateDemand(t_integer orderingRule, t_demand_request &dem);
 	t_integer calculateNumberOfNodes();
 	t_integer calculateNumberOfDemands();
 
