@@ -611,20 +611,22 @@ The creation of this model for any scenario, started with some considerations an
 	\begin{tabular}{|c|c|c|}
 		\hline
 		\textbf{Parameter} & \textbf{Default value} & \textbf{Description}                                                                                           \\ \hline
-		odu0                                                                         & Null          & ODU0 demands.                                                                                        \\ \hline
-		odu1                                                                         & Null          & ODU1 demands.                                                                                        \\ \hline
-		odu2                                                                         & Null          & ODU2 demands.                                                                                        \\ \hline
-		odu3                                                                         & Null          & ODU3 demands.                                                                                        \\ \hline
-		odu4                                                                         & Null          & ODU4 demands.                                                                                        \\ \hline
+		odu0                                                                         & [0]          & N by N matrix containing ODU0 demands.                                                                                     \\ \hline
+		odu1                                                                         & [0]          & N by N matrix containing ODU1 demands.                                                                                        \\ \hline
+		odu2                                                                         & [0]          &N by N matrix containing ODU2 demands.                                                                                        \\ \hline
+		odu3                                                                         & [0]          & N by N matrix containing ODU3 demands.                                                                                        \\ \hline
+		odu4                                                                         & [0]          & N by N matrix containing ODU4 demands.                                                                                        \\ \hline
 		orderingRule                                                        & 0   & \begin{tabular}[c]{@{}l@{}}0 - ODU4 to ODU0\\ 1 - ODU0 to ODU4\end{tabular} \\ \hline
-		transportMode                                                               & Null          & \begin{tabular}[c]{@{}c@{}}Opaque, transparent or translucid.\end{tabular}                   \\ \hline
-		adjacenceMatrix                                                            & Null          & \begin{tabular}[c]{@{}c@{}}Physical connections of the\\ network.\end{tabular}                       \\ \hline
+		transportMode                                                               & transparent          & \begin{tabular}[c]{@{}c@{}}"opaque", "transparent" or "translucide".\end{tabular}                   \\ \hline
+		adjacenceMatrix                                                            & [0]          & \begin{tabular}[c]{@{}c@{}}Physical connections of the\\ network.\end{tabular}                       \\ \hline
 		transportSystems                                                            & 1             & \begin{tabular}[c]{@{}c@{}}Number of transport systems\\ connecting each pair of nodes.\end{tabular} \\ \hline
 		opticalChannels                                                             & 100           & \begin{tabular}[c]{@{}c@{}}Optical channels per transport \\ system.\end{tabular}                    \\ \hline
 		\begin{tabular}[c]{@{}c@{}}opticalChannelCapacity\end{tabular}           & 100 Gbps      & \begin{tabular}[c]{@{}c@{}}Physical capacity of each \\ optical channel.\end{tabular}                        \\ \hline
 		%\begin{tabular}[c]{@{}c@{}}lightPathCriterion\end{tabular} & to define     & \begin{tabular}[c]{@{}c@{}}Maximum number of hops in a physical\\   path to establish a logical link.\end{tabular} \\ \hline
-		criterion                                                                    & Hops          & Shortest path type.                                                                                  \\             \hline
-		numberOfPaths                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of paths created between\\ a pair of nodes.\end{tabular}                      \\  \hline
+		routingCriterionLogicalTopology                                                                    & Hops          & Shortest path type.                                                                                  \\             \hline
+		routingCriterionPhysicalTopology                                                                    & Hops          & Shortest path type.                                                                                  \\             \hline
+		blockingCriterionLogicalTopology                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of attempted paths \\ before blocking a demand.\end{tabular}                      \\  \hline
+		blockingCriterionPhysicalTopology                                                              & 3             & \begin{tabular}[c]{@{}c@{}}Number of attempts to route before\\ discarding a possible path.\end{tabular}                      \\  \hline
 	\end{tabular}
 	\caption{System input parameters.}
 	\label{system_input}
@@ -661,6 +663,8 @@ The creation of this model for any scenario, started with some considerations an
 		LogicalManagerRequest & PathRequest\\ \hline
 		PhysicalManagerOut & PathRequestRouted\\ \hline
 		LogicalManagerOut &  DemandRequestRouted\\ \hline
+		currentLogicalTopology & LogicalTopology\\ \hline
+		currentPhysicalTopology & PhysicalTopology\\ \hline
 	\end{tabular}
 	\caption{System Signals.}
 	\label{system_signals}
@@ -680,37 +684,29 @@ The creation of this model for any scenario, started with some considerations an
 \end{table}
 D represents the total number of demands entering the network.\\
 N represents the number of nodes present in the network.
-%This is the output signal of the LogicalTopologyGenerator\_  block, it has a matrix NxN where every logical connection existent between nodes in the network is displayed. In this particular case we are studying the transparent trasnport node so our logical toplogy will be the one presented in table \ref{Transparentlogical_topology}. In addition here will occur the creation structures corresponding to our network logical links.\\
+%This is the output signal of the LogicalTopologyGenerator\_  block, it has a matrix NxN where every logical connection existent between nodes in the network is displayed. In this particular case we are studying the transparent trasnport node so our logical toplogy will be the one presented in table \ref{Transparentlogical_topology}. In addition here will occur the creation structures corresponding to our network logtical links.\\
 \subsection{LogicalTopology}
 
+This signal contains a lot of variables, which its structures will be specified in detail below.\\ \\
+\clearpage
+\textbf{Logical Topology Matrix}
 \begin{table}[H]
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
 		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6   \\ \hline
-		1                           & \textbf{0}   & 0/X & 0/X & 0/X & 0/X & 0/X \\ \hline
-		2                           & 0/X & \textbf{0}   & 0/X & 0/X & 0/X & 0/X \\ \hline
-		3                           & 0/X & 0/X & \textbf{0}   & 0/X & 0/X & 0/X \\ \hline
-		4                           & 0/X & 0/X & 0/X & \textbf{0}   & 0/X & 0/X \\ \hline
-		5                           & 0/X & 0/X & 0/X & 0/X & \textbf{0}   & 0/X \\ \hline
-		6                           & 0/X & 0/X & 0/X & 0/X & 0/X & \textbf{0}   \\ \hline
+		1                           & \textbf{0}   & 0 or 1 & 0 or 1 & 0 or 1 & 0 or 1 & 0 or 1 \\ \hline
+		2                           & 0 or 1 & \textbf{0}   & 0 or 1 & 0 or 1 & 0 or 1 & 0 or 1 \\ \hline
+		3                           & 0 or 1 & 0 or 1 & \textbf{0}   & 0 or 1 & 0 or 1 & 0 or 1 \\ \hline
+		4                           & 0 or 1 & 0 or 1 & 0 or 1 & \textbf{0}   & 0 or 1 & 0 or 1 \\ \hline
+		5                           & 0 or 1 & 0 or 1 & 0 or 1 & 0 or 1 & \textbf{0}   & 0 or 1 \\ \hline
+		6                           & 0 or 1 & 0 or 1 & 0 or 1 & 0 or 1 & 0 or 1 & \textbf{0}   \\ \hline
 	\end{tabular}
 	\caption{Allowed logical topology matrix.}
 	\label{logical_topology}
 \end{table}
-
-A network topology represents how the links and the nodes of the network interconnect with each other. More specifically this topology can be represented by a matrix that contains all logical connections existent between nodes and is created in an upper layer relatively to the physical topology. Below, in figure \ref{allowed_optical_surv_transparent} there is a graphical representation of the same matrix.\\ \\
-X represents  ??%the number of connections that is possible to establish between a pair of nodes.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=10cm]{sdf/heuristic/transparent/figures/logicalTopology}
-	\caption{Allowed logical topology graph.}
-	\label{allowed_optical_surv_transparent2}
-\end{figure}
-
-
-In the transparent transport mode each node connects to each other creating direct links between all nodes in the network, which can be seen below in figure \ref{Transparentlogical_topology}.
+0 or 1 indicates the possibility of establishing a logical connection between nodes.\\ \\
+A network topology represents how the links and the nodes of the network interconnect with each other. In the case of transparent transport mode, each node connects to all others creating direct links between all nodes of the network, which can be seen below represented in a matrix in table \ref{Transparentlogical_topology} and graphically in figure \ref{allowed_optical_surv_transparent2}.
 \begin{table}[H]
 	\centering	
 	\begin{tabular}{|c|c|c|c|c|c|c|}
@@ -723,11 +719,54 @@ In the transparent transport mode each node connects to each other creating dire
 		5                           & 1 & 1 & 1 & 1 & \textbf{0}   & 1 \\ \hline
 		6                           & 1 & 1 & 1 & 1 & 1 & \textbf{0}   \\ \hline
 	\end{tabular}
-	\caption{Logical topology matrix for transparent transport mode.}
+	\caption{Allowed logical topology matrix for transparent transport mode.}
 	\label{Transparentlogical_topology}
 \end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{sdf/heuristic/transparent/figures/logicalTopology}
+	\caption{Allowed logical topology graph.}
+	\label{allowed_optical_surv_transparent2}
+\end{figure}
 
+\textbf{Paths}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0...P-1         & 1...N          & 1...N               & 0...80                                                          & 0...LP-1               \\ \hline
+	\end{tabular}
+	\caption{Structure of a path variable.}
+	\label{path}
+\end{table}
+\textbf{Light Paths}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		lightPathIndex & sourceNode & destinationNode & capacity (ODU0s)    & opticalChannelsIndex \\ \hline
+		0...LP-1              & 1...N         & 1...N               & 0...80                   &[0...TOC-1]                  \\ \hline
+	\end{tabular}
+	\caption{Structure of a light path variable.}
+	\label{lightPath}
+\end{table}
 
+\textbf{Optical Channels}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		opticalChannelIndex & sourceNode & destinationNode & capacity & demandsIndex & wavelength \\ \hline
+		0...TOC-1                   & 1...N          & 1...N               & 0...80                & 0...D-1  &1...OC         \\ \hline
+		
+	\end{tabular}
+	\caption{Structure of an optical channel variable.}
+	\label{opticalChannels}
+\end{table}
+
+If the network starts from zero with no initial information or files given then these three last variables will be created and sent to the LogicalTopologyManager\_  block with null information. 
 %\begin{table}[H]
 %	\centering
 %	\begin{tabular}{|c|c|c|c|c|}
@@ -744,7 +783,8 @@ In the transparent transport mode each node connects to each other creating dire
 %OC represents the number optical channels existent in each physical link.\\
 %The Physical Links variable inside of the light paths represents the links existent in our network, in this case they can assume two different values, 0 or 1, depending on whether they are used or not to route a demand through a certain light path.\\ \\
 \subsection{PhysicalTopology}
-Based on the adjacence matrix representations of this network, presented below in table \ref{Adjacence_Matrix} and figure \ref{allowed_physical_surv_transp}, it is notable that our network consists in 6 nodes and 8 bidirectional optical multiplexing systems.
+Based on the adjacence matrix representations of this network, presented below in table \ref{Adjacence_Matrix} and figure \ref{allowed_physical_surv_transp}, it is evident that our network consists in 6 nodes and 8 bidirectional optical multiplexing systems.\\ \\
+\textbf{Physical Topology Matrix}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|c|c|}
@@ -768,8 +808,8 @@ Based on the adjacence matrix representations of this network, presented below i
 	\label{allowed_physical_surv_transp}
 \end{figure}
 
-The allowed physical topology is defined by the duct and sites in the field. It is assumed that each duct supports up to 1 bidirectional transmission system and each site supports up to 1 node. Based on the previous information a data structure is created for each of the optical multiplexing systems.
-
+The allowed physical topology is defined by the duct and sites in the field. It is assumed that each duct supports up to 1 bidirectional transmission system and each site supports up to 1 node. Based on the previous information a data structure is created for each unidirectional optical multiplexing system.\\ \\
+\textbf{Optical Multiplexing Systems}
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -779,61 +819,66 @@ The allowed physical topology is defined by the duct and sites in the field. It 
 		...      &            &                & ...                                                           & ...          \\ \hline
 		L-1      & 1...N      & 1...N          & OC                                                        & {[}1...OC{]} \\ \hline
 	\end{tabular}
-	\caption{PhysicalTopology type signal.}
+	\caption{Structure of an OMS.}
 	\label{PhysicalGeneratorOut}
 \end{table}
 
 OC represents the number of optical channels present in a physical link.\\
-L represent the total number of existent physical links.\\
+L represent the total number of existent unidirectional physical links.\\
 
-Here all OMS existent in the network are genereated and associated to a certain index. The structure of the signal includes information about each OMS source and destination nodes and also about the number of channels and which wavelenghts are available to be assigned.
+All Optical Multiplexing Systems existent in the network are created in the PhysicalTopologyGenerator\_  block. They all contain an index in order to further identify each OMS, source and destination nodes, capacity in terms of quantity of available channels and which wavelenghts are still available to be used, initially all.
 
 \subsection{PathRequest}
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|}
+	\begin{tabular}{|c|c|c|c|}
 		\hline
-		sourceNode & intermediateNodes & destinationNode\\ \hline
-		1...N      & 1...N             & 1...N          \\ \hline
+		requestIndex & sourceNode & intermediateNodes & destinationNode\\ \hline
+		0 or greater & 1...N      & 1...N             & 1...N          \\ \hline
 	\end{tabular}
 	\caption{PathRequest type signal.}
 	\label{PathRequest}
 \end{table}
 
-The PathRequest type signal will be sent into the PhysicalTopologyManager\_  block asking for a path to be created between source and destination nodes. In order establish that path one or more light paths are required. In this specific case, transparent transport mode, only direct logical connections will be taken into account and so all paths created will be formed by only one direct light path. This means that there will be no intermediate nodes. %The numberOfPaths variable will establish the number of possible conversions of each lightPath in a set of physical links in Dijkstra algorithm applied in the PhysicalTopologyManager\_  block. If none of those conversions enables the formation of a lightpath then that logical connection is cutted off of the logical topology matrix of our network.
+The PathRequest type signal will be sent from the LogicalTopologyManager\_  block into the PhysicalTopologyManager\_  block asking for a path to be created between source and destination nodes of a certain demand. In order establish that path one or more light paths are required. In this specific case, transparent transport mode, only direct logical connections will be taken into account, because the information has to travel only in the optical domain from source to destination, and so all paths created will be formed by only one direct light path. This means that there will be no intermediate nodes. %The numberOfPaths variable will establish the number of possible conversions of each lightPath in a set of physical links in Dijkstra algorithm applied in the PhysicalTopologyManager\_  block. If none of those conversions enables the formation of a lightpath then that logical connection is cutted off of the logical topology matrix of our network.
 
 
 
 \subsection{PathRequestRouted}
 
-
 \begin{table}[H]
 		\centering
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|lclccccl|}
 	\hline
-	routed                                                                 & \multicolumn{2}{c|}{lightPath}                  & \multicolumn{2}{c|}{opticalChannels} & \multirow{2}{*}{wavelength} \\ \cline{1-5}
-	\multirow{5}{*}{\begin{tabular}[c]{@{}c@{}}true/\\ false\end{tabular}} & sourceNode             & destinationNode        & sourceNode     & destinationNode     &                             \\ \cline{2-6}
-	& \multirow{2}{*}{1...N} & \multirow{2}{*}{1...N} & 1...N          & 1...N               & \multirow{2}{*}{1...OC}     \\ \cline{4-5}
-	&                        &                        & ....           & ....                &                             \\ \cline{2-6}
-	& \multirow{2}{*}{...}   & \multirow{2}{*}{...}   & 1...N          & 1...N               & \multirow{2}{*}{1...OC}     \\ \cline{4-5}
-	&                        &                        & ...            & ...                 &                             \\ \hline
+	& \multicolumn{1}{l}{}        &                             & \multicolumn{1}{l}{}                                           & \multicolumn{1}{l}{}                     & \multicolumn{1}{l}{}                          & \multicolumn{1}{l}{}                                      &  \\ \cline{4-5}
+	&                             & \multicolumn{1}{c|}{}       & \multicolumn{1}{c|}{\textbf{requestIndex}}                     & \multicolumn{1}{c|}{\textbf{routed}}     &                                               &                                                           &  \\ \cline{4-5}
+	&                             & \multicolumn{1}{c|}{}       & \multicolumn{1}{c|}{0...}                                      & \multicolumn{1}{c|}{true/false}          &                                               &                                                           &  \\ \cline{4-5}
+	& \multicolumn{1}{l}{}        &                             & \multicolumn{1}{l}{}                                           & \multicolumn{1}{l}{}                     & \multicolumn{1}{l}{}                          & \multicolumn{1}{l}{}                                      &  \\ \cline{2-7}
+	\multicolumn{1}{|l|}{} & \multicolumn{6}{c|}{\textbf{lightPaths}}                                                                                                                                                                                                                                          &  \\ \cline{2-7}
+	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{\multirow{2}{*}{\textbf{sourceNode}}} & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{destinationNode}}} & \multicolumn{2}{c|}{\textbf{opticalChannels}}                                            & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{wavelenght}}} &  \\ \cline{5-6}
+	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{}                                     & \multicolumn{1}{c|}{}                                          & \multicolumn{1}{c|}{\textbf{sourceNode}} & \multicolumn{1}{c|}{\textbf{destinationNode}} & \multicolumn{1}{c|}{}                                     &  \\ \cline{2-7}
+	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{\multirow{2}{*}{1...N}}               & \multicolumn{1}{c|}{\multirow{2}{*}{1...N}}                    & \multicolumn{1}{c|}{1...N}               & \multicolumn{1}{c|}{1...N}                    & \multicolumn{1}{c|}{\multirow{2}{*}{1...OC}}              &  \\ \cline{5-6}
+	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{}                                     & \multicolumn{1}{c|}{}                                          & \multicolumn{1}{c|}{...}                 & \multicolumn{1}{c|}{...}                      & \multicolumn{1}{c|}{}                                     &  \\ \cline{2-7}
+	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{...}                                  & \multicolumn{1}{c|}{...}                                       & \multicolumn{1}{c|}{...}                 & \multicolumn{1}{c|}{...}                      & \multicolumn{1}{c|}{...}                                  &  \\ \cline{2-7}
+	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{\multirow{2}{*}{1...N}}               & \multicolumn{1}{c|}{\multirow{2}{*}{1...N}}                    & \multicolumn{1}{c|}{1...N}               & \multicolumn{1}{c|}{1...N}                    & \multicolumn{1}{c|}{\multirow{2}{*}{1...OC}}              &  \\ \cline{5-6}
+	\multicolumn{1}{|l|}{} & \multicolumn{2}{c|}{}                                     & \multicolumn{1}{c|}{}                                          & \multicolumn{1}{c|}{...}                 & \multicolumn{1}{c|}{...}                      & \multicolumn{1}{c|}{}                                     &  \\ \cline{2-7}
+	& \multicolumn{1}{l}{}        &                             & \multicolumn{1}{l}{}                                           & \multicolumn{1}{l}{}                     & \multicolumn{1}{l}{}                          & \multicolumn{1}{l}{}                                      &  \\ \hline
 \end{tabular}
 	\caption{PathRequestRouted type signal.}
 	\label{pathRequestRouted}
 \end{table}
-This signal represents the response that the PhysicalTopologyManager\_  block sends back when asked to establish a path. It is formed by one boolean variable "routed"  which will return true in the case a demand is routed correctly through the network, validating the remaining information, or false in the case it is not, which means no path was created to route the demand and so the other fields of this structure will be void. Also this signal contains information about each of the light paths needed to establish the path required in the case it is possible to do so. A PathRequestRouted signal can contain one or many light paths if more than one is needed.
+This signal represents the response that the PhysicalTopologyManager\_  block sends back to the LogicalTopologyManager\_ block when asked to establish a path. There is an requestIndex variable that identifies this signal as a reponse to the pathRequest signal with the same requestIndex. It is also formed by one boolean variable "routed"  which will return true in the case a demand is routed correctly through the network, validating the remaining information, or false in the case it is not, which means no path is possible to be created to route the demand and so the other fields of this structure will be void or fill with invalid information. Furthermore, this signal contains various information about each of the light paths needed to establish the path required in the case it is possible to do so, the source and destination nodes of each lightPath and the source and destination nodes of the opticalChannels needed to create each of those lightPaths as well as the wavelenghts used for that purpose.A PathRequestRouted signal can contain one or many light paths if more than one is needed to create a path.\\ This signal just informs the network about the possibility of creating paths and lightPaths, but in reality those paths and lightPaths will only be created and managed in the LogicalTopologyManager\_  block.
+
 \subsection{DemandRequestRouted}
 
 \begin{table}[H]
 	\centering
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|}
 	\hline
-	demandIndex              & routed                                                                 & pathIndex                & lightPathIndex           & opticalChannelIndex & wavelenght              \\ \hline
-	\multirow{4}{*}{0...D-1} & \multirow{4}{*}{\begin{tabular}[c]{@{}c@{}}true/\\ false\end{tabular}} & \multirow{4}{*}{0...P-1} & \multirow{2}{*}{1...LP-1} & 1...TOC-1           & \multirow{2}{*}{1...OC} \\ \cline{5-5}
-	&                                                                        &                          &                          & ...                 &                         \\ \cline{4-6}
-	&                                                                        &                          & \multirow{2}{*}{...}     & 1-TOC-1             & \multirow{2}{*}{1...OC} \\ \cline{5-5}
-	&                                                                        &                          &                          & ...                 &                         \\ \hline
+	demandIndex               & routed                      & pathsIndex               & lightPathsIndex           & opticalChannelsIndex \\ \hline
+	\multirow{2}{*}{0...D-1} & \multirow{2}{*}{true/false} & \multirow{2}{*}{0...P-1} & \multirow{2}{*}{1...LP-1} & 1...TOC-1            \\ \cline{5-5} 
+	&                             &                          &                           & ...                  \\ \hline
 \end{tabular}
 	\caption{DemandRequestRouted type signal.}
 \label{DemandRequestRouted}
@@ -844,7 +889,7 @@ P represents the total number of paths existent.\\
 LP represents the total number of lightPaths existent.\\
 TOC represents the total number of opticalChannels existent.\\ \\
 
-This signal contains information regarding one demand and whether it was routed or not. In the case variable "routed" assumes a true value it is presented in the final block (SinkRoutedOrBlocked\_ ) of the diagram of figure \ref{fluxogram_transparent_surv} information about the path used, also the lightPaths  and opticalChannels that constitute it and the wavelength used in each of those lightPaths. In the case where variable "routed" assumes value false only the information about the demandIndex is presented meaning that that demand was blocked.
+This signal contains information regarding one demand and whether it was routed or not. In the case variable "routed" assumes a true value it is presented in the final block (SinkRoutedOrBlocked\_ ) of the diagram of figure \ref{fluxogram_transparent_surv} information about the path used, also the lightPaths  and opticalChannels that constitute it. In the case where variable "routed" assumes value false only the information about the demandIndex is presented meaning that that demand was blocked. In the case a demand is routed combining the information of the DemandRequestRouted signal with the one present in the LogicalTopologyManager\_  block it is possible to know every piece of information about the route taken by the demand as well as waveleghts, etc. 
 
 %\underline{Path}\\
 
@@ -862,22 +907,22 @@ This signal contains information regarding one demand and whether it was routed 
 
 
 
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|c|c|}
-		\hline
-		Equipment         & Costs      \\ \hline
-		OLT               & 15000\euro     \\ \hline
-		Transponder       & 5000\euro/GB   \\ \hline
-		Optical Amplifier & 4000\euro      \\ \hline
-		EXC               & 10000\euro     \\ \hline
-		OXC               & 20000\euro     \\ \hline
-		EXC Port          & 1000\euro/GB/s \\ \hline
-		OXC Port          & 2500\euro/port \\ \hline
-	\end{tabular}
-	\caption{Equipment costs.}
-	\label{equipment_costs}
-\end{table}
+%\begin{table}[H]
+%	\centering
+%	\begin{tabular}{|c|c|}
+%		\hline
+%		Equipment         & Costs      \\ \hline
+%		OLT               & 15000\euro     \\ \hline
+%		Transponder       & 5000\euro/GB   \\ \hline
+%		Optical Amplifier & 4000\euro      \\ \hline
+%		EXC               & 10000\euro     \\ \hline
+%		OXC               & 20000\euro     \\ \hline
+%		EXC Port          & 1000\euro/GB/s \\ \hline
+%		OXC Port          & 2500\euro/port \\ \hline
+%	\end{tabular}
+%	\caption{Equipment costs.}
+%	\label{equipment_costs}
+%\end{table}
 
 \section{Blocks input parameters and signals}
 
@@ -885,14 +930,15 @@ This signal contains information regarding one demand and whether it was routed 
 	\centering
 	\begin{tabular}{|c|c|c|}
 		\hline
-		\textbf{Block}                                                               & \textbf{Input Parameters}                                                                                                         & \textbf{Input Signals}                                                                \\ \hline
-		Scheduler\_                                                               & \begin{tabular}[c]{@{}c@{}}odu0, odu1,odu2, odu3, odu4,\\ orderingRule\end{tabular}                 & None                                                                         \\ \hline
-		\begin{tabular}[c]{@{}c@{}}LogicalTopologyGenerator\_  \end{tabular}  & \begin{tabular}[c]{@{}c@{}}transportMode, adjacenceMatrix\end{tabular}                                                & None \\ \hline
-		\begin{tabular}[c]{@{}c@{}}PhysicalTopologyGenerator\_  \end{tabular}  & \begin{tabular}[c]{@{}c@{}}adjacenceMatrix, transportSystems,\\ opticalChannels, opticalChannelsCapacity \end{tabular}                                                & None                                                                    \\ \hline
-		\begin{tabular}[c]{@{}c@{}}LogicalTopologyManager\_  \end{tabular} & \begin{tabular}[c]{@{}c@{}}None\end{tabular} & \begin{tabular}[c]{@{}c@{}} SchedulerOut, \\LogicalTopologyOut, \\PhysicalManagerOut \end{tabular}                                                                        \\ \hline
-		PhysicalTopologyManager\_                                                          & \begin{tabular}[c]{@{}c@{}}criterion, numberOfPaths\end{tabular}                                                                                                & \begin{tabular}[c]{@{}c@{}}LogicalManagerRequest,\\ PhysicalGeneratorOut \end{tabular}     \\ \hline
-		SinkRoutedOrBlocked\_                                                              & None                                                                                         & LogicalManagerOut \\ \hline
-
+		\textbf{Block}              & \textbf{Input Parameters}                                                                                     & \textbf{Input Signals}                                                                            \\ \hline
+		Scheduler\_                 & \begin{tabular}[c]{@{}c@{}}odu0, odu1, odu2, odu3,\\ odu4, orderingRule\end{tabular}                          & None                                                                                              \\ \hline
+		LogicalTopologyGenerator\_  & \begin{tabular}[c]{@{}c@{}}transportMode,\\ adjacenceMatrix\end{tabular}                                      & None                                                                                              \\ \hline
+		PhysicalTopologyGenerator\_ & \begin{tabular}[c]{@{}c@{}}transportSystems,\\ opticalChannels,\\ opticalChannelCapacity\end{tabular}         & None                                                                                              \\ \hline
+		LogicalTopologyManager\_    & \begin{tabular}[c]{@{}c@{}}routingCriterionLogicalTopology,\\ blockingCriterionLogicalTopology\end{tabular}   & \begin{tabular}[c]{@{}c@{}}SchedulerOut,\\ LogicalGeneratorOut,\\ PhysicalManagerOut\end{tabular} \\ \hline
+		PhysicalTopologyManager\_   & \begin{tabular}[c]{@{}c@{}}routingCriterionPhysicalTopology,\\ blockingCriterionPhysicalTopology\end{tabular} & \begin{tabular}[c]{@{}c@{}}PhysicalGeneratorOut,\\ LogicalManagerRequest\end{tabular}             \\ \hline
+		SinkRoutedOrBlocked\_       & None                                                                                                          & LogicalManagerOut                                                                                 \\ \hline
+		SinkLogicalTopology\_       & None                                                                                                          & currentLogicalTopology                                                                            \\ \hline
+		SinkPhysicalTopology\_      & None                                                                                                          & currentPhysicalTopology                                                                           \\ \hline
 	\end{tabular}
 	\caption{Blocks input parameters and signals.}
 	\label{blocks_input}
@@ -916,25 +962,97 @@ This signal contains information regarding one demand and whether it was routed 
 	\label{blocks_input}
 \end{table}
 
-
+\clearpage
 \section{Example}
 %
-\textbf{Physical Topology}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/physicalTopology}
 	\caption{Allowed physical topology.}
 	\label{allowed_physical_example}
 \end{figure}
-\textbf{Logical Topology}
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=13cm]{sdf/heuristic/transparent/figures/logicalTopology}
-	\caption{Transparent logical topology.}
+	\caption{Allowed transparent logical topology.}
 	\label{allowed_logical_example}
 \end{figure}
 
-Having just 3 optical channels per OMS, each with a capacity of 100 Gbps, and the following set of demands.\\\\
+These traffic matrices are represented by ODU0, ODU1, ODU2, ODU3 and ODU4 where each one has a certain bit rate.
+The ODU0 corresponds to 1.25 Gbits/s, the ODU1 corresponds to 2.5 Gbits/s, the ODU2 corresponds to 10 Gbits/s, the ODU3 corresponds to 40 Gbits/s and finally the ODU4 corresponds to 100 Gbits/s.
+As we can see below, these arrays are bi-directional because they are symmetric arrays and as such, the traffic sent in a certain direction must be the same traffic sent in that opposite direction.
+Having just 2 optical channels per OMS, each with a capacity of 100 Gbps, and the following set of demands.\\\\
+
+\[
+ODU0=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\qquad ODU1=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+\[
+ODU2=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\qquad ODU3=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 2 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 2 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+\[
+ODU4=
+\begin{bmatrix}
+0 & 0 & 0 & 0 & 5 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 \\
+5 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0
+\end{bmatrix}
+\]
+
+\vspace{17pt}
+Through these ODU's we can calculate the total network traffic for this specific scenario:\\
+
+$T_1^0$ = 0x1.25 = 0 Gbits/s \qquad
+$T_1^1$ = 0x2.5 = 0 Gbits/s \qquad
+$T_1^2$ = 0x10 = 0 Gbits/s \\
+
+$T_1^3$ = 4x40 = 160 Gbits/s \quad
+$T_1^4$ = 10x100 = 1000 Gbits/s \\
+
+$T_{1}$ = 0 + 0 + 0 + 80 + 1160 = 1160 Gbits/s \qquad
+$T$ = 1660/2 = \textbf{580 Gbits/s}\\
+
+Where the variable $T_1^x$ represents the unidirectional traffic of the ODUx, for example, $T_1^0$ represents the unidirectional traffic of the ODU0 and $T_1^1$ represents the unidirectional traffic of the ODU1. The variable $T_{1}$ represents the total of unidirectional traffic that is injected into the network and finally the variable $T$ represents the total of bidirectional traffic.\\
+
+The demands are first ordered in the Scheduler\_   block considering the entry variable, orderingRule (type of ODU), in a single queue. These demands will constitute the SchedulerOut signal.\\ \\ \\ 
 \textbf{Demands}
 \begin{table}[H]
 	\centering
@@ -946,65 +1064,894 @@ Having just 3 optical channels per OMS, each with a capacity of 100 Gbps, and th
 		2           & 1          & 5               & 4       & 0                   \\ \hline
 		3           & 1          & 5               & 4       & 0                   \\ \hline
 		4           & 1          & 5               & 4       & 0                   \\ \hline
-		5           & 1          & 5               & 4       & 0                   \\ \hline
-		6           & 1          & 5               & 4       & 0                   \\ \hline
-		7           & 3          & 5               & 3       & 0                   \\ \hline
-		8           & 3          & 5               & 3       & 0                   \\ \hline
+		5           & 3          & 5               & 3       & 0                   \\ \hline
+		6           & 3          & 5               & 3       & 0                   \\ \hline
 	\end{tabular}
 	\caption{Demands ordered by Scheduler\_  block.}
 	\label{scheduler_example}
 \end{table}
-\clearpage
-\textbf{PathRequest signals}
+
+\subsection{Demand 0}
+\textbf{Generate a DemandRequest type signal}\\ \\
+Demand 0 is sent in a DemandRequest signal type from the Scheduler\_  to the LogicalTopologyManager\_  block.
 \begin{table}[H]
 	\centering
-	\begin{tabular}{c|c|c|c|}
-		\cline{2-4}
-		\multicolumn{1}{l|}{}          & \multicolumn{3}{c|}{PathRequest signals}         \\ \cline{2-4}
-		\multicolumn{1}{l|}{}          & sourceNode & intermediateNodes & destinationNode \\ \hline
-		\multicolumn{1}{|l|}{Demand 0} & 1          & 0                 & 5               \\ \hline
-		\multicolumn{1}{|c|}{Demand 1} & 1          & 0                 & 5               \\ \hline
-		\multicolumn{1}{|c|}{Demand 2} & 1          & 0                 & 5               \\ \hline
-		\multicolumn{1}{|c|}{Demand 3} & 1          & 0                 & 5               \\ \hline
-		\multicolumn{1}{|c|}{Demand 4} & 1          & 0                 & 5               \\ \hline
-		\multicolumn{1}{|c|}{Demand 5} & 1          & 0                 & 5               \\ \hline
-		\multicolumn{1}{|c|}{Demand 6} & 1          & 0                 & 5               \\ \hline
-		\multicolumn{1}{|c|}{Demand 7} & 3          & 0                 & 5               \\ \hline
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & sourceNode & destinationNode & oduType & survivabilityMethod \\ \hline
+		0           & 1          & 5               & 4       & 0                   \\ \hline
 	\end{tabular}
-	\caption{PathRequest signals generated.}
-	\label{pathrequest_example}
+	\caption{First DemandRequest sent by Scheduler\_  block.}
 \end{table}
-\textbf{PathRequestRouted signals}
+ 
+The signal is sent to the LogicalTopologyManager\_  block where a search is made by an available path from source to destination node, in this case nodes 1 and 5, respectively.\\ \\
+
+\textbf{Search for an availabe path}
 \begin{table}[H]
 	\centering
-	\begin{tabular}{c|c|c|c|c|c|c|}
-		\cline{2-7}
-		\multicolumn{1}{l|}{}                           & \multirow{2}{*}{routed} & \multicolumn{2}{c|}{lightPath}          & \multicolumn{2}{c|}{opticalChannels} & \multirow{2}{*}{wavelenght} \\ \cline{3-6}
-		\multicolumn{1}{l|}{}                           &                         & sourceNode         & destinationNode    & sourceNode     & destinationNode     &                             \\ \hline
-		\multicolumn{1}{|l|}{\multirow{2}{*}{Demand 0}} & \multirow{2}{*}{true}   & \multirow{2}{*}{1} & \multirow{2}{*}{5} & 1              & 6                   & \multirow{2}{*}{1}          \\ \cline{5-6}
-		\multicolumn{1}{|l|}{}                          &                         &                    &                    & 6              & 5                   &                             \\ \hline
-		\multicolumn{1}{|l|}{\multirow{2}{*}{Demand 1}} & \multirow{2}{*}{true}   & \multirow{2}{*}{1} & \multirow{2}{*}{5} & 1              & 6                   & \multirow{2}{*}{2}          \\ \cline{5-6}
-		\multicolumn{1}{|l|}{}                          &                         &                    &                    & 6              & 5                   &                             \\ \hline
-		\multicolumn{1}{|c|}{\multirow{2}{*}{Demand 2}} & \multirow{2}{*}{true}   & \multirow{2}{*}{1} & \multirow{2}{*}{5} & 1              & 6                   & \multirow{2}{*}{3}          \\ \cline{5-6}
-		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 6              & 5                   &                             \\ \hline
-		\multicolumn{1}{|c|}{\multirow{3}{*}{Demand 3}} & \multirow{3}{*}{true}   & \multirow{3}{*}{1} & \multirow{3}{*}{5} & 1              & 2                   & \multirow{3}{*}{1}          \\ \cline{5-6}
-		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 2              & 3                   &                             \\ \cline{5-6}
-		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 3              & 5                   &                             \\ \hline
-		\multicolumn{1}{|c|}{\multirow{3}{*}{Demand 4}} & \multirow{3}{*}{true}   & \multirow{3}{*}{1} & \multirow{3}{*}{5} & 1              & 2                   & \multirow{3}{*}{2}          \\ \cline{5-6}
-		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 2              & 3                   &                             \\ \cline{5-6}
-		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 3              & 5                   &                             \\ \hline
-		\multicolumn{1}{|c|}{\multirow{3}{*}{Demand 5}} & \multirow{3}{*}{true}   & \multirow{3}{*}{1} & \multirow{3}{*}{5} & 1              & 2                   & \multirow{3}{*}{3}          \\ \cline{5-6}
-		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 2              & 3                   &                             \\ \cline{5-6}
-		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 3              & 5                   &                             \\ \hline
-		\multicolumn{1}{|c|}{Demand 6}                  & false                   & 0                  & 0                  & 0              & 0                   & 0                           \\ \hline
-		\multicolumn{1}{|c|}{\multirow{2}{*}{Demand 7}} & \multirow{2}{*}{true}   & \multirow{2}{*}{3} & \multirow{2}{*}{5} & 3              & 4                   & \multirow{2}{*}{1}          \\ \cline{5-6}
-		\multicolumn{1}{|c|}{}                          &                         &                    &                    & 4              & 5                   &                             \\ \hline
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		&            &                 &                                                            &                 \\ \hline
 	\end{tabular}
-	\caption{PathRequestRouted signals.}
-	\label{pathRequestRouted_example}
+	\caption{Paths state variable from LogicalTopologyManager\_  block.}
 \end{table}
-\clearpage
-\textbf{Paths}
+
+As initially no path exists one must be created in order to route this demand and so a pathRequest is sent from the LogicalTopologyManager\_  to to the PhysicalTopologyManager\_  block.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Logical Topology)}\\ \\
+\begin{table}[H]
+	\centering	
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
+		1                           & \textbf{0}   & 1 & 1 & 1 & 1 & 1 \\ \hline
+		2                           & 1 & \textbf{0}   & 1 & 1 & 1 & 1 \\ \hline
+		3                           & 1 & 1 & \textbf{0}   & 1 & 1 & 1 \\ \hline
+		4                           & 1 & 1 & 1 & \textbf{0}   & 1 & 1 \\ \hline
+		5                           & 1 & 1 & 1 & 1 & \textbf{0}   & 1 \\ \hline
+		6                           & 1 & 1 & 1 & 1 & 1 & \textbf{0}   \\ \hline
+	\end{tabular}
+	\caption{Allowed logical topology matrix for transparent transport mode.}
+	\label{Transparentlogical_topology}
+\end{table}
+
+The logical topology matrix of table \ref{Transparentlogical_topology} is then applied as an entry to the Dijkstra algorithm, but in this case as we are considering the transparent transport mode, the output is constrained by the fact that the number of hops of the shortest path must be equal to 1, this means that there must be a direct logical connection between source and destination nodes (1->5).\\ \\
+
+\textbf{Generate a pathRequest signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		requestIndex & sourceNode & intermidiateNodes & destinationNode \\ \hline
+		0            & 1          & -1                 & 5               \\ \hline
+	\end{tabular}
+	\caption{pathRequest signal for demand 0.}
+\end{table} 
+
+As the transport mode assumed is the transparent, only direct logical connections are used to route demands, so there are no intermidiate nodes.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Physical Topology)}\\ \\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Nodes} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+		1     & \textbf{0} & 1 & 0 & 0 & 0 & 1 \\ \hline
+		2     & 1 & \textbf{0} & 1 & 0 & 0 & 1 \\ \hline
+		3     & 0 & 1 & \textbf{0} & 1 & 1 & 0 \\ \hline
+		4     & 0 & 0 & 1 & \textbf{0} & 1 & 0 \\ \hline
+		5     & 0 & 0 & 1 & 1 & \textbf{0} & 1 \\ \hline
+		6     & 1 & 1 & 0 & 0 & 1 & \textbf{0} \\ \hline
+	\end{tabular}
+	\caption{Physical topology adjacence matrix.}
+	\label{Adjacence_Matrix}
+\end{table}
+Here the entry variable for the Dijkstra algorithm will be the adjacence matrix which will convert the required light path (1->5) into a restricted variety of sets of physical connections. Considering blockingCriterionPhysicalTopology equal to 3 (number of paths to be tested before declaring a possible blocked state) and routingCriterionPhysicalTopology equal to 1 (number of excess hops in relation to the shortest path), then the final result of Dijkstra algorithm will be the one presented below.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|l|c|l|c|l|c|l|}
+		\hline
+		\multicolumn{8}{|c|}{lightPath}                                                                                                                                                    \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{sourceNode}} & \multicolumn{2}{c|}{\multirow{2}{*}{destinationNode}} & \multicolumn{4}{c|}{opticalChannels}                                   \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{sourceNode} & \multicolumn{2}{c|}{destinationNode} \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{1}}          & \multicolumn{2}{c|}{\multirow{2}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{3}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{3}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+	\end{tabular}
+	\caption{Result of Dijkstra algorithm applied to the ajacence matrix.}
+\end{table}
+
+\textbf{Test possibilities given by Dijkstra to establish a path}\\ \\
+\textbf{Before routing}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		1                              & 1          & 6               & 2                                                             & {[}1 2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 6.}
+\end{table}
+
+There are available channels and wavelenghts. Lets now test the other opticalChannel needed to establish this path.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		15                              & 6          & 5               & 2                                                             & {[}1 2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 6.}
+\end{table}
+
+As both opticalMultiplexingSystems have the required capacity and wavelenghts a PathRequestRouted signal will generated informing the LogicalTopologyManager\_  block that it is possible to establish a path to route demand 0, and the physical capacity of the Optical Multiplexing Systems will be updated.\\ \\
+\\ \\
+\textbf{After routing}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		1                              & 1          & 6               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 1 to 6 after routing demand 0.}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		15                              & 6          & 5               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 6 to 5 after routing demand 0.}
+\end{table}
+
+\textbf{Generate a PathRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|lllclll|}
+		\hline
+		&                                                  &                                                       & \multicolumn{1}{l}{}            &                                      &                                                  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{}                            & \multicolumn{1}{c|}{requestIndex}                     & \multicolumn{1}{c|}{routed}     &                                      &                                                  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{}                            & \multicolumn{1}{c|}{0}                                & \multicolumn{1}{c|}{true}       &                                      &                                                  &  \\ \cline{3-4}
+		&                                                  &                                                       & \multicolumn{1}{l}{}            &                                      &                                                  &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{5}{c|}{lightPaths}                                                                                                                                                                                                      &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{\multirow{2}{*}{sourceNode}} & \multicolumn{1}{l|}{\multirow{2}{*}{destinationNode}} & \multicolumn{2}{c|}{opticalChannels}                                   & \multicolumn{1}{l|}{\multirow{2}{*}{wavelenght}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{}                            & \multicolumn{1}{l|}{}                                 & \multicolumn{1}{l|}{sourceNode} & \multicolumn{1}{l|}{destinationNode} & \multicolumn{1}{l|}{}                            &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\multirow{2}{*}{1}}          & \multicolumn{1}{c|}{\multirow{2}{*}{5}}               & \multicolumn{1}{c|}{1}          & \multicolumn{1}{c|}{6}               & \multicolumn{1}{c|}{\multirow{2}{*}{1}}          &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{}                            & \multicolumn{1}{c|}{}                                 & \multicolumn{1}{c|}{6}          & \multicolumn{1}{c|}{5}               & \multicolumn{1}{c|}{}                            &  \\ \cline{2-6}
+		&                                                  &                                                       & \multicolumn{1}{l}{}            &                                      &                                                  &  \\ \hline
+	\end{tabular}
+	\caption{PathRequestRouted signal.}
+\end{table}
+
+\textbf{Update LogicalTopologyManager\_  block state variables} \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+	\end{tabular}
+	\caption{Paths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+\begin{tabular}{|c|c|c|c|c|}
+	\hline
+	lightPathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & opticalChannelsIndex \\ \hline
+	0              & 1          & 5               & 0                                                          & 0,1                  \\ \hline
+\end{tabular}
+	\caption{LightPaths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		opticalChannelsIndex & sourceNode & destinationNode & capacity & demandsIndex & wavelenght \\ \hline
+		0                    & 1          & 6               & 0        & 0            & 1          \\ \hline
+		1                    & 6          & 5               & 0        & 0            & 1          \\ \hline
+	\end{tabular}
+	\caption{OpticalChannels variable updated.}
+\end{table}
+
+\textbf{Generate a DemandRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & routed & pathsIndex & lightPathsIndex & opticalChannelsIndex \\ \hline
+		0           & true   & 0          & 0               & {[}0, 1{]}           \\ \hline
+	\end{tabular}
+	\caption{DemandRequestRouted signal.}
+\end{table}
+
+\subsection{Demand 1}
+\textbf{Generate a DemandRequest type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & sourceNode & destinationNode & oduType & survivabilityMethod \\ \hline
+		1           & 1          & 5               & 4       & 0                   \\ \hline
+	\end{tabular}
+	\caption{DemandRequest sent by Scheduler\_  block for demand 1.}
+\end{table}
+
+The signal is sent to the LogicalTopologyManager\_  block where a search is made by an available path from source to destination node, in this case nodes 1 and 5, respectively.\\ \\
+
+\textbf{Search for an availabe path}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+	\end{tabular}
+	\caption{Paths state variable from LogicalTopologyManager\_  block.}
+\end{table}
+
+There is no available path.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Logical Topology)}\\ \\
+\begin{table}[H]
+	\centering	
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
+		1                           & \textbf{0}   & 1 & 1 & 1 & 1 & 1 \\ \hline
+		2                           & 1 & \textbf{0}   & 1 & 1 & 1 & 1 \\ \hline
+		3                           & 1 & 1 & \textbf{0}   & 1 & 1 & 1 \\ \hline
+		4                           & 1 & 1 & 1 & \textbf{0}   & 1 & 1 \\ \hline
+		5                           & 1 & 1 & 1 & 1 & \textbf{0}   & 1 \\ \hline
+		6                           & 1 & 1 & 1 & 1 & 1 & \textbf{0}   \\ \hline
+	\end{tabular}
+	\caption{Allowed logical topology matrix for transparent transport mode.}
+	\label{Transparentlogical_topology}
+\end{table}
+
+The logical topology matrix of table \ref{Transparentlogical_topology} is then applied as an entry to the Dijkstra algorithm, but in this case as we are considering the transparent transport mode, the output is constrained by the fact that the number of hops of the shortest path must be equal to 1, this means that there must be a direct logical connection between source and destination nodes (1->5).\\ \\
+
+\textbf{Generate a pathRequest signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		requestIndex & sourceNode & intermidiateNodes & destinationNode \\ \hline
+		1            & 1          & -1                 & 5               \\ \hline
+	\end{tabular}
+	\caption{pathRequest signal for demand 0.}
+\end{table} 
+
+As the transport mode assumed is the transparent, only direct logical connections are used to route demands, so there are no intermidiate nodes.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Physical Topology)}\\ \\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Nodes} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+		1     & \textbf{0} & 1 & 0 & 0 & 0 & 1 \\ \hline
+		2     & 1 & \textbf{0} & 1 & 0 & 0 & 1 \\ \hline
+		3     & 0 & 1 & \textbf{0} & 1 & 1 & 0 \\ \hline
+		4     & 0 & 0 & 1 & \textbf{0} & 1 & 0 \\ \hline
+		5     & 0 & 0 & 1 & 1 & \textbf{0} & 1 \\ \hline
+		6     & 1 & 1 & 0 & 0 & 1 & \textbf{0} \\ \hline
+	\end{tabular}
+	\caption{Physical topology adjacence matrix.}
+	\label{Adjacence_Matrix}
+\end{table}
+Here the entry variable for the Dijkstra algorithm will be the adjacence matrix which will convert the required light path (1->5) into a restricted variety of sets of physical connections. Considering blockingCriterionPhysicalTopology equal to 3 (number of paths to be tested before declaring a possible blocked state) and routingCriterionPhysicalTopology equal to 1 (number of excess hops in relation to the shortest path), then the final result of Dijkstra algorithm will be the one presented below.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|l|c|l|c|l|c|l|}
+		\hline
+		\multicolumn{8}{|c|}{lightPath}                                                                                                                                                    \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{sourceNode}} & \multicolumn{2}{c|}{\multirow{2}{*}{destinationNode}} & \multicolumn{4}{c|}{opticalChannels}                                   \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{sourceNode} & \multicolumn{2}{c|}{destinationNode} \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{1}}          & \multicolumn{2}{c|}{\multirow{2}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{3}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{3}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+	\end{tabular}
+	\caption{Result of Dijkstra algorithm applied to the ajacence matrix.}
+\end{table}
+
+\textbf{Test possibilities given by Dijkstra to establish a path}\\ \\
+\textbf{Before routing}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		1                              & 1          & 6               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 6.}
+\end{table}
+
+There are available channels and wavelenghts. Lets now test the other opticalChannel needed to establish this path.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		15                              & 6          & 5               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 6.}
+\end{table}
+
+As both opticalMultiplexingSystems have the required capacity and wavelenghts a PathRequestRouted signal will generated informing the LogicalTopologyManager\_  block that it is possible to establish a path to route demand 1, and the physical capacity of the Optical Multiplexing Systems will be updated.\\ \\
+\\ \\
+\textbf{After routing}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		1                              & 1          & 6               & 0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 1 to 6 after routing demand 1.}
+\end{table}
+
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		15                              & 6          & 5               & 0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 6 to 5 after routing demand 1.}
+\end{table}
+
+\textbf{Generate a PathRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|lllclll|}
+		\hline
+		&                                                  &                                                       & \multicolumn{1}{l}{}            &                                      &                                                  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{}                            & \multicolumn{1}{c|}{requestIndex}                     & \multicolumn{1}{c|}{routed}     &                                      &                                                  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{}                            & \multicolumn{1}{c|}{1}                                & \multicolumn{1}{c|}{true}       &                                      &                                                  &  \\ \cline{3-4}
+		&                                                  &                                                       & \multicolumn{1}{l}{}            &                                      &                                                  &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{5}{c|}{lightPaths}                                                                                                                                                                                                      &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{\multirow{2}{*}{sourceNode}} & \multicolumn{1}{l|}{\multirow{2}{*}{destinationNode}} & \multicolumn{2}{c|}{opticalChannels}                                   & \multicolumn{1}{l|}{\multirow{2}{*}{wavelenght}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{}                            & \multicolumn{1}{l|}{}                                 & \multicolumn{1}{l|}{sourceNode} & \multicolumn{1}{l|}{destinationNode} & \multicolumn{1}{l|}{}                            &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\multirow{2}{*}{1}}          & \multicolumn{1}{c|}{\multirow{2}{*}{5}}               & \multicolumn{1}{c|}{1}          & \multicolumn{1}{c|}{6}               & \multicolumn{1}{c|}{\multirow{2}{*}{2}}          &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{}                            & \multicolumn{1}{c|}{}                                 & \multicolumn{1}{c|}{6}          & \multicolumn{1}{c|}{5}               & \multicolumn{1}{c|}{}                            &  \\ \cline{2-6}
+		&                                                  &                                                       & \multicolumn{1}{l}{}            &                                      &                                                  &  \\ \hline
+	\end{tabular}
+	\caption{PathRequestRouted signal.}
+\end{table}
+
+\textbf{Update LogicalTopologyManager\_  block state variables} \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+		1         & 1          & 5               & 0                                                          & 1               \\ \hline
+	\end{tabular}
+	\caption{Paths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		lightPathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & opticalChannelsIndex \\ \hline
+		0              & 1          & 5               & 0                                                          & 0,1                  \\ \hline
+		1              & 1          & 5               & 0                                                          & 2,3                  \\ \hline
+	\end{tabular}
+	\caption{LightPaths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		opticalChannelsIndex & sourceNode & destinationNode & capacity & demandsIndex & wavelenght \\ \hline
+		0                    & 1          & 6               & 0        & 0            & 1          \\ \hline
+		1                    & 6          & 5               & 0        & 0            & 1          \\  \hline
+		2                    & 1          & 6               & 0        & 1            & 2          \\ \hline
+		3                    & 6          & 5               & 0        & 1            & 2          \\ \hline
+	\end{tabular}
+	\caption{OpticalChannels variable updated.}
+\end{table}
+
+\textbf{Generate a DemandRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & routed & pathsIndex & lightPathsIndex & opticalChannelsIndex \\ \hline
+		1           & true   & 1          & 1               & {[}2, 3{]}           \\ \hline
+	\end{tabular}
+	\caption{DemandRequestRouted signal.}
+\end{table}
+
+\subsection{Demand 2}
+\textbf{Generate a DemandRequest type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & sourceNode & destinationNode & oduType & survivabilityMethod \\ \hline
+		2           & 1          & 5               & 4       & 0                   \\ \hline
+	\end{tabular}
+	\caption{DemandRequest sent by Scheduler\_  block for demand 2.}
+\end{table}
+
+The signal is sent to the LogicalTopologyManager\_  block where a search is made by an available path from source to destination node, in this case nodes 1 and 5, respectively.\\ \\
+
+\textbf{Search for an availabe path}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+		1         & 1          & 5               & 0                                                          & 1               \\ \hline
+	\end{tabular}
+	\caption{Paths state variable from LogicalTopologyManager\_  block.}
+\end{table}
+
+There is no available path.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Logical Topology)}\\ \\
+\begin{table}[H]
+	\centering	
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
+		1                           & \textbf{0}   & 1 & 1 & 1 & 1 & 1 \\ \hline
+		2                           & 1 & \textbf{0}   & 1 & 1 & 1 & 1 \\ \hline
+		3                           & 1 & 1 & \textbf{0}   & 1 & 1 & 1 \\ \hline
+		4                           & 1 & 1 & 1 & \textbf{0}   & 1 & 1 \\ \hline
+		5                           & 1 & 1 & 1 & 1 & \textbf{0}   & 1 \\ \hline
+		6                           & 1 & 1 & 1 & 1 & 1 & \textbf{0}   \\ \hline
+	\end{tabular}
+	\caption{Allowed logical topology matrix for transparent transport mode.}
+	\label{Transparentlogical_topology}
+\end{table}
+
+The logical topology matrix of table \ref{Transparentlogical_topology} is then applied as an entry to the Dijkstra algorithm, but in this case as we are considering the transparent transport mode, the output is constrained by the fact that the number of hops of the shortest path must be equal to 1, this means that there must be a direct logical connection between source and destination nodes (1->5).\\ \\
+
+\textbf{Generate a pathRequest signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		requestIndex & sourceNode & intermidiateNodes & destinationNode \\ \hline
+		2            & 1          & -1                 & 5               \\ \hline
+	\end{tabular}
+	\caption{pathRequest signal for demand 0.}
+\end{table} 
+
+As the transport mode assumed is the transparent, only direct logical connections are used to route demands, so there are no intermidiate nodes.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Physical Topology)}\\ \\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Nodes} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+		1     & \textbf{0} & 1 & 0 & 0 & 0 & 1 \\ \hline
+		2     & 1 & \textbf{0} & 1 & 0 & 0 & 1 \\ \hline
+		3     & 0 & 1 & \textbf{0} & 1 & 1 & 0 \\ \hline
+		4     & 0 & 0 & 1 & \textbf{0} & 1 & 0 \\ \hline
+		5     & 0 & 0 & 1 & 1 & \textbf{0} & 1 \\ \hline
+		6     & 1 & 1 & 0 & 0 & 1 & \textbf{0} \\ \hline
+	\end{tabular}
+	\caption{Physical topology adjacence matrix.}
+	\label{Adjacence_Matrix}
+\end{table}
+Here the entry variable for the Dijkstra algorithm will be the adjacence matrix which will convert the required light path (1->5) into a restricted variety of sets of physical connections. Considering blockingCriterionPhysicalTopology equal to 3 (number of paths to be tested before declaring a possible blocked state) and routingCriterionPhysicalTopology equal to 1 (number of excess hops in relation to the shortest path), then the final result of Dijkstra algorithm will be the one presented below.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|l|c|l|c|l|c|l|}
+		\hline
+		\multicolumn{8}{|c|}{lightPath}                                                                                                                                                    \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{sourceNode}} & \multicolumn{2}{c|}{\multirow{2}{*}{destinationNode}} & \multicolumn{4}{c|}{opticalChannels}                                   \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{sourceNode} & \multicolumn{2}{c|}{destinationNode} \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{1}}          & \multicolumn{2}{c|}{\multirow{2}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{3}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{3}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+	\end{tabular}
+	\caption{Result of Dijkstra algorithm applied to the ajacence matrix.}
+\end{table}
+
+\textbf{Test possibilities given by Dijkstra to establish a path}\\ \\
+\textbf{Before routing}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		1                              & 1          & 6               & 0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 6.}
+\end{table}
+
+There are no available channels neither wavelenghts, so this first Path given by Dijkstra algorithm must be ignored and the second tested.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		0                              & 1          & 2               & 2                                                             & {[}1 2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 2.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		3                              & 2          & 3               & 2                                                             & {[}1 2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 2 to 3.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		7                              & 3          & 5               & 2                                                             & {[}1 2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 3 to 5.}
+\end{table}
+
+As all opticalMultiplexingSystems have the required capacity and wavelenghts a PathRequestRouted signal will generated informing the LogicalTopologyManager\_  block that it is possible to establish a path to route demand 2, and the physical capacity of the Optical Multiplexing Systems will be updated.\\ \\
+\\ \\
+\textbf{After routing}\\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		0                              & 1          & 2               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 1 to 2 after routing demand 2.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		3                              & 2          & 3               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 2 to 3 after routing demand 2.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		7                              &3          & 5               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 3 to 5 after routing demand 2.}
+\end{table}
+
+
+\textbf{Generate a PathRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|lllclll|}
+		\hline
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{requestIndex} & \multicolumn{1}{c|}{routed} &  &  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{true} &  &  &  \\ \cline{3-4}
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{5}{c|}{lightPaths} &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{\multirow{2}{*}{sourceNode}} & \multicolumn{1}{l|}{\multirow{2}{*}{destinationNode}} & \multicolumn{2}{c|}{opticalChannels} & \multicolumn{1}{l|}{\multirow{2}{*}{wavelenght}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{sourceNode} & \multicolumn{1}{l|}{destinationNode} & \multicolumn{1}{l|}{} &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\multirow{3}{*}{1}} & \multicolumn{1}{c|}{\multirow{3}{*}{5}} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{\multirow{3}{*}{1}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{} &  \\ \cline{2-6}
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \hline
+	\end{tabular}
+	\caption{PathRequestRouted signal.}
+\end{table}
+
+\textbf{Update LogicalTopologyManager\_  block state variables} \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+		1         & 1          & 5               & 0                                                          & 1               \\ \hline
+		2         & 1          & 5               & 0                                                          & 2               \\ \hline
+	\end{tabular}
+	\caption{Paths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		lightPathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & opticalChannelsIndex \\ \hline
+		0              & 1          & 5               & 0                                                          & 0,1                  \\ \hline
+		1              & 1          & 5               & 0                                                          & 2,3                  \\ \hline
+		2              & 1          & 5               & 0                                                          & 4,5,6                  \\ \hline
+	\end{tabular}
+	\caption{LightPaths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		opticalChannelsIndex & sourceNode & destinationNode & capacity & demandsIndex & wavelenght \\ \hline
+		0                    & 1          & 6               & 0        & 0            & 1          \\ \hline
+		1                    & 6          & 5               & 0        & 0            & 1          \\  \hline
+		2                    & 1          & 6               & 0        & 1            & 2          \\ \hline
+		3                    & 6          & 5               & 0        & 1            & 2          \\ \hline
+		4                    & 1          & 2               & 0        & 2            & 1          \\ \hline
+		5                    & 2          & 3               & 0        & 2            & 1          \\  \hline
+		6                    & 3          & 5               & 0        & 2            & 1          \\ \hline
+	\end{tabular}
+	\caption{OpticalChannels variable updated.}
+\end{table}
+
+\textbf{Generate a DemandRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & routed & pathsIndex & lightPathsIndex & opticalChannelsIndex \\ \hline
+		2           & true   & 2          & 2               & {[}4, 5, 6{]}           \\ \hline
+	\end{tabular}
+	\caption{DemandRequestRouted signal.}
+\end{table}
+
+\subsection{Demand 3}
+\textbf{Generate a DemandRequest type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & sourceNode & destinationNode & oduType & survivabilityMethod \\ \hline
+		3           & 1          & 5               & 4       & 0                   \\ \hline
+	\end{tabular}
+	\caption{DemandRequest sent by Scheduler\_  block for demand 3.}
+\end{table}
+
+The signal is sent to the LogicalTopologyManager\_  block where a search is made by an available path from source to destination node, in this case nodes 1 and 5, respectively.\\ \\
+
+\textbf{Search for an availabe path}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+		1         & 1          & 5               & 0                                                          & 1               \\ \hline
+		2         & 1          & 5               & 0                                                          & 2               \\ \hline
+	\end{tabular}
+	\caption{Paths state variable from LogicalTopologyManager\_  block.}
+\end{table}
+
+There is no available path.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Logical Topology)}\\ \\
+\begin{table}[H]
+	\centering	
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
+		1                           & \textbf{0}   & 1 & 1 & 1 & 1 & 1 \\ \hline
+		2                           & 1 & \textbf{0}   & 1 & 1 & 1 & 1 \\ \hline
+		3                           & 1 & 1 & \textbf{0}   & 1 & 1 & 1 \\ \hline
+		4                           & 1 & 1 & 1 & \textbf{0}   & 1 & 1 \\ \hline
+		5                           & 1 & 1 & 1 & 1 & \textbf{0}   & 1 \\ \hline
+		6                           & 1 & 1 & 1 & 1 & 1 & \textbf{0}   \\ \hline
+	\end{tabular}
+	\caption{Allowed logical topology matrix for transparent transport mode.}
+	\label{Transparentlogical_topology}
+\end{table}
+
+The logical topology matrix of table \ref{Transparentlogical_topology} is then applied as an entry to the Dijkstra algorithm, but in this case as we are considering the transparent transport mode, the output is constrained by the fact that the number of hops of the shortest path must be equal to 1, this means that there must be a direct logical connection between source and destination nodes (1->5).\\ \\
+
+\textbf{Generate a pathRequest signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		requestIndex & sourceNode & intermidiateNodes & destinationNode \\ \hline
+		3            & 1          & -1                 & 5               \\ \hline
+	\end{tabular}
+	\caption{pathRequest signal for demand 3.}
+\end{table} 
+
+As the transport mode assumed is the transparent, only direct logical connections are used to route demands, so there are no intermidiate nodes.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Physical Topology)}\\ \\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Nodes} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+		1     & \textbf{0} & 1 & 0 & 0 & 0 & 1 \\ \hline
+		2     & 1 & \textbf{0} & 1 & 0 & 0 & 1 \\ \hline
+		3     & 0 & 1 & \textbf{0} & 1 & 1 & 0 \\ \hline
+		4     & 0 & 0 & 1 & \textbf{0} & 1 & 0 \\ \hline
+		5     & 0 & 0 & 1 & 1 & \textbf{0} & 1 \\ \hline
+		6     & 1 & 1 & 0 & 0 & 1 & \textbf{0} \\ \hline
+	\end{tabular}
+	\caption{Physical topology adjacence matrix.}
+	\label{Adjacence_Matrix}
+\end{table}
+Here the entry variable for the Dijkstra algorithm will be the adjacence matrix which will convert the required light path (1->5) into a restricted variety of sets of physical connections. Considering blockingCriterionPhysicalTopology equal to 3 (number of paths to be tested before declaring a possible blocked state) and routingCriterionPhysicalTopology equal to 1 (number of excess hops in relation to the shortest path), then the final result of Dijkstra algorithm will be the one presented below.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|l|c|l|c|l|c|l|}
+		\hline
+		\multicolumn{8}{|c|}{lightPath}                                                                                                                                                    \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{sourceNode}} & \multicolumn{2}{c|}{\multirow{2}{*}{destinationNode}} & \multicolumn{4}{c|}{opticalChannels}                                   \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{sourceNode} & \multicolumn{2}{c|}{destinationNode} \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{1}}          & \multicolumn{2}{c|}{\multirow{2}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{3}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{3}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+	\end{tabular}
+	\caption{Result of Dijkstra algorithm applied to the ajacence matrix.}
+\end{table}
+
+\textbf{Test possibilities given by Dijkstra to establish a path}\\ \\
+\textbf{Before routing}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		1                              & 1          & 6               & 0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 6.}
+\end{table}
+
+There are no available channels neither wavelenghts, so this first Path given by Dijkstra algorithm must be ignored and the second tested.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		0                              & 1          & 2               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 2.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		3                              & 2          & 3               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 2 to 3.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		7                              & 3          & 5               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 3 to 5.}
+\end{table}
+
+As all opticalMultiplexingSystems have the required capacity and wavelenghts a PathRequestRouted signal will generated informing the LogicalTopologyManager\_  block that it is possible to establish a path to route demand 3, and the physical capacity of the Optical Multiplexing Systems will be updated.\\ \\
+\\ \\
+\textbf{After routing}\\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		0                              & 1          & 2               & 0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 1 to 2 after routing demand 2.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		3                              & 2          & 3               &0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 2 to 3 after routing demand 2.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		7                              &3          & 5               & 0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 3 to 5 after routing demand 2.}
+\end{table}
+
+
+\textbf{Generate a PathRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|lllclll|}
+		\hline
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{requestIndex} & \multicolumn{1}{c|}{routed} &  &  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{true} &  &  &  \\ \cline{3-4}
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{5}{c|}{lightPaths} &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{\multirow{2}{*}{sourceNode}} & \multicolumn{1}{l|}{\multirow{2}{*}{destinationNode}} & \multicolumn{2}{c|}{opticalChannels} & \multicolumn{1}{l|}{\multirow{2}{*}{wavelenght}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{sourceNode} & \multicolumn{1}{l|}{destinationNode} & \multicolumn{1}{l|}{} &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\multirow{3}{*}{1}} & \multicolumn{1}{c|}{\multirow{3}{*}{5}} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{\multirow{3}{*}{2}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{} &  \\ \cline{2-6}
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \hline
+	\end{tabular}
+	\caption{PathRequestRouted signal.}
+\end{table}
+
+\textbf{Update LogicalTopologyManager\_  block state variables} \\
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -1014,91 +1961,564 @@ Having just 3 optical channels per OMS, each with a capacity of 100 Gbps, and th
 		1         & 1          & 5               & 0                                                          & 1               \\ \hline
 		2         & 1          & 5               & 0                                                          & 2               \\ \hline
 		3         & 1          & 5               & 0                                                          & 3               \\ \hline
-		4         & 1          & 5               & 0                                                          & 4               \\ \hline
-		5         & 1          & 5               & 0                                                          & 5               \\ \hline
-		6         & 3          & 5               &  16                                        & 6               \\ \hline
 	\end{tabular}
-	\caption{Paths state variable from LogicalTopologyManager\_  block.}
-	\label{paths_example}
+	\caption{Paths variable updated.}
 \end{table}
-\textbf{Light paths}
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		lightPathIndex & sourceNode & destinationNode & capacity (ODU0s)    & opticalChannelsIndex \\ \hline
-		0              & 1          & 5               & 0                   & 0,1                  \\ \hline
-		1              & 1          & 5               & 0                   & 2,3                  \\ \hline
-		2              & 1          & 5               & 0                   & 4,5                  \\ \hline
-		3              & 1          & 5               & 0                   & 6,7,9                  \\ \hline
-		4              & 1          & 5               & 0                   & 9,10,11               \\ \hline
-		5              & 1          & 5               & 0                   & 12,13,14             \\ \hline
-		6              & 3          & 5               & 16                  & 15,16             \\ \hline
+		lightPathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & opticalChannelsIndex \\ \hline
+		0              & 1          & 5               & 0                                                          & 0,1                  \\ \hline
+		1              & 1          & 5               & 0                                                          & 2,3                  \\ \hline
+		2              & 1          & 5               & 0                                                          & 4,5,6                  \\ \hline
+		3              & 1          & 5               & 0                                                          & 7,8,9                  \\ \hline
 	\end{tabular}
-	\caption{Light paths state variable from LogicalTopologyManager\_  block.}
-	\label{lightPaths_example}
+	\caption{LightPaths variable updated.}
 \end{table}
-\clearpage
-\textbf{Optical Channels}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|c|}
 		\hline
-		opticalChannelIndex & sourceNode & destinationNode & capacity & demandsIndex & wavelength \\ \hline
-		0                   & 1          & 6               & 0                & 0  &1          \\ \hline
-		1                   & 6          & 5               & 0                & 0  &1          \\ \hline
-		2                   & 1          & 6               & 0                & 1   &2         \\ \hline
-		3                   & 6          & 5               & 0                & 1  &2          \\ \hline
-		4                   & 1          & 6               & 0                & 2  &3          \\ \hline
-		5                   & 6          & 5               & 0                & 2   &3         \\ \hline
-		6                   & 1          & 2               & 0                & 3   &1         \\ \hline
-		7                   & 2          & 3               & 0                & 3    &1        \\ \hline
-		8                   & 3          & 5               & 0                & 3   &1         \\ \hline
-		9                   & 1          & 2               & 0                & 4   &2         \\ \hline
-		10                   & 2          & 3               & 0                & 4    &2        \\ \hline
-		11                   & 3          & 5               & 0                & 4   &2         \\ \hline
-		12                   & 1          & 2               & 0                & 5   &3         \\ \hline
-		13                   & 2          & 3               & 0                & 5    &3        \\ \hline
-		14                   & 3          & 5               & 0                & 5   &3         \\ \hline
-		15					&3			&4					&16				&7,8	&1			\\ \hline
-		16					&4 			&5 					&16				&7,8	&1 \\ \hline
-		
+		opticalChannelsIndex & sourceNode & destinationNode & capacity & demandsIndex & wavelenght \\ \hline
+		0                    & 1          & 6               & 0        & 0            & 1          \\ \hline
+		1                    & 6          & 5               & 0        & 0            & 1          \\  \hline
+		2                    & 1          & 6               & 0        & 1            & 2          \\ \hline
+		3                    & 6          & 5               & 0        & 1            & 2          \\ \hline
+		4                    & 1          & 2               & 0        & 2            & 1          \\ \hline
+		5                    & 2          & 3               & 0        & 2            & 1          \\  \hline
+		6                    & 3          & 5               & 0        & 2            & 1          \\ \hline
+		7                    & 1          & 2               & 0        & 3            & 2          \\ \hline
+		8                    & 2          & 3               & 0        & 3            & 2          \\  \hline
+		9                    & 3          & 5               & 0        & 3            & 2          \\ \hline
 	\end{tabular}
-	\caption{Optical channels state variable from LogicalTopologyManager\_  block.}
-	\label{opticalChannels_example}
+	\caption{OpticalChannels variable updated.}
 \end{table}
-\clearpage
-\textbf{Optical Multiplexing Systems}
+
+\textbf{Generate a DemandRequestRouted type signal}\\ \\
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
-		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels available)\end{tabular} & \begin{tabular}[c]{@{}c@{}}wavelenghts\\ (available)\end{tabular} \\ \hline
-		0        & 1          & 2               & 0                                                                       & 0                                                                 \\ \hline
-		1        & 1          & 6               & 0                                                                       & 0                                                                 \\ \hline
-		2        & 2          & 1               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
-		3        & 2          & 3               & 0                                                                       & 0                                                                 \\ \hline
-		4        & 2          & 6               & 0                                                                       & {[}1 2 3{]}                                                       \\ \hline
-		5        & 3          & 2               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
-		6        & 3          & 4               & 2                                                                       & {[}2 3{]}                                                         \\ \hline
-		7        & 3          & 5               & 0                                                                       & 0                                                                 \\ \hline
-		8        & 4          & 3               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
-		9        & 4          & 5               & 2                                                                       & {[}2 3{]}                                                         \\ \hline
-		10       & 5          & 3               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
-		11       & 5          & 4               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
-		12       & 5          & 6               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
-		13       & 6          & 1               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
-		14       & 6          & 2               & 3                                                                       & {[}1 2 3{]}                                                       \\ \hline
-		15       & 6          & 5               & 0                                                                       & 0                                                                 \\ \hline
+		demandIndex & routed & pathsIndex & lightPathsIndex & opticalChannelsIndex \\ \hline
+		3           & true   & 3          & 3               & {[}7, 8, 9{]}           \\ \hline
 	\end{tabular}
-	\caption{Optical multiplexing systems state variable from PhysicalTopologyManager\_  block.}
-	\label{OMS_example}
+	\caption{DemandRequestRouted signal.}
 \end{table}
 
+\subsection{Demand 4}
+\textbf{Generate a DemandRequest type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & sourceNode & destinationNode & oduType & survivabilityMethod \\ \hline
+		4           & 1          & 5               & 4       & 0                   \\ \hline
+	\end{tabular}
+	\caption{DemandRequest sent by Scheduler\_  block for demand 4.}
+\end{table}
+
+The signal is sent to the LogicalTopologyManager\_  block where a search is made by an available path from source to destination node, in this case nodes 1 and 5, respectively.\\ \\
+
+\textbf{Search for an availabe path}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+		1         & 1          & 5               & 0                                                          & 1               \\ \hline
+		2         & 1          & 5               & 0                                                          & 2               \\ \hline
+		3         & 1          & 5               & 0                                                          & 3               \\ \hline
+	\end{tabular}
+	\caption{Paths state variable from LogicalTopologyManager\_  block.}
+\end{table}
+
+There is no available path.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Logical Topology)}\\ \\
+\begin{table}[H]
+	\centering	
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
+		1                           & \textbf{0}   & 1 & 1 & 1 & 1 & 1 \\ \hline
+		2                           & 1 & \textbf{0}   & 1 & 1 & 1 & 1 \\ \hline
+		3                           & 1 & 1 & \textbf{0}   & 1 & 1 & 1 \\ \hline
+		4                           & 1 & 1 & 1 & \textbf{0}   & 1 & 1 \\ \hline
+		5                           & 1 & 1 & 1 & 1 & \textbf{0}   & 1 \\ \hline
+		6                           & 1 & 1 & 1 & 1 & 1 & \textbf{0}   \\ \hline
+	\end{tabular}
+	\caption{Allowed logical topology matrix for transparent transport mode.}
+	\label{Transparentlogical_topology}
+\end{table}
+
+The logical topology matrix of table \ref{Transparentlogical_topology} is then applied as an entry to the Dijkstra algorithm, but in this case as we are considering the transparent transport mode, the output is constrained by the fact that the number of hops of the shortest path must be equal to 1, this means that there must be a direct logical connection between source and destination nodes (1->5).\\ \\
+
+\textbf{Generate a pathRequest signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		requestIndex & sourceNode & intermidiateNodes & destinationNode \\ \hline
+		4            & 1          & -1                 & 5               \\ \hline
+	\end{tabular}
+	\caption{pathRequest signal for demand 4.}
+\end{table} 
+
+As the transport mode assumed is the transparent, only direct logical connections are used to route demands, so there are no intermidiate nodes.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Physical Topology)}\\ \\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Nodes} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+		1     & \textbf{0} & 1 & 0 & 0 & 0 & 1 \\ \hline
+		2     & 1 & \textbf{0} & 1 & 0 & 0 & 1 \\ \hline
+		3     & 0 & 1 & \textbf{0} & 1 & 1 & 0 \\ \hline
+		4     & 0 & 0 & 1 & \textbf{0} & 1 & 0 \\ \hline
+		5     & 0 & 0 & 1 & 1 & \textbf{0} & 1 \\ \hline
+		6     & 1 & 1 & 0 & 0 & 1 & \textbf{0} \\ \hline
+	\end{tabular}
+	\caption{Physical topology adjacence matrix.}
+	\label{Adjacence_Matrix}
+\end{table}
+Here the entry variable for the Dijkstra algorithm will be the adjacence matrix which will convert the required light path (1->5) into a restricted variety of sets of physical connections. Considering blockingCriterionPhysicalTopology equal to 3 (number of paths to be tested before declaring a possible blocked state) and routingCriterionPhysicalTopology equal to 1 (number of excess hops in relation to the shortest path), then the final result of Dijkstra algorithm will be the one presented below.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|l|c|l|c|l|c|l|}
+		\hline
+		\multicolumn{8}{|c|}{lightPath}                                                                                                                                                    \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{sourceNode}} & \multicolumn{2}{c|}{\multirow{2}{*}{destinationNode}} & \multicolumn{4}{c|}{opticalChannels}                                   \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{sourceNode} & \multicolumn{2}{c|}{destinationNode} \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{1}}          & \multicolumn{2}{c|}{\multirow{2}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{3}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{3}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{3}{*}{1}}          & \multicolumn{2}{c|}{\multirow{3}{*}{5}}               & \multicolumn{2}{c|}{1}          & \multicolumn{2}{c|}{2}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{2}          & \multicolumn{2}{c|}{6}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{6}          & \multicolumn{2}{c|}{5}               \\ \hline
+	\end{tabular}
+	\caption{Result of Dijkstra algorithm applied to the ajacence matrix.}
+\end{table}
+
+\textbf{Test possibilities given by Dijkstra to establish a path}\\ \\
+\textbf{Before routing}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		1                              & 1          & 6               & 0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 6.}
+\end{table}
+
+There are no available channels neither wavelenghts, so this first Path given by Dijkstra algorithm must be ignored and the second tested.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		0                              & 1          & 2               & 0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 1 to 2.}
+\end{table}
+
+There are also no available channels neither wavelenghts, so this second Path given by Dijkstra algorithm must be ignored and the last one tested. As the last path has optical channels in common with the last two paths it will also be unavailable. 
+
+As none of the paths given by Dijkstra algorithm is able to route demand number 4, a blocking state will be generated and this logical connection between nodes 1 and 5 will disappear for all the other demands of the same ODU type.\\ \\
+
+\textbf{Generate a PathRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|lllclll|}
+		\hline
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{requestIndex} & \multicolumn{1}{c|}{routed} &  &  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{false} &  &  &  \\ \cline{3-4}
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{5}{c|}{lightPaths} &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{\multirow{2}{*}{sourceNode}} & \multicolumn{1}{l|}{\multirow{2}{*}{destinationNode}} & \multicolumn{2}{c|}{opticalChannels} & \multicolumn{1}{l|}{\multirow{2}{*}{wavelenght}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{sourceNode} & \multicolumn{1}{l|}{destinationNode} & \multicolumn{1}{l|}{} &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\multirow{3}{*}{}} & \multicolumn{1}{c|}{\multirow{3}{*}{}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{\multirow{3}{*}{}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} &  \\ \cline{2-6}
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \hline
+	\end{tabular}
+	\caption{PathRequestRouted signal.}
+\end{table}
+\textbf{Update LogicalTopologyManager\_  block state variables}
+\begin{table}[H]
+	\centering	
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
+		1                           & \textbf{0}   & 1 & 1 & 1 & 0 & 1 \\ \hline
+		2                           & 1 & \textbf{0}   & 1 & 1 & 1 & 1 \\ \hline
+		3                           & 1 & 1 & \textbf{0}   & 1 & 1 & 1 \\ \hline
+		4                           & 1 & 1 & 1 & \textbf{0}   & 1 & 1 \\ \hline
+		5                           & 0 & 1 & 1 & 1 & \textbf{0}   & 1 \\ \hline
+		6                           & 1 & 1 & 1 & 1 & 1 & \textbf{0}   \\ \hline
+	\end{tabular}
+	\caption{Eliminating logical link (1,5) for demands of the ODU type 4.}
+	\label{Transparentlogical_topology}
+\end{table}
+
+\textbf{Generate a DemandRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & routed & pathsIndex & lightPathsIndex & opticalChannelsIndex \\ \hline
+		4           & false   &           &                & {[}{]}           \\ \hline
+	\end{tabular}
+	\caption{DemandRequestRouted signal.}
+\end{table}
+
+\subsection{Demand 5}
+\textbf{Generate a DemandRequest type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & sourceNode & destinationNode & oduType & survivabilityMethod \\ \hline
+		5           & 3          & 5               & 3       & 0                   \\ \hline
+	\end{tabular}
+	\caption{DemandRequest sent by Scheduler\_  block for demand 5.}
+\end{table}
+
+The signal is sent to the LogicalTopologyManager\_  block where a search is made by an available path from source to destination node, in this case nodes 3 and 5, respectively.\\ \\
+
+\textbf{Search for an availabe path}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+		1         & 1          & 5               & 0                                                          & 1               \\ \hline
+		2         & 1          & 5               & 0                                                          & 2               \\ \hline
+		3         & 1          & 5               & 0                                                          & 3               \\ \hline
+	\end{tabular}
+	\caption{Paths state variable from LogicalTopologyManager\_  block.}
+\end{table}
+
+There is no available path.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Logical Topology)}\\ \\
+\begin{table}[H]
+	\centering	
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|l|}{\textbf{Nodes}} & 1   & 2   & 3   & 4   & 5   & 6  \\ \hline
+		1                           & \textbf{0}   & 1 & 1 & 1 & 1 & 1 \\ \hline
+		2                           & 1 & \textbf{0}   & 1 & 1 & 1 & 1 \\ \hline
+		3                           & 1 & 1 & \textbf{0}   & 1 & 1 & 1 \\ \hline
+		4                           & 1 & 1 & 1 & \textbf{0}   & 1 & 1 \\ \hline
+		5                           & 1 & 1 & 1 & 1 & \textbf{0}   & 1 \\ \hline
+		6                           & 1 & 1 & 1 & 1 & 1 & \textbf{0}   \\ \hline
+	\end{tabular}
+	\caption{Allowed logical topology matrix for transparent transport mode.}
+	\label{Transparentlogical_topology}
+\end{table}
+
+The logical topology matrix of table \ref{Transparentlogical_topology} is then applied as an entry to the Dijkstra algorithm, but in this case as we are considering the transparent transport mode, the output is constrained by the fact that the number of hops of the shortest path must be equal to 1, this means that there must be a direct logical connection between source and destination nodes (3->5).\\ \\
+
+\textbf{Generate a pathRequest signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		requestIndex & sourceNode & intermidiateNodes & destinationNode \\ \hline
+		5            & 3          & -1                 & 5               \\ \hline
+	\end{tabular}
+	\caption{pathRequest signal for demand 3.}
+\end{table} 
+
+As the transport mode assumed is the transparent, only direct logical connections are used to route demands, so there are no intermidiate nodes.\\ \\
+
+\textbf{Apply Dijkstra algorithm to discover shortest paths (Physical Topology)}\\ \\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{Nodes} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+		1     & \textbf{0} & 1 & 0 & 0 & 0 & 1 \\ \hline
+		2     & 1 & \textbf{0} & 1 & 0 & 0 & 1 \\ \hline
+		3     & 0 & 1 & \textbf{0} & 1 & 1 & 0 \\ \hline
+		4     & 0 & 0 & 1 & \textbf{0} & 1 & 0 \\ \hline
+		5     & 0 & 0 & 1 & 1 & \textbf{0} & 1 \\ \hline
+		6     & 1 & 1 & 0 & 0 & 1 & \textbf{0} \\ \hline
+	\end{tabular}
+	\caption{Physical topology adjacence matrix.}
+	\label{Adjacence_Matrix}
+\end{table}
+Here the entry variable for the Dijkstra algorithm will be the adjacence matrix which will convert the required light path (3->5) into a restricted variety of sets of physical connections. Considering blockingCriterionPhysicalTopology equal to 3 (maximum number of paths to be tested before declaring a possible blocked state) and routingCriterionPhysicalTopology equal to 1 (number of excess hops in relation to the shortest path found), then the final result of Dijkstra algorithm will be the one presented below.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|l|c|l|c|l|c|l|}
+		\hline
+		\multicolumn{8}{|c|}{lightPath}                                                                                                                                                    \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{sourceNode}} & \multicolumn{2}{c|}{\multirow{2}{*}{destinationNode}} & \multicolumn{4}{c|}{opticalChannels}                                   \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{sourceNode} & \multicolumn{2}{c|}{destinationNode} \\ \hline
+		\multicolumn{2}{|c|}{3}                           & \multicolumn{2}{c|}{5}                                & \multicolumn{2}{c|}{3}          & \multicolumn{2}{c|}{5}               \\ \hline
+		\multicolumn{2}{|c|}{\multirow{2}{*}{3}}          & \multicolumn{2}{c|}{\multirow{2}{*}{5}}               & \multicolumn{2}{c|}{3}          & \multicolumn{2}{c|}{4}               \\ \cline{5-8} 
+		\multicolumn{2}{|c|}{}                            & \multicolumn{2}{c|}{}                                 & \multicolumn{2}{c|}{4}          & \multicolumn{2}{c|}{5}               \\ \hline
+	\end{tabular}
+	\caption{Result of Dijkstra algorithm applied to the ajacence matrix.}
+\end{table}
+
+\textbf{Test possibilities given by Dijkstra to establish a path}\\ \\
+\textbf{Before routing}\\
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		7                              & 3          & 5               & 0                                                             & {[}{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 3 to 5.}
+\end{table}
+
+There are no available channels neither wavelenghts, so this first Path given by Dijkstra algorithm must be ignored and the second tested.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		6                              & 3          & 4               & 2                                                             & {[}1 2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 3 to 4.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		9                              & 4          & 5               & 2                                                             & {[}1 2{]}            \\ \hline
+	\end{tabular}
+	\caption{Initial values of opticalMultiplexingSystem going from node 4 to 5.}
+\end{table}
+
+As all opticalMultiplexingSystems have the required capacity and wavelenghts a PathRequestRouted signal will generated informing the LogicalTopologyManager\_  block that it is possible to establish a path to route demand 5, and the physical capacity of the Optical Multiplexing Systems will be updated.\\ \\
+\\ \\
+\textbf{After routing}\\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		6                              & 3          & 4               & 1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 3 to 4 after routing demand 5.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		OMSIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (channels)\end{tabular} & wavelenghtsAvailable \\ \hline
+		9                              & 4          & 5               &1                                                             & {[}2{]}            \\ \hline
+	\end{tabular}
+	\caption{Value of opticalMultiplexingSystem going from node 4 to 5 after routing demand 5.}
+\end{table}
+
+\textbf{Generate a PathRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|lllclll|}
+		\hline
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{requestIndex} & \multicolumn{1}{c|}{routed} &  &  &  \\ \cline{3-4}
+		& \multicolumn{1}{l|}{} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{true} &  &  &  \\ \cline{3-4}
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{5}{c|}{lightPaths} &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{\multirow{2}{*}{sourceNode}} & \multicolumn{1}{l|}{\multirow{2}{*}{destinationNode}} & \multicolumn{2}{c|}{opticalChannels} & \multicolumn{1}{l|}{\multirow{2}{*}{wavelenght}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{sourceNode} & \multicolumn{1}{l|}{destinationNode} & \multicolumn{1}{l|}{} &  \\ \cline{2-6}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{\multirow{2}{*}{3}} & \multicolumn{1}{c|}{\multirow{2}{*}{5}} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{\multirow{2}{*}{1}} &  \\ \cline{4-5}
+		\multicolumn{1}{|l|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{5} & \multicolumn{1}{c|}{} &  \\ \cline{2-6}
+		&  &  & \multicolumn{1}{l}{} &  &  &  \\ \hline
+	\end{tabular}
+	\caption{PathRequestRouted signal.}
+\end{table}
+
+\textbf{Update LogicalTopologyManager\_  block state variables} \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+		1         & 1          & 5               & 0                                                          & 1               \\ \hline
+		2         & 1          & 5               & 0                                                          & 2               \\ \hline
+		3         & 1          & 5               & 0                                                          & 3               \\ \hline
+		4         & 3          & 5               & 48                                                          & 4               \\ \hline
+	\end{tabular}
+	\caption{Paths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		lightPathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & opticalChannelsIndex \\ \hline
+		0              & 1          & 5               & 0                                                          & 0,1                  \\ \hline
+		1              & 1          & 5               & 0                                                          & 2,3                  \\ \hline
+		2              & 1          & 5               & 0                                                          & 4,5,6                  \\ \hline
+		3              & 1          & 5               & 0                                                          & 7,8,9                  \\ \hline
+		4              & 3          & 5               & 48                                                          & 10,11                  \\ \hline
+	\end{tabular}
+	\caption{LightPaths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		opticalChannelsIndex & sourceNode & destinationNode & capacity & demandsIndex & wavelenght \\ \hline
+		0                    & 1          & 6               & 0        & 0            & 1          \\ \hline
+		1                    & 6          & 5               & 0        & 0            & 1          \\  \hline
+		2                    & 1          & 6               & 0        & 1            & 2          \\ \hline
+		3                    & 6          & 5               & 0        & 1            & 2          \\ \hline
+		4                    & 1          & 2               & 0        & 2            & 1          \\ \hline
+		5                    & 2          & 3               & 0        & 2            & 1          \\  \hline
+		6                    & 3          & 5               & 0        & 2            & 1          \\ \hline
+		7                    & 1          & 2               & 0        & 3            & 2          \\ \hline
+		8                    & 2          & 3               & 0        & 3            & 2          \\  \hline
+		9                    & 3          & 5               & 0        & 3            & 2          \\ \hline
+		10                    & 3          & 4               & 48        & 5            & 1          \\  \hline
+		11                    & 4          & 5               & 48        & 5            & 1          \\ \hline
+	\end{tabular}
+	\caption{OpticalChannels variable updated.}
+\end{table}
+
+\textbf{Generate a DemandRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & routed & pathsIndex & lightPathsIndex & opticalChannelsIndex \\ \hline
+		5           & true   & 4          & 4               & {[}10,11{]}           \\ \hline
+	\end{tabular}
+	\caption{DemandRequestRouted signal.}
+\end{table}
+\subsection{Demand 6}
+\textbf{Generate a DemandRequest type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & sourceNode & destinationNode & oduType & survivabilityMethod \\ \hline
+		6           & 3          & 5               & 3       & 0                   \\ \hline
+	\end{tabular}
+	\caption{DemandRequest sent by Scheduler\_  block for demand 6.}
+\end{table}
+
+The signal is sent to the LogicalTopologyManager\_  block where a search is made by an available path from source to destination node, in this case nodes 3 and 5, respectively.\\ \\
+
+\textbf{Search for an availabe path}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+		1         & 1          & 5               & 0                                                          & 1               \\ \hline
+		2         & 1          & 5               & 0                                                          & 2               \\ \hline
+		3         & 1          & 5               & 0                                                          & 3               \\ \hline
+		4         & 3          & 5               & 48                                                          & 4               \\ \hline
+	\end{tabular}
+	\caption{Paths state variable from LogicalTopologyManager\_  block.}
+\end{table}
+
+
+\textbf{Update LogicalTopologyManager\_  block state variables} \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		pathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & lightPathsIndex \\ \hline
+		0         & 1          & 5               & 0                                                          & 0               \\ \hline
+		1         & 1          & 5               & 0                                                          & 1               \\ \hline
+		2         & 1          & 5               & 0                                                          & 2               \\ \hline
+		3         & 1          & 5               & 0                                                          & 3               \\ \hline
+		4         & 3          & 5               & 16                                                          & 4               \\ \hline
+	\end{tabular}
+	\caption{Paths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		lightPathIndex & sourceNode & destinationNode & \begin{tabular}[c]{@{}c@{}}capacity\\ (ODU0s)\end{tabular} & opticalChannelsIndex \\ \hline
+		0              & 1          & 5               & 0                                                          & 0,1                  \\ \hline
+		1              & 1          & 5               & 0                                                          & 2,3                  \\ \hline
+		2              & 1          & 5               & 0                                                          & 4,5,6                  \\ \hline
+		3              & 1          & 5               & 0                                                          & 7,8,9                  \\ \hline
+		4              & 3          & 5               & 16                                                          & 10,11                  \\ \hline
+	\end{tabular}
+	\caption{LightPaths variable updated.}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		opticalChannelsIndex & sourceNode & destinationNode & capacity & demandsIndex & wavelenght \\ \hline
+		0                    & 1          & 6               & 0        & 0            & 1          \\ \hline
+		1                    & 6          & 5               & 0        & 0            & 1          \\  \hline
+		2                    & 1          & 6               & 0        & 1            & 2          \\ \hline
+		3                    & 6          & 5               & 0        & 1            & 2          \\ \hline
+		4                    & 1          & 2               & 0        & 2            & 1          \\ \hline
+		5                    & 2          & 3               & 0        & 2            & 1          \\  \hline
+		6                    & 3          & 5               & 0        & 2            & 1          \\ \hline
+		7                    & 1          & 2               & 0        & 3            & 2          \\ \hline
+		8                    & 2          & 3               & 0        & 3            & 2          \\  \hline
+		9                    & 3          & 5               & 0        & 3            & 2          \\ \hline
+		10                    & 3          & 4               & 16        & 5,6            & 1          \\  \hline
+		11                    & 4          & 5               & 16        & 5,6            & 1          \\ \hline
+	\end{tabular}
+	\caption{OpticalChannels variable updated.}
+\end{table}
+
+\textbf{Generate a DemandRequestRouted type signal}\\ \\
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		demandIndex & routed & pathsIndex & lightPathsIndex & opticalChannelsIndex \\ \hline
+		6           & true   & 4          & 4               & {[}10,11{]}           \\ \hline
+	\end{tabular}
+	\caption{DemandRequestRouted signal.}
+\end{table}
 \Large Final report\\ \\
 
-\normalsize Of the total 9 demands only the demand with index 6 was not routed (was blocked) while the rest were routed correctly through the network.
+\normalsize Of the total 7 demands only the demand with index 4 was not routed (was blocked) while the rest were routed correctly through the network.
 \clearpage
 \textbf{Physical topology after dimensioning}
 \begin{figure}[H]
