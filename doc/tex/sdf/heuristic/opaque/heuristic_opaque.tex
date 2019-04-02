@@ -580,21 +580,22 @@ The creation of this model for any scenario, started with some considerations an
 	\centering
 	\begin{tabular}{| c | c | c | c |}
 		\hline
-		\textbf{Input Parameter} & \textbf{Default Value} & \textbf{Type} & \textbf{Description}                                                                                \\ \hline
-		odu0                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU0 demands \\ matrix\end{tabular}                                      \\ \hline
-		odu1                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU1 demands \\ matrix\end{tabular}                                      \\ \hline
-		odu2                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU2 demands \\ matrix\end{tabular}                                      \\ \hline
-		odu3                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU3 demands \\ matrix\end{tabular}                                      \\ \hline
-		odu4                     &                        & matrix        & \begin{tabular}[c]{@{}c@{}}ODU4 demands \\ matrix\end{tabular}                                      \\ \hline
-		orderingRule             & 0                      & integer       & \begin{tabular}[c]{@{}c@{}}Demands ordering rule:\\ 0 - ODU4 to ODU0\\ 1 - ODU0 to ODU4\end{tabular}\\ \hline
-		shortestPathType         & hops                   & string        & \begin{tabular}[c]{@{}c@{}}Shortest path type: \\ hops \\ km\end{tabular}                           \\ \hline
-		transportMode            & opaque                 & string        & \begin{tabular}[c]{@{}c@{}}Transport mode:\\ opaque \\ transparent \\ translucent\end{tabular}      \\ \hline
-		adjacencyMatrix          &                        & matrix        & \begin{tabular}[c]{@{}c@{}}Adjacency matrix of the \\ physical network\end{tabular}                 \\ \hline
-		transmissionSystems      & 1                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of transmission \\ systems\end{tabular}                           \\ \hline
-		opticalChannels          & 100                    & integer       & \begin{tabular}[c]{@{}c@{}}Number of optical channels \\ per link\end{tabular}                      \\ \hline
-		opticalChannelCapacity   & 80                     & integer       & \begin{tabular}[c]{@{}c@{}}Capacity of each optical \\ channel in ODU0s\end{tabular}                \\ \hline
-		%numberOfPaths            & 3                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of short paths created \\ between each pair of nodes\end{tabular} \\ \hline
-		%lightPathCriterion       &                        &               &                                                                                                     \\ \hline
+		\textbf{Input Parameter}          & \textbf{Default Value} & \textbf{Type} & \textbf{Description}                                                                                \\ \hline
+		odu0                              & [0]                    & matrix        & \begin{tabular}[c]{@{}c@{}}ODU0 demands \\ matrix\end{tabular}                                      \\ \hline
+		odu1                              & [0]                    & matrix        & \begin{tabular}[c]{@{}c@{}}ODU1 demands \\ matrix\end{tabular}                                      \\ \hline
+		odu2                              & [0]                    & matrix        & \begin{tabular}[c]{@{}c@{}}ODU2 demands \\ matrix\end{tabular}                                      \\ \hline
+		odu3                              & [0]                    & matrix        & \begin{tabular}[c]{@{}c@{}}ODU3 demands \\ matrix\end{tabular}                                      \\ \hline
+		odu4                              & [0]                    & matrix        & \begin{tabular}[c]{@{}c@{}}ODU4 demands \\ matrix\end{tabular}                                      \\ \hline
+		orderingRule                      & 0                      & integer       & \begin{tabular}[c]{@{}c@{}}Demands ordering rule:\\ 0 - ODU4 to ODU0\\ 1 - ODU0 to ODU4\end{tabular}\\ \hline
+		transportMode                     & opaque                 & string        & \begin{tabular}[c]{@{}c@{}}Transport mode:\\ opaque \\ transparent \\ translucent\end{tabular}      \\ \hline
+		adjacencyMatrix                   & [0]                    & matrix        & \begin{tabular}[c]{@{}c@{}}Adjacency matrix of the \\ physical network\end{tabular}                 \\ \hline
+		transmissionSystems               & 1                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of transmission \\ systems\end{tabular}                           \\ \hline
+		opticalChannels                   & 100                    & integer       & \begin{tabular}[c]{@{}c@{}}Number of optical channels \\ per link\end{tabular}                      \\ \hline
+		opticalChannelCapacity            & 80                     & integer       & \begin{tabular}[c]{@{}c@{}}Capacity of each optical \\ channel in ODU0s\end{tabular}                \\ \hline
+		routingCriterionLogicalTopology   & hops                   & string        & \begin{tabular}[c]{@{}c@{}}Shortest path type: \\ hops \\ km\end{tabular}                           \\ \hline
+		blockingCriterionLogicalTopology  & 3                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of short paths created \\ between each pair of nodes\end{tabular} \\ \hline
+		routingCriterionPhysicalTopology  & hops                   & string        & \begin{tabular}[c]{@{}c@{}}Shortest path type: \\ hops \\ km\end{tabular}                           \\ \hline
+		blockingCriterionPhysicalTopology & 3                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of short paths created \\ between each pair of nodes\end{tabular} \\ \hline
 	\end{tabular}
 	\caption{System Input Parameters}
 	\label{system_input_parameters}
@@ -607,18 +608,19 @@ The creation of this model for any scenario, started with some considerations an
 		\textbf{Signal Name}  & \textbf{Signal Type}  \\ \hline
 		SchedulerOut          & DemandRequest         \\ \hline
 		LogicalTopologyOut    & LogicalTopology       \\ \hline
+		PhysicalTopologyOut   & PhysicalTopology      \\ \hline
 		LogicalManagerRequest & PathRequest           \\ \hline
 		PhysicalManagerOut    & PathRequestRouted     \\ \hline
 		LogicalManagerOut     & DemandRequestRouted   \\ \hline
+		LogicalTopologyCheck  & LogicalTopology       \\ \hline
+		PhysicalTopologyCheck & PhysicalTopology      \\ \hline
 	\end{tabular}
 	\caption{System Signals}
-	\label{system_signals_opaque}
+	\label{system_signals}
 \end{table}
 
-\newpage
-\vspace{11pt}
 
-\textbf{DemandRequest}
+\underline{\textbf{DemandRequest}}
 
 \begin{table}[H]
 	\centering
@@ -627,33 +629,94 @@ The creation of this model for any scenario, started with some considerations an
 		\textbf{demandIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{oduType} & \textbf{survivabilityMethod}\\ \hline
 		0...D-1              & 1...N               & 1...N                    & 0...4            & \begin{tabular}[c]{@{}l@{}}0 - None\\ 1 - Protection 1+1\end{tabular}\\ \hline
 	\end{tabular}
-	\caption{Demand variable}
+	\caption{DemandRequest variable}
 	\label{demand_variable}
 \end{table}
 
 D = numberOfDemands\par
 N = numberOfNodes\\
 
-\textbf{DemandRequestRouted}
+\underline{\textbf{LogicalTopology}}\\
+
+matrix NxN logicalTopology\par
+vector paths\\
+ 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\textbf{Node} & 1  & ... & ... & N  \\ \hline
+		1             & 0  & X   & X   & X  \\ \hline
+		...           & X  & 0   & X   & X  \\ \hline
+		...           & X  & X   & 0   & X  \\ \hline
+		N 			  & X  & X   & X   & 0  \\ \hline
+	\end{tabular}
+	\caption{logicalTopology matrix}
+	\label{logical_matrix}
+\end{table}
+
+N = numberOfNodes\par
+X = 0 => not logical link or X = 1 => logical link\\
+
+\textbf{path}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c | c |}
+		\hline
+		\textbf{pathIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfLightPaths} & \textbf{lightPaths } \\ \hline
+		0...P-1 & 1...N & -1 or 1...N & 1...N & 0...OC & 1...LP & vector<lightPaths> \\ \hline
+	\end{tabular}               
+	\caption{path variable}
+	\label{path}
+\end{table}
+
+P = numberOfPaths\par
+N = numberOfNodes\par
+OC = opticalChannelCapacity\par
+LP = numberOfLightPaths\\
+
+\textbf{lightPath}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
-		\textbf{demandIndex} & \textbf{routed} & \textbf{pathsIndex} & \textbf{lightPathsIndex} & \textbf{opticalChannelsIndex} & \textbf{wavelength}\\ \hline
-		0...D-1              & 0 or 1          & 0...P-1             & 0...LP-1                 & 0...OC-1                      & 1...W         \\ \hline
+		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODUOs)\end{tabular} & numberOfOpticalChannels &\textbf{opticalChannels} \\ \hline
+		0...LP-1 & 1...N & 1...N &  1...OC & 1...Och & vector<opticalChannels> \\ \hline        	
 	\end{tabular}
-	\caption{DemandRequestRouted variable}
-	\label{demand_request_routed}
+	\caption{lightPath variable}
+	\label{lightpath}
 \end{table}
 
-D = numberOfDemands\par
-P = numberOfPaths\par
-LP = numberOfLightPaths\par
-OC = opticalChannelCapacity\par 
-W = numberOfWavelengths\\
+LP = numberOfLightPaths\par 
+N = numberOfNodes\par 
+Och = numberOfOpticalChannels\par
+OC = opticalChannelCapacity\\
 
-\textbf{LogicalTopology}
+\textbf{opticalChannel}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c |}
+		\hline
+		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODUOs)\end{tabular}  & \textbf{demandsIndex} & \textbf{wavelength}   \\ \hline
+		0...Och-1 & 1...N & 1...N & 1...OC & 0...D & 1...W \\ \hline
+	\end{tabular}
+	\caption{opticalChannel variable}
+	\label{optical_channel}
+\end{table}
+
+Och = numberOfOpticalChannels\par
+N = numberOfNodes\par
+OC = opticalChannelCapacity\par 
+D = numberOfDemands\par
+W = numberOfWavelenghts\\
+
+\underline{\textbf{PhysicalTopology}}\\
+
+matrix NxN physicalTopology\par
+vector OMS\\
 
 \begin{table}[H]
 	\centering
@@ -665,177 +728,81 @@ W = numberOfWavelengths\\
 		...           & X  & X   & 0   & X  \\ \hline
 		N 			  & X  & X   & X   & 0  \\ \hline
 	\end{tabular}
-	\caption{Logical topology matrix}
-	\label{logical_matrix}
+	\caption{physicalTopology matrix}
+	\label{physical_matrix}
 \end{table}
 
 N = numberOfNodes\par
-X = 0 => not logical link or X = 1 => logical link\\
+X = 0 => not physical link or X = 1 => physical link\\
 
-\textbf{Path}
+\textbf{OMS}
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{| c | c | c | c | c | c |}
+	\begin{tabular}{| c | c | c | c | c |}
 		\hline
-		\textbf{pathIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODUOs)\end{tabular} & \textbf{lightPathsIndex } \\ \hline
-		0...P-1            & 1...N               & null or 1...N              & 1...N                    & 0...OC                          & 0...LP-1                  \\ \hline
-	\end{tabular}               
-	\caption{Path variable}
-	\label{path}
+		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (opticalChannels)\end{tabular} & \textbf{wavelengths}  \\ \hline
+		0   & 1...N & 1...N & 0...OchL &  0 or 1...W         \\ \hline
+		... & 1...N & 1...N & 0...OchL &  0 or 1...W         \\ \hline
+		L-1 & 1...N & 1...N & 0...OchL &  0 or 1...W         \\ \hline
+	\end{tabular}
+	\caption{OMS (Optical Multiplex Section) variable}
+	\label{oms}
 \end{table}
 
-P = numberOfPaths\par
-N = numberOfNodes\par
-OC = opticalChannelCapacity\par 
-LP = numberOfLightPaths\\
+L = numberOfLinks\par
+N = numberOfNodes\par 
+OchL = numberOfOpticalChannelsPerLink\par 
+W = numberOfWavelengths\\
 
-\textbf{PathRequest}
+\underline{\textbf{PathRequest}}
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{| c | c | c | c |}
+	\begin{tabular}{| c | c | c | c | c |}
 		\hline
-		\textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \textbf{wavelengthContinuity}\\ \hline
-		0...N               & null or 1...N                      & 1...N                    & 0                    \\ \hline
+		\textbf{requestIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \textbf{wavelengthContinuity}\\ \hline
+		0...R-1               & 0...N               & -1 or 1...N                & 1...N                    & 0                            \\ \hline
 	\end{tabular}
 	\caption{PathRequest variable}
 	\label{path_request}
 \end{table}
 
-N = numberOfNodes\\
+N = numberOfNodes\par
+R = numberOfRequests\\
 
-\textbf{PathRequestRouted}\\
+\underline{\textbf{PathRequestRouted}}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c | c |}
 		\hline
-		\textbf{routed} & \textbf{lightPathsIndex} & \textbf{opticalChannelsIndex} & \textbf{wavelength}\\ \hline
-		0 or 1          & 0...LP-1                 & 0...Och-1                      & 1...W              \\ \hline
+		\textbf{requestIndex} & \textbf{routed} & \textbf{numberOfLightPaths} & \textbf{lightPaths}\\ \hline
+		0...R-1               & 0 or 1          & 1...LP                      & vector <lighPaths> \\ \hline
 	\end{tabular}
 	\caption{PathRequestRouted variable}
 	\label{path_request_routed}
 \end{table}
 
+R = numberOfRequests\par
 LP = numberOfLightPaths\par  
-Och = numberOfOpticalChannels\par
-W = numberOfWavelength\\
-
-\textbf{LightPath}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c | c | c |}
-		\hline
-		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODUOs)\end{tabular} & \textbf{opticalChannelsIndex} \\ \hline
-		0...LP-1              & 1...N               & 1...N                    &  1...OC                   & 0...Och-1                     \\ \hline        	
-	\end{tabular}
-	\caption{LightPath variable}
-	\label{lightpath}
-\end{table}
-
-LP = numberOfLightPaths\par 
-N = numberOfNodes\par 
-OC = opticalChannelCapacity\par
 Och = numberOfOpticalChannels\\
 
-\textbf{LightPathRequest}
+
+\underline{\textbf{DemandRequestRouted}}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c |}
 		\hline
-		\textbf{sourceNode} & \textbf{destinationNode} & \textbf{wavelength}\\ \hline
-		1...N               & 1...N                    & -1                 \\ \hline
+		\textbf{demandIndex} & \textbf{routed}  & \textbf{wavelength}\\ \hline
+		0...D-1              & 0 or 1           & 1...W              \\ \hline
 	\end{tabular}
-	\caption{lightPathRequest variable}
-	\label{light_path_request}
+	\caption{DemandRequestRouted variable}
+	\label{demand_request_routed}
 \end{table}
 
-N = numberOfNodes\\
-
-\textbf{LightPathRequestRouted}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c |}
-		\hline
-		\textbf{sourceNode} & \textbf{destinationNode} & \textbf{wavelength}\\ \hline
-		1...N               & 1...N                    & 1...W              \\ \hline
-	\end{tabular}
-	\caption{lightPathRequestRouted variable}
-	\label{light_path_request_routed}
-\end{table}
-
-N = numberOfNodes\par
-W = numberOfWavelength\\
-
-\textbf{OpticalChannel}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c | c | c |}
-		\hline
-		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODUOs)\end{tabular}  & \textbf{demandsIndex}    \\ \hline
-		0...Och-1                    & 1...N               & 1...N                    & 1...OC                     & 0...D                    \\ \hline
-	\end{tabular}
-	\caption{OpticalChannel variable}
-	\label{optical_channel}
-\end{table}
-
-Och = numberOfOpticalChannels\par
-N = numberOfNodes\par
-OC = opticalChannelCapacity\par 
-D = numberOfDemands\\
-
-\textbf{OpticalChannelRequest}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c |}
-		\hline
-		\textbf{sourceNode} & \textbf{destinationNode}\\ \hline
-		1...N               & 1...N                   \\ \hline
-	\end{tabular}
-	\caption{opticalChannelRequest variable}
-	\label{optical_channel_request}
-\end{table}
-
-N = numberOfNodes\\
-
-\textbf{OpticalChannelRequestRouted}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c |}
-		\hline
-		\textbf{sourceNode} & \textbf{destinationNode}\\ \hline
-		1...N               & 1...N                   \\ \hline
-	\end{tabular}
-	\caption{opticalChannelRequestRouted variable}
-	\label{optical_channel_request_routed}
-\end{table}
-
-N = numberOfNodes\\
-
-\textbf{Oms}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c | c | c |}
-		\hline
-		\textbf{omsIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (opticalChannels)\end{tabular} & \begin{tabular}[c]{@{}c@{}}\textbf{[opticalChannelsIndex,} \\ \textbf{wavelengths]}\end{tabular}  \\ \hline
-		0...L-1                 & 1...N               & 1...N                    & 0...OchL                            & [0...Och-1, 1...W]                             \\ \hline
-	\end{tabular}
-	\caption{Oms (Optical multiplex section) variable}
-	\label{oms}
-\end{table}
-
-L = numberOfLinks (oms)\par
-N = numberOfNodes\par 
-OchL = numberOfOpticalChannelsPerLink\par 
-Och = numberOfOpticalChannels\par
+D = numberOfDemands\par
 W = numberOfWavelengths\\
 
 
@@ -846,12 +813,15 @@ W = numberOfWavelengths\\
 	\centering
 	\begin{tabular}{| c | c |}
 		\hline
-		\textbf{Block}             & \textbf{Description}\\ \hline
-		Scheduler\_                &                     \\ \hline
-		LogicalTopologyGenerator\_ &                     \\ \hline
-		LogicalTopologyManager\_   &                     \\ \hline
-		PhysicalTopologyManager\_  &                     \\ \hline
-		Sink\_                     &                     \\ \hline
+		\textbf{Block}              & \textbf{Description}\\ \hline
+		Scheduler\_                 &                     \\ \hline
+		LogicalTopologyGenerator\_  &                     \\ \hline
+		PhysicalTopologyGenerator\_ &                     \\ \hline
+		LogicalTopologyManager\_    &                     \\ \hline
+		PhysicalTopologyManager\_   &                     \\ \hline
+		SinkRoutedOrBlocked\_       &                     \\ \hline
+		SinkLogicalTopology\_       &                     \\ \hline
+		SinkPhysicalTopology\_      &                     \\ \hline
 	\end{tabular}
 	\caption{System Blocks}
 	\label{system_blocks}
@@ -873,8 +843,8 @@ W = numberOfWavelengths\\
 	\centering
 	\begin{tabular}{| c | c | c |}
 		\hline
-		\textbf{Input Parameters}                                                 & \textbf{State Variables} & \textbf{Output Signal}\\ \hline
-		\begin{tabular}[c]{@{}c@{}}transportMode \\ physicalTopology\end{tabular} &        & LogicalTopologyOut    \\ \hline
+		\textbf{Input Parameters}                                                & \textbf{State Variables} & \textbf{Output Signal}\\ \hline
+		\begin{tabular}[c]{@{}c@{}}transportMode \\ adjacencyMatrix\end{tabular} &        & LogicalTopologyOut    \\ \hline
 	\end{tabular}
 	\caption{LogicalTopologyGenerator\_ Block}
 	\label{logical_topology_block}
@@ -882,10 +852,21 @@ W = numberOfWavelengths\\
 
 \begin{table}[H]
 	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\textbf{Input Parameters} & \textbf{State Variables} & \textbf{Output Signal}\\ \hline
+		\begin{tabular}[c]{@{}c@{}}adjacencyMatrix \\ transmissionSystems \\ opticalChannels \\ opticalChannelCapacity\end{tabular} &   & PhysicalTopologyOut\\ \hline
+	\end{tabular}
+	\caption{PhysicalTopologyGenerator\_ Block}
+	\label{physical_topology_block}
+\end{table}
+
+\begin{table}[H]
+	\centering
 	\begin{tabular}{| c | c | c | c |}
 		\hline
-		\textbf{Input Parameter} &\textbf{Input Signals} & \textbf{State Variables} & \textbf{Output Signals}\\ \hline
-		shortestPathType & \begin{tabular}[c]{@{}c@{}}SchedulerOut \\ LogicalTopologyOut\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}LogicalManagerRequest \\ LogicalManagerOut\end{tabular}\\ \hline
+		\textbf{Input Parameters} &\textbf{Input Signals} & \textbf{State Variables} & \textbf{Output Signals}\\ \hline
+		\begin{tabular}[c]{@{}c@{}}routingCriterionLogicalTopology \\ blockingCriterionLogicalTopology\end{tabular} & \begin{tabular}[c]{@{}c@{}}SchedulerOut \\ LogicalTopologyOut \\ PhysicalManagerOut\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}LogicalManagerRequest \\ LogicalManagerOut \\ LogicalTopologyCheck\end{tabular}\\ \hline
 	\end{tabular}
 	\caption{LogicalTopologyManager\_ Block}
 	\label{logical_manager_block}
@@ -895,8 +876,8 @@ W = numberOfWavelengths\\
 	\centering
 	\begin{tabular}{| c | c | c | c |}
 		\hline
-		\textbf{Input Parameters} & \textbf{Input Signal} & \textbf{State Variables} & \textbf{Output Signal}\\ \hline
-		\begin{tabular}[c]{@{}c@{}}adjacencyMatrix \\ transmissionSystems \\ opticalChannels \\ opticalChannelCapacity\end{tabular} & LogicalManagerRequest &  & PhysicalManagerOut\\ \hline
+		\textbf{Input Parameters} & \textbf{Input Signals} & \textbf{State Variables} & \textbf{Output Signals}\\ \hline
+		\begin{tabular}[c]{@{}c@{}}routingCriterionPhysicalTopology \\ blockingCriterionPhysicalTopology\end{tabular} & \begin{tabular}[c]{@{}c@{}}LogicalManagerRequest \\ PhysicalTopologyOut\end{tabular} &  & \begin{tabular}[c]{@{}c@{}}PhysicalManagerOut \\ PhysicalTopologyCheck\end{tabular}\\ \hline
 	\end{tabular}
 	\caption{PhysicalTopologyManager\_ Block}
 	\label{physical_manager_block}
@@ -907,11 +888,34 @@ W = numberOfWavelengths\\
 	\begin{tabular}{| c |}
 		\hline
 		\textbf{Input Signal}\\ \hline
-		LogicalManagerOut        \\ \hline
+		LogicalTopologyCheck \\ \hline
 	\end{tabular}
-	\caption{Sink\_ Block}
-	\label{sink_block}
+	\caption{SinkLogicalTopology\_ Block}
+	\label{sink_logical_topology_block}
 \end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c |}
+		\hline
+		\textbf{Input Signal}\\ \hline
+		LogicalManagerOut \\ \hline
+	\end{tabular}
+	\caption{SinkRoutedOrBlocked\_ Block}
+	\label{sink_routed_or_blocked_block}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c |}
+		\hline
+		\textbf{Input Signal}\\ \hline
+		PhysicalTopologyCheck \\ \hline
+	\end{tabular}
+	\caption{SinkPhysicalTopology\_ Block}
+	\label{sink_physical_topology_block}
+\end{table}
+
 
 \newpage
 \vspace{11pt}
@@ -987,6 +991,21 @@ ODU4=
 	\end{bmatrix}
 \]
 
+\underline{\textbf{DemandRequest}}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\textbf{demandIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{oduType} & \textbf{survivabilityMethod}\\ \hline
+		0                    & 1                   & 2                        & 4                & 0						   \\ \hline
+	\end{tabular}
+	\caption{DemandRequest}
+	\label{demand_request_variable}
+\end{table}
+
+\underline{\textbf{LogicalTopology}}
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c | c | c | c | c |}
@@ -999,10 +1018,302 @@ ODU4=
 		5    	      & 0 & 0 & 1 & 1 & 0 & 1 \\ \hline
 		6			  & 1 & 1 & 0 & 0 & 1 & 0 \\ \hline
 	\end{tabular}
-	\caption{Logical topology matrix}
+	\caption{logicalTopology matrix}
 	\label{logical_matrix}
 \end{table}
 
+\textbf{paths}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c | c |}
+		\hline
+		\textbf{pathIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfLightPaths} & \textbf{lightPaths } \\ \hline
+		& & & & & & \\ \hline
+	\end{tabular}               
+	\caption{paths variable}
+	\label{paths}
+\end{table}
+
+\underline{\textbf{PhysicalTopology}}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c | c |}
+		\hline
+		\textbf{Node} & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+		1             & 0 & 1 & 0 & 0 & 0 & 1 \\ \hline
+		2             & 1 & 0 & 1 & 0 & 0 & 1 \\ \hline
+		3             & 0 & 1 & 0 & 1 & 1 & 0 \\ \hline
+		4			  & 0 & 0 & 1 & 0 & 1 & 0 \\ \hline	
+		5    	      & 0 & 0 & 1 & 1 & 0 & 1 \\ \hline
+		6			  & 1 & 1 & 0 & 0 & 1 & 0 \\ \hline
+	\end{tabular}
+	\caption{physicalTopology matrix}
+	\label{physical_matrix}
+\end{table}
+
+\textbf{OMS}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (opticalChannels)\end{tabular} & \textbf{wavelengths}  \\ \hline
+		0 & 1 & 2 & 2 &  0         \\ \hline
+		1 & 1 & 6 & 2 &  0         \\ \hline
+		2 & 2 & 1 & 2 &  0         \\ \hline
+		3 & 2 & 3 & 2 &  0         \\ \hline
+		4 & 2 & 6 & 2 &  0         \\ \hline
+		5 & 3 & 2 & 2 &  0         \\ \hline
+		6 & 3 & 4 & 2 &  0         \\ \hline
+		7 & 3 & 5 & 2 &  0         \\ \hline
+		8 & 4 & 3 & 2 &  0         \\ \hline
+		9 & 4 & 5 & 2 &  0         \\ \hline
+		10 & 5 & 3 & 2 &  0         \\ \hline
+		11 & 5 & 4 & 2 &  0         \\ \hline
+		12 & 5 & 6 & 2 &  0         \\ \hline
+		13 & 6 & 1 & 2 &  0         \\ \hline
+		14 & 6 & 2 & 2 &  0         \\ \hline
+		15 & 6 & 5 & 2 &  0         \\ \hline
+	\end{tabular}
+	\caption{OMS (Optical Multiplex Section) variable}
+	\label{oms}
+\end{table}
+
+\underline{\textbf{PathRequest}}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\textbf{requestIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \textbf{wavelengthContinuity}\\ \hline
+		0              & 1               & -1                 & 2                    & 0                            \\ \hline
+	\end{tabular}
+	\caption{PathRequest variable}
+	\label{path_request}
+\end{table}
+
+\underline{\textbf{PathRequestRouted}}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c |}
+		\hline
+		\textbf{requestIndex} & \textbf{routed} & \textbf{numberOfLightPaths} & \textbf{lightPaths}\\ \hline
+		0              & 1          & 1                      & vector <lightPaths> \\ \hline
+	\end{tabular}
+	\caption{PathRequestRouted variable}
+	\label{path_request_routed}
+\end{table}
+
+\textbf{lightPath}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c |}
+		\hline
+		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfOpticalChannels} & \textbf{opticalChannels} \\ \hline
+		0 & 1 & 2 & 0 & 1 & vector<opticalChannels> \\ \hline        	
+	\end{tabular}
+	\caption{lightPaths variable}
+	\label{lightpaths}
+\end{table}
+
+
+\textbf{opticalChannels}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c |}
+		\hline
+		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular}  & \textbf{demandsIndex} & \textbf{wavelength}   \\ \hline
+		0 & 1 & 2 & 0 & 0 & 1 \\ \hline
+	\end{tabular}
+	\caption{opticalChannels variable}
+	\label{optical_channels}
+\end{table}
+
+\textbf{OMS}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (opticalChannels)\end{tabular} & \textbf{wavelengths}  \\ \hline
+		0 & 1 & 2 & 0 &  [1]         \\ \hline
+		1 & 1 & 6 & 2 &  [0]         \\ \hline
+		2 & 2 & 1 & 2 &  [0]         \\ \hline
+		3 & 2 & 3 & 1 &  [0]         \\ \hline
+		4 & 2 & 6 & 2 &  [0]         \\ \hline
+		5 & 3 & 2 & 2 &  [0]         \\ \hline
+		6 & 3 & 4 & 2 &  [0]         \\ \hline
+		7 & 3 & 5 & 2 &  [0]         \\ \hline
+		8 & 4 & 3 & 2 &  [0]         \\ \hline
+		9 & 4 & 5 & 2 &  [0]         \\ \hline
+		10 & 5 & 3 & 2 &  [0]         \\ \hline
+		11 & 5 & 4 & 2 &  [0]         \\ \hline
+		12 & 5 & 6 & 2 &  [0]        \\ \hline
+		13 & 6 & 1 & 2 &  [0]         \\ \hline
+		14 & 6 & 2 & 2 &  [0]         \\ \hline
+		15 & 6 & 5 & 2 &  [0]         \\ \hline
+	\end{tabular}
+	\caption{OMS (Optical Multiplex Section) variable}
+	\label{oms}
+\end{table}
+
+\textbf{paths}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c | c |}
+		\hline
+		\textbf{pathIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfLightPaths} & \textbf{lightPaths } \\ \hline
+		0 & 1 & -1 & 2 & 0 & 1 & vector<lightPaths> \\ \hline
+	\end{tabular}               
+	\caption{path variable}
+	\label{path}
+\end{table}
+
+\underline{\textbf{DemandRequestRouted}}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\textbf{demandIndex} & \textbf{routed}  & \textbf{wavelength}\\ \hline
+		0           & 1           & 1             \\ \hline
+	\end{tabular}
+	\caption{DemandRequestRouted variable}
+	\label{demand_request_routed}
+\end{table}
+
+
+\underline{\textbf{DemandRequest}}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\textbf{demandIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{oduType} & \textbf{survivabilityMethod}\\ \hline
+		1                    & 1                   & 3                        & 4                & 0						   \\ \hline
+	\end{tabular}
+	\caption{DemandRequest}
+	\label{demand_request_variable}
+\end{table}
+
+\underline{\textbf{PathRequest}}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\textbf{requestIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \textbf{wavelengthContinuity}\\ \hline
+		1              & 1               & 2                 & 3                    & 0                            \\ \hline
+	\end{tabular}
+	\caption{PathRequest variable}
+	\label{path_request}
+\end{table}
+
+\underline{\textbf{PathRequestRouted}}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c |}
+		\hline
+		\textbf{requestIndex} & \textbf{routed} & \textbf{numberOfLightPaths} & \textbf{lightPaths}\\ \hline
+		1              & 1          & 2                      & vector <lightPaths> \\ \hline
+	\end{tabular}
+	\caption{PathRequestRouted variable}
+	\label{path_request_routed}
+\end{table}
+
+\textbf{lightPaths}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c |}
+		\hline
+		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfOpticalChannels} & \textbf{opticalChannel} \\ \hline
+		1 & 1 & 2 & 0 & 1 & vector<opticalChannels> \\ \hline    
+		2 & 2 & 3 & 0 & 1 & vector<opticalChannels> \\ \hline     	
+	\end{tabular}
+	\caption{lightPaths variable}
+	\label{lightpaths}
+\end{table}
+
+
+\textbf{opticalChannels}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c |}
+		\hline
+		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular}  & \textbf{demandsIndex} & \textbf{wavelength}   \\ \hline
+		1 & 1 & 2 & 0 & 1 & 2 \\ \hline
+	    2 & 2 & 3 & 0 & 1 & 3 \\ \hline
+	\end{tabular}
+	\caption{opticalChannels variable}
+	\label{optical_channels}
+\end{table}
+
+\textbf{OMS}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c |}
+		\hline
+		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (opticalChannels)\end{tabular} & \textbf{wavelengths}  \\ \hline
+		0 & 1 & 2 & 0 &  [1,2]         \\ \hline
+		1 & 1 & 6 & 2 &  [0]         \\ \hline
+		2 & 2 & 1 & 2 &  [0]         \\ \hline
+		3 & 2 & 3 & 1 &  [3]         \\ \hline
+		4 & 2 & 6 & 2 &  [0]         \\ \hline
+		5 & 3 & 2 & 2 &  [0]         \\ \hline
+		6 & 3 & 4 & 2 &  [0]         \\ \hline
+		7 & 3 & 5 & 2 &  [0]         \\ \hline
+		8 & 4 & 3 & 2 &  [0]         \\ \hline
+		9 & 4 & 5 & 2 &  [0]         \\ \hline
+		10 & 5 & 3 & 2 &  [0]         \\ \hline
+		11 & 5 & 4 & 2 &  [0]         \\ \hline
+		12 & 5 & 6 & 2 &  [0]        \\ \hline
+		13 & 6 & 1 & 2 &  [0]         \\ \hline
+		14 & 6 & 2 & 2 &  [0]         \\ \hline
+		15 & 6 & 5 & 2 &  [0]         \\ \hline
+	\end{tabular}
+	\caption{OMS (Optical Multiplex Section) variable}
+	\label{oms}
+\end{table}
+
+\textbf{paths}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c | c |}
+		\hline
+		\textbf{pathIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfLightPaths} & \textbf{lightPaths } \\ \hline
+		0 & 1 & -1 & 2 & 0 & 1 & vector<lightPath> \\ \hline
+		1 & 1 & 2 & 3 & 0 & 2 & vector<lightPath> \\ \hline
+	\end{tabular}               
+	\caption{paths variable}
+	\label{paths}
+\end{table}
+
+\underline{\textbf{DemandRequestRouted}}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\textbf{demandIndex} & \textbf{routed}  & \textbf{wavelengths}\\ \hline
+		1           & 1           & [2,3]            \\ \hline
+	\end{tabular}
+	\caption{DemandRequestRouted variable}
+	\label{demand_request_routed}
+\end{table}
+
+\newpage
+\vspace{11pt}
 
 \begin{table}[H]
 	\centering
@@ -1029,7 +1340,7 @@ ODU4=
 	\centering
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
-		\textbf{pathIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODUOs)\end{tabular} & \textbf{lightPathsIndex} \\ \hline
+		\textbf{pathIndex} & \textbf{sourceNode} & \textbf{intermediateNodes} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{lightPathsIndex} \\ \hline
 		0				   & 1                   & null						  & 2                        & 0                         & 0                        \\ \hline
 		1				   & 1                   & 2                          & 3                        & 0                         & 1, 2                     \\ \hline
 		2				   & 1                   & 6, 2                       & 3                        & 0                         & 3, 4, 5                  \\ \hline
@@ -1060,7 +1371,7 @@ ODU4=
 	\centering
 	\begin{tabular}{| c | c | c | c | c |}
 		\hline
-		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODUOs)\end{tabular} & \textbf{opticalChannelsIndex} \\ \hline
+		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{opticalChannelsIndex} \\ \hline
 		0                       & 1                   & 2                        & 0                         & 0					   		 \\ \hline
 		1                       & 1                   & 2                        & 0                    	 & 1					   	     \\ \hline
 		2                       & 2                   & 3                        & 0                         & 2					   	     \\ \hline
@@ -1082,7 +1393,7 @@ ODU4=
 	\centering
 	\begin{tabular}{| c | c | c | c | c |}
 		\hline
-		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODUOs)\end{tabular}  & \textbf{demandsIndex}  \\ \hline
+		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular}  & \textbf{demandsIndex}  \\ \hline
 		0                       & 1                   & 2                        & 0                         & 0					   		 \\ \hline
 		1                       & 1                   & 2                        & 0                    	 & 1					   	     \\ \hline
 		2                       & 2                   & 3                        & 0                         & 1					   	     \\ \hline
