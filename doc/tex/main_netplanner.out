@@ -16,6 +16,13 @@
 \BOOKMARK [1][-]{section.2.4}{Blocks input parameters and signals}{chapter.2}% 16
 \BOOKMARK [1][-]{section.2.5}{Blocks state variables and output signals}{chapter.2}% 17
 \BOOKMARK [1][-]{section.2.6}{Example}{chapter.2}% 18
-\BOOKMARK [2][-]{subsection.2.6.1}{Transparent with 1+1 Protection}{section.2.6}% 19
-\BOOKMARK [2][-]{subsection.2.6.2}{Translucent without Survivability}{section.2.6}% 20
-\BOOKMARK [2][-]{subsection.2.6.3}{Translucent with 1+1 Protection}{section.2.6}% 21
+\BOOKMARK [2][-]{subsection.2.6.1}{Demand 0}{section.2.6}% 19
+\BOOKMARK [2][-]{subsection.2.6.2}{Demand 1}{section.2.6}% 20
+\BOOKMARK [2][-]{subsection.2.6.3}{Demand 2}{section.2.6}% 21
+\BOOKMARK [2][-]{subsection.2.6.4}{Demand 3}{section.2.6}% 22
+\BOOKMARK [2][-]{subsection.2.6.5}{Demand 4}{section.2.6}% 23
+\BOOKMARK [2][-]{subsection.2.6.6}{Demand 5}{section.2.6}% 24
+\BOOKMARK [2][-]{subsection.2.6.7}{Demand 6}{section.2.6}% 25
+\BOOKMARK [2][-]{subsection.2.6.8}{Transparent with 1+1 Protection}{section.2.6}% 26
+\BOOKMARK [2][-]{subsection.2.6.9}{Translucent without Survivability}{section.2.6}% 27
+\BOOKMARK [2][-]{subsection.2.6.10}{Translucent with 1+1 Protection}{section.2.6}% 28
