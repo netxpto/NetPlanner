@@ -46,8 +46,8 @@ public:
 	void setODU4(t_matrix od4) { odu4 = od4; }
 	t_matrix const getODU4(void) { return odu4; };
 
-	void setDemandsOrderingRule(t_integer rule) { orderingRule = rule; }
-	t_integer const setDemandsOrderingRule(void) { return orderingRule; };
+	void setOrderingRule(t_integer rule) { orderingRule = rule; }
+	t_integer const setOrderingRule(void) { return orderingRule; };
 
 	void setNumberOfNodes(t_integer nodes) { numberOfNodes = nodes; }
 	void setNumberOfDemands(t_integer number) { numberOfDemands = number; }
