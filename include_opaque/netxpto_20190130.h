@@ -60,6 +60,10 @@ const int MAX_NUMBER_OF_PATHS = 2;
 
 using namespace std;							// to be deleted 4/9/2018
 
+//enum class survivability_method { none, protection_1_plus_1, restoration };
+enum class transport_mode { opaque, transparent };
+enum class routing_criterion { hops, distance };
+
 // ####################################################################################################
 // #
 // # Random engine
@@ -91,7 +95,7 @@ using t_demand_request = struct {
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer oduType{ 0 };
-	t_integer survivabilityMethod{ 0 };
+	t_integer survivabilityMethod { 0 };
 
 	void setDemandIndex(t_integer dIndex) { demandIndex = dIndex; }
 	t_integer getDemandIndex() { return demandIndex; }
@@ -100,10 +104,10 @@ using t_demand_request = struct {
 using t_path = struct {
 	t_integer pathIndex{ 0 };
 	t_integer sourceNode{ 0 };
-	std::vector<int> intermediateNodes{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer capacity{ 0 };
-	std::vector<int> lightPaths{ 0 };
+	t_integer numberOfLightPaths{ 0 };
+	std::vector<int> lightPathsIndex{ 0 };
 };
 
 using t_light_path = struct {
@@ -111,28 +115,76 @@ using t_light_path = struct {
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer capacity{ 0 };
-	t_integer opticalChannels{ 0 };
+	t_integer numberOfOpticalChannels{ 0 };
+	std::vector<int> opticalChannelsIndex{ 0 };
 };
 
 using t_optical_channel = struct {
 	t_integer opticalChannelIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
+	t_integer wavelength{ 0 };
 	t_integer capacity{ 0 };
+	t_integer numberOfDemands{ 0 };
 	std::vector<int> demandsIndex{ 0 };
 };		
 
-using t_oms = struct {
-	t_integer omsIndex{ 0 };
+/*
+using t_logical_topology = struct {
+	t_matrix logicalTopology{ 0 };
+	std::vector<t_path> paths{ 0 };
+	std::vector<t_light_path> lightPaths{ 0 };
+	std::vector<t_optical_channel> opticalChannels{ 0 };
+};
+*/
+
+using t_optical_multiplexing_system = struct {
+	t_integer OMSIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
-	t_integer capacity{ 0 };
-
+	t_integer maximumNumberOfWavelengths{ 0 };
+	std::vector<int> wavelengths;
+	std::vector<int> availableWavelengths;
+};
+using t_physical_topology = struct {
+	t_matrix physicalTopology{ 0 };
+	std::vector<t_optical_multiplexing_system> OMS;
 };
 
+using t_path_request = struct {
+	t_integer requestIndex{ 0 };
+	t_integer sourceNode{ 0 };
+	t_integer destinationNode{ 0 };
+	t_integer numberOfIntermediateNodes{ 0 };
+	std::vector<int> intermediateNodes;
+};
+
+using t_routed = struct {
+	t_integer requestIndex{ 0 };
+	bool routed;
+	t_integer numberOfLightPaths{ 0 };
+};
+
+using t_light_paths_table = struct {
+	t_integer sourceNode{ 0 };
+	t_integer destinationNode{ 0 };
+	t_integer numberOfIntermediateNodes{ 0 };
+	std::vector<int> intermediateNodes;
+	t_integer wavelength{ 0 };
+};
+using t_path_request_routed = struct {
+	std::vector<t_routed> routed;
+	std::vector<t_light_paths_table> lightPathsTable;
+};
+
+using t_demand_request_routed = struct {
+	t_integer demandIndex{ 0 };
+	bool routed;
+	t_integer pathsIndex{ 0 };
+};
 
 // Existent signals
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand_request, t_logical_topology, t_path, t_lightPath, t_optical_channel, t_oms };
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand_request, t_logical_topology, t_physical_topology, t_path, t_light_path, t_optical_channel, t_optical_multiplexing_system };
 
 // #######################################################################################################
 // #
@@ -160,7 +212,7 @@ std::ostream& operator<<(std::ostream &out, const t_demand_request &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, DemandRequest, LogicalTopology };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, DemandRequest, LogicalTopology, PhysicalTopology, PathRequest, PathRequestRouted, DemandRequestRouted };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -403,6 +455,9 @@ private:
 			case signal_type::LogicalTopology:
 				typeName = "LogicalTopology";
 				break;
+			case signal_type::PhysicalTopology:
+				typeName = "PhysicalTopology";
+				break;
 			default:
 				cout << "Error: netxpto_20180830.h - typeName not defined\n";
 		}
@@ -421,6 +476,7 @@ using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, sig
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
 using DemandRequest = BaseSignal<t_demand_request, signal_type::DemandRequest, signal_value_type::t_demand_request>;
 using LogicalTopology = BaseSignal<t_matrix, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
+using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
 
 
 
