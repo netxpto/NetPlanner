@@ -339,7 +339,45 @@ void Signal::close() {
 				}
 				setFirstValueToBeSaved(1);
 			}
-		
+			
+			else if (type == "PhysicalTopology") {
+				t_physical_topology *ptr = (t_physical_topology *)buffer;
+				ptr = ptr + (firstValueToBeSaved - 1);
+
+				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+				for (auto pTopology = firstValueToBeSaved; pTopology <= outPosition; pTopology++) {
+
+					t_integer nodes = (*ptr).physicalTopology[0].size();
+					for (t_integer line = 0; line < nodes; line++) {
+
+						for (t_integer column = 0; column < nodes; column++) {
+
+							fileHandler << (*ptr).physicalTopology[line][column];
+							fileHandler << "\t";
+						}
+						fileHandler << "\n";
+					}
+					fileHandler << "\n\n\n";
+
+					for (t_optical_multiplexing_system& oms : ptr->OMS) {
+
+						fileHandler << oms.OMSIndex;
+						fileHandler << "\t";
+						fileHandler << oms.sourceNode;
+						fileHandler << "\t";
+						fileHandler << oms.destinationNode;
+						fileHandler << "\t";
+						fileHandler << oms.maximumNumberOfWavelengths;
+						fileHandler << "\t";
+						for (t_integer w = 0; w < oms.wavelengths.size(); w++) {
+							fileHandler << oms.wavelengths[w];
+						}
+						fileHandler << "\n";
+					}
+				}
+				setFirstValueToBeSaved(1);
+			}
+
 			else if (type == "Binary") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_binary));
@@ -614,6 +652,13 @@ bool SuperBlock::runBlock(string signalPath) {
 						t_matrix signalLogicalTopology;
 						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalLogicalTopology);
 						outputSignals[i]->bufferPut(signalLogicalTopology);
+					}
+					break;
+				case signal_value_type::t_physical_topology:
+					for (int j = 0; j < length; j++) {
+						t_physical_topology signalPhysicalTopology;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPhysicalTopology);
+						outputSignals[i]->bufferPut(signalPhysicalTopology);
 					}
 					break;
 			

@@ -10,9 +10,10 @@ bool LogicalTopologyGenerator::runBlock(void) {
 	else
 		generate = false;
 
-	if (transportMode == "opaque") 
+	if (transportMode == transport_mode::opaque) 
 
 		outputSignals[0]->bufferPut((t_matrix)adjacencyMatrix);
+
 
 	else {
 

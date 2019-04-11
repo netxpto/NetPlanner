@@ -2,6 +2,7 @@
 #include "..\..\..\include_opaque\scheduler_20190122.h"
 #include "..\..\..\include_opaque\sink_20180815.h"
 #include "..\..\..\include_opaque\logical_topology_generator_20190216.h"
+#include "..\..\..\include_opaque\physical_topology_generator_20190221.h"
 
 
 //##########################################################################################
@@ -20,15 +21,15 @@ t_matrix odu1{	{0,0,0,0,0,0},
 				{0,0,0,0,0,0},
 				{0,0,0,0,0,0},
 				{0,0,0,0,0,0},
-				{0,0,1,0,0,0},
+				{0,0,0,0,0,0},
 				{0,0,0,0,0,0} };
 
-t_matrix odu2{	{0,0,0,0,0,0},
+t_matrix odu2{	{0,0,0,0,0,1},
 				{0,0,0,0,0,0},
 				{0,0,0,0,0,0},
 				{0,0,0,0,0,0},
 				{0,0,0,0,0,0},
-				{0,0,0,3,0,0} };
+				{0,0,0,0,0,0} };
 
 t_matrix odu3{	{0,0,3,0,0,0},
 				{0,0,0,0,0,0},
@@ -47,19 +48,16 @@ t_matrix odu4{	{0,1,2,0,0,0},
 // Demands odering rule
 t_integer orderingRule{ 0 };
 
-// Shortest Path Type
-std::string shortestPathType{ "hops" };
-
 // Transport mode
-std::string transportMode{ "opaque" };
+transport_mode transportMode{transport_mode::opaque};
 
 // Adjacency matrix of the physical network 
 t_matrix adjacencyMatrix{ {0,1,0,0,0,1},
-						  {1,0,1,0,0,1},
-						  {0,1,0,1,1,0},
-						  {0,0,1,0,1,0},
-						  {0,0,1,1,0,1},
-						  {1,1,0,0,1,0} };
+						  {0,0,1,0,0,0},
+						  {0,0,0,0,0,0},
+						  {0,0,1,0,0,0},
+						  {0,0,1,1,0,0},
+						  {0,1,0,0,1,0} };
 
 // Number of transmission systems
 t_integer transmissionSystems{ 1 };
@@ -70,6 +68,12 @@ t_integer opticalChannels{ 2 };
 // Capacity of each optical channel in ODU0s
 t_integer opticalChannelCapacity{ 80 };
 
+// Routing Criterion Logical Topology
+routing_criterion routingCriterionLogicalTopology{ routing_criterion::hops };
+
+// Routing Criterion Physical Topology
+routing_criterion routingCriterionPhysicalTopology{ routing_criterion::hops };
+
 //##########################################################################################
 //##########################################################################################
 //##########################################################################################
@@ -77,67 +81,94 @@ t_integer opticalChannelCapacity{ 80 };
 int main() {
 
 	/* Signals Declaration */
-	DemandRequest SchedulerOut{ "SchedulerOut.sgn", 10};
-	SchedulerOut.setSaveInAscii(true);
+	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 10};
+	Scheduler_Out.setSaveInAscii(true);
 	
-	LogicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn", 32 };
-	LogicalTopologyOut.setSaveInAscii(true);
+	LogicalTopology LogicalTopology_Out{ "LogicalTopology_Out.sgn", 32 };
+	LogicalTopology_Out.setSaveInAscii(true);
 
-	PathRequest LogicalManagerRequest{ "LogicalManagerRequest.sgn", 32 };
-	LogicalManagerRequest.setSaveInAscii(true);
+	PhysicalTopology PhysicalTopology_Out{ "PhysicalTopology_Out.sgn", 32 };
+	PhysicalTopology_Out.setSaveInAscii(true);
 
-	PathRequestRouted PhysicalManagerOut{ "PhysicalManagerOut.sgn", 32 };
-	PhysicalManagerOut.setSaveInAscii(true);
+	/*
+	PathRequest LogicalManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn", 32 };
+	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
 
-	DemandRequestRouted LogicalManagerOut{ "LogicalManagerOut.sgn", 32 };
-	LogicalManagerOut.setSaveInAscii(true);
+	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn", 32 };
+	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
+
+	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn", 32 };
+	ProcessedDemand.setSaveInAscii(true);
+
+	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn", 32 };
+	FinalLogicalTopology.setSaveInAscii(true);
+
+	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn", 32 };
+	FinalPhysicalTopology.setSaveInAscii(true);
 	
+	*/
 
 	/* Blocks Declaration */
-	Scheduler Scheduler_{ {},{ &SchedulerOut} };
+	Scheduler Scheduler_{ {},{ &Scheduler_Out} };
 	Scheduler_.setODU0(odu0);
 	Scheduler_.setODU1(odu1);
 	Scheduler_.setODU2(odu2);
 	Scheduler_.setODU3(odu3);
 	Scheduler_.setODU4(odu4);
-	Scheduler_.setDemandsOrderingRule(orderingRule);
+	Scheduler_.setOrderingRule(orderingRule);
 
-	Sink SinkScheduler_{ { &SchedulerOut },{} };
+	Sink SinkScheduler_{ { &Scheduler_Out },{} };
 	SinkScheduler_.setDisplayNumberOfSamples(true);
 
-	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{ &LogicalTopologyOut } };
+	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{ &LogicalTopology_Out } };
 	LogicalTopologyGenerator_.setTransportMode(transportMode);
 	LogicalTopologyGenerator_.setAdjacencyMatrix(adjacencyMatrix);
 
-	Sink SinkLogicalTopology_{ { &LogicalTopologyOut },{} };
+	Sink SinkLogicalTopologyGenerator_{ { &LogicalTopology_Out },{} };
+	SinkLogicalTopologyGenerator_.setDisplayNumberOfSamples(true);
+
+	PhysicalTopologyGenerator PhysicalTopologyGenerator_{ {},{ &PhysicalTopology_Out } };
+	PhysicalTopologyGenerator_.setAdjacencyMatrix(adjacencyMatrix);
+	PhysicalTopologyGenerator_.setTransmissionSystems(transmissionSystems);
+	PhysicalTopologyGenerator_.setOpticalChannels(opticalChannels);
+	PhysicalTopologyGenerator_.setOpticalChannelCapacity(opticalChannelCapacity);
+
+	Sink SinkPhysicalTopologyGenerator_{ { &PhysicalTopology_Out },{} };
+	SinkPhysicalTopologyGenerator_.setDisplayNumberOfSamples(true);
+
+	/*
+	LogicalTopologyManager LogicalTopologyManager_{ { &Scheduler_Out, &LogicalTopology_Out, PhysicalTopologyManager_PathRequestRouted},{ &LogicalTopologyManager_PathRequest, &FinalLogicalTopology, &ProcessedDemand } };
+	LogicalTopologyManager_.setRoutingCriterionLogicalTopology(routingCriterionLogicalTopology);
+	LogicalTopologyManager_.setBlockingCriterionLogicalTopology(blockingCriterionLogicalTopology);
+
+	PhysicalTopologyManager PhysicalTopologyManager_{ { &PhysicalTopology_Out, &LogicalTopologyManager_PathRequest},{ &FinalPhysicalManager } };
+	PhysicalTopologyManager_.setRoutingCriterionPhysicalTopology(routingCriterionPhysicalTopology);
+	PhysicalTopologyManager_.setBlockingCriterionPhysicalTopology(blockingCriterionPhysicalTopology);
+
+	Sink SinkLogicalTopology_{ {&FinalLogicalTopology},{} };
 	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
 
-	LogicalTopologyManager LogicalTopologyManager_{ { &SchedulerOut, &LogicalTopologyOut},{ &LogicalManagerRequest, &LogicalManagerOut } };
-	LogicalTopologyManager_.setShortestPathType(shortestPathType);
+	Sink SinkPhysicalTopology_{ {&FinalPhysicalTopology},{} };
+	SinkPhysicalTopology_.setDisplayNumberOfSamples(true);
 
-	Sink SinkLogicalManager_{ {&LogicalManagerRequest, &LogicalManagerOut},{} };
-	SinkLogicalManager_.setDisplayNumberOfSamples(true);
-
-	PhysicalTopologyManager PhysicalTopologyManager_{ { &LogicalManagerRequest},{ &PhysicalManagerOut } };
-	PhysicalTopologyManager_.setAdjacencyMatrix(adjacencyMatrix);
-	PhysicalTopologyManager_.setTransmissionSystems(transmissionSystems);
-	PhysicalTopologyManager_.setOpticalChannels(opticalChannels);
-	PhysicalTopologyManager_.setOpticalChannelCapacity(opticalChannelCapacity);
-
-	Sink SinkPhysicalManager_{ {&PhysicalManagerOut},{} };
-	SinkPhysicalManager_.setDisplayNumberOfSamples(true);
+	Sink SinkRoutedOrBlocked_{ {&ProcessedDemand},{} };
+	SinkRoutedOrBlocked_.setDisplayNumberOfSamples(true);
+	*/
 
 	System MainSystem{
 			// BLOCKS
 			&Scheduler_,
 			&SinkScheduler_,
 			&LogicalTopologyGenerator_,
-			&SinkLogicalTopology_,
-			&LogicalTopologyManager_,
-			&SinkLogicalManager_,
-			&PhysicalTopologyManager_,
-			&SinkPhysicalManager_,
-
+			&SinkLogicalTopologyGenerator_,
+			&PhysicalTopologyGenerator_,
+			&SinkPhysicalTopologyGenerator_,
+			//&LogicalTopologyManager_,
+			//&PhysicalTopologyManager_,
+			//&SinkLogicalTopology_,
+			//&SinkPhysicalTopology_,
+			//&SinkRoutedOrBlocked_,
+		
 	};
 	
 	MainSystem.run();

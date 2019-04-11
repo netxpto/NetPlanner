@@ -1,113 +1,169 @@
 The following input parameters were loaded from the configuration file:
 -----------------------------------------------------------------
 ########## Scheduler ##########
-Block start time: 2019-03-22 10:42:33
+Block start time: 2019-04-06 22:04:00
 Input Signals: 
 Output Signals: 
-Scheduler|SchedulerOut|space=10
+Scheduler|Scheduler_Out|space=10
 -----------------------------------------------------------------
-Elapsed time: 3 milliseconds
+Elapsed time: 1 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Output Signals: 
-Scheduler|SchedulerOut|space=0
+Scheduler|Scheduler_Out|space=3
 
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-03-22 10:42:33
+Block start time: 2019-04-06 22:04:00
 Input Signals: 
-Sink|SchedulerOut|ready=10
+Sink|Scheduler_Out|ready=7
 Output Signals: 
 -----------------------------------------------------------------
-Elapsed time: 2 milliseconds
+Elapsed time: 1 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
-Sink|SchedulerOut|ready=0
+Sink|Scheduler_Out|ready=0
 Output Signals: 
 
 
 -----------------------------------------------------------------
 ########## LogicalTopologyGenerator ##########
-Block start time: 2019-03-22 10:42:33
+Block start time: 2019-04-06 22:04:00
 Input Signals: 
 Output Signals: 
-LogicalTopologyGenerator|LogicalTopologyOut|space=32
+LogicalTopologyGenerator|LogicalTopology_Out|space=32
 -----------------------------------------------------------------
-Elapsed time: 1 milliseconds
+Elapsed time: 0 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Output Signals: 
-LogicalTopologyGenerator|LogicalTopologyOut|space=31
+LogicalTopologyGenerator|LogicalTopology_Out|space=31
 
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-03-22 10:42:33
+Block start time: 2019-04-06 22:04:00
 Input Signals: 
-Sink|LogicalTopologyOut|ready=1
+Sink|LogicalTopology_Out|ready=1
 Output Signals: 
 -----------------------------------------------------------------
 Elapsed time: 1 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
-Sink|LogicalTopologyOut|ready=0
+Sink|LogicalTopology_Out|ready=0
+Output Signals: 
+
+
+-----------------------------------------------------------------
+########## PhysicalTopologyGenerator ##########
+Block start time: 2019-04-06 22:04:00
+Input Signals: 
+Output Signals: 
+PhysicalTopologyGenerator|PhysicalTopology_Out|space=32
+-----------------------------------------------------------------
+Elapsed time: 1 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Output Signals: 
+PhysicalTopologyGenerator|PhysicalTopology_Out|space=31
+
+
+-----------------------------------------------------------------
+########## Sink ##########
+Block start time: 2019-04-06 22:04:00
+Input Signals: 
+Sink|PhysicalTopology_Out|ready=1
+Output Signals: 
+-----------------------------------------------------------------
+Elapsed time: 1 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Sink|PhysicalTopology_Out|ready=0
 Output Signals: 
 
 
 -----------------------------------------------------------------
 ########## Scheduler ##########
-Block start time: 2019-03-22 10:42:33
+Block start time: 2019-04-06 22:04:00
 Input Signals: 
 Output Signals: 
-Scheduler|SchedulerOut|space=10
+Scheduler|Scheduler_Out|space=10
 -----------------------------------------------------------------
 Elapsed time: 0 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Output Signals: 
-Scheduler|SchedulerOut|space=10
+Scheduler|Scheduler_Out|space=10
 
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-03-22 10:42:33
+Block start time: 2019-04-06 22:04:00
 Input Signals: 
-Sink|SchedulerOut|ready=0
+Sink|Scheduler_Out|ready=0
 Output Signals: 
 -----------------------------------------------------------------
 Elapsed time: 0 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
-Sink|SchedulerOut|ready=0
+Sink|Scheduler_Out|ready=0
 Output Signals: 
 
 
 -----------------------------------------------------------------
 ########## LogicalTopologyGenerator ##########
-Block start time: 2019-03-22 10:42:33
+Block start time: 2019-04-06 22:04:00
 Input Signals: 
 Output Signals: 
-LogicalTopologyGenerator|LogicalTopologyOut|space=32
+LogicalTopologyGenerator|LogicalTopology_Out|space=32
 -----------------------------------------------------------------
 Elapsed time: 0 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Output Signals: 
-LogicalTopologyGenerator|LogicalTopologyOut|space=32
+LogicalTopologyGenerator|LogicalTopology_Out|space=32
 
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-03-22 10:42:33
+Block start time: 2019-04-06 22:04:00
 Input Signals: 
-Sink|LogicalTopologyOut|ready=0
+Sink|LogicalTopology_Out|ready=0
 Output Signals: 
 -----------------------------------------------------------------
 Elapsed time: 0 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
-Sink|LogicalTopologyOut|ready=0
+Sink|LogicalTopology_Out|ready=0
+Output Signals: 
+
+
+-----------------------------------------------------------------
+########## PhysicalTopologyGenerator ##########
+Block start time: 2019-04-06 22:04:00
+Input Signals: 
+Output Signals: 
+PhysicalTopologyGenerator|PhysicalTopology_Out|space=32
+-----------------------------------------------------------------
+Elapsed time: 0 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Output Signals: 
+PhysicalTopologyGenerator|PhysicalTopology_Out|space=32
+
+
+-----------------------------------------------------------------
+########## Sink ##########
+Block start time: 2019-04-06 22:04:00
+Input Signals: 
+Sink|PhysicalTopology_Out|ready=0
+Output Signals: 
+-----------------------------------------------------------------
+Elapsed time: 0 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Sink|PhysicalTopology_Out|ready=0
 Output Signals: 
 
 
