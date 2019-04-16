@@ -28,7 +28,6 @@
 # include <string>
 
 
-
 // ####################################################################################################
 // #
 // # Alias for ISO C++ built-in types
@@ -61,8 +60,8 @@ const int MAX_NUMBER_OF_PATHS = 2;
 using namespace std;							// to be deleted 4/9/2018
 
 //enum class survivability_method { none, protection_1_plus_1, restoration };
-enum class transport_mode { opaque, transparent };
-enum class routing_criterion { hops, distance };
+//enum class transport_mode { opaque, transparent };
+//enum class routing_criterion { hops, distance };
 
 // ####################################################################################################
 // #
@@ -107,7 +106,7 @@ using t_path = struct {
 	t_integer destinationNode{ 0 };
 	t_integer capacity{ 0 };
 	t_integer numberOfLightPaths{ 0 };
-	std::vector<int> lightPathsIndex{ 0 };
+	std::vector<int> lightPathsIndex;
 };
 
 using t_light_path = struct {
@@ -116,7 +115,7 @@ using t_light_path = struct {
 	t_integer destinationNode{ 0 };
 	t_integer capacity{ 0 };
 	t_integer numberOfOpticalChannels{ 0 };
-	std::vector<int> opticalChannelsIndex{ 0 };
+	std::vector<int> opticalChannelsIndex;
 };
 
 using t_optical_channel = struct {
@@ -126,15 +125,15 @@ using t_optical_channel = struct {
 	t_integer wavelength{ 0 };
 	t_integer capacity{ 0 };
 	t_integer numberOfDemands{ 0 };
-	std::vector<int> demandsIndex{ 0 };
+	std::vector<int> demandsIndex;
 };		
 
 /*
 using t_logical_topology = struct {
-	t_matrix logicalTopology{ 0 };
-	std::vector<t_path> paths{ 0 };
-	std::vector<t_light_path> lightPaths{ 0 };
-	std::vector<t_optical_channel> opticalChannels{ 0 };
+	t_matrix logicalTopologyAdjacencyMatrix{ 0 };
+	std::vector<t_path> paths;
+	std::vector<t_light_path> lightPaths;
+	std::vector<t_optical_channel> opticalChannels;
 };
 */
 
@@ -147,7 +146,7 @@ using t_optical_multiplexing_system = struct {
 	std::vector<int> availableWavelengths;
 };
 using t_physical_topology = struct {
-	t_matrix physicalTopology{ 0 };
+	t_matrix physicalTopologyAdjacencyMatrix{ 0 };
 	std::vector<t_optical_multiplexing_system> OMS;
 };
 
