@@ -20,10 +20,12 @@
 class PhysicalTopologyGenerator : public Block {
 
 	// Input Parameters
-	t_matrix physicalTopology{ {0} };
-	t_integer opticalChannels{ 0 };
-	t_integer transportSystems{ 0 };		// Number of transport systems between each pair of nodes
-	t_integer opticalChannelCapacity{ 0 };  // In terms of ODU0s
+	t_matrix physicalTopologyAdjacencyMatrix{0};
+	t_integer numberOfOMSPerLink{ 0 };
+	t_integer numberOfOpticalChannelsPerOMS{0};
+	double initialWavelenght{ 0 };
+	double wavelenghtSpacing{ 0 };
+	t_integer opticalChannelCapacity{ 0 };
 
 	// State variables
 	bool generate{ true }; 
@@ -40,14 +42,20 @@ public:
 	bool runBlock(void);
 
 
-	void setOpticalChannels(t_integer channels) { opticalChannels = channels; }; // Number of optical channels per transport system
-	t_integer getOpticalChannels(void) { return opticalChannels; };
+	void setNumberOfOpticalChannelsPerOMS(t_integer channels) { numberOfOpticalChannelsPerOMS = channels; };	// Number of optical channels per OMS
+	t_integer getNumberOfOpticalChannelsPerOMS(void) { return numberOfOpticalChannelsPerOMS; };
 
-	void setPhysicalTopology(t_matrix pTopology) { physicalTopology = pTopology; } // Physical topology
-	t_matrix getPhysicalTopology(void) { return physicalTopology; };
+	void setInitialWavelenght(double wavelenght) { initialWavelenght = wavelenght; };						// Initial wavelenght value (nm)
+	double getInitialWavelenght(void) { return initialWavelenght; };
 
-	void setTransportSystems(t_integer tSystems) { transportSystems = tSystems; };
-	t_integer getTransportSystems(void) { return transportSystems; };
+	void setWavelenghtSpacing(double spacing) { wavelenghtSpacing = spacing; };									// Spacing between wavlenghts used
+	double getWavelenghtSpacing(void) { return wavelenghtSpacing; };
+
+	void setPhysicalTopologyAdjacencyMatrix(t_matrix pTopology) { physicalTopologyAdjacencyMatrix = pTopology; } // Physical topology
+	t_matrix getPhysicalTopologyAdjacencyMatrix(void) { return physicalTopologyAdjacencyMatrix; };
+
+	void setNumberOfOMSPerLink(t_integer tSystems) { numberOfOMSPerLink = tSystems; };
+	t_integer getnumberOfOMSPerLink(void) { return numberOfOMSPerLink; };
 
 	void setOpticalChannelCapacity(t_integer optChCapacity) { opticalChannelCapacity = optChCapacity; };
 	t_integer getOpticalChannelCapacity(void) { return opticalChannelCapacity; };
