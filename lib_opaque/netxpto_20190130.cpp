@@ -347,12 +347,12 @@ void Signal::close() {
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 				for (auto pTopology = firstValueToBeSaved; pTopology <= outPosition; pTopology++) {
 
-					t_integer nodes = (*ptr).physicalTopology[0].size();
+					t_integer nodes = (*ptr).physicalTopologyAdjacencyMatrix[0].size();
 					for (t_integer line = 0; line < nodes; line++) {
 
 						for (t_integer column = 0; column < nodes; column++) {
 
-							fileHandler << (*ptr).physicalTopology[line][column];
+							fileHandler << (*ptr).physicalTopologyAdjacencyMatrix[line][column];
 							fileHandler << "\t";
 						}
 						fileHandler << "\n";

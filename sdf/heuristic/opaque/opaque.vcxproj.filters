@@ -51,4 +51,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="InputParameters.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Text.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

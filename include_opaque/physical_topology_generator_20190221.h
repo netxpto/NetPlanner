@@ -8,9 +8,9 @@
 class PhysicalTopologyGenerator : public Block {
 
 	// Input Parameters
-	t_matrix adjacencyMatrix;
-	t_integer transmissionSystems{ 0 };
-	t_integer opticalChannels{ 0 };
+	t_matrix physicalTopologyAdjacencyMatrix;
+	t_integer numberOfOMSPerLink{ 0 };
+	t_integer numberOfOpticalChannelsPerOMS{ 0 };
 	t_integer opticalChannelCapacity{ 0 };
 	
 	// State Variables
@@ -25,14 +25,14 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setAdjacencyMatrix(t_matrix aMatrix) { adjacencyMatrix = aMatrix; }
-	t_matrix getAdjacencyMatrix(void) { return adjacencyMatrix; };
+	void setPhysicalTopologyAdjacencyMatrix(t_matrix aMatrix) { physicalTopologyAdjacencyMatrix = aMatrix; }
+	t_matrix getPhysicalTopologyAdjacencyMatrix(void) { return physicalTopologyAdjacencyMatrix; };
 
-	void setTransmissionSystems(t_integer tSystems) { transmissionSystems = tSystems; }
-	t_integer getTransmissionSystems(void) { return transmissionSystems; }; 
+	void setNumberOfOMSPerLink(t_integer tSystems) { numberOfOMSPerLink = tSystems; }
+	t_integer getNumberOfOMSPerLink(void) { return numberOfOMSPerLink; };
 	
-	void setOpticalChannels(t_integer oChannels) { opticalChannels = oChannels; }
-	t_integer getOpticalChannels(void) { return opticalChannels; };
+	void setNumberOfOpticalChannelsPerOMS(t_integer oChannels) { numberOfOpticalChannelsPerOMS = oChannels; }
+	t_integer getNumberOfOpticalChannelsPerOMS(void) { return numberOfOpticalChannelsPerOMS; };
 
 	void setOpticalChannelCapacity(t_integer oChannelCapacity) { opticalChannelCapacity = oChannelCapacity; }
 	t_integer getOpticalChannelCapacity(void) { return opticalChannelCapacity; };

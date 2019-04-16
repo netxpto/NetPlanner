@@ -9,6 +9,7 @@
 //######################## Simulation Input Parameters #####################################
 //##########################################################################################
 
+
 // Traffic matrices
 t_matrix odu0{	{0,0,0,0,0,0},
 				{0,0,0,0,0,0},
@@ -44,21 +45,23 @@ t_matrix odu4{	{0,1,2,0,0,0},
 				{0,0,0,0,0,0},
 				{0,0,0,0,0,0},
 				{0,0,0,0,0,0} };
-				
+
+/*
 // Demands odering rule
 t_integer orderingRule{ 0 };
 
 // Transport mode
 transport_mode transportMode{transport_mode::opaque};
+*/
 
 // Adjacency matrix of the physical network 
-t_matrix adjacencyMatrix{ {0,1,0,0,0,1},
-						  {0,0,1,0,0,0},
-						  {0,0,0,0,0,0},
-						  {0,0,1,0,0,0},
-						  {0,0,1,1,0,0},
-						  {0,1,0,0,1,0} };
-
+t_matrix physicalTopologyAdjacencyMatrix{ {0,1,0,0,0,1},
+						                  {0,0,1,0,0,0},
+						                  {0,0,0,0,0,0},
+						                  {0,0,1,0,0,0},
+						                  {0,0,1,1,0,0},
+						                  {0,1,0,0,1,0} };
+/*
 // Number of transmission systems
 t_integer transmissionSystems{ 1 };
 
@@ -73,12 +76,63 @@ routing_criterion routingCriterionLogicalTopology{ routing_criterion::hops };
 
 // Routing Criterion Physical Topology
 routing_criterion routingCriterionPhysicalTopology{ routing_criterion::hops };
+*/
 
 //##########################################################################################
 //##########################################################################################
 //##########################################################################################
 
 int main() {
+
+	std::ifstream readFromFile;
+
+	readFromFile.open("Text.txt");
+
+	if (!readFromFile.is_open()) {
+		std::cerr << "Error Opening File!\n";
+		return -1;
+	}
+
+	const std::string needle = "#";
+
+	//std::vector < std::vector<int> > odu0;
+	//std::vector < std::vector<int> > odu1;
+	//std::vector < std::vector<int> > odu2;
+	//std::vector < std::vector<int> > odu3;
+	//std::vector < std::vector<int> > odu4;
+	int orderingRule;
+	std::string transportMode;
+	//std::vector < std::vector<int> > physicalTopologyAdjacencyMatrix;
+	int numberOfOMSPerLink;
+	int numberOfOpticalChannelsPerOMS;
+	int opticalChannelCapacity;
+	std::string routingCriterionLogicalTopology;
+	int blockingCriterionLogicalTopology;
+	std::string routingCriterionPhysicalTopology;
+	int blockingCriterionPhysicalTopology;
+
+	std::string str;
+	char c;
+
+	while (std::getline(readFromFile, str)) {
+		if (str.find(needle) != std::string::npos) {
+			//odu0
+			//odu1
+			//odu2
+			//odu3
+			//odu4
+			readFromFile >> str >> c >> orderingRule;
+			readFromFile >> str >> c >> transportMode;
+			//physicalTopologyAdjacencyMatrix
+			readFromFile >> str >> c >> numberOfOMSPerLink;
+			readFromFile >> str >> c >> numberOfOpticalChannelsPerOMS;
+			readFromFile >> str >> c >> opticalChannelCapacity;
+			readFromFile >> str >> c >> routingCriterionLogicalTopology;
+			readFromFile >> str >> c >> blockingCriterionLogicalTopology;
+			readFromFile >> str >> c >> routingCriterionPhysicalTopology;
+			readFromFile >> str >> c >> blockingCriterionPhysicalTopology;
+		}
+	}
 
 	/* Signals Declaration */
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 10};
@@ -122,15 +176,15 @@ int main() {
 
 	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{ &LogicalTopology_Out } };
 	LogicalTopologyGenerator_.setTransportMode(transportMode);
-	LogicalTopologyGenerator_.setAdjacencyMatrix(adjacencyMatrix);
+	LogicalTopologyGenerator_.setPhysicalTopologyAdjacencyMatrix(physicalTopologyAdjacencyMatrix);
 
 	Sink SinkLogicalTopologyGenerator_{ { &LogicalTopology_Out },{} };
 	SinkLogicalTopologyGenerator_.setDisplayNumberOfSamples(true);
 
 	PhysicalTopologyGenerator PhysicalTopologyGenerator_{ {},{ &PhysicalTopology_Out } };
-	PhysicalTopologyGenerator_.setAdjacencyMatrix(adjacencyMatrix);
-	PhysicalTopologyGenerator_.setTransmissionSystems(transmissionSystems);
-	PhysicalTopologyGenerator_.setOpticalChannels(opticalChannels);
+	PhysicalTopologyGenerator_.setPhysicalTopologyAdjacencyMatrix(physicalTopologyAdjacencyMatrix);
+	PhysicalTopologyGenerator_.setNumberOfOMSPerLink(numberOfOMSPerLink);
+	PhysicalTopologyGenerator_.setNumberOfOpticalChannelsPerOMS(numberOfOpticalChannelsPerOMS);
 	PhysicalTopologyGenerator_.setOpticalChannelCapacity(opticalChannelCapacity);
 
 	Sink SinkPhysicalTopologyGenerator_{ { &PhysicalTopology_Out },{} };
