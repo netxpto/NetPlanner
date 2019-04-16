@@ -12,15 +12,15 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 		generate = false;
 
 	t_physical_topology outputPhysicalTopology;
-	outputPhysicalTopology.physicalTopology = adjacencyMatrix;
+	outputPhysicalTopology.physicalTopologyAdjacencyMatrix = physicalTopologyAdjacencyMatrix;
 	t_optical_multiplexing_system outputOpticalMultiplexingSystem;
 	
 	t_integer index{ 0 };
 	
 	t_integer line{ 0 };
-	t_integer nodes = adjacencyMatrix[0].size();
+	t_integer nodes = physicalTopologyAdjacencyMatrix[0].size();
 
-	for (t_integer w = 0; w < opticalChannels; w++) {
+	for (t_integer w = 0; w < numberOfOpticalChannelsPerOMS; w++) {
 		outputOpticalMultiplexingSystem.wavelengths.push_back(1);
 	}
 
@@ -29,17 +29,17 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 		t_integer column{ 0 };
 		while (column < nodes) {
 
-			if (adjacencyMatrix[line][column] == 1) {
+			if (physicalTopologyAdjacencyMatrix[line][column] == 1) {
 
 				outputOpticalMultiplexingSystem.OMSIndex = index;
 				outputOpticalMultiplexingSystem.sourceNode = { line + 1 };
 				outputOpticalMultiplexingSystem.destinationNode = { column + 1 };
-				outputOpticalMultiplexingSystem.maximumNumberOfWavelengths = opticalChannels;
+				outputOpticalMultiplexingSystem.maximumNumberOfWavelengths = numberOfOpticalChannelsPerOMS;
 				outputOpticalMultiplexingSystem.wavelengths;
 				
 				outputPhysicalTopology.OMS.push_back(outputOpticalMultiplexingSystem);
 
-				adjacencyMatrix[line][column]--;
+				physicalTopologyAdjacencyMatrix[line][column]--;
 				index++;
 			}
 			column++;

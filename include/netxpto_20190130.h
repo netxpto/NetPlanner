@@ -214,27 +214,7 @@ public:
 	explicit Signal(t_unsigned_long bLength) : bufferLength{ bLength } {};
 
 	// Signal destructors
-	~Signal() 
-	{ 
-		/*
-		if (!(valueType == signal_value_type::t_message))
-		{ 
-			if (valueType == signal_value_type::t_logical_topology)
-			{
-				delete[] buffer;
-			}
-			else if(valueType == signal_value_type::t_demand)
-			{ 
-				delete[] buffer; }
-
-			else if (valueType == signal_value_type::t_physical_topology)
-			{
-				delete[] buffer;
-			}
-			 
-		};
-		*/
-	};
+	~Signal() { if (!(valueType == signal_value_type::t_message)) { delete[] buffer; }; };	
 
 	// Buffer manipulation funtions
 	t_integer ready();										// Returns the number of samples in the buffer ready to be processed
@@ -772,6 +752,8 @@ public:
 	void terminateBlock();
 	virtual void terminate(void){};
 
+	void closeOutputSignals();
+
 	void setNumberOfInputSignals(int nOfInputSignal) { numberOfInputSignals = nOfInputSignal; };
 	int getNumberOfInputSignals() { return numberOfInputSignals; };
 
@@ -810,6 +792,7 @@ public:
 	bool run();
 	bool run(string signalPath);
 	void terminate();
+	void terminateSuperBlock();
 
 	//########################################################################################################
 
