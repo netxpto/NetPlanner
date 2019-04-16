@@ -25,9 +25,10 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 		for (t_integer column=0; column < (t_integer) physicalTopologyAdjacencyMatrix[0].size(); column++)
 		{
 //################ CREATES OPTICAL MULTIPLEXING SYSTEMS #######################################################
+
 			if (physicalTopologyAdjacencyMatrix[line][column] == 1)
 			{
-				t_integer addWavelenght{ 0 };
+				double addWavelenght{ 0 };
 
 				oms.opticalMultiplexingSystemIndex = k;
 				oms.sourceNode = line + 1;
@@ -35,7 +36,7 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 				oms.numberOfWavelenghts = getNumberOfOpticalChannelsPerOMS();
 
 				 // wavelenghts vector
-				for (size_t i = 0; i < numberOfOpticalChannelsPerOMS; i++)
+				for (auto i = 0; i < numberOfOpticalChannelsPerOMS; i++)
 				{
 					if (i == 0)	// In the beggining it adds our initial wavelenght to the wavelnghts vector
 					{

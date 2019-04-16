@@ -1,15 +1,16 @@
 # include "..\..\..\include\netxpto_20190130.h"
 # include "..\..\..\include\scheduler_20190122.h"
-# include "..\..\..\include\sink_20180815.h"
 # include "..\..\..\include\logical_topology_generator_20190216.h"
 # include "..\..\..\include\physical_topology_generator_20190227.h"
+# include "..\..\..\include\sink_20180815.h"
 
+void readImputParametersValuesFile(t_integer &numberOfNodes, t_matrix &odu0, t_matrix &odu1, t_matrix &odu2, t_matrix &odu3, t_matrix &odu4, ordering_rule &orderingRule, t_matrix &physicalTopologyAdjacencyMatrix, transport_mode &transportMode);
 
 //##########################################################################################
 //######################## Simulation Input Parameters #####################################
 //##########################################################################################
-using namespace std;
 
+// devera ser feito de acordo com IPS do netxpto
 
 t_integer numberOfNodes; // Number of nodes existent in the network
 
@@ -49,292 +50,14 @@ t_integer numberOfPaths{ 3 }; // 3 shortest paths are attributed to each demand
 //##########################################################################################
 //##########################################################################################
 
-void readImputParametersValuesFile(t_integer &numberOfNodes, t_matrix &odu0, t_matrix &odu1, t_matrix &odu2, t_matrix &odu3, t_matrix &odu4, ordering_rule &orderingRule, t_matrix &physicalTopologyAdjacencyMatrix, transport_mode &transportMode)
-{
-	ifstream inFile;
-	inFile.open("InputParameters.txt", ios::in);  //opening inputtxt file 
-	string line;
 
-	// ################### Entry variable names ##################################
-
-	string s1 = "numberOfNodes";
-	string s2 = "odu0";
-	string s3 = "odu1";
-	string s4 = "odu2";
-	string s5 = "odu3";
-	string s6 = "odu4";
-	string s7 = "orderingRule";
-	string s8 = "physicalTopologyAdjacencyMatrix";
-	string s9 = "transportMode";
-
-	//###########################################################################
-	string evaluateVariable;
-	
-	int vectorValue;
-	string variableValue;
-	vector<int> oduValues;
-	string ordering;
-	string transport;
-	
-	if (!inFile.fail())
-	{
-		// for each line in the file 
-		while (getline(inFile, line))
-		{
-			if (!(line[0] == '#')) // ignore if it is commented
-			{
-				stringstream s(line);
-				getline(s, evaluateVariable, ':');
-				size_t foundS1 = evaluateVariable.find(s1);
-				size_t foundS2 = evaluateVariable.find(s2);
-				size_t foundS3 = evaluateVariable.find(s3);
-				size_t foundS4 = evaluateVariable.find(s4);
-				size_t foundS5 = evaluateVariable.find(s5);
-				size_t foundS6 = evaluateVariable.find(s6);
-				size_t foundS7 = evaluateVariable.find(s7);
-				size_t foundS8 = evaluateVariable.find(s8);
-				size_t foundS9 = evaluateVariable.find(s9);
-
-				if (foundS1 != string::npos)
-				{
-					getline(s, variableValue);
-					numberOfNodes = stoi(variableValue);
-				}
-				if (foundS2 != string::npos)
-				{
-					for (size_t j = 0; j < numberOfNodes; j++)
-					{
-						for (size_t k = 0; k < numberOfNodes - 1; k++) // search through a line
-						{
-							getline(s, variableValue, ',');
-							vectorValue = stoi(variableValue);
-							oduValues.push_back(vectorValue);
-						}
-
-						getline(s, variableValue, ';');
-						vectorValue = stoi(variableValue);
-						oduValues.push_back(vectorValue);
-
-						odu0.push_back(oduValues);
-						oduValues.clear();
-					}
-
-				}
-				if (foundS3 != string::npos)
-				{
-					for (size_t j = 0; j < numberOfNodes; j++)
-					{
-						for (size_t k = 0; k < numberOfNodes - 1; k++) // search through a line
-						{
-							getline(s, variableValue, ',');
-							vectorValue = stoi(variableValue);
-							oduValues.push_back(vectorValue);
-						}
-
-						getline(s, variableValue, ';');
-						vectorValue = stoi(variableValue);
-						oduValues.push_back(vectorValue);
-
-						odu1.push_back(oduValues);
-						oduValues.clear();
-					}
-
-				}
-				if (foundS4 != string::npos)
-				{
-					for (size_t j = 0; j < numberOfNodes; j++)
-					{
-						for (size_t k = 0; k < numberOfNodes - 1; k++) // search through a line
-						{
-							getline(s, variableValue, ',');
-							vectorValue = stoi(variableValue);
-							oduValues.push_back(vectorValue);
-						}
-
-						getline(s, variableValue, ';');
-						vectorValue = stoi(variableValue);
-						oduValues.push_back(vectorValue);
-
-						odu2.push_back(oduValues);
-						oduValues.clear();
-					}
-
-				}
-				if (foundS5 != string::npos)
-				{
-					for (size_t j = 0; j < numberOfNodes; j++)
-					{
-						for (size_t k = 0; k < numberOfNodes - 1; k++) // search through a line
-						{
-							getline(s, variableValue, ',');
-							vectorValue = stoi(variableValue);
-							oduValues.push_back(vectorValue);
-						}
-
-						getline(s, variableValue, ';');
-						vectorValue = stoi(variableValue);
-						oduValues.push_back(vectorValue);
-
-						odu3.push_back(oduValues);
-						oduValues.clear();
-					}
-
-				}
-				if (foundS6 != string::npos)
-				{
-					for (size_t j = 0; j < numberOfNodes; j++)
-					{
-						for (size_t k = 0; k < numberOfNodes - 1; k++) // search through a line
-						{
-							getline(s, variableValue, ',');
-							vectorValue = stoi(variableValue);
-							oduValues.push_back(vectorValue);
-						}
-
-						getline(s, variableValue, ';');
-						vectorValue = stoi(variableValue);
-						oduValues.push_back(vectorValue);
-
-						odu4.push_back(oduValues);
-						oduValues.clear();
-					}
-
-				}
-				if (foundS7 != string::npos)
-				{
-					getline(s, ordering);
-			
-					if (ordering == "descendingOrder")
-					{
-						orderingRule = ordering_rule::descendingOrder;
-					}
-					else if (ordering == "ascendingOrder")
-					{
-						orderingRule = ordering_rule::ascendingOrder;
-					}
-				}
-				if (foundS8 != string::npos)
-				{
-					for (size_t j = 0; j < numberOfNodes; j++)
-					{
-						for (size_t k = 0; k < numberOfNodes - 1; k++) // search through a line
-						{
-							getline(s, variableValue, ',');
-							vectorValue = stoi(variableValue);
-							oduValues.push_back(vectorValue);
-						}
-
-						getline(s, variableValue, ';');
-						vectorValue = stoi(variableValue);
-						oduValues.push_back(vectorValue);
-
-						physicalTopologyAdjacencyMatrix.push_back(oduValues);
-						oduValues.clear();
-					}
-
-				}
-				if (foundS9 != string::npos)
-				{
-					getline(s, transport);
-
-					if (transport == "opaque")
-					{
-						transportMode = transport_mode::opaque;
-					}
-					else if (transport == "transparent")
-					{
-						transportMode = transport_mode::transparent;
-					}
-					else if (transport == "translucent")
-					{
-						transportMode = transport_mode::translucent;
-					}
-				}
-
-			}
-		}
-		// PRINT VARIABLES
-		cout << "numberOfNodes: " << variableValue << endl;
-
-		cout << "odu0 demands" << endl;
-
-		for (size_t line = 0; line < numberOfNodes; line++)
-		{
-			for (size_t column = 0; column < numberOfNodes; column++)
-			{
-				cout << odu0[line][column];
-			}
-			cout << endl;
-		}
-		cout << "odu1 demands" << endl;
-
-		for (size_t line = 0; line < numberOfNodes; line++)
-		{
-			for (size_t column = 0; column < numberOfNodes; column++)
-			{
-				cout << odu1[line][column];
-			}
-			cout << endl;
-		}
-		cout << "odu2 demands" << endl;
-
-		for (size_t line = 0; line < numberOfNodes; line++)
-		{
-			for (size_t column = 0; column < numberOfNodes; column++)
-			{
-				cout << odu2[line][column];
-			}
-			cout << endl;
-		}
-		cout << "odu3 demands" << endl;
-
-		for (size_t line = 0; line < numberOfNodes; line++)
-		{
-			for (size_t column = 0; column < numberOfNodes; column++)
-			{
-				cout << odu3[line][column];
-			}
-			cout << endl;
-		}
-		cout << "odu4 demands" << endl;
-
-		for (size_t line = 0; line < numberOfNodes; line++)
-		{
-			for (size_t column = 0; column < numberOfNodes; column++)
-			{
-				cout << odu4[line][column];
-			}
-			cout << endl;
-		}
-		cout << "orderingRule: " << ordering << endl;
-
-		cout << "physicalTopologyAdjacencyMatrix" << endl;
-
-		for (size_t line = 0; line < numberOfNodes; line++)
-		{
-			for (size_t column = 0; column < numberOfNodes; column++)
-			{
-				cout << physicalTopologyAdjacencyMatrix[line][column];
-			}
-			cout << endl;
-		}
-		cout << "transportMode: " << transport << endl;
-
-	}
-	else
-	{
-		cerr << "Error opening IputParameters.txt file" << endl;
-		system("pause");
-		exit(1);
-	}
-}
 int main()
 {
 	readImputParametersValuesFile(numberOfNodes, odu0, odu1, odu2, odu3, odu4, orderingRule, physicalTopologyAdjacencyMatrix, transportMode);
 
 	/* Signals Declaration */
-	Demand SchedulerOut{ "SchedulerOut.sgn",7};
-	SchedulerOut.setSaveInAscii(true);
+	Demand Scheduler_Out{ "SchedulerOut.sgn", 7};
+	Scheduler_Out.setSaveInAscii(true);
 
 	/*LogicalTopology LogicalTopologyOut{ "LogicalTopologyOut.sgn"};
 	LogicalTopologyOut.setSaveInAscii(true);
@@ -343,7 +66,7 @@ int main()
 	PhysicalTopologyOut.setSaveInAscii(true);*/
 
 	/* Blocks Decalration */
-	Scheduler Scheduler_{ {},{ &SchedulerOut} };
+	Scheduler Scheduler_{ {},{ &Scheduler_Out} };
 	Scheduler_.setNumberOfNodes(numberOfNodes);
 	Scheduler_.setODU0(odu0);
 	Scheduler_.setODU1(odu1);
@@ -352,7 +75,7 @@ int main()
 	Scheduler_.setODU4(odu4);
 	Scheduler_.setOrderingRule(orderingRule);
 
-	Sink SinkScheduler_{ { &SchedulerOut },{} };
+	Sink SinkScheduler_{ { &Scheduler_Out },{} };
 	SinkScheduler_.setDisplayNumberOfSamples(true);
 
 
@@ -417,3 +140,282 @@ int main()
 }
 
 
+void readImputParametersValuesFile(t_integer &numberOfNodes, t_matrix &odu0, t_matrix &odu1, t_matrix &odu2, t_matrix &odu3, t_matrix &odu4, ordering_rule &orderingRule, t_matrix &physicalTopologyAdjacencyMatrix, transport_mode &transportMode)
+{
+	ifstream inFile;
+	inFile.open("InputParameters.txt", ios::in);  //opening inputtxt file 
+	string line;
+
+	// ################### Entry variable names ##################################
+
+	string s1 = "numberOfNodes";
+	string s2 = "odu0";
+	string s3 = "odu1";
+	string s4 = "odu2";
+	string s5 = "odu3";
+	string s6 = "odu4";
+	string s7 = "orderingRule";
+	string s8 = "physicalTopologyAdjacencyMatrix";
+	string s9 = "transportMode";
+
+	//###########################################################################
+	string evaluateVariable;
+
+	int vectorValue;
+	string variableValue;
+	vector<int> oduValues;
+	string ordering;
+	string transport;
+
+	if (!inFile.fail())
+	{
+		// for each line in the file 
+		while (getline(inFile, line))
+		{
+			if (!(line[0] == '#')) // ignore if it is commented
+			{
+				stringstream s(line);
+				getline(s, evaluateVariable, ':');
+				size_t foundS1 = evaluateVariable.find(s1);
+				size_t foundS2 = evaluateVariable.find(s2);
+				size_t foundS3 = evaluateVariable.find(s3);
+				size_t foundS4 = evaluateVariable.find(s4);
+				size_t foundS5 = evaluateVariable.find(s5);
+				size_t foundS6 = evaluateVariable.find(s6);
+				size_t foundS7 = evaluateVariable.find(s7);
+				size_t foundS8 = evaluateVariable.find(s8);
+				size_t foundS9 = evaluateVariable.find(s9);
+
+				if (foundS1 != string::npos)
+				{
+					getline(s, variableValue);
+					numberOfNodes = stoi(variableValue);
+				}
+				if (foundS2 != string::npos)
+				{
+					for (auto j = 0; j < numberOfNodes; j++)
+					{
+						for (auto k = 0; k < numberOfNodes - 1; k++) // search through a line
+						{
+							getline(s, variableValue, ',');
+							vectorValue = stoi(variableValue);
+							oduValues.push_back(vectorValue);
+						}
+
+						getline(s, variableValue, ';');
+						vectorValue = stoi(variableValue);
+						oduValues.push_back(vectorValue);
+
+						odu0.push_back(oduValues);
+						oduValues.clear();
+					}
+
+				}
+				if (foundS3 != string::npos)
+				{
+					for (auto j = 0; j < numberOfNodes; j++)
+					{
+						for (auto k = 0; k < numberOfNodes - 1; k++) // search through a line
+						{
+							getline(s, variableValue, ',');
+							vectorValue = stoi(variableValue);
+							oduValues.push_back(vectorValue);
+						}
+
+						getline(s, variableValue, ';');
+						vectorValue = stoi(variableValue);
+						oduValues.push_back(vectorValue);
+
+						odu1.push_back(oduValues);
+						oduValues.clear();
+					}
+
+				}
+				if (foundS4 != string::npos)
+				{
+					for (auto j = 0; j < numberOfNodes; j++)
+					{
+						for (auto k = 0; k < numberOfNodes - 1; k++) // search through a line
+						{
+							getline(s, variableValue, ',');
+							vectorValue = stoi(variableValue);
+							oduValues.push_back(vectorValue);
+						}
+
+						getline(s, variableValue, ';');
+						vectorValue = stoi(variableValue);
+						oduValues.push_back(vectorValue);
+
+						odu2.push_back(oduValues);
+						oduValues.clear();
+					}
+
+				}
+				if (foundS5 != string::npos)
+				{
+					for (auto j = 0; j < numberOfNodes; j++)
+					{
+						for (auto k = 0; k < numberOfNodes - 1; k++) // search through a line
+						{
+							getline(s, variableValue, ',');
+							vectorValue = stoi(variableValue);
+							oduValues.push_back(vectorValue);
+						}
+
+						getline(s, variableValue, ';');
+						vectorValue = stoi(variableValue);
+						oduValues.push_back(vectorValue);
+
+						odu3.push_back(oduValues);
+						oduValues.clear();
+					}
+
+				}
+				if (foundS6 != string::npos)
+				{
+					for (auto j = 0; j < numberOfNodes; j++)
+					{
+						for (auto k = 0; k < numberOfNodes - 1; k++) // search through a line
+						{
+							getline(s, variableValue, ',');
+							vectorValue = stoi(variableValue);
+							oduValues.push_back(vectorValue);
+						}
+
+						getline(s, variableValue, ';');
+						vectorValue = stoi(variableValue);
+						oduValues.push_back(vectorValue);
+
+						odu4.push_back(oduValues);
+						oduValues.clear();
+					}
+
+				}
+				if (foundS7 != string::npos)
+				{
+					getline(s, ordering);
+
+					if (ordering == "descendingOrder")
+					{
+						orderingRule = ordering_rule::descendingOrder;
+					}
+					else if (ordering == "ascendingOrder")
+					{
+						orderingRule = ordering_rule::ascendingOrder;
+					}
+				}
+				if (foundS8 != string::npos)
+				{
+					for (auto j = 0; j < numberOfNodes; j++)
+					{
+						for (auto k = 0; k < numberOfNodes - 1; k++) // search through a line
+						{
+							getline(s, variableValue, ',');
+							vectorValue = stoi(variableValue);
+							oduValues.push_back(vectorValue);
+						}
+
+						getline(s, variableValue, ';');
+						vectorValue = stoi(variableValue);
+						oduValues.push_back(vectorValue);
+
+						physicalTopologyAdjacencyMatrix.push_back(oduValues);
+						oduValues.clear();
+					}
+
+				}
+				if (foundS9 != string::npos)
+				{
+					getline(s, transport);
+
+					if (transport == "opaque")
+					{
+						transportMode = transport_mode::opaque;
+					}
+					else if (transport == "transparent")
+					{
+						transportMode = transport_mode::transparent;
+					}
+					else if (transport == "translucent")
+					{
+						transportMode = transport_mode::translucent;
+					}
+				}
+
+			}
+		}
+		// PRINT VARIABLES
+		cout << "numberOfNodes: " << variableValue << endl;
+
+		cout << "odu0 demands" << endl;
+
+		for (auto line = 0; line < numberOfNodes; line++)
+		{
+			for (auto column = 0; column < numberOfNodes; column++)
+			{
+				cout << odu0[line][column];
+			}
+			cout << endl;
+		}
+		cout << "odu1 demands" << endl;
+
+		for (auto line = 0; line < numberOfNodes; line++)
+		{
+			for (auto column = 0; column < numberOfNodes; column++)
+			{
+				cout << odu1[line][column];
+			}
+			cout << endl;
+		}
+		cout << "odu2 demands" << endl;
+
+		for (auto line = 0; line < numberOfNodes; line++)
+		{
+			for (auto column = 0; column < numberOfNodes; column++)
+			{
+				cout << odu2[line][column];
+			}
+			cout << endl;
+		}
+		cout << "odu3 demands" << endl;
+
+		for (auto line = 0; line < numberOfNodes; line++)
+		{
+			for (auto column = 0; column < numberOfNodes; column++)
+			{
+				cout << odu3[line][column];
+			}
+			cout << endl;
+		}
+		cout << "odu4 demands" << endl;
+
+		for (auto line = 0; line < numberOfNodes; line++)
+		{
+			for (auto column = 0; column < numberOfNodes; column++)
+			{
+				cout << odu4[line][column];
+			}
+			cout << endl;
+		}
+		cout << "orderingRule: " << ordering << endl;
+
+		cout << "physicalTopologyAdjacencyMatrix" << endl;
+
+		for (auto line = 0; line < numberOfNodes; line++)
+		{
+			for (auto column = 0; column < numberOfNodes; column++)
+			{
+				cout << physicalTopologyAdjacencyMatrix[line][column];
+			}
+			cout << endl;
+		}
+		cout << "transportMode: " << transport << endl;
+
+	}
+	else
+	{
+		cerr << "Error opening IputParameters.txt file" << endl;
+		system("pause");
+		exit(1);
+	}
+}

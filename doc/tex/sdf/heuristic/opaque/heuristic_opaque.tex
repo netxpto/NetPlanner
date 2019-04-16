@@ -589,9 +589,9 @@ The creation of this model for any scenario, started with some considerations an
 		odu4                              & [0]                    & matrix        & \begin{tabular}[c]{@{}c@{}}ODU4 demands \\ matrix\end{tabular}                                      \\ \hline
 		orderingRule                      & 0                      & integer       & \begin{tabular}[c]{@{}c@{}}Demands ordering rule:\\ 0 - ODU4 to ODU0\\ 1 - ODU0 to ODU4\end{tabular}\\ \hline
 		transportMode                     & opaque                 & string        & \begin{tabular}[c]{@{}c@{}}Transport mode:\\ opaque \\ transparent \\ translucent\end{tabular}      \\ \hline
-		adjacencyMatrix                   & [0]                    & matrix        & \begin{tabular}[c]{@{}c@{}}Adjacency matrix of the \\ physical network\end{tabular}                 \\ \hline
-		transmissionSystems               & 1                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of transmission \\ systems\end{tabular}                           \\ \hline
-		opticalChannels                   & 100                    & integer       & \begin{tabular}[c]{@{}c@{}}Number of optical channels \\ per link\end{tabular}                      \\ \hline
+		physicalTopologyAdjacencyMatrix   & [0]                    & matrix        & \begin{tabular}[c]{@{}c@{}}Adjacency matrix of the \\ physical network\end{tabular}                 \\ \hline
+		numberOfOMSPerLink                & 1                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of OMS per link\end{tabular}                           \\ \hline
+		numberOfOpticalChannelsPerOMS     & 100                    & integer       & \begin{tabular}[c]{@{}c@{}}Number of optical channels \\ per OMS\end{tabular}                      \\ \hline
 		opticalChannelCapacity            & 80                     & integer       & \begin{tabular}[c]{@{}c@{}}Capacity of each optical \\ channel in ODU0s\end{tabular}                \\ \hline
 		routingCriterionLogicalTopology   & hops                   & string        & \begin{tabular}[c]{@{}c@{}}Shortest path type: \\ hops \\ km\end{tabular}                           \\ \hline
 		blockingCriterionLogicalTopology  & 3                      & integer       & \begin{tabular}[c]{@{}c@{}}Number of short paths created \\ between each pair of nodes\end{tabular} \\ \hline
@@ -606,15 +606,15 @@ The creation of this model for any scenario, started with some considerations an
 	\centering
 	\begin{tabular}{| c | c |}
 		\hline
-		\textbf{Signal Name}  & \textbf{Signal Type}  \\ \hline
-		Scheduler\_Out          & DemandRequest         \\ \hline
-		LogicalTopology\_Out    & LogicalTopology       \\ \hline
-		PhysicalTopology\_Out   & PhysicalTopology      \\ \hline
-		LogicalTopologyManager\_PathRequest & PathRequest           \\ \hline
-		PhysicalTopologyManager\_PathRequestRouted    & PathRequestRouted     \\ \hline
-		ProcessedDemand     & DemandRequestRouted   \\ \hline
-		FinalLogicalTopology  & LogicalTopology       \\ \hline
-		FinalPhysicalTopology & PhysicalTopology      \\ \hline
+		\textbf{Signal Name}                       & \textbf{Signal Type}  \\ \hline
+		Scheduler\_Out                             & DemandRequest         \\ \hline
+		LogicalTopology\_Out                       & LogicalTopology       \\ \hline
+		PhysicalTopology\_Out                      & PhysicalTopology      \\ \hline
+		LogicalTopologyManager\_PathRequest        & PathRequest           \\ \hline
+		PhysicalTopologyManager\_PathRequestRouted & PathRequestRouted     \\ \hline
+		ProcessedDemand                            & DemandRequestRouted   \\ \hline
+		FinalLogicalTopology                       & LogicalTopology       \\ \hline
+		FinalPhysicalTopology                      & PhysicalTopology      \\ \hline
 	\end{tabular}
 	\caption{System Signals}
 	\label{system_signals}
@@ -640,7 +640,7 @@ N = numberOfNodes\\
 
 \underline{\textbf{LogicalTopology}}\\
 
-matrix NxN logicalTopology\par
+matrix NxN logicalTopologyAdjacencyMatrix\par
 vector paths\par
 vector lightPaths\par
 vector opticalChannels\\ 
@@ -655,7 +655,7 @@ vector opticalChannels\\
 		...           & 0/1  & 0/1   & 0   & 0/1  \\ \hline
 		N 			  & 0/1  & 0/1   & 0/1   & 0  \\ \hline
 	\end{tabular}
-	\caption{logicalTopology matrix}
+	\caption{logicalTopologyAdjacencyMatrix}
 	\label{logical_matrix}
 \end{table}
 
@@ -722,7 +722,7 @@ W = numberOfWavelenghts\\
 
 \underline{\textbf{PhysicalTopology}}\\
 
-matrix NxN physicalTopology\par
+matrix NxN physicalTopologyAdjacencyMatrix\par
 vector opticalMultiplexSection\\
 
 \begin{table}[H]
@@ -735,7 +735,7 @@ vector opticalMultiplexSection\\
 		...           & 0/1  & 0/1   & 0   & 0/1  \\ \hline
 		N 			  & 0/1  & 0/1   & 0/1   & 0  \\ \hline
 	\end{tabular}
-	\caption{physicalTopology matrix}
+	\caption{physicalTopologyAdjacencyMatrix}
 	\label{physical_matrix}
 \end{table}
 
@@ -871,7 +871,7 @@ P = numberOfPaths\\
 	\begin{tabular}{| c | c | c |}
 		\hline
 		\textbf{Input Parameters}                                                & \textbf{State Variables} & \textbf{Output Signal}\\ \hline
-		\begin{tabular}[c]{@{}c@{}}transportMode \\ adjacencyMatrix\end{tabular} &        & LogicalTopology\_Out    \\ \hline
+		\begin{tabular}[c]{@{}c@{}}transportMode \\ physicalTopologyAdjacencyMatrix\end{tabular} &        & LogicalTopology\_Out    \\ \hline
 	\end{tabular}
 	\caption{LogicalTopologyGenerator\_ Block}
 	\label{logical_topology_block}
@@ -882,7 +882,7 @@ P = numberOfPaths\\
 		\begin{tabular}{| c | c | c |}
 		\hline
 		\textbf{Input Parameters} & \textbf{State Variables} & \textbf{Output Signal}\\ \hline
-		\begin{tabular}[c]{@{}c@{}}adjacencyMatrix \\ transmissionSystems \\ opticalChannels \\ opticalChannelCapacity\end{tabular} &   & PhysicalTopology\_Out\\ \hline
+		\begin{tabular}[c]{@{}c@{}}physicalTopologyAdjacencyMatrix \\ numberOfOMSPerLink \\ numberOfOpticalChannelsPerOMS \\ opticalChannelCapacity\end{tabular} &   & PhysicalTopology\_Out\\ \hline
 	\end{tabular}	
 	\caption{PhysicalTopologyGenerator\_ Block}
 	\label{physical_topology_block}
@@ -1020,6 +1020,13 @@ ODU4=
 	\end{bmatrix}
 \]
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=11cm]{sdf/heuristic/opaque/figures/InputParameters}
+	\caption{Input Parameters}
+	\label{input_parameters}
+\end{figure}
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c | c | c |}
@@ -1051,7 +1058,7 @@ ODU4=
 		5    	      & 0 & 0 & 1 & 1 & 0 & 0 \\ \hline
 		6			  & 0 & 1 & 0 & 0 & 1 & 0 \\ \hline
 	\end{tabular}
-	\caption{logicalTopology matrix}
+	\caption{logicalTopologyAdjacencyMatrix}
 	\label{logical_matrix}
 \end{table}
 
@@ -1106,7 +1113,7 @@ ODU4=
 		5    	      & 0 & 0 & 1 & 1 & 0 & 0 \\ \hline
 		6			  & 0 & 1 & 0 & 0 & 1 & 0 \\ \hline
 	\end{tabular}
-	\caption{physicalTopology matrix}
+	\caption{physicalTopologyAdjacencyMatrix}
 	\label{physical_matrix}
 \end{table}
 

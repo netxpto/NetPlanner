@@ -1,0 +1,21 @@
+Input parameters for opaque transport mode example
+
+##################################################
+
+orderingRule : 0
+
+transportMode : opaque
+
+numberOfOMSPerLink : 1
+
+numberOfOpticalChannelsPerOMS : 2
+
+opticalChannelCapacity : 80
+
+routingCriterionLogicalTopology : hops
+
+blockingCriterionLogicalTopology : 3
+
+routingCriterionPhysicalTopology : hops
+
+blockingCriterionPhysicalTopology : 3

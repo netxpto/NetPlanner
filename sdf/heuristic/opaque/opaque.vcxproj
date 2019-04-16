@@ -129,6 +129,10 @@
     <ClCompile Include="..\..\..\lib_opaque\sink_20180815.cpp" />
     <ClCompile Include="opaque_sdf.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="InputParameters.txt" />
+    <Text Include="Text.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
