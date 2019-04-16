@@ -27,6 +27,7 @@
 # include <vector>
 # include <strstream>
 # include <string>
+# include <iostream>
 
 
 
@@ -88,77 +89,74 @@ using t_photon_mp_xy = struct { t_complex_xy_mp path[MAX_NUMBER_OF_PATHS]; };
 using t_iqValues = complex<t_real>;
 using t_message = struct {	string messageType;	string messageDataLength; 	string messageData; int size() { return 3; }};
 
-using t_demand = struct {						// Signal type Demand structure creation
+enum class survivability_method { none, protection_1_plus_1, restoration };
+
+using t_demand = struct {						// Signal type Demand structure 
 	t_integer demandIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer oduType{ 0 };
-	t_integer restorationMethod{ 0 };
+	survivability_method survivabilityMethod{ survivability_method::none };
 
 	void setDemandIndex(t_integer dIndex) { demandIndex = dIndex; }
 	t_integer getDemandIndex() { return demandIndex; }
 };
 
-using t_logical_links = struct {			// Logical links data structure
-	t_integer linkIndex{ 0 };
-	t_integer linkSourceNode{ 0 };
-	t_integer linkDestinationNode{ 0 };
-	t_integer numberOfLightPaths{ 0 };
+using t_paths = struct {							// paths data structure
+	t_integer pathIndex{ 0 };						// paths index
+	t_integer sourceNode{ 0 };						// paths source node
+	t_integer destinationNode{ 0 };					// paths destination node
+	t_integer capacity{ 0 };						// paths capacity in terms of ODU0 demands
+	t_integer numberOfLightPaths{ 0 };				// number of lightpaths that form these paths
+	std::vector<t_integer> lightPathsIndex{ 0 };	// index of those lightpaths
 };
 
-using t_light_paths = struct {				// Light pahts data structure
-	t_integer linkIndex{ 0 };
-	t_integer lightPathNumber{ 0 };
-	std::vector<int> physicalLinks{ 0 };
-	t_integer wavelength{ 0 };
+using t_light_paths = struct {				// lightPahts data structure
+	t_integer lightPathIndex{ 0 };			// lightPaths index
+	t_integer sourceNode{ 0 };				// lightPaths source node
+	t_integer destinationNode{ 0 };			// lightPaths destination node
+	t_integer capacity{ 0 };				// lightPaths capacity in terms of ODU0 demands
+	t_integer numberOfOpticalChannels{ 0 }; 
+	std::vector<t_integer> opticalChannelsIndex;
 };
 
-using t_logical_topology = struct {			// Logical Topology signal data structure
-	t_matrix logicalTopology{ 0 };
-	std::vector<t_logical_links> logicalLinks;	// List of logical links
-	std::vector<t_light_paths> lightPaths;		// List of light paths
-
+using t_optical_channels = struct {			// opticalChannels data structure
+	t_integer opticalChannelIndex{ 0 };		// opticalChannels index
+	t_integer sourceNode{ 0 };				// opticalChannels source node
+	t_integer destinationNode{ 0 };			// opticalChannels destination node
+	t_integer capacity{ 0 };				// opticalChannels capacity in terms of ODU0 demands
+	t_integer wavelenght{ 0 };				// opticalChannels wavelenght
+	t_integer numberOfDemands{ 0 };         // number of demands passing through each of the opticalChannels
+	std::vector<t_integer> demandsIndex{ 0 };			// index of the previous demands
 };
 
-using t_physical_link = struct {			// Logical Topology signal data structure
-	t_integer linkIndex{ 0 };				// Link Index
-	t_integer linkSourceNode{ 0 };			
-	t_integer linkDestinationNode{ 0 };
-	t_integer numberOfOpticalChannels{ 0 }; // Number of optical channels per physical link
-
+using t_logical_topology = struct {						// LogicalTopology signal data structure
+	t_matrix logicalTopologyAdjacencyMatrix{ 0 };		// logicalTopologyAdjacencyMatrix variable
+	std::vector<t_paths> paths;							// List of paths
+	std::vector<t_light_paths> lightPaths;				// List of lightPaths
+	std::vector<t_optical_channels> opticalChannels;	// List of opticalChannels
 };
 
-using t_optical_channel = struct {			// Logical Topology signal data structure
-	t_integer linkIndex{ 0 };				// Physical link index
-	t_integer opticalChannelNumber{ 0 };	// Number of the optical channel
-	t_integer capacity{ 0 };				// In terms of ODU0s
-	t_integer wavelengtht{ 0 };
-	t_integer sourceNode{ 0 };				// Source node of the physical link
-	t_integer destinationNode{ 0 };			// Destination node of the physical link
+using t_optical_multiplexing_systems = struct {			// opticalMultiplexingSystems data structure
+	t_integer opticalMultiplexingSystemIndex{ 0 };		// opticalMultiplexingSystems index
+	t_integer sourceNode{ 0 };							// opticalMultiplexingSystems source node
+	t_integer destinationNode{ 0 };						// opticalMultiplexingSystems destination node
+	t_integer numberOfWavelenghts{ 0 };					// opticalMultiplexingSystems number of wavelenghts
+	std::vector<double> wavelenghts;					// opticalMultiplexingSystems wavelenghts values in nanometers (nm)
+	std::vector<t_integer> availableWavelenghts;		// indicates which of the previous wavelenghts values are available to be assigned
+};
 
-};
-using t_physical_topology = struct {					// Physical Topology signal data structure
-	std::vector<t_physical_link> physicalLinks;			// List of physical links
-	std::vector<t_optical_channel> opticalChannels;		// List of optical channels
-
-};
-using t_path = struct {
-	t_integer pathIndex { 0 };
-	t_integer sourceNode{ 0 };
-	t_integer destinationNode{ 0 };
-	std::vector<int> logicalLinks;
-	t_integer hops{ 0 };
-};
-using t_demand_list_of_paths = struct {
-	t_demand demand;					// Demand being processed
-	std::vector<t_path> selectedPaths;	// Vector of possible paths
+using t_physical_topology = struct {											// physicalTopology signal data structure
+	t_matrix physicalTopologyAdjacencyMatrix{ 0 };								// physicalTopologyMatrix variable
+	std::vector<t_optical_multiplexing_systems> opticalMultiplexingSystems;		
 };
 
 // Existent signals
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology, t_path, t_demand_list_of_paths }; 
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology }; 
 
-enum class transport_mode { opaque, transparent };
-enum class criterion { hops, distance }; // The shortest path type will be selected depending on one of those
+enum class transport_mode { opaque, transparent, translucent };				// Trasnsport mode types
+enum class criterion { hops, distance };									// The shortest path type will be selected depending on one of those
+enum class ordering_rule {descendingOrder, ascendingOrder};					// Demand ordering rule in Scheduler_ block	
 
 // #######################################################################################################
 // #
@@ -186,7 +184,7 @@ std::ostream& operator<<(std::ostream &out, const t_demand &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, Demand, LogicalTopology, PhysicalTopology, /*Path,*/ DemandListOfPaths };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, DemandRequest, LogicalTopology, PhysicalTopology };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -443,8 +441,8 @@ private:
 			case signal_type::PhotonStreamMPXY:
 				typeName = "PhotonStreamMPXY";
 				break;
-			case signal_type::Demand:
-				typeName = "Demand";
+			case signal_type::DemandRequest:
+				typeName = "DemandRequest";
 				break;
 			case signal_type::LogicalTopology:
 				typeName = "LogicalTopology";
@@ -452,12 +450,6 @@ private:
 			case signal_type::PhysicalTopology:
 				typeName = "PhysicalTopology";
 				break;
-			/*case signal_type::Path:
-				typeName = "Path";
-				break;*/
-			case signal_type::DemandListOfPaths:
-					typeName = "DemandListOfPaths";
-					break;
 			default:
 				cout << "Error: netxpto_20180815.h - typeName not defined\n";
 		}
@@ -474,11 +466,9 @@ using TimeContinuousAmplitudeContinuousReal = BaseSignal<t_real, signal_type::Ti
 using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, signal_value_type::t_complex_xy>;
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
-using Demand = BaseSignal<t_demand, signal_type::Demand, signal_value_type::t_demand>;
+using Demand = BaseSignal<t_demand, signal_type::DemandRequest, signal_value_type::t_demand>;
 using LogicalTopology = BaseSignal<t_logical_topology, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
 using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
-//using Path = BaseSignal<t_path, signal_type::Path, signal_value_type::t_path>;
-using DemandListOfPahts = BaseSignal<t_demand_list_of_paths, signal_type::DemandListOfPaths, signal_value_type::t_demand_list_of_paths>;
 
 /*
 class TimeDiscrete : public Signal {

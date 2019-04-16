@@ -10,14 +10,14 @@ void Scheduler::initialize(void){
 
 	numberOfOutputSignals = (int) outputSignals.size();
 
-	setNumberOfNodes(calculateNumberOfNodes());
+	//setNumberOfNodes(calculateNumberOfNodes());
 	setNumberOfDemands(calculateNumberOfDemands());
 	
 
 	numberOfNodes = getNumberOfNodes();				// Returns the number of nodes
 	numberOfDemands = getNumberOfDemands();			// Returns the total number of existent demands
 	demandIndex = getDemandIndex();					// Returns demandIndex value
-	orderingRule = getDemandOrderingRule();			// Returns orderingRule value
+	orderingRule = getOrderingRule();				// Returns orderingRule value
 
 }
 
@@ -39,11 +39,11 @@ bool Scheduler::runBlock(void) {
 	return true;
 }
 
-bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
+bool Scheduler::generateDemand(ordering_rule orderingRule, t_demand &dem)
 {
 	bool findDemand{ false };
 
-	if (orderingRule == 0) // ODU4 to ODU0
+	if (orderingRule == ordering_rule::descendingOrder) // ODU4 to ODU0
 	{
 		//############################ ODU4 ####################################
 		t_integer line{ 0 };
@@ -60,7 +60,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 4 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // Always 0, meaning no protection
 
 					odu4[line][column]--; // A demand was processed
 					demandIndex++;
@@ -85,7 +85,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 3 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none };
 
 					odu3[line][column]--; // A demand was processed
 					demandIndex++;
@@ -110,7 +110,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 2 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none };
 
 					odu2[line][column]--; // A demand was processed
 					demandIndex++;
@@ -135,7 +135,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 1 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none };
 
 					odu1[line][column]--; // A demand was processed
 					demandIndex++;
@@ -160,7 +160,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 0 };
-					dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none };
 
 					odu0[line][column]--; // A demand was processed
 					demandIndex++;
@@ -172,7 +172,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 		
 	}
 
-	else if (orderingRule == 1) // ODU0 to ODU4
+	else if (orderingRule == ordering_rule::ascendingOrder) // ODU0 to ODU4
 	{
 	//############################ ODU0 ####################################
 	t_integer line{ 0 };
@@ -189,7 +189,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 				dem.sourceNode = { line + 1 };
 				dem.destinationNode = { column + 1 };
 				dem.oduType = { 0 };
-				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+				dem.survivabilityMethod = { survivability_method::none };
 
 				odu0[line][column]--; // A demand was processed
 				demandIndex++;
@@ -214,7 +214,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 				dem.sourceNode = { line + 1 };
 				dem.destinationNode = { column + 1 };
 				dem.oduType = { 1 };
-				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+				dem.survivabilityMethod = { survivability_method::none };
 
 				odu1[line][column]--; // A demand was processed
 				demandIndex++;
@@ -238,7 +238,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 				dem.sourceNode = { line + 1 };
 				dem.destinationNode = { column + 1 };
 				dem.oduType = { 2 };
-				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+				dem.survivabilityMethod = { survivability_method::none };
 
 				odu2[line][column]--; // A demand was processed
 				demandIndex++;
@@ -262,7 +262,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 				dem.sourceNode = { line + 1 };
 				dem.destinationNode = { column + 1 };
 				dem.oduType = { 3 };
-				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+				dem.survivabilityMethod = { survivability_method::none };
 
 				odu3[line][column]--; // A demand was processed
 				demandIndex++;
@@ -286,7 +286,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 				dem.sourceNode = { line + 1 };
 				dem.destinationNode = { column + 1 };
 				dem.oduType = { 4 };
-				dem.restorationMethod = { 0 }; // Always 0, meaning no protection
+				dem.survivabilityMethod = { survivability_method::none };
 
 				odu4[line][column]--; // A demand was processed
 				demandIndex++;
@@ -300,11 +300,11 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand &dem)
 	return findDemand;
 }
 
-t_integer Scheduler::calculateNumberOfNodes()	
+/*t_integer Scheduler::calculateNumberOfNodes()	
 { 
 	t_integer nodes = odu0[0].size() ;
 	return nodes;
-};
+};*/
 
 t_integer Scheduler::calculateNumberOfDemands()
 {

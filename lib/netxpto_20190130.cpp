@@ -86,7 +86,7 @@ void Signal::bufferPut(T value)
 				}
 				else
 				{
-					if (type == "Demand") {
+					if (type == "DemandRequest") {
 						t_demand *ptr = (t_demand *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 
@@ -101,7 +101,18 @@ void Signal::bufferPut(T value)
 							fileHandler << "\t\t\t";
 							fileHandler << ptr->oduType;
 							fileHandler << "\t\t\t";
-							fileHandler << ptr->restorationMethod;
+							if (ptr->survivabilityMethod == survivability_method::none)
+							{
+								fileHandler << "none";
+							}
+							else if (ptr->survivabilityMethod == survivability_method::protection_1_plus_1)
+							{
+								fileHandler << "protection_1_plus_1";
+							}
+							else if (ptr->survivabilityMethod == survivability_method::restoration)
+							{
+								fileHandler << "restoration";
+							}
 							fileHandler << "\n";
 							ptr++;
 						}
@@ -115,59 +126,116 @@ void Signal::bufferPut(T value)
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
 						{
-							//################### PRINT LOGICAL TOPOLOGY #################
-							for (size_t line = 0; line < (*ptr).logicalTopology[0].size(); line++)
+							//################### PRINT LOGICAL TOPOLOGY ADJACENCY MATRIX #################
+							fileHandler << "--------------------------logicalTopologyAdjacencyMatrix ---------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							for (size_t line = 0; line < (*ptr).logicalTopologyAdjacencyMatrix[0].size(); line++)
 							{
-								for (size_t column = 0; column < (*ptr).logicalTopology[0].size(); column++)
+								for (size_t column = 0; column < (*ptr).logicalTopologyAdjacencyMatrix[0].size(); column++)
 								{
-									fileHandler << (*ptr).logicalTopology[line][column];
+									fileHandler << (*ptr).logicalTopologyAdjacencyMatrix[line][column];
 									fileHandler << "\t";
 								}
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
-							//################### PRINT LOGICAL LINKS ###################
-							for (size_t logicalLink = 0; logicalLink < (*ptr).logicalLinks.size(); logicalLink++)
+
+							//################### PRINT PATHS ###################
+							fileHandler << "-------------------------------------- paths ----------------------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "pathIndex	sourceNode	destinationNode	capacity(ODU0s)	numberOfLightPaths	lightPathsIndex";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							for (size_t path = 0; path < (*ptr).paths.size(); path++)
 							{
-								fileHandler << (*ptr).logicalLinks[logicalLink].linkIndex;
+								fileHandler << (*ptr).paths[path].pathIndex;
 								fileHandler << "\t";
-								fileHandler << (*ptr).logicalLinks[logicalLink].linkSourceNode;
+								fileHandler << (*ptr).paths[path].sourceNode;
 								fileHandler << "\t";
-								fileHandler << (*ptr).logicalLinks[logicalLink].linkDestinationNode;
+								fileHandler << (*ptr).paths[path].destinationNode;
 								fileHandler << "\t";
-								fileHandler << (*ptr).logicalLinks[logicalLink].numberOfLightPaths;
+								fileHandler << (*ptr).paths[path].capacity;
+								fileHandler << "\t";
+								fileHandler << (*ptr).paths[path].numberOfLightPaths;
+								fileHandler << "\t";
+								for (size_t i = 0; i < (*ptr).paths[i].lightPathsIndex.size(); i++)
+								{
+									fileHandler << "[";
+									fileHandler << (*ptr).paths[i].lightPathsIndex[i];
+									fileHandler << " ";
+								}
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
 
-							//################### PRINT LIGHT PATHS #####################  // Faria mais sentido ser uma variável de estado do Path Generator
+							//################### PRINT LIGHTPATHS #####################  
+							fileHandler << "----------------------------------------- lightPaths ----------------------------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "lightPathIndex	sourceNode	destinationNode	capacity(ODU0s)	numberOfOpticalChannels	opticalChannlesIndex";
+							fileHandler << "\n";
+							fileHandler << "\n";
 							for (size_t lightPath = 0; lightPath < (*ptr).lightPaths.size(); lightPath++)
 							{
-								fileHandler << (*ptr).lightPaths[lightPath].linkIndex;
+								fileHandler << (*ptr).lightPaths[lightPath].lightPathIndex;
 								fileHandler << "\t";
-								fileHandler << (*ptr).lightPaths[lightPath].lightPathNumber;
+								fileHandler << (*ptr).lightPaths[lightPath].sourceNode;
 								fileHandler << "\t";
-								for (size_t i = 0; i < (*ptr).lightPaths[lightPath].physicalLinks.size(); i++)
+								fileHandler << (*ptr).lightPaths[lightPath].destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPaths[lightPath].capacity;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPaths[lightPath].numberOfOpticalChannels;
+								fileHandler << "\t";
+								for (size_t i = 0; i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size(); i++)
 								{
-									fileHandler << (*ptr).lightPaths[lightPath].physicalLinks[i];
+									fileHandler << "[";
+									fileHandler << (*ptr).lightPaths[lightPath].opticalChannelsIndex[i];
+									fileHandler << " ";
 								}
-
+								fileHandler << "]";
+								fileHandler << "\n";
+							}
+							//################### PRINT OPTICAL CHANNELS #####################  
+							fileHandler << "----------------------------------------- opticalChannels ----------------------------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "opticalChannelIndex	sourceNode	destinationNode	capacity(ODU0s)	wavelenght(nm)	numberOfDemands	demandsIndex";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							for (size_t opticalChannel = 0; opticalChannel < (*ptr).opticalChannels.size(); opticalChannel++)
+							{
+								fileHandler << (*ptr).opticalChannels[opticalChannel].opticalChannelIndex;
 								fileHandler << "\t";
-								fileHandler << (*ptr).lightPaths[lightPath].wavelength;
+								fileHandler << (*ptr).opticalChannels[opticalChannel].sourceNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].capacity;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].wavelenght;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
+								fileHandler << "\t";
+
+								for (size_t i = 0; i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size(); i++)
+								{
+									fileHandler << "[";
+									fileHandler << (*ptr).opticalChannels[opticalChannel].demandsIndex[i];
+									fileHandler << " ";
+								}
+								fileHandler << "]";
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
 						}
-
-						ptr++;
-						fileHandler.close();
-						setFirstValueToBeSaved(1);
 					}
-					//}
-				//}
+
 					else if (type == "PhysicalTopology")
 					{
-						t_physical_topology *ptr = (t_physical_topology *)buffer;
+						/*t_physical_topology *ptr = (t_physical_topology *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
@@ -187,9 +255,9 @@ void Signal::bufferPut(T value)
 								fileHandler << "\t";
 								fileHandler << (*ptr).physicalLinks[physicalLink].numberOfOpticalChannels;
 								fileHandler << "\n";
-								
+
 							}
-							fileHandler << "\n"; 
+							fileHandler << "\n";
 							fileHandler << "\n";
 							fileHandler << "\n";
 							fileHandler << "\n";
@@ -212,66 +280,15 @@ void Signal::bufferPut(T value)
 							}
 							ptr++;
 							fileHandler.close();
-							setFirstValueToBeSaved(1);
-						}
-						else if (type == "DemandListOfPaths") {
-							t_demand_list_of_paths *ptr = (t_demand_list_of_paths *)buffer;
-							ptr = ptr + (firstValueToBeSaved - 1);
-
-							ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-							for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
-								//Print demand
-								fileHandler << "Demand";
-								fileHandler << (*ptr).demand.demandIndex;
-								fileHandler << "\t";
-								fileHandler << (*ptr).demand.sourceNode;
-								fileHandler << "\t";
-								fileHandler << (*ptr).demand.destinationNode;
-								fileHandler << "\t";
-								fileHandler << (*ptr).demand.oduType;
-								fileHandler << "\t";
-								fileHandler << (*ptr).demand.restorationMethod;
-								fileHandler << "\n";
-								fileHandler << "\n";
-								// Print list of paths
-								for (t_integer i=0; i<((*ptr).selectedPaths.size()); i++)
-								{
-									fileHandler << "pathIndex	source	destination";
-									fileHandler << "\n";
-									fileHandler << "\n";
-									fileHandler << (*ptr).selectedPaths[i].pathIndex;
-									fileHandler << "\t";
-									fileHandler << (*ptr).selectedPaths[i].sourceNode;
-									fileHandler << "\t";
-									fileHandler << (*ptr).selectedPaths[i].destinationNode;
-									fileHandler << "\n";
-									fileHandler << "\n";
-									fileHandler << "logical links";
-									fileHandler << "\n";
-									fileHandler << "\n";
-									for (t_integer j = 0; j < (*ptr).selectedPaths[i].logicalLinks.size(); j++)
-									{
-										fileHandler << (*ptr).selectedPaths[i].logicalLinks[j];
-									}
-									fileHandler << "\n";
-									fileHandler << "\n";
-									fileHandler << "hops";
-									fileHandler << "\n";
-									fileHandler << "\n";
-									fileHandler << (*ptr).selectedPaths[i].hops;
-
-								}
-								ptr++;
-							}
-							fileHandler.close();
-							setFirstValueToBeSaved(1);
-						}
+							setFirstValueToBeSaved(1);*/
 					}
+
 				}
+			}
 			else
 			{
 				firstValueToBeSaved = firstValueToBeSaved - bufferLength;
-			
+
 			}
 		}
 
@@ -320,7 +337,7 @@ void Signal::writeHeader() {
 		
 //######################### TENTAR MUDAR PARA UM SWITCH #########################################
 
-		if (getType() == "Demand")
+		if (getType() == "DemandRequest")
 		{
 			headerFile << "Signal type: " << getType() << "\n";
 			headerFile << "==========================================================================================================================\n";
@@ -328,20 +345,15 @@ void Signal::writeHeader() {
 			headerFile << "|     Source Node      |";
 			headerFile << "|   Destination Node   |";
 			headerFile << "|       ODU Type       |";
-			headerFile << "|  Restoration Method  ||\n";
+			headerFile << "|  Survivability Method  ||\n";
 			headerFile << "==========================================================================================================================\n";
 		}
 		else if (getType() == "LogicalTopology")
 		{
 			headerFile << "Signal type: " << getType() << "\n";
 			headerFile << "===================================================\n";
-			headerFile << "||	    LOGICAL TOPOLOGY MATRIX      	||\n";
+			headerFile << "||	    LogicalTopologyGenerator_ block      	||\n";
 			headerFile << "===================================================\n";
-			headerFile << "\n";
-			headerFile << "First matrix: Logical Topology";
-			headerFile << "\n";
-			headerFile << "\n";
-			headerFile << "Second matrix: Logical Links (linkIndex, linkSourceNode, linkDestinationNode, numberOfLightPaths)";
 			headerFile << "\n";
 			headerFile << "\n";
 		}
@@ -361,18 +373,7 @@ void Signal::writeHeader() {
 			headerFile << "\n";
 			headerFile << "\n";
 		}
-		else if (getType() == "DemandListOfPaths")
-		{
-			headerFile << "Signal type: " << getType() << "\n";
-			headerFile << "======================================================\n";
-			headerFile << "||   DEMAND AND CORRESPONDENT LIST OF PATHS   ||\n";
-			headerFile << "======================================================\n";
-		}
-		headerFile << "//	 ### HEADER TERMINATOR ###\n";
-		headerFile << "\n";
-		headerFile.close();
-
-		headerWritten = true;
+			headerWritten = true;
 	}
 };
 
@@ -523,7 +524,7 @@ void Signal::close() {
 			fileHandler.open("./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app);
 
 //################## Changed 19-02-1019 ##################################		
-			if (type == "Demand") {
+			if (type == "DemandRequest") {
 				t_demand *ptr = (t_demand *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 				//bool stop {false};
@@ -538,7 +539,18 @@ void Signal::close() {
 						fileHandler << "\t\t\t";
 						fileHandler << ptr->oduType;
 						fileHandler << "\t\t\t";
-						fileHandler << ptr->restorationMethod;
+						if (ptr->survivabilityMethod == survivability_method::none)
+						{
+							fileHandler << "none";
+						}
+						else if (ptr->survivabilityMethod == survivability_method::protection_1_plus_1)
+						{
+							fileHandler << "protection_1_plus_1";
+						}
+						else if (ptr->survivabilityMethod == survivability_method::restoration)
+						{
+							fileHandler << "restoration";
+						}
 						fileHandler << "\n";
 						ptr++;
 				}
@@ -552,45 +564,107 @@ void Signal::close() {
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
 						{
-							//################### PRINT LOGICAL TOPOLOGY #################
-							for (size_t line = 0; line < (*ptr).logicalTopology[0].size(); line++)
+							//################### PRINT LOGICAL TOPOLOGY ADJACENCY MATRIX #################
+							fileHandler << "--------------------------logicalTopologyAdjacencyMatrix ---------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							for (size_t line = 0; line < (*ptr).logicalTopologyAdjacencyMatrix[0].size(); line++)
 							{
-								for (size_t column = 0; column < (*ptr).logicalTopology[0].size(); column++)
+								for (size_t column = 0; column < (*ptr).logicalTopologyAdjacencyMatrix[0].size(); column++)
 								{
-									fileHandler << (*ptr).logicalTopology[line][column];
+									fileHandler << (*ptr).logicalTopologyAdjacencyMatrix[line][column];
 									fileHandler << "\t";
 								}
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
-							//################### PRINT LOGICAL LINKS ###################
-							for (size_t logicalLink = 0; logicalLink < (*ptr).logicalLinks.size(); logicalLink++)
+
+							//################### PRINT PATHS ###################
+							fileHandler << "-------------------------------------- paths ----------------------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "pathIndex	sourceNode	destinationNode	capacity(ODU0s)	numberOfLightPaths	lightPathsIndex";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							for (size_t path = 0; path < (*ptr).paths.size(); path++)
 							{
-								fileHandler << (*ptr).logicalLinks[logicalLink].linkIndex;
+								fileHandler << (*ptr).paths[path].pathIndex;
 								fileHandler << "\t";
-								fileHandler << (*ptr).logicalLinks[logicalLink].linkSourceNode;
+								fileHandler << (*ptr).paths[path].sourceNode;
 								fileHandler << "\t";
-								fileHandler << (*ptr).logicalLinks[logicalLink].linkDestinationNode;
+								fileHandler << (*ptr).paths[path].destinationNode;
 								fileHandler << "\t";
-								fileHandler << (*ptr).logicalLinks[logicalLink].numberOfLightPaths;
+								fileHandler << (*ptr).paths[path].capacity;
+								fileHandler << "\t";
+								fileHandler << (*ptr).paths[path].numberOfLightPaths;
+								fileHandler << "\t";
+								for (size_t i = 0; i < (*ptr).paths[i].lightPathsIndex.size(); i++)
+								{
+									fileHandler << "[";
+									fileHandler << (*ptr).paths[i].lightPathsIndex[i];
+									fileHandler << " ";
+								}
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
 
-							//################### PRINT LIGHT PATHS #####################  // Faria mais sentido ser uma variável de estado do Path Generator
+							//################### PRINT LIGHTPATHS #####################  
+							fileHandler << "----------------------------------------- lightPaths ----------------------------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "lightPathIndex	sourceNode	destinationNode	capacity(ODU0s)	numberOfOpticalChannels	opticalChannlesIndex";
+							fileHandler << "\n";
+							fileHandler << "\n";
 							for (size_t lightPath = 0; lightPath < (*ptr).lightPaths.size(); lightPath++)
 							{
-								fileHandler << (*ptr).lightPaths[lightPath].linkIndex;
+								fileHandler << (*ptr).lightPaths[lightPath].lightPathIndex;
 								fileHandler << "\t";
-								fileHandler << (*ptr).lightPaths[lightPath].lightPathNumber;
+								fileHandler << (*ptr).lightPaths[lightPath].sourceNode;
 								fileHandler << "\t";
-								for(size_t i=0; i < (*ptr).lightPaths[lightPath].physicalLinks.size(); i++)
+								fileHandler << (*ptr).lightPaths[lightPath].destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPaths[lightPath].capacity;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPaths[lightPath].numberOfOpticalChannels;
+								fileHandler << "\t";
+								for (size_t i = 0; i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size(); i++)
 								{
-									fileHandler << (*ptr).lightPaths[lightPath].physicalLinks[i];
+									fileHandler << "[";
+									fileHandler << (*ptr).lightPaths[lightPath].opticalChannelsIndex[i];
+									fileHandler << " ";
 								}
-
+								fileHandler << "]";
+								fileHandler << "\n";
+							}
+							//################### PRINT OPTICAL CHANNELS #####################  
+							fileHandler << "----------------------------------------- opticalChannels ----------------------------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "opticalChannelIndex	sourceNode	destinationNode	capacity(ODU0s)	wavelenght(nm)	numberOfDemands	demandsIndex";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							for (size_t opticalChannel = 0; opticalChannel < (*ptr).opticalChannels.size(); opticalChannel++)
+							{
+								fileHandler << (*ptr).opticalChannels[opticalChannel].opticalChannelIndex;
 								fileHandler << "\t";
-								fileHandler << (*ptr).lightPaths[lightPath].wavelength;
+								fileHandler << (*ptr).opticalChannels[opticalChannel].sourceNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].capacity;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].wavelenght;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
+								fileHandler << "\t";
+
+								for (size_t i = 0; i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size(); i++)
+								{
+									fileHandler << "[";
+									fileHandler << (*ptr).opticalChannels[opticalChannel].demandsIndex[i];
+									fileHandler << " ";
+								}
+								fileHandler << "]";
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
@@ -599,7 +673,7 @@ void Signal::close() {
 			}
 			else if (type == "PhysicalTopology")
 			{
-				t_physical_topology *ptr = (t_physical_topology *)buffer;
+				/*t_physical_topology *ptr = (t_physical_topology *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
@@ -636,7 +710,7 @@ void Signal::close() {
 					}
 					fileHandler << "\n";
 				}
-				setFirstValueToBeSaved(1);
+				setFirstValueToBeSaved(1);*/
 			}
 			else if (type == "Binary") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
@@ -921,20 +995,7 @@ bool SuperBlock::runBlock(string signalPath) {
 						outputSignals[i]->bufferPut(signalPhysicalTopology);
 					}
 					break;
-				case signal_value_type::t_path:
-					for (int j = 0; j < length; j++) {
-						t_path signalPath;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPath);
-						outputSignals[i]->bufferPut(signalPath);
-					}
-					break;
-				case signal_value_type::t_demand_list_of_paths:
-					for (int j = 0; j < length; j++) {
-						t_demand_list_of_paths signalDemandListOfPaths;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalDemandListOfPaths);
-						outputSignals[i]->bufferPut(signalDemandListOfPaths);
-					}
-					break;
+
 			default:
 				cerr << "ERRO: netxpto_20190130.cpp (SuperBlock)" << "\n";
 				return false;
