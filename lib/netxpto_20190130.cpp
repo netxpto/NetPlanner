@@ -66,12 +66,12 @@ void Signal::bufferPut(T value)
 	bufferEmpty = false;
 	bufferFull = inPosition == outPosition;
 
-
-	if (bufferFull)
+	//if (bufferFull)      2019-04-13, de forma a gravar os sinais mesmo quando o buffer não enche
+	if(inPosition == 0)
 	{
 		if (saveSignal)
 		{
-			if (!headerWritten) { writeHeader(); };
+			if (!headerWritten) writeHeader();
 
 			if (firstValueToBeSaved <= bufferLength)
 			{
@@ -288,10 +288,8 @@ void Signal::bufferPut(T value)
 			else
 			{
 				firstValueToBeSaved = firstValueToBeSaved - bufferLength;
-
 			}
 		}
-
 	}
 }
 
@@ -324,13 +322,14 @@ void Signal::bufferGet() {
 
 }
 
-void Signal::writeHeader() {
+
+void Signal::writeHeader(){
 
 	if (headerWritten) return;
 
-	if (saveSignal && (!fileName.empty())) {
+	ofstream headerFile;
 
-		ofstream headerFile;
+	if (saveSignal && (!fileName.empty())) {
 
 		headerFile.open("./" + folderName + "/" + fileName, ios::out);
 
@@ -373,7 +372,12 @@ void Signal::writeHeader() {
 			headerFile << "\n";
 			headerFile << "\n";
 		}
-			headerWritten = true;
+
+		headerFile << "// ### HEADER TERMINATOR ###\n";
+
+		headerFile.close();
+
+		headerWritten = true;
 	}
 };
 
@@ -794,6 +798,13 @@ void Block::terminateBlock(void) {
 
 }
 
+void Block::closeOutputSignals(void) {
+
+	for (auto i = 0; i < numberOfOutputSignals; i++)
+		outputSignals[i]->close();
+
+}
+
 //########################################################################################################################################################
 //################################################ GENERAL SUPER BLOCKS FUNCTIONS IMPLEMENTATION #########################################################
 //########################################################################################################################################################
@@ -1023,7 +1034,8 @@ void SuperBlock::terminate() {
 	for (int unsigned j = 0; j<(moduleBlocks[moduleBlocks.size() - 1]->outputSignals).size(); j++)
 		moduleBlocks[moduleBlocks.size() - 1]->outputSignals[j]->close();
     */
-	superBlockSystem.terminate();
+	superBlockSystem.terminateSuperBlock();
+	
 }
 
 void SuperBlock::setSaveInternalSignals(bool sInternalSignals) {
@@ -1669,6 +1681,21 @@ void System::terminate()
 
 }
 
+void System::terminateSuperBlock()
+{
+
+	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
+		SystemBlocks[i]->terminateBlock();
+	}
+	
+	SystemBlocks[SystemBlocks.size() - 1]->closeOutputSignals();
+
+	//Closes debug file
+	if (logValue)
+		logFile.close();
+
+}
+
 void System::setOpenFile(bool value) {
 	openFile = value;
 }
@@ -1685,12 +1712,16 @@ void System::setSignalsFolderName(string newName)
 {
 	signalsFolder = newName;
 
-	for (auto b : SystemBlocks)
+	for (auto b : SystemBlocks) {
+		for (auto s : b->inputSignals)
+		{
+			s->setFolderName(signalsFolder);
+		}
 		for (auto s : b->outputSignals)
 		{
 			s->setFolderName(signalsFolder);
 		}
-
+	}
 }
 
 void System::setLoadedInputParameters(vector<string> loadedInputParams)

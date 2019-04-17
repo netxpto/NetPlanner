@@ -1,4 +1,19 @@
-# include "..\include_opaque\netxpto_20190130.h"
+/*
+# include <complex>
+# include <fstream>
+# include <iostream>
+# include <cmath>
+# include <iostream>
+# include <string>
+# include <strstream>
+# include <algorithm>
+# include <ctime>
+#include  <filesystem>
+#include  <functional>  
+#include  <cctype> 
+#include  <locale> 
+*/
+# include "../include/netxpto_20180815.h"
 
 
 using namespace std;
@@ -37,7 +52,7 @@ t_integer Signal::space() {
 }
 
 template<typename T>							
-void Signal::bufferPut(T value)
+void Signal::bufferPut(T value) 
 {
 	(static_cast<T *>(buffer))[inPosition] = value;
 
@@ -51,47 +66,21 @@ void Signal::bufferPut(T value)
 	bufferEmpty = false;
 	bufferFull = inPosition == outPosition;
 
-
-	if (bufferFull)
+	//if (bufferFull)      2019-04-13, de forma a gravar os sinais mesmo quando o buffer não enche
+	if(inPosition == 0)
 	{
 		if (saveSignal)
 		{
 			if (!headerWritten) writeHeader();
-			
+
 			if (firstValueToBeSaved <= bufferLength)
 			{
-				if (!saveInAscii)
-				{
-					char *ptr = (char *)buffer;
-					ptr = ptr + (firstValueToBeSaved - 1) * sizeof(T);
-					ofstream fileHandler{ "./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app };
-					fileHandler.write(ptr, (bufferLength - (firstValueToBeSaved - 1)) * sizeof(T));
-					fileHandler.close();
-					firstValueToBeSaved = 1;
-				}
-				else
-				{
-					if (type == "DemandRequest") {
-						t_demand_request *ptr = (t_demand_request *)buffer;
-						ptr = ptr + (firstValueToBeSaved - 1);
-						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
-							fileHandler << ptr->demandIndex;
-							fileHandler << "\t";
-							fileHandler << ptr->sourceNode;
-							fileHandler << "\t";
-							fileHandler << ptr->destinationNode;
-							fileHandler << "\t";
-							fileHandler << ptr->oduType;
-							fileHandler << "\t";
-							fileHandler << ptr->survivabilityMethod;
-							fileHandler << "\n";
-							ptr++;
-						}
-						fileHandler.close();
-						setFirstValueToBeSaved(1);
-					} 
-				}
+				char *ptr = (char *)buffer;
+				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(T);
+				ofstream fileHandler{ "./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app };
+				fileHandler.write(ptr, (bufferLength - (firstValueToBeSaved - 1)) * sizeof(T));
+				fileHandler.close();
+				firstValueToBeSaved = 1;
 			}
 			else
 			{
@@ -100,6 +89,7 @@ void Signal::bufferPut(T value)
 		}
 	}
 }
+
 
 template<typename T>
 void Signal::bufferGet(T* valueAddr) {
@@ -135,21 +125,23 @@ void Signal::writeHeader(){
 
 	if (headerWritten) return;
 
-	if (saveSignal && (!fileName.empty())) {
+	ofstream headerFile;
 
-		ofstream headerFile;
+	if (saveSignal && (!fileName.empty())) {
 
 		headerFile.open("./" + folderName + "/" + fileName, ios::out);
 
 		headerFile << "Signal type: " << getType() << "\n";
-		headerFile << "\n";
-		
+		headerFile << "Symbol Period (s): " << getSymbolPeriod() << "\n";
+		headerFile << "Sampling Period (s): " << getSamplingPeriod() << "\n";
+
+		headerFile << "// ### HEADER TERMINATOR ###\n";
+
 		headerFile.close();
 
 		headerWritten = true;
 	}
 };
-
 
 void Signal::writeHeader(string signalPath){
 
@@ -290,95 +282,14 @@ void Signal::close() {
 	if (saveSignal && (inPosition >= firstValueToBeSaved)) {
 
 		if (!headerWritten) writeHeader();
-		
+
 		if (!(type == "Message")) {
 			char* ptr = (char *)buffer;
 
 			ofstream fileHandler;
 			fileHandler.open("./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app);
 
-			if (type == "DemandRequest") {
-				t_demand_request *ptr = (t_demand_request *)buffer;
-				ptr = ptr + (firstValueToBeSaved - 1);
-				
-				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
-						fileHandler << ptr->demandIndex;
-						fileHandler << "\t";
-						fileHandler << ptr->sourceNode;
-						fileHandler << "\t";
-						fileHandler << ptr->destinationNode;
-						fileHandler << "\t";
-						fileHandler << ptr->oduType;
-						fileHandler << "\t";
-						fileHandler << ptr->survivabilityMethod;
-						fileHandler << "\n";
-						ptr++;
-				}
-				setFirstValueToBeSaved(1);
-			}
-
-			else if (type == "LogicalTopology") {
-				t_matrix *ptr = (t_matrix *)buffer;
-				ptr = ptr + (firstValueToBeSaved - 1);
-				
-				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto lTopology = firstValueToBeSaved; lTopology <= outPosition; lTopology++) {
-
-					t_integer nodes = (*ptr)[0].size();
-					for (t_integer line = 0; line < nodes ; line++) {
-
-						for (t_integer column = 0; column < nodes; column++) {
-
-							fileHandler << (*ptr)[line][column];
-							fileHandler << "\t";
-						}
-						fileHandler << "\n";
-					}
-					
-				}
-				setFirstValueToBeSaved(1);
-			}
-			
-			else if (type == "PhysicalTopology") {
-				t_physical_topology *ptr = (t_physical_topology *)buffer;
-				ptr = ptr + (firstValueToBeSaved - 1);
-
-				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto pTopology = firstValueToBeSaved; pTopology <= outPosition; pTopology++) {
-
-					t_integer nodes = (*ptr).physicalTopologyAdjacencyMatrix[0].size();
-					for (t_integer line = 0; line < nodes; line++) {
-
-						for (t_integer column = 0; column < nodes; column++) {
-
-							fileHandler << (*ptr).physicalTopologyAdjacencyMatrix[line][column];
-							fileHandler << "\t";
-						}
-						fileHandler << "\n";
-					}
-					fileHandler << "\n\n\n";
-
-					for (t_optical_multiplexing_system& oms : ptr->OMS) {
-
-						fileHandler << oms.OMSIndex;
-						fileHandler << "\t";
-						fileHandler << oms.sourceNode;
-						fileHandler << "\t";
-						fileHandler << oms.destinationNode;
-						fileHandler << "\t";
-						fileHandler << oms.maximumNumberOfWavelengths;
-						fileHandler << "\t";
-						for (t_integer w = 0; w < oms.wavelengths.size(); w++) {
-							fileHandler << oms.wavelengths[w];
-						}
-						fileHandler << "\n";
-					}
-				}
-				setFirstValueToBeSaved(1);
-			}
-
-			else if (type == "Binary") {
+			if (type == "Binary") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_binary));
 			}
@@ -457,6 +368,13 @@ void Block::terminateBlock(void) {
 
   for (auto i = 0; i < numberOfInputSignals; i++)
     inputSignals[i]->close();
+
+}
+
+void Block::closeOutputSignals(void) {
+
+	for (auto i = 0; i < numberOfOutputSignals; i++)
+		outputSignals[i]->close();
 
 }
 
@@ -633,6 +551,8 @@ bool SuperBlock::runBlock(string signalPath) {
 						outputSignals[i]->bufferPut(signalValueXY);
 					}
 				break;
+
+
 /*			case signal_value_type::t_message:
 				for (int j = 0; j < length; j++) {
 					t_message signalValue;
@@ -640,30 +560,8 @@ bool SuperBlock::runBlock(string signalPath) {
 					outputSignals[i]->bufferPut(signalValue);
 				}
 				break;*/
-				case signal_value_type::t_demand_request:
-					for (int j = 0; j < length; j++) {
-						t_demand_request signalDemand;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalDemand);
-						outputSignals[i]->bufferPut(signalDemand);
-					}
-					break;
-				case signal_value_type::t_logical_topology:
-					for (int j = 0; j < length; j++) {
-						t_matrix signalLogicalTopology;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalLogicalTopology);
-						outputSignals[i]->bufferPut(signalLogicalTopology);
-					}
-					break;
-				case signal_value_type::t_physical_topology:
-					for (int j = 0; j < length; j++) {
-						t_physical_topology signalPhysicalTopology;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPhysicalTopology);
-						outputSignals[i]->bufferPut(signalPhysicalTopology);
-					}
-					break;
-			
 			default:
-				cerr << "ERRO: netxpto_20190130.cpp (SuperBlock)" << "\n";
+				cerr << "ERRO: netxpto_20180815.cpp (SuperBlock)" << "\n";
 				return false;
 			}
 		}
@@ -685,7 +583,8 @@ void SuperBlock::terminate() {
 	for (int unsigned j = 0; j<(moduleBlocks[moduleBlocks.size() - 1]->outputSignals).size(); j++)
 		moduleBlocks[moduleBlocks.size() - 1]->outputSignals[j]->close();
     */
-	superBlockSystem.terminate();
+	superBlockSystem.terminateSuperBlock();
+	
 }
 
 void SuperBlock::setSaveInternalSignals(bool sInternalSignals) {
@@ -1208,6 +1107,7 @@ System::System(initializer_list<Block *> Blocks)
 
 System::System(initializer_list<Block *> Blocks, string signalsFolderName, vector<string> list)
 {
+
 	SystemBlocks = Blocks;
 	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
 		SystemBlocks[i]->initializeBlock();
@@ -1218,6 +1118,7 @@ System::System(initializer_list<Block *> Blocks, string signalsFolderName, vecto
 
 void System::setSystem(initializer_list<Block *> Blocks)
 {
+
 	SystemBlocks = Blocks;
 
 	for (int unsigned i = 0; i < SystemBlocks.size(); i++)
@@ -1331,6 +1232,21 @@ void System::terminate()
 
 }
 
+void System::terminateSuperBlock()
+{
+
+	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
+		SystemBlocks[i]->terminateBlock();
+	}
+	
+	SystemBlocks[SystemBlocks.size() - 1]->closeOutputSignals();
+
+	//Closes debug file
+	if (logValue)
+		logFile.close();
+
+}
+
 void System::setOpenFile(bool value) {
 	openFile = value;
 }
@@ -1347,12 +1263,16 @@ void System::setSignalsFolderName(string newName)
 {
 	signalsFolder = newName;
 
-	for (auto b : SystemBlocks)
+	for (auto b : SystemBlocks) {
+		for (auto s : b->inputSignals)
+		{
+			s->setFolderName(signalsFolder);
+		}
 		for (auto s : b->outputSignals)
 		{
 			s->setFolderName(signalsFolder);
 		}
-
+	}
 }
 
 void System::setLoadedInputParameters(vector<string> loadedInputParams)
@@ -2267,4 +2187,34 @@ SystemInputParameters::Parameter::Parameter(bool * elem)
 {
 	type = BOOL;
 	b = elem;
+}
+
+
+//########################################################################################################################################################
+//############################################################### NUMERICAL WINDOWS ######################################################################
+//########################################################################################################################################################
+
+vector<double> getWindow(WindowType windowType, int windowSize) {
+	vector<double> wn(windowSize);
+	switch (windowType)
+	{
+	case Hamming:
+		for (int x = 0; x < windowSize; x++) {
+			wn[x] = 0.54 - 0.46*cos(2 * PI*x / (windowSize - 1));
+		}
+		return wn;
+
+	case None:
+		for (int x = 0; x < windowSize; x++) {
+			wn[x] = 1;
+		}
+		return wn;
+
+	case Hann:
+		for (int x = 0; x < windowSize; x++) {
+			wn[x] = 0.5 *(1 - cos(2 * PI*x / (windowSize - 1)));
+		}
+		return wn;
+	}
+	return wn;
 }
