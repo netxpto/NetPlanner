@@ -30,15 +30,21 @@ class Scheduler : public Block {
 	t_integer_long demandIndex{ 0 };
 	t_integer_long numberOfDemands{ 0 };
 
-	t_matrix odu0, odu1, odu2, odu3, odu4;
+	t_matrix odu0{ 0 };		// ODUO demands matrix default value
+	t_matrix odu1{ 0 };		// ODU1 demands matrix default value
+	t_matrix odu2{ 0 };		// ODU2 demands matrix default value
+	t_matrix odu3{ 0 };		// ODU3 demands matrix default value
+	t_matrix odu4{ 0 };		// ODU4 demands matrix default value
+
 
 	// Input Parameters
-	t_integer orderingRule{ 0 }; // By default descending ordering rule (ODU4 ... ODU0)
-	t_integer numberOfNodes{ 0 };
+	ordering_rule orderingRule{ ordering_rule::ascendingOrder };	// By default descending ordering rule (ODU4 ... ODU0)
+	//t_integer orderingRule{ 0 }; // By default descending ordering rule (ODU4 ... ODU0)
+	t_integer numberOfNodes{ 0 }; // Deafult value
 
 	// Functions that need access to this class variables values in the main cpp file
-	bool generateDemand(t_integer orderingRule, t_demand &dem);
-	t_integer calculateNumberOfNodes();
+	bool generateDemand(ordering_rule orderingRule, t_demand &dem);
+	//t_integer calculateNumberOfNodes();
 	t_integer calculateNumberOfDemands();
 
 public:
@@ -49,6 +55,10 @@ public:
 
 	void initialize(void);
 	bool runBlock(void); 
+
+
+	void setNumberOfNodes(t_integer nodes) { numberOfNodes = nodes; }
+	t_integer getNumberOfNodes(void) { return numberOfNodes; };
 
 	void setODU0(t_matrix od0) { odu0 = od0; }
 	t_matrix const getODU0(void) { return odu0; };
@@ -65,16 +75,14 @@ public:
 	void setODU4(t_matrix od4) { odu4 = od4; }
 	t_matrix const getODU4(void) { return odu4; };
 
-	void setDemandsOrderingRule(t_integer rule) { orderingRule = rule; }
-	t_integer const setDemandsOrderingRule(void) { return orderingRule; };
+	void setOrderingRule(ordering_rule rule) { orderingRule = rule; }
+	ordering_rule getOrderingRule(void) { return orderingRule; };
 
-	void setNumberOfNodes(size_t nodes) { numberOfNodes = nodes; }
 	void setNumberOfDemands(t_integer number) { numberOfDemands = number; }
 
-	size_t getNumberOfNodes() { return numberOfNodes; };
+	
 	t_integer getNumberOfDemands() { return numberOfDemands; };
-	t_integer getDemandIndex() { return demandIndex; };
-	t_integer getDemandOrderingRule() { return orderingRule; };
+	t_integer getDemandIndex() { return demandIndex; };	
 
 };
 

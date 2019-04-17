@@ -12,7 +12,7 @@
 # include <bitset>
 # include <chrono>
 # include <cmath>
-# include <complex>
+# include <complex>				
 # include <cctype> 
 # include <ctime>
 # include <filesystem>
@@ -21,13 +21,11 @@
 # include <iostream>
 # include <locale>
 # include <map>
-# include <math.h>
 # include <random>
 # include <sstream>
 # include <vector>
 # include <strstream>
 # include <string>
-# include <iostream>
 
 
 
@@ -40,9 +38,6 @@
 using t_unsigned_long = unsigned long int;
 using t_unsigned = unsigned int;
 using t_integer = int;
-using t_integer_long = long int;
-
-typedef std::vector<std::vector<int> > t_matrix;
 
 
 // ####################################################################################################
@@ -89,74 +84,7 @@ using t_photon_mp_xy = struct { t_complex_xy_mp path[MAX_NUMBER_OF_PATHS]; };
 using t_iqValues = complex<t_real>;
 using t_message = struct {	string messageType;	string messageDataLength; 	string messageData; int size() { return 3; }};
 
-enum class survivability_method { none, protection_1_plus_1, restoration };
-
-using t_demand = struct {						// Signal type Demand structure 
-	t_integer demandIndex{ 0 };
-	t_integer sourceNode{ 0 };
-	t_integer destinationNode{ 0 };
-	t_integer oduType{ 0 };
-	survivability_method survivabilityMethod{ survivability_method::none };
-
-	void setDemandIndex(t_integer dIndex) { demandIndex = dIndex; }
-	t_integer getDemandIndex() { return demandIndex; }
-};
-
-using t_paths = struct {							// paths data structure
-	t_integer pathIndex{ 0 };						// paths index
-	t_integer sourceNode{ 0 };						// paths source node
-	t_integer destinationNode{ 0 };					// paths destination node
-	t_integer capacity{ 0 };						// paths capacity in terms of ODU0 demands
-	t_integer numberOfLightPaths{ 0 };				// number of lightpaths that form these paths
-	std::vector<t_integer> lightPathsIndex{ 0 };	// index of those lightpaths
-};
-
-using t_light_paths = struct {				// lightPahts data structure
-	t_integer lightPathIndex{ 0 };			// lightPaths index
-	t_integer sourceNode{ 0 };				// lightPaths source node
-	t_integer destinationNode{ 0 };			// lightPaths destination node
-	t_integer capacity{ 0 };				// lightPaths capacity in terms of ODU0 demands
-	t_integer numberOfOpticalChannels{ 0 }; 
-	std::vector<t_integer> opticalChannelsIndex;
-};
-
-using t_optical_channels = struct {			// opticalChannels data structure
-	t_integer opticalChannelIndex{ 0 };		// opticalChannels index
-	t_integer sourceNode{ 0 };				// opticalChannels source node
-	t_integer destinationNode{ 0 };			// opticalChannels destination node
-	t_integer capacity{ 0 };				// opticalChannels capacity in terms of ODU0 demands
-	t_integer wavelenght{ 0 };				// opticalChannels wavelenght
-	t_integer numberOfDemands{ 0 };         // number of demands passing through each of the opticalChannels
-	std::vector<t_integer> demandsIndex{ 0 };			// index of the previous demands
-};
-
-using t_logical_topology = struct {						// LogicalTopology signal data structure
-	t_matrix logicalTopologyAdjacencyMatrix{ 0 };		// logicalTopologyAdjacencyMatrix variable
-	std::vector<t_paths> paths;							// List of paths
-	std::vector<t_light_paths> lightPaths;				// List of lightPaths
-	std::vector<t_optical_channels> opticalChannels;	// List of opticalChannels
-};
-
-using t_optical_multiplexing_systems = struct {			// opticalMultiplexingSystems data structure
-	t_integer opticalMultiplexingSystemIndex{ 0 };		// opticalMultiplexingSystems index
-	t_integer sourceNode{ 0 };							// opticalMultiplexingSystems source node
-	t_integer destinationNode{ 0 };						// opticalMultiplexingSystems destination node
-	t_integer numberOfWavelenghts{ 0 };					// opticalMultiplexingSystems number of wavelenghts
-	std::vector<double> wavelenghts;					// opticalMultiplexingSystems wavelenghts values in nanometers (nm)
-	std::vector<t_integer> availableWavelenghts;		// indicates which of the previous wavelenghts values are available to be assigned
-};
-
-using t_physical_topology = struct {											// physicalTopology signal data structure
-	t_matrix physicalTopologyAdjacencyMatrix{ 0 };								// physicalTopologyMatrix variable
-	std::vector<t_optical_multiplexing_systems> opticalMultiplexingSystems;		
-};
-
-// Existent signals
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology }; 
-
-enum class transport_mode { opaque, transparent, translucent };				// Trasnsport mode types
-enum class criterion { hops, distance };									// The shortest path type will be selected depending on one of those
-enum class ordering_rule {descendingOrder, ascendingOrder};					// Demand ordering rule in Scheduler_ block	
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message };
 
 // #######################################################################################################
 // #
@@ -171,20 +99,24 @@ std::ostream& operator<<(std::ostream &out, const complex<T> &cx)
 	return out;
 }
 
-template<typename T>
-std::ostream& operator<<(std::ostream &out, const t_demand &cx)
-{
-	out << cx.demandIndex;
-	return out;
-}
-
 // ####################################################################################################
 // #
 // # NetXpto enuerate class types
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, DemandRequest, LogicalTopology, PhysicalTopology };
+enum class signal_type	{	Binary, 
+							TimeDiscreteAmplitudeContinuousReal,
+							TimeContinuousAmplitudeContinuousReal,
+							TimeContinuousAmplitudeDiscreteReal,
+							TimeDiscreteAmplitudeContinuousComplex,
+							TimeContinuousAmplitudeContinuousComplex,
+							OpticalSignal,
+							PhotonStreamXY,
+							PhotonStreamMP, 
+							PhotonStreamMPXY,
+							Message
+						};
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -226,7 +158,7 @@ public:
 	// File manipulation
 	void writeHeader();								// Opens the signal file in the default signals directory, \signals, and writes the signal header
 	void writeHeader(string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
-	
+
 	// Buffer and File manipulation
 	void close();									// Empty the signal buffer and close the signal file
 
@@ -285,9 +217,6 @@ public:
 	void setCentralWavelength(double cWavelength) { centralWavelength = cWavelength; centralFrequency = SPEED_OF_LIGHT / centralWavelength; }
 	double getCentralWavelength() const { return centralWavelength; }
 
-	void setSaveInAscii(bool sInAscii) { saveInAscii = sInAscii; }
-	bool getSaveInAscii() const { return saveInAscii; }
-
 	template<typename t, signal_type sType, signal_value_type vType> friend class BaseSignal;
 
 private:
@@ -299,7 +228,6 @@ private:
 	bool bufferEmpty{ true };											// Flag bufferEmpty
 	bool bufferFull{ false };											// Flag bufferFull
 	const t_unsigned bufferLength{ DEFAULT_BUFFER_LENGTH };		// Buffer length
-	bool finish {false};
 
 	t_unsigned_long numberOfSavedValues{ 0 };							// Number of saved values
 	t_unsigned_long count;												// Number of values that have already entered in the buffer
@@ -315,8 +243,6 @@ private:
 	string fileName{ "" };							// Name of the file where data values are going to be saved
 	string folderName{ "signals" };					// folder where signals are going to be saved by default
 	bool headerWritten{ false };
-	
-	bool saveInAscii{ false };
 
 	long int numberOfValuesToBeSaved{ -1 };			// Number of values to be saved, if -1 all values are going to be saved
 
@@ -412,6 +338,18 @@ private:
 			case signal_type::TimeContinuousAmplitudeContinuousReal:
 				typeName = "TimeContinuousAmplitudeContinuousReal";
 				break;
+			case signal_type::TimeContinuousAmplitudeDiscreteReal:
+				typeName = "TimeContinuousAmplitudeDiscreteReal";
+				break;
+			case signal_type::TimeDiscreteAmplitudeContinuousComplex:
+				typeName = "TimeDiscreteAmplitudeContinuousComplex";
+				break;
+			case signal_type::TimeContinuousAmplitudeContinuousComplex:
+				typeName = "TimeContinuousAmplitudeContinuousComplex";
+				break;
+			case signal_type::OpticalSignal:
+				typeName = "TimeContinuousAmplitudeContinuousComplex";
+				break;
 			case signal_type::PhotonStreamXY:
 				typeName = "PhotonStreamXY";
 				break;
@@ -421,14 +359,8 @@ private:
 			case signal_type::PhotonStreamMPXY:
 				typeName = "PhotonStreamMPXY";
 				break;
-			case signal_type::DemandRequest:
-				typeName = "DemandRequest";
-				break;
-			case signal_type::LogicalTopology:
-				typeName = "LogicalTopology";
-				break;
-			case signal_type::PhysicalTopology:
-				typeName = "PhysicalTopology";
+			case signal_type::Message:
+				typeName = "Message";
 				break;
 			default:
 				cout << "Error: netxpto_20180815.h - typeName not defined\n";
@@ -443,12 +375,15 @@ private:
 using Binary = BaseSignal< t_binary, signal_type::Binary, signal_value_type::t_binary> ;
 using TimeDiscreteAmplitudeContinuousReal = BaseSignal<t_real, signal_type::TimeDiscreteAmplitudeContinuousReal, signal_value_type::t_real>;
 using TimeContinuousAmplitudeContinuousReal = BaseSignal<t_real, signal_type::TimeContinuousAmplitudeContinuousReal, signal_value_type::t_real>;
+using TimeContinuousAmplitudeDiscreteReal = BaseSignal<t_real, signal_type::TimeContinuousAmplitudeDiscreteReal, signal_value_type::t_real>;
+using TimeDiscreteAmplitudeContinuousComplex = BaseSignal<t_complex, signal_type::TimeDiscreteAmplitudeContinuousComplex, signal_value_type::t_complex>;
+using TimeContinuousAmplitudeContinuousComplex = BaseSignal<t_complex, signal_type::TimeContinuousAmplitudeContinuousComplex, signal_value_type::t_complex>;
+using OpticalSignal = BaseSignal<t_complex, signal_type::OpticalSignal, signal_value_type::t_complex>;
 using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, signal_value_type::t_complex_xy>;
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
-using Demand = BaseSignal<t_demand, signal_type::DemandRequest, signal_value_type::t_demand>;
-using LogicalTopology = BaseSignal<t_logical_topology, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
-using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
+using Message = BaseSignal<t_message, signal_type::Message, signal_value_type::t_message>;
+
 
 /*
 class TimeDiscrete : public Signal {
@@ -1153,5 +1088,12 @@ private:
 	function<double()> r;
 };
 
+//########################################################################################################################################################
+//############################################################### NUMERICAL WINDOWS ######################################################################
+//########################################################################################################################################################
+
+enum WindowType { None, Hann, Hamming };
+
+vector<double> getWindow(WindowType windowType, int windowSize);
 
 # endif // PROGRAM_INCLUDE_netxpto_H_

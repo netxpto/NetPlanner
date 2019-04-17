@@ -3,10 +3,9 @@ validar essas heuristicas usando os ILPs do Tiago
 desenvolver novas heuristicas considerando novas restrições
 avançarmos para o modo translucidio
 
-
-
-
-Workshop sobre Git & Latex, 14/nov: danielfpereira@ua.pt. 15h
+TO BE DONE
+	- ver o sistema the entrada de parametro do netxpto e fazer igual
+	- ver o sistema do log file
 
 
 TO BE DONE

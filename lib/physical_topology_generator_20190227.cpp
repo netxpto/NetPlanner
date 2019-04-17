@@ -14,39 +14,50 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 		generate = false;
 
 	t_physical_topology output;
-	t_physical_link outputLinks;
-	t_optical_channel outputChannels;
+	t_optical_multiplexing_systems oms; // Optical Multiplexing Systems
 	t_integer k{ 0 };
 
 
-	for (t_integer line=0; line < (t_integer) physicalTopology[0].size(); line++)
-	{
-		for (t_integer column=0; column < (t_integer) physicalTopology[0].size(); column++)
-		{
-//################ CREATES PHYSICAL LINKS #######################################################
-			if (physicalTopology[line][column] == 1)
-			{
-				outputLinks.linkIndex = k;
-				outputLinks.linkSourceNode = line + 1;
-				outputLinks.linkDestinationNode = column + 1;
-				outputLinks.numberOfOpticalChannels = getOpticalChannels();
-				output.physicalLinks.push_back(outputLinks);
+	output.physicalTopologyAdjacencyMatrix = getPhysicalTopologyAdjacencyMatrix();
 
-//#################### CREATES THE OPTICAL CHANNELS OF EACH PHYSICAL LINK #######################
-				for (t_integer channel = 0; channel < opticalChannels; channel++)
+	for (t_integer line=0; line < (t_integer) physicalTopologyAdjacencyMatrix[0].size(); line++)
+	{
+		for (t_integer column=0; column < (t_integer) physicalTopologyAdjacencyMatrix[0].size(); column++)
+		{
+//################ CREATES OPTICAL MULTIPLEXING SYSTEMS #######################################################
+
+			if (physicalTopologyAdjacencyMatrix[line][column] == 1)
+			{
+				double addWavelenght{ 0 };
+
+				oms.opticalMultiplexingSystemIndex = k;
+				oms.sourceNode = line + 1;
+				oms.destinationNode = column + 1;
+				oms.numberOfWavelenghts = getNumberOfOpticalChannelsPerOMS();
+
+				 // wavelenghts vector
+				for (auto i = 0; i < numberOfOpticalChannelsPerOMS; i++)
 				{
-					outputChannels.linkIndex = k;
-					outputChannels.opticalChannelNumber = channel+1;
-					outputChannels.capacity = opticalChannelCapacity;
-					outputChannels.wavelengtht = 0; // "O" means its not being used any wavelength in this optical channel
-					outputChannels.sourceNode = line + 1;
-					outputChannels.destinationNode = column + 1;
-					output.opticalChannels.push_back(outputChannels);
+					if (i == 0)	// In the beggining it adds our initial wavelenght to the wavelnghts vector
+					{
+						addWavelenght = getInitialWavelenght();
+						oms.wavelenghts.push_back(addWavelenght);
+					}
+					else
+					{
+						oms.wavelenghts.push_back(addWavelenght);
+					}
+					i++;
+					addWavelenght += wavelenghtSpacing;
+					oms.availableWavelenghts.push_back(1);
 				}
+	
+				output.opticalMultiplexingSystems.push_back(oms);
 				k++;
 			}
 		}
 	}
+	
 	outputSignals[0]->bufferPut((t_physical_topology)output);
 	return true;
 }
