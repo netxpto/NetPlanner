@@ -55,7 +55,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="InputParameters.txt">
+    <Text Include="input_parameters_values.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

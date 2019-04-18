@@ -1077,9 +1077,9 @@ public:
 class SystemInputParameters {
 private:
 	vector<string> loadedInputParameters;
-	string inputParametersFileName{ "input_parameters_0.txt" }; //name of the file from where the input parameters will be read
+	string inputParametersFileName{ "input_parameters_values.txt" }; //name of the file from where the input parameters will be read
 	string outputFolderName{ "signals" };
-	enum ParameterType { INT, DOUBLE, BOOL }; //types of parameters
+	enum ParameterType { INT, DOUBLE, BOOL, MATRIX, ORDERING, TRANSPORT }; //types of parameters
 											  //A parameter can only be of 1 type
 	class Parameter {
 	private:
@@ -1089,6 +1089,9 @@ private:
 			int* i;
 			double* d;
 			bool* b;
+			t_matrix* m;
+			ordering_rule* o;
+			transport_mode *t;
 		};
 
 	public:
@@ -1096,6 +1099,9 @@ private:
 		void setValue(int value);
 		void setValue(double value);
 		void setValue(bool value);
+		void setValue(t_matrix value);
+		void setValue(ordering_rule value);
+		void setValue(transport_mode value);
 		ParameterType getType();
 		//Constructor for parameter of type int
 		Parameter(int* elem);
@@ -1103,11 +1109,18 @@ private:
 		Parameter(double* elem);
 		//Constructor for parameter of type bool
 		Parameter(bool* elem);
+		//Constructor for parameter of type t_matrix
+		Parameter(t_matrix* elem);
+		//Constructor for parameter of type ordering_rule
+		Parameter(ordering_rule* elem);
+		//Constructor for parameter of type ordering_rule
+		Parameter(transport_mode* elem);
 	};
 
 	int parseInt(string str);
 	double parseDouble(string str);
 	bool parseBool(string str);
+	
 	vector<string> split(const string & text, char sep);
 	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
 
@@ -1120,6 +1133,9 @@ public:
 	void addInputParameter(string name, int* variable);
 	void addInputParameter(string name, double* variable);
 	void addInputParameter(string name, bool* variable);
+	void addInputParameter(string name, t_matrix* variable);
+	void addInputParameter(string name, ordering_rule* variable);
+	void addInputParameter(string name, transport_mode* variable);
 	/* Default empty constructor. Initializes the map */
 	SystemInputParameters(){}
 	SystemInputParameters(int argc,char*argv[]);
