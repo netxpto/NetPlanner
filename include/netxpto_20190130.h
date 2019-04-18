@@ -1136,9 +1136,11 @@ public:
 	void addInputParameter(string name, t_matrix* variable);
 	void addInputParameter(string name, ordering_rule* variable);
 	void addInputParameter(string name, transport_mode* variable);
+
 	/* Default empty constructor. Initializes the map */
-	SystemInputParameters(){}
+	SystemInputParameters() {};
 	SystemInputParameters(int argc,char*argv[]);
+	SystemInputParameters(string fName);
 	/* Deletes all heap memory occupied by the parameters */
 	~SystemInputParameters();
 };
