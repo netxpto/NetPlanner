@@ -16,6 +16,7 @@ public:
 
 	// INPUT PARAMETERS
 	int numberOfNodes{ 0 }; // Number of nodes existent in the network
+	t_matrix odu0;
 
 	/* Initializes default input parameters*/
 	NetworkSimulatorInputParameters() : SystemInputParameters() {
@@ -29,9 +30,15 @@ public:
 		readSystemInputParameters();
 	}
 
+	NetworkSimulatorInputParameters(string fName) : SystemInputParameters(fName) {
+		initializeInputParameterMap();
+		readSystemInputParameters();
+	}
+
 	// Each parameter must be added to the parameter map by calling this function
 	void initializeInputParameterMap() {
 		addInputParameter("numberOfNodes", &numberOfNodes);
+		addInputParameter("odu0", &odu0);
 	}
 };
 
@@ -41,9 +48,11 @@ public:
 //##########################################################################################
 
 
-int main(int argc, char *argv[])
+//int main(int argc, char *argv[])
+int main()
 {
-	NetworkSimulatorInputParameters param(argc, argv);
+
+	NetworkSimulatorInputParameters param("input_parameters_values.txt");
 
 
 	/* Signals Declaration */
@@ -58,7 +67,7 @@ int main(int argc, char *argv[])
 
 	/* Blocks Decalration */
 	Scheduler Scheduler_{ {},{ &Scheduler_Out} };
-	Scheduler_.setNumberOfNodes(numberOfNodes);
+	Scheduler_.setNumberOfNodes(param.numberOfNodes);
 	//Scheduler_.setODU0(odu0);
 	//Scheduler_.setODU1(odu1);
 	//Scheduler_.setODU2(odu2);

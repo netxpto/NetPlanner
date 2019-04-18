@@ -2508,20 +2508,20 @@ void SystemInputParameters::readSystemInputParameters()
 	int errorLine = 1;
 	//Reads each line
 	string line;
-	string traffic = "odu";
-	string topology = "physicalTopologyAdjacencyMatrix";
-	string evaluateVariable;
+//	string traffic = "odu";
+//	string topology = "physicalTopologyAdjacencyMatrix";
+//	string evaluateVariable;
 	while (getline(inputFile, line)) {
 
-		size_t pos1 = line.find(traffic);
-		size_t pos2 = line.find(topology);
+		//size_t pos1 = line.find(traffic);
+		//size_t pos2 = line.find(topology);
 
 		line = trim(line); 
 		try {
 			//If the line is a comment, it just skips to the next one
 			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
 
-				if (pos1 != string::npos) // odu... found
+			/*	if (pos1 != string::npos) // odu... found
 				{
 
 				}
@@ -2530,7 +2530,7 @@ void SystemInputParameters::readSystemInputParameters()
 
 				}
 				else
-				{
+				{*/
 					vector<string> splitline = split(line, '=');
 					splitline[0] = trim(splitline[0]);
 					splitline[1] = trim(splitline[1]);
@@ -2541,8 +2541,9 @@ void SystemInputParameters::readSystemInputParameters()
 							parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
 						else if (parameters[splitline[0]]->getType() == BOOL)
 							parameters[splitline[0]]->setValue(parseBool(splitline[1]));
-						else if (parameters[splitline[0]]->getType() == TRANSPORT)
-						{
+						else if (parameters[splitline[0]]->getType() == MATRIX)
+							parameters[splitline[0]]->setValue(readSquareMatrix(parseInt(splitline[1])));
+						/*{
 							if (splitline[1] == "opaque")
 							{
 								parameters[splitline[0]]->setValue(transport_mode::opaque);
@@ -2566,10 +2567,10 @@ void SystemInputParameters::readSystemInputParameters()
 							else if (splitline[1] == "descendingOrder")
 							{
 								parameters[splitline[0]]->setValue(ordering_rule::descendingOrder);
-							}
+							}*/
 						//Logs that a given parameter has been loaded from a file
 						loadedInputParameters.push_back(splitline[0] + " = " + splitline[1]);
-					}
+					//}
 				}
 			}
 			errorLine++;
@@ -2624,6 +2625,11 @@ SystemInputParameters::SystemInputParameters(int argc, char * argv[])
 	}
 }
 
+SystemInputParameters::SystemInputParameters(string fName)
+{
+	inputParametersFileName = fName;
+}
+
 SystemInputParameters::~SystemInputParameters()
 {	
 	for (map<string, Parameter*>::iterator itr = parameters.begin(); itr != parameters.end();itr++) {
@@ -2673,7 +2679,7 @@ void SystemInputParameters::Parameter::setValue(bool value)
 }
 void SystemInputParameters::Parameter::setValue(t_matrix value)
 {
-	if (type != MATRIX) throw invalid_argument("Parameter is not of type T_MATRIX");
+	if (type != MATRIX) throw invalid_argument("Parameter is not of type MATRIX");
 	*m = value;
 }
 void SystemInputParameters::Parameter::setValue(ordering_rule value)
