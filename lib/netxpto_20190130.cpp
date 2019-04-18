@@ -2508,23 +2508,68 @@ void SystemInputParameters::readSystemInputParameters()
 	int errorLine = 1;
 	//Reads each line
 	string line;
+	string traffic = "odu";
+	string topology = "physicalTopologyAdjacencyMatrix";
+	string evaluateVariable;
 	while (getline(inputFile, line)) {
+
+		size_t pos1 = line.find(traffic);
+		size_t pos2 = line.find(topology);
+
 		line = trim(line); 
 		try {
 			//If the line is a comment, it just skips to the next one
 			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
-				vector<string> splitline = split(line, '=');
-				splitline[0] = trim(splitline[0]); 
-				splitline[1] = trim(splitline[1]); 
-				if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
-					if(parameters[splitline[0]]->getType() == INT) //If parameter is an int
-						parameters[splitline[0]]->setValue(parseInt(splitline[1]));
-					else if(parameters[splitline[0]]->getType() == DOUBLE)
-						parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
-					else if(parameters[splitline[0]]->getType() == BOOL)
-						parameters[splitline[0]]->setValue(parseBool(splitline[1]));
-					//Logs that a given parameter has been loaded from a file
-					loadedInputParameters.push_back(splitline[0]+" = "+splitline[1]);
+
+				if (pos1 != string::npos) // odu... found
+				{
+
+				}
+				else if (pos2 != string::npos) // physicalTopologyAdjacencyMatrix found
+				{
+
+				}
+				else
+				{
+					vector<string> splitline = split(line, '=');
+					splitline[0] = trim(splitline[0]);
+					splitline[1] = trim(splitline[1]);
+					if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
+						if (parameters[splitline[0]]->getType() == INT) //If parameter is an int
+							parameters[splitline[0]]->setValue(parseInt(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == DOUBLE)
+							parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == BOOL)
+							parameters[splitline[0]]->setValue(parseBool(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == TRANSPORT)
+						{
+							if (splitline[1] == "opaque")
+							{
+								parameters[splitline[0]]->setValue(transport_mode::opaque);
+							}
+							else if (splitline[1] == "transparent")
+							{
+								parameters[splitline[0]]->setValue(transport_mode::transparent);
+							}
+							else if (splitline[1] == "translucent")
+							{
+								parameters[splitline[0]]->setValue(transport_mode::translucent);
+							}
+						}
+						else if (parameters[splitline[0]]->getType() == MATRIX)
+							parameters[splitline[0]]->setValue(parseBool(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == ORDERING)
+							if (splitline[1] == "ascedingOrder")
+							{
+								parameters[splitline[0]]->setValue(ordering_rule::ascendingOrder);
+							}
+							else if (splitline[1] == "descendingOrder")
+							{
+								parameters[splitline[0]]->setValue(ordering_rule::descendingOrder);
+							}
+						//Logs that a given parameter has been loaded from a file
+						loadedInputParameters.push_back(splitline[0] + " = " + splitline[1]);
+					}
 				}
 			}
 			errorLine++;
@@ -2549,6 +2594,18 @@ void SystemInputParameters::addInputParameter(string name, double * variable)
 }
 
 void SystemInputParameters::addInputParameter(string name, bool * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+void SystemInputParameters::addInputParameter(string name, t_matrix * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+void SystemInputParameters::addInputParameter(string name, ordering_rule * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+void SystemInputParameters::addInputParameter(string name, transport_mode * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
@@ -2614,6 +2671,21 @@ void SystemInputParameters::Parameter::setValue(bool value)
 	if (type != BOOL) throw invalid_argument("Parameter is not of type BOOL");
 	*b = value;
 }
+void SystemInputParameters::Parameter::setValue(t_matrix value)
+{
+	if (type != MATRIX) throw invalid_argument("Parameter is not of type T_MATRIX");
+	*m = value;
+}
+void SystemInputParameters::Parameter::setValue(ordering_rule value)
+{
+	if (type != ORDERING) throw invalid_argument("Parameter is not of type ORDERING_RULE");
+	*o = value;
+}
+void SystemInputParameters::Parameter::setValue(transport_mode value)
+{
+	if (type != TRANSPORT) throw invalid_argument("Parameter is not of type TRANSPORT_MODE");
+	*t = value;
+}
 
 SystemInputParameters::ParameterType SystemInputParameters::Parameter::getType()
 {
@@ -2636,4 +2708,19 @@ SystemInputParameters::Parameter::Parameter(bool * elem)
 {
 	type = BOOL;
 	b = elem;
+}
+SystemInputParameters::Parameter::Parameter(t_matrix * elem)
+{
+	type = MATRIX;
+	m = elem;
+}
+SystemInputParameters::Parameter::Parameter(ordering_rule * elem)
+{
+	type = ORDERING;
+	o = elem;
+}
+SystemInputParameters::Parameter::Parameter(transport_mode * elem)
+{
+	type = TRANSPORT;
+	t = elem;
 }

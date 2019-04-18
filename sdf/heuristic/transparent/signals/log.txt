@@ -1,20 +1,12 @@
 The following input parameters were loaded from the configuration file:
 -----------------------------------------------------------------
 ########## Scheduler ##########
-<<<<<<< HEAD
-Block start time: 2019-04-16 17:12:34
-=======
-Block start time: 2019-04-16 17:26:15
->>>>>>> ElioEduardo
+Block start time: 2019-04-17 11:50:40
 Input Signals: 
 Output Signals: 
 Scheduler|SchedulerOut|space=7
 -----------------------------------------------------------------
-<<<<<<< HEAD
-Elapsed time: 9 milliseconds
-=======
-Elapsed time: 4271 milliseconds
->>>>>>> ElioEduardo
+Elapsed time: 28 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Output Signals: 
@@ -23,16 +15,12 @@ Scheduler|SchedulerOut|space=0
 
 -----------------------------------------------------------------
 ########## Sink ##########
-<<<<<<< HEAD
-Block start time: 2019-04-16 17:12:34
-=======
-Block start time: 2019-04-16 17:26:19
->>>>>>> ElioEduardo
+Block start time: 2019-04-17 11:50:40
 Input Signals: 
 Sink|SchedulerOut|ready=7
 Output Signals: 
 -----------------------------------------------------------------
-Elapsed time: 5 milliseconds
+Elapsed time: 2 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Sink|SchedulerOut|ready=0
@@ -41,11 +29,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## Scheduler ##########
-<<<<<<< HEAD
-Block start time: 2019-04-16 17:12:34
-=======
-Block start time: 2019-04-16 17:26:19
->>>>>>> ElioEduardo
+Block start time: 2019-04-17 11:50:40
 Input Signals: 
 Output Signals: 
 Scheduler|SchedulerOut|space=7
@@ -59,11 +43,7 @@ Scheduler|SchedulerOut|space=7
 
 -----------------------------------------------------------------
 ########## Sink ##########
-<<<<<<< HEAD
-Block start time: 2019-04-16 17:12:34
-=======
-Block start time: 2019-04-16 17:26:19
->>>>>>> ElioEduardo
+Block start time: 2019-04-17 11:50:40
 Input Signals: 
 Sink|SchedulerOut|ready=0
 Output Signals: 
