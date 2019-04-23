@@ -20,8 +20,15 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 	t_integer line{ 0 };
 	t_integer nodes = physicalTopologyAdjacencyMatrix[0].size();
 
+	double wavelength = initialWavelength;
+
 	for (t_integer w = 0; w < numberOfOpticalChannelsPerOMS; w++) {
-		outputOpticalMultiplexingSystem.wavelengths.push_back(1);
+
+		outputOpticalMultiplexingSystem.wavelengths.push_back(wavelength);
+		if (w < numberOfOpticalChannelsPerOMS - 1)
+			wavelength += wavelengthSpacing;
+
+		outputOpticalMultiplexingSystem.availableWavelengths.push_back(1);
 	}
 
 	while (line < nodes) {
@@ -36,6 +43,7 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 				outputOpticalMultiplexingSystem.destinationNode = { column + 1 };
 				outputOpticalMultiplexingSystem.maximumNumberOfWavelengths = numberOfOpticalChannelsPerOMS;
 				outputOpticalMultiplexingSystem.wavelengths;
+				outputOpticalMultiplexingSystem.availableWavelengths;
 				
 				outputPhysicalTopology.OMS.push_back(outputOpticalMultiplexingSystem);
 

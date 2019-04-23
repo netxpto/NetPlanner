@@ -10,16 +10,18 @@ bool LogicalTopologyGenerator::runBlock(void) {
 	else
 		generate = false;
 
-	if (transportMode == "opaque") 
+	if (transportMode == "opaque") {
 
-		outputSignals[0]->bufferPut((t_matrix)physicalTopologyAdjacencyMatrix);
+		t_logical_topology outputLogicalTopology;
 
+		outputLogicalTopology.logicalTopologyAdjacencyMatrix = physicalTopologyAdjacencyMatrix;
 
-	else {
+		outputSignals[0]->bufferPut((t_logical_topology) outputLogicalTopology);
+	}
 
+	else 
 		std::cout << "Error: logical_topology_generator_20190216.h - Transport Mode not opaque\n";
 
-	}
 	
 	return true;
 

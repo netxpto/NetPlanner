@@ -59,7 +59,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 4 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu4[line][column]--; // A demand was processed
 					demandIndex++;
@@ -84,7 +84,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 3 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu3[line][column]--; // A demand was processed
 					demandIndex++;
@@ -109,7 +109,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 2 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu2[line][column]--; // A demand was processed
 					demandIndex++;
@@ -134,7 +134,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 1 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu1[line][column]--; // A demand was processed
 					demandIndex++;
@@ -161,7 +161,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 0 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu0[line][column]--; // A demand was processed
 					demandIndex++;
@@ -189,7 +189,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 0 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu0[line][column]--; // A demand was processed
 					demandIndex++;
@@ -214,7 +214,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 1 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu1[line][column]--; // A demand was processed
 					demandIndex++;
@@ -239,7 +239,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 2 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu2[line][column]--; // A demand was processed
 					demandIndex++;
@@ -265,7 +265,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 3 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu3[line][column]--; // A demand was processed
 					demandIndex++;
@@ -290,7 +290,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 					dem.sourceNode = { line + 1 };
 					dem.destinationNode = { column + 1 };
 					dem.oduType = { 4 };
-					dem.survivabilityMethod = { 0 }; // Always 0, meaning no protection
+					dem.survivabilityMethod = { survivability_method::none }; // No protection
 
 					odu4[line][column]--; // A demand was processed
 					demandIndex++;
