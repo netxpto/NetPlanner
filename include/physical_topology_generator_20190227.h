@@ -20,12 +20,12 @@
 class PhysicalTopologyGenerator : public Block {
 
 	// Input Parameters
-	t_matrix physicalTopologyAdjacencyMatrix{0};
-	t_integer numberOfOMSPerLink{ 0 };
-	t_integer numberOfOpticalChannelsPerOMS{0};
-	double initialWavelenght{ 0 };
-	double wavelenghtSpacing{ 0 };
-	t_integer opticalChannelCapacity{ 0 };
+	t_matrix physicalTopologyAdjacencyMatrix;
+	t_integer numberOfOMSPerLink;
+	t_integer numberOfOpticalChannelsPerOMS;
+	double initialWavelenght;
+	double wavelenghtSpacing;
+	t_integer opticalChannelCapacity;
 
 	// State variables
 	bool generate{ true }; 

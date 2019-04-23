@@ -33,6 +33,12 @@
     <ClCompile Include="..\..\..\lib\physical_topology_generator_20190227.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\lib\logical_topology_manager_20190420.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\physical_topology_manager_20190421.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\scheduler_20190122.h">
@@ -50,13 +56,19 @@
     <ClInclude Include="..\..\..\include\physical_topology_generator_20190227.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\Dijkstra_20190309.h">
+    <ClInclude Include="..\..\..\include\logical_topology_manager_20190420.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\physical_topology_manager_20190421.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="InputParameters.txt">
+    <Text Include="input_parameters_values.txt">
       <Filter>Resource Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>
