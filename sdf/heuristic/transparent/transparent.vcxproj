@@ -112,22 +112,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\lib\logical_topology_generator_20190216.cpp" />
+    <ClCompile Include="..\..\..\lib\logical_topology_manager_20190420.cpp" />
     <ClCompile Include="..\..\..\lib\netxpto_20190130.cpp" />
     <ClCompile Include="..\..\..\lib\physical_topology_generator_20190227.cpp" />
+    <ClCompile Include="..\..\..\lib\physical_topology_manager_20190421.cpp" />
     <ClCompile Include="..\..\..\lib\scheduler_20190122.cpp" />
     <ClCompile Include="..\..\..\lib\sink_20180815.cpp" />
     <ClCompile Include="transparent_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\Dijkstra_20190309.h" />
     <ClInclude Include="..\..\..\include\logical_topology_generator_20190216.h" />
+    <ClInclude Include="..\..\..\include\logical_topology_manager_20190420.h" />
     <ClInclude Include="..\..\..\include\netxpto_20190130.h" />
     <ClInclude Include="..\..\..\include\physical_topology_generator_20190227.h" />
+    <ClInclude Include="..\..\..\include\physical_topology_manager_20190421.h" />
     <ClInclude Include="..\..\..\include\scheduler_20190122.h" />
     <ClInclude Include="..\..\..\include\sink_20180815.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="InputParameters.txt" />
+    <Text Include="input_parameters_values.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
