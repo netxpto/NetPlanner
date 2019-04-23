@@ -1,9 +1,7 @@
 # ifndef LOGICAL_TOPOLOGY_GENERATOR_H_
 # define LOGICAL_TOPOLOGY_GENERATOR_H_
 
-
 # include "netxpto_20190130.h"
-
 
 class LogicalTopologyGenerator : public Block {
 
@@ -14,7 +12,6 @@ class LogicalTopologyGenerator : public Block {
 	// State variables
 	bool generate{ true };
 	
-
 public:
 
 	// Methods (Constructors)
@@ -27,7 +24,7 @@ public:
 	void setTransportMode(std::string tMode) { transportMode = tMode; }
 	std::string getTransportMode(void) { return transportMode; };
 
-	void setPhysicalTopologyAdjacencyMatrix(t_matrix aMatrix) { physicalTopologyAdjacencyMatrix = aMatrix; }
+	void setPhysicalTopologyAdjacencyMatrix(t_matrix pTopology) { physicalTopologyAdjacencyMatrix = pTopology; }
 	t_matrix getPhysicalTopologyAdjacencyMatrix(void) { return physicalTopologyAdjacencyMatrix; };
 
 };

@@ -30,6 +30,12 @@
     <ClInclude Include="..\..\..\include_opaque\physical_topology_generator_20190221.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include_opaque\logical_topology_manager_20190419.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include_opaque\physical_topology_manager_20190420.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\lib_opaque\logical_topology_generator_20190216.cpp">
@@ -50,12 +56,15 @@
     <ClCompile Include="..\..\..\lib_opaque\physical_topology_generator_20190221.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\lib_opaque\logical_topology_manager_20190419.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib_opaque\physical_topology_manager_20190420.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="InputParameters.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Text.txt">
+    <Text Include="Debug\input_parameters_0.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

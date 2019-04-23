@@ -11,6 +11,8 @@ class PhysicalTopologyGenerator : public Block {
 	t_matrix physicalTopologyAdjacencyMatrix;
 	t_integer numberOfOMSPerLink{ 0 };
 	t_integer numberOfOpticalChannelsPerOMS{ 0 };
+	double initialWavelength{ 0 };
+	double wavelengthSpacing{ 0 };
 	t_integer opticalChannelCapacity{ 0 };
 	
 	// State Variables
@@ -25,16 +27,22 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setPhysicalTopologyAdjacencyMatrix(t_matrix aMatrix) { physicalTopologyAdjacencyMatrix = aMatrix; }
+	void setPhysicalTopologyAdjacencyMatrix(t_matrix pTopology) { physicalTopologyAdjacencyMatrix = pTopology; }
 	t_matrix getPhysicalTopologyAdjacencyMatrix(void) { return physicalTopologyAdjacencyMatrix; };
 
-	void setNumberOfOMSPerLink(t_integer tSystems) { numberOfOMSPerLink = tSystems; }
+	void setNumberOfOMSPerLink(t_integer nOMS) { numberOfOMSPerLink = nOMS; }
 	t_integer getNumberOfOMSPerLink(void) { return numberOfOMSPerLink; };
 	
-	void setNumberOfOpticalChannelsPerOMS(t_integer oChannels) { numberOfOpticalChannelsPerOMS = oChannels; }
+	void setNumberOfOpticalChannelsPerOMS(t_integer nChannels) { numberOfOpticalChannelsPerOMS = nChannels; }
 	t_integer getNumberOfOpticalChannelsPerOMS(void) { return numberOfOpticalChannelsPerOMS; };
 
-	void setOpticalChannelCapacity(t_integer oChannelCapacity) { opticalChannelCapacity = oChannelCapacity; }
+	void setInitialWavelength(double iWavelength) { initialWavelength = iWavelength; }
+	double getInitialWavelength(void) { return initialWavelength; };
+
+	void setWavelengthSpacing(double wSpacing) { wavelengthSpacing = wSpacing; }
+	double getWavelengthSpacing(void) { return wavelengthSpacing; };
+
+	void setOpticalChannelCapacity(t_integer cCapacity) { opticalChannelCapacity = cCapacity; }
 	t_integer getOpticalChannelCapacity(void) { return opticalChannelCapacity; };
 
 };
