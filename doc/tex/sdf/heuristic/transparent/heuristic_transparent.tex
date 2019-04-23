@@ -616,6 +616,7 @@ The lines connecting network nodes can be mentioned both as physical links or op
 	\begin{tabular}{|c|c|c|}
 		\hline
 		\textbf{Parameter} & \textbf{Default value} & \textbf{Description}                                                                                           \\ \hline
+		numberOfNodes & 0 & Number of existing nodes in the network. \\ \hline
 		odu0                                                                         & [0]          & N by N matrix containing ODU0 demands.                                                                                     \\ \hline
 		odu1                                                                         & [0]          & N by N matrix containing ODU1 demands.                                                                                        \\ \hline
 		odu2                                                                         & [0]          &N by N matrix containing ODU2 demands.                                                                                        \\ \hline
@@ -625,7 +626,9 @@ The lines connecting network nodes can be mentioned both as physical links or op
 		transportMode                                                               & transparent          & \begin{tabular}[c]{@{}c@{}}"opaque", "transparent" or "translucent".\end{tabular}                   \\ \hline
 		physicalTopologyAdjacencyMatrix                                                            & [0]          & \begin{tabular}[c]{@{}c@{}}Physical connections of the\\ network.\end{tabular}                       \\ \hline
 		numberOfOMSPerLink                                                            & 1             & \begin{tabular}[c]{@{}c@{}}Number of optical multiplexing systems\\ existing in each physical link.\end{tabular} \\ \hline
-		numberOfOpticalChannelsPerOMS                                                             & [100, 1550, 0.8]           & \begin{tabular}[c]{@{}c@{}}Contains optical channels per optical \\ multiplexing system, the inital wavelenght \\ used (nm) and wavelenght spacing.\end{tabular}                    \\ \hline
+		numberOfOpticalChannelsPerOMS                                                             & 100           & \begin{tabular}[c]{@{}c@{}}Number of optical channels per\\ optical multiplexing system\end{tabular}                    \\ \hline
+		initialWavelenght & 1550 & \begin{tabular}[c]{@{}c@{}}Initial value of the wavelenght used \\ expressed in nanometers (nm).\end{tabular} \\ \hline
+		wavelenghtSpacing & 0.8 & Interval  between used wavlenghts (nm). \\ \hline
 		\begin{tabular}[c]{@{}c@{}}opticalChannelCapacity\end{tabular}           & 100 Gbps      & \begin{tabular}[c]{@{}c@{}}Physical capacity of each \\ optical channel.\end{tabular}                        \\ \hline
 		routingCriterionLogicalTopology                                                                    & Hops          & Shortest path type.                                                                                  \\             \hline
 		routingCriterionPhysicalTopology                                                                    & Hops          & Shortest path type.                                                                                  \\             \hline

@@ -142,7 +142,7 @@ void Signal::bufferPut(T value)
 							fileHandler << "\n";
 
 							//################### PRINT PATHS ###################
-							fileHandler << "-------------------------------------- paths ----------------------------------------------";
+							fileHandler << "-------------------------------------------- paths ----------------------------------------------------";
 							fileHandler << "\n";
 							fileHandler << "\n";
 							fileHandler << "pathIndex	sourceNode	destinationNode	capacity(ODU0s)	numberOfLightPaths	lightPathsIndex";
@@ -160,18 +160,19 @@ void Signal::bufferPut(T value)
 								fileHandler << "\t";
 								fileHandler << (*ptr).paths[path].numberOfLightPaths;
 								fileHandler << "\t";
-								for (size_t i = 0; i < (*ptr).paths[i].lightPathsIndex.size(); i++)
+								fileHandler << "[ ";
+								for (size_t i = 0; i < (*ptr).paths[path].lightPathsIndex.size(); i++)
 								{
-									fileHandler << "[";
-									fileHandler << (*ptr).paths[i].lightPathsIndex[i];
+									fileHandler << (*ptr).paths[path].lightPathsIndex[i];
 									fileHandler << " ";
 								}
+								fileHandler << "]";
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
 
 							//################### PRINT LIGHTPATHS #####################  
-							fileHandler << "----------------------------------------- lightPaths ----------------------------------------------------";
+							fileHandler << "------------------------------------------- lightPaths ------------------------------------------------------";
 							fileHandler << "\n";
 							fileHandler << "\n";
 							fileHandler << "lightPathIndex	sourceNode	destinationNode	capacity(ODU0s)	numberOfOpticalChannels	opticalChannlesIndex";
@@ -189,9 +190,9 @@ void Signal::bufferPut(T value)
 								fileHandler << "\t";
 								fileHandler << (*ptr).lightPaths[lightPath].numberOfOpticalChannels;
 								fileHandler << "\t";
+								fileHandler << "[ ";
 								for (size_t i = 0; i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size(); i++)
 								{
-									fileHandler << "[";
 									fileHandler << (*ptr).lightPaths[lightPath].opticalChannelsIndex[i];
 									fileHandler << " ";
 								}
@@ -199,7 +200,7 @@ void Signal::bufferPut(T value)
 								fileHandler << "\n";
 							}
 							//################### PRINT OPTICAL CHANNELS #####################  
-							fileHandler << "----------------------------------------- opticalChannels ----------------------------------------------------";
+							fileHandler << "-------------------------------------------- opticalChannels -------------------------------------------------------";
 							fileHandler << "\n";
 							fileHandler << "\n";
 							fileHandler << "opticalChannelIndex	sourceNode	destinationNode	capacity(ODU0s)	wavelenght(nm)	numberOfDemands	demandsIndex";
@@ -219,10 +220,9 @@ void Signal::bufferPut(T value)
 								fileHandler << "\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
 								fileHandler << "\t";
-
+								fileHandler << "[ ";
 								for (size_t i = 0; i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size(); i++)
-								{
-									fileHandler << "[";
+								{ 
 									fileHandler << (*ptr).opticalChannels[opticalChannel].demandsIndex[i];
 									fileHandler << " ";
 								}
@@ -231,56 +231,73 @@ void Signal::bufferPut(T value)
 							}
 							fileHandler << "\n";
 						}
+						fileHandler.close();
+						setFirstValueToBeSaved(1);
 					}
 
 					else if (type == "PhysicalTopology")
 					{
-						/*t_physical_topology *ptr = (t_physical_topology *)buffer;
+						t_physical_topology *ptr = (t_physical_topology *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
-						t_integer opticalChannel{ 0 }; // initial optical channel index
-
+						
 						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
 						{
-							//################### PRINT PHYSICAL LINKS ######################
-
-							for (size_t physicalLink = 0; physicalLink < (*ptr).physicalLinks.size(); physicalLink++)
+							//################### PRINT PHYSICAL TOPOLOGY ADJACENCY MATRIX #################
+							fileHandler << "--------------------------physicalTopologyAdjacencyMatrix ---------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							for (size_t line = 0; line < (*ptr).physicalTopologyAdjacencyMatrix[0].size(); line++)
 							{
-								fileHandler << (*ptr).physicalLinks[physicalLink].linkIndex;
-								fileHandler << "\t";
-								fileHandler << (*ptr).physicalLinks[physicalLink].linkSourceNode;
-								fileHandler << "\t";
-								fileHandler << (*ptr).physicalLinks[physicalLink].linkDestinationNode;
-								fileHandler << "\t";
-								fileHandler << (*ptr).physicalLinks[physicalLink].numberOfOpticalChannels;
-								fileHandler << "\n";
-
-							}
-							fileHandler << "\n";
-							fileHandler << "\n";
-							fileHandler << "\n";
-							fileHandler << "\n";
-
-								for (size_t i = 0; i < (*ptr).opticalChannels.size(); i++)  // Cover all optical channels from all physical links created
+								for (size_t column = 0; column < (*ptr).physicalTopologyAdjacencyMatrix[0].size(); column++)
 								{
-									fileHandler << (*ptr).opticalChannels[i].linkIndex;
+									fileHandler << (*ptr).physicalTopologyAdjacencyMatrix[line][column];
 									fileHandler << "\t";
-									fileHandler << (*ptr).opticalChannels[i].opticalChannelNumber;
-									fileHandler << "\t";
-									fileHandler << (*ptr).opticalChannels[i].capacity;
-									fileHandler << "\t";
-									fileHandler << (*ptr).opticalChannels[i].wavelengtht;
-									fileHandler << "\t";
-									fileHandler << (*ptr).opticalChannels[i].sourceNode;
-									fileHandler << "\t";
-									fileHandler << (*ptr).opticalChannels[i].destinationNode;
-									fileHandler << "\n";
 								}
+								fileHandler << "\n";
 							}
-							ptr++;
+							fileHandler << "\n";
+
+							//################### PRINT OPTICAL MULTIPLEXING SYSTEMS ###################
+							fileHandler << "------------------------------------------ opticalMultiplexingSystems --------------------------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "OMSIndex | sourceNode | destinationNode | numberOfWavelenghts | wavelenghts(nm) | availableWavelenghts";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							for (size_t oms = 0; oms < (*ptr).opticalMultiplexingSystems.size(); oms++)
+							{
+								fileHandler << (*ptr).opticalMultiplexingSystems[oms].opticalMultiplexingSystemIndex;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalMultiplexingSystems[oms].sourceNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalMultiplexingSystems[oms].destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts;
+								fileHandler << "\t";
+								fileHandler << "[ ";
+								for (size_t i = 0; i < (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts; i++)
+								{
+									fileHandler << (*ptr).opticalMultiplexingSystems[oms].wavelenghts[i];
+									fileHandler << " ";
+								}
+								fileHandler << "]";
+								fileHandler << "\t";
+								fileHandler << "\t";
+								fileHandler << "[ ";
+								for (size_t j = 0; j < (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts; j++)
+								{
+									fileHandler << (*ptr).opticalMultiplexingSystems[oms].availableWavelenghts[j];
+									fileHandler << " ";
+								}
+								fileHandler << "]";
+								fileHandler << "\n";
+							}
+							fileHandler << "\n";
+						}
 							fileHandler.close();
-							setFirstValueToBeSaved(1);*/
+							setFirstValueToBeSaved(1);
 					}
 
 				}
@@ -350,27 +367,16 @@ void Signal::writeHeader(){
 		else if (getType() == "LogicalTopology")
 		{
 			headerFile << "Signal type: " << getType() << "\n";
-			headerFile << "===================================================\n";
-			headerFile << "||	    LogicalTopologyGenerator_ block      	||\n";
-			headerFile << "===================================================\n";
-			headerFile << "\n";
-			headerFile << "\n";
+			headerFile << "==========================================\n";
+			headerFile << "||	    Logical Topology       	||\n";
+			headerFile << "==========================================\n";
 		}
 		else if (getType() == "PhysicalTopology")
 		{
 			headerFile << "Signal type: " << getType() << "\n";
-			headerFile << "===================================================\n";
-			headerFile << "||   PHYSICAL LINKS AND OPTICAL CHANNELS   ||\n";
-			headerFile << "===================================================\n";
-			headerFile << "\n";
-			headerFile << "\n";
-			headerFile << "First matrix: Physical links (linkIndex, linkSourceNode, linkDestinationNode, numberOfOpticalChannels)";
-			headerFile << "\n";
-			headerFile << "\n";
-			headerFile << "Second matrix: Optical channels";
-			headerFile << "(linkIndex, opticalChannelNumber, capacity, wavelenght, sourceNode, destinationNode)";
-			headerFile << "\n";
-			headerFile << "\n";
+			headerFile << "========================================\n";
+			headerFile << "||          Physical Topology         ||\n";
+			headerFile << "========================================\n";
 		}
 
 		headerFile << "// ### HEADER TERMINATOR ###\n";
@@ -602,12 +608,13 @@ void Signal::close() {
 								fileHandler << "\t";
 								fileHandler << (*ptr).paths[path].numberOfLightPaths;
 								fileHandler << "\t";
-								for (size_t i = 0; i < (*ptr).paths[i].lightPathsIndex.size(); i++)
+								fileHandler << "[ ";
+								for (size_t i = 0; i < (*ptr).paths[path].lightPathsIndex.size(); i++)
 								{
-									fileHandler << "[";
-									fileHandler << (*ptr).paths[i].lightPathsIndex[i];
+									fileHandler << (*ptr).paths[path].lightPathsIndex[i];
 									fileHandler << " ";
 								}
+								fileHandler << "]";
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
@@ -631,9 +638,10 @@ void Signal::close() {
 								fileHandler << "\t";
 								fileHandler << (*ptr).lightPaths[lightPath].numberOfOpticalChannels;
 								fileHandler << "\t";
+								fileHandler << "[ ";
 								for (size_t i = 0; i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size(); i++)
 								{
-									fileHandler << "[";
+									
 									fileHandler << (*ptr).lightPaths[lightPath].opticalChannelsIndex[i];
 									fileHandler << " ";
 								}
@@ -661,10 +669,10 @@ void Signal::close() {
 								fileHandler << "\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
 								fileHandler << "\t";
-
+								fileHandler << "[ ";
 								for (size_t i = 0; i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size(); i++)
 								{
-									fileHandler << "[";
+									
 									fileHandler << (*ptr).opticalChannels[opticalChannel].demandsIndex[i];
 									fileHandler << " ";
 								}
@@ -676,46 +684,68 @@ void Signal::close() {
 						setFirstValueToBeSaved(1);
 			}
 			else if (type == "PhysicalTopology")
-			{
-				/*t_physical_topology *ptr = (t_physical_topology *)buffer;
-				ptr = ptr + (firstValueToBeSaved - 1);
-				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-
-				for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
-				{
-					//################### PRINT PHYSICAL LINKS ######################
-
-					for (t_integer k = 0; k < (t_integer)(*ptr).physicalLinks.size(); k++)
 					{
-						fileHandler << (*ptr).physicalLinks[k].linkIndex;
-						fileHandler << "\t";
-						fileHandler << (*ptr).physicalLinks[k].linkSourceNode;
-						fileHandler << "\t";
-						fileHandler << (*ptr).physicalLinks[k].linkDestinationNode;
-						fileHandler << "\t";
-						fileHandler << (*ptr).physicalLinks[k].numberOfOpticalChannels;
-						fileHandler << "\n";
+					t_physical_topology *ptr = (t_physical_topology *)buffer;
+					ptr = ptr + (firstValueToBeSaved - 1);
+					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
-						for (t_integer i = 0; i < (t_integer)(*ptr).physicalLinks[k].numberOfOpticalChannels; i++)
+
+					for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
+					{
+						//################### PRINT PHYSICAL TOPOLOGY ADJACENCY MATRIX #################
+						fileHandler << "--------------------------physicalTopologyAdjacencyMatrix ---------------------------------";
+						fileHandler << "\n";
+						fileHandler << "\n";
+						for (size_t line = 0; line < (*ptr).physicalTopologyAdjacencyMatrix[0].size(); line++)
 						{
-							fileHandler << (*ptr).opticalChannels[i].linkIndex;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].opticalChannelNumber;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].capacity;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].wavelengtht;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].sourceNode;
-							fileHandler << "\t";
-							fileHandler << (*ptr).opticalChannels[i].destinationNode;
+							for (size_t column = 0; column < (*ptr).physicalTopologyAdjacencyMatrix[0].size(); column++)
+							{
+								fileHandler << (*ptr).physicalTopologyAdjacencyMatrix[line][column];
+								fileHandler << "\t";
+							}
 							fileHandler << "\n";
 						}
+						fileHandler << "\n";
+
+						//################### PRINT OPTICAL MULTIPLEXING SYSTEMS ###################
+						fileHandler << "------------------------------------------ opticalMultiplexingSystems --------------------------------------------------";
+						fileHandler << "\n";
+						fileHandler << "\n";
+						fileHandler << "OMSIndex | sourceNode | destinationNode | numberOfWavelenghts | wavelenghts(nm) | availableWavelenghts";
+						fileHandler << "\n";
+						fileHandler << "\n";
+						for (size_t oms = 0; oms < (*ptr).opticalMultiplexingSystems.size(); oms++)
+						{
+							fileHandler << (*ptr).opticalMultiplexingSystems[oms].opticalMultiplexingSystemIndex;
+							fileHandler << "\t";
+							fileHandler << (*ptr).opticalMultiplexingSystems[oms].sourceNode;
+							fileHandler << "\t";
+							fileHandler << (*ptr).opticalMultiplexingSystems[oms].destinationNode;
+							fileHandler << "\t";
+							fileHandler << (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts;
+							fileHandler << "\t";
+							fileHandler << "[ ";
+							for (size_t i = 0; i < (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts; i++)
+							{
+								fileHandler << (*ptr).opticalMultiplexingSystems[oms].wavelenghts[i];
+								fileHandler << " ";
+							}
+							fileHandler << "]";
+							fileHandler << "\t";
+							fileHandler << "[ ";
+							for (size_t j = 0; j < (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts; j++)
+							{
+								fileHandler << (*ptr).opticalMultiplexingSystems[oms].availableWavelenghts[j];
+								fileHandler << " ";
+							}
+							fileHandler << "]";
+							fileHandler << "\n";
+						}
+						fileHandler << "\n";
 					}
-					fileHandler << "\n";
-				}
-				setFirstValueToBeSaved(1);*/
-			}
+					fileHandler.close();
+					setFirstValueToBeSaved(1);
+					}
 			else if (type == "Binary") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_binary));
@@ -2465,6 +2495,33 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec, int
 	return OUT;
 }
 
+// ################################### FUNCTION TO READ SQUARE MATRICES #######################################
+
+t_matrix readSquareMatrix(int lines, ifstream &inputFile){
+	string line;
+	string str;
+	t_matrix finalMatrix;
+	vector<int> vector;
+
+	for (int i = 0; i < lines; i++)
+	{
+		getline(inputFile, line);
+		stringstream s(line);
+
+		for (size_t j = 0; j < lines - 1; j++)
+		{
+			getline(s, str, ' ');
+			vector.push_back(stoi(str));
+		}
+		getline(s, str, '\n');
+		vector.push_back(stoi(str));
+
+		finalMatrix.push_back(vector);
+		vector.clear();
+	}
+	return finalMatrix;
+}
+
 // #####################################################################################################
 // ###################################        Parameters       #########################################
 // #####################################################################################################
@@ -2508,29 +2565,13 @@ void SystemInputParameters::readSystemInputParameters()
 	int errorLine = 1;
 	//Reads each line
 	string line;
-//	string traffic = "odu";
-//	string topology = "physicalTopologyAdjacencyMatrix";
-//	string evaluateVariable;
-	while (getline(inputFile, line)) {
 
-		//size_t pos1 = line.find(traffic);
-		//size_t pos2 = line.find(topology);
+	while (getline(inputFile, line)) {
 
 		line = trim(line); 
 		try {
 			//If the line is a comment, it just skips to the next one
 			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
-
-			/*	if (pos1 != string::npos) // odu... found
-				{
-
-				}
-				else if (pos2 != string::npos) // physicalTopologyAdjacencyMatrix found
-				{
-
-				}
-				else
-				{*/
 					vector<string> splitline = split(line, '=');
 					splitline[0] = trim(splitline[0]);
 					splitline[1] = trim(splitline[1]);
@@ -2541,33 +2582,19 @@ void SystemInputParameters::readSystemInputParameters()
 							parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
 						else if (parameters[splitline[0]]->getType() == BOOL)
 							parameters[splitline[0]]->setValue(parseBool(splitline[1]));
-						else if (parameters[splitline[0]]->getType() == MATRIX)
-							parameters[splitline[0]]->setValue(readSquareMatrix(parseInt(splitline[1])));
-						/*{
-							if (splitline[1] == "opaque")
-							{
-								parameters[splitline[0]]->setValue(transport_mode::opaque);
-							}
-							else if (splitline[1] == "transparent")
-							{
-								parameters[splitline[0]]->setValue(transport_mode::transparent);
-							}
-							else if (splitline[1] == "translucent")
-							{
-								parameters[splitline[0]]->setValue(transport_mode::translucent);
-							}
+						else if (parameters[splitline[0]]->getType() == MATRIX) {
+							parameters[splitline[0]]->setValue(readSquareMatrix(parseInt(splitline[1]), inputFile));
+							errorLine = errorLine + (parseInt(splitline[1]));
 						}
-						else if (parameters[splitline[0]]->getType() == MATRIX)
-							parameters[splitline[0]]->setValue(parseBool(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == TRANSPORT)
+							parameters[splitline[0]]->setValue(parseTransportMode(splitline[1]));
 						else if (parameters[splitline[0]]->getType() == ORDERING)
-							if (splitline[1] == "ascedingOrder")
-							{
-								parameters[splitline[0]]->setValue(ordering_rule::ascendingOrder);
-							}
-							else if (splitline[1] == "descendingOrder")
-							{
-								parameters[splitline[0]]->setValue(ordering_rule::descendingOrder);
-							}*/
+							parameters[splitline[0]]->setValue(parseOrderingRule(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == ROUTING_CRITERION_LOGICAL)
+							parameters[splitline[0]]->setValue(parseRoutingCriterionLogicalTopology(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == ROUTING_CRITERION_PHYSICAL) 
+							parameters[splitline[0]]->setValue(parseRoutingCriterionPhysicalTopology(splitline[1]));
+						
 						//Logs that a given parameter has been loaded from a file
 						loadedInputParameters.push_back(splitline[0] + " = " + splitline[1]);
 					//}
@@ -2577,7 +2604,8 @@ void SystemInputParameters::readSystemInputParameters()
 		}
 		catch (const exception& e) {
 			(void)e;
-			cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputParametersFileName;
+			cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputParametersFileName << endl;
+			system("pause");
 			exit(1);
 		}
 	}
@@ -2607,6 +2635,14 @@ void SystemInputParameters::addInputParameter(string name, ordering_rule * varia
 	parameters[name] = new Parameter(variable);
 }
 void SystemInputParameters::addInputParameter(string name, transport_mode * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+void SystemInputParameters::addInputParameter(string name, routing_criterion_logical_topology * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+void SystemInputParameters::addInputParameter(string name, routing_criterion_physical_topology * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
@@ -2659,7 +2695,51 @@ bool SystemInputParameters::parseBool(string str)
 	else //Incorrect input
 		throw exception();
 }
+transport_mode SystemInputParameters::parseTransportMode(string str)
+{
+	transport_mode transportMode;
 
+	if (str == "opaque")
+		 return transportMode = transport_mode::opaque;
+	else if (str == "transparent")
+		return transportMode = transport_mode::transparent;
+	else if (str == "translucent")
+		return transportMode = transport_mode::translucent;
+	else //Incorrect input
+		throw exception();
+}
+ordering_rule SystemInputParameters::parseOrderingRule(string str)
+{
+	ordering_rule orderingRule;
+
+	if (str == "ascendingOrder")
+		return orderingRule = ordering_rule::ascendingOrder;
+	else if (str == "descendingOrder")
+		return orderingRule = ordering_rule::descendingOrder;
+	else //Incorrect input
+		throw exception();
+}
+
+routing_criterion_logical_topology SystemInputParameters::parseRoutingCriterionLogicalTopology(string str) {
+	routing_criterion_logical_topology routingCriterionLogicalTopology;
+
+	if (str == "hops")
+		return routingCriterionLogicalTopology = routing_criterion_logical_topology::hops;
+	else if (str == "distance")
+		return routingCriterionLogicalTopology = routing_criterion_logical_topology::distance;
+	else //Incorrect input
+		throw exception();
+}
+routing_criterion_physical_topology SystemInputParameters::parseRoutingCriterionPhysicalTopology(string str) {
+	routing_criterion_physical_topology routingCriterionPhysicalTopology;
+
+	if (str == "hops")
+		return routingCriterionPhysicalTopology = routing_criterion_physical_topology::hops;
+	else if (str == "distance")
+		return routingCriterionPhysicalTopology = routing_criterion_physical_topology::distance;
+	else //Incorrect input
+		throw exception();
+}
 void SystemInputParameters::Parameter::setValue(int value)
 {
 	if (type != INT) throw invalid_argument("Parameter is not of type INT");
@@ -2691,6 +2771,16 @@ void SystemInputParameters::Parameter::setValue(transport_mode value)
 {
 	if (type != TRANSPORT) throw invalid_argument("Parameter is not of type TRANSPORT_MODE");
 	*t = value;
+}
+void SystemInputParameters::Parameter::setValue(routing_criterion_logical_topology value)
+{
+	if (type != ROUTING_CRITERION_LOGICAL) throw invalid_argument("Parameter is not of type ROUTING_CRITERION_LOGICAL");
+	*l = value;
+}
+void SystemInputParameters::Parameter::setValue(routing_criterion_physical_topology value)
+{
+	if (type != ROUTING_CRITERION_PHYSICAL) throw invalid_argument("Parameter is not of type ROUTING_CRITERION_PHYSICAL");
+	*p = value;
 }
 
 SystemInputParameters::ParameterType SystemInputParameters::Parameter::getType()
@@ -2729,4 +2819,14 @@ SystemInputParameters::Parameter::Parameter(transport_mode * elem)
 {
 	type = TRANSPORT;
 	t = elem;
+}
+SystemInputParameters::Parameter::Parameter(routing_criterion_logical_topology * elem)
+{
+	type = ROUTING_CRITERION_LOGICAL;
+	l = elem;
+}
+SystemInputParameters::Parameter::Parameter(routing_criterion_physical_topology * elem)
+{
+	type = ROUTING_CRITERION_PHYSICAL;
+	p = elem;
 }

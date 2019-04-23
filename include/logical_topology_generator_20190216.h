@@ -23,8 +23,8 @@ using namespace std;
 class LogicalTopologyGenerator : public Block {
 
 	// Input Parameters
-	transport_mode transportMode{ transport_mode::transparent }; // Transport mode default value
-	t_matrix physicalTopologyAdjacencyMatrix{0};
+	transport_mode transportMode; // Transport mode default value
+	t_matrix physicalTopologyAdjacencyMatrix;
 
 	// State variables
 	bool generate{ true };

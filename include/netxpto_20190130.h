@@ -102,6 +102,9 @@ using t_demand = struct {						// Signal type Demand structure
 	t_integer getDemandIndex() { return demandIndex; }
 };
 
+using t_demand_request_routed = struct {			// DemandRequestRouted signal structure 
+};
+
 using t_paths = struct {							// paths data structure
 	t_integer pathIndex{ 0 };						// paths index
 	t_integer sourceNode{ 0 };						// paths source node
@@ -157,6 +160,8 @@ enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex
 enum class transport_mode { opaque, transparent, translucent };				// Trasnsport mode types
 enum class criterion { hops, distance };									// The shortest path type will be selected depending on one of those
 enum class ordering_rule {descendingOrder, ascendingOrder};					// Demand ordering rule in Scheduler_ block	
+enum class routing_criterion_logical_topology {distance, hops};				// Routing type criterion to select shortest paths
+enum class routing_criterion_physical_topology { distance, hops };			// Routing type criterion to select shortest paths
 
 // #######################################################################################################
 // #
@@ -214,7 +219,7 @@ public:
 	explicit Signal(t_unsigned_long bLength) : bufferLength{ bLength } {};
 
 	// Signal destructors
-	~Signal() { if (!(valueType == signal_value_type::t_message)) { delete[] buffer; }; };	
+	//~Signal() { if (!(valueType == signal_value_type::t_message)) { delete[] buffer; }; };	
 
 	// Buffer manipulation funtions
 	t_integer ready();										// Returns the number of samples in the buffer ready to be processed
@@ -446,7 +451,7 @@ using TimeContinuousAmplitudeContinuousReal = BaseSignal<t_real, signal_type::Ti
 using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, signal_value_type::t_complex_xy>;
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
-using Demand = BaseSignal<t_demand, signal_type::DemandRequest, signal_value_type::t_demand>;
+using DemandRequest= BaseSignal<t_demand, signal_type::DemandRequest, signal_value_type::t_demand>;
 using LogicalTopology = BaseSignal<t_logical_topology, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
 using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
 
@@ -1079,7 +1084,7 @@ private:
 	vector<string> loadedInputParameters;
 	string inputParametersFileName{ "input_parameters_values.txt" }; //name of the file from where the input parameters will be read
 	string outputFolderName{ "signals" };
-	enum ParameterType { INT, DOUBLE, BOOL, MATRIX, ORDERING, TRANSPORT }; //types of parameters
+	enum ParameterType { INT, DOUBLE, BOOL, MATRIX, ORDERING, TRANSPORT, ROUTING_CRITERION_LOGICAL, ROUTING_CRITERION_PHYSICAL }; //types of parameters
 											  //A parameter can only be of 1 type
 	class Parameter {
 	private:
@@ -1092,6 +1097,8 @@ private:
 			t_matrix* m;
 			ordering_rule* o;
 			transport_mode *t;
+			routing_criterion_logical_topology *l;
+			routing_criterion_physical_topology *p;
 		};
 
 	public:
@@ -1102,6 +1109,8 @@ private:
 		void setValue(t_matrix value);
 		void setValue(ordering_rule value);
 		void setValue(transport_mode value);
+		void setValue(routing_criterion_logical_topology value);
+		void setValue(routing_criterion_physical_topology value);
 		ParameterType getType();
 		//Constructor for parameter of type int
 		Parameter(int* elem);
@@ -1115,11 +1124,19 @@ private:
 		Parameter(ordering_rule* elem);
 		//Constructor for parameter of type ordering_rule
 		Parameter(transport_mode* elem);
+		//Constructor for parameter of type ordering_rule
+		Parameter(routing_criterion_logical_topology* elem);
+		//Constructor for parameter of type ordering_rule
+		Parameter(routing_criterion_physical_topology* elem);
 	};
 
 	int parseInt(string str);
 	double parseDouble(string str);
 	bool parseBool(string str);
+	transport_mode parseTransportMode(string str);
+	ordering_rule parseOrderingRule(string str);
+	routing_criterion_logical_topology parseRoutingCriterionLogicalTopology(string str);
+	routing_criterion_physical_topology parseRoutingCriterionPhysicalTopology(string str);
 	
 	vector<string> split(const string & text, char sep);
 	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
@@ -1136,6 +1153,8 @@ public:
 	void addInputParameter(string name, t_matrix* variable);
 	void addInputParameter(string name, ordering_rule* variable);
 	void addInputParameter(string name, transport_mode* variable);
+	void addInputParameter(string name, routing_criterion_logical_topology* variable);
+	void addInputParameter(string name, routing_criterion_physical_topology* variable);
 
 	/* Default empty constructor. Initializes the map */
 	SystemInputParameters() {};
