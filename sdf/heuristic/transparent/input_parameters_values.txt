@@ -1,5 +1,26 @@
 //################################## NUMBER OF NODES ###############################################
 numberOfNodes=6
+//########################### PHYSICAL TOPOLOGY ADJACENCY MATRIX ###################################
+physicalTopologyAdjacencyMatrix=6
+0 1 0 0 0 1
+1 0 1 0 0 1
+0 1 0 1 1 0
+0 0 1 0 1 0
+0 0 1 1 0 1
+1 1 0 0 1 0 
+//################################### NUMBER OF OMS PER LINK #######################################
+numberOfOMSPerLink=1
+//############################# NUMBER OF OPTICAL CHANNELS PER OMS #################################
+numberOfOpticalChannelsPerOMS=5
+//################################### INITIAL WAVELENGHT (nm) ######################################
+initialWavelenght=1550
+//############################## WAVELENGHT SPACING IN NANOMETERS ##################################
+wavelenghtSpacing=0.8
+//############################# OPTICAL CHANNEL CAPACITY IN ODU0 ###################################
+opticalChannelCapacity=80
+//##################################################################################################
+//################################### TRAFFIC MATRIX ###############################################
+//##################################################################################################
 //####################################### ODU0 #####################################################
 odu0=6
 0 0 0 0 0 0
@@ -42,31 +63,13 @@ odu4=6
 0 0 0 0 0 0 
 //################################### ORDERING RULE ################################################
 orderingRule=ascendingOrder
-//################################### TRANSPORT MODE ################################################
+//################################### TRANSPORT MODE ###############################################
 transportMode=transparent
-//########################### PHYSICAL TOPOLOGY ADJACENCY MATRIX ###################################
-physicalTopologyAdjacencyMatrix=6
-0 1 0 0 0 1
-1 0 1 0 0 1
-0 1 0 1 1 0
-0 0 1 0 1 0
-0 0 1 1 0 1
-1 1 0 0 1 0 
-//################################### NUMBER OF OMS PER LINK ################################################
-numberOfOMSPerLink=1
-//################################### NUMBER OF OPTICAL CHANNELS PER OMS ################################################
-numberOfOpticalChannelsPerOMS=5
-//################################### INITIAL WAVELENGHT (nm) ################################################
-initialWavelenght=1550
-//################################### WAVELENGHT SPACING ################################################
-wavelenghtSpacing=0.8
-//################################### OPTICAL CHANNEL CAPACITY ################################################
-opticalChannelCapacity=80
-//################################### ROUTING CRITERION LOGICAL TOPOLOGY ################################################
+//############################ ROUTING CRITERION LOGICAL TOPOLOGY ##################################
 routingCriterionLogicalTopology=hops
-//################################### BLOCKING CRITERION LOGICAL TOPOLOGY ################################################
+//############################ BLOCKING CRITERION LOGICAL TOPOLOGY #################################
 blockingCriterionLogicalTopology=1
-//################################### ROUTING CRITERION PHYSICAL TOPOLOGY ################################################
+//############################ ROUTING CRITERION PHYSICAL TOPOLOGY #################################
 routingCriterionPhysicalTopology=hops
-//################################### BLOCKING CRITERION PHYSICAL TOPOLOGY ################################################
+//############################ BLOCKING CRITERION PHYSICAL TOPOLOGY ################################
 blockingCriterionPhysicalTopology=1
