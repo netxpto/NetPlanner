@@ -59,9 +59,7 @@ const int MAX_NUMBER_OF_PATHS = 2;
 
 using namespace std;							// to be deleted 4/9/2018
 
-//enum class survivability_method { none, protection_1_plus_1, restoration };
-//enum class transport_mode { opaque, transparent };
-//enum class routing_criterion { hops, distance };
+enum class survivability_method { none, protection_1_plus_1, restoration };
 
 // ####################################################################################################
 // #
@@ -89,24 +87,13 @@ using t_photon_mp_xy = struct { t_complex_xy_mp path[MAX_NUMBER_OF_PATHS]; };
 using t_iqValues = complex<t_real>;
 using t_message = struct {	string messageType;	string messageDataLength; 	string messageData; int size() { return 3; }};
 
-using t_demand_request = struct {						        
-	t_integer demandIndex{ 0 };
-	t_integer sourceNode{ 0 };
-	t_integer destinationNode{ 0 };
-	t_integer oduType{ 0 };
-	t_integer survivabilityMethod { 0 };
-
-	void setDemandIndex(t_integer dIndex) { demandIndex = dIndex; }
-	t_integer getDemandIndex() { return demandIndex; }
-};
-
 using t_path = struct {
 	t_integer pathIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer capacity{ 0 };
 	t_integer numberOfLightPaths{ 0 };
-	std::vector<int> lightPathsIndex;
+	std::vector<t_integer> lightPathsIndex;
 };
 
 using t_light_path = struct {
@@ -115,7 +102,7 @@ using t_light_path = struct {
 	t_integer destinationNode{ 0 };
 	t_integer capacity{ 0 };
 	t_integer numberOfOpticalChannels{ 0 };
-	std::vector<int> opticalChannelsIndex;
+	std::vector<t_integer> opticalChannelsIndex;
 };
 
 using t_optical_channel = struct {
@@ -125,42 +112,56 @@ using t_optical_channel = struct {
 	t_integer wavelength{ 0 };
 	t_integer capacity{ 0 };
 	t_integer numberOfDemands{ 0 };
-	std::vector<int> demandsIndex;
+	std::vector<t_integer> demandsIndex;
 };		
 
-/*
 using t_logical_topology = struct {
 	t_matrix logicalTopologyAdjacencyMatrix{ 0 };
 	std::vector<t_path> paths;
 	std::vector<t_light_path> lightPaths;
 	std::vector<t_optical_channel> opticalChannels;
 };
-*/
 
 using t_optical_multiplexing_system = struct {
 	t_integer OMSIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer maximumNumberOfWavelengths{ 0 };
-	std::vector<int> wavelengths;
-	std::vector<int> availableWavelengths;
+	std::vector<double> wavelengths;
+	std::vector<t_integer> availableWavelengths;
 };
 using t_physical_topology = struct {
 	t_matrix physicalTopologyAdjacencyMatrix{ 0 };
 	std::vector<t_optical_multiplexing_system> OMS;
 };
 
+using t_demand_request = struct {
+	t_integer demandIndex{ 0 };
+	t_integer sourceNode{ 0 };
+	t_integer destinationNode{ 0 };
+	t_integer oduType{ 0 };
+	survivability_method survivabilityMethod{ survivability_method::none };
+
+	void setDemandIndex(t_integer dIndex) { demandIndex = dIndex; }
+	t_integer getDemandIndex() { return demandIndex; }
+};
+
+using t_demand_request_routed = struct {
+	t_integer demandIndex{ 0 };
+	bool routed;
+	t_integer pathIndex;
+};
 using t_path_request = struct {
 	t_integer requestIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer numberOfIntermediateNodes{ 0 };
-	std::vector<int> intermediateNodes;
+	std::vector<t_integer> intermediateNodes;
 };
 
-using t_routed = struct {
+using t_path_routed = struct {
 	t_integer requestIndex{ 0 };
-	bool routed;
+	t_integer routed;
 	t_integer numberOfLightPaths{ 0 };
 };
 
@@ -168,22 +169,21 @@ using t_light_paths_table = struct {
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer numberOfIntermediateNodes{ 0 };
-	std::vector<int> intermediateNodes;
+	std::vector<t_integer> intermediateNodes;
 	t_integer wavelength{ 0 };
 };
 using t_path_request_routed = struct {
-	std::vector<t_routed> routed;
+	std::vector<t_path_routed> pathRouted;
 	std::vector<t_light_paths_table> lightPathsTable;
 };
 
-using t_demand_request_routed = struct {
-	t_integer demandIndex{ 0 };
-	bool routed;
-	t_integer pathsIndex{ 0 };
-};
-
 // Existent signals
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand_request, t_logical_topology, t_physical_topology, t_path, t_light_path, t_optical_channel, t_optical_multiplexing_system };
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, 
+							   t_logical_topology, t_path, t_light_path, t_optical_channel,
+							   t_physical_topology, t_optical_multiplexing_system,
+							   t_demand_request, t_demand_request_routed,
+							   t_path_request, t_path_request_routed
+};
 
 // #######################################################################################################
 // #
@@ -211,7 +211,8 @@ std::ostream& operator<<(std::ostream &out, const t_demand_request &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, DemandRequest, LogicalTopology, PhysicalTopology, PathRequest, PathRequestRouted, DemandRequestRouted };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, 
+						 LogicalTopology, PhysicalTopology, DemandRequest, DemandRequestRouted, PathRequest, PathRequestRouted };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -448,15 +449,25 @@ private:
 			case signal_type::PhotonStreamMPXY:
 				typeName = "PhotonStreamMPXY";
 				break;
-			case signal_type::DemandRequest:
-				typeName = "DemandRequest";
-				break;
 			case signal_type::LogicalTopology:
 				typeName = "LogicalTopology";
 				break;
 			case signal_type::PhysicalTopology:
 				typeName = "PhysicalTopology";
 				break;
+			case signal_type::DemandRequest:
+				typeName = "DemandRequest";
+				break;
+			case signal_type::DemandRequestRouted:
+				typeName = "DemandRequestRouted";
+				break;
+			case signal_type::PathRequest:
+				typeName = "PathRequest";
+				break;
+			case signal_type::PathRequestRouted:
+				typeName = "PathRequestRouted";
+				break;
+			
 			default:
 				cout << "Error: netxpto_20180830.h - typeName not defined\n";
 		}
@@ -473,11 +484,12 @@ using TimeContinuousAmplitudeContinuousReal = BaseSignal<t_real, signal_type::Ti
 using PhotonStreamXY = BaseSignal<t_complex_xy, signal_type::PhotonStreamXY, signal_value_type::t_complex_xy>;
 //using PhotonStreamMP = BaseSignal<t_photon_mp, signal_type::PhotonStreamMP, signal_value_type::t_photon_mp>;
 using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPXY, signal_value_type::t_photon_mp_xy>;
-using DemandRequest = BaseSignal<t_demand_request, signal_type::DemandRequest, signal_value_type::t_demand_request>;
-using LogicalTopology = BaseSignal<t_matrix, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
+using LogicalTopology = BaseSignal<t_logical_topology, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
 using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
-
-
+using DemandRequest = BaseSignal<t_demand_request, signal_type::DemandRequest, signal_value_type::t_demand_request>;
+using DemandRequestRouted = BaseSignal<t_demand_request_routed, signal_type::DemandRequestRouted, signal_value_type::t_demand_request_routed>;
+using PathRequest = BaseSignal<t_path_request, signal_type::PathRequest, signal_value_type::t_path_request>;
+using PathRequestRouted = BaseSignal<t_path_request_routed, signal_type::PathRequestRouted, signal_value_type::t_path_request_routed>;
 
 /*
 class TimeDiscrete : public Signal {
@@ -781,6 +793,8 @@ public:
 	void terminateBlock();
 	virtual void terminate(void){};
 
+	void closeOutputSignals();
+
 	void setNumberOfInputSignals(int nOfInputSignal) { numberOfInputSignals = nOfInputSignal; };
 	int getNumberOfInputSignals() { return numberOfInputSignals; };
 
@@ -819,6 +833,7 @@ public:
 	bool run();
 	bool run(string signalPath);
 	void terminate();
+	void terminateSuperBlock();
 
 	//########################################################################################################
 
@@ -1105,7 +1120,7 @@ private:
 	vector<string> loadedInputParameters;
 	string inputParametersFileName{ "input_parameters_0.txt" }; //name of the file from where the input parameters will be read
 	string outputFolderName{ "signals" };
-	enum ParameterType { INT, DOUBLE, BOOL }; //types of parameters
+	enum ParameterType { INT, DOUBLE, BOOL, STRING, MATRIX }; //types of parameters
 											  //A parameter can only be of 1 type
 	class Parameter {
 	private:
@@ -1115,6 +1130,8 @@ private:
 			int* i;
 			double* d;
 			bool* b;
+			string* s;
+			t_matrix* m;
 		};
 
 	public:
@@ -1122,6 +1139,8 @@ private:
 		void setValue(int value);
 		void setValue(double value);
 		void setValue(bool value);
+		void setValue(string value);
+		void setValue(t_matrix value);
 		ParameterType getType();
 		//Constructor for parameter of type int
 		Parameter(int* elem);
@@ -1129,11 +1148,17 @@ private:
 		Parameter(double* elem);
 		//Constructor for parameter of type bool
 		Parameter(bool* elem);
+		//Constructor for parameter of type string
+		Parameter(string* elem);
+		//Constructor for parameter of type matrix
+		Parameter(t_matrix* elem);
 	};
 
 	int parseInt(string str);
 	double parseDouble(string str);
 	bool parseBool(string str);
+	string parseString(string str);
+	t_matrix parseMatrix(string str);
 	vector<string> split(const string & text, char sep);
 	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
 
@@ -1146,6 +1171,8 @@ public:
 	void addInputParameter(string name, int* variable);
 	void addInputParameter(string name, double* variable);
 	void addInputParameter(string name, bool* variable);
+	void addInputParameter(string name, string* variable);
+	void addInputParameter(string name, t_matrix* variable);
 	/* Default empty constructor. Initializes the map */
 	SystemInputParameters(){}
 	SystemInputParameters(int argc,char*argv[]);
