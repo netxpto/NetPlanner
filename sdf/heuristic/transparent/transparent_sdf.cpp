@@ -90,22 +90,28 @@ int main()
 
 
 	/* Signals Declaration */
-	DemandRequest Scheduler_Out{"Scheduler_Out.sgn"};
+	DemandRequest Scheduler_Out{"Scheduler_Out.sgn",25};
 	Scheduler_Out.setSaveInAscii(true);
 
-	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn"};
+	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn",5};
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn"};
+	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn",5};
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn"};
+	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn",5};
 	FinalLogicalTopology.setSaveInAscii(true);
 
-	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn" };
+	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn",5};
 	FinalPhysicalTopology.setSaveInAscii(true);
 
-	DemandRequest ProcessedDemand{ "ProcessedDemand.sgn", 5};
+	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn",5};
+	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
+
+	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn",5};
+	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
+
+	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn",5 };
 	ProcessedDemand.setSaveInAscii(true);
 
 	/* Blocks Decalration */
@@ -141,7 +147,7 @@ int main()
 	SinkPhysicalTopologyGenerator_.setDisplayNumberOfSamples(true);
 
 
-	LogicalTopologyManager LogicalTopologyManager_{ {&LogicalTopologyGenerator_Out, &Scheduler_Out},{&FinalLogicalTopology, &ProcessedDemand} };
+	LogicalTopologyManager LogicalTopologyManager_{ {&LogicalTopologyGenerator_Out, &Scheduler_Out, &PhysicalTopologyManager_PathRequestRouted},{&FinalLogicalTopology, &ProcessedDemand, &LogicalTopologyManager_PathRequest} };
 	LogicalTopologyManager_.setRoutingCriterionLogicalTopology(param.routingCriterionLogicalTopology);
 	LogicalTopologyManager_.setBlockingCriterionLogicalTopology(param.blockingCriterionLogicalTopology);
 
@@ -151,7 +157,7 @@ int main()
 	Sink SinkRoutedOrBlocked_{ {&ProcessedDemand},{} };
 	SinkRoutedOrBlocked_.setDisplayNumberOfSamples(true);
 
-	PhysicalTopologyManager PhysicalTopologyManager_{ {&PhysicalTopologyGenerator_Out},{&FinalPhysicalTopology} };
+	PhysicalTopologyManager PhysicalTopologyManager_{ {&PhysicalTopologyGenerator_Out, &LogicalTopologyManager_PathRequest},{&FinalPhysicalTopology , &PhysicalTopologyManager_PathRequestRouted} };
 	PhysicalTopologyManager_.setRoutingCriterionPhysicalTopology(param.routingCriterionPhysicalTopology);
 	PhysicalTopologyManager_.setBlockingCriterionPhysicalTopology(param.blockingCriterionPhysicalTopology);
 
@@ -169,7 +175,7 @@ int main()
 		//&SinkPhysicalTopologyGenerator_,
 		&LogicalTopologyManager_,
 		&SinkLogicalTopology_,
-		&SinkRoutedOrBlocked_,
+		//&SinkRoutedOrBlocked_,
 		&PhysicalTopologyManager_,
 		&SinkPhysicalTopology_
 };
