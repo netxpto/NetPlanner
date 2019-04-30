@@ -26,7 +26,7 @@
 # include <vector>
 # include <strstream>
 # include <string>
-
+# include <set>
 
 // ####################################################################################################
 // #
@@ -161,7 +161,7 @@ using t_path_request = struct {
 
 using t_path_routed = struct {
 	t_integer requestIndex{ 0 };
-	t_integer routed;
+	bool routed;
 	t_integer numberOfLightPaths{ 0 };
 };
 
@@ -170,12 +170,13 @@ using t_light_paths_table = struct {
 	t_integer destinationNode{ 0 };
 	t_integer numberOfIntermediateNodes{ 0 };
 	std::vector<t_integer> intermediateNodes;
-	t_integer wavelength{ 0 };
+	double wavelength{ 0 };
 };
 using t_path_request_routed = struct {
 	std::vector<t_path_routed> pathRouted;
 	std::vector<t_light_paths_table> lightPathsTable;
 };
+
 
 // Existent signals
 enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, 

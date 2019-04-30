@@ -28,7 +28,10 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 		if (w < numberOfOpticalChannelsPerOMS - 1)
 			wavelength += wavelengthSpacing;
 
-		outputOpticalMultiplexingSystem.availableWavelengths.push_back(1);
+		if (w == 0 || w == 1)
+			outputOpticalMultiplexingSystem.availableWavelengths.push_back(0);
+		else 
+			outputOpticalMultiplexingSystem.availableWavelengths.push_back(1);
 	}
 
 	while (line < nodes) {
