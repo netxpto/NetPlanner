@@ -36,6 +36,9 @@
     <ClInclude Include="..\..\..\include_opaque\physical_topology_manager_20190420.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\include_opaque\Dijkstra_20190309.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\lib_opaque\logical_topology_generator_20190216.cpp">

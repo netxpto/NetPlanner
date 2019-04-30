@@ -343,7 +343,7 @@ void Signal::close() {
 				setFirstValueToBeSaved(1);
 			}
 
-			if (type == "PathRequest") {
+			else if (type == "PathRequest") {
 				t_path_request *ptr = (t_path_request *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 
@@ -371,9 +371,9 @@ void Signal::close() {
 					fileHandler << ptr->numberOfIntermediateNodes;
 					fileHandler << "\t";
 					fileHandler << "[";
-					for (int i = 0; i < ptr->intermediateNodes.size(); i++) {
+					for (t_integer i = 0; i < (t_integer)ptr->intermediateNodes.size(); i++) {
 						fileHandler << ptr->intermediateNodes[i];
-						if (i < ptr->intermediateNodes.size() - 1)
+						if (i < (t_integer)ptr->intermediateNodes.size() - 1)
 							fileHandler << ",";
 					}
 					fileHandler << "]";

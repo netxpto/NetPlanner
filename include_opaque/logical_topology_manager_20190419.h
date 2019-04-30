@@ -1,7 +1,7 @@
-# ifndef LOGICAL_TOPOLOGY_MANAGER_H_
-# define LOGICAL_TOPOLOGY_MANAGER_H_
+#ifndef LOGICAL_TOPOLOGY_MANAGER_H_
+#define LOGICAL_TOPOLOGY_MANAGER_H_
 
-# include "netxpto_20190130.h"
+#include "netxpto_20190130.h"
 
 class LogicalTopologyManager : public Block {
 
@@ -10,7 +10,10 @@ class LogicalTopologyManager : public Block {
 	t_integer blockingCriterionLogicalTopology;
 
 	//State Variables
+	t_logical_topology logicalTopology;
+	t_demand_request demand;
 
+	t_integer dijkstra(std::vector<vector<int>> graph, t_integer src, t_integer dst);
 
 public:
 	// Methods (Constructors)
