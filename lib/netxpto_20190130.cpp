@@ -66,7 +66,7 @@ void Signal::bufferPut(T value)
 	bufferEmpty = false;
 	bufferFull = inPosition == outPosition;
 
-	//if (bufferFull)      2019-04-13, de forma a gravar os sinais mesmo quando o buffer não enche
+	//if (bufferFull)     // 2019-04-13, de forma a gravar os sinais mesmo quando o buffer não enche
 	if(inPosition == 0)
 	{
 		if (saveSignal)
@@ -230,6 +230,12 @@ void Signal::bufferPut(T value)
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "-------------------------------------------- END -------------------------------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							ptr++;
 						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
@@ -295,9 +301,57 @@ void Signal::bufferPut(T value)
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
+							ptr++;
 						}
 							fileHandler.close();
 							setFirstValueToBeSaved(1);
+					}
+					else if (type == "PathRequest")
+					{
+						t_path_request *ptr = (t_path_request *)buffer;
+						ptr = ptr + (firstValueToBeSaved - 1);
+						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+
+						//################### PRINT PATH REQUEST SIGNAL #####################
+						
+						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+						{
+							fileHandler << (*ptr).requestIndex;
+							fileHandler << "\t";
+							fileHandler << (*ptr).demandIndex;
+							fileHandler << "\t";
+							fileHandler << (*ptr).oduType;
+							fileHandler << "\t";
+							fileHandler << (*ptr).sourceNode;
+							fileHandler << "\t";
+							fileHandler << (*ptr).intermediateNodes;
+							fileHandler << "\t";
+							fileHandler << (*ptr).destinationNode;
+							fileHandler << "\n";
+							ptr++;
+						}
+						fileHandler.close();
+						setFirstValueToBeSaved(1);
+					}
+					else if (type == "DemandRequestRouted")
+					{
+					t_demand_request_routed *ptr = (t_demand_request_routed *)buffer;
+					ptr = ptr + (firstValueToBeSaved - 1);
+					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+
+
+						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+						{
+							fileHandler << (*ptr).demandIndex;
+							fileHandler << "\t";
+							fileHandler << (*ptr).demandIndex;
+							fileHandler << "\t";
+							fileHandler << (*ptr).demandIndex;
+							fileHandler << "\n";
+							ptr++;
+						}
+					fileHandler.close();
+					setFirstValueToBeSaved(1);
 					}
 
 				}
@@ -377,6 +431,31 @@ void Signal::writeHeader(){
 			headerFile << "========================================\n";
 			headerFile << "||          Physical Topology         ||\n";
 			headerFile << "========================================\n";
+		}
+		else if (getType() == "PathRequest")
+		{
+			headerFile << "Signal type: " << getType() << "\n";
+			headerFile << "========================================\n";
+			headerFile << "||		PathRequest		 ||\n";
+			headerFile << "========================================\n";
+			headerFile << "-------------------------------- LogicalTopologyManager_PathRequest ----------------------------------";
+			headerFile << "\n";
+			headerFile << "\n";
+			headerFile << "requestIndex	|	demandIndex	|	oduType	|	sourceNode	|	intermediateNodes	|	destinationNode";
+			headerFile << "\n";
+			headerFile << "\n";
+		}
+		else if (getType() == "DemandRequestRouted")
+		{
+			headerFile << "Signal type: " << getType() << "\n";
+			headerFile << "========================================\n";
+			headerFile << "||        Processed Demands       ||\n";
+			headerFile << "========================================\n";
+			headerFile << "\n";
+			headerFile << "\n";
+			headerFile << "demandIndex	|	routed	|	pathIndex";
+			headerFile << "\n";
+			headerFile << "\n";
 		}
 
 		headerFile << "// ### HEADER TERMINATOR ###\n";
@@ -680,6 +759,12 @@ void Signal::close() {
 								fileHandler << "\n";
 							}
 							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "-------------------------------------------- END -------------------------------------------------------";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							fileHandler << "\n";
+							ptr++;
 						}
 						setFirstValueToBeSaved(1);
 			}
@@ -743,7 +828,54 @@ void Signal::close() {
 						}
 						fileHandler << "\n";
 					}
-					fileHandler.close();
+					//fileHandler.close();
+					setFirstValueToBeSaved(1);
+					}
+			else if (type == "PathRequest")
+			{
+					t_path_request *ptr = (t_path_request *)buffer;
+					ptr = ptr + (firstValueToBeSaved - 1);
+					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+
+					//################### PRINT PATH REQUEST SIGNAL ###################
+					
+					for (auto dmd = firstValueToBeSaved; dmd <= inPosition; dmd++)
+					{
+						fileHandler << (*ptr).requestIndex;
+						fileHandler << "\t";
+						fileHandler << (*ptr).demandIndex;
+						fileHandler << "\t";
+						fileHandler << (*ptr).oduType;
+						fileHandler << "\t";
+						fileHandler << (*ptr).sourceNode;
+						fileHandler << "\t";
+						fileHandler << (*ptr).intermediateNodes;
+						fileHandler << "\t";
+						fileHandler << (*ptr).destinationNode;
+						fileHandler << "\n";
+						ptr++;
+					}
+					//fileHandler.close();
+					setFirstValueToBeSaved(1);
+			}
+			else if (type == "DemandRequestRouted")
+					{
+					t_demand_request_routed *ptr = (t_demand_request_routed *)buffer;
+					ptr = ptr + (firstValueToBeSaved - 1);
+					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+
+
+					for (auto dmd = firstValueToBeSaved; dmd <= inPosition; dmd++)
+					{
+						fileHandler << (*ptr).demandIndex;
+						fileHandler << "\t";
+						fileHandler << (*ptr).demandIndex;
+						fileHandler << "\t";
+						fileHandler << (*ptr).demandIndex;
+						fileHandler << "\n";
+						ptr++;
+					}
+					//fileHandler.close();
 					setFirstValueToBeSaved(1);
 					}
 			else if (type == "Binary") {
@@ -1034,6 +1166,27 @@ bool SuperBlock::runBlock(string signalPath) {
 						t_physical_topology signalPhysicalTopology;
 						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPhysicalTopology);
 						outputSignals[i]->bufferPut(signalPhysicalTopology);
+					}
+					break;
+				case signal_value_type::t_path_request:
+					for (int j = 0; j < length; j++) {
+						t_path_request signalPathRequest;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPathRequest);
+						outputSignals[i]->bufferPut(signalPathRequest);
+					}
+					break;
+				case signal_value_type::t_path_request_routed:
+					for (int j = 0; j < length; j++) {
+						t_path_request_routed signalPathRequestRouted;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalPathRequestRouted);
+						outputSignals[i]->bufferPut(signalPathRequestRouted);
+					}
+					break;
+				case signal_value_type::t_demand_request_routed:
+					for (int j = 0; j < length; j++) {
+						t_demand_request_routed signalDemandRequestRouted;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalDemandRequestRouted);
+						outputSignals[i]->bufferPut(signalDemandRequestRouted);
 					}
 					break;
 
