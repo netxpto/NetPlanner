@@ -20,9 +20,12 @@ using namespace std;
 
 class LogicalTopologyManager : public Block {
 	
+	//t_demand demand;
+	//t_path_request_routed pathRequestRouted;
+
 	// State variables
 	t_logical_topology currentLogicalTopology;
-	t_demand demand;
+	t_integer requestIndex{ 0 };
 
 	// Input parameters
 	routing_criterion_logical_topology routingCriterionLogicalTopology{ routing_criterion_logical_topology::hops };

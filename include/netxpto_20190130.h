@@ -102,7 +102,34 @@ using t_demand = struct {						// Signal type Demand structure
 	t_integer getDemandIndex() { return demandIndex; }
 };
 
-using t_demand_request_routed = struct {			// DemandRequestRouted signal structure 
+using t_path_information = struct {			//pathInformation variable from PathRequestRouted signal
+	t_integer requestIndex{ 0 };
+	t_integer demandIndex{ 0 };
+	t_integer oduType{ 0 };
+	bool routed{ false };
+	t_integer numberOfLightPaths{ 0 };
+};
+
+using t_light_paths_table = struct {			// lightPathsTable variable from PathRequestRouted signal
+	t_integer sourceNode{ 0 };
+	t_integer destinationNode{ 0 };
+	t_integer numberOfIntermediateNodes{ -1 };
+	std::vector<t_integer> intermediateNodes;
+	double wavelenght{ 0 };
+};
+
+using t_path_request_routed = struct {			// PathRequestRouted signal structure 
+	t_path_information pathInformation;
+	std::vector<t_light_paths_table> lightPathsTable;
+};
+
+using t_path_request = struct {
+	t_integer requestIndex{ 0 };
+	t_integer demandIndex{ 0 };
+	t_integer oduType{ 0 };
+	t_integer sourceNode{ 0 };
+	t_integer intermediateNodes{-1};
+	t_integer destinationNode{ 0 };
 };
 
 using t_paths = struct {							// paths data structure
@@ -111,7 +138,7 @@ using t_paths = struct {							// paths data structure
 	t_integer destinationNode{ 0 };					// paths destination node
 	t_integer capacity{ 0 };						// paths capacity in terms of ODU0 demands
 	t_integer numberOfLightPaths{ 0 };				// number of lightpaths that form these paths
-	std::vector<t_integer> lightPathsIndex{ 0 };	// index of those lightpaths
+	std::vector<t_integer> lightPathsIndex;	// index of those lightpaths
 };
 
 using t_light_paths = struct {				// lightPahts data structure
@@ -130,7 +157,7 @@ using t_optical_channels = struct {			// opticalChannels data structure
 	t_integer capacity{ 0 };				// opticalChannels capacity in terms of ODU0 demands
 	t_integer wavelenght{ 0 };				// opticalChannels wavelenght
 	t_integer numberOfDemands{ 0 };         // number of demands passing through each of the opticalChannels
-	std::vector<t_integer> demandsIndex{ 0 };			// index of the previous demands
+	std::vector<t_integer> demandsIndex;			// index of the previous demands
 };
 
 using t_logical_topology = struct {						// LogicalTopology signal data structure
@@ -149,13 +176,19 @@ using t_optical_multiplexing_systems = struct {			// opticalMultiplexingSystems 
 	std::vector<t_integer> availableWavelenghts;		// indicates which of the previous wavelenghts values are available to be assigned
 };
 
+using t_demand_request_routed = struct {
+	t_integer demandIndex{ 0 };
+	bool routed{ false };
+	t_integer pathIndex{ 0 };
+};
+
 using t_physical_topology = struct {											// physicalTopology signal data structure
 	t_matrix physicalTopologyAdjacencyMatrix{ 0 };								// physicalTopologyMatrix variable
 	std::vector<t_optical_multiplexing_systems> opticalMultiplexingSystems;		
 };
 
 // Existent signals
-enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology }; 
+enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology, t_path_request, t_path_request_routed, t_demand_request_routed};
 
 enum class transport_mode { opaque, transparent, translucent };				// Trasnsport mode types
 enum class criterion { hops, distance };									// The shortest path type will be selected depending on one of those
@@ -189,7 +222,7 @@ std::ostream& operator<<(std::ostream &out, const t_demand &cx)
 // #
 // ####################################################################################################
 
-enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, DemandRequest, LogicalTopology, PhysicalTopology };
+enum class signal_type { Binary, TimeDiscreteAmplitudeContinuousReal, TimeContinuousAmplitudeContinuousReal, PhotonStreamXY, PhotonStreamMP, PhotonStreamMPXY, DemandRequest, LogicalTopology, PhysicalTopology, PathRequest, PathRequestRouted, DemandRequestRouted };
 
 //enum class signal_write_mode {Binary, Ascii};
 
@@ -435,8 +468,18 @@ private:
 			case signal_type::PhysicalTopology:
 				typeName = "PhysicalTopology";
 				break;
+			case signal_type::PathRequest:
+				typeName = "PathRequest";
+				break;
+			case signal_type::PathRequestRouted:
+				typeName = "PathRequestRouted";
+				break;
+			case signal_type::DemandRequestRouted:
+				typeName = "DemandRequestRouted";
+				break;
 			default:
 				cout << "Error: netxpto_20180815.h - typeName not defined\n";
+				break;
 		}
 
 		setType(typeName, vType);
@@ -454,6 +497,9 @@ using PhotonStreamMPXY = BaseSignal<t_photon_mp_xy, signal_type::PhotonStreamMPX
 using DemandRequest= BaseSignal<t_demand, signal_type::DemandRequest, signal_value_type::t_demand>;
 using LogicalTopology = BaseSignal<t_logical_topology, signal_type::LogicalTopology, signal_value_type::t_logical_topology>;
 using PhysicalTopology = BaseSignal<t_physical_topology, signal_type::PhysicalTopology, signal_value_type::t_physical_topology>;
+using PathRequest = BaseSignal<t_path_request, signal_type::PathRequest, signal_value_type::t_path_request>;
+using PathRequestRouted = BaseSignal<t_path_request_routed, signal_type::PathRequestRouted, signal_value_type::t_path_request_routed>;
+using DemandRequestRouted = BaseSignal<t_demand_request_routed, signal_type::DemandRequestRouted, signal_value_type::t_demand_request_routed>;
 
 /*
 class TimeDiscrete : public Signal {
