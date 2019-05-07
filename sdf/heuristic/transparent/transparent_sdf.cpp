@@ -7,6 +7,7 @@
 # include "..\..\..\include\physical_topology_manager_20190421.h"
 
 
+
 //##########################################################################################
 //######################## Simulation Input Parameters #####################################
 //##########################################################################################
@@ -90,28 +91,28 @@ int main()
 
 
 	/* Signals Declaration */
-	DemandRequest Scheduler_Out{"Scheduler_Out.sgn",25};
+	DemandRequest Scheduler_Out{"Scheduler_Out.sgn",1};
 	Scheduler_Out.setSaveInAscii(true);
 
-	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn",5};
+	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn",1};
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn",5};
+	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn",1};
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn",5};
+	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn",1};
 	FinalLogicalTopology.setSaveInAscii(true);
 
-	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn",5};
+	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn",1};
 	FinalPhysicalTopology.setSaveInAscii(true);
 
-	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn",5};
+	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn",1};
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
 
-	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn",5};
+	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn",1};
 	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
 
-	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn",5 };
+	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn",1 };
 	ProcessedDemand.setSaveInAscii(true);
 
 	/* Blocks Decalration */
@@ -154,6 +155,9 @@ int main()
 	Sink SinkLogicalTopology_{ {&FinalLogicalTopology},{} };
 	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
 
+	Sink SinkLogicalTopologyProcessedDemands_{ {&ProcessedDemand},{} };
+	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
+
 	Sink SinkRoutedOrBlocked_{ {&ProcessedDemand},{} };
 	SinkRoutedOrBlocked_.setDisplayNumberOfSamples(true);
 
@@ -175,6 +179,7 @@ int main()
 		//&SinkPhysicalTopologyGenerator_,
 		&LogicalTopologyManager_,
 		&SinkLogicalTopology_,
+		&SinkLogicalTopologyProcessedDemands_,
 		//&SinkRoutedOrBlocked_,
 		&PhysicalTopologyManager_,
 		&SinkPhysicalTopology_
