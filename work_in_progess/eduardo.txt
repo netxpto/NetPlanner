@@ -3,18 +3,13 @@ validar essas heuristicas usando os ILPs do Tiago
 desenvolver novas heuristicas considerando novas restrições
 avançarmos para o modo translucidio
 
-TO BE DONE
-	- ver o sistema the entrada de parametro do netxpto e fazer igual
-	- ver o sistema do log file
-
 
 TO BE DONE
 
-	- atualizar o documento
-	- especificar a topologia fisica e a topologia logical 
-	- codificar o sistema de alto nivel
+	resolver o exemplos dos alunos
+	elaborar o relatório para obter o CAPEX
 
-Next Meeting: 3ª feira, 17h
+
 
 
 TO BE DONE
