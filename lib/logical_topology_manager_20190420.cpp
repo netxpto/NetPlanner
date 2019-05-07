@@ -1,7 +1,8 @@
 # include "..\include\logical_topology_manager_20190420.h"
-
+# include "..\include\Dijkstra_20190503.h"
 
 using namespace std;
+
 
 void LogicalTopologyManager::initialize(void) {
 	
@@ -9,9 +10,12 @@ void LogicalTopologyManager::initialize(void) {
 
 bool LogicalTopologyManager::runBlock(void) {
 	
+	bool transparent{ true };
+
 	t_demand demand;
 	t_demand_request_routed demandProcessed;
 	t_path_request_routed pathRequestRouted;
+
 
 	int process = inputSignals[0]->ready();		// LogicalTopology signal from LogicalTopologyManager_ block
 	int process2 = inputSignals[1]->ready();	// number of samples in the buffer ready to be processed
@@ -21,22 +25,66 @@ bool LogicalTopologyManager::runBlock(void) {
 
 	if (process != 0)
 	{
+		
 		for (int i = 0; i < process; i++) {
 			inputSignals[0]->bufferGet(&currentLogicalTopology);
+
+			// Logical matrices for all ODU types
+			logicalTopology_odu0 = currentLogicalTopology.logicalTopologyAdjacencyMatrix;
+			logicalTopology_odu1 = currentLogicalTopology.logicalTopologyAdjacencyMatrix;
+			logicalTopology_odu2 = currentLogicalTopology.logicalTopologyAdjacencyMatrix;
+			logicalTopology_odu3 = currentLogicalTopology.logicalTopologyAdjacencyMatrix;
+			logicalTopology_odu4 = currentLogicalTopology.logicalTopologyAdjacencyMatrix;
+
+			
+
+			// Verify Transport Mode
+			for (int line = 0; line < currentLogicalTopology.logicalTopologyAdjacencyMatrix.size(); line++)
+			{
+				for (int column = 0; column < currentLogicalTopology.logicalTopologyAdjacencyMatrix[0].size(); column++)
+				{
+					if (line != column)
+					{
+						if (currentLogicalTopology.logicalTopologyAdjacencyMatrix[line][column] == 0)
+							transparent = false;
+					}
+				}
+			}
+			if (transparent)
+				cout << "transparent" << endl;
+			else
+				cout << "opaque" << endl;
 		}
 		//outputSignals[0]->bufferPut((t_logical_topology)currentLogicalTopology);
 	}
 
 	
-	if (process3 != 0) // Process DemandRequestRouted signals
+	if (process3 != 0) // Process PathRequestRouted signals
 	{
 		for (int i = 0; i < process3; i++) {
 			inputSignals[2]->bufferGet(&pathRequestRouted);
 
-			if (pathRequestRouted.pathInformation.routed = false) // Demand was not routed and has to be blocked
+			if (pathRequestRouted.pathInformation.routed == false) // Demand was not routed and has to be blocked
 			{
-				// direct logical connection is cutted off for demands of the same ODU type
-				//currentLogicalTopology.logicalTopologyAdjacencyMatrix[pathRequestRouted.lightPathsTable[0].sourceNode][pathRequestRouted.lightPathsTable[0].destinationNode] = 0;
+				// direct logical connection is cutted off for demands of the same ODU type (0)
+				if (pathRequestRouted.pathInformation.oduType == 0)
+				{
+					logicalTopology_odu0[pathRequestRouted.lightPathsTable[0].sourceNode - 1][pathRequestRouted.lightPathsTable[0].destinationNode - 1] = 0;
+					currentLogicalTopology.logicalTopologyAdjacencyMatrix[pathRequestRouted.lightPathsTable[0].sourceNode - 1][pathRequestRouted.lightPathsTable[0].destinationNode - 1] = 0;
+				}
+				// direct logical connection is cutted off for demands of the same ODU type (1)
+				else if (pathRequestRouted.pathInformation.oduType == 1)
+					logicalTopology_odu1[pathRequestRouted.lightPathsTable[0].sourceNode - 1][pathRequestRouted.lightPathsTable[0].destinationNode - 1] = 0;
+				// direct logical connection is cutted off for demands of the same ODU type (2)
+				else if (pathRequestRouted.pathInformation.oduType == 2)
+					logicalTopology_odu2[pathRequestRouted.lightPathsTable[0].sourceNode-1][pathRequestRouted.lightPathsTable[0].destinationNode-1] = 0;
+				// direct logical connection is cutted off for demands of the same ODU type (3)
+				else if (pathRequestRouted.pathInformation.oduType == 3)
+					logicalTopology_odu3[pathRequestRouted.lightPathsTable[0].sourceNode-1][pathRequestRouted.lightPathsTable[0].destinationNode-1] = 0;
+				// direct logical connection is cutted off for demands of the same ODU type (4)
+				else if (pathRequestRouted.pathInformation.oduType == 4)
+					logicalTopology_odu4[pathRequestRouted.lightPathsTable[0].sourceNode-1][pathRequestRouted.lightPathsTable[0].destinationNode-1] = 0;
+
 				demandProcessed.demandIndex = pathRequestRouted.pathInformation.demandIndex;
 				demandProcessed.routed = false;
 				demandProcessed.pathIndex = -1;
@@ -153,24 +201,22 @@ bool LogicalTopologyManager::runBlock(void) {
 
 				currentLogicalTopology.paths.push_back(newPath);
 
-
-				// Generate a DemandProcessed signal
-
+				// Print DemandRequestRouted signals
 				demandProcessed.demandIndex = pathRequestRouted.pathInformation.demandIndex;
 				demandProcessed.routed = true;
 				demandProcessed.pathIndex = newPath.pathIndex;
 				outputSignals[1]->bufferPut((t_demand_request_routed)demandProcessed);
-				
 				ochsIndex.clear();
 			}
-			
+		
+
 		}
 	}
 	
 
-	int space = outputSignals[1]->space();	// Buffer free space 
+//	int space = inputSignals[1]->space();	// Buffer free space 
 
-	process2 = std::min(space, process2);
+//	process2 = std::min(space, process2);
 
 	if (process2 != 0)
 	{
@@ -182,11 +228,14 @@ bool LogicalTopologyManager::runBlock(void) {
 			//cout << demandProcessed.demandIndex << endl;
 			//outputSignals[1]->bufferPut((t_demand)demandProcessed);
 
-			for (int numberOfPaths = 0; numberOfPaths < currentLogicalTopology.paths.size(); numberOfPaths++) // Searchs list of existing pahts
-			{
-				if (pathFound == true)
-					break;
-				pathFound = false;
+			int numberOfPaths{ 0 };
+			while(numberOfPaths < currentLogicalTopology.paths.size() && pathFound == false) {
+			//for (int numberOfPaths = 0; numberOfPaths < currentLogicalTopology.paths.size(); numberOfPaths++) // Searchs list of existing pahts
+			
+				//if (pathFound == true)
+					
+				//break;
+				//pathFound = false;
 
 				if (currentLogicalTopology.paths[numberOfPaths].sourceNode == demand.sourceNode) // Find a path with the same source node of the demand
 				{
@@ -218,7 +267,12 @@ bool LogicalTopologyManager::runBlock(void) {
 										currentLogicalTopology.opticalChannels[currentLogicalTopology.lightPaths[currentLogicalTopology.paths[numberOfPaths].lightPathsIndex[numberOfLP]].opticalChannelsIndex[numberOfOCh]].demandsIndex.push_back(demand.demandIndex);
 									}
 								}
-
+								// Print DemandRequestRouted signals
+								demandProcessed.demandIndex = demand.demandIndex;
+								demandProcessed.routed = true;
+								demandProcessed.pathIndex = currentLogicalTopology.paths[numberOfPaths].pathIndex;
+								outputSignals[1]->bufferPut((t_demand_request_routed)demandProcessed);
+								
 							}
 							break;
 						case 1:
@@ -246,7 +300,11 @@ bool LogicalTopologyManager::runBlock(void) {
 										currentLogicalTopology.opticalChannels[currentLogicalTopology.lightPaths[currentLogicalTopology.paths[numberOfPaths].lightPathsIndex[numberOfLP]].opticalChannelsIndex[numberOfOCh]].demandsIndex.push_back(demand.demandIndex);
 									}
 								}
-
+								// Print DemandRequestRouted signals
+								demandProcessed.demandIndex = demand.demandIndex;
+								demandProcessed.routed = true;
+								demandProcessed.pathIndex = currentLogicalTopology.paths[numberOfPaths].pathIndex;
+								outputSignals[1]->bufferPut((t_demand_request_routed)demandProcessed);
 							}
 							break;
 						case 2:
@@ -274,7 +332,11 @@ bool LogicalTopologyManager::runBlock(void) {
 										currentLogicalTopology.opticalChannels[currentLogicalTopology.lightPaths[currentLogicalTopology.paths[numberOfPaths].lightPathsIndex[numberOfLP]].opticalChannelsIndex[numberOfOCh]].demandsIndex.push_back(demand.demandIndex);
 									}
 								}
-
+								// Print DemandRequestRouted signals
+								demandProcessed.demandIndex = demand.demandIndex;
+								demandProcessed.routed = true;
+								demandProcessed.pathIndex = currentLogicalTopology.paths[numberOfPaths].pathIndex;
+								outputSignals[1]->bufferPut((t_demand_request_routed)demandProcessed);
 							}
 							break;
 						case 3:
@@ -302,11 +364,15 @@ bool LogicalTopologyManager::runBlock(void) {
 										currentLogicalTopology.opticalChannels[currentLogicalTopology.lightPaths[currentLogicalTopology.paths[numberOfPaths].lightPathsIndex[numberOfLP]].opticalChannelsIndex[numberOfOCh]].demandsIndex.push_back(demand.demandIndex);
 									}
 								}
-
+								// Print DemandRequestRouted signals
+								demandProcessed.demandIndex = demand.demandIndex;
+								demandProcessed.routed = true;
+								demandProcessed.pathIndex = currentLogicalTopology.paths[numberOfPaths].pathIndex;
+								outputSignals[1]->bufferPut((t_demand_request_routed)demandProcessed);
 							}
 							break;
 						case 4:
-							if (currentLogicalTopology.paths[numberOfPaths].capacity >= 32)
+							if (currentLogicalTopology.paths[numberOfPaths].capacity >= 80)
 							{
 								int numberOfLP;
 								int numberOfOCh;
@@ -330,7 +396,11 @@ bool LogicalTopologyManager::runBlock(void) {
 										currentLogicalTopology.opticalChannels[currentLogicalTopology.lightPaths[currentLogicalTopology.paths[numberOfPaths].lightPathsIndex[numberOfLP]].opticalChannelsIndex[numberOfOCh]].demandsIndex.push_back(demand.demandIndex);
 									}
 								}
-
+								// Print DemandRequestRouted signals
+								demandProcessed.demandIndex = demand.demandIndex;
+								demandProcessed.routed = true;
+								demandProcessed.pathIndex = currentLogicalTopology.paths[numberOfPaths].pathIndex;
+								outputSignals[1]->bufferPut((t_demand_request_routed)demandProcessed);
 							}
 							break;
 						default:
@@ -339,28 +409,219 @@ bool LogicalTopologyManager::runBlock(void) {
 						}
 					}
 				}
+				numberOfPaths++;
 			}
 			
 
 			if (pathFound == false)
 			{
 				// try to create a new path to route the demand
+				t_path_request pathRequest; // Create a PathRequest type signal
 				
-				if (currentLogicalTopology.logicalTopologyAdjacencyMatrix[demand.sourceNode-1][demand.destinationNode-1] == 1)
+				if (oduType == 0)
 				{
 					//If the direct logical connection between source and destination nodes is still available
-					t_path_request pathRequest; // Create a PathRequest type signal
 					
-					pathRequest.requestIndex = requestIndex;
+
+					/*pathRequest.requestIndex = requestIndex;
 					pathRequest.demandIndex = demand.demandIndex;
 					pathRequest.sourceNode = demand.sourceNode;
 					pathRequest.destinationNode = demand.destinationNode;
 					pathRequest.intermediateNodes = -1;
-					requestIndex++;
+					requestIndex++;*/
+					if (logicalTopology_odu0[demand.sourceNode - 1][demand.destinationNode - 1] == 1)
+					{
+						
+						Graph g(logicalTopology_odu0[0].size());
+						for (size_t line = 0; line < logicalTopology_odu0[0].size(); line++)
+						{
+							for (size_t column = 0; column < logicalTopology_odu0.size(); column++)
+							{
+								if (logicalTopology_odu0[line][column] == 1)
+									g.addEdge(line, column);
+							}
+						}
 
-					outputSignals[2]->bufferPut((t_path_request) pathRequest); // Send a PathRequest to the PhysicalTopologyManager_ block
+						int sourceNode = demand.sourceNode - 1;
+						int destinationNode = demand.destinationNode - 1;
+						g.printAllPaths(sourceNode, destinationNode);
+						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+						
+
+						pathRequest.requestIndex = requestIndex;
+						pathRequest.demandIndex = demand.demandIndex;
+						pathRequest.oduType = demand.oduType;
+						pathRequest.sourceNode = demand.sourceNode;
+						pathRequest.destinationNode = demand.destinationNode;
+						for (size_t i = 1; i < possiblePaths[0].size() - 1; i++)
+						{
+							pathRequest.intermediateNodes.push_back(possiblePaths[0][i] + 1);
+						}
+						if (pathRequest.intermediateNodes.size() == 0)
+							pathRequest.intermediateNodes.push_back(-1);
+
+						requestIndex++;
+						outputSignals[2]->bufferPut((t_path_request)pathRequest); // Send a PathRequest to the PhysicalTopologyManager_ block
+						pathRequest.intermediateNodes.clear();
+					}
 				}
-			}
+				else if (oduType == 1)
+				{
+					if (logicalTopology_odu1[demand.sourceNode - 1][demand.destinationNode - 1] == 1)
+					{
+						Graph g(logicalTopology_odu1[0].size());
+						for (size_t line = 0; line < logicalTopology_odu1[0].size(); line++)
+						{
+							for (size_t column = 0; column < logicalTopology_odu1.size(); column++)
+							{
+								if (logicalTopology_odu1[line][column] == 1)
+									g.addEdge(line, column);
+							}
+						}
+
+						int sourceNode = demand.sourceNode - 1;
+						int destinationNode = demand.destinationNode - 1;
+						g.printAllPaths(sourceNode, destinationNode);
+						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+
+						pathRequest.requestIndex = requestIndex;
+						pathRequest.demandIndex = demand.demandIndex;
+						pathRequest.oduType = demand.oduType;
+						pathRequest.sourceNode = demand.sourceNode;
+						pathRequest.destinationNode = demand.destinationNode;
+						for (size_t i = 1; i < possiblePaths[0].size() - 1; i++)
+						{
+							pathRequest.intermediateNodes.push_back(possiblePaths[0][i] + 1);
+						}
+						if (pathRequest.intermediateNodes.size() == 0)
+							pathRequest.intermediateNodes.push_back(-1);
+						requestIndex++;
+						outputSignals[2]->bufferPut((t_path_request)pathRequest); // Send a PathRequest to the PhysicalTopologyManager_ block
+						pathRequest.intermediateNodes.clear();
+					}
+				}
+				else if (oduType == 2)
+				{
+					if (logicalTopology_odu2[demand.sourceNode - 1][demand.destinationNode - 1] == 1)
+					{
+						Graph g(logicalTopology_odu2[0].size());
+						for (size_t line = 0; line < logicalTopology_odu2[0].size(); line++)
+						{
+							for (size_t column = 0; column < logicalTopology_odu2.size(); column++)
+							{
+								if (logicalTopology_odu2[line][column] == 1)
+									g.addEdge(line, column);
+							}
+						}
+
+						int sourceNode = demand.sourceNode - 1;
+						int destinationNode = demand.destinationNode - 1;
+						g.printAllPaths(sourceNode, destinationNode);
+						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+
+						pathRequest.requestIndex = requestIndex;
+						pathRequest.demandIndex = demand.demandIndex;
+						pathRequest.oduType = demand.oduType;
+						pathRequest.sourceNode = demand.sourceNode;
+						pathRequest.destinationNode = demand.destinationNode;
+						for (size_t i = 1; i < possiblePaths[0].size() - 1; i++)
+						{
+							pathRequest.intermediateNodes.push_back(possiblePaths[0][i] + 1);
+						}
+						if (pathRequest.intermediateNodes.size() == 0)
+							pathRequest.intermediateNodes.push_back(-1);
+						requestIndex++;
+						outputSignals[2]->bufferPut((t_path_request)pathRequest); // Send a PathRequest to the PhysicalTopologyManager_ block
+						pathRequest.intermediateNodes.clear();
+					}
+				}
+				else if (oduType == 3)
+				{
+					if (logicalTopology_odu3[demand.sourceNode - 1][demand.destinationNode - 1] == 1)
+					{
+						Graph g(logicalTopology_odu3[0].size());
+						for (size_t line = 0; line < logicalTopology_odu3[0].size(); line++)
+						{
+							for (size_t column = 0; column < logicalTopology_odu3.size(); column++)
+							{
+								if (logicalTopology_odu3[line][column] == 1)
+									g.addEdge(line, column);
+							}
+						}
+
+						int sourceNode = demand.sourceNode - 1;
+						int destinationNode = demand.destinationNode - 1;
+						g.printAllPaths(sourceNode, destinationNode);
+						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+
+						pathRequest.requestIndex = requestIndex;
+						pathRequest.demandIndex = demand.demandIndex;
+						pathRequest.oduType = demand.oduType;
+						pathRequest.sourceNode = demand.sourceNode;
+						pathRequest.destinationNode = demand.destinationNode;
+						for (size_t i = 1; i < possiblePaths[0].size() - 1; i++)
+						{
+							pathRequest.intermediateNodes.push_back(possiblePaths[0][i] + 1);
+						}
+						if (pathRequest.intermediateNodes.size() == 0)
+							pathRequest.intermediateNodes.push_back(-1);
+						requestIndex++;
+						outputSignals[2]->bufferPut((t_path_request)pathRequest); // Send a PathRequest to the PhysicalTopologyManager_ block
+						pathRequest.intermediateNodes.clear();
+					}
+				}
+				else if (oduType == 4)
+				{
+					if (logicalTopology_odu4[demand.sourceNode - 1][demand.destinationNode - 1] == 1)
+					{
+						Graph g(logicalTopology_odu4[0].size());
+						for (size_t line = 0; line < logicalTopology_odu4[0].size(); line++)
+						{
+							for (size_t column = 0; column < logicalTopology_odu4.size(); column++)
+							{
+								if (logicalTopology_odu4[line][column] == 1)
+									g.addEdge(line, column);
+							}
+						}
+
+						int sourceNode = demand.sourceNode - 1;
+						int destinationNode = demand.destinationNode - 1;
+						g.printAllPaths(sourceNode, destinationNode);
+						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+						
+						
+						if (transparent)
+						{
+							for (int i = 0; i < possiblePaths.size(); i++)
+							{
+								if (possiblePaths[i].size() > 2)
+								{
+									possiblePaths.erase(possiblePaths.begin()+i, possiblePaths.begin()+ (possiblePaths.size()));
+									break;
+								}
+							}
+						}
+	
+
+						pathRequest.requestIndex = requestIndex;
+						pathRequest.demandIndex = demand.demandIndex;
+						pathRequest.oduType = demand.oduType;
+						pathRequest.sourceNode = demand.sourceNode;
+						pathRequest.destinationNode = demand.destinationNode;
+						for (size_t i = 1; i < possiblePaths[0].size() - 1; i++)
+						{
+							pathRequest.intermediateNodes.push_back(possiblePaths[0][i] + 1);
+						}
+						if (pathRequest.intermediateNodes.size() == 0)
+							pathRequest.intermediateNodes.push_back(-1);
+						requestIndex++;
+						outputSignals[2]->bufferPut((t_path_request)pathRequest); // Send a PathRequest to the PhysicalTopologyManager_ block
+						pathRequest.intermediateNodes.clear();
+					}
+				}
+					
+				}
+			
 			//outputSignals[1]->bufferPut((t_demand)demand);
 			
 		}

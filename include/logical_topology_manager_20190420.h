@@ -26,6 +26,11 @@ class LogicalTopologyManager : public Block {
 	// State variables
 	t_logical_topology currentLogicalTopology;
 	t_integer requestIndex{ 0 };
+	t_matrix logicalTopology_odu0;	// Logical topology matrix for odu0 type demands
+	t_matrix logicalTopology_odu1;	// Logical topology matrix for odu1 type demands
+	t_matrix logicalTopology_odu2;	// Logical topology matrix for odu2 type demands
+	t_matrix logicalTopology_odu3;	// Logical topology matrix for odu3 type demands
+	t_matrix logicalTopology_odu4;	// Logical topology matrix for odu4 type demands
 
 	// Input parameters
 	routing_criterion_logical_topology routingCriterionLogicalTopology{ routing_criterion_logical_topology::hops };
