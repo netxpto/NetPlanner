@@ -34,7 +34,7 @@ bool LogicalTopologyGenerator::runBlock(void) {
 		for (size_t k = 0; k < physicalTopologyAdjacencyMatrix[0].size(); k++) { Transparent.logicalTopologyAdjacencyMatrix[k][k] = 0; }
 
 // CREATE A PATH, LIGHTPATH AND OPTICAL CHANNEL FOR TEST PURPOSES
-		t_paths test1;
+	/*	t_paths test1;
 		test1.pathIndex = 20;
 		test1.sourceNode = 1;
 		test1.destinationNode = 5;
@@ -70,7 +70,7 @@ bool LogicalTopologyGenerator::runBlock(void) {
 		Transparent.paths.push_back(test1);
 		Transparent.lightPaths.push_back(test2);
 		Transparent.opticalChannels.push_back(test3);
-		Transparent.opticalChannels.push_back(test4);
+		Transparent.opticalChannels.push_back(test4);*/
 
 		outputSignals[0]->bufferPut((t_logical_topology) Transparent);
 		

@@ -52,6 +52,8 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 					}
 
 					output.opticalMultiplexingSystems.push_back(oms);
+					oms.wavelenghts.clear();
+					oms.availableWavelenghts.clear();
 					k++;
 				}
 			}
