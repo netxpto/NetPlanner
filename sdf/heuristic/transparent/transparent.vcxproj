@@ -121,6 +121,8 @@
     <ClCompile Include="transparent_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\include\Dijkstra_20190503.h" />
+    <ClInclude Include="..\..\..\include\Dijkstra_physical_20190504.h" />
     <ClInclude Include="..\..\..\include\logical_topology_generator_20190216.h" />
     <ClInclude Include="..\..\..\include\logical_topology_manager_20190420.h" />
     <ClInclude Include="..\..\..\include\netxpto_20190130.h" />

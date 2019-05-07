@@ -28,6 +28,7 @@
 # include <strstream>
 # include <string>
 # include <iostream>
+# include <list>
 
 
 
@@ -128,7 +129,7 @@ using t_path_request = struct {
 	t_integer demandIndex{ 0 };
 	t_integer oduType{ 0 };
 	t_integer sourceNode{ 0 };
-	t_integer intermediateNodes{-1};
+	std::vector<t_integer> intermediateNodes;
 	t_integer destinationNode{ 0 };
 };
 
@@ -155,7 +156,7 @@ using t_optical_channels = struct {			// opticalChannels data structure
 	t_integer sourceNode{ 0 };				// opticalChannels source node
 	t_integer destinationNode{ 0 };			// opticalChannels destination node
 	t_integer capacity{ 0 };				// opticalChannels capacity in terms of ODU0 demands
-	t_integer wavelenght{ 0 };				// opticalChannels wavelenght
+	double wavelenght{ 0 };				// opticalChannels wavelenght
 	t_integer numberOfDemands{ 0 };         // number of demands passing through each of the opticalChannels
 	std::vector<t_integer> demandsIndex;			// index of the previous demands
 };

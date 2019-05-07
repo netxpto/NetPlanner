@@ -11,7 +11,7 @@ physicalTopologyAdjacencyMatrix=6
 //################################### NUMBER OF OMS PER LINK #######################################
 numberOfOMSPerLink=1
 //############################# NUMBER OF OPTICAL CHANNELS PER OMS #################################
-numberOfOpticalChannelsPerOMS=5
+numberOfOpticalChannelsPerOMS=2
 //################################### INITIAL WAVELENGHT (nm) ######################################
 initialWavelenght=1550
 //############################## WAVELENGHT SPACING IN NANOMETERS ##################################
@@ -23,8 +23,8 @@ opticalChannelCapacity=80
 //##################################################################################################
 //####################################### ODU0 #####################################################
 odu0=6
-0 0 0 0 0 1
-0 0 0 0 0 1
+0 0 0 0 0 0
+0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
@@ -47,29 +47,29 @@ odu2=6
 0 0 0 0 0 0
 //####################################### ODU3 #####################################################
 odu3=6
-0 0 0 0 1 0
 0 0 0 0 0 0
 0 0 0 0 0 0
+0 0 0 0 2 0
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
 //####################################### ODU4 #####################################################
 odu4=6
-0 0 0 0 0 0
+0 0 0 0 5 0
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0
 0 0 0 0 0 0 
 //################################### ORDERING RULE ################################################
-orderingRule=ascendingOrder
+orderingRule=descendingOrder
 //################################### TRANSPORT MODE ###############################################
 transportMode=transparent
 //############################ ROUTING CRITERION LOGICAL TOPOLOGY ##################################
 routingCriterionLogicalTopology=hops
 //############################ BLOCKING CRITERION LOGICAL TOPOLOGY #################################
-blockingCriterionLogicalTopology=1
+blockingCriterionLogicalTopology=20
 //############################ ROUTING CRITERION PHYSICAL TOPOLOGY #################################
 routingCriterionPhysicalTopology=hops
 //############################ BLOCKING CRITERION PHYSICAL TOPOLOGY ################################
-blockingCriterionPhysicalTopology=1
+blockingCriterionPhysicalTopology=3
