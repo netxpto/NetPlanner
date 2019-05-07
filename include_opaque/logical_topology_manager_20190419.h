@@ -11,10 +11,11 @@ class LogicalTopologyManager : public Block {
 
 	//State Variables
 	t_logical_topology logicalTopology;
-	t_demand_request demand;
 
-	t_integer dijkstra(std::vector<vector<int>> graph, t_integer src, t_integer dst);
+	void dijkstraComputePaths(vertex_t source, const adjacency_list_t &adjacency_list, std::vector<weight_t> &min_distance, std::vector<vertex_t> &previous);
+	std::list<vertex_t> dijkstraGetShortestPathTo(vertex_t vertex, const std::vector<vertex_t> &previous);
 
+	
 public:
 	// Methods (Constructors)
 	LogicalTopologyManager() {};
