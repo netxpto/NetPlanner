@@ -1,4 +1,4 @@
-# include "..\include_opaque\netxpto_20190130.h"
+#include "..\include_opaque\netxpto_20190130.h"
 
 using namespace std;
 
@@ -371,9 +371,9 @@ void Signal::close() {
 					fileHandler << ptr->numberOfIntermediateNodes;
 					fileHandler << "\t";
 					fileHandler << "[";
-					for (t_integer i = 0; i < (t_integer)ptr->intermediateNodes.size(); i++) {
+					for (size_t i = 0; i < ptr->intermediateNodes.size(); i++) {
 						fileHandler << ptr->intermediateNodes[i];
-						if (i < (t_integer)ptr->intermediateNodes.size() - 1)
+						if (i < ptr->intermediateNodes.size() - 1)
 							fileHandler << ",";
 					}
 					fileHandler << "]";
@@ -437,9 +437,9 @@ void Signal::close() {
 						fileHandler << lightPathsTable.numberOfIntermediateNodes;
 						fileHandler << "\t";
 						fileHandler << "[";
-						for (t_integer i = 0; i < (t_integer)lightPathsTable.intermediateNodes.size(); i++) {
+						for (size_t i = 0; i < lightPathsTable.intermediateNodes.size(); i++) {
 							fileHandler << lightPathsTable.intermediateNodes[i];
-							if (i < (t_integer)lightPathsTable.intermediateNodes.size() - 1)
+							if (i < lightPathsTable.intermediateNodes.size() - 1)
 								fileHandler << ",";
 						}
 						fileHandler << "]";
@@ -502,9 +502,9 @@ void Signal::close() {
 						fileHandler << path.numberOfLightPaths;
 						fileHandler << "\t";
 						fileHandler << "[";
-						for (t_integer i = 0; i < (t_integer) path.lightPathsIndex.size(); i++) {
+						for (size_t i = 0; i < path.lightPathsIndex.size(); i++) {
 							fileHandler << path.lightPathsIndex[i];
-							if ( i < (t_integer)path.lightPathsIndex.size() - 1)
+							if ( i < path.lightPathsIndex.size() - 1)
 								fileHandler << ",";
 						}
 						fileHandler << "]";
@@ -540,9 +540,9 @@ void Signal::close() {
 						fileHandler << lightPath.numberOfOpticalChannels;
 						fileHandler << "\t";
 						fileHandler << "[";
-						for (t_integer i = 0; i < (t_integer) lightPath.opticalChannelsIndex.size(); i++) {
+						for (size_t i = 0; i < lightPath.opticalChannelsIndex.size(); i++) {
 							fileHandler << lightPath.opticalChannelsIndex[i];
-							if (i < (t_integer)lightPath.opticalChannelsIndex.size() - 1)
+							if (i < lightPath.opticalChannelsIndex.size() - 1)
 								fileHandler << ",";
 						}
 						fileHandler << "]";
@@ -582,9 +582,9 @@ void Signal::close() {
 						fileHandler << opticalChannel.numberOfDemands;
 						fileHandler << "\t";
 						fileHandler << "[";
-						for (t_integer i = 0; i < (t_integer) opticalChannel.demandsIndex.size(); i++) {
+						for (size_t i = 0; i < opticalChannel.demandsIndex.size(); i++) {
 							fileHandler << opticalChannel.demandsIndex[i];
-							if (i < (t_integer)opticalChannel.demandsIndex.size() - 1)
+							if (i < opticalChannel.demandsIndex.size() - 1)
 								fileHandler << ",";
 						}
 						fileHandler << "]";
@@ -642,17 +642,17 @@ void Signal::close() {
 						fileHandler << oms.maximumNumberOfWavelengths;
 						fileHandler << "\t";
 						fileHandler << "[";
-						for (t_integer i = 0; i < (t_integer)oms.wavelengths.size(); i++) {
+						for (size_t i = 0; i < oms.wavelengths.size(); i++) {
 							fileHandler << oms.wavelengths[i];
-							if (i < (t_integer)oms.availableWavelengths.size() - 1)
+							if (i < oms.availableWavelengths.size() - 1)
 								fileHandler << ",";
 						}
 						fileHandler << "]";
 						fileHandler << "\t";
 						fileHandler << "[";
-						for (t_integer i = 0; i < (t_integer)oms.availableWavelengths.size(); i++) {
+						for (size_t i = 0; i < oms.availableWavelengths.size(); i++) {
 							fileHandler << oms.availableWavelengths[i];
-							if (i < (t_integer)oms.availableWavelengths.size() - 1)
+							if (i <  oms.availableWavelengths.size() - 1)
 								fileHandler << ",";
 						}
 						fileHandler << "]";
@@ -2572,6 +2572,11 @@ SystemInputParameters::SystemInputParameters(int argc, char * argv[])
 		inputParametersFileName = argv[1];
 		outputFolderName = argv[2];
 	}
+}
+
+SystemInputParameters::SystemInputParameters(string fName)
+{
+	inputParametersFileName = fName;
 }
 
 SystemInputParameters::~SystemInputParameters()

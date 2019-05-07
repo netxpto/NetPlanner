@@ -28,6 +28,11 @@
 # include <string>
 # include <set>
 
+#include <list>
+#include <limits> // for numeric_limits
+#include <utility> // for pair
+#include <iterator>
+
 // ####################################################################################################
 // #
 // # Alias for ISO C++ built-in types
@@ -60,6 +65,22 @@ const int MAX_NUMBER_OF_PATHS = 2;
 using namespace std;							// to be deleted 4/9/2018
 
 enum class survivability_method { none, protection_1_plus_1, restoration };
+
+
+typedef int vertex_t;
+typedef double weight_t;
+
+const weight_t max_weight = std::numeric_limits<double>::infinity();
+
+struct neighbor {
+	vertex_t target;
+	weight_t weight;
+	neighbor(vertex_t arg_target, weight_t arg_weight)
+		: target(arg_target), weight(arg_weight) { }
+};
+
+typedef std::vector<std::vector<neighbor> > adjacency_list_t;
+
 
 // ####################################################################################################
 // #
@@ -109,7 +130,7 @@ using t_optical_channel = struct {
 	t_integer opticalChannelIndex{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
-	t_integer wavelength{ 0 };
+	double wavelength{ 0 };
 	t_integer capacity{ 0 };
 	t_integer numberOfDemands{ 0 };
 	std::vector<t_integer> demandsIndex;
@@ -129,6 +150,7 @@ using t_optical_multiplexing_system = struct {
 	t_integer maximumNumberOfWavelengths{ 0 };
 	std::vector<double> wavelengths;
 	std::vector<t_integer> availableWavelengths;
+	//std::vector<t_integer> capacity;
 };
 using t_physical_topology = struct {
 	t_matrix physicalTopologyAdjacencyMatrix{ 0 };
@@ -151,12 +173,16 @@ using t_demand_request_routed = struct {
 	bool routed;
 	t_integer pathIndex;
 };
+
 using t_path_request = struct {
 	t_integer requestIndex{ 0 };
+	//t_integer demandIndex{ 0 };
+	//t_integer oduType{ 0 };
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer numberOfIntermediateNodes{ 0 };
 	std::vector<t_integer> intermediateNodes;
+	//bool wavelengthContinuity;
 };
 
 using t_path_routed = struct {
@@ -172,6 +198,7 @@ using t_light_paths_table = struct {
 	std::vector<t_integer> intermediateNodes;
 	double wavelength{ 0 };
 };
+
 using t_path_request_routed = struct {
 	std::vector<t_path_routed> pathRouted;
 	std::vector<t_light_paths_table> lightPathsTable;
@@ -243,7 +270,7 @@ public:
 	explicit Signal(t_unsigned_long bLength) : bufferLength{ bLength } {};
 
 	// Signal destructors
-	~Signal() { if (!(valueType == signal_value_type::t_message)) { delete[] buffer; }; };	
+	//~Signal() { if (!(valueType == signal_value_type::t_message)) { delete[] buffer; }; };	
 
 	// Buffer manipulation funtions
 	t_integer ready();										// Returns the number of samples in the buffer ready to be processed
@@ -1119,7 +1146,7 @@ public:
 class SystemInputParameters {
 private:
 	vector<string> loadedInputParameters;
-	string inputParametersFileName{ "input_parameters_0.txt" }; //name of the file from where the input parameters will be read
+	string inputParametersFileName{ "input_parameters.txt" }; //name of the file from where the input parameters will be read
 	string outputFolderName{ "signals" };
 	enum ParameterType { INT, DOUBLE, BOOL, STRING, MATRIX }; //types of parameters
 											  //A parameter can only be of 1 type
@@ -1175,8 +1202,9 @@ public:
 	void addInputParameter(string name, string* variable);
 	void addInputParameter(string name, t_matrix* variable);
 	/* Default empty constructor. Initializes the map */
-	SystemInputParameters(){}
+	SystemInputParameters() {};
 	SystemInputParameters(int argc,char*argv[]);
+	SystemInputParameters(string fName);
 	/* Deletes all heap memory occupied by the parameters */
 	~SystemInputParameters();
 };

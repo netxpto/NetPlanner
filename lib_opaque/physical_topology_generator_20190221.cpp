@@ -1,11 +1,13 @@
 #include "..\include_opaque\physical_topology_generator_20190221.h"
 
 
-void PhysicalTopologyGenerator::initialize(void) {}
+void PhysicalTopologyGenerator::initialize(void) 
+{
 
+}
 
-bool PhysicalTopologyGenerator::runBlock(void) {
-
+bool PhysicalTopologyGenerator::runBlock(void) 
+{
 	if (!generate)
 		return false;
 	else
@@ -22,25 +24,25 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 
 	double wavelength = initialWavelength;
 
-	for (t_integer w = 0; w < numberOfOpticalChannelsPerOMS; w++) {
-
+	for (t_integer w = 0; w < numberOfOpticalChannelsPerOMS; w++) 
+	{
 		outputOpticalMultiplexingSystem.wavelengths.push_back(wavelength);
 		if (w < numberOfOpticalChannelsPerOMS - 1)
 			wavelength += wavelengthSpacing;
 
-		if (w == 0 || w == 1)
-			outputOpticalMultiplexingSystem.availableWavelengths.push_back(0);
-		else 
+		//if (w == 0 || w == 1)
+			//outputOpticalMultiplexingSystem.availableWavelengths.push_back(0);
+		//else 
 			outputOpticalMultiplexingSystem.availableWavelengths.push_back(1);
 	}
 
-	while (line < nodes) {
-
+	while (line < nodes) 
+	{
 		t_integer column{ 0 };
-		while (column < nodes) {
-
-			if (physicalTopologyAdjacencyMatrix[line][column] == 1) {
-
+		while (column < nodes) 
+		{
+			if (physicalTopologyAdjacencyMatrix[line][column] == 1) 
+			{
 				outputOpticalMultiplexingSystem.OMSIndex = index;
 				outputOpticalMultiplexingSystem.sourceNode = { line + 1 };
 				outputOpticalMultiplexingSystem.destinationNode = { column + 1 };

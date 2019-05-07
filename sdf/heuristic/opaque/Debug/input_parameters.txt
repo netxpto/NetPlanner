@@ -1,0 +1,35 @@
+//Input parameters for opaque transport mode example       
+//                   
+odu0 = 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
+//
+odu1 = 0 1 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
+//
+odu2 = 0 0 1 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
+//
+odu3 = 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
+//
+odu4 = 0 0 1 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
+//
+orderingRule = 0
+//
+transportMode = opaque
+//
+physicalTopologyAdjacencyMatrix = 0 1 0 0 0 1 , 0 0 1 0 0 0 , 0 0 0 0 0 0 , 0 0 1 0 0 0 , 0 0 1 1 0 0 , 0 1 0 0 1 0
+//
+numberOfOMSPerLink = 1
+//
+numberOfOpticalChannelsPerOMS = 2
+//
+initialWavelength = 1550
+//
+wavelengthSpacing = 0.8
+//
+opticalChannelCapacity = 80
+//
+routingCriterionLogicalTopology = hops
+//
+blockingCriterionLogicalTopology = 3
+//
+routingCriterionPhysicalTopology = hops
+//
+blockingCriterionPhysicalTopology = 3
