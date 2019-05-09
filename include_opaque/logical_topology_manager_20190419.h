@@ -11,6 +11,7 @@ class LogicalTopologyManager : public Block {
 
 	//State Variables
 	t_logical_topology logicalTopology;
+	t_integer requestIndex = 0;
 
 	void dijkstraComputePaths(vertex_t source, const adjacency_list_t &adjacency_list, std::vector<weight_t> &min_distance, std::vector<vertex_t> &previous);
 	std::list<vertex_t> dijkstraGetShortestPathTo(vertex_t vertex, const std::vector<vertex_t> &previous);

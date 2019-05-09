@@ -24,7 +24,7 @@ public:
 	t_matrix physicalTopologyAdjacencyMatrix;
 	t_integer numberOfOMSPerLink{ 1 };
 	t_integer numberOfOpticalChannelsPerOMS{ 2 };
-	double initialWavelenght{ 1550 };
+	double initialWavelength{ 1550 };
 	double wavelengthSpacing{ 0.8 };
 	t_integer opticalChannelCapacity{ 80 }; //Capacity of each optical channel in ODU0s
 	std::string routingCriterionLogicalTopology{ "hops" };
@@ -64,7 +64,7 @@ public:
 		addInputParameter("physicalTopologyAdjacencyMatrix", &physicalTopologyAdjacencyMatrix);
 		addInputParameter("numberOfOMSPerLink", &numberOfOMSPerLink);
 		addInputParameter("numberOfOpticalChannelsPerOMS", &numberOfOpticalChannelsPerOMS);
-		addInputParameter("initialWavelength", &initialWavelenght);
+		addInputParameter("initialWavelength", &initialWavelength);
 		addInputParameter("wavelengthSpacing", &wavelengthSpacing);
 		addInputParameter("opticalChannelCapacity", &opticalChannelCapacity);
 		addInputParameter("routingCriterionLogicalTopology", &routingCriterionLogicalTopology);
@@ -85,28 +85,28 @@ int main()
 	SimulationInputParameters param("input_parameters.txt");
 
 	//Signals Declaration 
-	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn", 10 };
+	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn",1};
+	Scheduler_Out.setSaveInAscii(true);
+
+	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn" };
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn", 10 };
+	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn" };
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 10};
-	Scheduler_Out.setSaveInAscii(true);
-	
-	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn", 10 };
+	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn" };
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
 
-	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn", 10 };
+	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn" };
 	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
 
-	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn", 10};
+	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn" };
 	ProcessedDemand.setSaveInAscii(true);
 
-	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn", 10 };
+	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn" };
 	FinalLogicalTopology.setSaveInAscii(true);
 	
-	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn", 10 };
+	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn" };
 	FinalPhysicalTopology.setSaveInAscii(true);
 
 
@@ -119,7 +119,7 @@ int main()
 	PhysicalTopologyGenerator_.setPhysicalTopologyAdjacencyMatrix(param.physicalTopologyAdjacencyMatrix);
 	PhysicalTopologyGenerator_.setNumberOfOMSPerLink(param.numberOfOMSPerLink);
 	PhysicalTopologyGenerator_.setNumberOfOpticalChannelsPerOMS(param.numberOfOpticalChannelsPerOMS);
-	PhysicalTopologyGenerator_.setInitialWavelength(param.initialWavelenght);
+	PhysicalTopologyGenerator_.setInitialWavelength(param.initialWavelength);
 	PhysicalTopologyGenerator_.setWavelengthSpacing(param.wavelengthSpacing);
 	PhysicalTopologyGenerator_.setOpticalChannelCapacity(param.opticalChannelCapacity);
 
