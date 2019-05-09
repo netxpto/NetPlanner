@@ -10,7 +10,8 @@
 //######################## Simulation Input Parameters #####################################
 //##########################################################################################
 
-class SimulationInputParameters : public SystemInputParameters {
+class SimulationInputParameters : public SystemInputParameters 
+{
 public:
 	//INPUT PARAMETERS
 	t_matrix odu0;
@@ -32,19 +33,27 @@ public:
 	t_integer blockingCriterionPhysicalTopology{ 3 };
 	
 	/* Initializes default input parameters */
-	SimulationInputParameters() : SystemInputParameters() {
+	SimulationInputParameters() : SystemInputParameters() 
+	{
 		initializeInputParameterMap();
 	}
 
 	/* Initializes input parameters according to the program arguments */
 	/* Usage: .\opaque.exe <input_parameters_0.txt> <output_directory> */
-	SimulationInputParameters(int argc, char*argv[]) : SystemInputParameters(argc, argv) {
+	SimulationInputParameters(int argc, char*argv[]) : SystemInputParameters(argc, argv) 
+	{
 		initializeInputParameterMap();
 		readSystemInputParameters();
 	}
 
+	SimulationInputParameters(string fName) : SystemInputParameters(fName) 
+	{
+		initializeInputParameterMap();
+		readSystemInputParameters();
+	}
 	//Each parameter must be added to the parameter map by calling addInputParameter(string,param*)
-	void initializeInputParameterMap() {
+	void initializeInputParameterMap() 
+	{
 		addInputParameter("odu0", &odu0);
 		addInputParameter("odu1", &odu1);
 		addInputParameter("odu2", &odu2);
@@ -69,33 +78,35 @@ public:
 //##########################################################################################
 //##########################################################################################
 
-int main(int argc, char*argv[]) {
-
-	SimulationInputParameters param(argc, argv);
+//int main(int argc, char*argv[]) 
+int main()
+{
+	//SimulationInputParameters param(argc, argv);
+	SimulationInputParameters param("input_parameters.txt");
 
 	//Signals Declaration 
-	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn", param.getOutputFolderName() };
+	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn", 10 };
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn", param.getOutputFolderName() };
+	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn", 10 };
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", param.getOutputFolderName()};
+	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 10};
 	Scheduler_Out.setSaveInAscii(true);
 	
-	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn", param.getOutputFolderName() };
+	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn", 10 };
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
 
-	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn", param.getOutputFolderName() };
+	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn", 10 };
 	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
 
-	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn", param.getOutputFolderName() };
+	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn", 10};
 	ProcessedDemand.setSaveInAscii(true);
 
-	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn", param.getOutputFolderName() };
+	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn", 10 };
 	FinalLogicalTopology.setSaveInAscii(true);
 	
-	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn", param.getOutputFolderName() };
+	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn", 10 };
 	FinalPhysicalTopology.setSaveInAscii(true);
 
 
@@ -139,7 +150,8 @@ int main(int argc, char*argv[]) {
 
 
 	//System Declaration and Initialization
-	System MainSystem{
+	System MainSystem
+	{
 			// BLOCKS
 			&LogicalTopologyGenerator_,
 			&PhysicalTopologyGenerator_,
@@ -148,8 +160,7 @@ int main(int argc, char*argv[]) {
 			&PhysicalTopologyManager_,
 			&SinkRoutedOrBlocked_,
 			&SinkLogicalTopology_,
-			&SinkPhysicalTopology_,
-			
+			&SinkPhysicalTopology_,		
 	};
 	
 	//System Run

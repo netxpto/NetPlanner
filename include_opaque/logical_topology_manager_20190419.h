@@ -1,7 +1,7 @@
-# ifndef LOGICAL_TOPOLOGY_MANAGER_H_
-# define LOGICAL_TOPOLOGY_MANAGER_H_
+#ifndef LOGICAL_TOPOLOGY_MANAGER_H_
+#define LOGICAL_TOPOLOGY_MANAGER_H_
 
-# include "netxpto_20190130.h"
+#include "netxpto_20190130.h"
 
 class LogicalTopologyManager : public Block {
 
@@ -10,8 +10,12 @@ class LogicalTopologyManager : public Block {
 	t_integer blockingCriterionLogicalTopology;
 
 	//State Variables
+	t_logical_topology logicalTopology;
 
+	void dijkstraComputePaths(vertex_t source, const adjacency_list_t &adjacency_list, std::vector<weight_t> &min_distance, std::vector<vertex_t> &previous);
+	std::list<vertex_t> dijkstraGetShortestPathTo(vertex_t vertex, const std::vector<vertex_t> &previous);
 
+	
 public:
 	// Methods (Constructors)
 	LogicalTopologyManager() {};

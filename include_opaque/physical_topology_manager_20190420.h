@@ -10,7 +10,7 @@ class PhysicalTopologyManager : public Block {
 	t_integer blockingCriterionPhysicalTopology;
 
 	//State Variables
-
+	t_physical_topology physicalTopology;
 
 public:
 	// Methods (Constructors)

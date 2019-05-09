@@ -64,7 +64,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Debug\input_parameters_0.txt">
+    <Text Include="input_parameters.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

@@ -6,6 +6,11 @@ avançarmos para o modo translucidio
 
 
 TO BE DONE
+	
+	- resolver o exemplo de estudo
+
+
+TO BE DONE
 
 	- atualizar o documento
 	- especificar a topologia fisica e a topologia logical 
