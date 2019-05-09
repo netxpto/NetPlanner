@@ -12,6 +12,9 @@ class PhysicalTopologyManager : public Block {
 	//State Variables
 	t_physical_topology physicalTopology;
 
+	void dijkstraComputePaths(vertex_t source, const adjacency_list_t &adjacency_list, std::vector<weight_t> &min_distance, std::vector<vertex_t> &previous);
+	std::list<vertex_t> dijkstraGetShortestPathTo(vertex_t vertex, const std::vector<vertex_t> &previous);
+
 public:
 	// Methods (Constructors)
 	PhysicalTopologyManager() {};
