@@ -95,7 +95,381 @@ void Signal::bufferPut(T value)
 						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
-					} 
+					}
+					else if (type == "PathRequest") {
+						t_path_request *ptr = (t_path_request *)buffer;
+						ptr = ptr + (firstValueToBeSaved - 1);
+
+						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+
+						fileHandler << "\n";
+						fileHandler << "requestIndex";
+						fileHandler << " | ";
+						fileHandler << "demandIndex";
+						fileHandler << " | ";
+						fileHandler << "oduType";
+						fileHandler << " | ";
+						fileHandler << "sourceNode";
+						fileHandler << " | ";
+						fileHandler << "destinationNode";
+						fileHandler << " | ";
+						fileHandler << "numberOfIntermediateNodes";
+						fileHandler << " | ";
+						fileHandler << "intermediateNodes";
+						fileHandler << "\n\n";
+
+						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
+							fileHandler << ptr->requestIndex;
+							fileHandler << "\t";
+							fileHandler << ptr->demandIndex;
+							fileHandler << "\t";
+							fileHandler << ptr->oduType;
+							fileHandler << "\t";
+							fileHandler << ptr->sourceNode;
+							fileHandler << "\t";
+							fileHandler << ptr->destinationNode;
+							fileHandler << "\t";
+							fileHandler << ptr->numberOfIntermediateNodes;
+							fileHandler << "\t";
+							fileHandler << "[";
+							for (size_t i = 0; i < ptr->intermediateNodes.size(); i++) {
+								fileHandler << ptr->intermediateNodes[i];
+								if (i < ptr->intermediateNodes.size() - 1)
+									fileHandler << ",";
+							}
+							fileHandler << "]";
+
+							fileHandler << "\n";
+							ptr++;
+						}
+						fileHandler.close();
+						setFirstValueToBeSaved(1);
+					}
+
+					else if (type == "PathRequestRouted") {
+						t_path_request_routed *ptr = (t_path_request_routed *)buffer;
+						ptr = ptr + (firstValueToBeSaved - 1);
+
+						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
+
+							fileHandler << "\n";
+							fileHandler << "### pathInformation ###";
+							fileHandler << "\n\n";
+							fileHandler << "requestIndex";
+							fileHandler << " | ";
+							fileHandler << "demandIndex";
+							fileHandler << " | ";
+							fileHandler << "oduType";
+							fileHandler << " | ";
+							fileHandler << "routed";
+							fileHandler << " | ";
+							fileHandler << "numberOfLightPaths";
+							fileHandler << "\n";
+
+							fileHandler << (*ptr).pathInformation.requestIndex;
+							fileHandler << "\t";
+							fileHandler << (*ptr).pathInformation.demandIndex;
+							fileHandler << "\t";
+							fileHandler << (*ptr).pathInformation.oduType;
+							fileHandler << "\t";
+							if ((*ptr).pathInformation.routed == true)
+								fileHandler << "true";
+							else
+								fileHandler << "false";
+							fileHandler << "\t";
+							fileHandler << (*ptr).pathInformation.numberOfLightPaths;
+							fileHandler << "\n";
+
+							fileHandler << "\n\n";
+
+							fileHandler << "### lightPathsTable ###";
+							fileHandler << "\n\n";
+							fileHandler << "sourceNode";
+							fileHandler << " | ";
+							fileHandler << "destinationNode";
+							fileHandler << " | ";
+							fileHandler << "numberOfIntermediateNodes";
+							fileHandler << " | ";
+							fileHandler << "intermediateNodes";
+							fileHandler << " | ";
+							fileHandler << "wavelength";
+							fileHandler << "\n";
+
+							for (size_t i = 0; i < (*ptr).lightPathsTable.size(); i++)
+							{
+								fileHandler << (*ptr).lightPathsTable[i].sourceNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPathsTable[i].destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPathsTable[i].numberOfIntermediateNodes;
+								fileHandler << "\t";
+								fileHandler << "[ ";
+								for (size_t j = 0; j < (*ptr).lightPathsTable[i].intermediateNodes.size(); j++)
+								{
+									fileHandler << (*ptr).lightPathsTable[i].intermediateNodes[j];
+									fileHandler << " ";
+								}
+								fileHandler << "]";
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPathsTable[i].wavelength;
+								fileHandler << "\n";
+							}
+							ptr++;
+						}
+						fileHandler.close();
+						setFirstValueToBeSaved(1);
+					}
+
+					else if (type == "LogicalTopology") {
+						t_logical_topology *ptr = (t_logical_topology *)buffer;
+						ptr = ptr + (firstValueToBeSaved - 1);
+
+						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
+
+							fileHandler << "\n";
+							fileHandler << "### logicalTopologyAdjacencyMatrix ###";
+							fileHandler << "\n\n";
+
+							t_integer nodes = (*ptr).logicalTopologyAdjacencyMatrix[0].size();
+							for (t_integer line = 0; line < nodes; line++) {
+
+								for (t_integer column = 0; column < nodes; column++) {
+
+									fileHandler << (*ptr).logicalTopologyAdjacencyMatrix[line][column];
+									fileHandler << "\t";
+								}
+								fileHandler << "\n";
+							}
+							fileHandler << "\n\n";
+
+							fileHandler << "### paths ###";
+							fileHandler << "\n\n";
+							fileHandler << "pathIndex";
+							fileHandler << " | ";
+							fileHandler << "sourceNode";
+							fileHandler << " | ";
+							fileHandler << "destinationNode";
+							fileHandler << " | ";
+							fileHandler << "capacity (ODU0s)";
+							fileHandler << " | ";
+							fileHandler << "numberOfLightPaths";
+							fileHandler << " | ";
+							fileHandler << "lightPathsIndex";
+							fileHandler << "\n";
+
+							for (size_t path = 0; path < (*ptr).paths.size(); path++)
+							{
+								fileHandler << (*ptr).paths[path].pathIndex;
+								fileHandler << "\t";
+								fileHandler << (*ptr).paths[path].sourceNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).paths[path].destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).paths[path].capacity;
+								fileHandler << "\t";
+								fileHandler << (*ptr).paths[path].numberOfLightPaths;
+								fileHandler << "\t";
+								fileHandler << "[ ";
+								for (size_t i = 0; i < (*ptr).paths[path].lightPathsIndex.size(); i++)
+								{
+									fileHandler << (*ptr).paths[path].lightPathsIndex[i];
+									fileHandler << " ";
+								}
+								fileHandler << "]";
+								fileHandler << "\n";
+							}
+							fileHandler << "\n\n";
+
+							fileHandler << "### lightPaths ###";
+							fileHandler << "\n\n";
+							fileHandler << "lightPathIndex";
+							fileHandler << " | ";
+							fileHandler << "sourceNode";
+							fileHandler << " | ";
+							fileHandler << "destinationNode";
+							fileHandler << " | ";
+							fileHandler << "capacity (ODU0s)";
+							fileHandler << " | ";
+							fileHandler << "numberOfOpticalChannels";
+							fileHandler << " | ";
+							fileHandler << "opticalChannelsIndex";
+							fileHandler << "\n";
+
+							for (size_t lightPath = 0; lightPath < (*ptr).lightPaths.size(); lightPath++)
+							{
+								fileHandler << (*ptr).lightPaths[lightPath].lightPathIndex;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPaths[lightPath].sourceNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPaths[lightPath].destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPaths[lightPath].capacity;
+								fileHandler << "\t";
+								fileHandler << (*ptr).lightPaths[lightPath].numberOfOpticalChannels;
+								fileHandler << "\t";
+								fileHandler << "[ ";
+								for (size_t i = 0; i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size(); i++)
+								{
+
+									fileHandler << (*ptr).lightPaths[lightPath].opticalChannelsIndex[i];
+									fileHandler << " ";
+								}
+								fileHandler << "]";
+								fileHandler << "\n";
+							}
+							fileHandler << "\n\n";
+
+							fileHandler << "### opticalChannels ###";
+							fileHandler << "\n\n";
+							fileHandler << "opticalChannelIndex";
+							fileHandler << " | ";
+							fileHandler << "sourceNode";
+							fileHandler << " | ";
+							fileHandler << "destinationNode";
+							fileHandler << " | ";
+							fileHandler << "wavelength";
+							fileHandler << " | ";
+							fileHandler << "capacity (ODU0s)";
+							fileHandler << " | ";
+							fileHandler << "numberOfDemands";
+							fileHandler << " | ";
+							fileHandler << "demandsIndex";
+							fileHandler << "\n";
+
+							for (size_t opticalChannel = 0; opticalChannel < (*ptr).opticalChannels.size(); opticalChannel++)
+							{
+								fileHandler << (*ptr).opticalChannels[opticalChannel].opticalChannelIndex;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].sourceNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].destinationNode;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].wavelength;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].capacity;
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
+								fileHandler << "\t";
+								fileHandler << "[ ";
+								for (size_t i = 0; i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size(); i++)
+								{
+
+									fileHandler << (*ptr).opticalChannels[opticalChannel].demandsIndex[i];
+									fileHandler << " ";
+								}
+								fileHandler << "]";
+								fileHandler << "\n";
+							}
+							ptr++;
+						}
+						fileHandler.close();
+						setFirstValueToBeSaved(1);
+					}
+
+					else if (type == "PhysicalTopology") {
+						t_physical_topology *ptr = (t_physical_topology *)buffer;
+						ptr = ptr + (firstValueToBeSaved - 1);
+
+						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+						for (auto pTopology = firstValueToBeSaved; pTopology <= outPosition; pTopology++) {
+
+							fileHandler << "\n";
+							fileHandler << "### physicalTopologyAdjacencyMatrix ####";
+							fileHandler << "\n\n";
+							t_integer nodes = (*ptr).physicalTopologyAdjacencyMatrix[0].size();
+							for (t_integer line = 0; line < nodes; line++) {
+
+								for (t_integer column = 0; column < nodes; column++) {
+
+									fileHandler << (*ptr).physicalTopologyAdjacencyMatrix[line][column];
+									fileHandler << "\t";
+								}
+								fileHandler << "\n";
+							}
+							fileHandler << "\n\n";
+
+							fileHandler << "### opticalMultiplexSection ####";
+							fileHandler << "\n\n";
+							fileHandler << "OMSIndex";
+							fileHandler << " | ";
+							fileHandler << "sourceNode";
+							fileHandler << " | ";
+							fileHandler << "destinationNode";
+							fileHandler << " | ";
+							fileHandler << "maximumNumberOfWavelengths";
+							fileHandler << " | ";
+							fileHandler << "wavelengths";
+							fileHandler << " | ";
+							fileHandler << "availableWavelengths";
+							fileHandler << "\n\n";
+
+							for (t_optical_multiplexing_system& oms : ptr->OMS) {
+
+								fileHandler << oms.OMSIndex;
+								fileHandler << "\t";
+								fileHandler << oms.sourceNode;
+								fileHandler << "\t";
+								fileHandler << oms.destinationNode;
+								fileHandler << "\t";
+								fileHandler << oms.maximumNumberOfWavelengths;
+								fileHandler << "\t";
+								fileHandler << "[";
+								for (size_t i = 0; i < oms.wavelengths.size(); i++) {
+									fileHandler << oms.wavelengths[i];
+									if (i < oms.wavelengths.size() - 1)
+										fileHandler << ",";
+								}
+								fileHandler << "]";
+								fileHandler << "\t";
+								fileHandler << "[";
+								for (size_t i = 0; i < oms.availableWavelengths.size(); i++) {
+									fileHandler << oms.availableWavelengths[i];
+									if (i < oms.availableWavelengths.size() - 1)
+										fileHandler << ",";
+								}
+								fileHandler << "]";
+								fileHandler << "\n";
+							}
+							ptr++;
+						}
+						fileHandler.close();
+						setFirstValueToBeSaved(1);
+					}
+
+					else if (type == "DemandRequestRouted") {
+						t_demand_request_routed *ptr = (t_demand_request_routed *)buffer;
+						ptr = ptr + (firstValueToBeSaved - 1);
+
+						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+
+						fileHandler << "\n";
+						fileHandler << "demandIndex";
+						fileHandler << " | ";
+						fileHandler << "routed";
+						fileHandler << " | ";
+						fileHandler << "pathIndex";
+						fileHandler << "\n\n";
+
+						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
+
+							fileHandler << ptr->demandIndex;
+							fileHandler << "\t";
+							if (ptr->routed == true) {
+								fileHandler << "true";
+							}
+							else if (ptr->routed == false) {
+								fileHandler << "false";
+							}
+							fileHandler << "\t";
+							fileHandler << ptr->pathIndex;
+							fileHandler << "\n";
+							ptr++;
+						}
+						fileHandler.close();
+						setFirstValueToBeSaved(1);
+					}
 				}
 			}
 			else
@@ -352,6 +726,16 @@ void Signal::close() {
 				fileHandler << "\n";
 				fileHandler << "requestIndex";
 				fileHandler << " | ";
+				fileHandler << "pathTotal";
+				fileHandler << " | ";
+				fileHandler << "demandIndex";
+				fileHandler << " | ";
+				fileHandler << "demandSourceNode";
+				fileHandler << " | ";
+				fileHandler << "demandDestinationNode";
+				fileHandler << " | ";
+				fileHandler << "oduType";
+				fileHandler << " | ";
 				fileHandler << "sourceNode";
 				fileHandler << " | ";
 				fileHandler << "destinationNode";
@@ -363,6 +747,16 @@ void Signal::close() {
 
 				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
 					fileHandler << ptr->requestIndex;
+					fileHandler << "\t";
+					fileHandler << ptr->pathTotal;
+					fileHandler << "\t";
+					fileHandler << ptr->demandIndex;
+					fileHandler << "\t";
+					fileHandler << ptr->demandSourceNode;
+					fileHandler << "\t";
+					fileHandler << ptr->demandDestinationNode;
+					fileHandler << "\t";
+					fileHandler << ptr->oduType;
 					fileHandler << "\t";
 					fileHandler << ptr->sourceNode;
 					fileHandler << "\t";
@@ -389,30 +783,48 @@ void Signal::close() {
 				ptr = ptr + (firstValueToBeSaved - 1);
 
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto lTopology = firstValueToBeSaved; lTopology <= outPosition; lTopology++) {
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
 
 					fileHandler << "\n";
-					fileHandler << "### pathRouted ###";
+					fileHandler << "### pathInformation ###";
 					fileHandler << "\n\n";
 					fileHandler << "requestIndex";
+					fileHandler << " | ";
+					fileHandler << "pathTotal";
+					fileHandler << " | ";
+					fileHandler << "demandIndex";
+					fileHandler << " | ";
+					fileHandler << "demandSourceNode";
+					fileHandler << " | ";
+					fileHandler << "demandDestinationNode";
+					fileHandler << " | ";
+					fileHandler << "oduType";
 					fileHandler << " | ";
 					fileHandler << "routed";
 					fileHandler << " | ";
 					fileHandler << "numberOfLightPaths";
 					fileHandler << "\n";
 
-					for (t_path_routed& pathRouted : ptr->pathRouted) {
-
-						fileHandler << pathRouted.requestIndex;
-						fileHandler << "\t";
-						if (pathRouted.routed == true)
-							fileHandler << "true";
-						else if (pathRouted.routed == false)
-							fileHandler << "false";
-						fileHandler << "\t";
-						fileHandler << pathRouted.numberOfLightPaths;
-						fileHandler << "\n";
-					}
+					fileHandler << (*ptr).pathInformation.requestIndex;
+					fileHandler << "\t";
+					fileHandler << (*ptr).pathInformation.pathTotal;
+					fileHandler << "\t";
+					fileHandler << (*ptr).pathInformation.demandIndex;
+					fileHandler << "\t";
+					fileHandler << (*ptr).pathInformation.demandSourceNode;
+					fileHandler << "\t";
+					fileHandler << (*ptr).pathInformation.demandDestinationNode;
+					fileHandler << "\t";
+					fileHandler << (*ptr).pathInformation.oduType;
+					fileHandler << "\t";
+					if ((*ptr).pathInformation.routed == true)
+						fileHandler << "true";
+					else 
+						fileHandler << "false";
+					fileHandler << "\t";
+					fileHandler << (*ptr).pathInformation.numberOfLightPaths;
+					fileHandler << "\n";
+				
 					fileHandler << "\n\n";
 
 					fileHandler << "### lightPathsTable ###";
@@ -428,25 +840,26 @@ void Signal::close() {
 					fileHandler << "wavelength";
 					fileHandler << "\n";
 
-					for (t_light_paths_table& lightPathsTable : ptr->lightPathsTable) {
-
-						fileHandler << lightPathsTable.sourceNode;
+					for (size_t i = 0; i < (*ptr).lightPathsTable.size(); i++)
+					{
+						fileHandler << (*ptr).lightPathsTable[i].sourceNode;
 						fileHandler << "\t";
-						fileHandler << lightPathsTable.destinationNode;
+						fileHandler << (*ptr).lightPathsTable[i].destinationNode;
 						fileHandler << "\t";
-						fileHandler << lightPathsTable.numberOfIntermediateNodes;
+						fileHandler << (*ptr).lightPathsTable[i].numberOfIntermediateNodes;
 						fileHandler << "\t";
-						fileHandler << "[";
-						for (size_t i = 0; i < lightPathsTable.intermediateNodes.size(); i++) {
-							fileHandler << lightPathsTable.intermediateNodes[i];
-							if (i < lightPathsTable.intermediateNodes.size() - 1)
-								fileHandler << ",";
+						fileHandler << "[ ";
+						for (size_t j = 0; j < (*ptr).lightPathsTable[i].intermediateNodes.size(); j++)
+						{
+							fileHandler << (*ptr).lightPathsTable[i].intermediateNodes[j];
+							fileHandler << " ";
 						}
 						fileHandler << "]";
 						fileHandler << "\t";
-						fileHandler << lightPathsTable.wavelength;
+						fileHandler << (*ptr).lightPathsTable[i].wavelength;
 						fileHandler << "\n";
 					}
+					ptr++;
 				}
 				setFirstValueToBeSaved(1);
 			}
@@ -456,7 +869,7 @@ void Signal::close() {
 				ptr = ptr + (firstValueToBeSaved - 1);
 				
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto lTopology = firstValueToBeSaved; lTopology <= outPosition; lTopology++) {
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
 					
 					fileHandler << "\n";
 					fileHandler << "### logicalTopologyAdjacencyMatrix ###";
@@ -489,23 +902,23 @@ void Signal::close() {
 					fileHandler << "lightPathsIndex";
 					fileHandler << "\n";
 
-					for (t_path& path : ptr->paths) {
-
-						fileHandler << path.pathIndex;
+					for (size_t path = 0; path < (*ptr).paths.size(); path++)
+					{
+						fileHandler << (*ptr).paths[path].pathIndex;
 						fileHandler << "\t";
-						fileHandler << path.sourceNode;
+						fileHandler << (*ptr).paths[path].sourceNode;
 						fileHandler << "\t";
-						fileHandler << path.destinationNode;
+						fileHandler << (*ptr).paths[path].destinationNode;
 						fileHandler << "\t";
-						fileHandler << path.capacity;
+						fileHandler << (*ptr).paths[path].capacity;
 						fileHandler << "\t";
-						fileHandler << path.numberOfLightPaths;
+						fileHandler << (*ptr).paths[path].numberOfLightPaths;
 						fileHandler << "\t";
-						fileHandler << "[";
-						for (size_t i = 0; i < path.lightPathsIndex.size(); i++) {
-							fileHandler << path.lightPathsIndex[i];
-							if ( i < path.lightPathsIndex.size() - 1)
-								fileHandler << ",";
+						fileHandler << "[ ";
+						for (size_t i = 0; i < (*ptr).paths[path].lightPathsIndex.size(); i++)
+						{
+							fileHandler << (*ptr).paths[path].lightPathsIndex[i];
+							fileHandler << " ";
 						}
 						fileHandler << "]";
 						fileHandler << "\n";
@@ -527,23 +940,24 @@ void Signal::close() {
 					fileHandler << "opticalChannelsIndex";
 					fileHandler << "\n";
 
-					for (t_light_path& lightPath : ptr->lightPaths) {
+					for (size_t lightPath = 0; lightPath < (*ptr).lightPaths.size(); lightPath++)
+					{
+						fileHandler << (*ptr).lightPaths[lightPath].lightPathIndex;
+						fileHandler << "\t";
+						fileHandler << (*ptr).lightPaths[lightPath].sourceNode;
+						fileHandler << "\t";
+						fileHandler << (*ptr).lightPaths[lightPath].destinationNode;
+						fileHandler << "\t";
+						fileHandler << (*ptr).lightPaths[lightPath].capacity;
+						fileHandler << "\t";
+						fileHandler << (*ptr).lightPaths[lightPath].numberOfOpticalChannels;
+						fileHandler << "\t";
+						fileHandler << "[ ";
+						for (size_t i = 0; i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size(); i++)
+						{
 
-						fileHandler << lightPath.lightPathIndex;
-						fileHandler << "\t";
-						fileHandler << lightPath.sourceNode;
-						fileHandler << "\t";
-						fileHandler << lightPath.destinationNode;
-						fileHandler << "\t";
-						fileHandler << lightPath.capacity;
-						fileHandler << "\t";
-						fileHandler << lightPath.numberOfOpticalChannels;
-						fileHandler << "\t";
-						fileHandler << "[";
-						for (size_t i = 0; i < lightPath.opticalChannelsIndex.size(); i++) {
-							fileHandler << lightPath.opticalChannelsIndex[i];
-							if (i < lightPath.opticalChannelsIndex.size() - 1)
-								fileHandler << ",";
+							fileHandler << (*ptr).lightPaths[lightPath].opticalChannelsIndex[i];
+							fileHandler << " ";
 						}
 						fileHandler << "]";
 						fileHandler << "\n";
@@ -567,29 +981,31 @@ void Signal::close() {
 					fileHandler << "demandsIndex";
 					fileHandler << "\n";
 
-					for (t_optical_channel& opticalChannel : ptr->opticalChannels) {
+					for (size_t opticalChannel = 0; opticalChannel < (*ptr).opticalChannels.size(); opticalChannel++)
+					{
+						fileHandler << (*ptr).opticalChannels[opticalChannel].opticalChannelIndex;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[opticalChannel].sourceNode;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[opticalChannel].destinationNode;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[opticalChannel].wavelength;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[opticalChannel].capacity;
+						fileHandler << "\t";
+						fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
+						fileHandler << "\t";
+						fileHandler << "[ ";
+						for (size_t i = 0; i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size(); i++)
+						{
 
-						fileHandler << opticalChannel.opticalChannelIndex;
-						fileHandler << "\t";
-						fileHandler << opticalChannel.sourceNode;
-						fileHandler << "\t";
-						fileHandler << opticalChannel.destinationNode;
-						fileHandler << "\t";
-						fileHandler << opticalChannel.wavelength;
-						fileHandler << "\t";
-						fileHandler << opticalChannel.capacity;
-						fileHandler << "\t";
-						fileHandler << opticalChannel.numberOfDemands;
-						fileHandler << "\t";
-						fileHandler << "[";
-						for (size_t i = 0; i < opticalChannel.demandsIndex.size(); i++) {
-							fileHandler << opticalChannel.demandsIndex[i];
-							if (i < opticalChannel.demandsIndex.size() - 1)
-								fileHandler << ",";
+							fileHandler << (*ptr).opticalChannels[opticalChannel].demandsIndex[i];
+							fileHandler << " ";
 						}
 						fileHandler << "]";
 						fileHandler << "\n";
 					}
+					ptr++;
 				}
 				setFirstValueToBeSaved(1);
 			}
@@ -644,7 +1060,7 @@ void Signal::close() {
 						fileHandler << "[";
 						for (size_t i = 0; i < oms.wavelengths.size(); i++) {
 							fileHandler << oms.wavelengths[i];
-							if (i < oms.availableWavelengths.size() - 1)
+							if (i < oms.wavelengths.size() - 1)
 								fileHandler << ",";
 						}
 						fileHandler << "]";
@@ -658,6 +1074,7 @@ void Signal::close() {
 						fileHandler << "]";
 						fileHandler << "\n";
 					}
+					ptr++;
 				}
 				setFirstValueToBeSaved(1);
 			}
@@ -676,7 +1093,7 @@ void Signal::close() {
 				fileHandler << "pathIndex";
 				fileHandler << "\n\n";
 
-				for (auto dmdRouted = firstValueToBeSaved; dmdRouted <= outPosition; dmdRouted++) {
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
 
 					fileHandler << ptr->demandIndex;
 					fileHandler << "\t";

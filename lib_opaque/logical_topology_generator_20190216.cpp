@@ -19,7 +19,7 @@ bool LogicalTopologyGenerator::runBlock(void)
 	t_optical_channel opticalChannel;
 
 	if (transportMode == "opaque") {
-		
+		/*
 		path.pathIndex = 0;
 		path.sourceNode = 1;
 		path.destinationNode = 3;
@@ -63,7 +63,7 @@ bool LogicalTopologyGenerator::runBlock(void)
 		opticalChannel.wavelength = 1550;
 		opticalChannel.numberOfDemands = 0;
 		outputLogicalTopology.opticalChannels.push_back(opticalChannel);
-		
+		*/
 		outputLogicalTopology.logicalTopologyAdjacencyMatrix = physicalTopologyAdjacencyMatrix;
 	}
 	

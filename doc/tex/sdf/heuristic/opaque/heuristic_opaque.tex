@@ -782,8 +782,8 @@ N = numberOfNodes\\
 
 \underline{\textbf{PathRequestRouted}}\\
 
-routed\par
-lightpathsTable\\
+pathInformation\par
+vector lightPathsTable\\
 
 \begin{table}[H]
 	\centering
@@ -793,8 +793,8 @@ lightpathsTable\\
 		\textbf{requestIndex} & \textbf{routed} & \textbf{numberOfLightPaths}\\ \hline
 		0...R-1               & true or false   & 1...LP                     \\ \hline
 	\end{tabular}}
-	\caption{routed}
-	\label{routed}
+	\caption{pathInformation}
+	\label{path_information}
 \end{table}
 
 R = numberOfRequests\par
@@ -1038,7 +1038,7 @@ ODU4=
 		3                    & 1                   & 3                        & 3                & none                        \\ \hline
 		4                    & 1                   & 3                        & 3                & none                        \\ \hline
 		5                    & 1                   & 3                        & 3                & none                        \\ \hline
-		6                    & 1                   & 3                        & 2                & none                        \\ \hline
+		6                    & 1                   & 6                        & 2                & none                        \\ \hline
 	\end{tabular}
 	\caption{Demands}
 	\label{demands}
@@ -1123,14 +1123,14 @@ ODU4=
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{maximumNumberOfWavelengths} & \textbf{wavelengths} & \textbf{availableWavelengths} \\ \hline
-		0 & 1 & 2 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		1 & 1 & 6 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		2 & 2 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		3 & 4 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		4 & 5 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		5 & 5 & 4 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		6 & 6 & 2 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		7 & 6 & 5 & 2 &  [1550 1550] & [1 1]         \\ \hline
+		0 & 1 & 2 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		1 & 1 & 6 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		2 & 2 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		3 & 4 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		4 & 5 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		5 & 5 & 4 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		6 & 6 & 2 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		7 & 6 & 5 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
 	\end{tabular}}
 	\caption{opticalMultiplexSection}
 	\label{optical_multiplex_section}
@@ -1186,7 +1186,7 @@ No path
 	\begin{tabular}{| c | c | c | c | c |}
 		\hline
 		\textbf{requestIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes}\\ \hline
-		0                     & 1                   & 2                        & 0                                  & -1                        \\ \hline
+		0                     & 1                   & 2                        & 0                                  & []                        \\ \hline
 	\end{tabular}}
 	\caption{PathRequest}
 	\label{path_request}
@@ -1198,14 +1198,14 @@ No path
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{maximumNumberOfWavelengths} & \textbf{wavelengths} & \textbf{availableWavelengths} \\ \hline
-		0 & 1 & 2 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		1 & 1 & 6 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		2 & 2 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		3 & 4 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		4 & 5 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		5 & 5 & 4 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		6 & 6 & 2 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		7 & 6 & 5 & 2 &  [1550 1550] & [1 1]         \\ \hline
+		0 & 1 & 2 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
+		1 & 1 & 6 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		2 & 2 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		3 & 4 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		4 & 5 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		5 & 5 & 4 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		6 & 6 & 2 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		7 & 6 & 5 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
 	\end{tabular}}
 	\caption{opticalMultiplexSection}
 	\label{optical_multiplex_section}
@@ -1213,8 +1213,8 @@ No path
 
 \underline{\textbf{PathRequestRouted}}\\
 
-routed\par
-lightpathsTable\\
+pathInformation\par
+vector lightPathsTable\\
 
 \begin{table}[H]
 	\centering
@@ -1233,7 +1233,7 @@ lightpathsTable\\
 	\begin{tabular}{| c | c | c | c | c |}
 		\hline
 		\textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes} & \textbf{wavelength} \\ \hline
-		1                   & 2                        & 0                                  & [0]                        & 1550                \\ \hline
+		1                   & 2                        & 0                                  & []                        & 1550                \\ \hline
 	\end{tabular}}
 	\caption{lightPathsTable}
 	\label{light_paths_table}
@@ -1334,6 +1334,22 @@ No path
 	\label{dijkstra}
 \end{table}
 
+lightPaths 1->2 e 2->3 with capacity to create a Path?
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{| c | c | c | c | c | c |}
+			\hline
+			\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfOpticalChannels} &\textbf{opticalChannelsIndex} \\ \hline
+			0 & 1 & 2 & 0 & 1 & [0]  \\ \hline        	
+	\end{tabular}}
+	\caption{lightPaths}
+	\label{light_paths}
+\end{table}
+
+lightPath 1->2 without capacity and lightPath 2->3 not exist
+
 \underline{\textbf{PathRequest}}
 
 \begin{table}[H]
@@ -1354,14 +1370,14 @@ No path
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{maximumNumberOfWavelengths} & \textbf{wavelengths} & \textbf{availableWavelengths} \\ \hline
-		0 & 1 & 2 & 2 &  [1550 1550] & [0 0]         \\ \hline
-		1 & 1 & 6 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		2 & 2 & 3 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		3 & 4 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		4 & 5 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		5 & 5 & 4 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		6 & 6 & 2 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		7 & 6 & 5 & 2 &  [1550 1550] & [1 1]         \\ \hline
+		0 & 1 & 2 & 2 &  [1550 1550.8] & [0 0]         \\ \hline
+		1 & 1 & 6 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		2 & 2 & 3 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
+		3 & 4 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		4 & 5 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		5 & 5 & 4 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		6 & 6 & 2 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		7 & 6 & 5 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
 	\end{tabular}}
 	\caption{opticalMultiplexSection}
 	\label{optical_multiplex_section}
@@ -1386,8 +1402,8 @@ No path
 	\begin{tabular}{| c | c | c | c | c |}
 		\hline
 		\textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes} & \textbf{wavelength} \\ \hline
-		1                   & 2                        & 0                                  & [0]                        & 1550                \\ \hline
-		2                   & 3                        & 0                                  & [0]                        & 1550                \\ \hline
+		1                   & 2                        & 0                                  & [ ]                        & 1550.8                \\ \hline
+		2                   & 3                        & 0                                  & [ ]                        & 1550                \\ \hline
 	\end{tabular}}
 	\caption{lightPathsTable}
 	\label{light_paths_table}
@@ -1414,9 +1430,9 @@ Update paths, lightPaths and opticalChannels
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfOpticalChannels} &\textbf{opticalChannelsIndex} \\ \hline
-		0 & 1 & 2 & 0 & 1 & 0  \\ \hline      
-		1 & 1 & 2 & 0 & 1 & 1  \\ \hline  
-		2 & 2 & 3 & 0 & 1 & 2  \\ \hline  	
+		0 & 1 & 2 & 0 & 1 & [0]  \\ \hline      
+		1 & 1 & 2 & 0 & 1 & [1]  \\ \hline  
+		2 & 2 & 3 & 0 & 1 & [2]  \\ \hline  	
 	\end{tabular}}
 	\caption{lightPaths}
 	\label{light_paths}
@@ -1429,7 +1445,7 @@ Update paths, lightPaths and opticalChannels
 		\hline
 		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{wavelength} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular}  & \textbf{numberOfDemands} & \textbf{demandsIndex}    \\ \hline
 		0 & 1 & 2 & 1550 & 0 & 1 & [0]\\ \hline
-		1 & 1 & 2 & 1550 & 0 & 1 & [1]\\ \hline
+		1 & 1 & 2 & 1550.8 & 0 & 1 & [1]\\ \hline
 		2 & 2 & 3 & 1550 & 0 & 1 & [1]\\ \hline
 	\end{tabular}}
 	\caption{opticalChannels}
@@ -1479,7 +1495,7 @@ Path?\\
 	\label{paths}
 \end{table}
 
-No path\\
+Path exists but without capacity
 
 \underline{\textbf{PathRequest}}
 
@@ -1489,7 +1505,7 @@ No path\\
 	\begin{tabular}{| c | c | c | c | c |}
 		\hline
 		\textbf{requestIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes}\\ \hline
-		2                     & 1                   & 3                        & 2                                  & [6,2]                        \\ \hline
+		2                     & 1                   & 3                        & 2                                  & [6,2]                     \\ \hline
 	\end{tabular}}
 	\caption{PathRequest}
 	\label{path_request}
@@ -1501,14 +1517,14 @@ No path\\
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{maximumNumberOfWavelengths} & \textbf{wavelengths} & \textbf{availableWavelengths} \\ \hline
-		0 & 1 & 2 & 2 &  [1550 1550] & [0 0]         \\ \hline
-		1 & 1 & 6 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		2 & 2 & 3 & 2 &  [1550 1550] & [0 0]         \\ \hline
-		3 & 4 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		4 & 5 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		5 & 5 & 4 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		6 & 6 & 2 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		7 & 6 & 5 & 2 &  [1550 1550] & [1 1]         \\ \hline
+		0 & 1 & 2 & 2 &  [1550 1550.8] & [0 0]         \\ \hline
+		1 & 1 & 6 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
+		2 & 2 & 3 & 2 &  [1550 1550.8] & [0 0]         \\ \hline
+		3 & 4 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		4 & 5 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		5 & 5 & 4 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		6 & 6 & 2 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
+		7 & 6 & 5 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
 	\end{tabular}}
 	\caption{opticalMultiplexSection}
 	\label{optical_multiplex_section}
@@ -1523,8 +1539,8 @@ No path\\
 		\textbf{requestIndex} & \textbf{routed} & \textbf{numberOfLightPaths}\\ \hline
 		2                     & true            & 3                          \\ \hline
 	\end{tabular}
-	\caption{routed}
-	\label{routed}
+	\caption{pathInformation}
+	\label{path_information}
 \end{table}
 
 \begin{table}[H]
@@ -1533,9 +1549,9 @@ No path\\
 	\begin{tabular}{| c | c | c | c | c |}
 		\hline
 		\textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes} & \textbf{wavelength} \\ \hline
-		1                   & 6                        & 0                                  & [0]                        & 1550                \\ \hline
-		6                   & 2                        & 0                                  & [0]                        & 1550                \\ \hline
-		2                   & 3                        & 0                                  & [0]                        & 1550                \\ \hline
+		1                   & 6                        & 0                                  & [ ]                        & 1550                \\ \hline
+		6                   & 2                        & 0                                  & [ ]                        & 1550                \\ \hline
+		2                   & 3                        & 0                                  & [ ]                        & 1550.8                \\ \hline
 	\end{tabular}}
 	\caption{lightPathsTable}
 	\label{light_paths_table}
@@ -1563,12 +1579,12 @@ Update paths, lightPaths and opticalChannels\\
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfOpticalChannels} &\textbf{opticalChannelsIndex} \\ \hline
-		0 & 1 & 2 & 0 & 1 & 0  \\ \hline      
-		1 & 1 & 2 & 0 & 1 & 1  \\ \hline  
-		2 & 2 & 3 & 0 & 1 & 2  \\ \hline 
-		3 & 1 & 6 & 0 & 1 & 3  \\ \hline      
-		4 & 6 & 2 & 0 & 1 & 4  \\ \hline  
-		5 & 2 & 3 & 0 & 1 & 5  \\ \hline 	
+		0 & 1 & 2 & 0 & 1 & [0]  \\ \hline      
+		1 & 1 & 2 & 0 & 1 & [1]  \\ \hline  
+		2 & 2 & 3 & 0 & 1 & [2]  \\ \hline 
+		3 & 1 & 6 & 0 & 1 & [3]  \\ \hline      
+		4 & 6 & 2 & 0 & 1 & [4]  \\ \hline  
+		5 & 2 & 3 & 0 & 1 & [5]  \\ \hline 	
 	\end{tabular}}
 	\caption{lightPaths}
 	\label{light_paths}
@@ -1581,11 +1597,11 @@ Update paths, lightPaths and opticalChannels\\
 		\hline
 		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{wavelength} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular}  & \textbf{numberOfDemands} & \textbf{demandsIndex}    \\ \hline
 		0 & 1 & 2 & 1550 & 0 & 1 & [0]\\ \hline
-		1 & 1 & 2 & 1550 & 0 & 1 & [1]\\ \hline
+		1 & 1 & 2 & 1550.8 & 0 & 1 & [1]\\ \hline
 		2 & 2 & 3 & 1550 & 0 & 1 & [1]\\ \hline
 		3 & 1 & 6 & 1550 & 0 & 1 & [2]\\ \hline
 		4 & 6 & 2 & 1550 & 0 & 1 & [2]\\ \hline
-		5 & 2 & 3 & 1550 & 0 & 1 & [2]\\ \hline
+		5 & 2 & 3 & 1550.8 & 0 & 1 & [2]\\ \hline
 	\end{tabular}}
 	\caption{opticalChannels}
 	\label{optical_channels}
@@ -1657,20 +1673,18 @@ No path\\
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{maximumNumberOfWavelengths} & \textbf{wavelengths} & \textbf{availableWavelengths} \\ \hline
-		0 & 1 & 2 & 2 &  [1550 1550] & [0 0]         \\ \hline
-		1 & 1 & 6 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		2 & 2 & 3 & 2 &  [1550 1550] & [0 0]         \\ \hline
-		3 & 4 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		4 & 5 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		5 & 5 & 4 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		6 & 6 & 2 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		7 & 6 & 5 & 2 &  [1550 1550] & [1 1]         \\ \hline
+		0 & 1 & 2 & 2 &  [1550 1550.8] & [0 0]         \\ \hline
+		1 & 1 & 6 & 2 &  [1550 1550.8] & [0 0]         \\ \hline
+		2 & 2 & 3 & 2 &  [1550 1550.8] & [0 0]         \\ \hline
+		3 & 4 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		4 & 5 & 3 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
+		5 & 5 & 4 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		6 & 6 & 2 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
+		7 & 6 & 5 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
 	\end{tabular}}
 	\caption{opticalMultiplexSection}
 	\label{optical_muliplex_section}
 \end{table}
-
-It's using wavelengths, but isn't using full capacity\\
 
 \underline{\textbf{PathRequestRouted}}
 
@@ -1679,10 +1693,10 @@ It's using wavelengths, but isn't using full capacity\\
 	\begin{tabular}{| c | c | c |}
 		\hline
 		\textbf{requestIndex} & \textbf{routed} & \textbf{numberOfLightPaths}\\ \hline
-		3                     & true            & 2                          \\ \hline
+		3                     & true            & 3                          \\ \hline
 	\end{tabular}
-	\caption{routed}
-	\label{routed}
+	\caption{pathInformation}
+	\label{path_information}
 \end{table}
 
 \begin{table}[H]
@@ -1691,9 +1705,9 @@ It's using wavelengths, but isn't using full capacity\\
 	\begin{tabular}{| c | c | c | c | c |}
 		\hline
 		\textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes} & \textbf{wavelength} \\ \hline
-		1                   & 6                        & 0                                  & [0]                        & 1550                \\ \hline
-		6                   & 5                        & 0                                  & [0]                        & 1550                \\ \hline
-		5                   & 3                        & 0                                  & [0]                        & 1550                \\ \hline
+		1                   & 6                        & 0                                  & [ ]                        & 1550.8                \\ \hline
+		6                   & 5                        & 0                                  & [ ]                        & 1550                \\ \hline
+		5                   & 3                        & 0                                  & [ ]                        & 1550                \\ \hline
 	\end{tabular}}
 	\caption{lightPathsTable}
 	\label{light_paths_table}
@@ -1722,15 +1736,15 @@ Update paths, lightPaths and opticalChannels\\
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfOpticalChannels} &\textbf{opticalChannelsIndex} \\ \hline
-		0 & 1 & 2 & 0 & 1 & 0  \\ \hline      
-		1 & 1 & 2 & 0 & 1 & 1  \\ \hline  
-		2 & 2 & 3 & 0 & 1 & 2  \\ \hline 
-		3 & 1 & 6 & 0 & 1 & 3  \\ \hline      
-		4 & 6 & 2 & 0 & 1 & 4  \\ \hline  
-		5 & 2 & 3 & 0 & 1 & 5  \\ \hline 
-		6 & 1 & 6 & 48 & 1 & 6  \\ \hline      
-		7 & 6 & 5 & 48 & 1 & 7  \\ \hline  
-		8 & 5 & 3 & 48 & 1 & 8  \\ \hline 		
+		0 & 1 & 2 & 0 & 1 & [0]  \\ \hline      
+		1 & 1 & 2 & 0 & 1 & [1]  \\ \hline  
+		2 & 2 & 3 & 0 & 1 & [2]  \\ \hline 
+		3 & 1 & 6 & 0 & 1 & [3]  \\ \hline      
+		4 & 6 & 2 & 0 & 1 & [4]  \\ \hline  
+		5 & 2 & 3 & 0 & 1 & [5]  \\ \hline 
+		6 & 1 & 6 & 48 & 1 & [6]  \\ \hline      
+		7 & 6 & 5 & 48 & 1 & [7]  \\ \hline  
+		8 & 5 & 3 & 48 & 1 & [8]  \\ \hline 		
 	\end{tabular}}
 	\caption{lightPaths}
 	\label{light_paths}
@@ -1743,12 +1757,12 @@ Update paths, lightPaths and opticalChannels\\
 		\hline
 		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{wavelength} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular}  & \textbf{numberOfDemands} & \textbf{demandsIndex}    \\ \hline
 		0 & 1 & 2 & 1550 & 0 & 1 & [0]\\ \hline
-		1 & 1 & 2 & 1550 & 0 & 1 & [1]\\ \hline
+		1 & 1 & 2 & 1550.8 & 0 & 1 & [1]\\ \hline
 		2 & 2 & 3 & 1550 & 0 & 1 & [1]\\ \hline
 		3 & 1 & 6 & 1550 & 0 & 1 & [2]\\ \hline
 		4 & 6 & 2 & 1550 & 0 & 1 & [2]\\ \hline
-		5 & 2 & 3 & 1550 & 0 & 1 & [2]\\ \hline
-		6 & 1 & 6 & 1550 & 48 & 1 & [3]\\ \hline
+		5 & 2 & 3 & 1550.8 & 0 & 1 & [2]\\ \hline
+		6 & 1 & 6 & 1550.8 & 48 & 1 & [3]\\ \hline
 		7 & 6 & 5 & 1550 & 48 & 1 & [3]\\ \hline
 		8 & 5 & 3 & 1550 & 48 & 1 & [3]\\ \hline
 	\end{tabular}}
@@ -1847,12 +1861,12 @@ Update paths, lightpaths and opticalchannels\\
 		\hline
 		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{wavelength} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular}  & \textbf{numberOfDemands} & \textbf{demandsIndex}    \\ \hline
 		0 & 1 & 2 & 1550 & 0 & 1 & [0]\\ \hline
-		1 & 1 & 2 & 1550 & 0 & 1 & [1]\\ \hline
+		1 & 1 & 2 & 1550.8 & 0 & 1 & [1]\\ \hline
 		2 & 2 & 3 & 1550 & 0 & 1 & [1]\\ \hline
 		3 & 1 & 6 & 1550 & 0 & 1 & [2]\\ \hline
 		4 & 6 & 2 & 1550 & 0 & 1 & [2]\\ \hline
-		5 & 2 & 3 & 1550 & 0 & 1 & [2]\\ \hline
-		6 & 1 & 6 & 1550 & 16 & 2 & [3,4]\\ \hline
+		5 & 2 & 3 & 1550.8 & 0 & 1 & [2]\\ \hline
+		6 & 1 & 6 & 1550.8 & 16 & 2 & [3,4]\\ \hline
 		7 & 6 & 5 & 1550 & 16 & 1 & [3,4]\\ \hline
 		8 & 5 & 3 & 1550 & 16 & 1 & [3,4]\\ \hline
 	\end{tabular}}
@@ -1927,20 +1941,20 @@ No path\\
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{maximumNumberOfWavelengths} & \textbf{wavelengths} & \textbf{availableWavelengths} \\ \hline
-		0 & 1 & 2 & 2 &  [1550 1550] & [0 0]         \\ \hline
-		1 & 1 & 6 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		2 & 2 & 3 & 2 &  [1550 1550] & [0 0]         \\ \hline
-		3 & 4 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		4 & 5 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		5 & 5 & 4 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		6 & 6 & 2 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		7 & 6 & 5 & 2 &  [1550 1550] & [1 1]         \\ \hline
+		0 & 1 & 2 & 2 &  [1550 1550.8] & [0 0]         \\ \hline
+		1 & 1 & 6 & 2 &  [1550 1550.8] & [0 0]         \\ \hline
+		2 & 2 & 3 & 2 &  [1550 1550.8] & [0 0]         \\ \hline
+		3 & 4 & 3 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		4 & 5 & 3 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
+		5 & 5 & 4 & 2 &  [1550 1550.8] & [1 1]         \\ \hline
+		6 & 6 & 2 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
+		7 & 6 & 5 & 2 &  [1550 1550.8] & [0 1]         \\ \hline
 	\end{tabular}}
 	\caption{opticalMultiplexSection}
 	\label{optical_multiplex_section}
 \end{table}
 
-Doesn't have capacity for an ODU3, demand will be blocked\\
+No availableWavelengths, demand will be blocked\\
 
 \underline{\textbf{PathRequestRouted}}
 
@@ -1951,8 +1965,8 @@ Doesn't have capacity for an ODU3, demand will be blocked\\
 		\textbf{requestIndex} & \textbf{routed} & \textbf{numberOfLightPaths}\\ \hline
 		4                     & false           & 0                          \\ \hline
 	\end{tabular}
-	\caption{routed}
-	\label{routed}
+	\caption{pathInformation}
+	\label{path_information}
 \end{table}
 
 \begin{table}[H]
@@ -2025,65 +2039,31 @@ No path\\
 	\label{dijkstra}
 \end{table}
 
+lightPath 1->6 with capacity?
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{| c | c | c | c | c | c |}
+			\hline
+			\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfOpticalChannels} &\textbf{opticalChannelsIndex} \\ \hline
+			0 & 1 & 2 & 0 & 1 & 0  \\ \hline      
+			1 & 1 & 2 & 0 & 1 & 1  \\ \hline  
+			2 & 2 & 3 & 0 & 1 & 2  \\ \hline 
+			3 & 1 & 6 & 0 & 1 & 3  \\ \hline      
+			4 & 6 & 2 & 0 & 1 & 4  \\ \hline  
+			5 & 2 & 3 & 0 & 1 & 5  \\ \hline 
+			6 & 1 & 6 & 16 & 1 & 6  \\ \hline      
+			7 & 6 & 5 & 16 & 1 & 7  \\ \hline  
+			8 & 5 & 3 & 16 & 1 & 8  \\ \hline 		
+	\end{tabular}}
+	\caption{lightPaths}
+	\label{light_paths}
+\end{table}
+
+Yes. Update lightPaths and opticalChannels, create a new path and check if there are any other paths using this lightPath to check the capacity
+
 \underline{\textbf{PathRequest}}
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}{
-	\begin{tabular}{| c | c | c | c | c |}
-		\hline
-		\textbf{requestIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes}\\ \hline
-		5                     & 1                   & 6                        & 0                                  & -1                        \\ \hline
-	\end{tabular}}
-	\caption{PathRequest}
-	\label{path_request}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}{
-	\begin{tabular}{| c | c | c | c | c | c |}
-		\hline
-		\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{maximumNumberOfWavelengths} & \textbf{wavelengths} & \textbf{availableWavelengths} \\ \hline
-		0 & 1 & 2 & 2 &  [1550 1550] & [0 0]         \\ \hline
-		1 & 1 & 6 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		2 & 2 & 3 & 2 &  [1550 1550] & [0 0]         \\ \hline
-		3 & 4 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		4 & 5 & 3 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		5 & 5 & 4 & 2 &  [1550 1550] & [1 1]         \\ \hline
-		6 & 6 & 2 & 2 &  [1550 1550] & [0 1]         \\ \hline
-		7 & 6 & 5 & 2 &  [1550 1550] & [1 1]         \\ \hline
-	\end{tabular}}
-	\caption{opticalMultiplexSection}
-	\label{optical_multiplex_section}
-\end{table}
-
-\underline{\textbf{PathRequestRouted}}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c |}
-		\hline
-		\textbf{requestIndex} & \textbf{routed} & \textbf{numberOfLightPaths}\\ \hline
-		5                     & true            & 1                          \\ \hline
-	\end{tabular}
-	\caption{routed}
-	\label{routed}
-\end{table}
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}{
-	\begin{tabular}{| c | c | c | c | c |}
-		\hline
-		\textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes} & \textbf{wavelength} \\ \hline
-		1                   & 6                        & 0                                  & [0]                        & 1550                \\ \hline
-	\end{tabular}}
-	\caption{lightPathsTable}
-	\label{light_paths_table}
-\end{table}
-
-Update paths, lightPaths and opticalChannels\\
 
 \begin{table}[H]
 	\centering
@@ -2107,15 +2087,15 @@ Update paths, lightPaths and opticalChannels\\
 	\begin{tabular}{| c | c | c | c | c | c |}
 		\hline
 		\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfOpticalChannels} &\textbf{opticalChannelsIndex} \\ \hline
-		0 & 1 & 2 & 0 & 1 & 0  \\ \hline      
-		1 & 1 & 2 & 0 & 1 & 1  \\ \hline  
-		2 & 2 & 3 & 0 & 1 & 2  \\ \hline 
-		3 & 1 & 6 & 0 & 1 & 3  \\ \hline      
-		4 & 6 & 2 & 0 & 1 & 4  \\ \hline  
-		5 & 2 & 3 & 0 & 1 & 5  \\ \hline 
-		6 & 1 & 6 & 8 & 1 & 6  \\ \hline      
-		7 & 6 & 5 & 16 & 1 & 7  \\ \hline  
-		8 & 5 & 3 & 16 & 1 & 8  \\ \hline 		
+		0 & 1 & 2 & 0 & 1 & [0]  \\ \hline      
+		1 & 1 & 2 & 0 & 1 & [1]  \\ \hline  
+		2 & 2 & 3 & 0 & 1 & [2]  \\ \hline 
+		3 & 1 & 6 & 0 & 1 & [3]  \\ \hline      
+		4 & 6 & 2 & 0 & 1 & [4]  \\ \hline  
+		5 & 2 & 3 & 0 & 1 & [5]  \\ \hline 
+		6 & 1 & 6 & 8 & 1 & [6]  \\ \hline      
+		7 & 6 & 5 & 16 & 1 & [7]  \\ \hline  
+		8 & 5 & 3 & 16 & 1 & [8]  \\ \hline 		
 	\end{tabular}}
 	\caption{lightPaths}
 	\label{light_paths}
@@ -2128,12 +2108,12 @@ Update paths, lightPaths and opticalChannels\\
 		\hline
 		\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{wavelength} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular}  & \textbf{numberOfDemands} & \textbf{demandsIndex}    \\ \hline
 		0 & 1 & 2 & 1550 & 0 & 1 & [0]\\ \hline
-		1 & 1 & 2 & 1550 & 0 & 1 & [1]\\ \hline
+		1 & 1 & 2 & 1550.8 & 0 & 1 & [1]\\ \hline
 		2 & 2 & 3 & 1550 & 0 & 1 & [1]\\ \hline
 		3 & 1 & 6 & 1550 & 0 & 1 & [2]\\ \hline
 		4 & 6 & 2 & 1550 & 0 & 1 & [2]\\ \hline
-		5 & 2 & 3 & 1550 & 0 & 1 & [2]\\ \hline
-		6 & 1 & 6 & 1550 & 8 & 2 & [3,4,6]\\ \hline
+		5 & 2 & 3 & 1550.8 & 0 & 1 & [2]\\ \hline
+		6 & 1 & 6 & 1550.8 & 8 & 2 & [3,4,6]\\ \hline
 		7 & 6 & 5 & 1550 & 16 & 1 & [3,4]\\ \hline
 		8 & 5 & 3 & 1550 & 16 & 1 & [3,4]\\ \hline
 	\end{tabular}}
