@@ -6,7 +6,7 @@ odu1 = 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0
 //
 odu2 = 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
 //
-odu3 = 0 0 0 0 0 0 , 0 0 2 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 1 1 0 0 0
+odu3 = 0 3 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
 //
 odu4 = 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
 //
@@ -14,11 +14,11 @@ orderingRule = 0
 //
 transportMode = opaque
 //
-physicalTopologyAdjacencyMatrix = 0 1 0 0 0 1 , 0 0 1 0 0 0 , 0 0 0 0 0 0 , 0 0 1 0 0 0 , 0 0 1 1 0 0 , 0 1 0 0 1 0
+physicalTopologyAdjacencyMatrix = 0 1 0 0 0 1 , 0 0 1 0 0 0 , 0 0 0 0 0 0 , 0 0 1 0 0 0 , 0 0 1 1 0 0 , 0 0 0 0 1 0
 //
 numberOfOMSPerLink = 1
 //
-numberOfOpticalChannelsPerOMS = 2
+numberOfOpticalChannelsPerOMS = 1
 //
 initialWavelength = 1550
 //
