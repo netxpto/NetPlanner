@@ -30,6 +30,10 @@
 \BOOKMARK [2][-]{subsection.2.7.9}{Demand 5}{section.2.7}% 30
 \BOOKMARK [2][-]{subsection.2.7.10}{Demand 6}{section.2.7}% 31
 \BOOKMARK [2][-]{subsection.2.7.11}{Final Report}{section.2.7}% 32
-\BOOKMARK [2][-]{subsection.2.7.12}{Transparent with 1+1 Protection}{section.2.7}% 33
-\BOOKMARK [2][-]{subsection.2.7.13}{Translucent without Survivability}{section.2.7}% 34
-\BOOKMARK [2][-]{subsection.2.7.14}{Translucent with 1+1 Protection}{section.2.7}% 35
+\BOOKMARK [1][-]{section.2.8}{Heuristics vs ILP}{chapter.2}% 33
+\BOOKMARK [2][-]{subsection.2.8.1}{Low traffic scenario}{section.2.8}% 34
+\BOOKMARK [2][-]{subsection.2.8.2}{Medium traffic scenario}{section.2.8}% 35
+\BOOKMARK [2][-]{subsection.2.8.3}{High traffic scenario}{section.2.8}% 36
+\BOOKMARK [2][-]{subsection.2.8.4}{Transparent with 1+1 Protection}{section.2.8}% 37
+\BOOKMARK [2][-]{subsection.2.8.5}{Translucent without Survivability}{section.2.8}% 38
+\BOOKMARK [2][-]{subsection.2.8.6}{Translucent with 1+1 Protection}{section.2.8}% 39

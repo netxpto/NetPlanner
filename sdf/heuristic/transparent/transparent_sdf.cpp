@@ -26,6 +26,8 @@ public:
 	t_matrix odu4{ 0 };
 	ordering_rule orderingRule{ ordering_rule::descendingOrder };
 	t_matrix physicalTopologyAdjacencyMatrix{ 0 };
+	int span{ 0 };
+	t_matrix distancesBetweenNodes{ 0 };
 	transport_mode transportMode{transport_mode::transparent};
 	int numberOfOMSPerLink{ 0 };
 	int numberOfOpticalChannelsPerOMS{ 0 };
@@ -64,6 +66,8 @@ public:
 		addInputParameter("odu4", &odu4);
 		addInputParameter("orderingRule", &orderingRule);
 		addInputParameter("physicalTopologyAdjacencyMatrix", &physicalTopologyAdjacencyMatrix);
+		addInputParameter("distancesBetweenNodes", &distancesBetweenNodes);
+		addInputParameter("span", &span);
 		addInputParameter("transportMode", &transportMode);
 		addInputParameter("numberOfOMSPerLink", &numberOfOMSPerLink);
 		addInputParameter("numberOfOpticalChannelsPerOMS", &numberOfOpticalChannelsPerOMS);
@@ -141,6 +145,8 @@ int main()
 	PhysicalTopologyGenerator_.setInitialWavelenght(param.initialWavelenght);
 	PhysicalTopologyGenerator_.setWavelenghtSpacing(param.wavelenghtSpacing);
 	PhysicalTopologyGenerator_.setPhysicalTopologyAdjacencyMatrix(param.physicalTopologyAdjacencyMatrix);
+	PhysicalTopologyGenerator_.setDistancesBetweenNodes(param.distancesBetweenNodes);
+	PhysicalTopologyGenerator_.setSpan(param.span);
 	PhysicalTopologyGenerator_.setNumberOfOMSPerLink(param.numberOfOMSPerLink);
 	PhysicalTopologyGenerator_.setOpticalChannelCapacity(param.opticalChannelCapacity);
 
@@ -187,6 +193,7 @@ int main()
 	
 	MainSystem.run();
 	MainSystem.terminate();
+	//MainSystem.writeReport();
 
 	system("pause");
 

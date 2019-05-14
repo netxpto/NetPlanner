@@ -292,7 +292,7 @@ void Signal::bufferPut(T value)
 							fileHandler << "------------------------------------------ opticalMultiplexingSystems --------------------------------------------------";
 							fileHandler << "\n";
 							fileHandler << "\n";
-							fileHandler << "OMSIndex | sourceNode | destinationNode | numberOfWavelenghts | wavelenghts(nm) | availableWavelenghts";
+							fileHandler << "OMSIndex | sourceNode | destinationNode | numberOfWavelenghts | wavelenghts(nm) | availableWavelenghts	|	amplifiers";
 							fileHandler << "\n";
 							fileHandler << "\n";
 							for (size_t oms = 0; oms < (*ptr).opticalMultiplexingSystems.size(); oms++)
@@ -326,7 +326,12 @@ void Signal::bufferPut(T value)
 									fileHandler << " ";
 								}
 								fileHandler << "]";
+								fileHandler << "\t";
+								fileHandler << "\t";
+								fileHandler << (*ptr).opticalMultiplexingSystems[oms].amplifiers;
+								fileHandler << "\t";
 								fileHandler << "\n";
+
 							}
 							fileHandler << "\n";
 							fileHandler << "\n";
