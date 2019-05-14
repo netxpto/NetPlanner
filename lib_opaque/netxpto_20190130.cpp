@@ -105,14 +105,6 @@ void Signal::bufferPut(T value)
 						fileHandler << "\n";
 						fileHandler << "requestIndex";
 						fileHandler << " | ";
-						fileHandler << "demandIndex";
-						fileHandler << " | ";
-						fileHandler << "oduType";
-						fileHandler << " | ";
-						fileHandler << "sourceNode";
-						fileHandler << " | ";
-						fileHandler << "destinationNode";
-						fileHandler << " | ";
 						fileHandler << "numberOfIntermediateNodes";
 						fileHandler << " | ";
 						fileHandler << "intermediateNodes";
@@ -120,14 +112,6 @@ void Signal::bufferPut(T value)
 
 						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
 							fileHandler << ptr->requestIndex;
-							fileHandler << "\t";
-							fileHandler << ptr->demandIndex;
-							fileHandler << "\t";
-							fileHandler << ptr->oduType;
-							fileHandler << "\t";
-							fileHandler << ptr->sourceNode;
-							fileHandler << "\t";
-							fileHandler << ptr->destinationNode;
 							fileHandler << "\t";
 							fileHandler << ptr->numberOfIntermediateNodes;
 							fileHandler << "\t";
@@ -158,20 +142,12 @@ void Signal::bufferPut(T value)
 							fileHandler << "\n\n";
 							fileHandler << "requestIndex";
 							fileHandler << " | ";
-							fileHandler << "demandIndex";
-							fileHandler << " | ";
-							fileHandler << "oduType";
-							fileHandler << " | ";
 							fileHandler << "routed";
 							fileHandler << " | ";
 							fileHandler << "numberOfLightPaths";
 							fileHandler << "\n";
 
 							fileHandler << (*ptr).pathInformation.requestIndex;
-							fileHandler << "\t";
-							fileHandler << (*ptr).pathInformation.demandIndex;
-							fileHandler << "\t";
-							fileHandler << (*ptr).pathInformation.oduType;
 							fileHandler << "\t";
 							if ((*ptr).pathInformation.routed == true)
 								fileHandler << "true";
@@ -726,16 +702,6 @@ void Signal::close() {
 				fileHandler << "\n";
 				fileHandler << "requestIndex";
 				fileHandler << " | ";
-				fileHandler << "pathTotal";
-				fileHandler << " | ";
-				fileHandler << "demandIndex";
-				fileHandler << " | ";
-				fileHandler << "demandSourceNode";
-				fileHandler << " | ";
-				fileHandler << "demandDestinationNode";
-				fileHandler << " | ";
-				fileHandler << "oduType";
-				fileHandler << " | ";
 				fileHandler << "sourceNode";
 				fileHandler << " | ";
 				fileHandler << "destinationNode";
@@ -747,16 +713,6 @@ void Signal::close() {
 
 				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
 					fileHandler << ptr->requestIndex;
-					fileHandler << "\t";
-					fileHandler << ptr->pathTotal;
-					fileHandler << "\t";
-					fileHandler << ptr->demandIndex;
-					fileHandler << "\t";
-					fileHandler << ptr->demandSourceNode;
-					fileHandler << "\t";
-					fileHandler << ptr->demandDestinationNode;
-					fileHandler << "\t";
-					fileHandler << ptr->oduType;
 					fileHandler << "\t";
 					fileHandler << ptr->sourceNode;
 					fileHandler << "\t";
@@ -790,32 +746,12 @@ void Signal::close() {
 					fileHandler << "\n\n";
 					fileHandler << "requestIndex";
 					fileHandler << " | ";
-					fileHandler << "pathTotal";
-					fileHandler << " | ";
-					fileHandler << "demandIndex";
-					fileHandler << " | ";
-					fileHandler << "demandSourceNode";
-					fileHandler << " | ";
-					fileHandler << "demandDestinationNode";
-					fileHandler << " | ";
-					fileHandler << "oduType";
-					fileHandler << " | ";
 					fileHandler << "routed";
 					fileHandler << " | ";
 					fileHandler << "numberOfLightPaths";
 					fileHandler << "\n";
 
 					fileHandler << (*ptr).pathInformation.requestIndex;
-					fileHandler << "\t";
-					fileHandler << (*ptr).pathInformation.pathTotal;
-					fileHandler << "\t";
-					fileHandler << (*ptr).pathInformation.demandIndex;
-					fileHandler << "\t";
-					fileHandler << (*ptr).pathInformation.demandSourceNode;
-					fileHandler << "\t";
-					fileHandler << (*ptr).pathInformation.demandDestinationNode;
-					fileHandler << "\t";
-					fileHandler << (*ptr).pathInformation.oduType;
 					fileHandler << "\t";
 					if ((*ptr).pathInformation.routed == true)
 						fileHandler << "true";
