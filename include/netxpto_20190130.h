@@ -175,6 +175,7 @@ using t_optical_multiplexing_systems = struct {			// opticalMultiplexingSystems 
 	t_integer numberOfWavelenghts{ 0 };					// opticalMultiplexingSystems number of wavelenghts
 	std::vector<double> wavelenghts;					// opticalMultiplexingSystems wavelenghts values in nanometers (nm)
 	std::vector<t_integer> availableWavelenghts;		// indicates which of the previous wavelenghts values are available to be assigned
+	t_integer amplifiers{ 0 };							// number of needed amplifiers in a given link
 };
 
 using t_demand_request_routed = struct {
@@ -185,6 +186,7 @@ using t_demand_request_routed = struct {
 
 using t_physical_topology = struct {											// physicalTopology signal data structure
 	t_matrix physicalTopologyAdjacencyMatrix{ 0 };								// physicalTopologyMatrix variable
+	t_matrix distancesBetweenNodes{ 0 };
 	std::vector<t_optical_multiplexing_systems> opticalMultiplexingSystems;		
 };
 
