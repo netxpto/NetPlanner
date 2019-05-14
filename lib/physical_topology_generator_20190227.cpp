@@ -19,6 +19,8 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 
 
 		output.physicalTopologyAdjacencyMatrix = getPhysicalTopologyAdjacencyMatrix();
+		output.distancesBetweenNodes = getDistancesBetweenNodes();
+		
 
 		for (t_integer line = 0; line < (t_integer)physicalTopologyAdjacencyMatrix[0].size(); line++)
 		{
@@ -50,6 +52,9 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 						addWavelenght = addWavelenght + wavelenghtSpacing;
 						oms.availableWavelenghts.push_back(1);
 					}
+
+					int numberOfAmplifiers = distancesBetweenNodes[line][column] / span;
+					oms.amplifiers = numberOfAmplifiers;
 
 					output.opticalMultiplexingSystems.push_back(oms);
 					oms.wavelenghts.clear();

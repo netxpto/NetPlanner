@@ -100,6 +100,7 @@ bool PhysicalTopologyManager::runBlock(void) {
 				
 				while (wavelenghtFound == false && x < availableWavelenghtsIndexOfAllOMS[0].size()) // poderá ter de correr todas as wavelenghts do primeiro oms até encontrar uma compativel a todos
 				{
+					tryNextPath = false;
 					wavelenghtTested = availableWavelenghtsIndexOfAllOMS[0][x];
 					//Test that wavelenght in the reamaining OMS of the path
 
