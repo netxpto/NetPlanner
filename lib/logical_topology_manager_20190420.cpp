@@ -447,6 +447,17 @@ bool LogicalTopologyManager::runBlock(void) {
 						g.printAllPaths(sourceNode, destinationNode);
 						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
 						
+						if (transparent)
+						{
+							for (int i = 0; i < possiblePaths.size(); i++)
+							{
+								if (possiblePaths[i].size() > 2)
+								{
+									possiblePaths.erase(possiblePaths.begin() + i, possiblePaths.begin() + (possiblePaths.size()));
+									break;
+								}
+							}
+						}
 
 						pathRequest.requestIndex = requestIndex;
 						pathRequest.demandIndex = demand.demandIndex;
@@ -484,6 +495,18 @@ bool LogicalTopologyManager::runBlock(void) {
 						g.printAllPaths(sourceNode, destinationNode);
 						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
 
+						if (transparent)
+						{
+							for (int i = 0; i < possiblePaths.size(); i++)
+							{
+								if (possiblePaths[i].size() > 2)
+								{
+									possiblePaths.erase(possiblePaths.begin() + i, possiblePaths.begin() + (possiblePaths.size()));
+									break;
+								}
+							}
+						}
+
 						pathRequest.requestIndex = requestIndex;
 						pathRequest.demandIndex = demand.demandIndex;
 						pathRequest.oduType = demand.oduType;
@@ -519,6 +542,18 @@ bool LogicalTopologyManager::runBlock(void) {
 						g.printAllPaths(sourceNode, destinationNode);
 						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
 
+						if (transparent)
+						{
+							for (int i = 0; i < possiblePaths.size(); i++)
+							{
+								if (possiblePaths[i].size() > 2)
+								{
+									possiblePaths.erase(possiblePaths.begin() + i, possiblePaths.begin() + (possiblePaths.size()));
+									break;
+								}
+							}
+						}
+
 						pathRequest.requestIndex = requestIndex;
 						pathRequest.demandIndex = demand.demandIndex;
 						pathRequest.oduType = demand.oduType;
@@ -553,6 +588,18 @@ bool LogicalTopologyManager::runBlock(void) {
 						int destinationNode = demand.destinationNode - 1;
 						g.printAllPaths(sourceNode, destinationNode);
 						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+
+						if (transparent)
+						{
+							for (int i = 0; i < possiblePaths.size(); i++)
+							{
+								if (possiblePaths[i].size() > 2)
+								{
+									possiblePaths.erase(possiblePaths.begin() + i, possiblePaths.begin() + (possiblePaths.size()));
+									break;
+								}
+							}
+						}
 
 						pathRequest.requestIndex = requestIndex;
 						pathRequest.demandIndex = demand.demandIndex;
