@@ -1,12 +1,8 @@
 #include "..\include_opaque\physical_topology_generator_20190221.h"
 
+void PhysicalTopologyGenerator::initialize(void) {}
 
-void PhysicalTopologyGenerator::initialize(void) 
-{
-
-}
-
-bool PhysicalTopologyGenerator::runBlock(void) 
+bool PhysicalTopologyGenerator::runBlock(void)
 {
 	if (!generate)
 		return false;
@@ -14,54 +10,45 @@ bool PhysicalTopologyGenerator::runBlock(void)
 		generate = false;
 
 	t_physical_topology outputPhysicalTopology;
-	outputPhysicalTopology.physicalTopologyAdjacencyMatrix = physicalTopologyAdjacencyMatrix;
 	t_optical_multiplexing_system outputOpticalMultiplexingSystem;
-	
-	t_integer index{ 0 };
-	
-	t_integer line{ 0 };
-	t_integer nodes = physicalTopologyAdjacencyMatrix[0].size();
 
-	double wavelength = initialWavelength;
+	outputPhysicalTopology.physicalTopologyAdjacencyMatrix = physicalTopologyAdjacencyMatrix;
 
-	for (t_integer w = 0; w < numberOfOpticalChannelsPerOMS; w++) 
+	t_integer index = 0;
+
+	for (size_t i = 0; i < physicalTopologyAdjacencyMatrix[0].size(); i++)
 	{
-		outputOpticalMultiplexingSystem.wavelengths.push_back(wavelength);
-		if (w < numberOfOpticalChannelsPerOMS - 1)
-			wavelength += wavelengthSpacing;
-
-		//if (w == 0 || w == 1)
-			//outputOpticalMultiplexingSystem.availableWavelengths.push_back(0);
-		//else 
-			outputOpticalMultiplexingSystem.availableWavelengths.push_back(1);
-	}
-
-	while (line < nodes) 
-	{
-		t_integer column{ 0 };
-		while (column < nodes) 
+		for (size_t j = 0; j < physicalTopologyAdjacencyMatrix[0].size(); j++)
 		{
-			if (physicalTopologyAdjacencyMatrix[line][column] == 1) 
+			double wavelength = initialWavelength;
+
+			if (physicalTopologyAdjacencyMatrix[i][j] == 1)
 			{
 				outputOpticalMultiplexingSystem.OMSIndex = index;
-				outputOpticalMultiplexingSystem.sourceNode = { line + 1 };
-				outputOpticalMultiplexingSystem.destinationNode = { column + 1 };
+				outputOpticalMultiplexingSystem.sourceNode = i + 1;
+				outputOpticalMultiplexingSystem.destinationNode = j + 1;
 				outputOpticalMultiplexingSystem.maximumNumberOfWavelengths = numberOfOpticalChannelsPerOMS;
-				outputOpticalMultiplexingSystem.wavelengths;
-				outputOpticalMultiplexingSystem.availableWavelengths;
-				
+
+				for (t_integer k = 0; k < numberOfOpticalChannelsPerOMS; k++)
+				{
+					outputOpticalMultiplexingSystem.wavelengths.push_back(wavelength);
+					if (k < numberOfOpticalChannelsPerOMS - 1)
+						wavelength += wavelengthSpacing;
+
+					outputOpticalMultiplexingSystem.availableWavelengths.push_back(1);
+				}
+
 				outputPhysicalTopology.OMS.push_back(outputOpticalMultiplexingSystem);
 
-				physicalTopologyAdjacencyMatrix[line][column]--;
+				outputOpticalMultiplexingSystem.wavelengths.clear();
+				outputOpticalMultiplexingSystem.availableWavelengths.clear();
 				index++;
 			}
-			column++;
 		}
-		line++;
 	}
-	
-	outputSignals[0]->bufferPut((t_physical_topology)outputPhysicalTopology);	
-		
+
+	outputSignals[0]->bufferPut((t_physical_topology)outputPhysicalTopology);
+
 	return true;
 };
 

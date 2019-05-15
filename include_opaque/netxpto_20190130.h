@@ -150,8 +150,8 @@ using t_optical_multiplexing_system = struct {
 	t_integer maximumNumberOfWavelengths{ 0 };
 	std::vector<double> wavelengths;
 	std::vector<t_integer> availableWavelengths;
-	//std::vector<t_integer> capacity;
 };
+
 using t_physical_topology = struct {
 	t_matrix physicalTopologyAdjacencyMatrix{ 0 };
 	std::vector<t_optical_multiplexing_system> OMS;
@@ -175,9 +175,7 @@ using t_demand_request_routed = struct {
 };
 
 using t_path_request = struct {
-	t_integer requestIndex{ 0 };
-	//t_integer demandIndex{ 0 };
-	//t_integer oduType{ 0 };
+	t_integer requestIndex;
 	t_integer sourceNode{ 0 };
 	t_integer destinationNode{ 0 };
 	t_integer numberOfIntermediateNodes{ 0 };
@@ -185,7 +183,7 @@ using t_path_request = struct {
 	//bool wavelengthContinuity;
 };
 
-using t_path_routed = struct {
+using t_path_information = struct {
 	t_integer requestIndex{ 0 };
 	bool routed;
 	t_integer numberOfLightPaths{ 0 };
@@ -200,7 +198,7 @@ using t_light_paths_table = struct {
 };
 
 using t_path_request_routed = struct {
-	std::vector<t_path_routed> pathRouted;
+	t_path_information pathInformation;
 	std::vector<t_light_paths_table> lightPathsTable;
 };
 

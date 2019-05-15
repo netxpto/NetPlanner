@@ -193,6 +193,7 @@ int main()
 	
 	MainSystem.run();
 	MainSystem.terminate();
+	//MainSystem.writeReport();
 
 	system("pause");
 

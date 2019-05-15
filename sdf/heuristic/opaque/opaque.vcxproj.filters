@@ -67,5 +67,14 @@
     <Text Include="input_parameters.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="input_parameters_0_5_T.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="input_parameters_5T.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="input_parameters_10T.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
