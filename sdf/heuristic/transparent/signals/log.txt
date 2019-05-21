@@ -1,12 +1,12 @@
 The following input parameters were loaded from the configuration file:
 -----------------------------------------------------------------
 ########## Scheduler ##########
-Block start time: 2019-05-21 16:04:44
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Output Signals: 
 Scheduler|Scheduler_Out|space=1
 -----------------------------------------------------------------
-Elapsed time: 42 milliseconds
+Elapsed time: 2 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Output Signals: 
@@ -15,12 +15,12 @@ Scheduler|Scheduler_Out|space=0
 
 -----------------------------------------------------------------
 ########## LogicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:44
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Output Signals: 
 LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
 -----------------------------------------------------------------
-Elapsed time: 11 milliseconds
+Elapsed time: 3 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Output Signals: 
@@ -29,12 +29,12 @@ LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=0
 
 -----------------------------------------------------------------
 ########## PhysicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:44
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Output Signals: 
 PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
 -----------------------------------------------------------------
-Elapsed time: 61 milliseconds
+Elapsed time: 28 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Output Signals: 
@@ -43,7 +43,7 @@ PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=0
 
 -----------------------------------------------------------------
 ########## LogicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:44
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=1
 LogicalTopologyManager|Scheduler_Out|ready=1
@@ -53,7 +53,7 @@ LogicalTopologyManager|FinalLogicalTopology|space=1
 LogicalTopologyManager|ProcessedDemand|space=1
 LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=1
 -----------------------------------------------------------------
-Elapsed time: 20 milliseconds
+Elapsed time: 9 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
@@ -67,12 +67,12 @@ LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=0
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:44
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Sink|FinalLogicalTopology|ready=1
 Output Signals: 
 -----------------------------------------------------------------
-Elapsed time: 1 milliseconds
+Elapsed time: 3 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Sink|FinalLogicalTopology|ready=0
@@ -81,7 +81,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:44
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Sink|ProcessedDemand|ready=0
 Output Signals: 
@@ -95,7 +95,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## PhysicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:44
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=1
 PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=1
@@ -103,7 +103,7 @@ Output Signals:
 PhysicalTopologyManager|FinalPhysicalTopology|space=1
 PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=1
 -----------------------------------------------------------------
-Elapsed time: 234 milliseconds
+Elapsed time: 80 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
@@ -115,12 +115,12 @@ PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=0
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:44
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Sink|FinalPhysicalTopology|ready=1
 Output Signals: 
 -----------------------------------------------------------------
-Elapsed time: 1 milliseconds
+Elapsed time: 6 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Sink|FinalPhysicalTopology|ready=0
@@ -129,277 +129,21 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## Scheduler ##########
-Block start time: 2019-05-21 16:04:44
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Output Signals: 
 Scheduler|Scheduler_Out|space=1
------------------------------------------------------------------
-Elapsed time: 4 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Output Signals: 
-Scheduler|Scheduler_Out|space=0
-
-
------------------------------------------------------------------
-########## LogicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Output Signals: 
-LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
------------------------------------------------------------------
-Elapsed time: 0 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Output Signals: 
-LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
-
-
------------------------------------------------------------------
-########## PhysicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Output Signals: 
-PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
------------------------------------------------------------------
-Elapsed time: 0 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Output Signals: 
-PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
-
-
------------------------------------------------------------------
-########## LogicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
-LogicalTopologyManager|Scheduler_Out|ready=1
-LogicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|ready=1
-Output Signals: 
-LogicalTopologyManager|FinalLogicalTopology|space=1
-LogicalTopologyManager|ProcessedDemand|space=1
-LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=1
------------------------------------------------------------------
-Elapsed time: 22 milliseconds
------------------------------------------------------------------
-Input Signals: 
-LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
-LogicalTopologyManager|Scheduler_Out|ready=0
-LogicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|ready=0
-Output Signals: 
-LogicalTopologyManager|FinalLogicalTopology|space=0
-LogicalTopologyManager|ProcessedDemand|space=0
-LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=0
-
-
------------------------------------------------------------------
-########## Sink ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Sink|FinalLogicalTopology|ready=1
-Output Signals: 
------------------------------------------------------------------
-Elapsed time: 1 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Sink|FinalLogicalTopology|ready=0
-Output Signals: 
-
-
------------------------------------------------------------------
-########## Sink ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Sink|ProcessedDemand|ready=1
-Output Signals: 
------------------------------------------------------------------
-Elapsed time: 0 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Sink|ProcessedDemand|ready=0
-Output Signals: 
-
-
------------------------------------------------------------------
-########## PhysicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
-PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=1
-Output Signals: 
-PhysicalTopologyManager|FinalPhysicalTopology|space=1
-PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=1
------------------------------------------------------------------
-Elapsed time: 36 milliseconds
------------------------------------------------------------------
-Input Signals: 
-PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
-PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=0
-Output Signals: 
-PhysicalTopologyManager|FinalPhysicalTopology|space=0
-PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=0
-
-
------------------------------------------------------------------
-########## Sink ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Sink|FinalPhysicalTopology|ready=1
-Output Signals: 
------------------------------------------------------------------
-Elapsed time: 1 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Sink|FinalPhysicalTopology|ready=0
-Output Signals: 
-
-
------------------------------------------------------------------
-########## Scheduler ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Output Signals: 
-Scheduler|Scheduler_Out|space=1
------------------------------------------------------------------
-Elapsed time: 5 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Output Signals: 
-Scheduler|Scheduler_Out|space=0
-
-
------------------------------------------------------------------
-########## LogicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Output Signals: 
-LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
------------------------------------------------------------------
-Elapsed time: 0 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Output Signals: 
-LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
-
-
------------------------------------------------------------------
-########## PhysicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Output Signals: 
-PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
------------------------------------------------------------------
-Elapsed time: 0 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Output Signals: 
-PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
-
-
------------------------------------------------------------------
-########## LogicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
-LogicalTopologyManager|Scheduler_Out|ready=1
-LogicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|ready=1
-Output Signals: 
-LogicalTopologyManager|FinalLogicalTopology|space=1
-LogicalTopologyManager|ProcessedDemand|space=1
-LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=1
------------------------------------------------------------------
-Elapsed time: 20 milliseconds
------------------------------------------------------------------
-Input Signals: 
-LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
-LogicalTopologyManager|Scheduler_Out|ready=0
-LogicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|ready=0
-Output Signals: 
-LogicalTopologyManager|FinalLogicalTopology|space=0
-LogicalTopologyManager|ProcessedDemand|space=0
-LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=0
-
-
------------------------------------------------------------------
-########## Sink ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Sink|FinalLogicalTopology|ready=1
-Output Signals: 
------------------------------------------------------------------
-Elapsed time: 1 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Sink|FinalLogicalTopology|ready=0
-Output Signals: 
-
-
------------------------------------------------------------------
-########## Sink ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-Sink|ProcessedDemand|ready=1
-Output Signals: 
------------------------------------------------------------------
-Elapsed time: 0 milliseconds
------------------------------------------------------------------
-Input Signals: 
-Sink|ProcessedDemand|ready=0
-Output Signals: 
-
-
------------------------------------------------------------------
-########## PhysicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:44
-Input Signals: 
-PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
-PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=1
-Output Signals: 
-PhysicalTopologyManager|FinalPhysicalTopology|space=1
-PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=1
------------------------------------------------------------------
-Elapsed time: 385 milliseconds
------------------------------------------------------------------
-Input Signals: 
-PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
-PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=0
-Output Signals: 
-PhysicalTopologyManager|FinalPhysicalTopology|space=0
-PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=0
-
-
------------------------------------------------------------------
-########## Sink ##########
-Block start time: 2019-05-21 16:04:45
-Input Signals: 
-Sink|FinalPhysicalTopology|ready=1
-Output Signals: 
 -----------------------------------------------------------------
 Elapsed time: 2 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
-Sink|FinalPhysicalTopology|ready=0
-Output Signals: 
-
-
------------------------------------------------------------------
-########## Scheduler ##########
-Block start time: 2019-05-21 16:04:45
-Input Signals: 
-Output Signals: 
-Scheduler|Scheduler_Out|space=1
------------------------------------------------------------------
-Elapsed time: 819 milliseconds
------------------------------------------------------------------
-Input Signals: 
 Output Signals: 
 Scheduler|Scheduler_Out|space=0
 
 
 -----------------------------------------------------------------
 ########## LogicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Output Signals: 
 LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
@@ -413,7 +157,7 @@ LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
 
 -----------------------------------------------------------------
 ########## PhysicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Output Signals: 
 PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
@@ -427,7 +171,135 @@ PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
 
 -----------------------------------------------------------------
 ########## LogicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
+LogicalTopologyManager|Scheduler_Out|ready=1
+LogicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|ready=1
+Output Signals: 
+LogicalTopologyManager|FinalLogicalTopology|space=1
+LogicalTopologyManager|ProcessedDemand|space=1
+LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=1
+-----------------------------------------------------------------
+Elapsed time: 11 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
+LogicalTopologyManager|Scheduler_Out|ready=0
+LogicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|ready=0
+Output Signals: 
+LogicalTopologyManager|FinalLogicalTopology|space=0
+LogicalTopologyManager|ProcessedDemand|space=0
+LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=0
+
+
+-----------------------------------------------------------------
+########## Sink ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+Sink|FinalLogicalTopology|ready=1
+Output Signals: 
+-----------------------------------------------------------------
+Elapsed time: 6 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Sink|FinalLogicalTopology|ready=0
+Output Signals: 
+
+
+-----------------------------------------------------------------
+########## Sink ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+Sink|ProcessedDemand|ready=1
+Output Signals: 
+-----------------------------------------------------------------
+Elapsed time: 0 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Sink|ProcessedDemand|ready=0
+Output Signals: 
+
+
+-----------------------------------------------------------------
+########## PhysicalTopologyManager ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
+PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=1
+Output Signals: 
+PhysicalTopologyManager|FinalPhysicalTopology|space=1
+PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=1
+-----------------------------------------------------------------
+Elapsed time: 60 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
+PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=0
+Output Signals: 
+PhysicalTopologyManager|FinalPhysicalTopology|space=0
+PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=0
+
+
+-----------------------------------------------------------------
+########## Sink ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+Sink|FinalPhysicalTopology|ready=1
+Output Signals: 
+-----------------------------------------------------------------
+Elapsed time: 5 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Sink|FinalPhysicalTopology|ready=0
+Output Signals: 
+
+
+-----------------------------------------------------------------
+########## Scheduler ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+Output Signals: 
+Scheduler|Scheduler_Out|space=1
+-----------------------------------------------------------------
+Elapsed time: 2 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Output Signals: 
+Scheduler|Scheduler_Out|space=0
+
+
+-----------------------------------------------------------------
+########## LogicalTopologyGenerator ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+Output Signals: 
+LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
+-----------------------------------------------------------------
+Elapsed time: 0 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Output Signals: 
+LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
+
+
+-----------------------------------------------------------------
+########## PhysicalTopologyGenerator ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+Output Signals: 
+PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
+-----------------------------------------------------------------
+Elapsed time: 0 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Output Signals: 
+PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
+
+
+-----------------------------------------------------------------
+########## LogicalTopologyManager ##########
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
 LogicalTopologyManager|Scheduler_Out|ready=1
@@ -451,12 +323,12 @@ LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=0
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Sink|FinalLogicalTopology|ready=1
 Output Signals: 
 -----------------------------------------------------------------
-Elapsed time: 1 milliseconds
+Elapsed time: 5 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Sink|FinalLogicalTopology|ready=0
@@ -465,7 +337,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Sink|ProcessedDemand|ready=1
 Output Signals: 
@@ -479,7 +351,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## PhysicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
 PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=1
@@ -487,7 +359,7 @@ Output Signals:
 PhysicalTopologyManager|FinalPhysicalTopology|space=1
 PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=1
 -----------------------------------------------------------------
-Elapsed time: 37 milliseconds
+Elapsed time: 42 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
@@ -499,12 +371,12 @@ PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=0
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Sink|FinalPhysicalTopology|ready=1
 Output Signals: 
 -----------------------------------------------------------------
-Elapsed time: 1 milliseconds
+Elapsed time: 5 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Sink|FinalPhysicalTopology|ready=0
@@ -513,21 +385,21 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## Scheduler ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Output Signals: 
 Scheduler|Scheduler_Out|space=1
 -----------------------------------------------------------------
-Elapsed time: 0 milliseconds
+Elapsed time: 2 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Output Signals: 
-Scheduler|Scheduler_Out|space=1
+Scheduler|Scheduler_Out|space=0
 
 
 -----------------------------------------------------------------
 ########## LogicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Output Signals: 
 LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
@@ -541,7 +413,7 @@ LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
 
 -----------------------------------------------------------------
 ########## PhysicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
 Input Signals: 
 Output Signals: 
 PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
@@ -555,7 +427,135 @@ PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
 
 -----------------------------------------------------------------
 ########## LogicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
+LogicalTopologyManager|Scheduler_Out|ready=1
+LogicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|ready=1
+Output Signals: 
+LogicalTopologyManager|FinalLogicalTopology|space=1
+LogicalTopologyManager|ProcessedDemand|space=1
+LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=1
+-----------------------------------------------------------------
+Elapsed time: 9 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
+LogicalTopologyManager|Scheduler_Out|ready=0
+LogicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|ready=0
+Output Signals: 
+LogicalTopologyManager|FinalLogicalTopology|space=0
+LogicalTopologyManager|ProcessedDemand|space=0
+LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=0
+
+
+-----------------------------------------------------------------
+########## Sink ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+Sink|FinalLogicalTopology|ready=1
+Output Signals: 
+-----------------------------------------------------------------
+Elapsed time: 5 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Sink|FinalLogicalTopology|ready=0
+Output Signals: 
+
+
+-----------------------------------------------------------------
+########## Sink ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+Sink|ProcessedDemand|ready=1
+Output Signals: 
+-----------------------------------------------------------------
+Elapsed time: 0 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Sink|ProcessedDemand|ready=0
+Output Signals: 
+
+
+-----------------------------------------------------------------
+########## PhysicalTopologyManager ##########
+Block start time: 2019-05-21 17:40:31
+Input Signals: 
+PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
+PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=1
+Output Signals: 
+PhysicalTopologyManager|FinalPhysicalTopology|space=1
+PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=1
+-----------------------------------------------------------------
+Elapsed time: 43 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
+PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=0
+Output Signals: 
+PhysicalTopologyManager|FinalPhysicalTopology|space=0
+PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=0
+
+
+-----------------------------------------------------------------
+########## Sink ##########
+Block start time: 2019-05-21 17:40:32
+Input Signals: 
+Sink|FinalPhysicalTopology|ready=1
+Output Signals: 
+-----------------------------------------------------------------
+Elapsed time: 6 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Sink|FinalPhysicalTopology|ready=0
+Output Signals: 
+
+
+-----------------------------------------------------------------
+########## Scheduler ##########
+Block start time: 2019-05-21 17:40:32
+Input Signals: 
+Output Signals: 
+Scheduler|Scheduler_Out|space=1
+-----------------------------------------------------------------
+Elapsed time: 0 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Output Signals: 
+Scheduler|Scheduler_Out|space=1
+
+
+-----------------------------------------------------------------
+########## LogicalTopologyGenerator ##########
+Block start time: 2019-05-21 17:40:32
+Input Signals: 
+Output Signals: 
+LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
+-----------------------------------------------------------------
+Elapsed time: 0 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Output Signals: 
+LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
+
+
+-----------------------------------------------------------------
+########## PhysicalTopologyGenerator ##########
+Block start time: 2019-05-21 17:40:32
+Input Signals: 
+Output Signals: 
+PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
+-----------------------------------------------------------------
+Elapsed time: 0 milliseconds
+-----------------------------------------------------------------
+Input Signals: 
+Output Signals: 
+PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
+
+
+-----------------------------------------------------------------
+########## LogicalTopologyManager ##########
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
 LogicalTopologyManager|Scheduler_Out|ready=0
@@ -565,7 +565,7 @@ LogicalTopologyManager|FinalLogicalTopology|space=1
 LogicalTopologyManager|ProcessedDemand|space=1
 LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=1
 -----------------------------------------------------------------
-Elapsed time: 12 milliseconds
+Elapsed time: 4 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
@@ -579,12 +579,12 @@ LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=1
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 Sink|FinalLogicalTopology|ready=1
 Output Signals: 
 -----------------------------------------------------------------
-Elapsed time: 0 milliseconds
+Elapsed time: 7 milliseconds
 -----------------------------------------------------------------
 Input Signals: 
 Sink|FinalLogicalTopology|ready=0
@@ -593,7 +593,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 Sink|ProcessedDemand|ready=1
 Output Signals: 
@@ -607,7 +607,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## PhysicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
 PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=0
@@ -627,7 +627,7 @@ PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=1
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 Sink|FinalPhysicalTopology|ready=0
 Output Signals: 
@@ -641,7 +641,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## Scheduler ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 Output Signals: 
 Scheduler|Scheduler_Out|space=1
@@ -655,7 +655,7 @@ Scheduler|Scheduler_Out|space=1
 
 -----------------------------------------------------------------
 ########## LogicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 Output Signals: 
 LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
@@ -669,7 +669,7 @@ LogicalTopologyGenerator|LogicalTopologyGenerator_Out|space=1
 
 -----------------------------------------------------------------
 ########## PhysicalTopologyGenerator ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 Output Signals: 
 PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
@@ -683,7 +683,7 @@ PhysicalTopologyGenerator|PhysicalTopologyGenerator_Out|space=1
 
 -----------------------------------------------------------------
 ########## LogicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 LogicalTopologyManager|LogicalTopologyGenerator_Out|ready=0
 LogicalTopologyManager|Scheduler_Out|ready=0
@@ -707,7 +707,7 @@ LogicalTopologyManager|LogicalTopologyManager_PathRequest|space=1
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 Sink|FinalLogicalTopology|ready=0
 Output Signals: 
@@ -721,7 +721,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 Sink|ProcessedDemand|ready=0
 Output Signals: 
@@ -735,7 +735,7 @@ Output Signals:
 
 -----------------------------------------------------------------
 ########## PhysicalTopologyManager ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 PhysicalTopologyManager|PhysicalTopologyGenerator_Out|ready=0
 PhysicalTopologyManager|LogicalTopologyManager_PathRequest|ready=0
@@ -755,7 +755,7 @@ PhysicalTopologyManager|PhysicalTopologyManager_PathRequestRouted|space=1
 
 -----------------------------------------------------------------
 ########## Sink ##########
-Block start time: 2019-05-21 16:04:46
+Block start time: 2019-05-21 17:40:32
 Input Signals: 
 Sink|FinalPhysicalTopology|ready=0
 Output Signals: 
