@@ -1,6 +1,12 @@
 #include "..\include_opaque\logical_topology_manager_20190419.h"
 
-void LogicalTopologyManager::initialize(void) {}
+void LogicalTopologyManager::initialize(void) 
+{
+	numberOfOutputSignals = (int)outputSignals.size();
+
+	routingCriterionLogicalTopology = getRoutingCriterionLogicalTopology();
+	blockingCriterionLogicalTopology = getBlockingCriterionLogicalTopology();
+}
 
 bool LogicalTopologyManager::runBlock(void)
 {
@@ -44,8 +50,6 @@ bool LogicalTopologyManager::runBlock(void)
 				}
 
 				// se foi requerido wavelengths para todos os lightPaths que constituem o path
-				//if (demand.sourceNode == pathRequestRouted.lightPathsTable[0].sourceNode &&
-					//demand.destinationNode == pathRequestRouted.lightPathsTable[pathRequestRouted.lightPathsTable.size() - 1].destinationNode)
 				if (pathRequestRouted.lightPathsTable.size() == pathDij.size() - 1)
 				{
 					std::vector<t_integer> newLightPathsIndex;
@@ -224,7 +228,7 @@ bool LogicalTopologyManager::runBlock(void)
 						temporaryLogicalMatrix[src - 1][dst - 1] = 0;
 
 						bool block = true;
-						for (t_integer k = 0; k < logicalTopology.lightPaths.size(); k++)
+						for (size_t k = 0; k < logicalTopology.lightPaths.size(); k++)
 						{
 							if (src == logicalTopology.lightPaths[k].sourceNode && dst == logicalTopology.lightPaths[k].destinationNode)
 							{
@@ -326,8 +330,11 @@ bool LogicalTopologyManager::runBlock(void)
 					{
 						if (logicalTopology.logicalTopologyAdjacencyMatrix[i][j] != 0)
 						{
-							if (routingCriterionLogicalTopology == "hops")
+							if (routingCriterionLogicalTopology == t_routing_criterion_logical_topology::hops)
 								adjacency_list[i].push_back(neighbor(j, 1));
+
+							else if (routingCriterionLogicalTopology == t_routing_criterion_logical_topology::km)
+								adjacency_list[i].push_back(neighbor(j, logicalTopology.distanceMatrix[i][j]));
 						}
 					}
 				}
@@ -487,8 +494,11 @@ bool LogicalTopologyManager::runBlock(void)
 			{
 				if (temporaryLogicalMatrix[i][j] != 0)
 				{
-					if (routingCriterionLogicalTopology == "hops")
+					if (routingCriterionLogicalTopology == t_routing_criterion_logical_topology::hops)
 						adjacency_list[i].push_back(neighbor(j, 1));
+
+					else if (routingCriterionLogicalTopology == t_routing_criterion_logical_topology::km)
+						adjacency_list[i].push_back(neighbor(j, logicalTopology.distanceMatrix[i][j]));
 				}
 			}
 		}
@@ -695,4 +705,3 @@ std::list<vertex_t> LogicalTopologyManager::dijkstraGetShortestPathTo(vertex_t v
 		path.push_front(vertex);
 	return path;
 }
-

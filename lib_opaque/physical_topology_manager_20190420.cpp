@@ -1,6 +1,12 @@
 #include "..\include_opaque\physical_topology_manager_20190420.h"
 
-void PhysicalTopologyManager::initialize(void) {}
+void PhysicalTopologyManager::initialize(void) 
+{
+	numberOfOutputSignals = (int)outputSignals.size();
+
+	routingCriterionPhysicalTopology = getRoutingCriterionPhysicalTopology();
+	blockingCriterionPhysicalTopology = getBlockingCriterionPhysicalTopology();
+}
 
 bool PhysicalTopologyManager::runBlock(void) 
 {

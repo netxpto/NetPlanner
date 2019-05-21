@@ -65,7 +65,10 @@ const int MAX_NUMBER_OF_PATHS = 2;
 using namespace std;							// to be deleted 4/9/2018
 
 enum class survivability_method { none, protection_1_plus_1, restoration };
-
+enum class t_ordering_rule { descendingOrder, ascendingOrder };
+enum class t_transport_mode { opaque, transparent, translucent };
+enum class t_routing_criterion_logical_topology { hops, km };				
+enum class t_routing_criterion_physical_topology { hops, km };
 
 typedef int vertex_t;
 typedef double weight_t;
@@ -138,6 +141,7 @@ using t_optical_channel = struct {
 
 using t_logical_topology = struct {
 	t_matrix logicalTopologyAdjacencyMatrix{ 0 };
+	t_matrix distanceMatrix{ 0 };
 	std::vector<t_path> paths;
 	std::vector<t_light_path> lightPaths;
 	std::vector<t_optical_channel> opticalChannels;
@@ -150,10 +154,12 @@ using t_optical_multiplexing_system = struct {
 	t_integer maximumNumberOfWavelengths{ 0 };
 	std::vector<double> wavelengths;
 	std::vector<t_integer> availableWavelengths;
+	t_integer numberOfAmplifiers{ 0 };
 };
 
 using t_physical_topology = struct {
 	t_matrix physicalTopologyAdjacencyMatrix{ 0 };
+	t_matrix distanceMatrix{ 0 };
 	std::vector<t_optical_multiplexing_system> OMS;
 };
 
@@ -860,6 +866,7 @@ public:
 	bool run(string signalPath);
 	void terminate();
 	void terminateSuperBlock();
+	void writeReport();
 
 	//########################################################################################################
 
@@ -1146,7 +1153,7 @@ private:
 	vector<string> loadedInputParameters;
 	string inputParametersFileName{ "input_parameters.txt" }; //name of the file from where the input parameters will be read
 	string outputFolderName{ "signals" };
-	enum ParameterType { INT, DOUBLE, BOOL, STRING, MATRIX }; //types of parameters
+	enum ParameterType { INT, DOUBLE, BOOL, MATRIX, ORDERING, TRANSPORT, ROUTING_LOGICAL, ROUTING_PHYSICAL }; //types of parameters
 											  //A parameter can only be of 1 type
 	class Parameter {
 	private:
@@ -1156,8 +1163,11 @@ private:
 			int* i;
 			double* d;
 			bool* b;
-			string* s;
 			t_matrix* m;
+			t_ordering_rule* o;
+			t_transport_mode* t;
+			t_routing_criterion_logical_topology* rl;
+			t_routing_criterion_physical_topology* rp;
 		};
 
 	public:
@@ -1165,8 +1175,11 @@ private:
 		void setValue(int value);
 		void setValue(double value);
 		void setValue(bool value);
-		void setValue(string value);
 		void setValue(t_matrix value);
+		void setValue(t_ordering_rule value);
+		void setValue(t_transport_mode value);
+		void setValue(t_routing_criterion_logical_topology value);
+		void setValue(t_routing_criterion_physical_topology value);
 		ParameterType getType();
 		//Constructor for parameter of type int
 		Parameter(int* elem);
@@ -1174,17 +1187,28 @@ private:
 		Parameter(double* elem);
 		//Constructor for parameter of type bool
 		Parameter(bool* elem);
-		//Constructor for parameter of type string
-		Parameter(string* elem);
 		//Constructor for parameter of type matrix
 		Parameter(t_matrix* elem);
+		//Constructor for parameter of type orderingrule
+		Parameter(t_ordering_rule* elem);
+		//Constructor for parameter of type transportmode
+		Parameter(t_transport_mode* elem);
+		//Constructor for parameter of type routingcriterionlogicaltopology
+		Parameter(t_routing_criterion_logical_topology* elem);
+		//Constructor for parameter of type routingcriterionphysicaltopology
+		Parameter(t_routing_criterion_physical_topology* elem);
 	};
 
 	int parseInt(string str);
 	double parseDouble(string str);
 	bool parseBool(string str);
-	string parseString(string str);
-	t_matrix parseMatrix(string str);
+	//t_matrix parseMatrix(string str);
+	t_matrix parseMatrix(ifstream &inputFile );
+	t_ordering_rule parseOrderingRule(string str);
+	t_transport_mode parseTransportMode(string str);
+	t_routing_criterion_logical_topology parseRoutingCriterionLogicalTopology(string str);
+	t_routing_criterion_physical_topology parseRoutingCriterionPhysicalTopology(string str);
+
 	vector<string> split(const string & text, char sep);
 	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
 
@@ -1197,8 +1221,11 @@ public:
 	void addInputParameter(string name, int* variable);
 	void addInputParameter(string name, double* variable);
 	void addInputParameter(string name, bool* variable);
-	void addInputParameter(string name, string* variable);
 	void addInputParameter(string name, t_matrix* variable);
+	void addInputParameter(string name, t_ordering_rule* variable);
+	void addInputParameter(string name, t_transport_mode* variable);
+	void addInputParameter(string name, t_routing_criterion_logical_topology* variable);
+	void addInputParameter(string name, t_routing_criterion_physical_topology* variable);
 	/* Default empty constructor. Initializes the map */
 	SystemInputParameters() {};
 	SystemInputParameters(int argc,char*argv[]);

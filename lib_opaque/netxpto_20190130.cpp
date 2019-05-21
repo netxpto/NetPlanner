@@ -71,19 +71,23 @@ void Signal::bufferPut(T value)
 				}
 				else
 				{
-					if (type == "DemandRequest") {
+					if (type == "DemandRequest")
+					{
 						t_demand_request *ptr = (t_demand_request *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
+
+						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+						{
+							fileHandler << "\t";
 							fileHandler << ptr->demandIndex;
-							fileHandler << "\t";
+							fileHandler << "\t\t";
 							fileHandler << ptr->sourceNode;
-							fileHandler << "\t";
+							fileHandler << "\t\t";
 							fileHandler << ptr->destinationNode;
-							fileHandler << "\t";
+							fileHandler << "\t\t";
 							fileHandler << ptr->oduType;
-							fileHandler << "\t";
+							fileHandler << "\t\t";
 							if (ptr->survivabilityMethod == survivability_method::none)
 								fileHandler << "none";
 							else if (ptr->survivabilityMethod == survivability_method::protection_1_plus_1)
@@ -96,64 +100,77 @@ void Signal::bufferPut(T value)
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
-					else if (type == "PathRequest") {
+
+					else if (type == "PathRequest")
+					{
 						t_path_request *ptr = (t_path_request *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
 						fileHandler << "\n";
-						fileHandler << "requestIndex";
+						fileHandler << "  requestIndex";
+						fileHandler << "  |  ";
+						fileHandler << "sourceNode";
+						fileHandler << "  |  ";
+						fileHandler << "destinationNode";
 						fileHandler << " | ";
 						fileHandler << "numberOfIntermediateNodes";
 						fileHandler << " | ";
 						fileHandler << "intermediateNodes";
 						fileHandler << "\n\n";
 
-						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
+						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
+						{
+							fileHandler << "\t";
 							fileHandler << ptr->requestIndex;
-							fileHandler << "\t";
+							fileHandler << "\t\t";
+							fileHandler << ptr->sourceNode;
+							fileHandler << "\t\t";
+							fileHandler << ptr->destinationNode;
+							fileHandler << "\t\t\t";
 							fileHandler << ptr->numberOfIntermediateNodes;
-							fileHandler << "\t";
+							fileHandler << "\t\t\t";
 							fileHandler << "[";
-							for (size_t i = 0; i < ptr->intermediateNodes.size(); i++) {
+							for (size_t i = 0; i < ptr->intermediateNodes.size(); i++)
+							{
 								fileHandler << ptr->intermediateNodes[i];
 								if (i < ptr->intermediateNodes.size() - 1)
 									fileHandler << ",";
 							}
-							fileHandler << "]";
-
-							fileHandler << "\n";
+							fileHandler << "]\n";
 							ptr++;
 						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
 
-					else if (type == "PathRequestRouted") {
+					else if (type == "PathRequestRouted")
+					{
 						t_path_request_routed *ptr = (t_path_request_routed *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
-
+						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
+						{
 							fileHandler << "\n";
 							fileHandler << "### pathInformation ###";
 							fileHandler << "\n\n";
-							fileHandler << "requestIndex";
-							fileHandler << " | ";
+							fileHandler << "   requestIndex";
+							fileHandler << "   |   ";
 							fileHandler << "routed";
-							fileHandler << " | ";
+							fileHandler << "   |   ";
 							fileHandler << "numberOfLightPaths";
-							fileHandler << "\n";
+							fileHandler << "\n\n";
 
-							fileHandler << (*ptr).pathInformation.requestIndex;
 							fileHandler << "\t";
+							fileHandler << (*ptr).pathInformation.requestIndex;
+							fileHandler << "\t\t";
 							if ((*ptr).pathInformation.routed == true)
 								fileHandler << "true";
 							else
 								fileHandler << "false";
-							fileHandler << "\t";
+							fileHandler << "\t\t";
 							fileHandler << (*ptr).pathInformation.numberOfLightPaths;
 							fileHandler << "\n";
 
@@ -161,7 +178,7 @@ void Signal::bufferPut(T value)
 
 							fileHandler << "### lightPathsTable ###";
 							fileHandler << "\n\n";
-							fileHandler << "sourceNode";
+							fileHandler << "   sourceNode";
 							fileHandler << " | ";
 							fileHandler << "destinationNode";
 							fileHandler << " | ";
@@ -170,49 +187,54 @@ void Signal::bufferPut(T value)
 							fileHandler << "intermediateNodes";
 							fileHandler << " | ";
 							fileHandler << "wavelength";
-							fileHandler << "\n";
+							fileHandler << "\n\n";
 
 							for (size_t i = 0; i < (*ptr).lightPathsTable.size(); i++)
 							{
+								fileHandler << "\t";
 								fileHandler << (*ptr).lightPathsTable[i].sourceNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).lightPathsTable[i].destinationNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t\t";
 								fileHandler << (*ptr).lightPathsTable[i].numberOfIntermediateNodes;
-								fileHandler << "\t";
-								fileHandler << "[ ";
+								fileHandler << "\t\t";
+								fileHandler << "   [";
 								for (size_t j = 0; j < (*ptr).lightPathsTable[i].intermediateNodes.size(); j++)
 								{
 									fileHandler << (*ptr).lightPathsTable[i].intermediateNodes[j];
-									fileHandler << " ";
+									if (i < (*ptr).lightPathsTable[i].intermediateNodes.size() - 1)
+										fileHandler << ",";
 								}
 								fileHandler << "]";
-								fileHandler << "\t";
+								fileHandler << "\t\t     ";
 								fileHandler << (*ptr).lightPathsTable[i].wavelength;
 								fileHandler << "\n";
 							}
+							fileHandler << "\n";
+							fileHandler << "---------------------------------------------------------------------------------------------\n\n";
 							ptr++;
 						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
 
-					else if (type == "LogicalTopology") {
+					else if (type == "LogicalTopology")
+					{
 						t_logical_topology *ptr = (t_logical_topology *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
-
+						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
+						{
 							fileHandler << "\n";
 							fileHandler << "### logicalTopologyAdjacencyMatrix ###";
 							fileHandler << "\n\n";
 
 							t_integer nodes = (*ptr).logicalTopologyAdjacencyMatrix[0].size();
-							for (t_integer line = 0; line < nodes; line++) {
-
-								for (t_integer column = 0; column < nodes; column++) {
-
+							for (t_integer line = 0; line < nodes; line++)
+							{
+								for (t_integer column = 0; column < nodes; column++)
+								{
 									fileHandler << (*ptr).logicalTopologyAdjacencyMatrix[line][column];
 									fileHandler << "\t";
 								}
@@ -222,36 +244,38 @@ void Signal::bufferPut(T value)
 
 							fileHandler << "### paths ###";
 							fileHandler << "\n\n";
-							fileHandler << "pathIndex";
-							fileHandler << " | ";
+							fileHandler << "  pathIndex";
+							fileHandler << "   |   ";
 							fileHandler << "sourceNode";
-							fileHandler << " | ";
+							fileHandler << "  |  ";
 							fileHandler << "destinationNode";
-							fileHandler << " | ";
+							fileHandler << "  |  ";
 							fileHandler << "capacity (ODU0s)";
 							fileHandler << " | ";
 							fileHandler << "numberOfLightPaths";
 							fileHandler << " | ";
 							fileHandler << "lightPathsIndex";
-							fileHandler << "\n";
+							fileHandler << "\n\n";
 
 							for (size_t path = 0; path < (*ptr).paths.size(); path++)
 							{
+								fileHandler << "\t";
 								fileHandler << (*ptr).paths[path].pathIndex;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).paths[path].sourceNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).paths[path].destinationNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).paths[path].capacity;
-								fileHandler << "\t";
+								fileHandler << "\t\t\t";
 								fileHandler << (*ptr).paths[path].numberOfLightPaths;
-								fileHandler << "\t";
-								fileHandler << "[ ";
+								fileHandler << "\t\t";
+								fileHandler << "[";
 								for (size_t i = 0; i < (*ptr).paths[path].lightPathsIndex.size(); i++)
 								{
 									fileHandler << (*ptr).paths[path].lightPathsIndex[i];
-									fileHandler << " ";
+									if (i < (*ptr).paths[path].lightPathsIndex.size() - 1)
+										fileHandler << ",";
 								}
 								fileHandler << "]";
 								fileHandler << "\n";
@@ -271,26 +295,27 @@ void Signal::bufferPut(T value)
 							fileHandler << "numberOfOpticalChannels";
 							fileHandler << " | ";
 							fileHandler << "opticalChannelsIndex";
-							fileHandler << "\n";
+							fileHandler << "\n\n";
 
 							for (size_t lightPath = 0; lightPath < (*ptr).lightPaths.size(); lightPath++)
 							{
+								fileHandler << "\t";
 								fileHandler << (*ptr).lightPaths[lightPath].lightPathIndex;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).lightPaths[lightPath].sourceNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).lightPaths[lightPath].destinationNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).lightPaths[lightPath].capacity;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).lightPaths[lightPath].numberOfOpticalChannels;
-								fileHandler << "\t";
-								fileHandler << "[ ";
+								fileHandler << "\t\t\t";
+								fileHandler << "[";
 								for (size_t i = 0; i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size(); i++)
 								{
-
 									fileHandler << (*ptr).lightPaths[lightPath].opticalChannelsIndex[i];
-									fileHandler << " ";
+									if (i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size() - 1)
+										fileHandler << ",";
 								}
 								fileHandler << "]";
 								fileHandler << "\n";
@@ -312,53 +337,57 @@ void Signal::bufferPut(T value)
 							fileHandler << "numberOfDemands";
 							fileHandler << " | ";
 							fileHandler << "demandsIndex";
-							fileHandler << "\n";
+							fileHandler << "\n\n";
 
 							for (size_t opticalChannel = 0; opticalChannel < (*ptr).opticalChannels.size(); opticalChannel++)
 							{
+								fileHandler << "\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].opticalChannelIndex;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].sourceNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].destinationNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].wavelength;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].capacity;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
-								fileHandler << "\t";
-								fileHandler << "[ ";
+								fileHandler << "\t\t";
+								fileHandler << "[";
 								for (size_t i = 0; i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size(); i++)
 								{
-
 									fileHandler << (*ptr).opticalChannels[opticalChannel].demandsIndex[i];
-									fileHandler << " ";
+									if (i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size() - 1)
+										fileHandler << ",";
 								}
 								fileHandler << "]";
 								fileHandler << "\n";
 							}
+							fileHandler << "\n";
+							fileHandler << "--------------------------------------------------------------------------------------------------------------------\n\n";
 							ptr++;
 						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
 
-					else if (type == "PhysicalTopology") {
+					else if (type == "PhysicalTopology")
+					{
 						t_physical_topology *ptr = (t_physical_topology *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-						for (auto pTopology = firstValueToBeSaved; pTopology <= outPosition; pTopology++) {
-
+						for (auto pTopology = firstValueToBeSaved; pTopology <= outPosition; pTopology++)
+						{
 							fileHandler << "\n";
 							fileHandler << "### physicalTopologyAdjacencyMatrix ####";
 							fileHandler << "\n\n";
 							t_integer nodes = (*ptr).physicalTopologyAdjacencyMatrix[0].size();
-							for (t_integer line = 0; line < nodes; line++) {
-
-								for (t_integer column = 0; column < nodes; column++) {
-
+							for (t_integer line = 0; line < nodes; line++)
+							{
+								for (t_integer column = 0; column < nodes; column++)
+								{
 									fileHandler << (*ptr).physicalTopologyAdjacencyMatrix[line][column];
 									fileHandler << "\t";
 								}
@@ -368,7 +397,7 @@ void Signal::bufferPut(T value)
 
 							fileHandler << "### opticalMultiplexSection ####";
 							fileHandler << "\n\n";
-							fileHandler << "OMSIndex";
+							fileHandler << "    OMSIndex";
 							fileHandler << " | ";
 							fileHandler << "sourceNode";
 							fileHandler << " | ";
@@ -381,26 +410,29 @@ void Signal::bufferPut(T value)
 							fileHandler << "availableWavelengths";
 							fileHandler << "\n\n";
 
-							for (t_optical_multiplexing_system& oms : ptr->OMS) {
-
+							for (t_optical_multiplexing_system& oms : ptr->OMS)
+							{
+								fileHandler << "\t";
 								fileHandler << oms.OMSIndex;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << oms.sourceNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << oms.destinationNode;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << oms.maximumNumberOfWavelengths;
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << "[";
-								for (size_t i = 0; i < oms.wavelengths.size(); i++) {
+								for (size_t i = 0; i < oms.wavelengths.size(); i++)
+								{
 									fileHandler << oms.wavelengths[i];
 									if (i < oms.wavelengths.size() - 1)
 										fileHandler << ",";
 								}
 								fileHandler << "]";
-								fileHandler << "\t";
+								fileHandler << "\t\t";
 								fileHandler << "[";
-								for (size_t i = 0; i < oms.availableWavelengths.size(); i++) {
+								for (size_t i = 0; i < oms.availableWavelengths.size(); i++)
+								{
 									fileHandler << oms.availableWavelengths[i];
 									if (i < oms.availableWavelengths.size() - 1)
 										fileHandler << ",";
@@ -408,37 +440,39 @@ void Signal::bufferPut(T value)
 								fileHandler << "]";
 								fileHandler << "\n";
 							}
+							fileHandler << "\n";
+							fileHandler << "--------------------------------------------------------------------------------------------------------------------\n\n";
 							ptr++;
 						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
 
-					else if (type == "DemandRequestRouted") {
+					else if (type == "DemandRequestRouted")
+					{
 						t_demand_request_routed *ptr = (t_demand_request_routed *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
 						fileHandler << "\n";
-						fileHandler << "demandIndex";
-						fileHandler << " | ";
+						fileHandler << "   demandIndex";
+						fileHandler << "    |    ";
 						fileHandler << "routed";
-						fileHandler << " | ";
+						fileHandler << "    |    ";
 						fileHandler << "pathIndex";
 						fileHandler << "\n\n";
-
-						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
-
+					
+						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
+						{
+							fileHandler << "\t";
 							fileHandler << ptr->demandIndex;
-							fileHandler << "\t";
-							if (ptr->routed == true) {
+							fileHandler << "\t\t";
+							if (ptr->routed == true)
 								fileHandler << "true";
-							}
-							else if (ptr->routed == false) {
+							else if (ptr->routed == false)
 								fileHandler << "false";
-							}
-							fileHandler << "\t";
+							fileHandler << "\t\t";
 							fileHandler << ptr->pathIndex;
 							fileHandler << "\n";
 							ptr++;
@@ -496,9 +530,24 @@ void Signal::writeHeader(){
 
 		headerFile.open("./" + folderName + "/" + fileName, ios::out);
 
-		headerFile << "Signal type: " << getType() << "\n";
-		headerFile << "\n";
+		headerFile << "Signal type: " << getType() << "\n\n\n";
+		headerFile << "--------------------------------------------------------------------------------------------------------------------\n\n";
 		
+		if (getType() == "DemandRequest")
+		{
+			headerFile << "\n";
+			headerFile << "   demandIndex";
+			headerFile << "  |  ";
+			headerFile << "sourceNode";
+			headerFile << " | ";
+			headerFile << "destinationNode";
+			headerFile << "  |  ";
+			headerFile << "oduType";
+			headerFile << "  |  ";
+			headerFile << "survivabilityMethod";
+			headerFile << "\n\n";
+		}
+				
 		//headerFile << "// ### HEADER TERMINATOR ###\n";
 
 		headerFile.close();
@@ -644,66 +693,72 @@ void Messages::bufferPut(t_message value) {
 
 void Signal::close() {
 
-	if (saveSignal && (inPosition >= firstValueToBeSaved)) {
+	if (saveSignal && (inPosition >= firstValueToBeSaved)) 
+	{
 
 		if (!headerWritten) writeHeader();
 		
-		if (!(type == "Message")) {
+		if (!(type == "Message")) 
+		{
 			char* ptr = (char *)buffer;
 
 			ofstream fileHandler;
 			fileHandler.open("./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app);
 
-			if (type == "DemandRequest") {
+			if (type == "DemandRequest")
+			{
 				t_demand_request *ptr = (t_demand_request *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 				
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 			
 				fileHandler << "\n";
-				fileHandler << "demandIndex";
-				fileHandler << " | ";
+				fileHandler << "   demandIndex";
+				fileHandler << "  |  ";
 				fileHandler << "sourceNode";
 				fileHandler << " | ";
 				fileHandler << "destinationNode";
-				fileHandler << " | ";
+				fileHandler << "  |  ";
 				fileHandler << "oduType";
-				fileHandler << " | ";
+				fileHandler << "  |  ";
 				fileHandler << "survivabilityMethod";
 				fileHandler << "\n\n";
-				
-				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
-						fileHandler << ptr->demandIndex;
-						fileHandler << "\t";
-						fileHandler << ptr->sourceNode;
-						fileHandler << "\t";
-						fileHandler << ptr->destinationNode;
-						fileHandler << "\t";
-						fileHandler << ptr->oduType;
-						fileHandler << "\t";
-						if (ptr->survivabilityMethod == survivability_method::none)
-							fileHandler << "none";
-						else if (ptr->survivabilityMethod == survivability_method::protection_1_plus_1)
-							fileHandler << "protection 1+1";
-						else if (ptr->survivabilityMethod == survivability_method::restoration)
-							fileHandler << "restoration";
-						fileHandler << "\n";
-						ptr++;
+
+				for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+				{
+					fileHandler << "\t";
+					fileHandler << ptr->demandIndex;
+					fileHandler << "\t\t";
+					fileHandler << ptr->sourceNode;
+					fileHandler << "\t\t";
+					fileHandler << ptr->destinationNode;
+					fileHandler << "\t\t";
+					fileHandler << ptr->oduType;
+					fileHandler << "\t\t";
+					if (ptr->survivabilityMethod == survivability_method::none)
+						fileHandler << "none";
+					else if (ptr->survivabilityMethod == survivability_method::protection_1_plus_1)
+						fileHandler << "protection 1+1";
+					else if (ptr->survivabilityMethod == survivability_method::restoration)
+						fileHandler << "restoration";
+					fileHandler << "\n";
+					ptr++;
 				}
 				setFirstValueToBeSaved(1);
 			}
 
-			else if (type == "PathRequest") {
+			else if (type == "PathRequest")
+			{
 				t_path_request *ptr = (t_path_request *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
 				fileHandler << "\n";
-				fileHandler << "requestIndex";
-				fileHandler << " | ";
+				fileHandler << "  requestIndex";
+				fileHandler << "  |  ";
 				fileHandler << "sourceNode";
-				fileHandler << " | ";
+				fileHandler << "  |  ";
 				fileHandler << "destinationNode";
 				fileHandler << " | ";
 				fileHandler << "numberOfIntermediateNodes";
@@ -711,53 +766,56 @@ void Signal::close() {
 				fileHandler << "intermediateNodes";
 				fileHandler << "\n\n";
 
-				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
+				{
+					fileHandler << "\t";
 					fileHandler << ptr->requestIndex;
-					fileHandler << "\t";
+					fileHandler << "\t\t";
 					fileHandler << ptr->sourceNode;
-					fileHandler << "\t";
+					fileHandler << "\t\t";
 					fileHandler << ptr->destinationNode;
-					fileHandler << "\t";
+					fileHandler << "\t\t\t";
 					fileHandler << ptr->numberOfIntermediateNodes;
-					fileHandler << "\t";
+					fileHandler << "\t\t\t";
 					fileHandler << "[";
-					for (size_t i = 0; i < ptr->intermediateNodes.size(); i++) {
+					for (size_t i = 0; i < ptr->intermediateNodes.size(); i++) 
+					{
 						fileHandler << ptr->intermediateNodes[i];
 						if (i < ptr->intermediateNodes.size() - 1)
 							fileHandler << ",";
 					}
-					fileHandler << "]";
-					
-					fileHandler << "\n";
+					fileHandler << "]\n";
 					ptr++;
 				}
 				setFirstValueToBeSaved(1);
 			}
 
-			else if (type == "PathRequestRouted") {
+			else if (type == "PathRequestRouted") 
+			{
 				t_path_request_routed *ptr = (t_path_request_routed *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
-
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) 
+				{
 					fileHandler << "\n";
 					fileHandler << "### pathInformation ###";
 					fileHandler << "\n\n";
-					fileHandler << "requestIndex";
-					fileHandler << " | ";
+					fileHandler << "   requestIndex";
+					fileHandler << "   |   ";
 					fileHandler << "routed";
-					fileHandler << " | ";
+					fileHandler << "   |   ";
 					fileHandler << "numberOfLightPaths";
-					fileHandler << "\n";
+					fileHandler << "\n\n";
 
-					fileHandler << (*ptr).pathInformation.requestIndex;
 					fileHandler << "\t";
+					fileHandler << (*ptr).pathInformation.requestIndex;
+					fileHandler << "\t\t";
 					if ((*ptr).pathInformation.routed == true)
 						fileHandler << "true";
 					else 
 						fileHandler << "false";
-					fileHandler << "\t";
+					fileHandler << "\t\t";
 					fileHandler << (*ptr).pathInformation.numberOfLightPaths;
 					fileHandler << "\n";
 				
@@ -765,7 +823,7 @@ void Signal::close() {
 
 					fileHandler << "### lightPathsTable ###";
 					fileHandler << "\n\n";
-					fileHandler << "sourceNode";
+					fileHandler << "   sourceNode";
 					fileHandler << " | ";
 					fileHandler << "destinationNode";
 					fileHandler << " | ";
@@ -774,48 +832,53 @@ void Signal::close() {
 					fileHandler << "intermediateNodes";
 					fileHandler << " | ";
 					fileHandler << "wavelength";
-					fileHandler << "\n";
+					fileHandler << "\n\n";
 
 					for (size_t i = 0; i < (*ptr).lightPathsTable.size(); i++)
 					{
+						fileHandler << "\t";
 						fileHandler << (*ptr).lightPathsTable[i].sourceNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).lightPathsTable[i].destinationNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t\t";
 						fileHandler << (*ptr).lightPathsTable[i].numberOfIntermediateNodes;
-						fileHandler << "\t";
-						fileHandler << "[ ";
+						fileHandler << "\t\t";
+						fileHandler << "   [";
 						for (size_t j = 0; j < (*ptr).lightPathsTable[i].intermediateNodes.size(); j++)
 						{
 							fileHandler << (*ptr).lightPathsTable[i].intermediateNodes[j];
-							fileHandler << " ";
+							if (i < (*ptr).lightPathsTable[i].intermediateNodes.size() - 1)
+								fileHandler << ",";
 						}
 						fileHandler << "]";
-						fileHandler << "\t";
+						fileHandler << "\t\t     ";
 						fileHandler << (*ptr).lightPathsTable[i].wavelength;
 						fileHandler << "\n";
 					}
+					fileHandler << "\n";
+					fileHandler << "---------------------------------------------------------------------------------------------\n\n";
 					ptr++;
 				}
 				setFirstValueToBeSaved(1);
 			}
 
-			else if (type == "LogicalTopology") {
+			else if (type == "LogicalTopology") 
+			{
 				t_logical_topology *ptr = (t_logical_topology *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 				
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
-					
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) 
+				{	
 					fileHandler << "\n";
 					fileHandler << "### logicalTopologyAdjacencyMatrix ###";
 					fileHandler << "\n\n";
 
 					t_integer nodes = (*ptr).logicalTopologyAdjacencyMatrix[0].size();
-					for (t_integer line = 0; line < nodes ; line++) {
-
-						for (t_integer column = 0; column < nodes; column++) {
-
+					for (t_integer line = 0; line < nodes ; line++) 
+					{
+						for (t_integer column = 0; column < nodes; column++) 
+						{
 							fileHandler << (*ptr).logicalTopologyAdjacencyMatrix[line][column];
 							fileHandler << "\t";
 						}
@@ -825,36 +888,38 @@ void Signal::close() {
 					
 					fileHandler << "### paths ###";
 					fileHandler << "\n\n";
-					fileHandler << "pathIndex";
-					fileHandler << " | ";
+					fileHandler << "  pathIndex";
+					fileHandler << "   |   ";
 					fileHandler << "sourceNode";
-					fileHandler << " | ";
+					fileHandler << "  |  ";
 					fileHandler << "destinationNode";
-					fileHandler << " | ";
+					fileHandler << "  |  ";
 					fileHandler << "capacity (ODU0s)";
 					fileHandler << " | ";
 					fileHandler << "numberOfLightPaths";
 					fileHandler << " | ";
 					fileHandler << "lightPathsIndex";
-					fileHandler << "\n";
+					fileHandler << "\n\n";
 
 					for (size_t path = 0; path < (*ptr).paths.size(); path++)
 					{
+						fileHandler << "\t";
 						fileHandler << (*ptr).paths[path].pathIndex;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).paths[path].sourceNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).paths[path].destinationNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).paths[path].capacity;
-						fileHandler << "\t";
+						fileHandler << "\t\t\t";
 						fileHandler << (*ptr).paths[path].numberOfLightPaths;
-						fileHandler << "\t";
-						fileHandler << "[ ";
+						fileHandler << "\t\t";
+						fileHandler << "[";
 						for (size_t i = 0; i < (*ptr).paths[path].lightPathsIndex.size(); i++)
 						{
 							fileHandler << (*ptr).paths[path].lightPathsIndex[i];
-							fileHandler << " ";
+							if (i < (*ptr).paths[path].lightPathsIndex.size() - 1)
+								fileHandler << ",";
 						}
 						fileHandler << "]";
 						fileHandler << "\n";
@@ -874,26 +939,27 @@ void Signal::close() {
 					fileHandler << "numberOfOpticalChannels";
 					fileHandler << " | ";
 					fileHandler << "opticalChannelsIndex";
-					fileHandler << "\n";
+					fileHandler << "\n\n";
 
 					for (size_t lightPath = 0; lightPath < (*ptr).lightPaths.size(); lightPath++)
 					{
+						fileHandler << "\t";
 						fileHandler << (*ptr).lightPaths[lightPath].lightPathIndex;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).lightPaths[lightPath].sourceNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).lightPaths[lightPath].destinationNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).lightPaths[lightPath].capacity;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).lightPaths[lightPath].numberOfOpticalChannels;
-						fileHandler << "\t";
-						fileHandler << "[ ";
+						fileHandler << "\t\t\t";
+						fileHandler << "[";
 						for (size_t i = 0; i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size(); i++)
 						{
-
 							fileHandler << (*ptr).lightPaths[lightPath].opticalChannelsIndex[i];
-							fileHandler << " ";
+							if (i < (*ptr).lightPaths[lightPath].opticalChannelsIndex.size() - 1)
+								fileHandler << ",";
 						}
 						fileHandler << "]";
 						fileHandler << "\n";
@@ -915,52 +981,56 @@ void Signal::close() {
 					fileHandler << "numberOfDemands";
 					fileHandler << " | ";
 					fileHandler << "demandsIndex";
-					fileHandler << "\n";
+					fileHandler << "\n\n";
 
 					for (size_t opticalChannel = 0; opticalChannel < (*ptr).opticalChannels.size(); opticalChannel++)
 					{
+						fileHandler << "\t";
 						fileHandler << (*ptr).opticalChannels[opticalChannel].opticalChannelIndex;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).opticalChannels[opticalChannel].sourceNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).opticalChannels[opticalChannel].destinationNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).opticalChannels[opticalChannel].wavelength;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).opticalChannels[opticalChannel].capacity;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
-						fileHandler << "\t";
-						fileHandler << "[ ";
+						fileHandler << "\t\t";
+						fileHandler << "[";
 						for (size_t i = 0; i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size(); i++)
 						{
-
 							fileHandler << (*ptr).opticalChannels[opticalChannel].demandsIndex[i];
-							fileHandler << " ";
+							if (i < (*ptr).opticalChannels[opticalChannel].demandsIndex.size() - 1)
+								fileHandler << ",";
 						}
 						fileHandler << "]";
 						fileHandler << "\n";
 					}
+					fileHandler << "\n";
+					fileHandler << "--------------------------------------------------------------------------------------------------------------------\n\n";
 					ptr++;
 				}
 				setFirstValueToBeSaved(1);
 			}
 			
-			else if (type == "PhysicalTopology") {
+			else if (type == "PhysicalTopology") 
+			{
 				t_physical_topology *ptr = (t_physical_topology *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				for (auto pTopology = firstValueToBeSaved; pTopology <= outPosition; pTopology++) {
-
+				for (auto pTopology = firstValueToBeSaved; pTopology <= outPosition; pTopology++) 
+				{
 					fileHandler << "\n";
 					fileHandler << "### physicalTopologyAdjacencyMatrix ####";
 					fileHandler << "\n\n";
 					t_integer nodes = (*ptr).physicalTopologyAdjacencyMatrix[0].size();
-					for (t_integer line = 0; line < nodes; line++) {
-
-						for (t_integer column = 0; column < nodes; column++) {
-
+					for (t_integer line = 0; line < nodes; line++) 
+					{
+						for (t_integer column = 0; column < nodes; column++) 
+						{
 							fileHandler << (*ptr).physicalTopologyAdjacencyMatrix[line][column];
 							fileHandler << "\t";
 						}
@@ -970,7 +1040,7 @@ void Signal::close() {
 
 					fileHandler << "### opticalMultiplexSection ####";
 					fileHandler << "\n\n";
-					fileHandler << "OMSIndex";
+					fileHandler << "    OMSIndex";
 					fileHandler << " | ";
 					fileHandler << "sourceNode";
 					fileHandler << " | ";
@@ -981,65 +1051,74 @@ void Signal::close() {
 					fileHandler << "wavelengths";
 					fileHandler << " | ";
 					fileHandler << "availableWavelengths";
+					fileHandler << " | ";
+					fileHandler << "numberOfAmplifiers";
 					fileHandler << "\n\n";
 
-					for (t_optical_multiplexing_system& oms : ptr->OMS) {
-
+					for (t_optical_multiplexing_system& oms : ptr->OMS) 
+					{
+						fileHandler << "\t";
 						fileHandler << oms.OMSIndex;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << oms.sourceNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << oms.destinationNode;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << oms.maximumNumberOfWavelengths;
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << "[";
-						for (size_t i = 0; i < oms.wavelengths.size(); i++) {
+						for (size_t i = 0; i < oms.wavelengths.size(); i++) 
+						{
 							fileHandler << oms.wavelengths[i];
 							if (i < oms.wavelengths.size() - 1)
 								fileHandler << ",";
 						}
 						fileHandler << "]";
-						fileHandler << "\t";
+						fileHandler << "\t\t";
 						fileHandler << "[";
-						for (size_t i = 0; i < oms.availableWavelengths.size(); i++) {
+						for (size_t i = 0; i < oms.availableWavelengths.size(); i++) 
+						{
 							fileHandler << oms.availableWavelengths[i];
 							if (i <  oms.availableWavelengths.size() - 1)
 								fileHandler << ",";
 						}
 						fileHandler << "]";
+						fileHandler << "\t\t\t";
+						fileHandler << oms.numberOfAmplifiers;
 						fileHandler << "\n";
 					}
+					fileHandler << "\n";
+					fileHandler << "-----------------------------------------------------------------------------------------------------------------------------------\n\n";
 					ptr++;
 				}
 				setFirstValueToBeSaved(1);
 			}
 
-			else if (type == "DemandRequestRouted") {
+			else if (type == "DemandRequestRouted") 
+			{
 				t_demand_request_routed *ptr = (t_demand_request_routed *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
 				fileHandler << "\n";
-				fileHandler << "demandIndex";
-				fileHandler << " | ";
+				fileHandler << "   demandIndex";
+				fileHandler << "    |    ";
 				fileHandler << "routed";
-				fileHandler << " | ";
+				fileHandler << "    |    ";
 				fileHandler << "pathIndex";
 				fileHandler << "\n\n";
-
-				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
-
+			
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) 
+				{
+					fileHandler << "\t";
 					fileHandler << ptr->demandIndex;
-					fileHandler << "\t";
-					if (ptr->routed == true) {
+					fileHandler << "\t\t";
+					if (ptr->routed == true) 
 						fileHandler << "true";
-					}
-					else if (ptr->routed == false) {
+					else if (ptr->routed == false)
 						fileHandler << "false";
-					}
-					fileHandler << "\t";
+					fileHandler << "\t\t";
 					fileHandler << ptr->pathIndex;
 					fileHandler << "\n";
 					ptr++;
@@ -1135,6 +1214,7 @@ void Block::closeOutputSignals(void) {
 		outputSignals[i]->close();
 
 }
+
 
 //########################################################################################################################################################
 //################################################ GENERAL SUPER BLOCKS FUNCTIONS IMPLEMENTATION #########################################################
@@ -2015,6 +2095,58 @@ bool System::run(string signalPath) {
 	return systemAlive;
 }
 
+void System::writeReport()
+{
+	//SystemBlocks[3]
+
+	ofstream reportFile;
+	reportFile.open("report.txt");
+
+	reportFile << "RESULTS: Reference Network\n\n";
+	reportFile << "Scenario: Opaque\n\n";
+	reportFile << "--------------------------------------------------------\n";
+	reportFile << "Information regarding LINKS:\n";
+	reportFile << "--------------------------------------------------------\n";
+	reportFile << "| Link between Node: | Optical channels: | Amplifiers: |\n";
+	reportFile << "--------------------------------------------------------\n\n\n";
+	reportFile << "--------------------------------------------------------\n";
+	reportFile << "Information regarding NODES:\n\n";
+	reportFile << "--------------------------------------------------------\n";
+	reportFile << "Node:  | Connections: | Line Ports: | Tributary Ports: |\n";
+	reportFile << "--------------------------------------------------------\n\n\n";
+	reportFile << "Detailed description of each node:\n\n";
+	reportFile << "-------------------------------------------------------------\n";
+	reportFile << "Information regarding PATHS:\n";
+	reportFile << "-------------------------------------------------------------\n\n\n";
+	reportFile << "-------------------------------------------------------------\n";
+	reportFile << "Information regarding CAPEX:\n";
+	reportFile << "-------------------------------------------------------------\n\n\n";
+	reportFile << "-------------------------------------------------------------\n";
+	reportFile << "---------------------- Link Cost: ---------------------------\n";
+	reportFile << "-------------------------------------------------------------\n";
+	
+	reportFile << "-------------------------------------------------------------\n";
+	
+	reportFile << "-------------------------------------------------------------\n";
+	reportFile << "-------------------------------------------------------------\n";
+	reportFile << "---------------------- Node Cost: ---------------------------\n";
+	reportFile << "-------------------------------------------------------------\n";
+	
+	reportFile << "-------------------------------------------------------------\n";
+	
+	reportFile << "-------------------------------------------------------------\n";
+
+	reportFile << "-------------------------------------------------------------\n";
+	
+	reportFile << "-------------------------------------------------------------\n";
+	
+	reportFile << "-------------------------------------------------------------\n";
+
+	reportFile << "-------------------------------------------------------------\n";
+
+	reportFile.close();
+}
+
 void System::terminate()
 {
 
@@ -2856,33 +2988,44 @@ void SystemInputParameters::readSystemInputParameters()
 	string line;
 	while (getline(inputFile, line)) {
 		line = trim(line); 
-		try {
-			//If the line is a comment, it just skips to the next one
-			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
-				vector<string> splitline = split(line, '=');
-				splitline[0] = trim(splitline[0]); 
-				splitline[1] = trim(splitline[1]); 
-				if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
-					if(parameters[splitline[0]]->getType() == INT) //If parameter is an int
-						parameters[splitline[0]]->setValue(parseInt(splitline[1]));
-					else if(parameters[splitline[0]]->getType() == DOUBLE)
-						parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
-					else if(parameters[splitline[0]]->getType() == BOOL)
-						parameters[splitline[0]]->setValue(parseBool(splitline[1]));
-					else if (parameters[splitline[0]]->getType() == STRING)
-						parameters[splitline[0]]->setValue(parseString(splitline[1]));
-					else if (parameters[splitline[0]]->getType() == MATRIX)
-						parameters[splitline[0]]->setValue(parseMatrix(splitline[1]));
-					//Logs that a given parameter has been loaded from a file
-					loadedInputParameters.push_back(splitline[0]+" = "+splitline[1]);
+		if (line != "")
+		{
+			try {
+				//If the line is a comment, it just skips to the next one
+				if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+					vector<string> splitline = split(line, '=');
+					splitline[0] = trim(splitline[0]);
+					splitline[1] = trim(splitline[1]);
+					if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
+						if (parameters[splitline[0]]->getType() == INT) //If parameter is an int
+							parameters[splitline[0]]->setValue(parseInt(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == DOUBLE)
+							parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == BOOL)
+							parameters[splitline[0]]->setValue(parseBool(splitline[1]));
+					//	else if (parameters[splitline[0]]->getType() == MATRIX)
+						//	parameters[splitline[0]]->setValue(parseMatrix(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == MATRIX)
+							parameters[splitline[0]]->setValue(parseMatrix(inputFile));
+						else if (parameters[splitline[0]]->getType() == ORDERING)
+							parameters[splitline[0]]->setValue(parseOrderingRule(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == TRANSPORT)
+							parameters[splitline[0]]->setValue(parseTransportMode(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == ROUTING_LOGICAL)
+							parameters[splitline[0]]->setValue(parseRoutingCriterionLogicalTopology(splitline[1]));
+						else if (parameters[splitline[0]]->getType() == ROUTING_PHYSICAL)
+							parameters[splitline[0]]->setValue(parseRoutingCriterionPhysicalTopology(splitline[1]));
+						//Logs that a given parameter has been loaded from a file
+						loadedInputParameters.push_back(splitline[0] + " = " + splitline[1]);
+					}
 				}
+				errorLine++;
 			}
-			errorLine++;
-		}
-		catch (const exception& e) {
-			(void)e;
-			cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputParametersFileName;
-			exit(1);
+			catch (const exception& e) {
+				(void)e;
+				cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputParametersFileName;
+				exit(1);
+			}
 		}
 	}
 	inputFile.close();
@@ -2903,12 +3046,27 @@ void SystemInputParameters::addInputParameter(string name, bool * variable)
 	parameters[name] = new Parameter(variable);
 }
 
-void SystemInputParameters::addInputParameter(string name, string * variable)
+void SystemInputParameters::addInputParameter(string name, t_matrix * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
 
-void SystemInputParameters::addInputParameter(string name, t_matrix * variable)
+void SystemInputParameters::addInputParameter(string name, t_ordering_rule * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+void SystemInputParameters::addInputParameter(string name, t_transport_mode * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+void SystemInputParameters::addInputParameter(string name, t_routing_criterion_logical_topology * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+void SystemInputParameters::addInputParameter(string name, t_routing_criterion_physical_topology * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
@@ -2961,12 +3119,7 @@ bool SystemInputParameters::parseBool(string str)
 	else //Incorrect input
 		throw exception();
 }
-
-string SystemInputParameters::parseString(string str)
-{
-	return str;
-}
-
+/*
 t_matrix SystemInputParameters::parseMatrix(string str)
 {
 	stringstream ss(str);
@@ -2975,8 +3128,8 @@ t_matrix SystemInputParameters::parseMatrix(string str)
 	int n;
 	vector<int> line;
 	t_matrix m;
-	
-	while (getline(ss, indivLine, space)){
+
+	while (getline(ss, indivLine, space)) {
 		stringstream iss(indivLine);
 		while (iss >> n) {
 			line.push_back(n);
@@ -2984,8 +3137,89 @@ t_matrix SystemInputParameters::parseMatrix(string str)
 		m.push_back(line);
 		line.clear();
 	}
-	
+
 	return m;
+}
+*/
+t_matrix SystemInputParameters::parseMatrix(ifstream &inputFile)
+{
+	string line;
+	string number;
+	vector<t_integer> lines;
+	t_matrix m;
+	
+	t_integer n = 0;
+	t_integer k = 0;
+	
+	do
+	{
+		getline(inputFile, line);
+		stringstream s(line);
+
+		k = 0;
+		while (getline(s, number, ' '))
+		{
+			lines.push_back(stoi(number));
+			k++;
+		}
+		
+		m.push_back(lines);
+		lines.clear();
+		n++;
+
+	} while (n < k);
+
+	return m;
+}
+
+t_ordering_rule SystemInputParameters::parseOrderingRule(string str)
+{
+	t_ordering_rule o;
+
+	if (str == "descendingOrder")
+		return o = t_ordering_rule::descendingOrder;
+	else if (str == "ascendingOrder")
+		return o = t_ordering_rule::ascendingOrder;
+	else //Incorrect input
+		throw exception();
+}
+
+t_transport_mode SystemInputParameters::parseTransportMode(string str)
+{
+	t_transport_mode t;
+
+	if (str == "opaque")
+		return t = t_transport_mode::opaque;
+	else if (str == "transparent")
+		return t = t_transport_mode::transparent;
+	else if (str == "translucent")
+		return t = t_transport_mode::translucent;
+	else //Incorrect input
+		throw exception();
+}
+
+t_routing_criterion_logical_topology SystemInputParameters::parseRoutingCriterionLogicalTopology(string str)
+{
+	t_routing_criterion_logical_topology rl;
+
+	if (str == "hops")
+		return rl = t_routing_criterion_logical_topology::hops;
+	else if (str == "km")
+		return rl = t_routing_criterion_logical_topology::km;
+	else //Incorrect input
+		throw exception();
+}
+
+t_routing_criterion_physical_topology SystemInputParameters::parseRoutingCriterionPhysicalTopology(string str)
+{
+	t_routing_criterion_physical_topology rp;
+
+	if (str == "hops")
+		return rp = t_routing_criterion_physical_topology::hops;
+	else if (str == "km")
+		return rp = t_routing_criterion_physical_topology::km;
+	else //Incorrect input
+		throw exception();
 }
 
 void SystemInputParameters::Parameter::setValue(int value)
@@ -3006,16 +3240,34 @@ void SystemInputParameters::Parameter::setValue(bool value)
 	*b = value;
 }
 
-void SystemInputParameters::Parameter::setValue(string value)
-{
-	if (type != STRING) throw invalid_argument("Parameter is not of type STRING");
-	*s = value;
-}
-
 void SystemInputParameters::Parameter::setValue(t_matrix value)
 {
 	if (type != MATRIX) throw invalid_argument("Parameter is not of type MATRIX");
 	*m = value;
+}
+
+void SystemInputParameters::Parameter::setValue(t_ordering_rule value)
+{
+	if (type != ORDERING) throw invalid_argument("Parameter is not of type ORDERING");
+	*o = value;
+}
+
+void SystemInputParameters::Parameter::setValue(t_transport_mode value)
+{
+	if (type != TRANSPORT) throw invalid_argument("Parameter is not of type TRANSPORT");
+	*t = value;
+}
+
+void SystemInputParameters::Parameter::setValue(t_routing_criterion_logical_topology value)
+{
+	if (type != ROUTING_LOGICAL) throw invalid_argument("Parameter is not of type ROUTING_LOGICAL");
+	*rl = value;
+}
+
+void SystemInputParameters::Parameter::setValue(t_routing_criterion_physical_topology value)
+{
+	if (type != ROUTING_PHYSICAL) throw invalid_argument("Parameter is not of type ROUTING_PHYSICAL");
+	*rp = value;
 }
 
 SystemInputParameters::ParameterType SystemInputParameters::Parameter::getType()
@@ -3041,14 +3293,32 @@ SystemInputParameters::Parameter::Parameter(bool * elem)
 	b = elem;
 }
 
-SystemInputParameters::Parameter::Parameter(string * elem)
-{
-	type = STRING;
-	s = elem;
-}
-
 SystemInputParameters::Parameter::Parameter(t_matrix * elem)
 {
 	type = MATRIX;
 	m = elem;
+}
+
+SystemInputParameters::Parameter::Parameter(t_ordering_rule * elem)
+{
+	type = ORDERING;
+	o = elem;
+}
+
+SystemInputParameters::Parameter::Parameter(t_transport_mode * elem)
+{
+	type = TRANSPORT;
+	t = elem;
+}
+
+SystemInputParameters::Parameter::Parameter(t_routing_criterion_logical_topology * elem)
+{
+	type = ROUTING_LOGICAL;
+	rl = elem;
+}
+
+SystemInputParameters::Parameter::Parameter(t_routing_criterion_physical_topology * elem)
+{
+	type = ROUTING_PHYSICAL;
+	rp = elem;
 }

@@ -14,11 +14,11 @@ class Scheduler : public Block {
 	t_matrix odu0, odu1, odu2, odu3, odu4;
 
 	// Input Parameters
-	t_integer orderingRule{ 0 }; // By default descending ordering rule (ODU4 ... ODU0)
+	t_ordering_rule orderingRule{ t_ordering_rule::descendingOrder }; // By default descending ordering rule (ODU4 ... ODU0)
 	t_integer numberOfNodes{ 0 };
 
 	// Functions that need access to this class variables values in the main cpp file
-	bool generateDemand(t_integer orderingRule, t_demand_request &dem);
+	bool generateDemand(t_ordering_rule orderingRule, t_demand_request &dem);
 	t_integer calculateNumberOfNodes();
 	t_integer calculateNumberOfDemands();
 
@@ -46,8 +46,8 @@ public:
 	void setODU4(t_matrix od4) { odu4 = od4; }
 	t_matrix const getODU4(void) { return odu4; };
 
-	void setOrderingRule(t_integer rule) { orderingRule = rule; }
-	t_integer const setOrderingRule(void) { return orderingRule; };
+	void setOrderingRule(t_ordering_rule oRule) { orderingRule = oRule; }
+	t_ordering_rule const setOrderingRule(void) { return orderingRule; };
 
 	void setNumberOfNodes(t_integer nodes) { numberOfNodes = nodes; }
 	void setNumberOfDemands(t_integer number) { numberOfDemands = number; }
@@ -55,7 +55,7 @@ public:
 	t_integer getNumberOfNodes() { return numberOfNodes; };
 	t_integer getNumberOfDemands() { return numberOfDemands; };
 	t_integer getDemandIndex() { return demandIndex; };
-	t_integer getDemandOrderingRule() { return orderingRule; };
+	t_ordering_rule getDemandOrderingRule() { return orderingRule; };
 
 };
 

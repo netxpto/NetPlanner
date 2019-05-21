@@ -6,7 +6,7 @@
 class PhysicalTopologyManager : public Block {
 
 	//Input Parameters
-	std::string routingCriterionPhysicalTopology;
+	t_routing_criterion_physical_topology routingCriterionPhysicalTopology;
 	t_integer blockingCriterionPhysicalTopology;
 
 	//State Variables
@@ -20,8 +20,8 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setRoutingCriterionPhysicalTopology(std::string rPhysical) { routingCriterionPhysicalTopology = rPhysical; }
-	std::string getRoutingCriterionPhysicalTopology(void) { return routingCriterionPhysicalTopology; };
+	void setRoutingCriterionPhysicalTopology(t_routing_criterion_physical_topology rPhysical) { routingCriterionPhysicalTopology = rPhysical; }
+	t_routing_criterion_physical_topology getRoutingCriterionPhysicalTopology(void) { return routingCriterionPhysicalTopology; };
 
 	void setBlockingCriterionPhysicalTopology(t_integer bPhysical) { blockingCriterionPhysicalTopology = bPhysical; }
 	t_integer getBlockingCriterionPhysicalTopology(void) { return blockingCriterionPhysicalTopology; };
