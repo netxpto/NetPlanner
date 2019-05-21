@@ -6,9 +6,10 @@
 class LogicalTopologyGenerator : public Block {
 
 	// Input Parameters
-	std::string transportMode;
+	t_transport_mode transportMode;
 	t_matrix physicalTopologyAdjacencyMatrix;
-	
+	t_matrix distanceMatrix;
+
 	// State variables
 	bool generate{ true };
 	
@@ -21,11 +22,14 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setTransportMode(std::string tMode) { transportMode = tMode; }
-	std::string getTransportMode(void) { return transportMode; };
+	void setTransportMode(t_transport_mode tMode) { transportMode = tMode; }
+	t_transport_mode getTransportMode(void) { return transportMode; };
 
 	void setPhysicalTopologyAdjacencyMatrix(t_matrix pTopology) { physicalTopologyAdjacencyMatrix = pTopology; }
 	t_matrix getPhysicalTopologyAdjacencyMatrix(void) { return physicalTopologyAdjacencyMatrix; };
+
+	void setDistanceMatrix(t_matrix dMatrix) { distanceMatrix = dMatrix; }
+	t_matrix getDistanceMatrix(void) { return distanceMatrix; };
 
 };
 
