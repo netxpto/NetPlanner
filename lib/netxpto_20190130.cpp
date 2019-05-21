@@ -1141,6 +1141,9 @@ void Signal::close() {
 	}
 };
 
+void Signal::closeFinalReport() {
+	//t_logical_topology finalLogicalTopology = getLogicalTopology();
+};
 
 //########################################################################################################################################################
 //###################################################### GENERAL BLOCKS FUNCTIONS IMPLEMENTATION #########################################################
@@ -1183,6 +1186,10 @@ void Block::terminateBlock(void) {
   for (auto i = 0; i < numberOfInputSignals; i++)
     inputSignals[i]->close();
 
+}
+
+void Block::writeReport(void){
+	
 }
 
 void Block::closeOutputSignals(void) {
@@ -2079,15 +2086,528 @@ bool System::run(string signalPath) {
 
 void System::terminate()
 {
-
 	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
 		SystemBlocks[i]->terminateBlock();
+		
 	}
 	//Closes debug file
 	if (logValue)
 		logFile.close();
 
 }
+
+void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_topology finalPhysicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, ordering_rule orderingRule)
+{
+	ofstream fileHandler;
+	fileHandler.open("FinalReport.txt");
+	fileHandler << "RESULTS FOR TRANSPARENT MODE WITHOUT SURVIVABILITY\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "-------------------------------------------------------------\n";
+	fileHandler << "|                Information regarding links                |\n";
+	fileHandler << "-------------------------------------------------------------\n";
+	fileHandler << "|  Unidirectional link  |  Optical channels  |  Amplifiers  |\n";
+	fileHandler << "-------------------------------------------------------------\n";
+	for (size_t i = 0; i < finalPhysicalTopology.opticalMultiplexingSystems.size(); i++)
+	{
+		fileHandler << " Node " << finalPhysicalTopology.opticalMultiplexingSystems[i].sourceNode << " -> " << finalPhysicalTopology.opticalMultiplexingSystems[i].destinationNode << "\t";
+		int number{ 0 };
+
+		for (size_t j = 0; j < finalLogicalTopology.opticalChannels.size(); j++)
+		{
+			if (finalLogicalTopology.opticalChannels[j].sourceNode == finalPhysicalTopology.opticalMultiplexingSystems[i].sourceNode && finalLogicalTopology.opticalChannels[j].destinationNode == finalPhysicalTopology.opticalMultiplexingSystems[i].destinationNode)
+				number++;
+		}
+		fileHandler << "\t\t";
+		fileHandler << number; // number of optical channels
+		fileHandler << "\t";
+		fileHandler << "\t";
+		fileHandler << finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
+		fileHandler << "\n";
+	}
+	fileHandler << "-------------------------------------------------------------\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+
+
+	for (size_t line=0; line < finalLogicalTopology.logicalTopologyAdjacencyMatrix.size(); line++)
+	{
+		for (size_t column = 0; column < finalLogicalTopology.logicalTopologyAdjacencyMatrix[0].size(); column++)
+		{
+			if (finalLogicalTopology.logicalTopologyAdjacencyMatrix[line][column] == 1)
+			{
+				int lightpaths{ 0 };
+				for (size_t i = 0; i < finalLogicalTopology.lightPaths.size(); i++)
+				{
+					if (finalLogicalTopology.lightPaths[i].sourceNode == line + 1 && finalLogicalTopology.lightPaths[i].destinationNode == column + 1)
+					{
+						lightpaths++;
+					}
+				}
+				fileHandler << "Number of lightpaths between nodes (" << line+1 << "," << column+1 << "): " << lightpaths;
+				fileHandler << "\n";
+			}
+		}
+	}
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "---------------------------------------------------------------------------------------\n";
+	fileHandler << "|                            Information regarding nodes                              |\n";
+	fileHandler << "---------------------------------------------------------------------------------------\n";
+	fileHandler << "|                     |         Electrical part          |         Optical part       |\n";
+	fileHandler << "---------------------------------------------------------------------------------------\n";
+	fileHandler << "| Node | Nodal degree |  Tributary ports  |  OTU4 ports  |  Add ports  |  Line ports  |\n";
+	fileHandler << "---------------------------------------------------------------------------------------\n";
+
+	std::vector<int> nodalDegree;
+	std::vector<int> tributaryPorts;
+	std::vector<int> linePorts;
+	std::vector<int> otu4Ports;
+	std::vector<std::vector<int>> tributaryPortsODUtypes;
+	std::vector<std::vector<int>> linePortsDestinations;
+	std::vector<std::vector<int>> addPortsDestinations;
+
+	for (size_t line = 0; line < finalLogicalTopology.logicalTopologyAdjacencyMatrix.size(); line++)
+	{
+		nodalDegree.push_back(0);
+		tributaryPorts.push_back(0);
+		linePorts.push_back(0);
+		otu4Ports.push_back(0);
+	}
+	for (size_t line = 0; line < finalLogicalTopology.logicalTopologyAdjacencyMatrix.size(); line++)
+	{
+		linePortsDestinations.push_back(nodalDegree);
+		addPortsDestinations.push_back(nodalDegree);
+	}
+	for (int line = 0; line < finalLogicalTopology.logicalTopologyAdjacencyMatrix.size(); line++) // There are 5 ODU types (6x5 matrix)
+	{
+		std::vector<int> odu{ 0,0,0,0,0 };
+		tributaryPortsODUtypes.push_back(odu);
+	}
+
+	int firstODU0Index{ 0 };
+	int firstODU1Index{ 0 };
+	int firstODU2Index{ 0 };
+	int firstODU3Index{ 0 };
+	int firstODU4Index{ 0 };
+
+	if (orderingRule == ordering_rule::ascendingOrder)
+	{
+
+		for (int line = 0; line < odu0.size(); line++)
+		{
+			for (int column = 0; column < odu0.size(); column++)
+			{
+				if(odu0[line][column] != 0)
+					firstODU1Index += odu0[line][column];
+			}
+		}
+		for (int line = 0; line < odu1.size(); line++)
+		{
+			for (int column = 0; column < odu1.size(); column++)
+			{
+				if (odu1[line][column] != 0)
+					firstODU2Index += odu1[line][column];
+			}
+		}
+		firstODU2Index += firstODU1Index;
+
+		for (int line = 0; line < odu2.size(); line++)
+		{
+			for (int column = 0; column < odu2.size(); column++)
+			{
+				if (odu2[line][column] != 0)
+					firstODU2Index += odu2[line][column];
+			}
+		}
+		firstODU3Index += firstODU2Index;
+
+		for (int line = 0; line < odu3.size(); line++)
+		{
+			for (int column = 0; column < odu3.size(); column++)
+			{
+				if (odu3[line][column] != 0)
+					firstODU4Index += odu3[line][column];
+			}
+		}
+		firstODU4Index += firstODU3Index;
+	}
+	else
+	{
+		for (int line = 0; line < odu4.size(); line++)
+		{
+			for (int column = 0; column < odu4.size(); column++)
+			{
+				if (odu4[line][column] != 0)
+					firstODU3Index += odu4[line][column];
+			}
+		}
+		for (int line = 0; line < odu3.size(); line++)
+		{
+			for (int column = 0; column < odu3.size(); column++)
+			{
+				if (odu3[line][column] != 0)
+					firstODU2Index += odu3[line][column];
+			}
+		}
+		firstODU2Index += firstODU3Index;
+
+		for (int line = 0; line < odu2.size(); line++)
+		{
+			for (int column = 0; column < odu2.size(); column++)
+			{
+				if (odu2[line][column] != 0)
+					firstODU1Index += odu2[line][column];
+			}
+		}
+		firstODU1Index += firstODU2Index;
+
+		for (int line = 0; line < odu1.size(); line++)
+		{
+			for (int column = 0; column < odu1.size(); column++)
+			{
+				if (odu1[line][column] != 0)
+					firstODU0Index += odu1[line][column];
+			}
+		}
+		firstODU0Index += firstODU1Index;
+	}
+
+	for (int line = 0; line < finalLogicalTopology.logicalTopologyAdjacencyMatrix.size(); line++)
+	{
+			for (int i = 0; i < finalPhysicalTopology.physicalTopologyAdjacencyMatrix[line].size(); i++)
+			{
+				if (finalPhysicalTopology.physicalTopologyAdjacencyMatrix[line][i] == 1)
+					nodalDegree[line]++;
+			}
+			if (orderingRule == ordering_rule::descendingOrder) 
+			{
+				// Counting ODU4 demands
+				for (int j = 0; j < odu4[line].size(); j++)
+				{
+					tributaryPorts[line] += odu4[line][j];
+					tributaryPortsODUtypes[line][4] += odu4[line][j];
+				}
+
+				// Counting ODU3 demands
+				for (int j = 0; j < odu3[line].size(); j++)
+				{
+					tributaryPorts[line] += odu3[line][j];
+					tributaryPortsODUtypes[line][3] += odu3[line][j];
+				}
+				// Counting ODU2 demands
+				for (int j = 0; j < odu2[line].size(); j++)
+				{
+					tributaryPorts[line] += odu2[line][j];
+					tributaryPortsODUtypes[line][2] += odu2[line][j];
+				}
+				// Counting ODU1 demands
+				for (int j = 0; j < odu1[line].size(); j++)
+				{
+					tributaryPorts[line] += odu1[line][j];
+					tributaryPortsODUtypes[line][1] += odu1[line][j];
+				}
+				// Counting ODU0 demands
+				for (int j = 0; j < odu0[line].size(); j++)
+				{
+					tributaryPorts[line] += odu0[line][j];
+					tributaryPortsODUtypes[line][0] += odu0[line][j];
+				}
+			}
+			else if (orderingRule == ordering_rule::ascendingOrder)
+			{
+				// Counting ODU0 demands
+				for (int j = 0; j < odu0[line].size(); j++)
+				{
+					tributaryPorts[line] += odu0[line][j];
+					tributaryPortsODUtypes[line][0] += odu0[line][j];
+				}
+				// Counting ODU1 demands
+				for (int j = 0; j < odu1[line].size(); j++)
+				{
+					tributaryPorts[line] += odu1[line][j];
+					tributaryPortsODUtypes[line][1] += odu1[line][j];
+				}
+				// Counting ODU2 demands
+				for (int j = 0; j < odu2[line].size(); j++)
+				{
+					tributaryPorts[line] += odu2[line][j];
+					tributaryPortsODUtypes[line][2] += odu2[line][j];
+				}
+				// Counting ODU3 demands
+				for (int j = 0; j < odu3[line].size(); j++)
+				{
+					tributaryPorts[line] += odu3[line][j];
+					tributaryPortsODUtypes[line][3] += odu3[line][j];
+				}
+				// Counting ODU4 demands
+				for (int j = 0; j < odu4[line].size(); j++)
+				{
+					tributaryPorts[line] += odu4[line][j];
+					tributaryPortsODUtypes[line][4] += odu4[line][j];
+				}
+			}
+			// Number of OTU4 ports which is equal to the number of add ports
+
+			for (int n = 0; n < finalLogicalTopology.paths.size(); n++)
+			{
+				if (finalLogicalTopology.paths[n].sourceNode == line + 1)
+				{
+					otu4Ports[line]++;
+					addPortsDestinations[line][finalLogicalTopology.paths[n].destinationNode - 1]++;
+				}
+			}
+			// Number of line ports
+
+			for (int n = 0; n < finalLogicalTopology.opticalChannels.size(); n++)
+			{
+				if (finalLogicalTopology.opticalChannels[n].sourceNode == line + 1)
+				{
+					linePorts[line]++;
+					linePortsDestinations[line][finalLogicalTopology.opticalChannels[n].destinationNode-1]++;
+				}
+			}
+			
+			fileHandler << "  " << line + 1 << "\t\t" << nodalDegree[line] << "\t\t" << tributaryPorts[line] << "\t\t" << otu4Ports[line] << "\t\t" << otu4Ports[line] << "\t\t" << linePorts[line] << "\n";
+		
+	}
+	fileHandler << "---------------------------------------------------------------------------------------\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "Detailed description of each node:\n";
+	fileHandler << "\n";
+	for (size_t i=0; i < finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size(); i++)
+	{
+		fileHandler << "Node " << i+1 << ":\n";
+		fileHandler << "\t - Needs " << linePorts[i] <<" line ports.\n";
+		for (int k = 0; k < linePortsDestinations[i].size(); k++)
+		{
+			if(linePortsDestinations[i][k] != 0)
+				fileHandler << "\t\t - " << linePortsDestinations[i][k] << " connect to Node " << k+1 << " with 100 Gbit/s \n";
+		}
+		fileHandler << "\t - Needs " << otu4Ports[i] << " add ports.\n";
+		for (int k = 0; k < addPortsDestinations[i].size(); k++)
+		{
+			if (addPortsDestinations[i][k] != 0)
+				fileHandler << "\t\t - " << addPortsDestinations[i][k] << " connect to Node " << k + 1 << "\n";
+		}
+		fileHandler << "\t - Needs " << tributaryPorts[i] << " tributary ports:\n";
+		for (int k=0; k < tributaryPortsODUtypes[i].size(); k++)
+		{
+			if(tributaryPortsODUtypes[i][k] != 0)
+				fileHandler << "\t\t - Where " << tributaryPortsODUtypes[i][k] << " is the ODU" << k << "\n";
+		}
+	}
+	fileHandler << "\n";
+	fileHandler << "\n";
+	fileHandler << "\n";
+
+	fileHandler << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+	fileHandler << "|                                                                                      ROUTING                                                                                     |\n";
+	fileHandler << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+	fileHandler << "|  Source Node  |  Destination Node  |              Links              |        ODU0        |        ODU1        |        ODU2        |          ODU3         |        ODU4        |\n";
+	fileHandler << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+	t_routing_table routingTable;
+	
+	for (int line = 0; line < finalLogicalTopology.logicalTopologyAdjacencyMatrix.size(); line++)
+	{
+		for (int column = 0; column < finalLogicalTopology.logicalTopologyAdjacencyMatrix[0].size(); column++)
+		{
+				for (int i = 0; i < finalLogicalTopology.lightPaths.size(); i++)
+				{
+					if (finalLogicalTopology.lightPaths[i].sourceNode == line + 1 && finalLogicalTopology.lightPaths[i].destinationNode == column + 1)
+					{
+						std::vector<int> ODUs{0,0,0,0,0};
+						std::vector<int> linksUsed;
+
+						for (int j = 0; j < finalLogicalTopology.lightPaths[i].numberOfOpticalChannels; j++)
+						{
+							if (j == 0) // first element
+							{
+								linksUsed.push_back(finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[j]].sourceNode);
+								linksUsed.push_back(finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[j]].destinationNode);
+							}
+							else
+								linksUsed.push_back(finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[j]].destinationNode);
+						}
+						routingTable.linksUsedByPath.push_back(linksUsed);
+
+						for (int k = 0; k < finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].numberOfDemands; k++)
+						{
+							if (orderingRule == ordering_rule::descendingOrder)
+							{
+								if (finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] < firstODU3Index)
+									ODUs[4]++;
+								else if (finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] >= firstODU3Index && finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] < firstODU2Index)
+									ODUs[3]++;
+								else if (finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] >= firstODU2Index && finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] < firstODU1Index)
+									ODUs[2]++;
+								else if (finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] >= firstODU1Index && finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] < firstODU0Index)
+									ODUs[1]++;
+								else
+									ODUs[0]++;
+							}
+							else
+							{
+								if (finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] < firstODU1Index)
+									ODUs[0]++;
+								else if (finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] >= firstODU1Index && finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] < firstODU2Index)
+									ODUs[1]++;
+								else if (finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] >= firstODU2Index && finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] < firstODU3Index)
+									ODUs[2]++;
+								else if (finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] >= firstODU3Index && finalLogicalTopology.opticalChannels[finalLogicalTopology.lightPaths[i].opticalChannelsIndex[0]].demandsIndex[k] < firstODU4Index)
+									ODUs[3]++;
+								else
+									ODUs[4]++;
+							}
+						}
+						routingTable.ODUdemandsByPath.push_back(ODUs);
+					}
+				}
+		}
+	}
+	for (int i = 0; i < routingTable.linksUsedByPath.size(); i++)
+	{
+		fileHandler << "\t" << routingTable.linksUsedByPath[i][0] << "\t\t" << routingTable.linksUsedByPath[i][routingTable.linksUsedByPath[i].size()-1] << "\t\t\t";
+		for (int j=0; j < routingTable.linksUsedByPath[i].size(); j++)
+		{
+				if (j == 0)
+				{
+					fileHandler << "{(" << routingTable.linksUsedByPath[i][0];
+				}
+				else if (j > 0 && routingTable.linksUsedByPath[i].size() == 2)
+					fileHandler << "," << routingTable.linksUsedByPath[i][j] << ")}";
+
+				else if (j > 0 && routingTable.linksUsedByPath[i].size() > 2 && j < routingTable.linksUsedByPath[i].size() - 1)
+					fileHandler << "," << routingTable.linksUsedByPath[i][j] << "),(" << routingTable.linksUsedByPath[i][j];
+
+				else
+					fileHandler << "," << routingTable.linksUsedByPath[i][j] << ")}";
+		}
+		if (routingTable.linksUsedByPath[i].size() == 2)
+			fileHandler << "\t\t\t\t";
+		else if (routingTable.linksUsedByPath[i].size() == 3)
+			fileHandler << "\t\t\t";
+		else if (routingTable.linksUsedByPath[i].size() == 4)
+			fileHandler << "\t\t";
+		else if (routingTable.linksUsedByPath[i].size() == 5)
+			fileHandler << "\t";
+
+		for (int t = 0; t < 5; t++)
+		{
+			fileHandler << routingTable.ODUdemandsByPath[i][t] << "\t\t\t";
+		}
+		fileHandler << "\n";
+	}
+	fileHandler << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+	fileHandler << "\n\n\n\n";
+	
+	// Unit prices in Euros €
+	int OLTsCost{ 15000 };
+	int TranspondersCost{ 5000 };
+	int AmplifiersCost{ 4000 };
+	int EXCsCost{ 10000 };
+	int ODU0portsCost{ 10 };
+	int ODU1portsCost{ 15 };
+	int ODU2portsCost{ 30 };
+	int ODU3portsCost{ 60 };
+	int ODU4portsCost{ 100 };
+	int OTU4portsCost{ 100000 };
+	int OXCsCost{ 20000 };
+	int addPortsCost{ 2500 };
+	int linePortsCost{ 2500 };
+
+	//Quantities
+	int OLTsQuantity = finalPhysicalTopology.opticalMultiplexingSystems.size();
+	int TranspondersQuantity = finalLogicalTopology.opticalChannels.size();
+	int AmplifiersQuantity{ 0 };
+	for (int i=0; i < finalPhysicalTopology.opticalMultiplexingSystems.size(); i++)
+	{
+		AmplifiersQuantity += finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
+	}
+	int EXCsQuantity = finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size();
+	int ODU0portsQuantity{ 0 };
+	for (int line = 0; line < odu0.size(); line++)
+	{
+		for (int column = 0; column < odu0.size(); column++)
+		{
+			ODU0portsQuantity += odu0[line][column];
+		}
+	}
+	int ODU1portsQuantity{ 0 };
+	for (int line = 0; line < odu1.size(); line++)
+	{
+		for (int column = 0; column < odu1.size(); column++)
+		{
+			ODU1portsQuantity += odu1[line][column];
+		}
+	}
+	int ODU2portsQuantity{ 0 };
+	for (int line = 0; line < odu2.size(); line++)
+	{
+		for (int column = 0; column < odu2.size(); column++)
+		{
+			ODU2portsQuantity += odu2[line][column];
+		}
+	}
+	int ODU3portsQuantity{ 0 };
+	for (int line = 0; line < odu3.size(); line++)
+	{
+		for (int column = 0; column < odu3.size(); column++)
+		{
+			ODU3portsQuantity += odu3[line][column];
+		}
+	}
+	int ODU4portsQuantity{ 0 };
+	for (int line = 0; line < odu4.size(); line++)
+	{
+		for (int column = 0; column < odu4.size(); column++)
+		{
+			ODU4portsQuantity += odu4[line][column];
+		}
+	}
+	int OTU4portsQuantity = finalLogicalTopology.paths.size();
+	int OXCsQuantity = finalLogicalTopology.logicalTopologyAdjacencyMatrix.size();
+	int addPortsQuantity = OTU4portsQuantity;
+	int linePortsQuantity = finalLogicalTopology.opticalChannels.size();
+	int AmplifiersTotalCost = AmplifiersCost * AmplifiersQuantity;
+	int opticalPartCost = OXCsCost * OXCsQuantity + addPortsCost * addPortsQuantity + linePortsQuantity * linePortsCost;
+
+	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
+	fileHandler << "|                                              NETWORK CAPEX                                                   |\n";
+	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
+	fileHandler << "|                                               |  Quantity  | Unit price (€) |  Cost (€)  |    Total   (€)    |\n";
+	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
+	fileHandler << "|                |            OLTs              |\t" << OLTsQuantity << "\t" << OLTsCost << "\t\t" << OLTsQuantity*OLTsCost << "\n";
+	fileHandler << "|    Link Cost   |        Transponders          |\t" << TranspondersQuantity << "\t" << TranspondersCost << "\t\t" << TranspondersQuantity*TranspondersCost*100 << "\t" << (OLTsQuantity*OLTsCost)+(TranspondersQuantity*TranspondersCost*100)+ AmplifiersTotalCost << "\n";
+	fileHandler << "|                |         Amplifiers           |\t" << AmplifiersQuantity << "\t" << AmplifiersCost << "\t\t" << AmplifiersCost*AmplifiersQuantity << "\n";
+	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
+	fileHandler << "|                |              |      EXCs     |\t" << EXCsQuantity << "\t" << EXCsCost << "\t\t" << EXCsCost*EXCsQuantity << "\n";
+	fileHandler << "|                |              |   ODU0 ports  |\t" << ODU0portsQuantity << "\t" << ODU0portsCost << "\t\t" << ODU0portsCost * ODU0portsQuantity << "\n";
+	fileHandler << "|                |              |   ODU1 ports  |\t" << ODU1portsQuantity << "\t" << ODU1portsCost << "\t\t" << ODU1portsCost * ODU1portsQuantity << "\n";
+	fileHandler << "|                |   Electrical |   ODU2 ports  |\t" << ODU2portsQuantity << "\t" << ODU2portsCost << "\t\t" << ODU2portsCost * ODU2portsQuantity << "\n";
+	fileHandler << "|    Node Cost   |     Part     |   ODU3 ports  |\t" << ODU3portsQuantity << "\t" << ODU3portsCost << "\t\t" << ODU3portsCost * ODU3portsQuantity << "\t\t" << EXCsCost * EXCsQuantity + ODU0portsCost * ODU0portsQuantity + ODU1portsCost * ODU1portsQuantity + ODU2portsCost * ODU2portsQuantity + ODU3portsCost * ODU3portsQuantity + ODU4portsCost * ODU4portsQuantity + OTU4portsCost * OTU4portsQuantity + opticalPartCost << "\n";;
+	fileHandler << "|                |              |   ODU4 ports  |\t" << ODU4portsQuantity << "\t" << ODU4portsCost << "\t\t" << ODU4portsCost * ODU4portsQuantity << "\n";
+	fileHandler << "|                |              |   OTU4 ports  |\t" << OTU4portsQuantity << "\t" << OTU4portsCost << "\t\t" << OTU4portsCost * OTU4portsQuantity << "\n";
+	fileHandler << "|                |------------------------------|                                                               \n";
+	fileHandler << "|                |              |      OXCs     |\t" << OXCsQuantity << "\t" << OXCsCost << "\t\t" << OXCsCost*OXCsQuantity << "\n";
+	fileHandler << "|                | Optical part |   Add ports   |\t" << addPortsQuantity <<	"\t" << addPortsCost << "\t\t" << addPortsCost*addPortsQuantity << "\n";
+	fileHandler << "|                |              |  Line ports   |\t" << linePortsQuantity << "\t" << linePortsCost << "\t\t" << linePortsQuantity*linePortsCost << "\n";
+	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
+	fileHandler << "|                                 Total Network Cost                                       |\t" << ((OLTsQuantity*OLTsCost) + (TranspondersQuantity*TranspondersCost * 100) + AmplifiersTotalCost)+(EXCsCost * EXCsQuantity + ODU0portsCost * ODU0portsQuantity + ODU1portsCost * ODU1portsQuantity + ODU2portsCost * ODU2portsQuantity + ODU3portsCost * ODU3portsQuantity + ODU4portsCost * ODU4portsQuantity + OTU4portsCost * OTU4portsQuantity + opticalPartCost) << "\n";
+	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
+
+
+	fileHandler.close();
+}
+
+
 
 void System::terminateSuperBlock()
 {

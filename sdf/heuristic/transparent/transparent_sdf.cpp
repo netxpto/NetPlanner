@@ -95,38 +95,43 @@ int main()
 
 
 	/* Signals Declaration */
-	DemandRequest Scheduler_Out{"Scheduler_Out.sgn",1};
+	DemandRequest Scheduler_Out{"Scheduler_Out.sgn", 1};
 	Scheduler_Out.setSaveInAscii(true);
 
-	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn",1};
+	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn", 1};
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn",1};
+	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn", 1};
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
 
-	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn",1};
+	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn", 1};
 	FinalLogicalTopology.setSaveInAscii(true);
 
-	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn",1};
+	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn", 1};
 	FinalPhysicalTopology.setSaveInAscii(true);
 
-	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn",1};
+	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn", 1};
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
 
-	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn",1};
+	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn", 1};
 	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
 
-	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn",1 };
+	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn", 1};
 	ProcessedDemand.setSaveInAscii(true);
 
 	/* Blocks Decalration */
 	Scheduler Scheduler_{ {},{ &Scheduler_Out} };
 	Scheduler_.setNumberOfNodes(param.numberOfNodes);
 	Scheduler_.setODU0(param.odu0);
+	Scheduler_.setODU0Copy();
 	Scheduler_.setODU1(param.odu1);
+	Scheduler_.setODU1Copy();
 	Scheduler_.setODU2(param.odu2);
+	Scheduler_.setODU2Copy();
 	Scheduler_.setODU3(param.odu3);
+	Scheduler_.setODU3Copy();
 	Scheduler_.setODU4(param.odu4);
+	Scheduler_.setODU4Copy();
 	Scheduler_.setOrderingRule(param.orderingRule);
 
 	Sink SinkScheduler_{ { &Scheduler_Out },{} };
@@ -193,7 +198,8 @@ int main()
 	
 	MainSystem.run();
 	MainSystem.terminate();
-	//MainSystem.writeReport();
+	MainSystem.writeReport(LogicalTopologyManager_.getLogicalTopology(), PhysicalTopologyManager_.getPhysicalTopology(), Scheduler_.getODU0Copy(), Scheduler_.getODU1Copy(), Scheduler_.getODU2Copy(), Scheduler_.getODU3Copy(), Scheduler_.getODU4Copy(), Scheduler_.getOrderingRule());
+
 
 	system("pause");
 

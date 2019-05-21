@@ -42,6 +42,8 @@ public:
 
 	void setBlockingCriterionPhysicalTopology(t_integer crt) { blockingCriterionPhysicalTopology = crt; };
 	t_integer getBlockingCriterionPhysicalTopology(void) { return blockingCriterionPhysicalTopology; };
+
+	t_physical_topology getPhysicalTopology() { return currentPhysicalTopology; };
 };
 
 #endif 
