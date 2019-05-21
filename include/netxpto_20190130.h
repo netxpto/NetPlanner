@@ -190,6 +190,11 @@ using t_physical_topology = struct {											// physicalTopology signal data s
 	std::vector<t_optical_multiplexing_systems> opticalMultiplexingSystems;		
 };
 
+using t_routing_table = struct{
+	std::vector<std::vector<int>> linksUsedByPath;
+	std::vector<std::vector<int>> ODUdemandsByPath;
+};
+
 // Existent signals
 enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology, t_path_request, t_path_request_routed, t_demand_request_routed};
 
@@ -270,6 +275,7 @@ public:
 	
 	// Buffer and File manipulation
 	void close();									// Empty the signal buffer and close the signal file
+	void closeFinalReport();
 
 	void reset() { inPosition = 0; outPosition = inPosition; bufferEmpty = true; bufferFull = false; }
 
@@ -806,6 +812,8 @@ public:
 	void terminateBlock();
 	virtual void terminate(void){};
 
+	void writeReport();
+
 	void closeOutputSignals();
 
 	void setNumberOfInputSignals(int nOfInputSignal) { numberOfInputSignals = nOfInputSignal; };
@@ -846,6 +854,7 @@ public:
 	bool run();
 	bool run(string signalPath);
 	void terminate();
+	void writeReport(t_logical_topology finalLogicalTopology, t_physical_topology finalPhysicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, ordering_rule orderingRule);
 	void terminateSuperBlock();
 
 	//########################################################################################################

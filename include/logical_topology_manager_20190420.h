@@ -52,6 +52,7 @@ public:
 	void setBlockingCriterionLogicalTopology(t_integer crt) { blockingCriterionLogicalTopology = crt; };
 	t_integer getBlockingCriterionLogicalTopology(void) { return blockingCriterionLogicalTopology; };
 
+	t_logical_topology getLogicalTopology(void) { return currentLogicalTopology; };
 };
 
 #endif 

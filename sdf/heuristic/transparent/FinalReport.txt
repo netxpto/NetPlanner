@@ -1,0 +1,160 @@
+RESULTS FOR TRANSPARENT MODE WITHOUT SURVIVABILITY
+
+
+-------------------------------------------------------------
+|                Information regarding links                |
+-------------------------------------------------------------
+|  Unidirectional link  |  Optical channels  |  Amplifiers  |
+-------------------------------------------------------------
+ Node 1 -> 2			0		4
+ Node 1 -> 3			0		6
+ Node 2 -> 1			0		4
+ Node 2 -> 3			0		0
+ Node 2 -> 4			1		6
+ Node 3 -> 1			0		6
+ Node 3 -> 2			0		0
+ Node 3 -> 5			0		8
+ Node 4 -> 2			1		6
+ Node 4 -> 5			0		1
+ Node 4 -> 6			1		7
+ Node 5 -> 3			0		8
+ Node 5 -> 4			0		1
+ Node 5 -> 6			1		3
+ Node 6 -> 4			1		7
+ Node 6 -> 5			1		3
+-------------------------------------------------------------
+
+
+
+
+
+Number of lightpaths between nodes (1,2): 0
+Number of lightpaths between nodes (1,3): 0
+Number of lightpaths between nodes (1,4): 0
+Number of lightpaths between nodes (1,5): 0
+Number of lightpaths between nodes (1,6): 0
+Number of lightpaths between nodes (2,1): 0
+Number of lightpaths between nodes (2,3): 0
+Number of lightpaths between nodes (2,4): 0
+Number of lightpaths between nodes (2,5): 0
+Number of lightpaths between nodes (2,6): 1
+Number of lightpaths between nodes (3,1): 0
+Number of lightpaths between nodes (3,2): 0
+Number of lightpaths between nodes (3,4): 0
+Number of lightpaths between nodes (3,5): 0
+Number of lightpaths between nodes (3,6): 0
+Number of lightpaths between nodes (4,1): 0
+Number of lightpaths between nodes (4,2): 0
+Number of lightpaths between nodes (4,3): 0
+Number of lightpaths between nodes (4,5): 0
+Number of lightpaths between nodes (4,6): 0
+Number of lightpaths between nodes (5,1): 0
+Number of lightpaths between nodes (5,2): 0
+Number of lightpaths between nodes (5,3): 0
+Number of lightpaths between nodes (5,4): 0
+Number of lightpaths between nodes (5,6): 1
+Number of lightpaths between nodes (6,1): 0
+Number of lightpaths between nodes (6,2): 1
+Number of lightpaths between nodes (6,3): 0
+Number of lightpaths between nodes (6,4): 0
+Number of lightpaths between nodes (6,5): 1
+
+
+
+
+---------------------------------------------------------------------------------------
+|                            Information regarding nodes                              |
+---------------------------------------------------------------------------------------
+|                     |         Electrical part          |         Optical part       |
+---------------------------------------------------------------------------------------
+| Node | Nodal degree |  Tributary ports  |  OTU4 ports  |  Add ports  |  Line ports  |
+---------------------------------------------------------------------------------------
+  1		2		0		0		0		0
+  2		3		1		1		1		1
+  3		3		0		0		0		0
+  4		3		0		0		0		2
+  5		3		1		1		1		1
+  6		2		2		2		2		2
+---------------------------------------------------------------------------------------
+
+
+
+Detailed description of each node:
+
+Node 1:
+	 - Needs 0 line ports.
+	 - Needs 0 add ports.
+	 - Needs 0 tributary ports:
+Node 2:
+	 - Needs 1 line ports.
+		 - 1 connect to Node 4 with 100 Gbit/s 
+	 - Needs 1 add ports.
+		 - 1 connect to Node 6
+	 - Needs 1 tributary ports:
+		 - Where 1 is the ODU4
+Node 3:
+	 - Needs 0 line ports.
+	 - Needs 0 add ports.
+	 - Needs 0 tributary ports:
+Node 4:
+	 - Needs 2 line ports.
+		 - 1 connect to Node 2 with 100 Gbit/s 
+		 - 1 connect to Node 6 with 100 Gbit/s 
+	 - Needs 0 add ports.
+	 - Needs 0 tributary ports:
+Node 5:
+	 - Needs 1 line ports.
+		 - 1 connect to Node 6 with 100 Gbit/s 
+	 - Needs 1 add ports.
+		 - 1 connect to Node 6
+	 - Needs 1 tributary ports:
+		 - Where 1 is the ODU4
+Node 6:
+	 - Needs 2 line ports.
+		 - 1 connect to Node 4 with 100 Gbit/s 
+		 - 1 connect to Node 5 with 100 Gbit/s 
+	 - Needs 2 add ports.
+		 - 1 connect to Node 2
+		 - 1 connect to Node 5
+	 - Needs 2 tributary ports:
+		 - Where 2 is the ODU4
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|                                                                                      ROUTING                                                                                     |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Source Node  |  Destination Node  |              Links              |        ODU0        |        ODU1        |        ODU2        |          ODU3         |        ODU4        |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+|                                              NETWORK CAPEX                                                   |
+----------------------------------------------------------------------------------------------------------------
+|                                               |  Quantity  | Unit price (€) |  Cost (€)  |    Total   (€)    |
+----------------------------------------------------------------------------------------------------------------
+|                |            OLTs              |	16	15000		240000
+|    Link Cost   |        Transponders          |	6	5000		3000000	3520000
+|                |         Amplifiers           |	70	4000		280000
+----------------------------------------------------------------------------------------------------------------
+|                |              |      EXCs     |	6	10000		60000
+|                |              |   ODU0 ports  |	0	10		0
+|                |              |   ODU1 ports  |	0	15		0
+|                |   Electrical |   ODU2 ports  |	0	30		0
+|    Node Cost   |     Part     |   ODU3 ports  |	0	60		0		605400
+|                |              |   ODU4 ports  |	4	100		400
+|                |              |   OTU4 ports  |	4	100000		400000
+|                |------------------------------|                                                               
+|                |              |      OXCs     |	6	20000		120000
+|                | Optical part |   Add ports   |	4	2500		10000
+|                |              |  Line ports   |	6	2500		15000
+----------------------------------------------------------------------------------------------------------------
+|                                 Total Network Cost                                       |	4125400
+----------------------------------------------------------------------------------------------------------------
