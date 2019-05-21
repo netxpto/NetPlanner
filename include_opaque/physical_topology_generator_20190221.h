@@ -9,6 +9,8 @@ class PhysicalTopologyGenerator : public Block {
 
 	// Input Parameters
 	t_matrix physicalTopologyAdjacencyMatrix;
+	t_matrix distanceMatrix;
+	t_integer span;
 	t_integer numberOfOMSPerLink{ 0 };
 	t_integer numberOfOpticalChannelsPerOMS{ 0 };
 	double initialWavelength{ 0 };
@@ -29,6 +31,12 @@ public:
 
 	void setPhysicalTopologyAdjacencyMatrix(t_matrix pTopology) { physicalTopologyAdjacencyMatrix = pTopology; }
 	t_matrix getPhysicalTopologyAdjacencyMatrix(void) { return physicalTopologyAdjacencyMatrix; };
+
+	void setDistanceMatrix(t_matrix dMatrix) { distanceMatrix = dMatrix; }
+	t_matrix getDistanceMatrix(void) { return distanceMatrix; };
+
+	void setSpan(t_integer sp) { span = sp; }
+	t_integer getSpan(void) { return span; };
 
 	void setNumberOfOMSPerLink(t_integer nOMS) { numberOfOMSPerLink = nOMS; }
 	t_integer getNumberOfOMSPerLink(void) { return numberOfOMSPerLink; };

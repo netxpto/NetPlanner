@@ -1,35 +1,81 @@
-//Input parameters for opaque transport mode example       
-//                   
-odu0 = 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
-//
-odu1 = 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
-//
-odu2 = 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
-//
-odu3 = 0 3 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
-//
-odu4 = 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0 , 0 0 0 0 0 0
-//
-orderingRule = 0
-//
+// Input parameters for opaque transport mode example   
+                   
+odu0 = 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0
+
+odu1 = 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0
+
+odu2 = 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 1 0
+
+odu3 = 
+0 0 0 0 0 0 
+0 0 1 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 2 1 0 0 0
+
+odu4 = 
+0 3 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0
+
+orderingRule = descendingOrder
+
 transportMode = opaque
-//
-physicalTopologyAdjacencyMatrix = 0 1 0 0 0 1 , 0 0 1 0 0 0 , 0 0 0 0 0 0 , 0 0 1 0 0 0 , 0 0 1 1 0 0 , 0 0 0 0 1 0
-//
+
+physicalTopologyAdjacencyMatrix =
+0 1 0 0 0 1 
+0 0 1 0 0 0 
+0 0 0 0 1 0 
+0 0 1 0 0 0 
+0 0 0 1 0 1 
+0 1 0 0 0 0
+
+distanceMatrix = 
+0 460 663 0 0 0 
+460 0 75 684 0 0 
+663 75 0 0 890 0 
+0 684 0 0 103 764 
+0 0 890 103 0 361 
+0 0 0 764 361 0
+
+span = 100
+
 numberOfOMSPerLink = 1
-//
-numberOfOpticalChannelsPerOMS = 1
-//
+
+numberOfOpticalChannelsPerOMS = 2
+
 initialWavelength = 1550
-//
-wavelengthSpacing = 0.8
-//
+
+wavelengthSpacing = 0.8 
+
 opticalChannelCapacity = 80
-//
-routingCriterionLogicalTopology = hops
-//
+
+routingCriterionLogicalTopology = hops 
+
 blockingCriterionLogicalTopology = 3
-//
+
 routingCriterionPhysicalTopology = hops
-//
+
 blockingCriterionPhysicalTopology = 3

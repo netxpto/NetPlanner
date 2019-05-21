@@ -6,7 +6,7 @@
 class LogicalTopologyManager : public Block {
 
 	//Input Parameters
-	std::string routingCriterionLogicalTopology;
+	t_routing_criterion_logical_topology routingCriterionLogicalTopology;
 	t_integer blockingCriterionLogicalTopology;
 
 	//State Variables
@@ -29,8 +29,8 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setRoutingCriterionLogicalTopology(std::string rLogical) { routingCriterionLogicalTopology = rLogical; }
-	std::string getRoutingCriterionLogicalTopology(void) { return routingCriterionLogicalTopology; };
+	void setRoutingCriterionLogicalTopology(t_routing_criterion_logical_topology rLogical) { routingCriterionLogicalTopology = rLogical; }
+	t_routing_criterion_logical_topology getRoutingCriterionLogicalTopology(void) { return routingCriterionLogicalTopology; };
 
 	void setBlockingCriterionLogicalTopology(t_integer bLogical) { blockingCriterionLogicalTopology = bLogical; }
 	t_integer getBlockingCriterionLogicalTopology(void) { return blockingCriterionLogicalTopology; };

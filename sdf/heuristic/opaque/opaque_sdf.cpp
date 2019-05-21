@@ -14,22 +14,24 @@ class SimulationInputParameters : public SystemInputParameters
 {
 public:
 	//INPUT PARAMETERS
-	t_matrix odu0;
-	t_matrix odu1;
-	t_matrix odu2;
-	t_matrix odu3;
-	t_matrix odu4;
-	t_integer orderingRule{ 0 }; //Demands odering rule
-	std::string transportMode{ "opaque" };
-	t_matrix physicalTopologyAdjacencyMatrix;
+	t_matrix odu0{ 0 };
+	t_matrix odu1{ 0 };
+	t_matrix odu2{ 0 };
+	t_matrix odu3{ 0 };
+	t_matrix odu4{ 0 };
+	t_ordering_rule orderingRule{ t_ordering_rule::descendingOrder }; //Demands odering rule
+	t_transport_mode transportMode{ t_transport_mode::opaque };
+	t_matrix physicalTopologyAdjacencyMatrix{ 0 };
+	t_matrix distanceMatrix{ 0 };
+	t_integer span{ 100 };
 	t_integer numberOfOMSPerLink{ 1 };
 	t_integer numberOfOpticalChannelsPerOMS{ 2 };
 	double initialWavelength{ 1550 };
 	double wavelengthSpacing{ 0.8 };
 	t_integer opticalChannelCapacity{ 80 }; //Capacity of each optical channel in ODU0s
-	std::string routingCriterionLogicalTopology{ "hops" };
+	t_routing_criterion_logical_topology routingCriterionLogicalTopology{ t_routing_criterion_logical_topology::hops };
 	t_integer blockingCriterionLogicalTopology{ 3 };
-	std::string routingCriterionPhysicalTopology{ "hops" };
+	t_routing_criterion_physical_topology routingCriterionPhysicalTopology{ t_routing_criterion_physical_topology::hops };
 	t_integer blockingCriterionPhysicalTopology{ 3 };
 	
 	/* Initializes default input parameters */
@@ -62,6 +64,8 @@ public:
 		addInputParameter("orderingRule", &orderingRule);
 		addInputParameter("transportMode", &transportMode);
 		addInputParameter("physicalTopologyAdjacencyMatrix", &physicalTopologyAdjacencyMatrix);
+		addInputParameter("distanceMatrix", &distanceMatrix);
+		addInputParameter("span", &span);
 		addInputParameter("numberOfOMSPerLink", &numberOfOMSPerLink);
 		addInputParameter("numberOfOpticalChannelsPerOMS", &numberOfOpticalChannelsPerOMS);
 		addInputParameter("initialWavelength", &initialWavelength);
@@ -82,7 +86,7 @@ public:
 int main()
 {
 	//SimulationInputParameters param(argc, argv);
-	SimulationInputParameters param("input_parameters_10T.txt");
+	SimulationInputParameters param("input_parameters.txt");
 
 	//Signals Declaration 
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };
@@ -111,25 +115,28 @@ int main()
 
 
 	/* Blocks Declaration */
-	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{ &LogicalTopologyGenerator_Out } };
-	LogicalTopologyGenerator_.setTransportMode(param.transportMode);
-	LogicalTopologyGenerator_.setPhysicalTopologyAdjacencyMatrix(param.physicalTopologyAdjacencyMatrix);
-
-	PhysicalTopologyGenerator PhysicalTopologyGenerator_{ {},{ &PhysicalTopologyGenerator_Out } };
-	PhysicalTopologyGenerator_.setPhysicalTopologyAdjacencyMatrix(param.physicalTopologyAdjacencyMatrix);
-	PhysicalTopologyGenerator_.setNumberOfOMSPerLink(param.numberOfOMSPerLink);
-	PhysicalTopologyGenerator_.setNumberOfOpticalChannelsPerOMS(param.numberOfOpticalChannelsPerOMS);
-	PhysicalTopologyGenerator_.setInitialWavelength(param.initialWavelength);
-	PhysicalTopologyGenerator_.setWavelengthSpacing(param.wavelengthSpacing);
-	PhysicalTopologyGenerator_.setOpticalChannelCapacity(param.opticalChannelCapacity);
-
-	Scheduler Scheduler_{ {},{ &Scheduler_Out} };
+	Scheduler Scheduler_{ {},{ &Scheduler_Out } };
 	Scheduler_.setODU0(param.odu0);
 	Scheduler_.setODU1(param.odu1);
 	Scheduler_.setODU2(param.odu2);
 	Scheduler_.setODU3(param.odu3);
 	Scheduler_.setODU4(param.odu4);
 	Scheduler_.setOrderingRule(param.orderingRule);
+
+	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{ &LogicalTopologyGenerator_Out } };
+	LogicalTopologyGenerator_.setTransportMode(param.transportMode);
+	LogicalTopologyGenerator_.setPhysicalTopologyAdjacencyMatrix(param.physicalTopologyAdjacencyMatrix);
+	LogicalTopologyGenerator_.setDistanceMatrix(param.distanceMatrix); // não devia estar aqui
+
+	PhysicalTopologyGenerator PhysicalTopologyGenerator_{ {},{ &PhysicalTopologyGenerator_Out } };
+	PhysicalTopologyGenerator_.setPhysicalTopologyAdjacencyMatrix(param.physicalTopologyAdjacencyMatrix);
+	PhysicalTopologyGenerator_.setDistanceMatrix(param.distanceMatrix);
+	PhysicalTopologyGenerator_.setSpan(param.span);
+	PhysicalTopologyGenerator_.setNumberOfOMSPerLink(param.numberOfOMSPerLink);
+	PhysicalTopologyGenerator_.setNumberOfOpticalChannelsPerOMS(param.numberOfOpticalChannelsPerOMS);
+	PhysicalTopologyGenerator_.setInitialWavelength(param.initialWavelength);
+	PhysicalTopologyGenerator_.setWavelengthSpacing(param.wavelengthSpacing);
+	PhysicalTopologyGenerator_.setOpticalChannelCapacity(param.opticalChannelCapacity);
 
 	LogicalTopologyManager LogicalTopologyManager_{ { &LogicalTopologyGenerator_Out, &Scheduler_Out, &PhysicalTopologyManager_PathRequestRouted },{ &LogicalTopologyManager_PathRequest, &FinalLogicalTopology, &ProcessedDemand } };
 	LogicalTopologyManager_.setRoutingCriterionLogicalTopology(param.routingCriterionLogicalTopology);
@@ -153,9 +160,9 @@ int main()
 	System MainSystem
 	{
 			// BLOCKS
+			&Scheduler_,
 			&LogicalTopologyGenerator_,
 			&PhysicalTopologyGenerator_,
-			&Scheduler_,
 			&LogicalTopologyManager_,
 			&PhysicalTopologyManager_,
 			&SinkRoutedOrBlocked_,
@@ -166,6 +173,7 @@ int main()
 	//System Run
 	MainSystem.run();
 	MainSystem.terminate();
+	MainSystem.writeReport();
 
 	system("pause");
 

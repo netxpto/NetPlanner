@@ -38,11 +38,11 @@ bool Scheduler::runBlock(void) {
 
 }
 
-bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
+bool Scheduler::generateDemand(t_ordering_rule orderingRule, t_demand_request &dem) {
 
 	bool findDemand{ false };
 
-	if (orderingRule == 0) { // ODU4 to ODU0
+	if (orderingRule == t_ordering_rule::descendingOrder) { // ODU4 to ODU0
 	
 		//############################ ODU4 ####################################
 		t_integer line{ 0 };
@@ -172,7 +172,7 @@ bool Scheduler::generateDemand(t_integer orderingRule, t_demand_request &dem) {
 		}
 	}
 
-	else if (orderingRule == 1) { // ODU0 to ODU4
+	else if (orderingRule == t_ordering_rule::ascendingOrder) { // ODU0 to ODU4
 	
 		//############################ ODU0 ####################################
 		t_integer line{ 0 };
@@ -311,6 +311,7 @@ t_integer Scheduler::calculateNumberOfNodes() {
 	return nodes;
 
 };
+
 
 t_integer Scheduler::calculateNumberOfDemands() {
 
