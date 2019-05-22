@@ -86,7 +86,7 @@ public:
 int main()
 {
 	//SimulationInputParameters param(argc, argv);
-	SimulationInputParameters param("input_parameters.txt");
+	SimulationInputParameters param("input_parameters_5T.txt");
 
 	//Signals Declaration 
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };
@@ -117,10 +117,15 @@ int main()
 	/* Blocks Declaration */
 	Scheduler Scheduler_{ {},{ &Scheduler_Out } };
 	Scheduler_.setODU0(param.odu0);
+	Scheduler_.setODU0Copy();
 	Scheduler_.setODU1(param.odu1);
+	Scheduler_.setODU1Copy();
 	Scheduler_.setODU2(param.odu2);
+	Scheduler_.setODU2Copy();
 	Scheduler_.setODU3(param.odu3);
+	Scheduler_.setODU3Copy();
 	Scheduler_.setODU4(param.odu4);
+	Scheduler_.setODU4Copy();
 	Scheduler_.setOrderingRule(param.orderingRule);
 
 	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{ &LogicalTopologyGenerator_Out } };
@@ -173,7 +178,9 @@ int main()
 	//System Run
 	MainSystem.run();
 	MainSystem.terminate();
-	MainSystem.writeReport();
+	//MainSystem.writeReport();
+	MainSystem.writeReport(LogicalTopologyManager_.getLogicalTopology(), PhysicalTopologyManager_.getPhysicalTopology(), Scheduler_.getODU0Copy(), Scheduler_.getODU1Copy(), Scheduler_.getODU2Copy(), Scheduler_.getODU3Copy(), Scheduler_.getODU4Copy(), Scheduler_.getOrderingRule());
+
 
 	system("pause");
 

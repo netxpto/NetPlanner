@@ -208,6 +208,10 @@ using t_path_request_routed = struct {
 	std::vector<t_light_paths_table> lightPathsTable;
 };
 
+using t_routing_table = struct {
+	std::vector<std::vector<int>> linksUsedByPath;
+	std::vector<std::vector<int>> ODUdemandsByPath;
+};
 
 // Existent signals
 enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, 
@@ -288,7 +292,8 @@ public:
 	void writeHeader(string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
 
 	// Buffer and File manipulation
-	void close();									// Empty the signal buffer and close the signal file
+	void close();	// Empty the signal buffer and close the signal file
+	void closeFinalReport();
 
 	void reset() { inPosition = 0; outPosition = inPosition; bufferEmpty = true; bufferFull = false; }
 
@@ -865,8 +870,9 @@ public:
 	bool run();
 	bool run(string signalPath);
 	void terminate();
+	void writeReport(t_logical_topology logicalTopology, t_physical_topology physicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, t_ordering_rule orderingRule);
 	void terminateSuperBlock();
-	void writeReport();
+	//void writeReport();
 
 	//########################################################################################################
 

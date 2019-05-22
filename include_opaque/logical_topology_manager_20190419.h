@@ -35,6 +35,7 @@ public:
 	void setBlockingCriterionLogicalTopology(t_integer bLogical) { blockingCriterionLogicalTopology = bLogical; }
 	t_integer getBlockingCriterionLogicalTopology(void) { return blockingCriterionLogicalTopology; };
 
+	t_logical_topology getLogicalTopology(void) { return logicalTopology; };
 };
 
 # endif

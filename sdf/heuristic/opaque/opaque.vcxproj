@@ -136,6 +136,7 @@
   <ItemGroup>
     <Text Include="input_parameters.txt" />
     <Text Include="input_parameters_0_5T.txt" />
+    <Text Include="input_parameters_0_5_T.txt" />
     <Text Include="input_parameters_10T.txt" />
     <Text Include="input_parameters_5T.txt" />
   </ItemGroup>
