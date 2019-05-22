@@ -79,5 +79,8 @@
     <Text Include="input_parameters_0_5_T.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="input_parameters_opaque..txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

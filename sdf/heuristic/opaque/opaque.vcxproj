@@ -139,6 +139,7 @@
     <Text Include="input_parameters_0_5_T.txt" />
     <Text Include="input_parameters_10T.txt" />
     <Text Include="input_parameters_5T.txt" />
+    <Text Include="input_parameters_opaque..txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
