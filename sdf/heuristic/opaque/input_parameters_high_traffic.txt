@@ -1,45 +1,45 @@
 // Input parameters for opaque transport mode without survivability 
-// Medium traffic scenario - 5 Tbits/s       
+// High traffic scenario - 10 Tbits/s      
                  
 odu0 = 
-0 50 10 30 10 30 
-50 0 0 10 50 0 
-10 0 0 10 40 10 
-30 10 10 0 10 10 
-10 50 40 10 0 30 
-30 0 10 10 30 0
+0 100 20 60 20 60 
+100 0 0 20 100 0 
+20 0 0 20 80 20 
+60 20 20 0 20 20 
+20 100 80 20 0 60 
+60 0 20 20 60 0
 
 odu1 = 
-0 20 40 20 0 50 
-20 0 0 30 10 10 
-40 0 0 10 10 0 
-20 30 10 0 10 30 
-0 10 10 10 0 10 
-50 10 0 30 10 0
+0 40 80 40 0 100 
+40 0 0 60 20 20 
+80 0 0 20 20 0 
+40 60 20 0 20 60 
+0 20 20 20 0 20 
+100 20 0 60 20 0
 
 odu2 = 
-0 10 10 10 0 0 
-10 0 0 0 10 0 
-10 0 0 10 10 0 
-10 0 10 0 10 0
-0 10 10 10 0 10 
-0 0 0 0 10 0
+0 20 20 20 0 0 
+20 0 0 0 20 0 
+20 0 0 20 20 0 
+20 0 20 0 20 0 
+0 20 20 20 0 20 
+0 0 0 0 20 0
 
 odu3 = 
 0 0 0 0 0 0 
-0 0 10 0 0 10 
-0 10 0 0 10 0 
+0 0 20 0 0 20 
+0 20 0 0 20 0 
 0 0 0 0 0 0 
-0 0 10 0 0 0 
-0 10 0 0 0 0
+0 0 20 0 0 0 
+0 20 0 0 0 0
 
 odu4 = 
 0 0 0 0 0 0 
-0 0 0 0 0 10 
+0 0 0 0 0 20 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
-0 0 0 0 0 10 
-0 10 0 0 10 0
+0 0 0 0 0 20 
+0 20 0 0 20 0
 
 orderingRule = descendingOrder
 
@@ -80,3 +80,17 @@ blockingCriterionLogicalTopology = 3
 routingCriterionPhysicalTopology = hops
 
 blockingCriterionPhysicalTopology = 3
+
+OLTsCost = 15000
+TranspondersCost = 5000 
+AmplifiersCost = 4000 
+EXCsCost = 10000 
+ODU0portsCost = 10 
+ODU1portsCost = 15 
+ODU2portsCost = 30 
+ODU3portsCost = 60 
+ODU4portsCost = 100 
+OTU4portsCost = 100000 
+OXCsCost = 20000
+addPortsCost = 2500
+linePortsCost = 2500
