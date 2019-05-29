@@ -6,58 +6,58 @@ RESULTS FOR TRANSPARENT MODE WITHOUT SURVIVABILITY
 -------------------------------------------------------------
 |  Unidirectional link  |  Optical channels  |  Amplifiers  |
 -------------------------------------------------------------
- Node 1 -> 2			0		4
- Node 1 -> 3			0		6
- Node 2 -> 1			0		4
- Node 2 -> 3			0		0
- Node 2 -> 4			1		6
- Node 3 -> 1			0		6
- Node 3 -> 2			0		0
- Node 3 -> 5			0		8
- Node 4 -> 2			1		6
- Node 4 -> 5			0		1
- Node 4 -> 6			1		7
- Node 5 -> 3			0		8
- Node 5 -> 4			0		1
- Node 5 -> 6			1		3
- Node 6 -> 4			1		7
- Node 6 -> 5			1		3
+ Node 1 -> 2			6		3
+ Node 1 -> 6			3		1
+ Node 2 -> 1			6		3
+ Node 2 -> 3			4		3
+ Node 2 -> 6			0		0
+ Node 3 -> 2			4		3
+ Node 3 -> 4			3		2
+ Node 3 -> 5			0		0
+ Node 4 -> 3			3		2
+ Node 4 -> 5			0		0
+ Node 5 -> 3			0		0
+ Node 5 -> 4			0		0
+ Node 5 -> 6			1		5
+ Node 6 -> 1			3		1
+ Node 6 -> 2			0		0
+ Node 6 -> 5			1		5
 -------------------------------------------------------------
 
 
 
 
 
-Number of lightpaths between nodes (1,2): 0
-Number of lightpaths between nodes (1,3): 0
-Number of lightpaths between nodes (1,4): 0
-Number of lightpaths between nodes (1,5): 0
-Number of lightpaths between nodes (1,6): 0
-Number of lightpaths between nodes (2,1): 0
+Number of lightpaths between nodes (1,2): 2
+Number of lightpaths between nodes (1,3): 1
+Number of lightpaths between nodes (1,4): 3
+Number of lightpaths between nodes (1,5): 1
+Number of lightpaths between nodes (1,6): 2
+Number of lightpaths between nodes (2,1): 2
 Number of lightpaths between nodes (2,3): 0
 Number of lightpaths between nodes (2,4): 0
 Number of lightpaths between nodes (2,5): 0
-Number of lightpaths between nodes (2,6): 1
-Number of lightpaths between nodes (3,1): 0
+Number of lightpaths between nodes (2,6): 0
+Number of lightpaths between nodes (3,1): 1
 Number of lightpaths between nodes (3,2): 0
 Number of lightpaths between nodes (3,4): 0
 Number of lightpaths between nodes (3,5): 0
 Number of lightpaths between nodes (3,6): 0
-Number of lightpaths between nodes (4,1): 0
+Number of lightpaths between nodes (4,1): 3
 Number of lightpaths between nodes (4,2): 0
 Number of lightpaths between nodes (4,3): 0
 Number of lightpaths between nodes (4,5): 0
 Number of lightpaths between nodes (4,6): 0
-Number of lightpaths between nodes (5,1): 0
+Number of lightpaths between nodes (5,1): 1
 Number of lightpaths between nodes (5,2): 0
 Number of lightpaths between nodes (5,3): 0
 Number of lightpaths between nodes (5,4): 0
-Number of lightpaths between nodes (5,6): 1
-Number of lightpaths between nodes (6,1): 0
-Number of lightpaths between nodes (6,2): 1
+Number of lightpaths between nodes (5,6): 0
+Number of lightpaths between nodes (6,1): 2
+Number of lightpaths between nodes (6,2): 0
 Number of lightpaths between nodes (6,3): 0
 Number of lightpaths between nodes (6,4): 0
-Number of lightpaths between nodes (6,5): 1
+Number of lightpaths between nodes (6,5): 0
 
 
 
@@ -69,12 +69,12 @@ Number of lightpaths between nodes (6,5): 1
 ---------------------------------------------------------------------------------------
 | Node | Nodal degree |  Tributary ports  |  OTU4 ports  |  Add ports  |  Line ports  |
 ---------------------------------------------------------------------------------------
-  1		2		0		0		0		0
-  2		3		1		1		1		1
-  3		3		0		0		0		0
-  4		3		0		0		0		2
+  1		2		23		9		9		9
+  2		3		3		2		2		10
+  3		3		1		1		1		7
+  4		2		5		3		3		3
   5		3		1		1		1		1
-  6		2		2		2		2		2
+  6		3		13		2		2		4
 ---------------------------------------------------------------------------------------
 
 
@@ -82,42 +82,63 @@ Number of lightpaths between nodes (6,5): 1
 Detailed description of each node:
 
 Node 1:
-	 - Needs 0 line ports.
-	 - Needs 0 add ports.
-	 - Needs 0 tributary ports:
+	 - Needs 9 line ports.
+		 - 6 connect to Node 2 with 100 Gbit/s 
+		 - 3 connect to Node 6 with 100 Gbit/s 
+	 - Needs 9 add ports.
+		 - 2 connect to Node 2
+		 - 1 connect to Node 3
+		 - 3 connect to Node 4
+		 - 1 connect to Node 5
+		 - 2 connect to Node 6
+	 - Needs 23 tributary ports:
+		 - Where 10 is the ODU0
+		 - Where 2 is the ODU1
+		 - Where 2 is the ODU2
+		 - Where 4 is the ODU3
+		 - Where 5 is the ODU4
 Node 2:
-	 - Needs 1 line ports.
-		 - 1 connect to Node 4 with 100 Gbit/s 
-	 - Needs 1 add ports.
-		 - 1 connect to Node 6
-	 - Needs 1 tributary ports:
+	 - Needs 10 line ports.
+		 - 6 connect to Node 1 with 100 Gbit/s 
+		 - 4 connect to Node 3 with 100 Gbit/s 
+	 - Needs 2 add ports.
+		 - 2 connect to Node 1
+	 - Needs 3 tributary ports:
+		 - Where 2 is the ODU2
 		 - Where 1 is the ODU4
 Node 3:
-	 - Needs 0 line ports.
-	 - Needs 0 add ports.
-	 - Needs 0 tributary ports:
+	 - Needs 7 line ports.
+		 - 4 connect to Node 2 with 100 Gbit/s 
+		 - 3 connect to Node 4 with 100 Gbit/s 
+	 - Needs 1 add ports.
+		 - 1 connect to Node 1
+	 - Needs 1 tributary ports:
+		 - Where 1 is the ODU4
 Node 4:
-	 - Needs 2 line ports.
-		 - 1 connect to Node 2 with 100 Gbit/s 
-		 - 1 connect to Node 6 with 100 Gbit/s 
-	 - Needs 0 add ports.
-	 - Needs 0 tributary ports:
+	 - Needs 3 line ports.
+		 - 3 connect to Node 3 with 100 Gbit/s 
+	 - Needs 3 add ports.
+		 - 3 connect to Node 1
+	 - Needs 5 tributary ports:
+		 - Where 4 is the ODU3
+		 - Where 1 is the ODU4
 Node 5:
 	 - Needs 1 line ports.
 		 - 1 connect to Node 6 with 100 Gbit/s 
 	 - Needs 1 add ports.
-		 - 1 connect to Node 6
+		 - 1 connect to Node 1
 	 - Needs 1 tributary ports:
 		 - Where 1 is the ODU4
 Node 6:
-	 - Needs 2 line ports.
-		 - 1 connect to Node 4 with 100 Gbit/s 
+	 - Needs 4 line ports.
+		 - 3 connect to Node 1 with 100 Gbit/s 
 		 - 1 connect to Node 5 with 100 Gbit/s 
 	 - Needs 2 add ports.
-		 - 1 connect to Node 2
-		 - 1 connect to Node 5
-	 - Needs 2 tributary ports:
-		 - Where 2 is the ODU4
+		 - 2 connect to Node 1
+	 - Needs 13 tributary ports:
+		 - Where 10 is the ODU0
+		 - Where 2 is the ODU1
+		 - Where 1 is the ODU4
 
 
 
@@ -126,10 +147,24 @@ Node 6:
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 |  Source Node  |  Destination Node  |              Links              |        ODU0        |        ODU1        |        ODU2        |          ODU3         |        ODU4        |
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	2		6			{(2,4),(4,6)}			0			0			0			0			1			
-	5		6			{(5,6)}				0			0			0			0			1			
-	6		2			{(6,4),(4,2)}			0			0			0			0			1			
-	6		5			{(6,5)}				0			0			0			0			1			
+	1		2			{(1,2)}				0			0			0			0			1			
+	1		2			{(1,2)}				0			0			2			0			0			
+	1		3			{(1,2),(2,3)}			0			0			0			0			1			
+	1		4			{(1,2),(2,3),(3,4)}		0			0			0			0			1			
+	1		4			{(1,2),(2,3),(3,4)}		0			0			0			2			0			
+	1		4			{(1,2),(2,3),(3,4)}		0			0			0			2			0			
+	1		5			{(1,6),(6,5)}			0			0			0			0			1			
+	1		6			{(1,6)}				0			0			0			0			1			
+	1		6			{(1,6)}				10			2			0			0			0			
+	2		1			{(2,1)}				0			0			0			0			1			
+	2		1			{(2,1)}				0			0			2			0			0			
+	3		1			{(3,2),(2,1)}			0			0			0			0			1			
+	4		1			{(4,3),(3,2),(2,1)}		0			0			0			0			1			
+	4		1			{(4,3),(3,2),(2,1)}		0			0			0			2			0			
+	4		1			{(4,3),(3,2),(2,1)}		0			0			0			2			0			
+	5		1			{(5,6),(6,1)}			0			0			0			0			1			
+	6		1			{(6,1)}				0			0			0			0			1			
+	6		1			{(6,1)}				10			2			0			0			0			
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -140,21 +175,21 @@ Node 6:
 ----------------------------------------------------------------------------------------------------------------
 |                                               |  Quantity  | Unit price (€) |  Cost (€)  |    Total   (€)    |
 ----------------------------------------------------------------------------------------------------------------
-|                |            OLTs              |	16	15000		240000
-|    Link Cost   |        Transponders          |	6	5000		3000000	3520000
-|                |         Amplifiers           |	70	4000		280000
+|                |            OLTs              |	10	15000		150000
+|    Link Cost   |        Transponders          |	34	5000		17000000	17206000
+|                |         Amplifiers           |	28	2000		56000
 ----------------------------------------------------------------------------------------------------------------
 |                |              |      EXCs     |	6	10000		60000
-|                |              |   ODU0 ports  |	0	10		0
-|                |              |   ODU1 ports  |	0	15		0
-|                |   Electrical |   ODU2 ports  |	0	30		0
-|    Node Cost   |     Part     |   ODU3 ports  |	0	60		0		605400
-|                |              |   ODU4 ports  |	4	100		400
-|                |              |   OTU4 ports  |	4	100000		400000
+|                |              |   ODU0 ports  |	20	1250		25000
+|                |              |   ODU1 ports  |	4	2500		10000
+|                |   Electrical |   ODU2 ports  |	4	10000		40000
+|    Node Cost   |     Part     |   ODU3 ports  |	8	40000		320000		3505000
+|                |              |   ODU4 ports  |	10	100000		1000000
+|                |              |   OTU4 ports  |	18	100000		1800000
 |                |------------------------------|                                                               
 |                |              |      OXCs     |	6	20000		120000
-|                | Optical part |   Add ports   |	4	2500		10000
-|                |              |  Line ports   |	6	2500		15000
+|                | Optical part |   Add ports   |	18	2500		45000
+|                |              |  Line ports   |	34	2500		85000
 ----------------------------------------------------------------------------------------------------------------
-|                                 Total Network Cost                                       |	4125400
+|                                 Total Network Cost                                       |	20711000
 ----------------------------------------------------------------------------------------------------------------

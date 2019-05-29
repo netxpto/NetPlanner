@@ -91,6 +91,7 @@ public:
 int main()
 {
 
+	//NetworkSimulatorInputParameters param(argc, argv);
 	NetworkSimulatorInputParameters param("input_parameters_values.txt");
 
 

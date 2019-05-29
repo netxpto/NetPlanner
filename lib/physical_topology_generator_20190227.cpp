@@ -53,7 +53,13 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 						oms.availableWavelenghts.push_back(1);
 					}
 
-					int numberOfAmplifiers = distancesBetweenNodes[line][column] / span;
+					int numberOfAmplifiers;
+
+					if(distancesBetweenNodes[line][column] % span != 0)
+						numberOfAmplifiers = distancesBetweenNodes[line][column] / span;
+					else
+						numberOfAmplifiers = (distancesBetweenNodes[line][column] / span) - 1;
+
 					oms.amplifiers = numberOfAmplifiers;
 
 					output.opticalMultiplexingSystems.push_back(oms);
