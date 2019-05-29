@@ -108,11 +108,11 @@ public:
 //##########################################################################################
 //##########################################################################################
 
-int main(int argc, char*argv[]) 
-//int main()
+//int main(int argc, char*argv[]) 
+int main()
 {
-	SimulationInputParameters param(argc, argv);
-	//SimulationInputParameters param("input_parameters_opaque.txt");
+	//SimulationInputParameters param(argc, argv);
+	SimulationInputParameters param("input_parameters.txt");
 
 	//Signals Declaration 
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };

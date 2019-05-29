@@ -47,8 +47,11 @@ bool PhysicalTopologyGenerator::runBlock(void)
 					opticalMultiplexingSystem.availableWavelengths.push_back(1);
 				}
 
-				opticalMultiplexingSystem.numberOfAmplifiers = distanceMatrix[i][j] / span;
-				
+				if (distanceMatrix[i][j] % span != 0)
+					opticalMultiplexingSystem.numberOfAmplifiers = distanceMatrix[i][j] / span;
+				else 
+					opticalMultiplexingSystem.numberOfAmplifiers = distanceMatrix[i][j] / span - 1;
+
 				physicalTopology.OMS.push_back(opticalMultiplexingSystem);
 
 				opticalMultiplexingSystem.wavelengths.clear();
