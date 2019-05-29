@@ -33,6 +33,19 @@ public:
 	t_integer blockingCriterionLogicalTopology{ 3 };
 	t_routing_criterion_physical_topology routingCriterionPhysicalTopology{ t_routing_criterion_physical_topology::hops };
 	t_integer blockingCriterionPhysicalTopology{ 3 };
+	int OLTsCost{ 15000 };
+	int TranspondersCost{ 5000 };
+	int AmplifiersCost{ 4000 };
+	int EXCsCost{ 10000 };
+	int ODU0portsCost{ 10 };
+	int ODU1portsCost{ 15 };
+	int ODU2portsCost{ 30 };
+	int ODU3portsCost{ 60 };
+	int ODU4portsCost{ 100 };
+	int OTU4portsCost{ 100000 };
+	int OXCsCost{ 20000 };
+	int addPortsCost{ 2500 };
+	int linePortsCost{ 2500 };
 	
 	/* Initializes default input parameters */
 	SimulationInputParameters() : SystemInputParameters() 
@@ -41,7 +54,7 @@ public:
 	}
 
 	/* Initializes input parameters according to the program arguments */
-	/* Usage: .\opaque.exe <input_parameters_0.txt> <output_directory> */
+	/* Usage: .\opaque.exe <input_parameters_opaque.txt> <output_directory> */
 	SimulationInputParameters(int argc, char*argv[]) : SystemInputParameters(argc, argv) 
 	{
 		initializeInputParameterMap();
@@ -75,6 +88,19 @@ public:
 		addInputParameter("blockingCriterionLogicalTopology", &blockingCriterionLogicalTopology);
 		addInputParameter("routingCriterionLogicalTopology", &routingCriterionLogicalTopology);
 		addInputParameter("blockingCriterionPhysicalTopology", &blockingCriterionPhysicalTopology);
+		addInputParameter("OLTsCost", &OLTsCost);
+		addInputParameter("TranspondersCost", &TranspondersCost);
+		addInputParameter("AmplifiersCost", &AmplifiersCost);
+		addInputParameter("EXCsCost", &EXCsCost);
+		addInputParameter("ODU0portsCost", &ODU0portsCost);
+		addInputParameter("ODU1portsCost", &ODU1portsCost);
+		addInputParameter("ODU2portsCost", &ODU2portsCost);
+		addInputParameter("ODU3portsCost", &ODU3portsCost);
+		addInputParameter("ODU4portsCost", &ODU4portsCost);
+		addInputParameter("OTU4portsCost", &OTU4portsCost);
+		addInputParameter("OXCsCost", &OXCsCost);
+		addInputParameter("addPortsCost", &addPortsCost);
+		addInputParameter("linePortsCost", &linePortsCost);
 	}
 };
 
@@ -86,7 +112,7 @@ public:
 int main()
 {
 	//SimulationInputParameters param(argc, argv);
-	SimulationInputParameters param("input_parameters_opaque.txt");
+	SimulationInputParameters param("input_parameters.txt");
 
 	//Signals Declaration 
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };
@@ -117,15 +143,10 @@ int main()
 	/* Blocks Declaration */
 	Scheduler Scheduler_{ {},{ &Scheduler_Out } };
 	Scheduler_.setODU0(param.odu0);
-	Scheduler_.setODU0Copy();
 	Scheduler_.setODU1(param.odu1);
-	Scheduler_.setODU1Copy();
 	Scheduler_.setODU2(param.odu2);
-	Scheduler_.setODU2Copy();
 	Scheduler_.setODU3(param.odu3);
-	Scheduler_.setODU3Copy();
 	Scheduler_.setODU4(param.odu4);
-	Scheduler_.setODU4Copy();
 	Scheduler_.setOrderingRule(param.orderingRule);
 
 	LogicalTopologyGenerator LogicalTopologyGenerator_{ {},{ &LogicalTopologyGenerator_Out } };
@@ -178,10 +199,8 @@ int main()
 	//System Run
 	MainSystem.run();
 	MainSystem.terminate();
-	//MainSystem.writeReport();
-	MainSystem.writeReport(LogicalTopologyManager_.getLogicalTopology(), PhysicalTopologyManager_.getPhysicalTopology(), Scheduler_.getODU0Copy(), Scheduler_.getODU1Copy(), Scheduler_.getODU2Copy(), Scheduler_.getODU3Copy(), Scheduler_.getODU4Copy(), Scheduler_.getOrderingRule());
-
-
+	MainSystem.writeReport(LogicalTopologyManager_.getLogicalTopology(), PhysicalTopologyManager_.getPhysicalTopology(), param.odu0, param.odu1, param.odu2, param.odu3, param.odu4, param.orderingRule, param.OLTsCost, param.TranspondersCost, param.AmplifiersCost, param.EXCsCost, param.ODU0portsCost, param.ODU1portsCost, param.ODU2portsCost, param.ODU3portsCost, param.ODU4portsCost, param.OTU4portsCost, param.OXCsCost, param.addPortsCost, param.linePortsCost);
+	
 	system("pause");
 
 	return 0;

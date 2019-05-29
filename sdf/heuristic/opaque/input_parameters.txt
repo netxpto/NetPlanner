@@ -1,44 +1,44 @@
 // Input parameters for opaque transport mode   
                    
 odu0 = 
+0 0 0 0 0 10 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0
+10 0 0 0 0 0
 
 odu1 = 
+0 0 0 0 0 2 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0
+2 0 0 0 0 0
 
 odu2 = 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 1 0
-
-odu3 = 
-0 0 0 0 0 0 
-0 0 1 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 2 1 0 0 0
-
-odu4 = 
-0 3 0 0 0 0 
-0 0 0 0 0 0 
+0 2 0 0 0 0 
+2 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0
+
+odu3 = 
+0 0 0 4 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+4 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0
+
+odu4 = 
+0 1 1 1 1 1 
+1 0 0 0 0 0 
+1 0 0 0 0 0 
+1 0 0 0 0 0 
+1 0 0 0 0 0 
+1 0 0 0 0 0
 
 orderingRule = descendingOrder
 
@@ -46,25 +46,25 @@ transportMode = opaque
 
 physicalTopologyAdjacencyMatrix =
 0 1 0 0 0 1 
-0 0 1 0 0 0 
-0 0 0 0 1 0 
-0 0 1 0 0 0 
-0 0 0 1 0 1 
-0 1 0 0 0 0
+1 0 1 0 0 1 
+0 1 0 1 1 0 
+0 0 1 0 1 0 
+0 0 1 1 0 1 
+1 1 0 0 1 0
 
 distanceMatrix = 
-0 460 663 0 0 0 
-460 0 75 684 0 0 
-663 75 0 0 890 0 
-0 684 0 0 103 764 
-0 0 890 103 0 361 
-0 0 0 764 361 0
+0 350 0 0 0 150 
+350 0 400 0 0 120 
+0 400 0 250 100 0 
+0 0 250 0 200 0 
+0 0 100 200 0 600 
+150 120 0 0 600 0
 
 span = 100
 
 numberOfOMSPerLink = 1
 
-numberOfOpticalChannelsPerOMS = 2
+numberOfOpticalChannelsPerOMS = 100
 
 initialWavelength = 1550
 
@@ -82,7 +82,7 @@ blockingCriterionPhysicalTopology = 3
 
 OLTsCost = 15000
 TranspondersCost = 5000 
-AmplifiersCost = 4000 
+AmplifiersCost = 2000 
 EXCsCost = 10000 
 ODU0portsCost = 1250 
 ODU1portsCost = 2500 

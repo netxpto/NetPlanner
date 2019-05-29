@@ -1,56 +1,57 @@
-// Input parameters for opaque transport mode   
-                   
+// Input parameters for opaque transport mode without survivability 
+// Medium traffic scenario - 5 Tbits/s       
+                 
 odu0 = 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0
+0 50 10 30 10 30 
+50 0 0 10 50 0 
+10 0 0 10 40 10 
+30 10 10 0 10 10 
+10 50 40 10 0 30 
+30 0 10 10 30 0
 
 odu1 = 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0
+0 20 40 20 0 50 
+20 0 0 30 10 10 
+40 0 0 10 10 0 
+20 30 10 0 10 30 
+0 10 10 10 0 10 
+50 10 0 30 10 0
 
 odu2 = 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 1 0
+0 10 10 10 0 0 
+10 0 0 0 10 0 
+10 0 0 10 10 0 
+10 0 10 0 10 0
+0 10 10 10 0 10 
+0 0 0 0 10 0
 
 odu3 = 
 0 0 0 0 0 0 
-0 0 1 0 0 0 
+0 0 10 0 0 10 
+0 10 0 0 10 0 
 0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 2 1 0 0 0
+0 0 10 0 0 0 
+0 10 0 0 0 0
 
 odu4 = 
-0 3 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 10 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0 
-0 0 0 0 0 0
+0 0 0 0 0 10 
+0 10 0 0 10 0
 
 orderingRule = descendingOrder
 
 transportMode = opaque
 
 physicalTopologyAdjacencyMatrix =
-0 1 0 0 0 1 
-0 0 1 0 0 0 
-0 0 0 0 1 0 
-0 0 1 0 0 0 
-0 0 0 1 0 1 
-0 1 0 0 0 0
+0 1 1 0 0 0 
+1 0 1 1 0 0 
+1 1 0 0 1 0 
+0 1 0 0 1 1 
+0 0 1 1 0 1 
+0 0 0 1 1 0
 
 distanceMatrix = 
 0 460 663 0 0 0 
@@ -64,15 +65,15 @@ span = 100
 
 numberOfOMSPerLink = 1
 
-numberOfOpticalChannelsPerOMS = 2
+numberOfOpticalChannelsPerOMS = 100
 
 initialWavelength = 1550
 
-wavelengthSpacing = 0.8 
+wavelengthSpacing = 0.8
 
 opticalChannelCapacity = 80
 
-routingCriterionLogicalTopology = hops 
+routingCriterionLogicalTopology = hops
 
 blockingCriterionLogicalTopology = 3
 
