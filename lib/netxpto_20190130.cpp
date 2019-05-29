@@ -2108,6 +2108,10 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	fileHandler << "-------------------------------------------------------------\n";
 	fileHandler << "|  Unidirectional link  |  Optical channels  |  Amplifiers  |\n";
 	fileHandler << "-------------------------------------------------------------\n";
+
+	int  OLTsQuantity{ 0 };
+	int AmplifiersQuantity{ 0 };
+
 	for (size_t i = 0; i < finalPhysicalTopology.opticalMultiplexingSystems.size(); i++)
 	{
 		fileHandler << " Node " << finalPhysicalTopology.opticalMultiplexingSystems[i].sourceNode << " -> " << finalPhysicalTopology.opticalMultiplexingSystems[i].destinationNode << "\t";
@@ -2118,12 +2122,26 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 			if (finalLogicalTopology.opticalChannels[j].sourceNode == finalPhysicalTopology.opticalMultiplexingSystems[i].sourceNode && finalLogicalTopology.opticalChannels[j].destinationNode == finalPhysicalTopology.opticalMultiplexingSystems[i].destinationNode)
 				number++;
 		}
-		fileHandler << "\t\t";
-		fileHandler << number; // number of optical channels
-		fileHandler << "\t";
-		fileHandler << "\t";
-		fileHandler << finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
-		fileHandler << "\n";
+		if (number != 0)
+		{
+			OLTsQuantity++;
+			AmplifiersQuantity += finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
+			fileHandler << "\t\t";
+			fileHandler << number; // number of optical channels
+			fileHandler << "\t";
+			fileHandler << "\t";
+			fileHandler << finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
+			fileHandler << "\n";
+		}
+		else
+		{
+			fileHandler << "\t\t";
+			fileHandler << number; // number of optical channels
+			fileHandler << "\t";
+			fileHandler << "\t";
+			fileHandler << "0";
+			fileHandler << "\n";
+		}
 	}
 	fileHandler << "-------------------------------------------------------------\n";
 	fileHandler << "\n";
@@ -2511,26 +2529,27 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	// Unit prices in Euros €
 	int OLTsCost{ 15000 };
 	int TranspondersCost{ 5000 };
-	int AmplifiersCost{ 4000 };
+	int AmplifiersCost{ 2000 };
 	int EXCsCost{ 10000 };
-	int ODU0portsCost{ 10 };
-	int ODU1portsCost{ 15 };
-	int ODU2portsCost{ 30 };
-	int ODU3portsCost{ 60 };
-	int ODU4portsCost{ 100 };
+	int ODU0portsCost{ 1250 };
+	int ODU1portsCost{ 2500 };
+	int ODU2portsCost{ 10000 };
+	int ODU3portsCost{ 40000 };
+	int ODU4portsCost{ 100000 };
 	int OTU4portsCost{ 100000 };
 	int OXCsCost{ 20000 };
 	int addPortsCost{ 2500 };
 	int linePortsCost{ 2500 };
 
-	//Quantities
-	int OLTsQuantity = finalPhysicalTopology.opticalMultiplexingSystems.size();
+
+
+	//int OLTsQuantity = finalPhysicalTopology.opticalMultiplexingSystems.size();
 	int TranspondersQuantity = finalLogicalTopology.opticalChannels.size();
-	int AmplifiersQuantity{ 0 };
+	/*int AmplifiersQuantity{ 0 };
 	for (int i=0; i < finalPhysicalTopology.opticalMultiplexingSystems.size(); i++)
 	{
 		AmplifiersQuantity += finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
-	}
+	}*/
 	int EXCsQuantity = finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size();
 	int ODU0portsQuantity{ 0 };
 	for (int line = 0; line < odu0.size(); line++)
@@ -3468,8 +3487,9 @@ void SystemInputParameters::readSystemInputParameters()
 
 		line = trim(line); 
 		try {
-			//If the line is a comment, it just skips to the next one
-			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+			if (line != "")
+			{
+				if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
 					vector<string> splitline = split(line, '=');
 					splitline[0] = trim(splitline[0]);
 					splitline[1] = trim(splitline[1]);
@@ -3490,15 +3510,21 @@ void SystemInputParameters::readSystemInputParameters()
 							parameters[splitline[0]]->setValue(parseOrderingRule(splitline[1]));
 						else if (parameters[splitline[0]]->getType() == ROUTING_CRITERION_LOGICAL)
 							parameters[splitline[0]]->setValue(parseRoutingCriterionLogicalTopology(splitline[1]));
-						else if (parameters[splitline[0]]->getType() == ROUTING_CRITERION_PHYSICAL) 
+						else if (parameters[splitline[0]]->getType() == ROUTING_CRITERION_PHYSICAL)
 							parameters[splitline[0]]->setValue(parseRoutingCriterionPhysicalTopology(splitline[1]));
-						
+
 						//Logs that a given parameter has been loaded from a file
 						loadedInputParameters.push_back(splitline[0] + " = " + splitline[1]);
-					//}
+						//}
+					}
 				}
+				//If the line is a comment, it just skips to the next one
+
+				errorLine++;
 			}
-			errorLine++;
+			else
+				errorLine++;
+			
 		}
 		catch (const exception& e) {
 			(void)e;
