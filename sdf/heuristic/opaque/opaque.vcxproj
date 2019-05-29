@@ -134,11 +134,10 @@
     <ClCompile Include="opaque_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="input_parameters.txt" />
-    <Text Include="input_parameters_0_5T.txt" />
-    <Text Include="input_parameters_0_5_T.txt" />
-    <Text Include="input_parameters_10T.txt" />
-    <Text Include="input_parameters_5T.txt" />
+    <Text Include="input_parameters_high_traffic.txt" />
+    <Text Include="input_parameters_low_traffic.txt" />
+    <Text Include="input_parameters_medium_traffic.txt" />
+    <Text Include="input_parameters_opaque.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

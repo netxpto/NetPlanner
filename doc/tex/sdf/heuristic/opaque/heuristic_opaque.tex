@@ -2297,173 +2297,168 @@ Demand 5 blocked \
 \newpage
 \vspace{11pt}
 
-\underline{\textbf{DemandRequest}}
-
-\begin{table}[H]
-	\centering
-	{\small
-		\begin{tabular}{| c | c | c | c | c |}
-			\hline
-			\textbf{demandIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{oduType} & \textbf{survivabilityMethod}\\ \hline
-			0...$\infty$              & 1...N               & 1...N                    & 0...4            & \begin{tabular}[c]{@{}l@{}}none\\ protection\_1\_plus\_1 \\ restoration\end{tabular}\\ \hline
-	\end{tabular}}
-	\caption{DemandRequest variable}
-	\label{demand_variable}
-\end{table}
-
-\newpage
-\vspace{11pt}
-
-\underline{\textbf{LogicalTopology}}\\
-
-\textbf{logicalTopologyAdjacencyMatrix}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c | c | c |}
-		\hline
-		\textbf{Node} & 1  & ... & ... & N  \\ \hline
-		1             & 0  & 0/1   & 0/1   & 0/1  \\ \hline
-		...           & 0/1  & 0   & 0/1   & 0/1  \\ \hline
-		...           & 0/1  & 0/1   & 0   & 0/1  \\ \hline
-		N 			  & 0/1  & 0/1   & 0/1   & 0  \\ \hline
-	\end{tabular}
-	\label{logical_matrix}
-\end{table}
-
-\textbf{paths}
-
-\begin{table}[H]
-	\centering
-	{\small
-		\begin{tabular}{| c | c | c | c | c | c |}
-			\hline
-			\textbf{pathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfLightPaths} & \textbf{lightPathsIndex } \\ \hline
-			0...$\infty$ & 1...N & 1...N & 0...80 & 1...$\infty$ & [lp0, lp1,...] \\ \hline
-	\end{tabular}}              
-	\label{path}
-\end{table}
-
-\textbf{lightPaths}
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{| c | c | c | c | c | c |}
-			\hline
-			\textbf{lightPathIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular} & \textbf{numberOfOpticalChannels} & \textbf{opticalChannelsIndex} \\ \hline
-			0...$\infty$ & 1...N & 1...N &  1...80 & 1...100 & [och0,och1,...] \\ \hline        	
-	\end{tabular}}
-	\label{light_path}
-\end{table}
-
-
-\textbf{opticalChannels}
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{| c | c | c | c | c | c | c |}
-			\hline
-			\textbf{opticalChannelIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{wavelength} & \begin{tabular}[c]{@{}c@{}}\textbf{capacity} \\ (ODU0s)\end{tabular}  & \textbf{numberOfDemands} & \textbf{demandsIndex}    \\ \hline
-			0...$\infty$ & 1...N & 1...N & 1550,1550.8,... & 1...80 & 0...$\infty$ & [d0,d1,...]  \\ \hline
-	\end{tabular}}
-	\label{optical_channel}
-\end{table}
-
-\newpage
-\vspace{11pt}
-
-\underline{\textbf{PhysicalTopology}}\\
-
-\textbf{physicalTopologyAdjacencyMatrix}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{| c | c | c | c | c |}
-		\hline
-		\textbf{Node} & 1  & ... & ... & N  \\ \hline
-		1             & 0  & 0/1   & 0/1   & 0/1  \\ \hline
-		...           & 0/1  & 0   & 0/1   & 0/1  \\ \hline
-		...           & 0/1  & 0/1   & 0   & 0/1  \\ \hline
-		N 			  & 0/1  & 0/1   & 0/1   & 0  \\ \hline
-	\end{tabular}
-	\label{physical_matrix}
-\end{table}
-
-\textbf{opticalMultiplexSection}
-
-\begin{table}[H]
-	\centering
-	\resizebox{\textwidth}{!}{
-		\begin{tabular}{| c | c | c | c | c | c |}
-			\hline
-			\textbf{OMSIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{maximumNumberOfWavelengths} & \textbf{wavelengths} & \textbf{availableWavelengths} \\ \hline
-			0   & 1...N & 1...N & OC & [1550,1550.8,...] & [0/1,0/1,...]        \\ \hline
-			\vdots & 	\vdots & 	\vdots & 	\vdots & 	\vdots & 	\vdots        \\ \hline
-			$\infty$ & 1...N & 1...N & OC & [1550,1550.8,...] & [0/1,0/1,...]        \\ \hline
-	\end{tabular}}
-	\caption{opticalMultiplexSection}
-	\label{optical_multiplex_section}
-\end{table}
-
-\newpage
-\vspace{11pt}
-
-\underline{\textbf{PathRequest}}
-
-\begin{table}[H]
-	\centering
-	{\small
-		\begin{tabular}{| c | c | c | c | c |}
-			\hline
-			\textbf{requestIndex} & \textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes}\\ \hline
-			0...$\infty$               & 1...N               & 1...N                    & 0...N-2                              & [1, 2, ...]       \\ \hline
-	\end{tabular}}
-	\label{path_request}
-\end{table}
-
-
-
-\underline{\textbf{PathRequestRouted}}\\
-
-\textbf{pathInformation}
-
-\begin{table}[H]
-	\centering
-	{\small
-		\begin{tabular}{| c | c | c |}
-			\hline
-			\textbf{requestIndex} & \textbf{routed} & \textbf{numberOfLightPaths}\\ \hline
-			0...$\infty$               & true or false   & 1...$\infty$                    \\ \hline
-	\end{tabular}}
-	\label{path_information}
-\end{table}
-
-\textbf{lightPathsTable}
-
-\begin{table}[H]
-	\centering
-	{\small
-		\begin{tabular}{| c | c | c | c | c |}
-			\hline
-			\textbf{sourceNode} & \textbf{destinationNode} & \textbf{numberOfIntermediateNodes} & \textbf{intermediateNodes} & \textbf{wavelength} \\ \hline
-			1...N               & 1...N                    & 0...N-2                            & [1, 2, ...]                & 1550,1550.8,...               \\ \hline
-	\end{tabular}}
-	\label{light_path_table}
-\end{table}
-
-
-\underline{\textbf{DemandRequestRouted}}
+\textbf{CAPEX}
+\\
+\textbf{Low Traffic Scenario:}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{| c | c | c |}
 		\hline
-		\textbf{demandIndex} & \textbf{routed}  & \textbf{pathsIndex}\\ \hline
-		0...$\infty$              & true or false           & 0...$\infty$            \\ \hline
+		\multicolumn{3}{|c|}{\textbf{Information regarding links}} \\ \hline
+		Unidirectional link & Optical channels & Amplifiers \\ \hline 
+		\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Node 1 -\textgreater 2			\\ Node 1 -\textgreater 3			\\ Node 2 -\textgreater 1			\\ Node 2 -\textgreater 3						\\ Node 2 -\textgreater 4\\ Node 3 -\textgreater 1			\\ Node 3 -\textgreater 2			\\ Node 3 -\textgreater 5			\\ Node 4 -\textgreater 2			\\ Node 4 -\textgreater 5			\\ Node 4 -\textgreater 6			\\ Node 5 -\textgreater 3			\\ Node 5 -\textgreater 4			\\ Node 5 -\textgreater 6			\\ Node 6 -\textgreater 4			\\ Node 6 -\textgreater 5\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}1\\ 1\\ 1\\ 1\\ 2\\ 1\\ 1\\ 1\\ 2\\ 1\\ 2\\ 1\\ 1\\ 2\\ 2\\ 2\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}4\\ 6\\ 4\\ 0\\ 6\\ 6\\ 0\\ 8\\ 6\\ 1\\ 7\\ 8\\ 1\\ 3\\ 7\\ 3\end{tabular}}  \\ \hline
 	\end{tabular}
-	\label{demand_request_routed}
+	\caption{Table with information regarding links for opaque mode without survivability.}
+	\label{links}
 \end{table}
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c |}
+		\hline
+		\multicolumn{4}{|c|}{\textbf{Information regarding nodes}} \\ \hline
+		Node & Nodal Degree & Line Ports & Tributary Ports \\ \hline 
+		\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}1\\ 2\\ 3\\ 4\\ 5\\ 6\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}2\\ 3\\ 3\\ 3\\ 3\\ 2\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}2\\ 4\\ 3\\ 5\\ 4\\ 4\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}29\\ 23\\ 18\\ 20\\ 24\\ 22\end{tabular}}  \\ \hline
+	\end{tabular}
+	\caption{Table with information regarding nodes for opaque mode without survivability.}
+	\label{nodes}
+\end{table}
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c | c |}
+		\hline
+		\multicolumn{7}{|c|}{\textbf{Network CAPEX}} \\ \hline
+		\multicolumn{3}{|c|}{} & \textbf{Quantity} & \textbf{Unit price} & \textbf{Cost} & \textbf{Total} \\ \hline
+		\multirow{3}{*}{Link Cost} & \multicolumn{2}{c|}{OLTs} & 16 & 15 000 \euro & 240 000 \euro & \multirow{3}{*}{11 520 000 \euro} \\ \cline{2-6}
+		& \multicolumn{2}{c|}{Transponders} & 22 & 5 000 \euro /Gbit/s & 11 000 000 \euro &  \\ \cline{2-6}
+		& \multicolumn{2}{c|}{Amplifiers} & 70 & 10 000 \euro & 280 000 \euro &  \\ \hline
+		\multirow{10}{*}{Node Cost} & \multirow{7}{*}{Electrical part} & EXCs & 6 & 10 000 \euro & 60 000 \euro & \multirow{10}{*}{2 262 590 \euro} \\ \cline{3-6}
+		&  & ODU0 ports & 60 & 10 \euro/ port & 600 \euro &  \\ \cline{3-6}
+		&  & ODU1 ports & 50 & 15 \euro/ port & 750 \euro &  \\ \cline{3-6}
+		&  & ODU2 ports & 16 & 30 \euro/ port & 480 \euro &  \\ \cline{3-6}
+		&  & ODU3 ports & 6 & 60 \euro/ port & 360 \euro &  \\ \cline{3-6}
+		&  & ODU4 ports & 4 & 100 \euro/ port & 400 \euro &  \\ \cline{3-6}
+		&  & Line Ports & 22 & 100 000 \euro/ port & 2 200 000 \euro &  \\ \cline{2-6}
+		& \multirow{3}{*}{Optical part} & OXCs & 0 & 20 000 \euro & 0 \euro &  \\ \cline{3-6}
+		&  & Add ports & 0 & 2500 \euro/port & 0 \euro &  \\ \cline{3-6}
+		&  & Line ports & 0 & 2500 \euro/ port & 0 \euro &  \\ \hline
+		\multicolumn{6}{|c|}{Total Network Cost} & 13 782 590 \euro \\ \hline
+	\end{tabular}
+\caption{Table with detailed description of CAPEX for this scenario.}
+\label{capex}
+\end{table}
+
+\textbf{Medium Traffic Scenario:}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\multicolumn{3}{|c|}{\textbf{Information regarding links}} \\ \hline
+		Unidirectional link & Optical channels & Amplifiers \\ \hline 
+		\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Node 1 -\textgreater 2			\\ Node 1 -\textgreater 3			\\ Node 2 -\textgreater 1			\\ Node 2 -\textgreater 3						\\ Node 2 -\textgreater 4\\ Node 3 -\textgreater 1			\\ Node 3 -\textgreater 2			\\ Node 3 -\textgreater 5			\\ Node 4 -\textgreater 2			\\ Node 4 -\textgreater 5			\\ Node 4 -\textgreater 6			\\ Node 5 -\textgreater 3			\\ Node 5 -\textgreater 4			\\ Node 5 -\textgreater 6			\\ Node 6 -\textgreater 4			\\ Node 6 -\textgreater 5\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}6\\ 3\\ 6\\ 8\\ 20\\ 3\\ 8\\ 8\\ 20\\ 2\\ 17\\ 8\\ 2\\ 12\\ 17\\ 12\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}4\\ 6\\ 4\\ 0\\ 6\\ 6\\ 0\\ 8\\ 6\\ 1\\ 7\\ 8\\ 1\\ 3\\ 7\\ 3\end{tabular}}  \\ \hline
+	\end{tabular}
+	\caption{Table with information regarding links for opaque mode without survivability.}
+	\label{links}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c |}
+		\hline
+		\multicolumn{4}{|c|}{\textbf{Information regarding nodes}} \\ \hline
+		Node & Nodal Degree & Line Ports & Tributary Ports \\ \hline 
+		\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}1\\ 2\\ 3\\ 4\\ 5\\ 6\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}2\\ 3\\ 3\\ 3\\ 3\\ 2\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}9\\ 34\\ 19\\ 39\\ 22\\ 29\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}290\\ 230\\ 180\\ 200\\ 240\\ 220\end{tabular}}  \\ \hline
+	\end{tabular}
+	\caption{Table with information regarding nodes for opaque mode without survivability.}
+	\label{nodes}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c | c |}
+		\hline
+		\multicolumn{7}{|c|}{\textbf{Network CAPEX}} \\ \hline
+		\multicolumn{3}{|c|}{} & \textbf{Quantity} & \textbf{Unit price} & \textbf{Cost} & \textbf{Total} \\ \hline
+		\multirow{3}{*}{Link Cost} & \multicolumn{2}{c|}{OLTs} & 16 & 15 000 \euro & 240 000 \euro & \multirow{3}{*}{76 520 000 \euro} \\ \cline{2-6}
+		& \multicolumn{2}{c|}{Transponders} & 152 & 5 000 \euro /Gbit/s & 76 000 000 \euro &  \\ \cline{2-6}
+		& \multicolumn{2}{c|}{Amplifiers} & 70 & 10 000 \euro & 280 000 \euro &  \\ \hline
+		\multirow{10}{*}{Node Cost} & \multirow{7}{*}{Electrical part} & EXCs & 6 & 10 000 \euro & 60 000 \euro & \multirow{10}{*}{15 285 900 \euro} \\ \cline{3-6}
+		&  & ODU0 ports & 600 & 10 \euro/ port & 6000 \euro &  \\ \cline{3-6}
+		&  & ODU1 ports & 500 & 15 \euro/ port & 7500 \euro &  \\ \cline{3-6}
+		&  & ODU2 ports & 160 & 30 \euro/ port & 4800 \euro &  \\ \cline{3-6}
+		&  & ODU3 ports & 60 & 60 \euro/ port & 3600 \euro &  \\ \cline{3-6}
+		&  & ODU4 ports & 40 & 100 \euro/ port & 4000 \euro &  \\ \cline{3-6}
+		&  & Line Ports & 152 & 100 000 \euro/ port & 15 200 000 \euro &  \\ \cline{2-6}
+		& \multirow{3}{*}{Optical part} & OXCs & 0 & 20 000 \euro & 0 \euro &  \\ \cline{3-6}
+		&  & Add ports & 0 & 2500 \euro/port & 0 \euro &  \\ \cline{3-6}
+		&  & Line ports & 0 & 2500 \euro/ port & 0 \euro &  \\ \hline
+		\multicolumn{6}{|c|}{Total Network Cost} & 91 805 900 \euro \\ \hline
+	\end{tabular}
+	\caption{Table with detailed description of CAPEX for this scenario.}
+	\label{capex}
+\end{table}
+
+\textbf{High Traffic Scenario:}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\multicolumn{3}{|c|}{\textbf{Information regarding links}} \\ \hline
+		Unidirectional link & Optical channels & Amplifiers \\ \hline 
+		\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Node 1 -\textgreater 2			\\ Node 1 -\textgreater 3			\\ Node 2 -\textgreater 1			\\ Node 2 -\textgreater 3						\\ Node 2 -\textgreater 4\\ Node 3 -\textgreater 1			\\ Node 3 -\textgreater 2			\\ Node 3 -\textgreater 5			\\ Node 4 -\textgreater 2			\\ Node 4 -\textgreater 5			\\ Node 4 -\textgreater 6			\\ Node 5 -\textgreater 3			\\ Node 5 -\textgreater 4			\\ Node 5 -\textgreater 6			\\ Node 6 -\textgreater 4			\\ Node 6 -\textgreater 5\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}12\\ 5\\ 12\\ 15\\ 40\\ 5\\ 15\\ 16\\ 40\\ 3\\ 34\\ 16\\ 3\\ 24\\ 34\\ 24\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}4\\ 6\\ 4\\ 0\\ 6\\ 6\\ 0\\ 8\\ 6\\ 1\\ 7\\ 8\\ 1\\ 3\\ 7\\ 3\end{tabular}}  \\ \hline
+	\end{tabular}
+	\caption{Table with information regarding links for opaque mode without survivability.}
+	\label{links}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c |}
+		\hline
+		\multicolumn{4}{|c|}{\textbf{Information regarding nodes}} \\ \hline
+		Node & Nodal Degree & Line Ports & Tributary Ports \\ \hline 
+		\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}1\\ 2\\ 3\\ 4\\ 5\\ 6\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}2\\ 3\\ 3\\ 3\\ 3\\ 2\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}17\\ 67\\ 36\\ 77\\ 43\\ 58\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}580\\ 460\\ 360\\ 400\\ 480\\ 440\end{tabular}}  \\ \hline
+	\end{tabular}
+	\caption{Table with information regarding nodes for opaque mode without survivability.}
+	\label{nodes}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c | c | c | c |}
+		\hline
+		\multicolumn{7}{|c|}{\textbf{Network CAPEX}} \\ \hline
+		\multicolumn{3}{|c|}{} & \textbf{Quantity} & \textbf{Unit price} & \textbf{Cost} & \textbf{Total} \\ \hline
+		\multirow{3}{*}{Link Cost} & \multicolumn{2}{c|}{OLTs} & 16 & 15 000 \euro & 240 000 \euro & \multirow{3}{*}{149 520 000 \euro} \\ \cline{2-6}
+		& \multicolumn{2}{c|}{Transponders} & 298 & 5 000 \euro /Gbit/s & 149 000 000 \euro &  \\ \cline{2-6}
+		& \multicolumn{2}{c|}{Amplifiers} & 70 & 10 000 \euro & 280 000 \euro &  \\ \hline
+		\multirow{10}{*}{Node Cost} & \multirow{7}{*}{Electrical part} & EXCs & 6 & 10 000 \euro & 60 000 \euro & \multirow{10}{*}{29 911 800 \euro} \\ \cline{3-6}
+		&  & ODU0 ports & 1200 & 10 \euro/ port & 12000 \euro &  \\ \cline{3-6}
+		&  & ODU1 ports & 1000 & 15 \euro/ port & 15000 \euro &  \\ \cline{3-6}
+		&  & ODU2 ports & 320 & 30 \euro/ port & 9600 \euro &  \\ \cline{3-6}
+		&  & ODU3 ports & 120 & 60 \euro/ port & 7200 \euro &  \\ \cline{3-6}
+		&  & ODU4 ports & 80 & 100 \euro/ port & 8000 \euro &  \\ \cline{3-6}
+		&  & Line Ports & 298 & 100 000 \euro/ port & 29 800 000 \euro &  \\ \cline{2-6}
+		& \multirow{3}{*}{Optical part} & OXCs & 0 & 20 000 \euro & 0 \euro &  \\ \cline{3-6}
+		&  & Add ports & 0 & 2500 \euro/port & 0 \euro &  \\ \cline{3-6}
+		&  & Line ports & 0 & 2500 \euro/ port & 0 \euro &  \\ \hline
+		\multicolumn{6}{|c|}{Total Network Cost} & 179 431 800 \euro \\ \hline
+	\end{tabular}
+	\caption{Table with detailed description of CAPEX for this scenario.}
+	\label{capex}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{| c | c | c | c |}
+		\hline
+		               & ILP         & Net2Plan    & Heuristic     \\ \hline
+		Low Traffic    & 11 266 590 \euro  & 14 382 590 \euro  & 13 782 590 \euro   \\ \hline
+		Medium Traffic & 90 605 900 \euro  & 92 405 900 \euro  & 91 805 900 \euro   \\ \hline
+		High Traffic   & 178 231 800 \euro & 178 834 200 \euro & 179 431 800 \euro  \\ \hline
+	\end{tabular}
+\end{table}

@@ -2099,7 +2099,7 @@ bool System::run(string signalPath) {
 }
 
 
-void System::writeReport(t_logical_topology logicalTopology, t_physical_topology physicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, t_ordering_rule orderingRule)
+void System::writeReport(t_logical_topology logicalTopology, t_physical_topology physicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, t_ordering_rule orderingRule, t_integer OLTsCost, t_integer TranspondersCost, t_integer AmplifiersCost, t_integer EXCsCost, t_integer ODU0portsCost, t_integer ODU1portsCost, t_integer ODU2portsCost, t_integer ODU3portsCost, t_integer ODU4portsCost, t_integer OTU4portsCost, t_integer OXCsCost, t_integer addPortsCost, t_integer linePortsCost)
 {
 	ofstream fileHandler;
 	fileHandler.open("FinalReport.txt");
@@ -2107,7 +2107,9 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	fileHandler << "\n";
 	fileHandler << "\n";
 
-	
+	t_integer amplifiers = 0;
+	t_integer OLTs = 0;
+
 	fileHandler << "-------------------------------------------------------------\n";
 	fileHandler << "|                Information regarding links                |\n";
 	fileHandler << "-------------------------------------------------------------\n";
@@ -2128,6 +2130,11 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		fileHandler << "\t";
 		fileHandler << "\t";
 		fileHandler << physicalTopology.OMS[i].numberOfAmplifiers;
+		if (number != 0)
+		{	
+			amplifiers += physicalTopology.OMS[i].numberOfAmplifiers;
+			OLTs++;
+		}
 		fileHandler << "\n";
 	}
 	fileHandler << "-------------------------------------------------------------\n";
@@ -2168,7 +2175,7 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	fileHandler << "---------------------------------------------------------------------------------------\n";
 	fileHandler << "|                     |         Electrical part          |         Optical part       |\n";
 	fileHandler << "---------------------------------------------------------------------------------------\n";
-	fileHandler << "| Node | Nodal degree |  Tributary ports  |  OTU4 ports  |  Add ports  |  Line ports  |\n";
+	fileHandler << "| Node | Nodal degree |  Tributary ports  |  Line ports  |  Add ports  |  Line ports  |\n";
 	fileHandler << "---------------------------------------------------------------------------------------\n";
 
 	std::vector<int> nodalDegree;
@@ -2191,7 +2198,7 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		linePortsDestinations.push_back(nodalDegree);
 		addPortsDestinations.push_back(nodalDegree);
 	}
-	for (int line = 0; line < logicalTopology.logicalTopologyAdjacencyMatrix.size(); line++) // There are 5 ODU types (6x5 matrix)
+	for (size_t line = 0; line < logicalTopology.logicalTopologyAdjacencyMatrix.size(); line++) // There are 5 ODU types (6x5 matrix)
 	{
 		std::vector<int> odu{ 0,0,0,0,0 };
 		tributaryPortsODUtypes.push_back(odu);
@@ -2206,17 +2213,17 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	if (orderingRule == t_ordering_rule::ascendingOrder)
 	{
 
-		for (int line = 0; line < odu0.size(); line++)
+		for (size_t line = 0; line < odu0.size(); line++)
 		{
-			for (int column = 0; column < odu0.size(); column++)
+			for (size_t column = 0; column < odu0.size(); column++)
 			{
 				if (odu0[line][column] != 0)
 					firstODU1Index += odu0[line][column];
 			}
 		}
-		for (int line = 0; line < odu1.size(); line++)
+		for (size_t line = 0; line < odu1.size(); line++)
 		{
-			for (int column = 0; column < odu1.size(); column++)
+			for (size_t column = 0; column < odu1.size(); column++)
 			{
 				if (odu1[line][column] != 0)
 					firstODU2Index += odu1[line][column];
@@ -2224,9 +2231,9 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		}
 		firstODU2Index += firstODU1Index;
 
-		for (int line = 0; line < odu2.size(); line++)
+		for (size_t line = 0; line < odu2.size(); line++)
 		{
-			for (int column = 0; column < odu2.size(); column++)
+			for (size_t column = 0; column < odu2.size(); column++)
 			{
 				if (odu2[line][column] != 0)
 					firstODU2Index += odu2[line][column];
@@ -2234,9 +2241,9 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		}
 		firstODU3Index += firstODU2Index;
 
-		for (int line = 0; line < odu3.size(); line++)
+		for (size_t line = 0; line < odu3.size(); line++)
 		{
-			for (int column = 0; column < odu3.size(); column++)
+			for (size_t column = 0; column < odu3.size(); column++)
 			{
 				if (odu3[line][column] != 0)
 					firstODU4Index += odu3[line][column];
@@ -2246,17 +2253,17 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	}
 	else
 	{
-		for (int line = 0; line < odu4.size(); line++)
+		for (size_t line = 0; line < odu4.size(); line++)
 		{
-			for (int column = 0; column < odu4.size(); column++)
+			for (size_t column = 0; column < odu4.size(); column++)
 			{
 				if (odu4[line][column] != 0)
 					firstODU3Index += odu4[line][column];
 			}
 		}
-		for (int line = 0; line < odu3.size(); line++)
+		for (size_t line = 0; line < odu3.size(); line++)
 		{
-			for (int column = 0; column < odu3.size(); column++)
+			for (size_t column = 0; column < odu3.size(); column++)
 			{
 				if (odu3[line][column] != 0)
 					firstODU2Index += odu3[line][column];
@@ -2264,9 +2271,9 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		}
 		firstODU2Index += firstODU3Index;
 
-		for (int line = 0; line < odu2.size(); line++)
+		for (size_t line = 0; line < odu2.size(); line++)
 		{
-			for (int column = 0; column < odu2.size(); column++)
+			for (size_t column = 0; column < odu2.size(); column++)
 			{
 				if (odu2[line][column] != 0)
 					firstODU1Index += odu2[line][column];
@@ -2274,9 +2281,9 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		}
 		firstODU1Index += firstODU2Index;
 
-		for (int line = 0; line < odu1.size(); line++)
+		for (size_t line = 0; line < odu1.size(); line++)
 		{
-			for (int column = 0; column < odu1.size(); column++)
+			for (size_t column = 0; column < odu1.size(); column++)
 			{
 				if (odu1[line][column] != 0)
 					firstODU0Index += odu1[line][column];
@@ -2285,9 +2292,9 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		firstODU0Index += firstODU1Index;
 	}
 
-	for (int line = 0; line < logicalTopology.logicalTopologyAdjacencyMatrix.size(); line++)
+	for (size_t line = 0; line < logicalTopology.logicalTopologyAdjacencyMatrix.size(); line++)
 	{
-		for (int i = 0; i < physicalTopology.physicalTopologyAdjacencyMatrix[line].size(); i++)
+		for (size_t i = 0; i < physicalTopology.physicalTopologyAdjacencyMatrix[line].size(); i++)
 		{
 			if (physicalTopology.physicalTopologyAdjacencyMatrix[line][i] == 1)
 				nodalDegree[line]++;
@@ -2295,32 +2302,32 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		if (orderingRule == t_ordering_rule::descendingOrder)
 		{
 			// Counting ODU4 demands
-			for (int j = 0; j < odu4[line].size(); j++)
+			for (size_t j = 0; j < odu4[line].size(); j++)
 			{
 				tributaryPorts[line] += odu4[line][j];
 				tributaryPortsODUtypes[line][4] += odu4[line][j];
 			}
 
 			// Counting ODU3 demands
-			for (int j = 0; j < odu3[line].size(); j++)
+			for (size_t j = 0; j < odu3[line].size(); j++)
 			{
 				tributaryPorts[line] += odu3[line][j];
 				tributaryPortsODUtypes[line][3] += odu3[line][j];
 			}
 			// Counting ODU2 demands
-			for (int j = 0; j < odu2[line].size(); j++)
+			for (size_t j = 0; j < odu2[line].size(); j++)
 			{
 				tributaryPorts[line] += odu2[line][j];
 				tributaryPortsODUtypes[line][2] += odu2[line][j];
 			}
 			// Counting ODU1 demands
-			for (int j = 0; j < odu1[line].size(); j++)
+			for (size_t j = 0; j < odu1[line].size(); j++)
 			{
 				tributaryPorts[line] += odu1[line][j];
 				tributaryPortsODUtypes[line][1] += odu1[line][j];
 			}
 			// Counting ODU0 demands
-			for (int j = 0; j < odu0[line].size(); j++)
+			for (size_t j = 0; j < odu0[line].size(); j++)
 			{
 				tributaryPorts[line] += odu0[line][j];
 				tributaryPortsODUtypes[line][0] += odu0[line][j];
@@ -2329,31 +2336,31 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		else if (orderingRule == t_ordering_rule::ascendingOrder)
 		{
 			// Counting ODU0 demands
-			for (int j = 0; j < odu0[line].size(); j++)
+			for (size_t j = 0; j < odu0[line].size(); j++)
 			{
 				tributaryPorts[line] += odu0[line][j];
 				tributaryPortsODUtypes[line][0] += odu0[line][j];
 			}
 			// Counting ODU1 demands
-			for (int j = 0; j < odu1[line].size(); j++)
+			for (size_t j = 0; j < odu1[line].size(); j++)
 			{
 				tributaryPorts[line] += odu1[line][j];
 				tributaryPortsODUtypes[line][1] += odu1[line][j];
 			}
 			// Counting ODU2 demands
-			for (int j = 0; j < odu2[line].size(); j++)
+			for (size_t j = 0; j < odu2[line].size(); j++)
 			{
 				tributaryPorts[line] += odu2[line][j];
 				tributaryPortsODUtypes[line][2] += odu2[line][j];
 			}
 			// Counting ODU3 demands
-			for (int j = 0; j < odu3[line].size(); j++)
+			for (size_t j = 0; j < odu3[line].size(); j++)
 			{
 				tributaryPorts[line] += odu3[line][j];
 				tributaryPortsODUtypes[line][3] += odu3[line][j];
 			}
 			// Counting ODU4 demands
-			for (int j = 0; j < odu4[line].size(); j++)
+			for (size_t j = 0; j < odu4[line].size(); j++)
 			{
 				tributaryPorts[line] += odu4[line][j];
 				tributaryPortsODUtypes[line][4] += odu4[line][j];
@@ -2361,7 +2368,7 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		}
 		// Number of OTU4 ports which is equal to the number of add ports
 		
-		for (int n = 0; n < logicalTopology.paths.size(); n++)
+		for (size_t n = 0; n < logicalTopology.paths.size(); n++)
 		{
 			if (logicalTopology.paths[n].sourceNode == line + 1)
 			{
@@ -2371,7 +2378,7 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 		}
 		// Number of line ports
 
-		for (int n = 0; n < logicalTopology.opticalChannels.size(); n++)
+		for (size_t n = 0; n < logicalTopology.opticalChannels.size(); n++)
 		{
 			if (logicalTopology.opticalChannels[n].sourceNode == line + 1)
 			{
@@ -2385,7 +2392,7 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	}
 
 	fileHandler << "---------------------------------------------------------------------------------------\n";
-	/*
+
 	fileHandler << "\n";
 	fileHandler << "\n";
 	fileHandler << "\n";
@@ -2395,24 +2402,27 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	{
 		fileHandler << "Node " << i + 1 << ":\n";
 		fileHandler << "\t - Needs " << linePorts[i] << " line ports.\n";
-		for (int k = 0; k < linePortsDestinations[i].size(); k++)
+		for (size_t k = 0; k < linePortsDestinations[i].size(); k++)
 		{
 			if (linePortsDestinations[i][k] != 0)
 				fileHandler << "\t\t - " << linePortsDestinations[i][k] << " connect to Node " << k + 1 << " with 100 Gbit/s \n";
 		}
+		/*
 		fileHandler << "\t - Needs " << otu4Ports[i] << " add ports.\n";
 		for (int k = 0; k < addPortsDestinations[i].size(); k++)
 		{
 			if (addPortsDestinations[i][k] != 0)
 				fileHandler << "\t\t - " << addPortsDestinations[i][k] << " connect to Node " << k + 1 << "\n";
 		}
+		*/
 		fileHandler << "\t - Needs " << tributaryPorts[i] << " tributary ports:\n";
-		for (int k = 0; k < tributaryPortsODUtypes[i].size(); k++)
+		for (size_t k = 0; k < tributaryPortsODUtypes[i].size(); k++)
 		{
 			if (tributaryPortsODUtypes[i][k] != 0)
 				fileHandler << "\t\t - Where " << tributaryPortsODUtypes[i][k] << " is the ODU" << k << "\n";
 		}
 	}
+	/*
 	fileHandler << "\n";
 	fileHandler << "\n";
 	fileHandler << "\n";
@@ -2517,10 +2527,10 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	fileHandler << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n";
 	*/
 	fileHandler << "\n\n\n\n";
-	
-	
+
 	// Unit prices in Euros €
-	int OLTsCost{ 15000 };
+	//int OLTsCost{ 15000 };
+	/*
 	int TranspondersCost{ 5000 };
 	int AmplifiersCost{ 4000 };
 	int EXCsCost{ 10000 };
@@ -2533,52 +2543,56 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	int OXCsCost{ 20000 };
 	int addPortsCost{ 2500 };
 	int linePortsCost{ 2500 };
-
+	*/
+	
 	//Quantities
-	int OLTsQuantity = physicalTopology.OMS.size();
+	//int OLTsQuantity = physicalTopology.OMS.size();
+	int OLTsQuantity = OLTs;
 	int TranspondersQuantity = logicalTopology.opticalChannels.size();
-	int AmplifiersQuantity{ 0 };
-	for (int i = 0; i < physicalTopology.OMS.size(); i++)
+	int AmplifiersQuantity = amplifiers;
+	/*
+	for (size_t i = 0; i < physicalTopology.OMS.size(); i++)
 	{
 		AmplifiersQuantity += physicalTopology.OMS[i].numberOfAmplifiers;
 	}
+	*/
 	int EXCsQuantity = physicalTopology.physicalTopologyAdjacencyMatrix.size();
 	int ODU0portsQuantity{ 0 };
-	for (int line = 0; line < odu0.size(); line++)
+	for (size_t line = 0; line < odu0.size(); line++)
 	{
-		for (int column = 0; column < odu0.size(); column++)
+		for (size_t column = 0; column < odu0.size(); column++)
 		{
 			ODU0portsQuantity += odu0[line][column];
 		}
 	}
 	int ODU1portsQuantity{ 0 };
-	for (int line = 0; line < odu1.size(); line++)
+	for (size_t line = 0; line < odu1.size(); line++)
 	{
-		for (int column = 0; column < odu1.size(); column++)
+		for (size_t column = 0; column < odu1.size(); column++)
 		{
 			ODU1portsQuantity += odu1[line][column];
 		}
 	}
 	int ODU2portsQuantity{ 0 };
-	for (int line = 0; line < odu2.size(); line++)
+	for (size_t line = 0; line < odu2.size(); line++)
 	{
-		for (int column = 0; column < odu2.size(); column++)
+		for (size_t column = 0; column < odu2.size(); column++)
 		{
 			ODU2portsQuantity += odu2[line][column];
 		}
 	}
 	int ODU3portsQuantity{ 0 };
-	for (int line = 0; line < odu3.size(); line++)
+	for (size_t line = 0; line < odu3.size(); line++)
 	{
-		for (int column = 0; column < odu3.size(); column++)
+		for (size_t column = 0; column < odu3.size(); column++)
 		{
 			ODU3portsQuantity += odu3[line][column];
 		}
 	}
 	int ODU4portsQuantity{ 0 };
-	for (int line = 0; line < odu4.size(); line++)
+	for (size_t line = 0; line < odu4.size(); line++)
 	{
-		for (int column = 0; column < odu4.size(); column++)
+		for (size_t column = 0; column < odu4.size(); column++)
 		{
 			ODU4portsQuantity += odu4[line][column];
 		}
@@ -2606,7 +2620,7 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	fileHandler << "|                |   Electrical |   ODU2 ports  |\t" << ODU2portsQuantity << "\t" << ODU2portsCost << "\t\t" << ODU2portsCost * ODU2portsQuantity << "\n";
 	fileHandler << "|    Node Cost   |     Part     |   ODU3 ports  |\t" << ODU3portsQuantity << "\t" << ODU3portsCost << "\t\t" << ODU3portsCost * ODU3portsQuantity << "\t\t" << EXCsCost * EXCsQuantity + ODU0portsCost * ODU0portsQuantity + ODU1portsCost * ODU1portsQuantity + ODU2portsCost * ODU2portsQuantity + ODU3portsCost * ODU3portsQuantity + ODU4portsCost * ODU4portsQuantity + OTU4portsCost * OTU4portsQuantity + opticalPartCost << "\n";;
 	fileHandler << "|                |              |   ODU4 ports  |\t" << ODU4portsQuantity << "\t" << ODU4portsCost << "\t\t" << ODU4portsCost * ODU4portsQuantity << "\n";
-	fileHandler << "|                |              |   OTU4 ports  |\t" << OTU4portsQuantity << "\t" << OTU4portsCost << "\t\t" << OTU4portsCost * OTU4portsQuantity << "\n";
+	fileHandler << "|                |              |   Line ports  |\t" << OTU4portsQuantity << "\t" << OTU4portsCost << "\t\t" << OTU4portsCost * OTU4portsQuantity << "\n";
 	fileHandler << "|                |------------------------------|                                                               \n";
 	fileHandler << "|                |              |      OXCs     |\t" << OXCsQuantity << "\t" << OXCsCost << "\t\t" << OXCsCost * OXCsQuantity << "\n";
 	fileHandler << "|                | Optical part |   Add ports   |\t" << addPortsQuantity << "\t" << addPortsCost << "\t\t" << addPortsCost * addPortsQuantity << "\n";

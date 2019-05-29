@@ -65,7 +65,7 @@ span = 100
 
 numberOfOMSPerLink = 1
 
-numberOfOpticalChannelsPerOMS = 39
+numberOfOpticalChannelsPerOMS = 100
 
 initialWavelength = 1550
 
@@ -80,3 +80,17 @@ blockingCriterionLogicalTopology = 3
 routingCriterionPhysicalTopology = hops
 
 blockingCriterionPhysicalTopology = 3
+
+OLTsCost = 15000
+TranspondersCost = 5000 
+AmplifiersCost = 4000 
+EXCsCost = 10000 
+ODU0portsCost = 1250 
+ODU1portsCost = 2500 
+ODU2portsCost = 10000
+ODU3portsCost = 40000 
+ODU4portsCost = 100000 
+OTU4portsCost = 100000 
+OXCsCost = 20000
+addPortsCost = 2500
+linePortsCost = 2500
