@@ -1214,6 +1214,7 @@ public:
 	void addInputParameter(string name, routing_criterion_logical_topology* variable);
 	void addInputParameter(string name, routing_criterion_physical_topology* variable);
 
+
 	/* Default empty constructor. Initializes the map */
 	SystemInputParameters() {};
 	SystemInputParameters(int argc,char*argv[]);

@@ -184,15 +184,11 @@ int main()
 	System MainSystem{
 		// BLOCKS
 		&Scheduler_,
-		//&SinkScheduler_,
 		&LogicalTopologyGenerator_,
-		//&SinkLogicalTopologyGenerator_,
 		&PhysicalTopologyGenerator_,
-		//&SinkPhysicalTopologyGenerator_,
 		&LogicalTopologyManager_,
 		&SinkLogicalTopology_,
 		&SinkLogicalTopologyProcessedDemands_,
-		//&SinkRoutedOrBlocked_,
 		&PhysicalTopologyManager_,
 		&SinkPhysicalTopology_
 };

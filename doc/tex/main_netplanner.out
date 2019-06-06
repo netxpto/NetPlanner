@@ -1,39 +1,66 @@
-\BOOKMARK [0][-]{chapter.1}{Heuristic Models}{}% 1
-\BOOKMARK [1][-]{section.1.1}{CAPEX}{chapter.1}% 2
-\BOOKMARK [2][-]{subsection.1.1.1}{Opaque without Survivability}{section.1.1}% 3
-\BOOKMARK [2][-]{subsection.1.1.2}{Opaque with 1+1 Protection}{section.1.1}% 4
-\BOOKMARK [2][-]{subsection.1.1.3}{Transparent without Survivability}{section.1.1}% 5
-\BOOKMARK [0][-]{chapter.2}{Transparent transport mode}{}% 6
-\BOOKMARK [1][-]{section.2.1}{Concepts}{chapter.2}% 7
-\BOOKMARK [2][-]{subsection.2.1.1}{Network Nodes}{section.2.1}% 8
-\BOOKMARK [2][-]{subsection.2.1.2}{Network Links}{section.2.1}% 9
-\BOOKMARK [1][-]{section.2.2}{System inputs}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.3}{System signals}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.4}{Type signals structures}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.4.1}{LogicalTopology}{section.2.4}% 13
-\BOOKMARK [2][-]{subsection.2.4.2}{PhysicalTopology}{section.2.4}% 14
-\BOOKMARK [2][-]{subsection.2.4.3}{DemandRequest}{section.2.4}% 15
-\BOOKMARK [2][-]{subsection.2.4.4}{PathRequest}{section.2.4}% 16
-\BOOKMARK [2][-]{subsection.2.4.5}{PathRequestRouted}{section.2.4}% 17
-\BOOKMARK [2][-]{subsection.2.4.6}{DemandRequestRouted}{section.2.4}% 18
-\BOOKMARK [1][-]{section.2.5}{Blocks input parameters and signals}{chapter.2}% 19
-\BOOKMARK [1][-]{section.2.6}{Blocks state variables and output signals}{chapter.2}% 20
-\BOOKMARK [1][-]{section.2.7}{Network example}{chapter.2}% 21
-\BOOKMARK [2][-]{subsection.2.7.1}{Physical topology matrix}{section.2.7}% 22
-\BOOKMARK [2][-]{subsection.2.7.2}{Logical topology matrix}{section.2.7}% 23
-\BOOKMARK [2][-]{subsection.2.7.3}{Traffic scenario}{section.2.7}% 24
-\BOOKMARK [2][-]{subsection.2.7.4}{Theorectical resolution}{section.2.7}% 25
-\BOOKMARK [2][-]{subsection.2.7.5}{Demand 1}{section.2.7}% 26
-\BOOKMARK [2][-]{subsection.2.7.6}{Demand 2}{section.2.7}% 27
-\BOOKMARK [2][-]{subsection.2.7.7}{Demand 3}{section.2.7}% 28
-\BOOKMARK [2][-]{subsection.2.7.8}{Demand 4}{section.2.7}% 29
-\BOOKMARK [2][-]{subsection.2.7.9}{Demand 5}{section.2.7}% 30
-\BOOKMARK [2][-]{subsection.2.7.10}{Demand 6}{section.2.7}% 31
-\BOOKMARK [2][-]{subsection.2.7.11}{Final Report}{section.2.7}% 32
-\BOOKMARK [1][-]{section.2.8}{Heuristics vs ILP}{chapter.2}% 33
-\BOOKMARK [2][-]{subsection.2.8.1}{Low traffic scenario}{section.2.8}% 34
-\BOOKMARK [2][-]{subsection.2.8.2}{Medium traffic scenario}{section.2.8}% 35
-\BOOKMARK [2][-]{subsection.2.8.3}{High traffic scenario}{section.2.8}% 36
-\BOOKMARK [2][-]{subsection.2.8.4}{Transparent with 1+1 Protection}{section.2.8}% 37
-\BOOKMARK [2][-]{subsection.2.8.5}{Translucent without Survivability}{section.2.8}% 38
-\BOOKMARK [2][-]{subsection.2.8.6}{Translucent with 1+1 Protection}{section.2.8}% 39
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Simulator Structure}{}% 2
+\BOOKMARK [1][-]{section.2.1}{System}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Blocks}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{Signals}{chapter.2}% 5
+\BOOKMARK [0][-]{chapter.3}{Development Cycle}{}% 6
+\BOOKMARK [0][-]{chapter.4}{Reference Network Specification}{}% 7
+\BOOKMARK [1][-]{section.4.1}{Physical Topology}{chapter.4}% 8
+\BOOKMARK [1][-]{section.4.2}{Traffic Matrices}{chapter.4}% 9
+\BOOKMARK [2][-]{subsection.4.2.1}{Low traffic scenario \(0.5 Tbits/s\)}{section.4.2}% 10
+\BOOKMARK [2][-]{subsection.4.2.2}{Medium traffic scenario \(5 Tbits/s\)}{section.4.2}% 11
+\BOOKMARK [2][-]{subsection.4.2.3}{High traffic scenario \(10 Tbits/s\)}{section.4.2}% 12
+\BOOKMARK [0][-]{chapter.5}{Heuristic Models}{}% 13
+\BOOKMARK [1][-]{section.5.1}{CAPEX}{chapter.5}% 14
+\BOOKMARK [2][-]{subsection.5.1.1}{Opaque without Survivability}{section.5.1}% 15
+\BOOKMARK [2][-]{subsection.5.1.2}{Opaque with 1+1 Protection}{section.5.1}% 16
+\BOOKMARK [2][-]{subsection.5.1.3}{Transparent without Survivability}{section.5.1}% 17
+\BOOKMARK [0][-]{chapter.6}{Transparent transport mode}{}% 18
+\BOOKMARK [1][-]{section.6.1}{Concepts}{chapter.6}% 19
+\BOOKMARK [2][-]{subsection.6.1.1}{Network Nodes}{section.6.1}% 20
+\BOOKMARK [2][-]{subsection.6.1.2}{Network Links}{section.6.1}% 21
+\BOOKMARK [1][-]{section.6.2}{System inputs}{chapter.6}% 22
+\BOOKMARK [1][-]{section.6.3}{System signals}{chapter.6}% 23
+\BOOKMARK [1][-]{section.6.4}{Type signals structure}{chapter.6}% 24
+\BOOKMARK [2][-]{subsection.6.4.1}{LogicalTopology}{section.6.4}% 25
+\BOOKMARK [2][-]{subsection.6.4.2}{PhysicalTopology}{section.6.4}% 26
+\BOOKMARK [2][-]{subsection.6.4.3}{DemandRequest}{section.6.4}% 27
+\BOOKMARK [2][-]{subsection.6.4.4}{PathRequest}{section.6.4}% 28
+\BOOKMARK [2][-]{subsection.6.4.5}{PathRequestRouted}{section.6.4}% 29
+\BOOKMARK [2][-]{subsection.6.4.6}{DemandRequestRouted}{section.6.4}% 30
+\BOOKMARK [1][-]{section.6.5}{Blocks input parameters and signals}{chapter.6}% 31
+\BOOKMARK [1][-]{section.6.6}{Blocks state variables and output signals}{chapter.6}% 32
+\BOOKMARK [1][-]{section.6.7}{Network example}{chapter.6}% 33
+\BOOKMARK [2][-]{subsection.6.7.1}{Physical topology matrix}{section.6.7}% 34
+\BOOKMARK [2][-]{subsection.6.7.2}{Logical topology matrix}{section.6.7}% 35
+\BOOKMARK [2][-]{subsection.6.7.3}{Traffic scenario}{section.6.7}% 36
+\BOOKMARK [2][-]{subsection.6.7.4}{Theorectical resolution}{section.6.7}% 37
+\BOOKMARK [2][-]{subsection.6.7.5}{Demand 1}{section.6.7}% 38
+\BOOKMARK [2][-]{subsection.6.7.6}{Demand 2}{section.6.7}% 39
+\BOOKMARK [2][-]{subsection.6.7.7}{Demand 3}{section.6.7}% 40
+\BOOKMARK [2][-]{subsection.6.7.8}{Demand 4}{section.6.7}% 41
+\BOOKMARK [2][-]{subsection.6.7.9}{Demand 5}{section.6.7}% 42
+\BOOKMARK [2][-]{subsection.6.7.10}{Demand 6}{section.6.7}% 43
+\BOOKMARK [2][-]{subsection.6.7.11}{Final Report}{section.6.7}% 44
+\BOOKMARK [1][-]{section.6.8}{Heuristics vs ILP}{chapter.6}% 45
+\BOOKMARK [2][-]{subsection.6.8.1}{Low traffic scenario}{section.6.8}% 46
+\BOOKMARK [2][-]{subsection.6.8.2}{Medium traffic scenario}{section.6.8}% 47
+\BOOKMARK [2][-]{subsection.6.8.3}{High traffic scenario}{section.6.8}% 48
+\BOOKMARK [2][-]{subsection.6.8.4}{Transparent with 1+1 Protection}{section.6.8}% 49
+\BOOKMARK [2][-]{subsection.6.8.5}{Translucent without Survivability}{section.6.8}% 50
+\BOOKMARK [2][-]{subsection.6.8.6}{Translucent with 1+1 Protection}{section.6.8}% 51
+\BOOKMARK [0][-]{chapter.7}{Analytical Models}{}% 52
+\BOOKMARK [1][-]{section.7.1}{CAPEX}{chapter.7}% 53
+\BOOKMARK [2][-]{subsection.7.1.1}{Opaque without Survivability}{section.7.1}% 54
+\BOOKMARK [2][-]{subsection.7.1.2}{Opaque with 1+1 Protection}{section.7.1}% 55
+\BOOKMARK [2][-]{subsection.7.1.3}{Transparent without Survivability}{section.7.1}% 56
+\BOOKMARK [2][-]{subsection.7.1.4}{Transparent with 1+1 Protection}{section.7.1}% 57
+\BOOKMARK [2][-]{subsection.7.1.5}{Translucent without Survivability}{section.7.1}% 58
+\BOOKMARK [2][-]{subsection.7.1.6}{Translucent with 1+1 Protection}{section.7.1}% 59
+\BOOKMARK [0][-]{chapter.8}{Comparative Analysis}{}% 60
+\BOOKMARK [1][-]{section.8.1}{Opaque without Survivability}{chapter.8}% 61
+\BOOKMARK [1][-]{section.8.2}{Opaque with 1+1 Protection}{chapter.8}% 62
+\BOOKMARK [1][-]{section.8.3}{Transparent without Survivability}{chapter.8}% 63
+\BOOKMARK [1][-]{section.8.4}{Transparent with 1+1 Protection}{chapter.8}% 64
+\BOOKMARK [1][-]{section.8.5}{Translucent without Survivability}{chapter.8}% 65
+\BOOKMARK [1][-]{section.8.6}{Translucent with 1+1 Protection}{chapter.8}% 66
