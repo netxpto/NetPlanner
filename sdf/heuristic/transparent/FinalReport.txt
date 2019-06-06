@@ -6,58 +6,58 @@ RESULTS FOR TRANSPARENT MODE WITHOUT SURVIVABILITY
 -------------------------------------------------------------
 |  Unidirectional link  |  Optical channels  |  Amplifiers  |
 -------------------------------------------------------------
- Node 1 -> 2			6		3
- Node 1 -> 6			3		1
- Node 2 -> 1			6		3
- Node 2 -> 3			4		3
- Node 2 -> 6			0		0
- Node 3 -> 2			4		3
- Node 3 -> 4			3		2
- Node 3 -> 5			0		0
- Node 4 -> 3			3		2
- Node 4 -> 5			0		0
- Node 5 -> 3			0		0
- Node 5 -> 4			0		0
- Node 5 -> 6			1		5
- Node 6 -> 1			3		1
- Node 6 -> 2			0		0
- Node 6 -> 5			1		5
+ Node 1 -> 2			13		4
+ Node 1 -> 3			6		6
+ Node 2 -> 1			13		4
+ Node 2 -> 3			17		0
+ Node 2 -> 4			43		6
+ Node 3 -> 1			6		6
+ Node 3 -> 2			17		0
+ Node 3 -> 5			18		8
+ Node 4 -> 2			43		6
+ Node 4 -> 5			3		1
+ Node 4 -> 6			36		7
+ Node 5 -> 3			18		8
+ Node 5 -> 4			3		1
+ Node 5 -> 6			25		3
+ Node 6 -> 4			36		7
+ Node 6 -> 5			25		3
 -------------------------------------------------------------
 
 
 
 
 
-Number of lightpaths between nodes (1,2): 2
-Number of lightpaths between nodes (1,3): 1
-Number of lightpaths between nodes (1,4): 3
+Number of lightpaths between nodes (1,2): 5
+Number of lightpaths between nodes (1,3): 5
+Number of lightpaths between nodes (1,4): 4
 Number of lightpaths between nodes (1,5): 1
-Number of lightpaths between nodes (1,6): 2
-Number of lightpaths between nodes (2,1): 2
-Number of lightpaths between nodes (2,3): 0
-Number of lightpaths between nodes (2,4): 0
-Number of lightpaths between nodes (2,5): 0
-Number of lightpaths between nodes (2,6): 0
-Number of lightpaths between nodes (3,1): 1
-Number of lightpaths between nodes (3,2): 0
-Number of lightpaths between nodes (3,4): 0
-Number of lightpaths between nodes (3,5): 0
-Number of lightpaths between nodes (3,6): 0
-Number of lightpaths between nodes (4,1): 3
-Number of lightpaths between nodes (4,2): 0
-Number of lightpaths between nodes (4,3): 0
-Number of lightpaths between nodes (4,5): 0
-Number of lightpaths between nodes (4,6): 0
+Number of lightpaths between nodes (1,6): 4
+Number of lightpaths between nodes (2,1): 5
+Number of lightpaths between nodes (2,3): 10
+Number of lightpaths between nodes (2,4): 2
+Number of lightpaths between nodes (2,5): 4
+Number of lightpaths between nodes (2,6): 30
+Number of lightpaths between nodes (3,1): 5
+Number of lightpaths between nodes (3,2): 10
+Number of lightpaths between nodes (3,4): 3
+Number of lightpaths between nodes (3,5): 12
+Number of lightpaths between nodes (3,6): 1
+Number of lightpaths between nodes (4,1): 4
+Number of lightpaths between nodes (4,2): 2
+Number of lightpaths between nodes (4,3): 3
+Number of lightpaths between nodes (4,5): 3
+Number of lightpaths between nodes (4,6): 2
 Number of lightpaths between nodes (5,1): 1
-Number of lightpaths between nodes (5,2): 0
-Number of lightpaths between nodes (5,3): 0
-Number of lightpaths between nodes (5,4): 0
-Number of lightpaths between nodes (5,6): 0
-Number of lightpaths between nodes (6,1): 2
-Number of lightpaths between nodes (6,2): 0
-Number of lightpaths between nodes (6,3): 0
-Number of lightpaths between nodes (6,4): 0
-Number of lightpaths between nodes (6,5): 0
+Number of lightpaths between nodes (5,2): 4
+Number of lightpaths between nodes (5,3): 12
+Number of lightpaths between nodes (5,4): 3
+Number of lightpaths between nodes (5,6): 24
+Number of lightpaths between nodes (6,1): 4
+Number of lightpaths between nodes (6,2): 30
+Number of lightpaths between nodes (6,3): 1
+Number of lightpaths between nodes (6,4): 2
+Number of lightpaths between nodes (6,5): 24
 
 
 
@@ -69,12 +69,12 @@ Number of lightpaths between nodes (6,5): 0
 ---------------------------------------------------------------------------------------
 | Node | Nodal degree |  Tributary ports  |  OTU4 ports  |  Add ports  |  Line ports  |
 ---------------------------------------------------------------------------------------
-  1		2		23		9		9		9
-  2		3		3		2		2		10
-  3		3		1		1		1		7
-  4		2		5		3		3		3
-  5		3		1		1		1		1
-  6		3		13		2		2		4
+  1		2		580		19		19		19
+  2		3		460		51		51		73
+  3		3		360		31		31		41
+  4		3		400		14		14		82
+  5		3		480		44		44		46
+  6		2		440		61		61		61
 ---------------------------------------------------------------------------------------
 
 
@@ -82,63 +82,100 @@ Number of lightpaths between nodes (6,5): 0
 Detailed description of each node:
 
 Node 1:
-	 - Needs 9 line ports.
-		 - 6 connect to Node 2 with 100 Gbit/s 
-		 - 3 connect to Node 6 with 100 Gbit/s 
-	 - Needs 9 add ports.
-		 - 2 connect to Node 2
-		 - 1 connect to Node 3
-		 - 3 connect to Node 4
+	 - Needs 19 line ports.
+		 - 13 connect to Node 2 with 100 Gbit/s 
+		 - 6 connect to Node 3 with 100 Gbit/s 
+	 - Needs 19 add ports.
+		 - 5 connect to Node 2
+		 - 5 connect to Node 3
+		 - 4 connect to Node 4
 		 - 1 connect to Node 5
-		 - 2 connect to Node 6
-	 - Needs 23 tributary ports:
-		 - Where 10 is the ODU0
-		 - Where 2 is the ODU1
-		 - Where 2 is the ODU2
-		 - Where 4 is the ODU3
-		 - Where 5 is the ODU4
+		 - 4 connect to Node 6
+	 - Needs 580 tributary ports:
+		 - Where 260 is the ODU0
+		 - Where 260 is the ODU1
+		 - Where 60 is the ODU2
 Node 2:
-	 - Needs 10 line ports.
-		 - 6 connect to Node 1 with 100 Gbit/s 
-		 - 4 connect to Node 3 with 100 Gbit/s 
-	 - Needs 2 add ports.
-		 - 2 connect to Node 1
-	 - Needs 3 tributary ports:
-		 - Where 2 is the ODU2
-		 - Where 1 is the ODU4
+	 - Needs 73 line ports.
+		 - 13 connect to Node 1 with 100 Gbit/s 
+		 - 17 connect to Node 3 with 100 Gbit/s 
+		 - 43 connect to Node 4 with 100 Gbit/s 
+	 - Needs 51 add ports.
+		 - 5 connect to Node 1
+		 - 10 connect to Node 3
+		 - 2 connect to Node 4
+		 - 4 connect to Node 5
+		 - 30 connect to Node 6
+	 - Needs 460 tributary ports:
+		 - Where 220 is the ODU0
+		 - Where 140 is the ODU1
+		 - Where 40 is the ODU2
+		 - Where 40 is the ODU3
+		 - Where 20 is the ODU4
 Node 3:
-	 - Needs 7 line ports.
-		 - 4 connect to Node 2 with 100 Gbit/s 
-		 - 3 connect to Node 4 with 100 Gbit/s 
-	 - Needs 1 add ports.
-		 - 1 connect to Node 1
-	 - Needs 1 tributary ports:
-		 - Where 1 is the ODU4
+	 - Needs 41 line ports.
+		 - 6 connect to Node 1 with 100 Gbit/s 
+		 - 17 connect to Node 2 with 100 Gbit/s 
+		 - 18 connect to Node 5 with 100 Gbit/s 
+	 - Needs 31 add ports.
+		 - 5 connect to Node 1
+		 - 10 connect to Node 2
+		 - 3 connect to Node 4
+		 - 12 connect to Node 5
+		 - 1 connect to Node 6
+	 - Needs 360 tributary ports:
+		 - Where 140 is the ODU0
+		 - Where 120 is the ODU1
+		 - Where 60 is the ODU2
+		 - Where 40 is the ODU3
 Node 4:
-	 - Needs 3 line ports.
-		 - 3 connect to Node 3 with 100 Gbit/s 
-	 - Needs 3 add ports.
-		 - 3 connect to Node 1
-	 - Needs 5 tributary ports:
-		 - Where 4 is the ODU3
-		 - Where 1 is the ODU4
+	 - Needs 82 line ports.
+		 - 43 connect to Node 2 with 100 Gbit/s 
+		 - 3 connect to Node 5 with 100 Gbit/s 
+		 - 36 connect to Node 6 with 100 Gbit/s 
+	 - Needs 14 add ports.
+		 - 4 connect to Node 1
+		 - 2 connect to Node 2
+		 - 3 connect to Node 3
+		 - 3 connect to Node 5
+		 - 2 connect to Node 6
+	 - Needs 400 tributary ports:
+		 - Where 140 is the ODU0
+		 - Where 200 is the ODU1
+		 - Where 60 is the ODU2
 Node 5:
-	 - Needs 1 line ports.
-		 - 1 connect to Node 6 with 100 Gbit/s 
-	 - Needs 1 add ports.
+	 - Needs 46 line ports.
+		 - 18 connect to Node 3 with 100 Gbit/s 
+		 - 3 connect to Node 4 with 100 Gbit/s 
+		 - 25 connect to Node 6 with 100 Gbit/s 
+	 - Needs 44 add ports.
 		 - 1 connect to Node 1
-	 - Needs 1 tributary ports:
-		 - Where 1 is the ODU4
+		 - 4 connect to Node 2
+		 - 12 connect to Node 3
+		 - 3 connect to Node 4
+		 - 24 connect to Node 6
+	 - Needs 480 tributary ports:
+		 - Where 280 is the ODU0
+		 - Where 80 is the ODU1
+		 - Where 80 is the ODU2
+		 - Where 20 is the ODU3
+		 - Where 20 is the ODU4
 Node 6:
-	 - Needs 4 line ports.
-		 - 3 connect to Node 1 with 100 Gbit/s 
-		 - 1 connect to Node 5 with 100 Gbit/s 
-	 - Needs 2 add ports.
-		 - 2 connect to Node 1
-	 - Needs 13 tributary ports:
-		 - Where 10 is the ODU0
-		 - Where 2 is the ODU1
-		 - Where 1 is the ODU4
+	 - Needs 61 line ports.
+		 - 36 connect to Node 4 with 100 Gbit/s 
+		 - 25 connect to Node 5 with 100 Gbit/s 
+	 - Needs 61 add ports.
+		 - 4 connect to Node 1
+		 - 30 connect to Node 2
+		 - 1 connect to Node 3
+		 - 2 connect to Node 4
+		 - 24 connect to Node 5
+	 - Needs 440 tributary ports:
+		 - Where 160 is the ODU0
+		 - Where 200 is the ODU1
+		 - Where 20 is the ODU2
+		 - Where 20 is the ODU3
+		 - Where 40 is the ODU4
 
 
 
@@ -147,24 +184,226 @@ Node 6:
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 |  Source Node  |  Destination Node  |              Links              |        ODU0        |        ODU1        |        ODU2        |          ODU3         |        ODU4        |
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	1		2			{(1,2)}				0			0			0			0			1			
-	1		2			{(1,2)}				0			0			2			0			0			
-	1		3			{(1,2),(2,3)}			0			0			0			0			1			
-	1		4			{(1,2),(2,3),(3,4)}		0			0			0			0			1			
-	1		4			{(1,2),(2,3),(3,4)}		0			0			0			2			0			
-	1		4			{(1,2),(2,3),(3,4)}		0			0			0			2			0			
-	1		5			{(1,6),(6,5)}			0			0			0			0			1			
-	1		6			{(1,6)}				0			0			0			0			1			
-	1		6			{(1,6)}				10			2			0			0			0			
-	2		1			{(2,1)}				0			0			0			0			1			
-	2		1			{(2,1)}				0			0			2			0			0			
-	3		1			{(3,2),(2,1)}			0			0			0			0			1			
-	4		1			{(4,3),(3,2),(2,1)}		0			0			0			0			1			
-	4		1			{(4,3),(3,2),(2,1)}		0			0			0			2			0			
-	4		1			{(4,3),(3,2),(2,1)}		0			0			0			2			0			
-	5		1			{(5,6),(6,1)}			0			0			0			0			1			
-	6		1			{(6,1)}				0			0			0			0			1			
-	6		1			{(6,1)}				10			2			0			0			0			
+	1		2			{(1,2)}				0			0			10			0			0			
+	1		2			{(1,2)}				0			0			10			0			0			
+	1		2			{(1,2)}				0			40			0			0			0			
+	1		2			{(1,2)}				80			0			0			0			0			
+	1		2			{(1,2)}				20			0			0			0			0			
+	1		3			{(1,3)}				0			0			10			0			0			
+	1		3			{(1,3)}				0			0			10			0			0			
+	1		3			{(1,3)}				0			40			0			0			0			
+	1		3			{(1,3)}				0			40			0			0			0			
+	1		3			{(1,3)}				20			0			0			0			0			
+	1		4			{(1,2),(2,4)}			0			0			10			0			0			
+	1		4			{(1,2),(2,4)}			0			0			10			0			0			
+	1		4			{(1,2),(2,4)}			0			40			0			0			0			
+	1		4			{(1,2),(2,4)}			60			0			0			0			0			
+	1		5			{(1,3),(3,5)}			20			0			0			0			0			
+	1		6			{(1,2),(2,4),(4,6)}		0			40			0			0			0			
+	1		6			{(1,2),(2,4),(4,6)}		0			40			0			0			0			
+	1		6			{(1,2),(2,4),(4,6)}		40			20			0			0			0			
+	1		6			{(1,2),(2,4),(4,6)}		20			0			0			0			0			
+	2		1			{(2,1)}				0			0			10			0			0			
+	2		1			{(2,1)}				0			0			10			0			0			
+	2		1			{(2,1)}				0			40			0			0			0			
+	2		1			{(2,1)}				80			0			0			0			0			
+	2		1			{(2,1)}				20			0			0			0			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			0			2			0			
+	2		4			{(2,4)}				0			40			0			0			0			
+	2		4			{(2,4)}				20			20			0			0			0			
+	2		5			{(2,3),(3,5)}			0			0			10			0			0			
+	2		5			{(2,3),(3,5)}			0			0			10			0			0			
+	2		5			{(2,3),(3,5)}			40			20			0			0			0			
+	2		5			{(2,3),(3,5)}			60			0			0			0			0			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			0			0			0			1			
+	2		6			{(2,4),(4,6)}			0			8			0			2			0			
+	2		6			{(2,4),(4,6)}			0			8			0			2			0			
+	2		6			{(2,4),(4,6)}			0			4			0			2			0			
+	2		6			{(2,4),(4,6)}			0			0			0			2			0			
+	2		6			{(2,4),(4,6)}			0			0			0			2			0			
+	2		6			{(2,4),(4,6)}			0			0			0			2			0			
+	2		6			{(2,4),(4,6)}			0			0			0			2			0			
+	2		6			{(2,4),(4,6)}			0			0			0			2			0			
+	2		6			{(2,4),(4,6)}			0			0			0			2			0			
+	2		6			{(2,4),(4,6)}			0			0			0			2			0			
+	3		1			{(3,1)}				0			0			10			0			0			
+	3		1			{(3,1)}				0			0			10			0			0			
+	3		1			{(3,1)}				0			40			0			0			0			
+	3		1			{(3,1)}				0			40			0			0			0			
+	3		1			{(3,1)}				20			0			0			0			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		2			{(3,2)}				0			0			0			2			0			
+	3		4			{(3,2),(2,4)}			0			0			10			0			0			
+	3		4			{(3,2),(2,4)}			0			0			10			0			0			
+	3		4			{(3,2),(2,4)}			20			20			0			0			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				0			0			2			2			0			
+	3		5			{(3,5)}				40			20			0			0			0			
+	3		5			{(3,5)}				40			0			0			0			0			
+	3		6			{(3,5),(5,6)}			20			0			0			0			0			
+	4		1			{(4,2),(2,1)}			0			0			10			0			0			
+	4		1			{(4,2),(2,1)}			0			0			10			0			0			
+	4		1			{(4,2),(2,1)}			0			40			0			0			0			
+	4		1			{(4,2),(2,1)}			60			0			0			0			0			
+	4		2			{(4,2)}				0			40			0			0			0			
+	4		2			{(4,2)}				20			20			0			0			0			
+	4		3			{(4,2),(2,3)}			0			0			10			0			0			
+	4		3			{(4,2),(2,3)}			0			0			10			0			0			
+	4		3			{(4,2),(2,3)}			20			20			0			0			0			
+	4		5			{(4,5)}				0			0			10			0			0			
+	4		5			{(4,5)}				0			0			10			0			0			
+	4		5			{(4,5)}				20			20			0			0			0			
+	4		6			{(4,6)}				0			40			0			0			0			
+	4		6			{(4,6)}				20			20			0			0			0			
+	5		1			{(5,3),(3,1)}			20			0			0			0			0			
+	5		2			{(5,3),(3,2)}			0			0			10			0			0			
+	5		2			{(5,3),(3,2)}			0			0			10			0			0			
+	5		2			{(5,3),(3,2)}			40			20			0			0			0			
+	5		2			{(5,3),(3,2)}			60			0			0			0			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				0			0			2			2			0			
+	5		3			{(5,3)}				40			20			0			0			0			
+	5		3			{(5,3)}				40			0			0			0			0			
+	5		4			{(5,4)}				0			0			10			0			0			
+	5		4			{(5,4)}				0			0			10			0			0			
+	5		4			{(5,4)}				20			20			0			0			0			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			0			0			1			
+	5		6			{(5,6)}				0			0			10			0			0			
+	5		6			{(5,6)}				0			0			10			0			0			
+	5		6			{(5,6)}				40			20			0			0			0			
+	5		6			{(5,6)}				20			0			0			0			0			
+	6		1			{(6,4),(4,2),(2,1)}		0			40			0			0			0			
+	6		1			{(6,4),(4,2),(2,1)}		0			40			0			0			0			
+	6		1			{(6,4),(4,2),(2,1)}		40			20			0			0			0			
+	6		1			{(6,4),(4,2),(2,1)}		20			0			0			0			0			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			0			0			0			1			
+	6		2			{(6,4),(4,2)}			0			8			0			2			0			
+	6		2			{(6,4),(4,2)}			0			8			0			2			0			
+	6		2			{(6,4),(4,2)}			0			4			0			2			0			
+	6		2			{(6,4),(4,2)}			0			0			0			2			0			
+	6		2			{(6,4),(4,2)}			0			0			0			2			0			
+	6		2			{(6,4),(4,2)}			0			0			0			2			0			
+	6		2			{(6,4),(4,2)}			0			0			0			2			0			
+	6		2			{(6,4),(4,2)}			0			0			0			2			0			
+	6		2			{(6,4),(4,2)}			0			0			0			2			0			
+	6		2			{(6,4),(4,2)}			0			0			0			2			0			
+	6		3			{(6,5),(5,3)}			20			0			0			0			0			
+	6		4			{(6,4)}				0			40			0			0			0			
+	6		4			{(6,4)}				20			20			0			0			0			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			0			0			1			
+	6		5			{(6,5)}				0			0			10			0			0			
+	6		5			{(6,5)}				0			0			10			0			0			
+	6		5			{(6,5)}				40			20			0			0			0			
+	6		5			{(6,5)}				20			0			0			0			0			
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -175,21 +414,21 @@ Node 6:
 ----------------------------------------------------------------------------------------------------------------
 |                                               |  Quantity  | Unit price (€) |  Cost (€)  |    Total   (€)    |
 ----------------------------------------------------------------------------------------------------------------
-|                |            OLTs              |	10	15000		150000
-|    Link Cost   |        Transponders          |	34	5000		17000000	17206000
-|                |         Amplifiers           |	28	2000		56000
+|                |            OLTs              |	16	15000		240000
+|    Link Cost   |        Transponders          |	322	5000		161000000	161380000
+|                |         Amplifiers           |	70	2000		140000
 ----------------------------------------------------------------------------------------------------------------
 |                |              |      EXCs     |	6	10000		60000
-|                |              |   ODU0 ports  |	20	1250		25000
-|                |              |   ODU1 ports  |	4	2500		10000
-|                |   Electrical |   ODU2 ports  |	4	10000		40000
-|    Node Cost   |     Part     |   ODU3 ports  |	8	40000		320000		3505000
-|                |              |   ODU4 ports  |	10	100000		1000000
-|                |              |   OTU4 ports  |	18	100000		1800000
+|                |              |   ODU0 ports  |	1200	1250		1500000
+|                |              |   ODU1 ports  |	1000	2500		2500000
+|                |   Electrical |   ODU2 ports  |	320	10000		3200000
+|    Node Cost   |     Part     |   ODU3 ports  |	120	40000		4800000		43535000
+|                |              |   ODU4 ports  |	80	100000		8000000
+|                |              |   OTU4 ports  |	220	100000		22000000
 |                |------------------------------|                                                               
 |                |              |      OXCs     |	6	20000		120000
-|                | Optical part |   Add ports   |	18	2500		45000
-|                |              |  Line ports   |	34	2500		85000
+|                | Optical part |   Add ports   |	220	2500		550000
+|                |              |  Line ports   |	322	2500		805000
 ----------------------------------------------------------------------------------------------------------------
-|                                 Total Network Cost                                       |	20711000
+|                                 Total Network Cost                                       |	204915000
 ----------------------------------------------------------------------------------------------------------------

@@ -55,10 +55,16 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 
 					int numberOfAmplifiers;
 
+
 					if(distancesBetweenNodes[line][column] % span != 0)
 						numberOfAmplifiers = distancesBetweenNodes[line][column] / span;
 					else
-						numberOfAmplifiers = (distancesBetweenNodes[line][column] / span) - 1;
+					{
+						if (distancesBetweenNodes[line][column] == 0)
+							numberOfAmplifiers = 0;
+						else
+							numberOfAmplifiers = (distancesBetweenNodes[line][column] / span) - 1;
+					}
 
 					oms.amplifiers = numberOfAmplifiers;
 
