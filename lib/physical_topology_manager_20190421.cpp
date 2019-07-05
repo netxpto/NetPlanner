@@ -1,5 +1,7 @@
 # include "..\include\physical_topology_manager_20190421.h"
 # include "..\include\Dijkstra_physical_20190504.h"
+# include "..\include\Dijkstra_20190309.h"
+
 
 using namespace std;
 
@@ -32,22 +34,22 @@ bool PhysicalTopologyManager::runBlock(void) {
 			vector<int> intermediateNodes;
 			// Generates shortest physical paths (Dijkstra algorithm)
 
-			GraphPhysical graph(currentPhysicalTopology.physicalTopologyAdjacencyMatrix[0].size());
+			Graph g(currentPhysicalTopology.physicalTopologyAdjacencyMatrix[0].size());
 
 			for (int line = 0; line < currentPhysicalTopology.physicalTopologyAdjacencyMatrix[0].size(); line++)
 			{
 				for (int column = 0; column < currentPhysicalTopology.physicalTopologyAdjacencyMatrix[0].size(); column++)
 				{
 					if (currentPhysicalTopology.physicalTopologyAdjacencyMatrix[line][column] == 1)
-						graph.addEdgePhysical(line, column);
+						g.addEdge(line, column);
 				}
 			}
 
 			int sourceNode = newPathRequest.sourceNode-1;
 			int destinationNode = newPathRequest.destinationNode-1;
 			
-			graph.printAllPathsPhysical(sourceNode, destinationNode);
-			std::vector<vector<int>> possiblePaths = graph.printFinalPathsPhysical(blockingCriterionPhysicalTopology);
+			g.printAllPaths(sourceNode, destinationNode);
+			std::vector<vector<int>> possiblePaths = g.printFinalPaths(blockingCriterionPhysicalTopology);
 
 			std::vector<std::vector<double>> availableWavelenghtsIndexOfAllOMS; // informaçao acerca de 1 só caminho!!!!
 			// Search through the vector that contains the shortest paths

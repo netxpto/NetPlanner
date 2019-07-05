@@ -165,7 +165,7 @@ int main()
 	LogicalTopologyManager_.setBlockingCriterionLogicalTopology(param.blockingCriterionLogicalTopology);
 
 	Sink SinkLogicalTopology_{ {&FinalLogicalTopology},{} };
-	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
+	SinkLogicalTopology_.setDisplayNumberOfSamples(false);
 
 	Sink SinkLogicalTopologyProcessedDemands_{ {&ProcessedDemand},{} };
 	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
@@ -178,7 +178,7 @@ int main()
 	PhysicalTopologyManager_.setBlockingCriterionPhysicalTopology(param.blockingCriterionPhysicalTopology);
 
 	Sink SinkPhysicalTopology_{ {&FinalPhysicalTopology},{} };
-	SinkPhysicalTopology_.setDisplayNumberOfSamples(true);
+	SinkPhysicalTopology_.setDisplayNumberOfSamples(false);
 
 
 	System MainSystem{
