@@ -2112,6 +2112,18 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	int  OLTsQuantity{ 0 };
 	int AmplifiersQuantity{ 0 };
 
+	//t_matrix nodal_Degree;
+	//std::vector<int> row;
+
+	/*for (size_t i = 0; i < finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size(); i++)
+	{
+		for (size_t j = 0; j < finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size(); j++)
+		{
+			row.push_back(0);
+		}
+		nodal_Degree.push_back(row);
+	}*/
+
 	for (size_t i = 0; i < finalPhysicalTopology.opticalMultiplexingSystems.size(); i++)
 	{
 		fileHandler << " Node " << finalPhysicalTopology.opticalMultiplexingSystems[i].sourceNode << " -> " << finalPhysicalTopology.opticalMultiplexingSystems[i].destinationNode << "\t";
@@ -2132,6 +2144,7 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 			fileHandler << "\t";
 			fileHandler << finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
 			fileHandler << "\n";
+			//nodal_Degree[finalPhysicalTopology.opticalMultiplexingSystems[i].sourceNode-1][finalPhysicalTopology.opticalMultiplexingSystems[i].destinationNode-1] = 1;
 		}
 		else
 		{
@@ -2390,8 +2403,17 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 					linePortsDestinations[line][finalLogicalTopology.opticalChannels[n].destinationNode-1]++;
 				}
 			}
+
+			t_integer connections{ 0 };
+
+			/*// Nodal degree
+			for (size_t i = 0; i < finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size(); i++)
+			{
+				if (nodal_Degree[line][i] != 0)
+					connections++;
+			}*/
 			
-			fileHandler << "  " << line + 1 << "\t\t" << nodalDegree[line] << "\t\t" << tributaryPorts[line] << "\t\t" << otu4Ports[line] << "\t\t" << otu4Ports[line] << "\t\t" << linePorts[line] << "\n";
+			fileHandler << "  " << line + 1 << "\t\t" << nodalDegree[line] /*connections*/ << "\t\t" << tributaryPorts[line] << "\t\t" << otu4Ports[line] << "\t\t" << otu4Ports[line] << "\t\t" << linePorts[line] << "\n";
 		
 	}
 	fileHandler << "---------------------------------------------------------------------------------------\n";
@@ -2544,7 +2566,7 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 
 
 	//int OLTsQuantity = finalPhysicalTopology.opticalMultiplexingSystems.size();
-	int TranspondersQuantity = finalLogicalTopology.opticalChannels.size();
+	int TranspondersQuantity = finalLogicalTopology.paths.size();
 	/*int AmplifiersQuantity{ 0 };
 	for (int i=0; i < finalPhysicalTopology.opticalMultiplexingSystems.size(); i++)
 	{
@@ -2613,7 +2635,7 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	fileHandler << "|                |   Electrical |   ODU2 ports  |\t" << ODU2portsQuantity << "\t" << ODU2portsCost << "\t\t" << ODU2portsCost * ODU2portsQuantity << "\n";
 	fileHandler << "|    Node Cost   |     Part     |   ODU3 ports  |\t" << ODU3portsQuantity << "\t" << ODU3portsCost << "\t\t" << ODU3portsCost * ODU3portsQuantity << "\t\t" << EXCsCost * EXCsQuantity + ODU0portsCost * ODU0portsQuantity + ODU1portsCost * ODU1portsQuantity + ODU2portsCost * ODU2portsQuantity + ODU3portsCost * ODU3portsQuantity + ODU4portsCost * ODU4portsQuantity + OTU4portsCost * OTU4portsQuantity + opticalPartCost << "\n";;
 	fileHandler << "|                |              |   ODU4 ports  |\t" << ODU4portsQuantity << "\t" << ODU4portsCost << "\t\t" << ODU4portsCost * ODU4portsQuantity << "\n";
-	fileHandler << "|                |              |   OTU4 ports  |\t" << OTU4portsQuantity << "\t" << OTU4portsCost << "\t\t" << OTU4portsCost * OTU4portsQuantity << "\n";
+	fileHandler << "|                |              |    Add ports  |\t" << OTU4portsQuantity << "\t" << OTU4portsCost << "\t\t" << OTU4portsCost * OTU4portsQuantity << "\n";
 	fileHandler << "|                |------------------------------|                                                               \n";
 	fileHandler << "|                |              |      OXCs     |\t" << OXCsQuantity << "\t" << OXCsCost << "\t\t" << OXCsCost*OXCsQuantity << "\n";
 	fileHandler << "|                | Optical part |   Add ports   |\t" << addPortsQuantity <<	"\t" << addPortsCost << "\t\t" << addPortsCost*addPortsQuantity << "\n";
