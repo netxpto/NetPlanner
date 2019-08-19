@@ -4,9 +4,20 @@ desenvolver novas heuristicas considerando novas restrições
 avançarmos para o modo translucidio
 
 
+TO BE DONE
+
+	resolver o exemplos dos alunos
+	elaborar o relatório para obter o CAPEX
 
 
-Workshop sobre Git & Latex, 14/nov: danielfpereira@ua.pt. 15h
+
+
+TO BE DONE
+
+	- atualizar o documento
+	- especificar a informação associada a cada sinal 
+	- fazer o exemplo
+
 
 
 TO BE DONE

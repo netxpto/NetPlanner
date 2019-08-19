@@ -1,0 +1,174 @@
+% cover page
+\TitlePage
+  \HEADER{\BAR}{\ThesisYear}
+  \TITLE{Eduardo José \newline Domingues Fernandes}{Desenvolvimento de Heurísticas para o Dimensionamento de Redes Óticas Transparentes}
+  \vspace*{7mm}
+  \TITLE{}{Development of Heuristics for Transparent Optical Networks Dimensioning}
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+% initial thesis pages...
+\TitlePage
+  \HEADER{}{\ThesisYear}
+  \TITLE{Eduardo José \newline Domingues Fernandes}{Desenvolvimento de Heurísticas para o Dimensionamento de Redes Óticas Transparentes}
+  \vspace*{7mm}
+  \TITLE{}{Development of Heuristics for Transparent Optical Networks Dimensioning}
+  \vspace*{15mm}
+  \TEXT{}{Dissertação apresentada à Universidade de Aveiro para cumprimento
+dos requisitos necessários à obtenção do grau de Mestre em Engenharia
+Electrónica e Telecomunicações, realizada sob a orientação
+científica do Doutor Armando Humberto Moreira Nolasco Pinto, Professor
+Associado do Departamento de Eletrónica, Telecomunicações
+e Informática da Universidade de Aveiro e coorientação empresarial
+do Doutor Rui Manuel Dias Morais, Doutor em Engenharia Eletrotécnica
+pela Universidade de Aveiro, coordenador de atividades de investigação
+em optimização de redes na Infinera Portugal. Tendo como
+instituição de acolhimento o Instituto de Telecomunicações - Pólo de
+Aveiro.}
+
+  \vspace*{\fill}
+  \vspace{9cm}
+  %\includegraphics[width=0.3,height=1]{tex/contents/it.png}
+  \hspace{14cm}\includegraphics[width=6cm,height=3cm,keepaspectratio]{tex/contents/it.png}
+%\includegraphics[height=15.25mm]{ttex/contents/it.png}
+% TEXT{}{This work was supported by... (if applicable).} %% Logo IT
+
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+  \vspace*{55mm}
+  \TEXT{\textbf{o júri~/~the jury\newline}}
+       {}
+  \TEXT{presidente~/~president}
+       {\textbf{Paulo Sérgio de Brito André}\newline {\small
+         Professor Associado com Agregação da
+Universidade de Aveiro}}
+  \vspace*{5mm}
+  \TEXT{vogais~/~examiners committee}
+       {\textbf{João Lopes Rebola}\newline {\small
+         Professor Auxiliar do Instituto Universitário de Lisboa}}
+  \vspace*{5mm}
+  \TEXT{}
+       {\textbf{Armando Humberto Moreira Nolasco Pinto}\newline {\small
+        Professor Associado da Universidade de Aveiro}}
+
+\EndTitlePage
+
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+\hspace{75mm}\begin{minipage}{110mm} % no more than 120mm
+ 								\vspace{100mm}
+								\begin{flushright}
+            \begin{Large}\emph{\textbf{Aos meus pais e à minha irmã por todo o apoio incondicional.}}\end{Large}
+						\end{flushright}
+						 \end{minipage}
+						\vfill
+\EndTitlePage
+
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+  \vspace*{55mm}
+  \TEXT{\textbf{agradecimentos~/\newline acknowledgements}}
+       {Não queria deixar de agradecer a todos aqueles que de alguma forma apoiaram, incentivaram e colaboraram na realização deste trabalho.}
+  \TEXT{}
+       {Agradeço ao Professor Doutor Armando Nolasco Pinto por toda a dedicação, orientação e partilha de conhecimentos, sempre transmitidos com boa vontade e estímulo pelo trabalho.}
+  \TEXT{}
+       {Ao Doutor Rui Dias Morais pelo importante apoio cientifico prestado e pela sua total disponibilidade.}
+  \TEXT{}
+       {Aos meus pais e à minha irmã por todo o esforço e dedicação que sempre demonstraram nesta jornada. Por todo o amor e carinho ao longo da minha vida, pela força e por sempre acreditarem em mim. Por me incentivarem perante os desafios, a fazer mais e melhor, quero partilhar convosco a alegria de os conseguir vencer!}
+  \TEXT{}
+       {A todos os meus amigos, obrigado pela amizade, pelo incentivo, pelos conselhos, pela ajuda nos momentos mais difíceis e por estarem sempre presentes ao longo deste percurso.}
+  \TEXT{}
+       {À Margarida, agradeço por todo o seu carinho, por acreditar sempre em mim, por me dar toda a força que preciso e pela valorização sempre tão entusiasta do meu trabalho.
+       }
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+  \vspace*{55mm}
+  \TEXT{\textbf{Palavras-chave}}{CAPEX, heurísticas, redes óticas de transporte transparentes, camada lógica, camada física, algoritmos, escalonamento, encaminhamento, agregação, sobrevivência, programação linear inteira}
+  \vspace*{5mm}
+  \TEXT{\textbf{Resumo}}{Nesta dissertação foram desenvolvidas, implementadas e validadas heurísticas para o dimensionamento de redes óticas de transporte transparentes. Foi criada uma plataforma genérica para o desenvolvimento e a implementação das heurísticas baseada em duas entidades principais: um gestor de recursos da camada lógica e um gestor de recursos da camada física. Esta estrutura foi desenhada de modo a poder ser usada para testar uma grande variedade de heurísticas. No âmbito desta tese foram desenvolvidas heuristicas considerando o escalonamento dos pedidos baseados na quantidade de tráfego de cada pedido. Foram ainda desenvolvidos algoritmos para o encaminhamento, a atribuição de comprimentos de onda e agregação dos pedidos de tráfego. O objetivo das heurísticas passa pelo dimensionamento de uma rede, onde recorrendo-se a um mínimo possível de recursos, e portanto, minimizando o CAPEX da rede, se tenta garantir o encaminhamento total do tráfego. Por uma questão de simplificidade apenas foram consideradas redes sem sobrevivência, no entanto, a plataforma é suficientemente genérica para permitir a inclusão de sobrevivência.  Tendo também em conta a referida vertente económica, foi elaborado um estudo detalhado e comparativo, tendo em foco o CAPEX da rede, com o objetivo de validar a qualidade das soluções fornecidas pelas heurísticas desenvolvidas tendo por base os valores obtidos através de um modelo baseado em programação linear inteira. Finalmente, são partilhadas e discutidas algumas conclusões e direções para o desenvolvimento de trabalho futuro. % FALTAM ALGUMAS CONCLUSÕES
+  }
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+  \vspace*{55mm}
+  \TEXT{\textbf{Keywords}}{CAPEX, heuristics, transparent optical networks, logical layer, physical layer, algorithms, scheduling, routing, grooming, survivability, integer linear programming}
+  \vspace*{5mm}
+  \TEXT{\textbf{Abstract}}{In this dissertation a set of heuristic algorithms was developed, implemented and validated for the dimensioning of transparent optical networks. A generic platform was also created in order to allow the heuristics development and implementation, based on two main entities: a logical layer manager and a physical layer manager. The referred structure was designed in order to allow the test of a vast variety of heuristic algorithms. Within the scope of this dissertation were developed traffic scheduling algorithms based on the individual traffic quantity of each request. In addition, some routing, grooming and wavelength assignment algorithms were also developed. The main goal of these heuristics is is to dimension networks, while recurring to the minimum possible amount of resources, thus minimizing the CAPEX of the network, while also trying to guarantee the total traffic routing. For simplicity reasons only the case of networks without survivabilty was treated, although the platform is sufficiently generic to allow its inclusion in future work. Regarding the economic aspects, a detailed and comparative study was conducted, focusing on the networks CAPEX, in order to validate and assess the quality of the solutions provided by the heuristics developed based on the solutions given by an integer linear programming model. Finally, some conclusions and possible future work are discussed.} 
+ 
+  
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+% 1x vertical spacing between lines
+%\singlespacing
+% 1.5x vertical spacing between lines
+\onehalfspacing
+
+% tables of contents, of figures, ...
+% to count the following pages with roman numbering
+\pagenumbering{roman}
+
+\tableofcontents
+\cleardoublepage
+
+\listoffigures
+\cleardoublepage
+
+\listoftables
+\cleardoublepage
+
+% print the glossary
+\printnoidxglossary[%
+type=\acronymtype,%
+title={\acronymname},%
+nonumberlist,%
+]
+\cleardoublepage
+
+% 1x vertical spacing between lines
+%\singlespacing
+% 1.5x vertical spacing between lines
+\onehalfspacing
+
+% the chapters...
+% to count the following pages with arabic numerals
+\pagenumbering{arabic}
+
+% specifying header content - in this case it only shows chapter
+% information (left position at even pages, right position at odd pages)
+\setlength\headheight{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RO,LE]{\fontsize{10}{12}\textsl{\leftmark}}
+\fancyhead[LO,RE]{\fontsize{10}{12}}
+
+% to change font of the page numbering in all pages
+\fancyfoot[C]{\small\thepage}
+
+% "Some LATEX commands, like \chapter, use the \thispagestyle command to
+% automatically switch to the plain page style, thus ignoring the page
+% style currently in effect." from:
+% https://ctan.org/pkg/fancyhdr
+% (page 7)
+\fancypagestyle{plain}{%
+  % clear all header and footer fields
+  \fancyhf{}
+  % except the center
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}

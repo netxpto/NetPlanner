@@ -1,0 +1,13 @@
+% change symbol of itemize (smaller bullet)
+% (optional: comment to use default)
+\renewcommand*{\labelitemi}{$\vcenter{\hbox{\scriptsize$\bullet$}}$}
+
+% horizontal line to separate floats (figures and tables) from text
+% (optional: comment to use default)
+%\def\topfigrule{\kern 7.8pt \hrule width\textwidth\kern -8.2pt\relax}
+%\def\dblfigrule{\kern 7.8pt \hrule width\textwidth\kern -8.2pt\relax}
+%\def\botfigrule{\kern -7.8pt \hrule width\textwidth\kern 8.2pt\relax}
+
+% to make text never go over the right margin:
+% https://tex.stackexchange.com/questions/9107/how-can-i-make-my-text-never-go-over-the-right-margin-by-always-hyphenating-or-b
+\sloppy
