@@ -98,6 +98,7 @@ int main()
 	/* Signals Declaration */
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };
 	Scheduler_Out.setSaveInAscii(true);
+	Scheduler_Out.setSaveSignal(false);
 
 	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn", 1 };
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);

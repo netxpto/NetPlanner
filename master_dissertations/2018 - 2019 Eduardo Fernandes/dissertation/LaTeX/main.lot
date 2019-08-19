@@ -1,0 +1,154 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.1}{\ignorespaces Table containing indexes and the corresponding bit rates.}}{12}{table.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.2}{\ignorespaces Table of costs used to calculate the CAPEX \cite {anpinto}.}}{14}{table.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.3}{\ignorespaces Reference network physical topology adjacency matrix.}}{18}{table.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.4}{\ignorespaces Table of reference network values.}}{19}{table.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.5}{\ignorespaces Physical topology adjacency matrix.}}{24}{table.2.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.6}{\ignorespaces Table of vBNS network values.}}{25}{table.2.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.7}{\ignorespaces ODU1 traffic matrix for the realistic network.}}{25}{table.2.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.8}{\ignorespaces ODU2 traffic matrix for the realistic network.}}{26}{table.2.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {2.9}{\ignorespaces ODU3 traffic matrix for the realistic network.}}{26}{table.2.9}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.1}{\ignorespaces System input parameters.}}{36}{table.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.2}{\ignorespaces Allowed logical topology for a network of N nodes.}}{39}{table.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.3}{\ignorespaces Structure of a "Path" variable.}}{40}{table.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.4}{\ignorespaces Structure of a "Lightpath" variable.}}{40}{table.4.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.5}{\ignorespaces Structure of an "Optical Channel" variable.}}{40}{table.4.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.6}{\ignorespaces Allowed physical topology for a network of N nodes.}}{41}{table.4.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.7}{\ignorespaces Structure of a "Link" variable.}}{41}{table.4.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.8}{\ignorespaces Constitution of a 'Demand Request' type signal.}}{42}{table.4.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.9}{\ignorespaces Constitution of a "Path Request" type signal.}}{42}{table.4.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.10}{\ignorespaces Structure of a "Path Information" variable.}}{43}{table.4.10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.11}{\ignorespaces Structure of a "Lightpaths Table" variable.}}{43}{table.4.11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.12}{\ignorespaces Structure of a "Demand Request Routed" type signal.}}{43}{table.4.12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.13}{\ignorespaces Blocks input parameters and signals.}}{45}{table.4.13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.14}{\ignorespaces Blocks state variables and output signals.}}{45}{table.4.14}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.1}{\ignorespaces Table containing the analytical estimations for the CAPEX in each traffic scenario.}}{61}{table.6.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.2}{\ignorespaces Detailed description of CAPEX for low traffic scenario using ILPs.}}{62}{table.6.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.3}{\ignorespaces Detailed description of CAPEX for medium traffic scenario using ILPs.}}{62}{table.6.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.4}{\ignorespaces Detailed description of CAPEX for high traffic scenario using ILPs.}}{63}{table.6.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.5}{\ignorespaces Table with information regarding links for low traffic scenario.}}{64}{table.6.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.6}{\ignorespaces Table with information regarding nodes for low traffic scenario.}}{64}{table.6.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.7}{\ignorespaces Detailed description of node 1 for low traffic scenario.}}{65}{table.6.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.8}{\ignorespaces Detailed description of node 2 for low traffic scenario.}}{66}{table.6.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.9}{\ignorespaces Detailed description of node 3 for low traffic scenario.}}{67}{table.6.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.10}{\ignorespaces Detailed description of node 4 for low traffic scenario.}}{68}{table.6.10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.11}{\ignorespaces Detailed description of node 5 for low traffic scenario.}}{69}{table.6.11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.12}{\ignorespaces Detailed description of node 6 for low traffic scenario.}}{70}{table.6.12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.13}{\ignorespaces Detailed description of the routing process for low traffic scenario.}}{71}{table.6.13}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.14}{\ignorespaces Detailed description of CAPEX for low traffic scenario.}}{71}{table.6.14}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.15}{\ignorespaces Links information for medium traffic scenario.}}{72}{table.6.15}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.16}{\ignorespaces Node information for medium traffic scenario.}}{73}{table.6.16}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.17}{\ignorespaces Detailed description of node 1 for medium traffic scenario.}}{73}{table.6.17}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.18}{\ignorespaces Detailed description of node 2 for medium traffic scenario.}}{74}{table.6.18}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.19}{\ignorespaces Detailed description of node 3 for medium traffic scenario.}}{75}{table.6.19}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.20}{\ignorespaces Detailed description of node 4 for medium traffic scenario.}}{76}{table.6.20}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.21}{\ignorespaces Detailed description of node 5 for medium traffic scenario.}}{77}{table.6.21}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.22}{\ignorespaces Detailed description of node 6 for medium traffic scenario.}}{78}{table.6.22}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.23}{\ignorespaces Detailed description of the routing process for medium traffic scenario.}}{79}{table.6.23}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.24}{\ignorespaces Detailed description of CAPEX for medium traffic scenario.}}{79}{table.6.24}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.25}{\ignorespaces Links information for high traffic scenario.}}{80}{table.6.25}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.26}{\ignorespaces Node information for high traffic scenario.}}{81}{table.6.26}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.27}{\ignorespaces Detailed description of node 1 for high traffic scenario.}}{81}{table.6.27}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.28}{\ignorespaces Detailed description of node 2 for high traffic scenario.}}{82}{table.6.28}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.29}{\ignorespaces Detailed description of node 3 for high traffic scenario.}}{83}{table.6.29}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.30}{\ignorespaces Detailed description of node 4 for high traffic scenario.}}{84}{table.6.30}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.31}{\ignorespaces Detailed description of node 5 for high traffic scenario.}}{85}{table.6.31}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.32}{\ignorespaces Detailed description of node 6 for high traffic scenario.}}{86}{table.6.32}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.33}{\ignorespaces Detailed description of the routing process for high traffic scenario.}}{87}{table.6.33}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.34}{\ignorespaces Detailed description of CAPEX for high traffic scenario.}}{87}{table.6.34}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.35}{\ignorespaces Comparison between the CAPEX values obtained through different methods for all traffic scenarios.}}{88}{table.6.35}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.36}{\ignorespaces Comparison between the execution time of the heuristic and ILP methods for different traffic scenarios.}}{89}{table.6.36}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.37}{\ignorespaces Comparison of the different heuristic CAPEX values obtained for the different traffic scenarios.}}{90}{table.6.37}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.38}{\ignorespaces Detailed description of the CAPEX value for the realistic network, considering an ascending ordering rule.}}{92}{table.6.38}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.39}{\ignorespaces Detailed description of the CAPEX value for the realistic network, considering a descending ordering rule.}}{93}{table.6.39}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.40}{\ignorespaces Results comparison between heuristics and analytical models.}}{94}{table.6.40}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.41}{\ignorespaces Comparison between the execution time of the heuristic and ILP methods for the realistic network.}}{94}{table.6.41}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }

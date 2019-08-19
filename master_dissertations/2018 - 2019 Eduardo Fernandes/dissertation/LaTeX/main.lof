@@ -1,0 +1,68 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Cisco forecasts per month of IP traffic from 2017 until 2022 \cite {ciscoForecast}.}}{2}{figure.1.1}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Example of an all-optical network with 4 nodes \cite {RuiMoraisPhD}.}}{6}{figure.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Schematic of a link containing an optical fiber, inline optical amplifiers and OLT terminals \cite {RuiMoraisPhD}.}}{7}{figure.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Schematic of a node structure containing modules, shelves and a rack. \cite {6515886}.}}{8}{figure.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Electrical and optical node structure.}}{11}{figure.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Reference network physical topology graph representation.}}{18}{figure.2.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Reference network logical topology graph representation.}}{19}{figure.2.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.7}{\ignorespaces The Very-High Performance Backbone Network Service \cite {redeRealista}.}}{23}{figure.2.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Physical topology graph representation.}}{24}{figure.2.8}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Top level diagram of the developed framework. The solid lines represent vital connections between blocks as well as the flow of information, on the other hand, the dashed lines represent possible but non obligatory connections, since the framework runs correctly with or without them. They provide the possibility of starting a simulation by creating a void physical and/or logical topology or to load a previous state.}}{30}{figure.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Flowchart representing the interaction between the logical and physical topology manager entities while processing a demand request.}}{32}{figure.3.2}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Final scheme of the implemented platform.}}{46}{figure.4.1}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Scheduler algorithm illustration considering both ordering rules.}}{50}{figure.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Illustration of the order by which an ODUx traffic matrix is searched through.}}{50}{figure.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Logical topology algorithm: conversion from physical topology (left side) to the logical topology (right side) for transparent transport mode.}}{51}{figure.5.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Routing algorithm code flow.}}{52}{figure.5.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Grooming algorithm code flow.}}{53}{figure.5.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Wavelength Assignment algorithm code flow.}}{54}{figure.5.6}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Physical topology after the dimensioning process for low scenario traffic.}}{63}{figure.6.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Physical topology after dimensioning for medium scenario traffic.}}{72}{figure.6.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Physical topology after dimensioning process for high scenario traffic.}}{80}{figure.6.3}% 
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
