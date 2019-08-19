@@ -34,9 +34,9 @@ public:
 	double initialWavelenght{ 1550 };
 	double wavelenghtSpacing{ 0.8 };
 	int opticalChannelCapacity{ 0 };
-	routing_criterion_logical_topology routingCriterionLogicalTopology{ routing_criterion_logical_topology::hops };
+	t_routing_criterion_logical_topology routingCriterionLogicalTopology{ t_routing_criterion_logical_topology::hops };
 	int blockingCriterionLogicalTopology{ 1 };
-	routing_criterion_physical_topology routingCriterionPhysicalTopology{ routing_criterion_physical_topology::hops };
+	t_routing_criterion_physical_topology routingCriterionPhysicalTopology{ t_routing_criterion_physical_topology::hops };
 	int blockingCriterionPhysicalTopology{ 3 };
 
 	/* Initializes default input parameters*/
@@ -202,3 +202,4 @@ int main()
 
 	return 0;
 }
+

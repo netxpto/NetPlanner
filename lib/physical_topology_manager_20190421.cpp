@@ -78,10 +78,10 @@ bool PhysicalTopologyManager::runBlock(void) {
 
 								OMSInformation.push_back(k); // first element of each vector identifies the OMS analyzed through its OMS index
 
-								for (int l = 0; l < currentPhysicalTopology.opticalMultiplexingSystems[k].availableWavelenghts.size(); l++)
+								for (int l = 0; l < currentPhysicalTopology.opticalMultiplexingSystems[k].availableWavelengths.size(); l++)
 								{
-									if (currentPhysicalTopology.opticalMultiplexingSystems[k].availableWavelenghts[l] == 1)
-										OMSInformation.push_back(currentPhysicalTopology.opticalMultiplexingSystems[k].wavelenghts[l]);
+									if (currentPhysicalTopology.opticalMultiplexingSystems[k].availableWavelengths[l] == 1)
+										OMSInformation.push_back(currentPhysicalTopology.opticalMultiplexingSystems[k].wavelengths[l]);
 								}
 								availableWavelenghtsIndexOfAllOMS.push_back(OMSInformation);
 								OMSInformation.clear();
@@ -148,10 +148,10 @@ bool PhysicalTopologyManager::runBlock(void) {
 					// Update PhysicalTopologyManager_ block state variables
 					for (int i = 0; i < availableWavelenghtsIndexOfAllOMS.size(); i++)
 					{
-						for (int j = 0; j < currentPhysicalTopology.opticalMultiplexingSystems[availableWavelenghtsIndexOfAllOMS[i][0]].wavelenghts.size(); j++)
+						for (int j = 0; j < currentPhysicalTopology.opticalMultiplexingSystems[availableWavelenghtsIndexOfAllOMS[i][0]].wavelengths.size(); j++)
 						{
-							if (wavelenghtSelected == currentPhysicalTopology.opticalMultiplexingSystems[availableWavelenghtsIndexOfAllOMS[i][0]].wavelenghts[j])
-								currentPhysicalTopology.opticalMultiplexingSystems[availableWavelenghtsIndexOfAllOMS[i][0]].availableWavelenghts[j] = 0;
+							if (wavelenghtSelected == currentPhysicalTopology.opticalMultiplexingSystems[availableWavelenghtsIndexOfAllOMS[i][0]].wavelengths[j])
+								currentPhysicalTopology.opticalMultiplexingSystems[availableWavelenghtsIndexOfAllOMS[i][0]].availableWavelengths[j] = 0;
 						}
 					}
 
@@ -164,7 +164,7 @@ bool PhysicalTopologyManager::runBlock(void) {
 						bool omsFull{ true };
 						for (int f = 0; f < currentPhysicalTopology.opticalMultiplexingSystems[s].numberOfWavelenghts; f++)
 						{
-							if (currentPhysicalTopology.opticalMultiplexingSystems[s].availableWavelenghts[f] == 1)
+							if (currentPhysicalTopology.opticalMultiplexingSystems[s].availableWavelengths[f] == 1)
 								omsFull = false;
 						}
 						if (omsFull)
@@ -193,7 +193,7 @@ bool PhysicalTopologyManager::runBlock(void) {
 
 					lpt.numberOfIntermediateNodes = intermediateNodes.size();
 					lpt.intermediateNodes = intermediateNodes;
-					lpt.wavelenght = wavelenghtSelected;
+					lpt.wavelength = wavelenghtSelected;
 					pathRequestRouted.lightPathsTable.push_back(lpt);
 
 					outputSignals[1]->bufferPut((t_path_request_routed)pathRequestRouted);
@@ -229,4 +229,3 @@ bool PhysicalTopologyManager::runBlock(void) {
 	}
 	return true;
 };
-

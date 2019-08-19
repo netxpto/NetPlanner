@@ -31,11 +31,16 @@ class LogicalTopologyManager : public Block {
 	t_matrix logicalTopology_odu2;	// Logical topology matrix for odu2 type demands
 	t_matrix logicalTopology_odu3;	// Logical topology matrix for odu3 type demands
 	t_matrix logicalTopology_odu4;	// Logical topology matrix for odu4 type demands
+	std::vector<t_integer> pathDij;
+	t_integer tryAnotherPath;
+	t_matrix temporaryLogicalMatrix;
 
 	// Input parameters
-	routing_criterion_logical_topology routingCriterionLogicalTopology{ routing_criterion_logical_topology::hops };
+	t_routing_criterion_logical_topology routingCriterionLogicalTopology{ t_routing_criterion_logical_topology::hops };
 	t_integer blockingCriterionLogicalTopology{ 1 }; // Number of paths to try before blocking a demand
 
+	void dijkstraComputePaths(vertex_t source, const adjacency_list_t &adjacency_list, std::vector<weight_t> &min_distance, std::vector<vertex_t> &previous);
+	std::list<vertex_t> dijkstraGetShortestPathTo(vertex_t vertex, const std::vector<vertex_t> &previous);
 
 public:
 
@@ -46,8 +51,8 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setRoutingCriterionLogicalTopology(routing_criterion_logical_topology crt) { routingCriterionLogicalTopology = crt; };
-	routing_criterion_logical_topology getRoutingCriterionLogicalTopology(void) { return routingCriterionLogicalTopology; };
+	void setRoutingCriterionLogicalTopology(t_routing_criterion_logical_topology crt) { routingCriterionLogicalTopology = crt; };
+	t_routing_criterion_logical_topology getRoutingCriterionLogicalTopology(void) { return routingCriterionLogicalTopology; };
 
 	void setBlockingCriterionLogicalTopology(t_integer crt) { blockingCriterionLogicalTopology = crt; };
 	t_integer getBlockingCriterionLogicalTopology(void) { return blockingCriterionLogicalTopology; };

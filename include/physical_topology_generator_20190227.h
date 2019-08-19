@@ -21,6 +21,7 @@ class PhysicalTopologyGenerator : public Block {
 
 	// Input Parameters
 	t_matrix physicalTopologyAdjacencyMatrix;
+	transport_mode transportMode;
 	t_matrix distancesBetweenNodes;
 	t_integer span;
 	t_integer numberOfOMSPerLink;
@@ -67,6 +68,9 @@ public:
 
 	void setOpticalChannelCapacity(t_integer optChCapacity) { opticalChannelCapacity = optChCapacity; };
 	t_integer getOpticalChannelCapacity(void) { return opticalChannelCapacity; };
+
+	void setTransportMode(transport_mode tMode) { transportMode = tMode; }
+	transport_mode getTransportMode(void) { return transportMode; };
 };
 
 # endif

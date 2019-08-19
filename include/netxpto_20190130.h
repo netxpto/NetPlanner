@@ -21,15 +21,17 @@
 # include <iostream>
 # include <locale>
 # include <map>
-# include <math.h>
 # include <random>
 # include <sstream>
 # include <vector>
 # include <strstream>
 # include <string>
-# include <iostream>
-# include <list>
+# include <set>
 
+#include <list>
+#include <limits> // for numeric_limits
+#include <utility> // for pair
+#include <iterator>
 
 
 // ####################################################################################################
@@ -90,7 +92,27 @@ using t_photon_mp_xy = struct { t_complex_xy_mp path[MAX_NUMBER_OF_PATHS]; };
 using t_iqValues = complex<t_real>;
 using t_message = struct {	string messageType;	string messageDataLength; 	string messageData; int size() { return 3; }};
 
+typedef int vertex_t;
+typedef double weight_t;
+
+const weight_t max_weight = std::numeric_limits<double>::infinity();
+
+struct neighbor {
+	vertex_t target;
+	weight_t weight;
+	neighbor(vertex_t arg_target, weight_t arg_weight)
+		: target(arg_target), weight(arg_weight) { }
+};
+
+typedef std::vector<std::vector<neighbor> > adjacency_list_t;
+
 enum class survivability_method { none, protection_1_plus_1, restoration };
+enum class transport_mode { opaque, transparent, translucent };				// Trasnsport mode types
+enum class criterion { hops, distance };									// The shortest path type will be selected depending on one of those
+enum class ordering_rule { descendingOrder, ascendingOrder };					// Demand ordering rule in Scheduler_ block	
+enum class t_routing_criterion_logical_topology { distance, hops };				// Routing type criterion to select shortest paths
+enum class t_routing_criterion_physical_topology { distance, hops };			// Routing type criterion to select shortest paths
+
 
 using t_demand = struct {						// Signal type Demand structure 
 	t_integer demandIndex{ 0 };
@@ -116,7 +138,7 @@ using t_light_paths_table = struct {			// lightPathsTable variable from PathRequ
 	t_integer destinationNode{ 0 };
 	t_integer numberOfIntermediateNodes{ -1 };
 	std::vector<t_integer> intermediateNodes;
-	double wavelenght{ 0 };
+	double wavelength{ 0 };
 };
 
 using t_path_request_routed = struct {			// PathRequestRouted signal structure 
@@ -129,6 +151,7 @@ using t_path_request = struct {
 	t_integer demandIndex{ 0 };
 	t_integer oduType{ 0 };
 	t_integer sourceNode{ 0 };
+	t_integer numberOfIntermediateNodes{ 0 };
 	std::vector<t_integer> intermediateNodes;
 	t_integer destinationNode{ 0 };
 };
@@ -156,7 +179,7 @@ using t_optical_channels = struct {			// opticalChannels data structure
 	t_integer sourceNode{ 0 };				// opticalChannels source node
 	t_integer destinationNode{ 0 };			// opticalChannels destination node
 	t_integer capacity{ 0 };				// opticalChannels capacity in terms of ODU0 demands
-	double wavelenght{ 0 };				// opticalChannels wavelenght
+	double wavelength{ 0 };				// opticalChannels wavelenght
 	t_integer numberOfDemands{ 0 };         // number of demands passing through each of the opticalChannels
 	std::vector<t_integer> demandsIndex;			// index of the previous demands
 };
@@ -166,6 +189,8 @@ using t_logical_topology = struct {						// LogicalTopology signal data structur
 	std::vector<t_paths> paths;							// List of paths
 	std::vector<t_light_paths> lightPaths;				// List of lightPaths
 	std::vector<t_optical_channels> opticalChannels;	// List of opticalChannels
+	transport_mode transportMode;
+	t_matrix distancesBetweenNodes{ 0 };
 };
 
 using t_optical_multiplexing_systems = struct {			// opticalMultiplexingSystems data structure
@@ -173,8 +198,8 @@ using t_optical_multiplexing_systems = struct {			// opticalMultiplexingSystems 
 	t_integer sourceNode{ 0 };							// opticalMultiplexingSystems source node
 	t_integer destinationNode{ 0 };						// opticalMultiplexingSystems destination node
 	t_integer numberOfWavelenghts{ 0 };					// opticalMultiplexingSystems number of wavelenghts
-	std::vector<double> wavelenghts;					// opticalMultiplexingSystems wavelenghts values in nanometers (nm)
-	std::vector<t_integer> availableWavelenghts;		// indicates which of the previous wavelenghts values are available to be assigned
+	std::vector<double> wavelengths;					// opticalMultiplexingSystems wavelenghts values in nanometers (nm)
+	std::vector<t_integer> availableWavelengths;		// indicates which of the previous wavelenghts values are available to be assigned
 	t_integer amplifiers{ 0 };							// number of needed amplifiers in a given link
 };
 
@@ -188,6 +213,7 @@ using t_physical_topology = struct {											// physicalTopology signal data s
 	t_matrix physicalTopologyAdjacencyMatrix{ 0 };								// physicalTopologyMatrix variable
 	t_matrix distancesBetweenNodes{ 0 };
 	std::vector<t_optical_multiplexing_systems> opticalMultiplexingSystems;		
+	transport_mode transportMode;
 };
 
 using t_routing_table = struct{
@@ -198,11 +224,6 @@ using t_routing_table = struct{
 // Existent signals
 enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex_xy, t_photon, t_photon_mp, t_photon_mp_xy, t_iqValues, t_message, t_demand, t_logical_topology, t_physical_topology, t_path_request, t_path_request_routed, t_demand_request_routed};
 
-enum class transport_mode { opaque, transparent, translucent };				// Trasnsport mode types
-enum class criterion { hops, distance };									// The shortest path type will be selected depending on one of those
-enum class ordering_rule {descendingOrder, ascendingOrder};					// Demand ordering rule in Scheduler_ block	
-enum class routing_criterion_logical_topology {distance, hops};				// Routing type criterion to select shortest paths
-enum class routing_criterion_physical_topology { distance, hops };			// Routing type criterion to select shortest paths
 
 // #######################################################################################################
 // #
@@ -812,7 +833,7 @@ public:
 	void terminateBlock();
 	virtual void terminate(void){};
 
-	void writeReport();
+	//void writeReport();
 
 	void closeOutputSignals();
 
@@ -1155,8 +1176,8 @@ private:
 			t_matrix* m;
 			ordering_rule* o;
 			transport_mode *t;
-			routing_criterion_logical_topology *l;
-			routing_criterion_physical_topology *p;
+			t_routing_criterion_logical_topology *l;
+			t_routing_criterion_physical_topology *p;
 		};
 
 	public:
@@ -1167,8 +1188,8 @@ private:
 		void setValue(t_matrix value);
 		void setValue(ordering_rule value);
 		void setValue(transport_mode value);
-		void setValue(routing_criterion_logical_topology value);
-		void setValue(routing_criterion_physical_topology value);
+		void setValue(t_routing_criterion_logical_topology value);
+		void setValue(t_routing_criterion_physical_topology value);
 		ParameterType getType();
 		//Constructor for parameter of type int
 		Parameter(int* elem);
@@ -1183,18 +1204,19 @@ private:
 		//Constructor for parameter of type ordering_rule
 		Parameter(transport_mode* elem);
 		//Constructor for parameter of type ordering_rule
-		Parameter(routing_criterion_logical_topology* elem);
+		Parameter(t_routing_criterion_logical_topology* elem);
 		//Constructor for parameter of type ordering_rule
-		Parameter(routing_criterion_physical_topology* elem);
+		Parameter(t_routing_criterion_physical_topology* elem);
 	};
 
 	int parseInt(string str);
 	double parseDouble(string str);
 	bool parseBool(string str);
+	t_matrix parseMatrix(ifstream &inputFile);
 	transport_mode parseTransportMode(string str);
 	ordering_rule parseOrderingRule(string str);
-	routing_criterion_logical_topology parseRoutingCriterionLogicalTopology(string str);
-	routing_criterion_physical_topology parseRoutingCriterionPhysicalTopology(string str);
+	t_routing_criterion_logical_topology parseRoutingCriterionLogicalTopology(string str);
+	t_routing_criterion_physical_topology parseRoutingCriterionPhysicalTopology(string str);
 	
 	vector<string> split(const string & text, char sep);
 	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
@@ -1211,8 +1233,8 @@ public:
 	void addInputParameter(string name, t_matrix* variable);
 	void addInputParameter(string name, ordering_rule* variable);
 	void addInputParameter(string name, transport_mode* variable);
-	void addInputParameter(string name, routing_criterion_logical_topology* variable);
-	void addInputParameter(string name, routing_criterion_physical_topology* variable);
+	void addInputParameter(string name, t_routing_criterion_logical_topology* variable);
+	void addInputParameter(string name, t_routing_criterion_physical_topology* variable);
 
 
 	/* Default empty constructor. Initializes the map */

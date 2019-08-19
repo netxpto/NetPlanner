@@ -1,0 +1,126 @@
+%
+% Note that the order that the packages are imported sometimes it
+% matters. That is, some packages should be imported before others.
+% Otherwise, it may not work correctly.
+%
+
+% this package should be used with babel:
+% https://tex.stackexchange.com/questions/229638/package-biblatex-warning-babel-polyglossia-detected-but-csquotes-missing
+\usepackage{csquotes}
+
+% line spacing - it has to be loaded before the hyperref package to
+% ensure that the links of footnotes are correct:
+% https://tex.stackexchange.com/questions/203439/footnotes-misbehaving-in-report-go-to-front-page-but-behave-correctly-in-other-r
+\usepackage{setspace}
+
+% colors in text
+\usepackage[svgnames]{xcolor}
+
+% rotating pages
+\usepackage{pdflscape}
+
+% to add inline comments - it is possible to put comments using the
+% command: \todo{This is a comment.}
+%\usepackage[colorinlistoftodos]{todonotes}
+
+% mathematical utilities
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% managing URLs
+\usepackage[hyphens,spaces]{url}
+
+% references (citations, images, tables, etc.)
+\usepackage[breaklinks,hidelinks]{hyperref}
+
+% to make the hyperlink put the cursor at the beginning of the figure
+% (not in the figure caption):
+\usepackage[all]{hypcap}
+
+% cleveref has to be loaded after hyperref
+% cleveref has to be loaded after amsmath to correctly reference
+% equations:
+% https://tex.stackexchange.com/questions/148699/equation-reference-undefined-when-using-cref-and-packageamsmath
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+% multiple references to the same footnote:
+% https://tex.stackexchange.com/questions/10102/multiple-references-to-the-same-footnote-with-hyperref-support-is-there-a-bett
+\crefformat{footnote}{#2\footnotemark[#1]#3}
+
+% to create hyperlinks from the footnotes at the bottom of the page back
+% to the occurrence of the footnote in the main text
+\usepackage{footnotebackref}
+
+% table footnote:
+% https://tex.stackexchange.com/questions/1583/footnotes-in-tables
+\usepackage{tablefootnote}
+
+% header/footer treatment
+\usepackage{fancyhdr}
+
+% to place floats (figures/tables) at fixed position using the
+% \FloatBarrier command
+\usepackage{placeins}
+
+% enhances the quality of tables
+\usepackage{booktabs}
+
+% vertical alignment in row tables
+\usepackage{array}
+
+% horizontally centered and right aligned:
+% https://tex.stackexchange.com/questions/154958/vertically-centered-and-right-left-center-horizontal-alignment-in-tabular
+% centered:
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+% right aligned:
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
+
+% multirow in tables
+\usepackage{multirow}
+
+% to change the itemize character
+\usepackage{enumitem}
+
+% BibLaTeX bibliography
+\usepackage[%
+  backend=biber,%
+  bibstyle=numeric,%
+  citestyle=numeric-comp,%
+  %dashed=false,%
+  defernumbers=true,%
+  %giveninits=true,% to use initials for given (first) names
+  maxnames=999,%
+  minnames=1,%
+  sorting=none,%
+]{biblatex}
+\bibliography{refs}
+
+% to break URLs:
+% https://stackoverflow.com/questions/2625714/linebreak-in-url-with-bibtex-and-hyperref-package
+% https://tex.stackexchange.com/questions/22854/url-line-breaks-with-biblatex
+\setcounter{biburlnumpenalty}{3000}
+\setcounter{biburlucpenalty}{6000}
+\setcounter{biburllcpenalty}{9000}
+
+% acronyms
+\usepackage[%
+acronym,%
+xindy,%
+style=alttree,%
+nopostdot%
+]{glossaries}
+
+% to add links inside captions:
+% https://tex.stackexchange.com/questions/30800/gls-inside-caption-without-protect
+\robustify{\gls}
+
+% disabling hyphens
+\usepackage[none]{hyphenat}
+\usepackage{float} 
+% euro symbol
+\usepackage{eurosym}
+
+% to force not to break the line after a hyphen (may conflict with
+% latexdiff):
+% https://tex.stackexchange.com/questions/103608/how-to-force-latex-not-to-break-the-line-after-a-hyphen
+%\usepackage[shortcuts]{extdash}

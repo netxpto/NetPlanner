@@ -131,7 +131,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						newOpticalChannel.sourceNode = pathRequestRouted.lightPathsTable[0].sourceNode;
 						newOpticalChannel.destinationNode = pathRequestRouted.lightPathsTable[0].destinationNode;
 						newOpticalChannel.capacity = 80 - capacity;
-						newOpticalChannel.wavelenght = pathRequestRouted.lightPathsTable[0].wavelenght;
+						newOpticalChannel.wavelength = pathRequestRouted.lightPathsTable[0].wavelength;
 						newOpticalChannel.numberOfDemands = 1;
 						newOpticalChannel.demandsIndex.push_back(pathRequestRouted.pathInformation.demandIndex);
 						
@@ -144,7 +144,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						newOpticalChannel.sourceNode = pathRequestRouted.lightPathsTable[0].sourceNode;
 						newOpticalChannel.destinationNode = pathRequestRouted.lightPathsTable[0].intermediateNodes[i];
 						newOpticalChannel.capacity = 80 - capacity;
-						newOpticalChannel.wavelenght = pathRequestRouted.lightPathsTable[0].wavelenght;
+						newOpticalChannel.wavelength = pathRequestRouted.lightPathsTable[0].wavelength;
 						newOpticalChannel.numberOfDemands = 1;
 						newOpticalChannel.demandsIndex.push_back(pathRequestRouted.pathInformation.demandIndex);
 						
@@ -157,7 +157,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						newOpticalChannel.sourceNode = pathRequestRouted.lightPathsTable[0].intermediateNodes[i-1];
 						newOpticalChannel.destinationNode = pathRequestRouted.lightPathsTable[0].intermediateNodes[i];
 						newOpticalChannel.capacity = 80 - capacity;
-						newOpticalChannel.wavelenght = pathRequestRouted.lightPathsTable[0].wavelenght;
+						newOpticalChannel.wavelength = pathRequestRouted.lightPathsTable[0].wavelength;
 						newOpticalChannel.numberOfDemands = 1;
 						newOpticalChannel.demandsIndex.push_back(pathRequestRouted.pathInformation.demandIndex);
 						
@@ -170,7 +170,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						newOpticalChannel.sourceNode = pathRequestRouted.lightPathsTable[0].intermediateNodes[i - 1];
 						newOpticalChannel.destinationNode = pathRequestRouted.lightPathsTable[0].destinationNode;
 						newOpticalChannel.capacity = 80 - capacity;
-						newOpticalChannel.wavelenght = pathRequestRouted.lightPathsTable[0].wavelenght;
+						newOpticalChannel.wavelength = pathRequestRouted.lightPathsTable[0].wavelength;
 						newOpticalChannel.numberOfDemands = 1;
 						newOpticalChannel.demandsIndex.push_back(pathRequestRouted.pathInformation.demandIndex);
 						

@@ -421,23 +421,18 @@ public:
 	void bufferPut(value_type value)
 	{
 		(static_cast<T *>(buffer))[inPosition] = value;
-
 		if (bufferFull)
 		{
 			outPosition = (outPosition + 1) % bufferLength;
 		}
-
 		inPosition = (inPosition + 1) % bufferLength;
-
 		bufferEmpty = false;
 		bufferFull = inPosition == outPosition;
-
 		if (bufferFull)
 		{
 			if (saveSignal)
 			{
 				if (!headerWritten) writeHeader();
-
 				if (firstValueToBeSaved <= bufferLength)
 				{
 					char *ptr = (char *)buffer;
@@ -530,24 +525,18 @@ public:
 	TimeDiscrete(string fileName,string folderName) : Signal(fileName,folderName) { }
 	TimeDiscrete(){}
 };
-
-
 class TimeDiscreteAmplitudeDiscrete : public Signal {
 public:
 	TimeDiscreteAmplitudeDiscrete(string fName) { setFileName(fName); }
 	TimeDiscreteAmplitudeDiscrete(string fileName, string folderName) : Signal(fileName, folderName) { }
 	TimeDiscreteAmplitudeDiscrete(){}
 };
-
-
 class TimeDiscreteAmplitudeContinuous : public Signal {
 public:
 	TimeDiscreteAmplitudeContinuous(string fName) { setFileName(fName); }
 	TimeDiscreteAmplitudeContinuous(string fileName, string folderName) : Signal(fileName, folderName) { }
 	TimeDiscreteAmplitudeContinuous(){}
 };
-
-
 class TimeDiscreteAmplitudeDiscreteReal : public Signal {
 public:
 	TimeDiscreteAmplitudeDiscreteReal(string fName) { setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
@@ -555,11 +544,8 @@ public:
 	TimeDiscreteAmplitudeDiscreteReal(string fName, t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); setFileName(fName); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeDiscreteReal(t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeDiscreteReal(){ setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-
 //	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_real[bLength]; };
 };
-
-
 class TimeDiscreteAmplitudeDiscreteComplex : public Signal {
 	
 public:
@@ -573,7 +559,6 @@ class Binary : public Signal {
 	
 public:
 	using value_type = t_binary;
-
 	Binary() : Signal() { setBuffer(); }
 	Binary(string fileName) : Signal(fileName) { setBuffer(); }
 	Binary(string fileName, t_unsigned_long bLength) : Signal(fileName, bLength) { setBuffer(); }
@@ -584,11 +569,8 @@ public:
 	Binary(string fileName, t_unsigned_long bLength, bool sSignal) : Signal(fileName, bLength, sSignal) { setBuffer(); }
 	Binary(string fileName, string folderName, bool sSignal) : Signal(fileName, folderName, sSignal) { setBuffer(); }
 	Binary(string fileName, string folderName, t_unsigned_long bLength, bool sSignal) : Signal(fileName, folderName, bLength, sSignal) { setBuffer(); }
-
 private:
-
 	void setBuffer() { setType("Binary", signal_value_type::BinaryValue); if (buffer == nullptr) buffer = new value_type[getBufferLength()]; }
-
 };
 */
 /*
@@ -599,11 +581,8 @@ public:
 	TimeDiscreteAmplitudeContinuousReal(string fName, t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousReal(t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousReal(){ setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_real[bLength]; };
 };
-
-
 class TimeDiscreteAmplitudeContinuousComplex : public Signal {
 public:
 	TimeDiscreteAmplitudeContinuousComplex(string fName) { setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
@@ -611,26 +590,20 @@ public:
 	TimeDiscreteAmplitudeContinuousComplex(string fName, t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousComplex(t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousComplex(){ setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_complex[bLength]; };
 };
-
-
 class TimeContinuous : public Signal {
 public:
 	TimeContinuous(string fileName) : Signal(fileName) { }
 	TimeContinuous(string fileName, string folderName) : Signal(fileName, folderName) { }
 	TimeContinuous(){}
 };
-
 class TimeContinuousAmplitudeDiscrete : public Signal {
 public:
 	TimeContinuousAmplitudeDiscrete(string fileName) : Signal(fileName) { }
 	TimeContinuousAmplitudeDiscrete(string fileName, string folderName) : Signal(fileName, folderName) { }
 	TimeContinuousAmplitudeDiscrete(){}
 };
-
-
 class TimeContinuousAmplitudeContinuous : public Signal {
 public:
 	TimeContinuousAmplitudeContinuous(string fName) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
@@ -638,11 +611,8 @@ public:
 	TimeContinuousAmplitudeContinuous(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue);  setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuous(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue);  setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuous() { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_real[bLength]; };
 };
-
-
 class TimeContinuousAmplitudeDiscreteReal : public Signal {
 public:
 	TimeContinuousAmplitudeDiscreteReal(string fName) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
@@ -650,11 +620,8 @@ public:
 	TimeContinuousAmplitudeDiscreteReal(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue);  setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteReal(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue);  setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteReal(){ setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_real[bLength]; };
 };
-
-
 class TimeContinuousAmplitudeDiscreteComplex : public Signal {
 public:
 	TimeContinuousAmplitudeDiscreteComplex(string fName) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
@@ -662,11 +629,8 @@ public:
 	TimeContinuousAmplitudeDiscreteComplex(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteComplex(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteComplex(){ setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_complex[bLength]; };
 };
-
-
 class TimeContinuousAmplitudeContinuousReal : public Signal {
 public:
 	TimeContinuousAmplitudeContinuousReal(string fName) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
@@ -674,12 +638,8 @@ public:
 	TimeContinuousAmplitudeContinuousReal(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousReal(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousReal(){ setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_real[bLength]; };
-
 };
-
-
 class TimeContinuousAmplitudeContinuousComplex : public Signal {
 public:
 	TimeContinuousAmplitudeContinuousComplex(string fName) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
@@ -687,10 +647,8 @@ public:
 	TimeContinuousAmplitudeContinuousComplex(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousComplex(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousComplex(){ setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_complex[bLength]; };
 };
-
 class BandpassSignal : public Signal {
 public:
 	BandpassSignal(string fName) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
@@ -698,11 +656,8 @@ public:
 	BandpassSignal(string fName, t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	BandpassSignal(t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	BandpassSignal(){ setType("BandpassSignal", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_complex[bLength]; };
-
 };
-
 // the setType is BandpassSignal to garantee the compatibility with the Visualizer
 class OpticalSignal : public Signal {
 public:
@@ -711,12 +666,8 @@ public:
 	OpticalSignal(string fName, t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	OpticalSignal(t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	OpticalSignal() { setType("BandpassSignal", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_complex[bLength]; };
-
 };
-
-
 class OpticalSignalXY : public Signal {
 public:
 	OpticalSignalXY(string fName) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
@@ -724,7 +675,6 @@ public:
 	OpticalSignalXY(string fName, t_unsigned_long bLength) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); setFileName(fName); setBufferLength(bLength); }
 	OpticalSignalXY(t_unsigned_long bLength) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); setBufferLength(bLength); }
 	OpticalSignalXY() { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_complex_xy[bLength]; };
 };
 */
@@ -732,7 +682,6 @@ public:
 /*class MultiModeBandpassSignal : BandpassSignal {
 public:
 	MultiModeBandpassSignal(int nBandpassSignals) {
-
 	};
 private:
 	int numberOfBandpassSignals;
@@ -742,50 +691,37 @@ private:
 };*/
 /*
 class PhotonStream : public Signal {
-
 public:
 	PhotonStream(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStream", signal_value_type::PhotonValue); if (buffer == nullptr) buffer = new t_photon[getBufferLength()];}
 	PhotonStream(t_unsigned_long bLength) { setType("PhotonStream", signal_value_type::PhotonValue); setBufferLength(bLength); }
 	PhotonStream() { setType("PhotonStream", signal_value_type::PhotonValue); if (buffer == nullptr) buffer = new t_photon[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_photon[bLength]; };
 };
-
 class PhotonStreamXY : public Signal {
-
 public:
 	PhotonStreamXY(string fName) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
 	PhotonStreamXY(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()];	}
 	PhotonStreamXY(string fName, t_unsigned_long bLength) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); setFileName(fName); setBufferLength(bLength); }
 	PhotonStreamXY(t_unsigned_long bLength) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); setBufferLength(bLength); }
 	PhotonStreamXY() { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_complex_xy[bLength]; };
 };
-
 class PhotonStreamMP : public Signal {
-
 public:
 	PhotonStreamMP(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStreamMP", signal_value_type::PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[getBufferLength()]; }
 	PhotonStreamMP(t_unsigned_long bLength) { setType("PhotonStreamMP", signal_value_type::PhotonValueMP); setBufferLength(bLength); }
 	PhotonStreamMP() { setType("PhotonStreamMP", signal_value_type::PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_photon_mp[bLength]; };
-
 };
-
 class PhotonStreamMPXY : public Signal {
-
 public:
 	PhotonStreamMPXY(string fName) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); setFileName(fName); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()]; }
 	PhotonStreamMPXY(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()];}
 	PhotonStreamMPXY(string fName, t_unsigned_long bLength) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); setFileName(fName); setBufferLength(bLength); }
 	PhotonStreamMPXY(t_unsigned_long bLength) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); setBufferLength(bLength); }
 	PhotonStreamMPXY() { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_photon_mp_xy[bLength]; };
 };
-
 class Messages : public Signal {
 public:
 	Messages(string fName) { setType("Message", signal_value_type::Message); setFileName(fName); if (buffer == nullptr) buffer = new t_message[getBufferLength()]; }
@@ -793,7 +729,6 @@ public:
 	Messages(string fName, t_unsigned_long bLength) { setType("Message", signal_value_type::Message); setFileName(fName); setBufferLength(bLength); }
 	Messages(t_unsigned_long bLength) { setType("Message", signal_value_type::Message); setBufferLength(bLength); }
 	Messages() { setType("Message", signal_value_type::Message); if (buffer == nullptr) buffer = new t_message[getBufferLength()]; }
-
 	void setBufferLength(t_unsigned_long bLength) { Signal::setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_message[bLength]; };
 	
 	void bufferPut(t_message);
@@ -1080,26 +1015,17 @@ class RealToComplex : public Block {
 
 /*class OverlapMethod
 {
-
 public:
-
 	void overlapSaveSymComplexIn(vector<complex <double>> &v_in, vector<complex <double>> &v_out, vector<complex <double>> Hf, int NFFT);
 	void overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_out, vector<double> Hf, int NFFT);
 	void overlapSaveAsym(vector<double> &real_in, vector<double> &imag_in, vector<double> &real_out, vector<double> &imag_out, vector<double> h_real, vector<double> h_imag, int M, int L, int N);
 	void overlapSaveSym(vector<double> &real_in, vector<double> &imag_in, vector<double> &real_out, vector<double> &imag_out, vector<double> h_real, vector<double> h_imag, int NFFT);
 	void checkSize(vector<double> &real_in, vector<double> &imag_in, int L);
-
 };
-
-
-
-
 class Fft
 {
-
 public:
 	vector<complex <double>> directTransformInReal(vector<double> real);
-
 	vector<double> inverseTransformInCP(vector<complex <double>> &In);
 	
 	void directTransform(vector<double> &real, vector<double> &imag);
