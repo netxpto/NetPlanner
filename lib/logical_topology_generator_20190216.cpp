@@ -41,7 +41,6 @@ bool LogicalTopologyGenerator::runBlock(void) {
 		test1.capacity = 48;
 		test1.numberOfLightPaths = 1;
 		test1.lightPathsIndex = {0};
-
 		t_light_paths test2;
 		test2.lightPathIndex = 0;
 		test2.sourceNode = 1;
@@ -49,7 +48,6 @@ bool LogicalTopologyGenerator::runBlock(void) {
 		test2.capacity = test1.capacity;
 		test2.numberOfOpticalChannels = 2;
 		test2.opticalChannelsIndex = { 0,1 };
-
 		t_optical_channels test3;
 		t_optical_channels test4;
 		test3.opticalChannelIndex = 0;
@@ -66,7 +64,6 @@ bool LogicalTopologyGenerator::runBlock(void) {
 		test4.numberOfDemands = 1;
 		test3.demandsIndex = { 1 };
 		test4.demandsIndex = { 1 };
-
 		Transparent.paths.push_back(test1);
 		Transparent.lightPaths.push_back(test2);
 		Transparent.opticalChannels.push_back(test3);

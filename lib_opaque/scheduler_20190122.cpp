@@ -367,10 +367,3 @@ t_integer Scheduler::calculateNumberOfDemands() {
 	return demands;
 
 };
-
-
-
-
-
-
-

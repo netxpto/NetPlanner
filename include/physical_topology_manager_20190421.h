@@ -24,7 +24,7 @@ class PhysicalTopologyManager : public Block {
 	t_physical_topology currentPhysicalTopology;
 
 	// Input parameters
-	routing_criterion_physical_topology routingCriterionPhysicalTopology{ routing_criterion_physical_topology::hops };
+	t_routing_criterion_physical_topology routingCriterionPhysicalTopology{ t_routing_criterion_physical_topology::hops };
 	t_integer blockingCriterionPhysicalTopology{ 1 }; // Number of paths to try before blocking a demand
 
 
@@ -37,8 +37,8 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setRoutingCriterionPhysicalTopology(routing_criterion_physical_topology crt) { routingCriterionPhysicalTopology = crt; };
-	routing_criterion_physical_topology getRoutingCriterionPhysicalTopology(void) { return routingCriterionPhysicalTopology; };
+	void setRoutingCriterionPhysicalTopology(t_routing_criterion_physical_topology crt) { routingCriterionPhysicalTopology = crt; };
+	t_routing_criterion_physical_topology getRoutingCriterionPhysicalTopology(void) { return routingCriterionPhysicalTopology; };
 
 	void setBlockingCriterionPhysicalTopology(t_integer crt) { blockingCriterionPhysicalTopology = crt; };
 	t_integer getBlockingCriterionPhysicalTopology(void) { return blockingCriterionPhysicalTopology; };
