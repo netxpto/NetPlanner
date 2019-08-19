@@ -1,22 +1,15 @@
-trabalhar no desenolvimento de heuristicas, considerando o modo transparente
-validar essas heuristicas usando os ILPs do Tiago
-desenvolver novas heuristicas considerando novas restrições
-avançarmos para o modo translucidio
+Bolsa termina: 14/Setembro 
 
 
 TO BE DONE
 
-	resolver o exemplos dos alunos
-	elaborar o relatório para obter o CAPEX
+	- retirar todos os comentários do netxpto.cpp e netxpto.h
+	. colocar o save a false nos sinais
+	- finalizar a versao (alterar o nome Final -> opaque_transparent)
+	- ajudar Élio (Eduardo=>finaliza o código, Élio=> obtnha os resultados)
 
-
-
-
-TO BE DONE
-
-	- atualizar o documento
-	- especificar a informação associada a cada sinal 
-	- fazer o exemplo
+Next meeting: 22/8, 11h
+	
 
 
 
