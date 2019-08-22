@@ -1,19 +1,4 @@
-﻿/*
-# include <complex>
-# include <fstream>
-# include <iostream>
-# include <cmath>
-# include <iostream>
-# include <string>
-# include <strstream>
-# include <algorithm>
-# include <ctime>
-#include  <filesystem>
-#include  <functional>  
-#include  <cctype> 
-#include  <locale> 
-*/
-# include "..\include\netxpto_20190130.h"
+﻿# include "..\include\netxpto_20190130.h"
 
 
 using namespace std;
@@ -91,7 +76,7 @@ void Signal::bufferPut(T value)
 						ptr = ptr + (firstValueToBeSaved - 1);
 
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-						/*for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
+						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
 							fileHandler << "\t\t";
 							fileHandler << ptr->demandIndex;
 							fileHandler << "\t\t\t";
@@ -115,7 +100,7 @@ void Signal::bufferPut(T value)
 							}
 							fileHandler << "\n";
 							ptr++;
-						}*/
+						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
@@ -124,7 +109,7 @@ void Signal::bufferPut(T value)
 						t_logical_topology *ptr = (t_logical_topology *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-						/*for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
 						{
 							//################### PRINT LOGICAL TOPOLOGY ADJACENCY MATRIX #################
 							fileHandler << "-------------------------------------------logicalTopologyAdjacencyMatrix ----------------------------------------";
@@ -259,7 +244,7 @@ void Signal::bufferPut(T value)
 							fileHandler << "\n";
 							fileHandler << "\n";
 							ptr++;
-						}*/
+						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
@@ -271,7 +256,7 @@ void Signal::bufferPut(T value)
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
 
-						/*for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
 						{
 							//################### PRINT PHYSICAL TOPOLOGY ADJACENCY MATRIX #################
 							fileHandler << "-----------------------------------------physicalTopologyAdjacencyMatrix -----------------------------------------------";
@@ -343,7 +328,7 @@ void Signal::bufferPut(T value)
 							fileHandler << "\n";
 							fileHandler << "\n";
 							ptr++;
-						}*/
+						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
@@ -355,7 +340,7 @@ void Signal::bufferPut(T value)
 
 						//################### PRINT PATH REQUEST SIGNAL #####################
 
-						/*for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
 						{
 							fileHandler << "\t";
 							fileHandler << (*ptr).requestIndex;
@@ -381,7 +366,7 @@ void Signal::bufferPut(T value)
 							fileHandler << (*ptr).destinationNode;
 							fileHandler << "\n";
 							ptr++;
-						}*/
+						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
@@ -393,7 +378,7 @@ void Signal::bufferPut(T value)
 
 						//################### PRINT PATH REQUEST SIGNAL #####################
 
-						/*for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
 						{
 							fileHandler << "-------------------------------------------------------------------------------------------------\n";
 							fileHandler << "|                                        pathInformation                                         |\n";
@@ -470,7 +455,7 @@ void Signal::bufferPut(T value)
 							fileHandler << "\n";
 							fileHandler << "\n";
 							ptr++;
-						}*/
+						}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
@@ -481,7 +466,7 @@ void Signal::bufferPut(T value)
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
 
-						/*	for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
+							for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
 							{
 								fileHandler << "\t";
 								fileHandler << (*ptr).demandIndex;
@@ -496,7 +481,7 @@ void Signal::bufferPut(T value)
 								fileHandler << (*ptr).pathIndex;
 								fileHandler << "\n";
 								ptr++;
-							}*/
+							}
 						fileHandler.close();
 						setFirstValueToBeSaved(1);
 					}
@@ -661,9 +646,9 @@ void Signal::close() {
 			if (type == "DemandRequest") {
 				t_demand *ptr = (t_demand *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
-				//bool stop {false};
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
-				/*for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
+
+				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
 						fileHandler << "\t\t";
 						fileHandler << ptr->demandIndex;
 						fileHandler << "\t\t\t";
@@ -687,13 +672,12 @@ void Signal::close() {
 						}
 						fileHandler << "\n";
 						ptr++;
-				}*/
-			//	fileHandler.close();
+				}
 				setFirstValueToBeSaved(1);
 			}
 //#########################################################################
 			else if (type == "LogicalTopology") {
-				/*t_logical_topology *ptr = (t_logical_topology *)buffer;
+				t_logical_topology *ptr = (t_logical_topology *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
@@ -810,12 +794,12 @@ void Signal::close() {
 							fileHandler << "\n";
 							fileHandler << "\n";
 							ptr++;
-						}*/
+						}
 						setFirstValueToBeSaved(1);
 			}
 			else if (type == "PhysicalTopology")
 					{
-					/*t_physical_topology *ptr = (t_physical_topology *)buffer;
+					t_physical_topology *ptr = (t_physical_topology *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
 					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
@@ -873,12 +857,11 @@ void Signal::close() {
 						}
 						fileHandler << "\n";
 					}
-					//fileHandler.close();*/
 					setFirstValueToBeSaved(1);
 					}
 			else if (type == "PathRequest")
 			{
-				/*	t_path_request *ptr = (t_path_request *)buffer;
+					t_path_request *ptr = (t_path_request *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
 					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
@@ -902,13 +885,12 @@ void Signal::close() {
 						fileHandler << (*ptr).destinationNode;
 						fileHandler << "\n";
 						ptr++;
-					}*/
-					//fileHandler.close();
+					}
 					setFirstValueToBeSaved(1);
 			}
 			else if (type == "PathRequestRouted")
 					{
-					/*t_path_request_routed *ptr = (t_path_request_routed *)buffer;
+					t_path_request_routed *ptr = (t_path_request_routed *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
 					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
@@ -963,13 +945,13 @@ void Signal::close() {
 							fileHandler << "\n";
 						}
 						ptr++;
-					}*/
+					}
 					fileHandler.close();
 					setFirstValueToBeSaved(1);
 					}
 			else if (type == "DemandRequestRouted")
 					{
-					/*t_demand_request_routed *ptr = (t_demand_request_routed *)buffer;
+					t_demand_request_routed *ptr = (t_demand_request_routed *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
 					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
@@ -987,7 +969,6 @@ void Signal::close() {
 						fileHandler << "\n";
 						ptr++;
 					}
-					//fileHandler.close();*/
 					setFirstValueToBeSaved(1);
 					}
 			else if (type == "Binary") {
@@ -1026,10 +1007,6 @@ void Signal::close() {
 			}
 		}
 	}
-};
-
-void Signal::closeFinalReport() {
-	//t_logical_topology finalLogicalTopology = getLogicalTopology();
 };
 
 //########################################################################################################################################################
@@ -1955,17 +1932,6 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	int  OLTsQuantity{ 0 };
 	int AmplifiersQuantity{ 0 };
 
-	//t_matrix nodal_Degree;
-	//std::vector<int> row;
-
-	/*for (size_t i = 0; i < finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size(); i++)
-	{
-		for (size_t j = 0; j < finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size(); j++)
-		{
-			row.push_back(0);
-		}
-		nodal_Degree.push_back(row);
-	}*/
 
 	for (size_t i = 0; i < finalPhysicalTopology.opticalMultiplexingSystems.size(); i++)
 	{

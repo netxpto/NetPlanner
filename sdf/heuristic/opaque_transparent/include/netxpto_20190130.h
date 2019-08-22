@@ -296,7 +296,7 @@ public:
 	
 	// Buffer and File manipulation
 	void close();									// Empty the signal buffer and close the signal file
-	void closeFinalReport();
+	
 
 	void reset() { inPosition = 0; outPosition = inPosition; bufferEmpty = true; bufferFull = false; }
 

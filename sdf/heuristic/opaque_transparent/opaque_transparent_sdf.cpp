@@ -1,10 +1,10 @@
-# include "..\include\netxpto_20190130.h"
-# include "..\include\scheduler_20190122.h"
-# include "..\include\logical_topology_generator_20190216.h"
-# include "..\include\physical_topology_generator_20190227.h"
-# include "..\include\sink_20180815.h"
-# include "..\include\logical_topology_manager_20190420.h"
-# include "..\include\physical_topology_manager_20190421.h"
+# include "..\opaque_transparent\include\netxpto_20190130.h"
+# include "..\opaque_transparent\include\scheduler_20190122.h"
+# include "..\opaque_transparent\include\logical_topology_generator_20190216.h"
+# include "..\opaque_transparent\include\physical_topology_generator_20190227.h"
+# include "..\opaque_transparent\include\sink_20180815.h"
+# include "..\opaque_transparent\include\logical_topology_manager_20190420.h"
+# include "..\opaque_transparent\include\physical_topology_manager_20190421.h"
 
 
 
@@ -38,6 +38,7 @@ public:
 	int blockingCriterionLogicalTopology{ 1 };
 	t_routing_criterion_physical_topology routingCriterionPhysicalTopology{ t_routing_criterion_physical_topology::hops };
 	int blockingCriterionPhysicalTopology{ 3 };
+
 
 	/* Initializes default input parameters*/
 	NetworkSimulatorInputParameters() : SystemInputParameters() {
@@ -98,27 +99,35 @@ int main()
 	/* Signals Declaration */
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };
 	Scheduler_Out.setSaveInAscii(true);
+	Scheduler_Out.setSaveSignal(false);
 
-	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn", 1 };
+	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn"};
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
+	LogicalTopologyGenerator_Out.setSaveSignal(false);
 
-	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn", 1 };
+	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn"};
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
+	PhysicalTopologyGenerator_Out.setSaveSignal(false);
 
-	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn", 1 };
+	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn"};
 	FinalLogicalTopology.setSaveInAscii(true);
+	FinalLogicalTopology.setSaveSignal(false);
 
-	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn", 1 };
+	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn"};
 	FinalPhysicalTopology.setSaveInAscii(true);
+	FinalPhysicalTopology.setSaveSignal(false);
 
-	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn", 1 };
+	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn"};
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
+	LogicalTopologyManager_PathRequest.setSaveSignal(false);
 
-	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn", 1 };
+	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn"};
 	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
+	PhysicalTopologyManager_PathRequestRouted.setSaveSignal(false);
 
-	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn", 1 };
+	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn"};
 	ProcessedDemand.setSaveInAscii(true);
+	ProcessedDemand.setSaveSignal(false);
 
 	/* Blocks Decalration */
 	Scheduler Scheduler_{ {},{ &Scheduler_Out} };
@@ -196,7 +205,6 @@ int main()
 	MainSystem.run();
 	MainSystem.terminate();
 	MainSystem.writeReport(LogicalTopologyManager_.getLogicalTopology(), PhysicalTopologyManager_.getPhysicalTopology(), Scheduler_.getODU0Copy(), Scheduler_.getODU1Copy(), Scheduler_.getODU2Copy(), Scheduler_.getODU3Copy(), Scheduler_.getODU4Copy(), Scheduler_.getOrderingRule());
-
 
 	system("pause");
 

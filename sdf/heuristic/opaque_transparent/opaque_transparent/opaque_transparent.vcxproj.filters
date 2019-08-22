@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Final_sdf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\lib\dijkstra_20190503.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -42,12 +39,12 @@
     <ClCompile Include="..\lib\sink_20180815.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\opaque_transparent_sdf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Dijkstra_20190503.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\Dijkstra_physical_20190504.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\logical_topology_generator_20190216.h">
@@ -73,7 +70,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="input_parameters_values.txt">
+    <Text Include="..\FinalReport.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
