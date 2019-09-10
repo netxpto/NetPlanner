@@ -4,6 +4,14 @@ desenvolver novas heuristicas considerando novas restrições
 trabalhar no desenolvimento de heuristicas, considerando o modo opáco com proteção
 avançarmos para o modo translucidio
 
+TO BE DONE
+
+	- colocar o simulador a funcionar de forma integrada e eficiente para os dois modos de transporte (opaco e transparente)
+	
+	- documentar bem e obter resultados => dissertação
+
+next meeting: 17/9, 17h
+
 
 TO BE DONE
 	
