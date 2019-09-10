@@ -211,7 +211,7 @@ bool LogicalTopologyManager::runBlock(void) {
 			if (pathRequestRouted.pathInformation.routed == true)
 			{
 				t_integer odu0s;
-				switch (demand.oduType)
+				switch (pathRequestRouted.pathInformation.oduType)
 				{
 				case 4: odu0s = 80; //odu4 = 80 odu0s
 					break;
@@ -305,6 +305,7 @@ bool LogicalTopologyManager::runBlock(void) {
 
 					for (size_t i = 0; i < pathDij.size() - 1; i++)
 					{
+						if(pathDij.size() != 0) {
 						t_integer src = pathDij[i];
 						t_integer dst = pathDij[i + 1];
 
@@ -340,6 +341,7 @@ bool LogicalTopologyManager::runBlock(void) {
 							}
 							j++;
 						}
+					}
 					}
 
 					t_paths newPath; // novo path
@@ -908,7 +910,7 @@ bool LogicalTopologyManager::runBlock(void) {
 								pathRequest.numberOfIntermediateNodes++;
 								pathRequest.intermediateNodes.push_back(myPath[i] + 1);
 							}
-
+							pathRequest.oduType = demand.oduType;
 							outputSignals[2]->bufferPut((t_path_request)pathRequest);
 							pathRequest.intermediateNodes.clear();
 							requestIndex++;
@@ -939,6 +941,7 @@ bool LogicalTopologyManager::runBlock(void) {
 									pathRequest.destinationNode = dst;
 									pathRequest.numberOfIntermediateNodes = 0;
 									requestIndex++;
+									pathRequest.oduType = demand.oduType;
 
 									outputSignals[2]->bufferPut((t_path_request)pathRequest);
 								}

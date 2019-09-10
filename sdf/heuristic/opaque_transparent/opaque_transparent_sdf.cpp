@@ -38,6 +38,20 @@ public:
 	int blockingCriterionLogicalTopology{ 1 };
 	t_routing_criterion_physical_topology routingCriterionPhysicalTopology{ t_routing_criterion_physical_topology::hops };
 	int blockingCriterionPhysicalTopology{ 3 };
+	int OLTsCost{ 15000 };
+	int TranspondersCost{ 5000 };
+	int AmplifiersCost{ 2000 };
+	int EXCsCost{ 10000 };
+	int ODU0portsCost{ 125 };
+	int ODU1portsCost{ 250 };
+	int ODU2portsCost{ 1000 };
+	int ODU3portsCost{ 4000 };
+	int ODU4portsCost{ 10000 };
+	int OTU4portsCost{ 10000 };
+	int OXCsCost{ 20000 };
+	int addPortsCost{ 2500 };
+	int linePortsCost{ 2500 };
+
 
 
 	/* Initializes default input parameters*/
@@ -79,6 +93,19 @@ public:
 		addInputParameter("blockingCriterionLogicalTopology", &blockingCriterionLogicalTopology);
 		addInputParameter("routingCriterionPhysicalTopology", &routingCriterionPhysicalTopology);
 		addInputParameter("blockingCriterionPhysicalTopology", &blockingCriterionPhysicalTopology);
+		addInputParameter( "OLTsCost", &OLTsCost);
+		addInputParameter("TranspondersCost", &TranspondersCost);
+		addInputParameter("AmplifiersCost", &AmplifiersCost);
+		addInputParameter("EXCsCost", &EXCsCost);
+		addInputParameter("ODU0portsCost", &ODU0portsCost);
+		addInputParameter("ODU1portsCost", &ODU1portsCost);
+		addInputParameter("ODU2portsCost", &ODU2portsCost);
+		addInputParameter("ODU3portsCost", &ODU3portsCost);
+		addInputParameter("ODU4portsCost", &ODU4portsCost);
+		addInputParameter("OTU4portsCost", &OTU4portsCost);
+		addInputParameter("OXCsCost", &OXCsCost);
+		addInputParameter("addPortsCost", &addPortsCost);
+		addInputParameter("linePortsCost", &linePortsCost);
 	}
 };
 
@@ -99,35 +126,35 @@ int main()
 	/* Signals Declaration */
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };
 	Scheduler_Out.setSaveInAscii(true);
-	Scheduler_Out.setSaveSignal(false);
+	Scheduler_Out.setSaveSignal(true);
 
 	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn"};
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
-	LogicalTopologyGenerator_Out.setSaveSignal(false);
+	LogicalTopologyGenerator_Out.setSaveSignal(true);
 
 	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn"};
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
-	PhysicalTopologyGenerator_Out.setSaveSignal(false);
+	PhysicalTopologyGenerator_Out.setSaveSignal(true);
 
 	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn"};
 	FinalLogicalTopology.setSaveInAscii(true);
-	FinalLogicalTopology.setSaveSignal(false);
+	FinalLogicalTopology.setSaveSignal(true);
 
 	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn"};
 	FinalPhysicalTopology.setSaveInAscii(true);
-	FinalPhysicalTopology.setSaveSignal(false);
+	FinalPhysicalTopology.setSaveSignal(true);
 
 	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn"};
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
-	LogicalTopologyManager_PathRequest.setSaveSignal(false);
+	LogicalTopologyManager_PathRequest.setSaveSignal(true);
 
-	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn"};
+	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn" };
 	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
-	PhysicalTopologyManager_PathRequestRouted.setSaveSignal(false);
+	PhysicalTopologyManager_PathRequestRouted.setSaveSignal(true);
 
 	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn"};
 	ProcessedDemand.setSaveInAscii(true);
-	ProcessedDemand.setSaveSignal(false);
+	ProcessedDemand.setSaveSignal(true);
 
 	/* Blocks Decalration */
 	Scheduler Scheduler_{ {},{ &Scheduler_Out} };
@@ -204,10 +231,9 @@ int main()
 
 	MainSystem.run();
 	MainSystem.terminate();
-	MainSystem.writeReport(LogicalTopologyManager_.getLogicalTopology(), PhysicalTopologyManager_.getPhysicalTopology(), Scheduler_.getODU0Copy(), Scheduler_.getODU1Copy(), Scheduler_.getODU2Copy(), Scheduler_.getODU3Copy(), Scheduler_.getODU4Copy(), Scheduler_.getOrderingRule());
+	MainSystem.writeReport(LogicalTopologyManager_.getLogicalTopology(), PhysicalTopologyManager_.getPhysicalTopology(), param.odu0, param.odu1, param.odu2, param.odu3, param.odu4, param.orderingRule, param.OLTsCost, param.TranspondersCost, param.AmplifiersCost, param.EXCsCost, param.ODU0portsCost, param.ODU1portsCost, param.ODU2portsCost, param.ODU3portsCost, param.ODU4portsCost, param.OTU4portsCost, param.OXCsCost, param.addPortsCost, param.linePortsCost);
 
 	system("pause");
 
 	return 0;
 }
-

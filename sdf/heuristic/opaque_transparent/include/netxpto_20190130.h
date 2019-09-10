@@ -875,7 +875,7 @@ public:
 	bool run();
 	bool run(string signalPath);
 	void terminate();
-	void writeReport(t_logical_topology finalLogicalTopology, t_physical_topology finalPhysicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, ordering_rule orderingRule);
+	void writeReport(t_logical_topology finalLogicalTopology, t_physical_topology finalPhysicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, ordering_rule orderingRule, t_integer OLTsCost, t_integer TranspondersCost, t_integer AmplifiersCost, t_integer EXCsCost, t_integer ODU0portsCost, t_integer ODU1portsCost, t_integer ODU2portsCost, t_integer ODU3portsCost, t_integer ODU4portsCost, t_integer OTU4portsCost, t_integer OXCsCost, t_integer addPortsCost, t_integer linePortsCost);
 	void terminateSuperBlock();
 
 	//########################################################################################################

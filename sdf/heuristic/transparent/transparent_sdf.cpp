@@ -98,27 +98,35 @@ int main()
 	/* Signals Declaration */
 	DemandRequest Scheduler_Out{"Scheduler_Out.sgn", 1};
 	Scheduler_Out.setSaveInAscii(true);
+	Scheduler_Out.setSaveSignal(false);
 
 	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn", 1};
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
+	LogicalTopologyGenerator_Out.setSaveSignal(false);
 
 	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn", 1};
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
+	PhysicalTopologyGenerator_Out.setSaveSignal(false);
 
 	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn", 1};
 	FinalLogicalTopology.setSaveInAscii(true);
+	FinalLogicalTopology.setSaveSignal(false);
 
 	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn", 1};
 	FinalPhysicalTopology.setSaveInAscii(true);
+	FinalPhysicalTopology.setSaveSignal(false);
 
 	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn", 1};
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
+	LogicalTopologyManager_PathRequest.setSaveSignal(false);
 
 	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn", 1};
 	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
+	PhysicalTopologyManager_PathRequestRouted.setSaveSignal(false);
 
 	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn", 1};
 	ProcessedDemand.setSaveInAscii(true);
+	ProcessedDemand.setSaveSignal(false);
 
 	/* Blocks Decalration */
 	Scheduler Scheduler_{ {},{ &Scheduler_Out} };

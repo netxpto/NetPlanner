@@ -1052,10 +1052,6 @@ void Block::terminateBlock(void) {
 
 }
 
-//void Block::writeReport(void){
-	
-//}
-
 void Block::closeOutputSignals(void) {
 
 	for (auto i = 0; i < numberOfOutputSignals; i++)
@@ -1916,7 +1912,7 @@ void System::terminate()
 
 }
 
-void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_topology finalPhysicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, ordering_rule orderingRule)
+void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_topology finalPhysicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, ordering_rule orderingRule, t_integer OLTsCost, t_integer TranspondersCost, t_integer AmplifiersCost, t_integer EXCsCost, t_integer ODU0portsCost, t_integer ODU1portsCost, t_integer ODU2portsCost, t_integer ODU3portsCost, t_integer ODU4portsCost, t_integer OTU4portsCost, t_integer OXCsCost, t_integer addPortsCost, t_integer linePortsCost)
 {
 	ofstream fileHandler;
 	fileHandler.open("FinalReport.txt");
@@ -2358,7 +2354,7 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	fileHandler << "\n\n\n\n";
 	
 	// Unit prices in Euros €
-	int OLTsCost{ 15000 };
+	/*int OLTsCost{ 15000 };
 	int TranspondersCost{ 5000 };
 	int AmplifiersCost{ 2000 };
 	int EXCsCost{ 10000 };
@@ -2370,7 +2366,7 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	int OTU4portsCost{ 10000 };
 	int OXCsCost{ 20000 };
 	int addPortsCost{ 2500 };
-	int linePortsCost{ 2500 };
+	int linePortsCost{ 2500 };*/
 
 
 

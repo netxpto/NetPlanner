@@ -74,11 +74,11 @@ odu4=
 //################################### ORDERING RULE ################################################
 orderingRule=descendingOrder
 //################################### TRANSPORT MODE ###############################################
-transportMode=transparent
+transportMode=opaque
 //############################ ROUTING CRITERION LOGICAL TOPOLOGY ##################################
 routingCriterionLogicalTopology=hops
 //############################ BLOCKING CRITERION LOGICAL TOPOLOGY #################################
-blockingCriterionLogicalTopology=1
+blockingCriterionLogicalTopology=3
 //############################ ROUTING CRITERION PHYSICAL TOPOLOGY #################################
 routingCriterionPhysicalTopology=hops
 //############################ BLOCKING CRITERION PHYSICAL TOPOLOGY ################################
