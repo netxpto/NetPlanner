@@ -34,9 +34,9 @@ public:
 	double initialWavelenght{ 1550 };
 	double wavelenghtSpacing{ 0.8 };
 	int opticalChannelCapacity{ 0 };
-	routing_criterion_logical_topology routingCriterionLogicalTopology{ routing_criterion_logical_topology::hops };
+	t_routing_criterion_logical_topology routingCriterionLogicalTopology{ t_routing_criterion_logical_topology::hops };
 	int blockingCriterionLogicalTopology{ 1 };
-	routing_criterion_physical_topology routingCriterionPhysicalTopology{ routing_criterion_physical_topology::hops };
+	t_routing_criterion_physical_topology routingCriterionPhysicalTopology{ t_routing_criterion_physical_topology::hops };
 	int blockingCriterionPhysicalTopology{ 3 };
 
 	/* Initializes default input parameters*/
@@ -165,7 +165,7 @@ int main()
 	LogicalTopologyManager_.setBlockingCriterionLogicalTopology(param.blockingCriterionLogicalTopology);
 
 	Sink SinkLogicalTopology_{ {&FinalLogicalTopology},{} };
-	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
+	SinkLogicalTopology_.setDisplayNumberOfSamples(false);
 
 	Sink SinkLogicalTopologyProcessedDemands_{ {&ProcessedDemand},{} };
 	SinkLogicalTopology_.setDisplayNumberOfSamples(true);
@@ -178,21 +178,17 @@ int main()
 	PhysicalTopologyManager_.setBlockingCriterionPhysicalTopology(param.blockingCriterionPhysicalTopology);
 
 	Sink SinkPhysicalTopology_{ {&FinalPhysicalTopology},{} };
-	SinkPhysicalTopology_.setDisplayNumberOfSamples(true);
+	SinkPhysicalTopology_.setDisplayNumberOfSamples(false);
 
 
 	System MainSystem{
 		// BLOCKS
 		&Scheduler_,
-		//&SinkScheduler_,
 		&LogicalTopologyGenerator_,
-		//&SinkLogicalTopologyGenerator_,
 		&PhysicalTopologyGenerator_,
-		//&SinkPhysicalTopologyGenerator_,
 		&LogicalTopologyManager_,
 		&SinkLogicalTopology_,
 		&SinkLogicalTopologyProcessedDemands_,
-		//&SinkRoutedOrBlocked_,
 		&PhysicalTopologyManager_,
 		&SinkPhysicalTopology_
 };
@@ -206,3 +202,4 @@ int main()
 
 	return 0;
 }
+

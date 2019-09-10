@@ -22,6 +22,11 @@ odu2 =
 0 0 0 0 0 0 
 0 0 0 0 0 0 
 0 0 0 0 0 0 
+<<<<<<< HEAD
+=======
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+>>>>>>> Eduardo
 0 0 0 0 0 0
 
 odu3 = 
@@ -30,6 +35,7 @@ odu3 =
 0 0 0 0 0 0 
 4 0 0 0 0 0 
 0 0 0 0 0 0 
+<<<<<<< HEAD
 0 0 0 0 0 0
 
 odu4 = 
@@ -39,6 +45,19 @@ odu4 =
 1 0 0 0 0 0 
 1 0 0 0 0 0 
 1 0 0 0 0 0
+=======
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0
+
+odu4 = 
+0 1 1 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 0
+>>>>>>> Eduardo
 
 orderingRule = descendingOrder
 
@@ -53,18 +72,30 @@ physicalTopologyAdjacencyMatrix =
 1 1 0 0 1 0
 
 distanceMatrix = 
+<<<<<<< HEAD
 0 350 0 0 0 150 
 350 0 400 0 0 120 
 0 400 0 250 100 0 
 0 0 250 0 200 0 
 0 0 100 200 0 600 
+=======
+0 350 0 0 0 150
+350 0 400 0 0 120
+0 400 0 250 100 0
+0 0 250 0 200 0
+0 0 100 200 0 600
+>>>>>>> Eduardo
 150 120 0 0 600 0
 
 span = 100
 
 numberOfOMSPerLink = 1
 
+<<<<<<< HEAD
 numberOfOpticalChannelsPerOMS = 100
+=======
+numberOfOpticalChannelsPerOMS = 1
+>>>>>>> Eduardo
 
 initialWavelength = 1550
 

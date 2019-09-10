@@ -66,4 +66,3 @@ bool PhysicalTopologyGenerator::runBlock(void)
 	return true;
 };
 
-

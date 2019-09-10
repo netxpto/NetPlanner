@@ -73,6 +73,9 @@
     <Text Include="input_parameters_values.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="input_parameters_values_realistic.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
