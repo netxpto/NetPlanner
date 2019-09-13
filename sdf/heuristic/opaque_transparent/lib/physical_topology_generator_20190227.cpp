@@ -20,6 +20,7 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 
 		output.physicalTopologyAdjacencyMatrix = getPhysicalTopologyAdjacencyMatrix();
 		output.distancesBetweenNodes = getDistancesBetweenNodes();
+		output.transportMode = getTransportMode();
 		
 
 		for (t_integer line = 0; line < (t_integer)physicalTopologyAdjacencyMatrix[0].size(); line++)
@@ -75,7 +76,7 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 				}
 			}
 		}
-
+	 
 		outputSignals[0]->bufferPut((t_physical_topology)output);
 		return true;
 };

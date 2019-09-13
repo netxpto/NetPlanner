@@ -128,19 +128,19 @@ int main()
 	Scheduler_Out.setSaveInAscii(true);
 	Scheduler_Out.setSaveSignal(true);
 
-	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn"};
+	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn",1};
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
 	LogicalTopologyGenerator_Out.setSaveSignal(true);
 
-	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn"};
+	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn",1};
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
 	PhysicalTopologyGenerator_Out.setSaveSignal(true);
 
-	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn"};
+	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn",1};
 	FinalLogicalTopology.setSaveInAscii(true);
 	FinalLogicalTopology.setSaveSignal(true);
 
-	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn"};
+	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn",1};
 	FinalPhysicalTopology.setSaveInAscii(true);
 	FinalPhysicalTopology.setSaveSignal(true);
 
@@ -148,11 +148,11 @@ int main()
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
 	LogicalTopologyManager_PathRequest.setSaveSignal(true);
 
-	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn" };
+	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn"};
 	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
 	PhysicalTopologyManager_PathRequestRouted.setSaveSignal(true);
 
-	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn"};
+	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn",1};
 	ProcessedDemand.setSaveInAscii(true);
 	ProcessedDemand.setSaveSignal(true);
 
@@ -191,6 +191,7 @@ int main()
 	PhysicalTopologyGenerator_.setSpan(param.span);
 	PhysicalTopologyGenerator_.setNumberOfOMSPerLink(param.numberOfOMSPerLink);
 	PhysicalTopologyGenerator_.setOpticalChannelCapacity(param.opticalChannelCapacity);
+	PhysicalTopologyGenerator_.setTransportMode(param.transportMode);
 
 	Sink SinkPhysicalTopologyGenerator_{ { &PhysicalTopologyGenerator_Out },{} };
 	SinkPhysicalTopologyGenerator_.setDisplayNumberOfSamples(true);

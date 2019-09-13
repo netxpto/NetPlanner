@@ -21,7 +21,7 @@ span=100
 //################################### NUMBER OF OMS PER LINK #######################################
 numberOfOMSPerLink=1
 //############################# NUMBER OF OPTICAL CHANNELS PER OMS #################################
-numberOfOpticalChannelsPerOMS=100
+numberOfOpticalChannelsPerOMS=2
 //################################### INITIAL WAVELENGHT (nm) ######################################
 initialWavelenght=1550
 //############################## WAVELENGHT SPACING IN NANOMETERS ##################################
@@ -74,7 +74,7 @@ odu4=
 //################################### ORDERING RULE ################################################
 orderingRule=descendingOrder
 //################################### TRANSPORT MODE ###############################################
-transportMode=opaque
+transportMode=transparent
 //############################ ROUTING CRITERION LOGICAL TOPOLOGY ##################################
 routingCriterionLogicalTopology=hops
 //############################ BLOCKING CRITERION LOGICAL TOPOLOGY #################################

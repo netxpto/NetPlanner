@@ -14,7 +14,7 @@ void LogicalTopologyManager::initialize(void) {
 bool LogicalTopologyManager::runBlock(void) {
 	
 
-	t_demand demand;
+	//t_demand demand;
 	t_demand_request_routed demandProcessed;
 	t_path_request_routed pathRequestRouted;
 
@@ -42,8 +42,7 @@ bool LogicalTopologyManager::runBlock(void) {
 
 	bool notProcessNextDemand = false;
 	
-	//if (process3 != 0) // Process PathRequestRouted signals
-	//{
+	
 		if(currentLogicalTopology.transportMode == transport_mode::transparent && process3 != 0)
 		{
 		for (int i = 0; i < process3; i++) {
@@ -239,7 +238,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						newOpticalChannel.wavelength = pathRequestRouted.lightPathsTable[i].wavelength;
 						newOpticalChannel.capacity = 80 - odu0s;
 						newOpticalChannel.numberOfDemands = 1;
-						newOpticalChannel.demandsIndex.push_back(demand.demandIndex);
+						newOpticalChannel.demandsIndex.push_back(pathRequestRouted.pathInformation.demandIndex);
 						currentLogicalTopology.opticalChannels.push_back(newOpticalChannel);
 						newOpticalChannel.demandsIndex.clear();
 
@@ -264,7 +263,7 @@ bool LogicalTopologyManager::runBlock(void) {
 					newPath.lightPathsIndex = newLightPathsIndex;
 					currentLogicalTopology.paths.push_back(newPath);
 
-					processedDemand.demandIndex = demand.demandIndex;
+					processedDemand.demandIndex = pathRequestRouted.pathInformation.demandIndex;
 					processedDemand.routed = true;
 					processedDemand.pathIndex = newPath.pathIndex;
 					outputSignals[1]->bufferPut((t_demand_request_routed)processedDemand);
@@ -322,7 +321,7 @@ bool LogicalTopologyManager::runBlock(void) {
 									currentLogicalTopology.lightPaths[j].capacity -= odu0s;
 									currentLogicalTopology.opticalChannels[j].capacity -= odu0s;
 									currentLogicalTopology.opticalChannels[j].numberOfDemands++;
-									currentLogicalTopology.opticalChannels[j].demandsIndex.push_back(demand.demandIndex);
+									currentLogicalTopology.opticalChannels[j].demandsIndex.push_back(pathRequestRouted.pathInformation.demandIndex);
 
 									for (size_t k = 0; k < currentLogicalTopology.paths.size(); k++)
 									{
@@ -374,7 +373,7 @@ bool LogicalTopologyManager::runBlock(void) {
 							}
 						}
 					}
-					processedDemand.demandIndex = demand.demandIndex;
+					processedDemand.demandIndex = pathRequestRouted.pathInformation.demandIndex;
 					processedDemand.routed = true;
 					processedDemand.pathIndex = newPath.pathIndex;
 					outputSignals[1]->bufferPut((t_demand_request_routed)processedDemand);
@@ -388,7 +387,7 @@ bool LogicalTopologyManager::runBlock(void) {
 				tryAnotherPath++;
 				if (tryAnotherPath == blockingCriterionLogicalTopology)
 				{
-					processedDemand.demandIndex = demand.demandIndex;
+					processedDemand.demandIndex = pathRequestRouted.pathInformation.demandIndex;
 					processedDemand.routed = false;
 					processedDemand.pathIndex = -1;
 					outputSignals[1]->bufferPut((t_demand_request_routed)processedDemand);
@@ -721,6 +720,7 @@ bool LogicalTopologyManager::runBlock(void) {
 			for (t_integer dmd = 0; dmd < process2; dmd++)
 			{
 				inputSignals[1]->bufferGet(&demand);
+				
 
 				t_integer odu0s;
 				switch (demand.oduType)
@@ -903,6 +903,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						{
 							t_path_request pathRequest;
 							pathRequest.requestIndex = requestIndex;
+							pathRequest.demandIndex = demand.demandIndex;
 							pathRequest.sourceNode = myPath.front() + 1;
 							pathRequest.destinationNode = myPath.back() + 1;
 							for (size_t i = 1; i < myPath.size() - 1; i++)
@@ -937,6 +938,7 @@ bool LogicalTopologyManager::runBlock(void) {
 								{
 									t_path_request pathRequest;
 									pathRequest.requestIndex = requestIndex;
+									pathRequest.demandIndex = demand.demandIndex;
 									pathRequest.sourceNode = src;
 									pathRequest.destinationNode = dst;
 									pathRequest.numberOfIntermediateNodes = 0;
