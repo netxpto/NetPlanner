@@ -6,6 +6,16 @@ avançarmos para o modo translucidio
 
 TO BE DONE
 
+	- obter resultados (para a rede de referencia e uma rede realista (http://www.av.it.pt/anp/on/refnet2.html))
+
+	- começar a estruturar a tese (overleaf.com)
+
+	- começar a escrever
+
+next meeting: 30/9, 16h
+
+TO BE DONE
+
 	- colocar o simulador a funcionar de forma integrada e eficiente para os dois modos de transporte (opaco e transparente)
 	
 	- documentar bem e obter resultados => dissertação
