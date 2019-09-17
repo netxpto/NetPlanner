@@ -1,4 +1,4 @@
-/*
+﻿/*
 # include <complex>
 # include <fstream>
 # include <iostream>
@@ -234,7 +234,7 @@ void Signal::bufferPut(T value)
 								fileHandler << (*ptr).opticalChannels[opticalChannel].capacity;
 								fileHandler << "\t";
 								fileHandler << "\t";
-								fileHandler << (*ptr).opticalChannels[opticalChannel].wavelenght;
+								fileHandler << (*ptr).opticalChannels[opticalChannel].wavelength;
 								fileHandler << "\t";
 								fileHandler << "\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
@@ -313,7 +313,7 @@ void Signal::bufferPut(T value)
 								fileHandler << "[ ";
 								for (size_t i = 0; i < (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts; i++)
 								{
-									fileHandler << (*ptr).opticalMultiplexingSystems[oms].wavelenghts[i];
+									fileHandler << (*ptr).opticalMultiplexingSystems[oms].wavelengths[i];
 									fileHandler << " ";
 								}
 								fileHandler << "]";
@@ -322,7 +322,7 @@ void Signal::bufferPut(T value)
 								fileHandler << "[ ";
 								for (size_t j = 0; j < (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts; j++)
 								{
-									fileHandler << (*ptr).opticalMultiplexingSystems[oms].availableWavelenghts[j];
+									fileHandler << (*ptr).opticalMultiplexingSystems[oms].availableWavelengths[j];
 									fileHandler << " ";
 								}
 								fileHandler << "]";
@@ -457,7 +457,7 @@ void Signal::bufferPut(T value)
 							fileHandler << "\t";
 							fileHandler << "\t";
 							fileHandler << "\t";
-							fileHandler << (*ptr).lightPathsTable[i].wavelenght;
+							fileHandler << (*ptr).lightPathsTable[i].wavelength;
 							fileHandler << "\n";
 						}
 						fileHandler << "\n";
@@ -645,119 +645,6 @@ void Signal::writeHeader(string signalPath){
 };
 
 
-/*
-void Signal::bufferGet(t_binary *valueAddr) {
-	*valueAddr = static_cast<t_binary *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(t_integer *valueAddr) {
-	*valueAddr = static_cast<t_integer *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(t_real *valueAddr) {
-	*valueAddr = static_cast<t_real *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(t_complex *valueAddr) {
-	*valueAddr = static_cast<t_complex *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(t_complex_xy *valueAddr) {
-	*valueAddr = static_cast<t_complex_xy *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(t_photon *valueAddr) {
-	*valueAddr = static_cast<t_photon *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(t_photon_mp *valueAddr) {
-	*valueAddr = static_cast<t_photon_mp *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(t_photon_mp_xy *valueAddr) {
-	*valueAddr = static_cast<t_photon_mp_xy *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(t_message *valueAddr) {
-	*valueAddr = static_cast<t_message *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Messages::bufferPut(t_message value) {
-	(static_cast<t_message*>(buffer))[getInPosition()] = value;
-	if (getBufferEmpty()) setBufferEmpty(false);
-	setInPosition(getInPosition()+1);
-	if (getInPosition() == getBufferLength()) {
-		setInPosition(0);
-		if (getSaveSignal()) {
-			int fValueToBeSaved = getFirstValueToBeSaved();
-			int bLength = getBufferLength();
-			if (fValueToBeSaved <= getBufferLength()) {
-				t_message *ptr = (t_message *)buffer;
-				ptr = ptr + (fValueToBeSaved - 1);
-				ofstream fileHandler("./" + getFolderName() + "/" + getFileName(), ios::out | ios::app);
-				for (int msg = fValueToBeSaved; msg <= bLength; msg++) {
-						for (auto fld = 0; fld < value.size(); fld++) {
-							fileHandler << ptr->messageType + "\t" + ptr->messageDataLength + "\t" + ptr->messageData + "\n";
-						}
-						ptr++;
-				}
-				fileHandler.close();
-				setFirstValueToBeSaved(1);
-			}
-			else {
-				setFirstValueToBeSaved(fValueToBeSaved - bLength);
-			}
-		}
-	}
-	if (getInPosition() == getOutPosition()) setBufferFull(true);
-};
-*/
-
 void Signal::close() {
 
 	if (saveSignal && (inPosition >= firstValueToBeSaved)) {
@@ -902,7 +789,7 @@ void Signal::close() {
 								fileHandler << "\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].capacity;
 								fileHandler << "\t";
-								fileHandler << (*ptr).opticalChannels[opticalChannel].wavelenght;
+								fileHandler << (*ptr).opticalChannels[opticalChannel].wavelength;
 								fileHandler << "\t";
 								fileHandler << (*ptr).opticalChannels[opticalChannel].numberOfDemands;
 								fileHandler << "\t";
@@ -970,7 +857,7 @@ void Signal::close() {
 							fileHandler << "[ ";
 							for (size_t i = 0; i < (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts; i++)
 							{
-								fileHandler << (*ptr).opticalMultiplexingSystems[oms].wavelenghts[i];
+								fileHandler << (*ptr).opticalMultiplexingSystems[oms].wavelengths[i];
 								fileHandler << " ";
 							}
 							fileHandler << "]";
@@ -978,7 +865,7 @@ void Signal::close() {
 							fileHandler << "[ ";
 							for (size_t j = 0; j < (*ptr).opticalMultiplexingSystems[oms].numberOfWavelenghts; j++)
 							{
-								fileHandler << (*ptr).opticalMultiplexingSystems[oms].availableWavelenghts[j];
+								fileHandler << (*ptr).opticalMultiplexingSystems[oms].availableWavelengths[j];
 								fileHandler << " ";
 							}
 							fileHandler << "]";
@@ -1072,7 +959,7 @@ void Signal::close() {
 							}
 							fileHandler << "]";
 							fileHandler << "\t";
-							fileHandler << (*ptr).lightPathsTable[i].wavelenght;
+							fileHandler << (*ptr).lightPathsTable[i].wavelength;
 							fileHandler << "\n";
 						}
 						ptr++;
@@ -1188,9 +1075,9 @@ void Block::terminateBlock(void) {
 
 }
 
-void Block::writeReport(void){
+//void Block::writeReport(void){
 	
-}
+//}
 
 void Block::closeOutputSignals(void) {
 
@@ -1206,14 +1093,11 @@ void Block::closeOutputSignals(void) {
 void SuperBlock::initialize(void){
 /*
 	for (auto k : blocks) moduleBlocks.push_back(&k);
-
 	for (int unsigned i = 0; i < moduleBlocks.size(); i++) {
 		moduleBlocks[i]->initializeBlock();
 	}
-
 	for (int unsigned j = 0; j<(moduleBlocks[moduleBlocks.size() - 1]->outputSignals).size(); j++)
 		moduleBlocks[moduleBlocks.size() - 1]->outputSignals[j]->writeHeader();
-
 	
 	for (unsigned int i = 0; i < outputSignals.size(); i++) {
 		outputSignals[i]->setSymbolPeriod(moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->getSymbolPeriod());
@@ -1325,7 +1209,6 @@ bool SuperBlock::runBlock(string signalPath) {
 			proceed = (proceed || aux);
 			alive = (alive || proceed);
 		}
-
 		*/
 		for (unsigned int i = 0; i < 0; i++) {
 			//int ready = blocks[blocks.size() - 1].outputSignals[i]->ready();
@@ -1444,8 +1327,6 @@ void SuperBlock::terminate() {
 	for (int unsigned i = 0; i < moduleBlocks.size(); i++) {
 		moduleBlocks[i]->terminateBlock();
 	}
-
-
 	for (int unsigned j = 0; j<(moduleBlocks[moduleBlocks.size() - 1]->outputSignals).size(); j++)
 		moduleBlocks[moduleBlocks.size() - 1]->outputSignals[j]->close();
     */
@@ -1564,10 +1445,8 @@ void FD_Filter::initializeFD_Filter(void) {
 };
 
 /*void FD_Filter::OverlapSaveMethod(void) {
-
 	int NFFT = transferFunctionLength;
 	int Nblocks = 2 * (inputBufferTimeDomain.size() / NFFT);
-
 	vector<double> real_temp(NFFT, 0);
 	vector<double> imag_temp(NFFT, 0);
 	vector<double> real_temp_copy(NFFT, 0);
@@ -1578,13 +1457,10 @@ void FD_Filter::initializeFD_Filter(void) {
 	ComplexMult CMult;
 	CMult.ComplexVect2ReImVect(transferFunction, H_real, H_imag);
 	//fft.directTransform(h_real, h_imag);
-
 	for (int k = 0; k < Nblocks; k++) {
-
 		if (k == Nblocks - 1) {
 			copy(inputBufferTimeDomain.begin(), inputBufferTimeDomain.begin() + (NFFT / 2), real_temp.begin() + (NFFT / 2));
 			//copy(imag_in.begin(), imag_in.begin() + (NFFT / 2), imag_temp.begin() + (NFFT / 2));
-
 			copy(inputBufferTimeDomain.end() - (NFFT / 2), inputBufferTimeDomain.end(), real_temp.begin());
 			//copy(imag_in.end() - (NFFT / 2), imag_in.end(), imag_temp.begin());
 		}
@@ -1592,25 +1468,19 @@ void FD_Filter::initializeFD_Filter(void) {
 			copy(inputBufferTimeDomain.begin() + k*(NFFT / 2), inputBufferTimeDomain.begin() + ((k + 1)*NFFT - k*(NFFT / 2)), real_temp.begin());
 			//copy(imag_in.begin() + k*(NFFT / 2), imag_in.begin() + ((k + 1)*NFFT - k*(NFFT / 2)), imag_temp.begin());
 		}
-
 		// coping real_temp/imag_temp into real_temp_copy/imag_temp_copy vectors
 		real_temp_copy = real_temp;
 		imag_temp_copy = imag_temp;
-
 		// Computation of FFT of each block
 		fft.directTransform(real_temp_copy, imag_temp_copy);
-
 		// Multiplication with the transfer function
 		CMult.CMultVector_Loop(real_temp_copy, imag_temp_copy, H_real, H_imag);
-
 		// Computation of IFFT of each block
 		fft.inverseTransform(real_temp_copy, imag_temp_copy);
-
 		// Removing the samples symetrically and assign to the output
 		if (k == Nblocks - 1) {
 			copy(real_temp_copy.begin() + (NFFT / 4), real_temp_copy.begin() + (NFFT / 2), outputBufferTimeDomain.end() - (NFFT / 4));
 			//copy(imag_temp_copy.begin() + (NFFT / 4), imag_temp_copy.begin() + (NFFT / 2), imag_out.end() - (NFFT / 4));
-
 			copy(real_temp_copy.begin() + (NFFT / 2), real_temp_copy.begin() + NFFT, outputBufferTimeDomain.begin());
 			//copy(imag_temp_copy.begin() + (NFFT / 2), imag_temp_copy.begin() + NFFT, imag_out.begin());
 		}
@@ -1619,13 +1489,10 @@ void FD_Filter::initializeFD_Filter(void) {
 			//copy(imag_temp_copy.begin() + (NFFT / 4), imag_temp_copy.end() - (NFFT / 4), imag_out.begin() + ((NFFT / 4) + k*(NFFT / 2)));
 		}
 	}
-
 }
-
 void FD_Filter::overlapSaveZPRealIn(void) {
 	int NFFT = transferFunctionLength;
 	int Nblocks = 2 * (inputBufferTimeDomain.size() / NFFT);
-
 	vector<double> var_temp(NFFT, 0);
 	vector<double> real_temp_copy(NFFT, 0);
 	vector<double> imag_temp_copy(NFFT, 0);
@@ -1633,55 +1500,38 @@ void FD_Filter::overlapSaveZPRealIn(void) {
 	vector<double> H_imag(NFFT, 0);
 	vector<double> v_in_temp(NFFT / 2, 0);
 	vector<double> v_out_temp(NFFT / 2, 0);
-
 	Fft fft;
 	ComplexMult CMult;
-
 	CMult.ComplexVect2ReImVect(transferFunction, H_real, H_imag);
-
 	for (int k = 0; k < Nblocks; k++) {
-
 		copy(inputBufferTimeDomain.begin() + k*(NFFT / 2), inputBufferTimeDomain.begin() + ((k + 1)*(NFFT / 2)), v_in_temp.begin());
-
 		copy(v_in_temp.begin(), v_in_temp.end(), var_temp.begin() + (NFFT / 2));
 		real_temp_copy = var_temp;
 		rotate(var_temp.begin(), var_temp.begin() + NFFT / 2, var_temp.end());
 		// Computation of FFT of each block
-
 		fft.directTransform(real_temp_copy, imag_temp_copy);
-
 		// Multiplication with the transfer function
 		CMult.CMultVector_Loop(real_temp_copy, imag_temp_copy, H_real, H_imag);
-
 		// Computation of IFFT of each block
 		fft.inverseTransform(real_temp_copy, imag_temp_copy);
-
 		// Removing the samples symetrically and assign to the output
-
 		copy(real_temp_copy.begin() + (NFFT / 2), real_temp_copy.end(), v_out_temp.begin());
-
 		copy(v_out_temp.begin(), v_out_temp.end(), outputBufferTimeDomain.begin() + k*(NFFT / 2));
-
 	}
 }*/
 
 /*bool FD_Filter::runBlock(void) {
-
 	
 	Fft fft;
 	ComplexMult CMult;
-
 	bool alive{ false };
-
 	int ready = inputSignals[0]->ready();
 	//inputBufferTimeDomain.resize(ready);
 	//outputBufferTimeDomain.resize(ready);
 	int space = (int) inputBufferTimeDomain.size() - inputBufferPointer;
-
 	int process1 = min(ready, space);
 	//int process1 = ready;
 	if (process1 > 0) alive = true;
-
 	// read incoming samples to the input buffer
 	for (int k = 0; k < process1; k++) {
 		t_real val;
@@ -1698,10 +1548,8 @@ void FD_Filter::overlapSaveZPRealIn(void) {
 		inputBufferPointer = (int) inputBufferTimeDomain.size()/2;
 		outputBufferPointer = (int) outputBufferTimeDomain.size()/2;
 	};
-
 	//space = outputSignals[0]->space();
 	//ready = outputBufferTimeDomain.size() - outputBufferPointer;
-
 	int process2 = min(ready, space);
 	if (process2 > 0) alive = true;
 	//int process2 = outputBufferTimeDomain.size();
@@ -1711,23 +1559,18 @@ void FD_Filter::overlapSaveZPRealIn(void) {
 		outputBufferPointer++;
 	}
 	//alive = false;
-
 	return alive;
 };
 */    
 
 /*2016-08-03
 DiscreteToContinuousTime::DiscreteToContinuousTime(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
-
   numberOfInputSignals = InputSig.size();
   numberOfOutputSignals = OutputSig.size();
-
   inputSignals = InputSig;
   outputSignals = OutputSig;
-
   outputSignals[0]->symbolPeriod = (inputSignals[0]->symbolPeriod);
   outputSignals[0]->samplingPeriod = (inputSignals[0]->samplingPeriod) / numberOfSamplesPerSymbol;
-
   
 }
 */
@@ -2108,6 +1951,22 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	fileHandler << "-------------------------------------------------------------\n";
 	fileHandler << "|  Unidirectional link  |  Optical channels  |  Amplifiers  |\n";
 	fileHandler << "-------------------------------------------------------------\n";
+
+	int  OLTsQuantity{ 0 };
+	int AmplifiersQuantity{ 0 };
+
+	//t_matrix nodal_Degree;
+	//std::vector<int> row;
+
+	/*for (size_t i = 0; i < finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size(); i++)
+	{
+		for (size_t j = 0; j < finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size(); j++)
+		{
+			row.push_back(0);
+		}
+		nodal_Degree.push_back(row);
+	}*/
+
 	for (size_t i = 0; i < finalPhysicalTopology.opticalMultiplexingSystems.size(); i++)
 	{
 		fileHandler << " Node " << finalPhysicalTopology.opticalMultiplexingSystems[i].sourceNode << " -> " << finalPhysicalTopology.opticalMultiplexingSystems[i].destinationNode << "\t";
@@ -2118,12 +1977,27 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 			if (finalLogicalTopology.opticalChannels[j].sourceNode == finalPhysicalTopology.opticalMultiplexingSystems[i].sourceNode && finalLogicalTopology.opticalChannels[j].destinationNode == finalPhysicalTopology.opticalMultiplexingSystems[i].destinationNode)
 				number++;
 		}
-		fileHandler << "\t\t";
-		fileHandler << number; // number of optical channels
-		fileHandler << "\t";
-		fileHandler << "\t";
-		fileHandler << finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
-		fileHandler << "\n";
+		if (number != 0)
+		{
+			OLTsQuantity++;
+			AmplifiersQuantity += finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
+			fileHandler << "\t\t";
+			fileHandler << number; // number of optical channels
+			fileHandler << "\t";
+			fileHandler << "\t";
+			fileHandler << finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
+			fileHandler << "\n";
+			//nodal_Degree[finalPhysicalTopology.opticalMultiplexingSystems[i].sourceNode-1][finalPhysicalTopology.opticalMultiplexingSystems[i].destinationNode-1] = 1;
+		}
+		else
+		{
+			fileHandler << "\t\t";
+			fileHandler << number; // number of optical channels
+			fileHandler << "\t";
+			fileHandler << "\t";
+			fileHandler << "0";
+			fileHandler << "\n";
+		}
 	}
 	fileHandler << "-------------------------------------------------------------\n";
 	fileHandler << "\n";
@@ -2372,8 +2246,17 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 					linePortsDestinations[line][finalLogicalTopology.opticalChannels[n].destinationNode-1]++;
 				}
 			}
+
+			t_integer connections{ 0 };
+
+			/*// Nodal degree
+			for (size_t i = 0; i < finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size(); i++)
+			{
+				if (nodal_Degree[line][i] != 0)
+					connections++;
+			}*/
 			
-			fileHandler << "  " << line + 1 << "\t\t" << nodalDegree[line] << "\t\t" << tributaryPorts[line] << "\t\t" << otu4Ports[line] << "\t\t" << otu4Ports[line] << "\t\t" << linePorts[line] << "\n";
+			fileHandler << "  " << line + 1 << "\t\t" << nodalDegree[line] /*connections*/ << "\t\t" << tributaryPorts[line] << "\t\t" << otu4Ports[line] << "\t\t" << otu4Ports[line] << "\t\t" << linePorts[line] << "\n";
 		
 	}
 	fileHandler << "---------------------------------------------------------------------------------------\n";
@@ -2511,26 +2394,27 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	// Unit prices in Euros €
 	int OLTsCost{ 15000 };
 	int TranspondersCost{ 5000 };
-	int AmplifiersCost{ 4000 };
+	int AmplifiersCost{ 2000 };
 	int EXCsCost{ 10000 };
-	int ODU0portsCost{ 10 };
-	int ODU1portsCost{ 15 };
-	int ODU2portsCost{ 30 };
-	int ODU3portsCost{ 60 };
-	int ODU4portsCost{ 100 };
-	int OTU4portsCost{ 100000 };
+	int ODU0portsCost{ 125 };
+	int ODU1portsCost{ 250 };
+	int ODU2portsCost{ 1000 };
+	int ODU3portsCost{ 4000 };
+	int ODU4portsCost{ 10000 };
+	int OTU4portsCost{ 10000 };
 	int OXCsCost{ 20000 };
 	int addPortsCost{ 2500 };
 	int linePortsCost{ 2500 };
 
-	//Quantities
-	int OLTsQuantity = finalPhysicalTopology.opticalMultiplexingSystems.size();
+
+
+	//int OLTsQuantity = finalPhysicalTopology.opticalMultiplexingSystems.size();
 	int TranspondersQuantity = finalLogicalTopology.opticalChannels.size();
-	int AmplifiersQuantity{ 0 };
+	/*int AmplifiersQuantity{ 0 };
 	for (int i=0; i < finalPhysicalTopology.opticalMultiplexingSystems.size(); i++)
 	{
 		AmplifiersQuantity += finalPhysicalTopology.opticalMultiplexingSystems[i].amplifiers;
-	}
+	}*/
 	int EXCsQuantity = finalPhysicalTopology.physicalTopologyAdjacencyMatrix.size();
 	int ODU0portsQuantity{ 0 };
 	for (int line = 0; line < odu0.size(); line++)
@@ -2585,7 +2469,7 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	fileHandler << "|                                               |  Quantity  | Unit price (€) |  Cost (€)  |    Total   (€)    |\n";
 	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
 	fileHandler << "|                |            OLTs              |\t" << OLTsQuantity << "\t" << OLTsCost << "\t\t" << OLTsQuantity*OLTsCost << "\n";
-	fileHandler << "|    Link Cost   |        Transponders          |\t" << TranspondersQuantity << "\t" << TranspondersCost << "\t\t" << TranspondersQuantity*TranspondersCost*100 << "\t" << (OLTsQuantity*OLTsCost)+(TranspondersQuantity*TranspondersCost*100)+ AmplifiersTotalCost << "\n";
+	fileHandler << "|    Link Cost   |        Transponders          |\t" << TranspondersQuantity << "\t" << TranspondersCost << "\t\t" << TranspondersQuantity*TranspondersCost << "\t" << (OLTsQuantity*OLTsCost)+(TranspondersQuantity*TranspondersCost)+ AmplifiersTotalCost << "\n";
 	fileHandler << "|                |         Amplifiers           |\t" << AmplifiersQuantity << "\t" << AmplifiersCost << "\t\t" << AmplifiersCost*AmplifiersQuantity << "\n";
 	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
 	fileHandler << "|                |              |      EXCs     |\t" << EXCsQuantity << "\t" << EXCsCost << "\t\t" << EXCsCost*EXCsQuantity << "\n";
@@ -2594,13 +2478,13 @@ void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_top
 	fileHandler << "|                |   Electrical |   ODU2 ports  |\t" << ODU2portsQuantity << "\t" << ODU2portsCost << "\t\t" << ODU2portsCost * ODU2portsQuantity << "\n";
 	fileHandler << "|    Node Cost   |     Part     |   ODU3 ports  |\t" << ODU3portsQuantity << "\t" << ODU3portsCost << "\t\t" << ODU3portsCost * ODU3portsQuantity << "\t\t" << EXCsCost * EXCsQuantity + ODU0portsCost * ODU0portsQuantity + ODU1portsCost * ODU1portsQuantity + ODU2portsCost * ODU2portsQuantity + ODU3portsCost * ODU3portsQuantity + ODU4portsCost * ODU4portsQuantity + OTU4portsCost * OTU4portsQuantity + opticalPartCost << "\n";;
 	fileHandler << "|                |              |   ODU4 ports  |\t" << ODU4portsQuantity << "\t" << ODU4portsCost << "\t\t" << ODU4portsCost * ODU4portsQuantity << "\n";
-	fileHandler << "|                |              |   OTU4 ports  |\t" << OTU4portsQuantity << "\t" << OTU4portsCost << "\t\t" << OTU4portsCost * OTU4portsQuantity << "\n";
+	fileHandler << "|                |              |    Add ports  |\t" << OTU4portsQuantity << "\t" << OTU4portsCost << "\t\t" << OTU4portsCost * OTU4portsQuantity << "\n";
 	fileHandler << "|                |------------------------------|                                                               \n";
 	fileHandler << "|                |              |      OXCs     |\t" << OXCsQuantity << "\t" << OXCsCost << "\t\t" << OXCsCost*OXCsQuantity << "\n";
 	fileHandler << "|                | Optical part |   Add ports   |\t" << addPortsQuantity <<	"\t" << addPortsCost << "\t\t" << addPortsCost*addPortsQuantity << "\n";
 	fileHandler << "|                |              |  Line ports   |\t" << linePortsQuantity << "\t" << linePortsCost << "\t\t" << linePortsQuantity*linePortsCost << "\n";
 	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
-	fileHandler << "|                                 Total Network Cost                                       |\t" << ((OLTsQuantity*OLTsCost) + (TranspondersQuantity*TranspondersCost * 100) + AmplifiersTotalCost)+(EXCsCost * EXCsQuantity + ODU0portsCost * ODU0portsQuantity + ODU1portsCost * ODU1portsQuantity + ODU2portsCost * ODU2portsQuantity + ODU3portsCost * ODU3portsQuantity + ODU4portsCost * ODU4portsQuantity + OTU4portsCost * OTU4portsQuantity + opticalPartCost) << "\n";
+	fileHandler << "|                                 Total Network Cost                                       |\t" << ((OLTsQuantity*OLTsCost) + (TranspondersQuantity*TranspondersCost) + AmplifiersTotalCost)+(EXCsCost * EXCsQuantity + ODU0portsCost * ODU0portsQuantity + ODU1portsCost * ODU1portsQuantity + ODU2portsCost * ODU2portsQuantity + ODU3portsCost * ODU3portsQuantity + ODU4portsCost * ODU4portsQuantity + OTU4portsCost * OTU4portsQuantity + opticalPartCost) << "\n";
 	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
 
 
@@ -2664,23 +2548,17 @@ void System::setLoadedInputParameters(vector<string> loadedInputParams)
 
 /*
 void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_out, vector<double> Hf, int NFFT) {
-
 	int Nblocks = 2 * ((int) v_in.size() / NFFT);
-
 	vector<double> var_temp(NFFT, 0);
 	vector<double> real_temp_copy(NFFT, 0);
 	vector<double> imag_temp_copy(NFFT, 0);
 	vector<double> H_real(NFFT, 0);
 	vector<double> H_imag(NFFT, 0);
-
 	Fft fft;
 	ComplexMult CMult;
-
 	H_real = Hf;
 	fft.directTransform(H_real, H_imag);
-
 	for (int k = 0; k < Nblocks; k++) {
-
 		if (k == Nblocks - 1) 
 		{
 			copy(v_in.begin(), v_in.begin() + (NFFT / 2), var_temp.begin() + (NFFT / 2));
@@ -2691,19 +2569,12 @@ void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_
 			copy(v_in.begin() + k*(NFFT / 2), v_in.begin() + ((k + 1)*NFFT - k*(NFFT / 2)), var_temp.begin());
 		}
 		real_temp_copy = var_temp;
-
 		// Computation of FFT of each block
-
 		fft.directTransform(real_temp_copy, imag_temp_copy);
-
 		// Multiplication with the transfer function
 		CMult.CMultVector_Loop(real_temp_copy, imag_temp_copy, H_real, H_imag);
-
 		// Computation of IFFT of each block
 		fft.inverseTransform(real_temp_copy, imag_temp_copy);
-
-
-
 		// Removing the samples symetrically and assign to the output
 		if (k == Nblocks - 1) {
 			copy(real_temp_copy.begin() + (NFFT / 4), real_temp_copy.begin() + (NFFT / 2), v_out.end() - (NFFT / 4));
@@ -2713,14 +2584,12 @@ void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_
 			copy(real_temp_copy.begin() + (NFFT / 4), real_temp_copy.end() - (NFFT / 4), v_out.begin() + ((NFFT / 4) + k*(NFFT / 2)));
 		}
 	}
-
 }
 */
 
 /*
 // Private function prototypes
 static size_t reverseBits(size_t x, unsigned int n);
-
 vector<complex <double>> Fft::directTransformInReal(std::vector<double> real)
 {
 	//if (In.real.size() != imag.size())
@@ -2729,18 +2598,15 @@ vector<complex <double>> Fft::directTransformInReal(std::vector<double> real)
 	vector<double> im(real.size(), 0);
 	vector<complex <double>> v_out(real.size(), 0);
 	size_t n = real.size();
-
 	if (n == 0)
 		return v_out;
 	else if ((n & (n - 1)) == 0)  // Is power of 2
 		transformRadix2(real, im);
 	else  // More complicated algorithm for arbitrary sizes
 		transformBluestein(real, im);
-
 	CMult.ReImVect2ComplexVect(real, im, v_out);
 	return v_out;
 }
-
 std::vector<double> Fft::inverseTransformInCP(std::vector<complex <double>> &In)
 {
 	ComplexMult CMult;
@@ -2753,19 +2619,15 @@ std::vector<double> Fft::inverseTransformInCP(std::vector<complex <double>> &In)
 		real[x] = real[x] / real.size();
 		  im[x] =   im[x] / real.size();
 	}
-
 	vector<double> v_out(real.size(), 0);
 	v_out = real;
 	//CMult.ReImVect2ComplexVect(real, imag, v_out);
-
 	return v_out;
 }
-
 void Fft::directTransform(vector<double> &real, vector<double> &imag)
 {
 	if (real.size() != imag.size())
 		throw "Mismatched lengths";
-
 	size_t n = real.size();
 	if (n == 0)
 		return;
@@ -2774,8 +2636,6 @@ void Fft::directTransform(vector<double> &real, vector<double> &imag)
 	else									// More complicated algorithm for arbitrary sizes
 		transformBluestein(real, imag);
 }
-
-
 void Fft::inverseTransform(vector<double> &real, vector<double> &imag)
 {
 	directTransform(imag, real);					// Inverse function
@@ -2785,8 +2645,6 @@ void Fft::inverseTransform(vector<double> &real, vector<double> &imag)
 		imag[x] = imag[x] / real.size();
 	}
 }
-
-
 void Fft::transformRadix2(vector<double> &real, vector<double> &imag) 
 {
 	// Compute levels = floor(log2(n))
@@ -2805,7 +2663,6 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag)
 		if (1u << levels != n)
 			throw "Length is not a power of 2";
 	}
-
 	// Trignometric tables
 	vector<double> cosTable(n / 2);
 	vector<double> sinTable(n / 2);
@@ -2814,7 +2671,6 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag)
 		cosTable[i] = cos(2 * M_PI * i / n);
 		sinTable[i] = sin(2 * M_PI * i / n);
 	}
-
 	// Bit-reversed addressing permutation
 	for (size_t i = 0; i < n; i++) 
 	{
@@ -2829,7 +2685,6 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag)
 			imag[j] = temp;
 		}
 	}
-
 	// Cooley-Tukey decimation-in-time radix-2 FFT
 	for (size_t size = 2; size <= n; size *= 2) 
 	{
@@ -2851,15 +2706,6 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag)
 			break;
 	}
 }
-
-
-
-
-
-
-
-
-
 void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
 {
 	// Compute levels = floor(log2(n))
@@ -2878,7 +2724,6 @@ void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
 		if (1u << levels != n)
 			throw "Length is not a power of 2";
 	}
-
 	// Trignometric tables
 	vector<double> cosTable(n / 2);
 	vector<double> sinTable(n / 2);
@@ -2887,7 +2732,6 @@ void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
 		cosTable[i] = cos(-s*2 * M_PI * i / n);
 		sinTable[i] = sin(-s*2 * M_PI * i / n);
 	}
-
 	// Bit-reversed addressing permutation
 	for (size_t i = 0; i < n; i++)
 	{
@@ -2902,7 +2746,6 @@ void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
 			imag[j] = temp;
 		}
 	}
-
 	// Cooley-Tukey decimation-in-time radix-2 FFT
 	for (size_t size = 2; size <= n; size *= 2)
 	{
@@ -2924,8 +2767,6 @@ void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
 			break;
 	}
 }
-
-
 void Fft::transformBluestein(vector<double> &real, vector<double> &imag) 
 {
 	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
@@ -2944,7 +2785,6 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag)
 				throw "Vector too large";
 		}
 	}
-
 	// Trignometric tables
 	vector<double> cosTable(n), sinTable(n);
 	for (size_t i = 0; i < n; i++) {
@@ -2953,7 +2793,6 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag)
 		cosTable[i] = cos(temp);
 		sinTable[i] = sin(temp);
 	}
-
 	// Temporary vectors and preprocessing
 	vector<double> areal(m), aimag(m);
 	for (size_t i = 0; i < n; i++) {
@@ -2967,21 +2806,15 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag)
 		breal[i] = breal[m - i] = cosTable[i];
 		bimag[i] = bimag[m - i] = sinTable[i];
 	}
-
 	// Convolution
 	vector<double> creal(m), cimag(m);
 	convolve(areal, aimag, breal, bimag, creal, cimag);
-
 	// Postprocessing
 	for (size_t i = 0; i < n; i++) {
 		real[i] = creal[i] * cosTable[i] + cimag[i] * sinTable[i];
 		imag[i] = -creal[i] * sinTable[i] + cimag[i] * cosTable[i];
 	}
 }
-
-
-
-
 void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 {
 	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
@@ -3000,7 +2833,6 @@ void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 				throw "Vector too large";
 		}
 	}
-
 	// Trignometric tables
 	vector<double> cosTable(n), sinTable(n);
 	for (size_t i = 0; i < n; i++) {
@@ -3009,7 +2841,6 @@ void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 		cosTable[i] =    cos(-s*temp);
 		sinTable[i] =    sin(-s*temp);
 	}
-
 	// Temporary vectors and preprocessing
 	vector<double> areal(m), aimag(m);
 	for (size_t i = 0; i < n; i++) {
@@ -3023,32 +2854,15 @@ void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 		breal[i] = breal[m - i] = cosTable[i];
 		bimag[i] = bimag[m - i] = sinTable[i];
 	}
-
 	// Convolution
 	vector<double> creal(m), cimag(m);
 	convolve(areal, aimag, breal, bimag, creal, cimag);
-
 	// Postprocessing
 	for (size_t i = 0; i < n; i++) {
 		real[i] = creal[i] * cosTable[i] + cimag[i] * sinTable[i];
 		imag[i] = -creal[i] * sinTable[i] + cimag[i] * cosTable[i];
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 */
 
 /*
@@ -3059,18 +2873,14 @@ void Fft::convolve(const vector<double> &x, const vector<double> &y, vector<doub
 	vector<double> ximag(n), yimag(n), zimag(n);
 	convolve(x, ximag, y, yimag, out, zimag);
 }
-
-
 void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, const vector<double> &yreal, const vector<double> &yimag, vector<double> &outreal, vector<double> &outimag) {
 	if (xreal.size() != ximag.size() || xreal.size() != yreal.size() || yreal.size() != yimag.size() || xreal.size() != outreal.size() || outreal.size() != outimag.size())
 		throw "Mismatched lengths";
-
 	size_t n = xreal.size();
 	vector<double> xr(xreal);
 	vector<double> xi(ximag);
 	vector<double> yr(yreal);
 	vector<double> yi(yimag);
-
 	directTransform(xr, xi);
 	directTransform(yr, yi);
 	for (size_t i = 0; i < n; i++) {
@@ -3468,8 +3278,9 @@ void SystemInputParameters::readSystemInputParameters()
 
 		line = trim(line); 
 		try {
-			//If the line is a comment, it just skips to the next one
-			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+			if (line != "")
+			{
+				if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
 					vector<string> splitline = split(line, '=');
 					splitline[0] = trim(splitline[0]);
 					splitline[1] = trim(splitline[1]);
@@ -3490,15 +3301,21 @@ void SystemInputParameters::readSystemInputParameters()
 							parameters[splitline[0]]->setValue(parseOrderingRule(splitline[1]));
 						else if (parameters[splitline[0]]->getType() == ROUTING_CRITERION_LOGICAL)
 							parameters[splitline[0]]->setValue(parseRoutingCriterionLogicalTopology(splitline[1]));
-						else if (parameters[splitline[0]]->getType() == ROUTING_CRITERION_PHYSICAL) 
+						else if (parameters[splitline[0]]->getType() == ROUTING_CRITERION_PHYSICAL)
 							parameters[splitline[0]]->setValue(parseRoutingCriterionPhysicalTopology(splitline[1]));
-						
+
 						//Logs that a given parameter has been loaded from a file
 						loadedInputParameters.push_back(splitline[0] + " = " + splitline[1]);
-					//}
+						//}
+					}
 				}
+				//If the line is a comment, it just skips to the next one
+
+				errorLine++;
 			}
-			errorLine++;
+			else
+				errorLine++;
+			
 		}
 		catch (const exception& e) {
 			(void)e;
@@ -3536,11 +3353,11 @@ void SystemInputParameters::addInputParameter(string name, transport_mode * vari
 {
 	parameters[name] = new Parameter(variable);
 }
-void SystemInputParameters::addInputParameter(string name, routing_criterion_logical_topology * variable)
+void SystemInputParameters::addInputParameter(string name, t_routing_criterion_logical_topology * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
-void SystemInputParameters::addInputParameter(string name, routing_criterion_physical_topology * variable)
+void SystemInputParameters::addInputParameter(string name, t_routing_criterion_physical_topology * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
@@ -3618,23 +3435,23 @@ ordering_rule SystemInputParameters::parseOrderingRule(string str)
 		throw exception();
 }
 
-routing_criterion_logical_topology SystemInputParameters::parseRoutingCriterionLogicalTopology(string str) {
-	routing_criterion_logical_topology routingCriterionLogicalTopology;
+t_routing_criterion_logical_topology SystemInputParameters::parseRoutingCriterionLogicalTopology(string str) {
+	t_routing_criterion_logical_topology routingCriterionLogicalTopology;
 
 	if (str == "hops")
-		return routingCriterionLogicalTopology = routing_criterion_logical_topology::hops;
+		return routingCriterionLogicalTopology = t_routing_criterion_logical_topology::hops;
 	else if (str == "distance")
-		return routingCriterionLogicalTopology = routing_criterion_logical_topology::distance;
+		return routingCriterionLogicalTopology = t_routing_criterion_logical_topology::distance;
 	else //Incorrect input
 		throw exception();
 }
-routing_criterion_physical_topology SystemInputParameters::parseRoutingCriterionPhysicalTopology(string str) {
-	routing_criterion_physical_topology routingCriterionPhysicalTopology;
+t_routing_criterion_physical_topology SystemInputParameters::parseRoutingCriterionPhysicalTopology(string str) {
+	t_routing_criterion_physical_topology routingCriterionPhysicalTopology;
 
 	if (str == "hops")
-		return routingCriterionPhysicalTopology = routing_criterion_physical_topology::hops;
+		return routingCriterionPhysicalTopology = t_routing_criterion_physical_topology::hops;
 	else if (str == "distance")
-		return routingCriterionPhysicalTopology = routing_criterion_physical_topology::distance;
+		return routingCriterionPhysicalTopology = t_routing_criterion_physical_topology::distance;
 	else //Incorrect input
 		throw exception();
 }
@@ -3670,12 +3487,12 @@ void SystemInputParameters::Parameter::setValue(transport_mode value)
 	if (type != TRANSPORT) throw invalid_argument("Parameter is not of type TRANSPORT_MODE");
 	*t = value;
 }
-void SystemInputParameters::Parameter::setValue(routing_criterion_logical_topology value)
+void SystemInputParameters::Parameter::setValue(t_routing_criterion_logical_topology value)
 {
 	if (type != ROUTING_CRITERION_LOGICAL) throw invalid_argument("Parameter is not of type ROUTING_CRITERION_LOGICAL");
 	*l = value;
 }
-void SystemInputParameters::Parameter::setValue(routing_criterion_physical_topology value)
+void SystemInputParameters::Parameter::setValue(t_routing_criterion_physical_topology value)
 {
 	if (type != ROUTING_CRITERION_PHYSICAL) throw invalid_argument("Parameter is not of type ROUTING_CRITERION_PHYSICAL");
 	*p = value;
@@ -3718,12 +3535,12 @@ SystemInputParameters::Parameter::Parameter(transport_mode * elem)
 	type = TRANSPORT;
 	t = elem;
 }
-SystemInputParameters::Parameter::Parameter(routing_criterion_logical_topology * elem)
+SystemInputParameters::Parameter::Parameter(t_routing_criterion_logical_topology * elem)
 {
 	type = ROUTING_CRITERION_LOGICAL;
 	l = elem;
 }
-SystemInputParameters::Parameter::Parameter(routing_criterion_physical_topology * elem)
+SystemInputParameters::Parameter::Parameter(t_routing_criterion_physical_topology * elem)
 {
 	type = ROUTING_CRITERION_PHYSICAL;
 	p = elem;

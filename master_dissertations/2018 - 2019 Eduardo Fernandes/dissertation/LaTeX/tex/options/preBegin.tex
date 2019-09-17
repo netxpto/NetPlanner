@@ -1,0 +1,105 @@
+% title and author
+\title{Thesis Title}
+\author{Author Full Name}
+
+% table of contents depth
+% optional (comment to use default)
+%   depth of the table of contents (TOC)
+%     1 ... chapter and sections
+%     2 ... chapters, sections, and subsections
+%     3 ... chapters, sections, subsections, and subsubsections
+\setcounter{tocdepth}{2}
+
+% how to generate the glossary:
+% https://tex.stackexchange.com/questions/243750/acronym-glossary-doesnt-appear
+\makenoidxglossaries
+% widest name
+\glssetwidest{123456789012345}
+
+% define acronyms (term definitions)
+%\newacronym{WDM} {Wavelength Division Multiplexing}
+%\newacronym{OTN} {Optical Transport Network}
+%\newacronym{SONET} {Synchronous optical networking}
+%\newacronym{SDH} {Synchronous Digital Hierarchy}
+%\newacronym{M2M} {Machine-to-Machine}
+
+\newacronym{wdm}
+           {WDM}
+           {Wavelength Division Multiplexing}
+\newacronym{otn}
+           {OTN}
+           {Optical Transport Network}
+\newacronym{oms}
+           {OMS}
+           {Optical Multiplexing System}
+\newacronym{sonet}
+           {SONET}
+           {Synchronous optical networking}
+\newacronym{sdh}
+           {SDH}
+           {Synchronous digital hierarchy}
+\newacronym{m2m}
+           {M2M}
+           {Machine-to-Machine}
+\newacronym{qos}
+           {QoS}
+           {Quality of Service}
+\newacronym{ip}
+           {IP}
+           {Internet Protocol}
+\newacronym{capex}
+           {CAPEX}
+           {Capital Expenditure}
+\newacronym{opex}
+           {OPEX}
+           {Operational Expenditure}
+\newacronym{ftth}
+           {FTTH}
+           {Fiber-to-the-home}
+\newacronym{oadm}
+           {OADM}
+           {Optical Add/Drop Multiplexer}
+\newacronym{o-e-o}
+           {O-E-O}
+           {Optical-Electronic-Optical}
+\newacronym{ips}
+           {IPS}
+           {Input Parameters System}
+\newacronym{odu}
+           {ODU}
+           {Optical Data Unit}
+\newacronym{olt}
+           {OLT}
+           {Optical Line Terminal}
+\newacronym{exc}
+           {EXC}
+           {Electrical Cross Connector}
+\newacronym{oxc}
+           {OXC}
+           {Optical Cross Connector}
+\newacronym{ilp}
+           {ILP}
+           {Integer Linear Programming}
+           
+           
+
+% math functions declaration:
+% https://tex.stackexchange.com/questions/95171/how-can-i-define-user-defined-functions-in-math-mode
+% https://tex.stackexchange.com/questions/130510/write-text-correctly-in-equations
+\DeclareMathOperator{\myScore}{score}
+
+% manually hyphenated words (in case hyphenation is enabled - see
+% hyphenat package)
+% note: hyphenation in the middle is desired (better readability)
+\hyphenation{
+% english words
+ex-am-ple
+mas-sa-chu-setts
+test
+% portuguese words
+cien-tí-fico
+con-cei-tos
+exem-plo
+infor-mações
+tes-te
+}

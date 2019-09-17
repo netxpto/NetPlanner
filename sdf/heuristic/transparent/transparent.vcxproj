@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_parameters_values.txt" />
+    <Text Include="input_parameters_values_realistic.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

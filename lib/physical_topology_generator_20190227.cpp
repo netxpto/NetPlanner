@@ -43,22 +43,34 @@ bool PhysicalTopologyGenerator::runBlock(void) {
 						if (i == 0)	// In the beggining it adds our initial wavelenght to the wavelnghts vector
 						{
 							addWavelenght = getInitialWavelenght();
-							oms.wavelenghts.push_back(addWavelenght);
+							oms.wavelengths.push_back(addWavelenght);
 						}
 						else
 						{
-							oms.wavelenghts.push_back(addWavelenght);
+							oms.wavelengths.push_back(addWavelenght);
 						}
 						addWavelenght = addWavelenght + wavelenghtSpacing;
-						oms.availableWavelenghts.push_back(1);
+						oms.availableWavelengths.push_back(1);
 					}
 
-					int numberOfAmplifiers = distancesBetweenNodes[line][column] / span;
+					int numberOfAmplifiers;
+
+
+					if(distancesBetweenNodes[line][column] % span != 0)
+						numberOfAmplifiers = distancesBetweenNodes[line][column] / span;
+					else
+					{
+						if (distancesBetweenNodes[line][column] == 0)
+							numberOfAmplifiers = 0;
+						else
+							numberOfAmplifiers = (distancesBetweenNodes[line][column] / span) - 1;
+					}
+
 					oms.amplifiers = numberOfAmplifiers;
 
 					output.opticalMultiplexingSystems.push_back(oms);
-					oms.wavelenghts.clear();
-					oms.availableWavelenghts.clear();
+					oms.wavelengths.clear();
+					oms.availableWavelengths.clear();
 					k++;
 				}
 			}

@@ -1,19 +1,6 @@
 # ifndef LOGICAL_TOPOLOGY_GENERATOR_H_
 # define LOGICAL_TOPOLOGY_GENERATOR_H_
 
-# include <vector>
-# include <complex>
-# include <fstream>
-# include <iostream>
-# include <math.h>
-# include <stdio.h>
-# include <string>
-# include <strstream>
-# include <vector>
-# include <algorithm> 
-# include <random>
-# include <chrono>
-
 
 # include "..\include\netxpto_20190130.h"
 
@@ -25,6 +12,7 @@ class LogicalTopologyGenerator : public Block {
 	// Input Parameters
 	transport_mode transportMode; // Transport mode default value
 	t_matrix physicalTopologyAdjacencyMatrix;
+	t_matrix distanceBetweenNodes;
 
 	// State variables
 	bool generate{ true };
@@ -44,6 +32,10 @@ public:
 
 	void setPhysicalTopologyAjacencyMatrix(t_matrix pTopology) { physicalTopologyAdjacencyMatrix = pTopology; }
 	t_matrix getPhysicalTopologyAdjacencyMatrix(void) { return physicalTopologyAdjacencyMatrix; };
+
+	void setDistanceMatrix(t_matrix dMatrix) { distanceBetweenNodes = dMatrix; }
+	t_matrix getDistanceMatrix(void) { return distanceBetweenNodes; };
+
 };
 
 # endif
