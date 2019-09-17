@@ -216,6 +216,8 @@ bool LogicalTopologyManager::runBlock(void)
 					outputSignals[2]->bufferPut((t_demand_request_routed)processedDemand);
 
 					temporaryLogicalMatrix = logicalTopology.logicalTopologyAdjacencyMatrix;
+
+					
 				}
 				else
 				{

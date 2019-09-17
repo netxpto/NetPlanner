@@ -13,7 +13,7 @@ class LogicalTopologyManager : public Block {
 	t_logical_topology logicalTopology;
 	t_demand_request demand;
 	t_integer requestIndex;
-	std::vector<t_integer> pathDij;	
+	std::vector<t_integer> pathDij;
 	t_integer tryAnotherPath;
 	t_matrix temporaryLogicalMatrix;
 

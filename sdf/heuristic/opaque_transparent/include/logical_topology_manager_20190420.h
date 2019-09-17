@@ -11,6 +11,7 @@ class LogicalTopologyManager : public Block {
 	//t_path_request_routed pathRequestRouted;
 
 	// State variables
+	t_demand demand;
 	t_logical_topology currentLogicalTopology;
 	t_integer requestIndex{ 0 };
 	t_matrix logicalTopology_odu0;	// Logical topology matrix for odu0 type demands
