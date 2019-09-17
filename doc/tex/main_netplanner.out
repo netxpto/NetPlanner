@@ -64,3 +64,9 @@
 \BOOKMARK [1][-]{section.8.4}{Transparent with 1+1 Protection}{chapter.8}% 64
 \BOOKMARK [1][-]{section.8.5}{Translucent without Survivability}{chapter.8}% 65
 \BOOKMARK [1][-]{section.8.6}{Translucent with 1+1 Protection}{chapter.8}% 66
+\BOOKMARK [0][-]{chapter.9}{Appendices}{}% 67
+\BOOKMARK [1][-]{section.9.1}{Net2Plan Guide}{chapter.9}% 68
+\BOOKMARK [1][-]{section.9.2}{Installing LPSOLVE for using in MatLab}{chapter.9}% 69
+\BOOKMARK [2][-]{subsection.9.2.1}{Windows}{section.9.2}% 70
+\BOOKMARK [2][-]{subsection.9.2.2}{macOS}{section.9.2}% 71
+\BOOKMARK [1][-]{section.9.3}{Codify ILP in MatLab}{chapter.9}% 72
