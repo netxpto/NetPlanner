@@ -73,5 +73,17 @@
     <Text Include="input_parameters_values.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="input_parameters_low_traffic.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="input_parameters_medium_traffic.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="input_parameters_high_traffic.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="input_parameters_values_realistic.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

@@ -1,0 +1,96 @@
+// Input parameters for opaque transport mode without survivability 
+// Low traffic scenario - 0,5 Tbits/s       
+                 
+odu0 = 
+0 5 1 3 1 3 
+5 0 0 1 5 0 
+1 0 0 1 4 1 
+3 1 1 0 1 1 
+1 5 4 1 0 3 
+3 0 1 1 3 0
+
+odu1 = 
+0 2 4 2 0 5 
+2 0 0 3 1 1 
+4 0 0 1 1 0 
+2 3 1 0 1 3 
+0 1 1 1 0 1 
+5 1 0 3 1 0
+
+odu2 = 
+0 1 1 1 0 0 
+1 0 0 0 1 0 
+1 0 0 1 1 0 
+1 0 1 0 1 0
+0 1 1 1 0 1 
+0 0 0 0 1 0
+
+odu3 = 
+0 0 0 0 0 0 
+0 0 1 0 0 1 
+0 1 0 0 1 0 
+0 0 0 0 0 0 
+0 0 1 0 0 0 
+0 1 0 0 0 0
+
+odu4 = 
+0 0 0 0 0 0 
+0 0 0 0 0 1 
+0 0 0 0 0 0 
+0 0 0 0 0 0 
+0 0 0 0 0 1 
+0 1 0 0 1 0
+
+orderingRule = descendingOrder
+
+transportMode = opaque
+
+physicalTopologyAdjacencyMatrix =
+0 1 0 0 0 1
+1 0 1 0 0 1
+0 1 0 1 1 0
+0 0 1 0 1 0
+0 0 1 1 0 1
+1 1 0 0 1 0
+
+distanceMatrix = 
+0 350 0 0 0 150
+350 0 400 0 0 120
+0 400 0 250 100 0
+0 0 250 0 200 0
+0 0 100 200 0 600
+150 120 0 0 600 0
+
+span = 100
+
+numberOfOMSPerLink = 1
+
+numberOfOpticalChannelsPerOMS = 100
+
+initialWavelength = 1550
+
+wavelengthSpacing = 0.8
+
+opticalChannelCapacity = 80
+
+routingCriterionLogicalTopology = hops
+
+blockingCriterionLogicalTopology = 3
+
+routingCriterionPhysicalTopology = hops
+
+blockingCriterionPhysicalTopology = 3
+
+OLTsCost = 15000
+TranspondersCost = 5000 
+AmplifiersCost = 4000 
+EXCsCost = 10000 
+ODU0portsCost = 1250 
+ODU1portsCost = 2500 
+ODU2portsCost = 10000
+ODU3portsCost = 40000 
+ODU4portsCost = 100000 
+OTU4portsCost = 100000 
+OXCsCost = 20000
+addPortsCost = 2500
+linePortsCost = 2500

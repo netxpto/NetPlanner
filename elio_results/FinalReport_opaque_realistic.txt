@@ -1,0 +1,805 @@
+RESULTS FOR OPAQUE MODE WITHOUT SURVIVABILITY
+
+
+-------------------------------------------------------------
+|                Information regarding links                |
+-------------------------------------------------------------
+|  Unidirectional link  |  Optical channels  |  Amplifiers  |
+-------------------------------------------------------------
+ Node 1 -> 2			12		9
+ Node 1 -> 12			3		9
+ Node 2 -> 1			12		9
+ Node 2 -> 3			24		9
+ Node 2 -> 12			9		9
+ Node 3 -> 2			24		9
+ Node 3 -> 4			34		9
+ Node 3 -> 10			17		9
+ Node 4 -> 3			34		9
+ Node 4 -> 5			10		9
+ Node 4 -> 6			15		9
+ Node 4 -> 7			13		9
+ Node 5 -> 4			10		9
+ Node 5 -> 6			1		9
+ Node 6 -> 4			15		9
+ Node 6 -> 5			1		9
+ Node 6 -> 7			4		9
+ Node 7 -> 4			13		9
+ Node 7 -> 6			4		9
+ Node 7 -> 8			9		9
+ Node 7 -> 9			8		9
+ Node 8 -> 7			9		9
+ Node 8 -> 9			5		9
+ Node 9 -> 7			8		9
+ Node 9 -> 8			5		9
+ Node 9 -> 10			15		9
+ Node 10 -> 3			17		9
+ Node 10 -> 9			15		9
+ Node 10 -> 11			15		9
+ Node 11 -> 10			15		9
+ Node 11 -> 12			10		9
+ Node 12 -> 1			3		9
+ Node 12 -> 2			9		9
+ Node 12 -> 11			10		9
+-------------------------------------------------------------
+
+
+
+
+
+Number of lightpaths between nodes (1,2): 12
+Number of lightpaths between nodes (1,12): 3
+Number of lightpaths between nodes (2,1): 12
+Number of lightpaths between nodes (2,3): 24
+Number of lightpaths between nodes (2,12): 9
+Number of lightpaths between nodes (3,2): 24
+Number of lightpaths between nodes (3,4): 34
+Number of lightpaths between nodes (3,10): 17
+Number of lightpaths between nodes (4,3): 34
+Number of lightpaths between nodes (4,5): 10
+Number of lightpaths between nodes (4,6): 15
+Number of lightpaths between nodes (4,7): 13
+Number of lightpaths between nodes (5,4): 10
+Number of lightpaths between nodes (5,6): 1
+Number of lightpaths between nodes (6,4): 15
+Number of lightpaths between nodes (6,5): 1
+Number of lightpaths between nodes (6,7): 4
+Number of lightpaths between nodes (7,4): 13
+Number of lightpaths between nodes (7,6): 4
+Number of lightpaths between nodes (7,8): 9
+Number of lightpaths between nodes (7,9): 8
+Number of lightpaths between nodes (8,7): 9
+Number of lightpaths between nodes (8,9): 5
+Number of lightpaths between nodes (9,7): 8
+Number of lightpaths between nodes (9,8): 5
+Number of lightpaths between nodes (9,10): 15
+Number of lightpaths between nodes (10,3): 17
+Number of lightpaths between nodes (10,9): 15
+Number of lightpaths between nodes (10,11): 15
+Number of lightpaths between nodes (11,10): 15
+Number of lightpaths between nodes (11,12): 10
+Number of lightpaths between nodes (12,1): 3
+Number of lightpaths between nodes (12,2): 9
+Number of lightpaths between nodes (12,11): 10
+
+
+
+
+---------------------------------------------------------------------------------------
+|                            Information regarding nodes                              |
+---------------------------------------------------------------------------------------
+|                     |         Electrical part          |         Optical part       |
+---------------------------------------------------------------------------------------
+| Node | Nodal degree |  Tributary ports  |  OTU4 ports  |  Add ports  |  Line ports  |
+---------------------------------------------------------------------------------------
+  1		2		55		15		0		0
+  2		3		261		45		0		0
+  3		3		191		75		0		0
+  4		4		93		72		0		0
+  5		2		123		11		0		0
+  6		3		99		20		0		0
+  7		4		74		34		0		0
+  8		2		122		14		0		0
+  9		3		118		28		0		0
+  10		3		122		47		0		0
+  11		2		114		25		0		0
+  12		3		158		22		0		0
+---------------------------------------------------------------------------------------
+
+
+
+Detailed description of each node:
+
+Node 1:
+	 - Needs 15 line ports.
+		 - 12 connect to Node 2 with 100 Gbit/s 
+		 - 3 connect to Node 12 with 100 Gbit/s 
+	 - Needs 37 add ports.
+		 - 3 connect to Node 2
+		 - 2 connect to Node 3
+		 - 4 connect to Node 4
+		 - 4 connect to Node 5
+		 - 2 connect to Node 6
+		 - 3 connect to Node 7
+		 - 4 connect to Node 8
+		 - 6 connect to Node 9
+		 - 5 connect to Node 10
+		 - 3 connect to Node 11
+		 - 1 connect to Node 12
+	 - Needs 55 tributary ports:
+		 - Where 21 is the ODU1
+		 - Where 5 is the ODU2
+		 - Where 29 is the ODU3
+Node 2:
+	 - Needs 45 line ports.
+		 - 12 connect to Node 1 with 100 Gbit/s 
+		 - 24 connect to Node 3 with 100 Gbit/s 
+		 - 9 connect to Node 12 with 100 Gbit/s 
+	 - Needs 62 add ports.
+		 - 3 connect to Node 1
+		 - 6 connect to Node 3
+		 - 2 connect to Node 4
+		 - 11 connect to Node 5
+		 - 3 connect to Node 6
+		 - 5 connect to Node 7
+		 - 19 connect to Node 8
+		 - 4 connect to Node 9
+		 - 2 connect to Node 10
+		 - 4 connect to Node 11
+		 - 3 connect to Node 12
+	 - Needs 261 tributary ports:
+		 - Where 225 is the ODU1
+		 - Where 15 is the ODU2
+		 - Where 21 is the ODU3
+Node 3:
+	 - Needs 75 line ports.
+		 - 24 connect to Node 2 with 100 Gbit/s 
+		 - 34 connect to Node 4 with 100 Gbit/s 
+		 - 17 connect to Node 10 with 100 Gbit/s 
+	 - Needs 55 add ports.
+		 - 2 connect to Node 1
+		 - 9 connect to Node 2
+		 - 2 connect to Node 4
+		 - 3 connect to Node 5
+		 - 21 connect to Node 6
+		 - 4 connect to Node 7
+		 - 3 connect to Node 8
+		 - 2 connect to Node 9
+		 - 2 connect to Node 10
+		 - 2 connect to Node 11
+		 - 5 connect to Node 12
+	 - Needs 191 tributary ports:
+		 - Where 142 is the ODU1
+		 - Where 14 is the ODU2
+		 - Where 35 is the ODU3
+Node 4:
+	 - Needs 72 line ports.
+		 - 34 connect to Node 3 with 100 Gbit/s 
+		 - 10 connect to Node 5 with 100 Gbit/s 
+		 - 15 connect to Node 6 with 100 Gbit/s 
+		 - 13 connect to Node 7 with 100 Gbit/s 
+	 - Needs 44 add ports.
+		 - 2 connect to Node 1
+		 - 3 connect to Node 2
+		 - 4 connect to Node 3
+		 - 3 connect to Node 5
+		 - 5 connect to Node 6
+		 - 1 connect to Node 7
+		 - 2 connect to Node 8
+		 - 2 connect to Node 9
+		 - 2 connect to Node 10
+		 - 16 connect to Node 11
+		 - 4 connect to Node 12
+	 - Needs 93 tributary ports:
+		 - Where 57 is the ODU1
+		 - Where 18 is the ODU2
+		 - Where 18 is the ODU3
+Node 5:
+	 - Needs 11 line ports.
+		 - 10 connect to Node 4 with 100 Gbit/s 
+		 - 1 connect to Node 6 with 100 Gbit/s 
+	 - Needs 46 add ports.
+		 - 3 connect to Node 1
+		 - 12 connect to Node 2
+		 - 4 connect to Node 3
+		 - 3 connect to Node 4
+		 - 1 connect to Node 6
+		 - 2 connect to Node 7
+		 - 3 connect to Node 8
+		 - 2 connect to Node 9
+		 - 3 connect to Node 10
+		 - 8 connect to Node 11
+		 - 5 connect to Node 12
+	 - Needs 123 tributary ports:
+		 - Where 94 is the ODU1
+		 - Where 14 is the ODU2
+		 - Where 15 is the ODU3
+Node 6:
+	 - Needs 20 line ports.
+		 - 15 connect to Node 4 with 100 Gbit/s 
+		 - 1 connect to Node 5 with 100 Gbit/s 
+		 - 4 connect to Node 7 with 100 Gbit/s 
+	 - Needs 46 add ports.
+		 - 2 connect to Node 1
+		 - 4 connect to Node 2
+		 - 12 connect to Node 3
+		 - 5 connect to Node 4
+		 - 1 connect to Node 5
+		 - 2 connect to Node 7
+		 - 3 connect to Node 8
+		 - 4 connect to Node 9
+		 - 7 connect to Node 10
+		 - 2 connect to Node 11
+		 - 4 connect to Node 12
+	 - Needs 99 tributary ports:
+		 - Where 42 is the ODU1
+		 - Where 21 is the ODU2
+		 - Where 36 is the ODU3
+Node 7:
+	 - Needs 34 line ports.
+		 - 13 connect to Node 4 with 100 Gbit/s 
+		 - 4 connect to Node 6 with 100 Gbit/s 
+		 - 9 connect to Node 8 with 100 Gbit/s 
+		 - 8 connect to Node 9 with 100 Gbit/s 
+	 - Needs 36 add ports.
+		 - 2 connect to Node 1
+		 - 3 connect to Node 2
+		 - 5 connect to Node 3
+		 - 1 connect to Node 4
+		 - 4 connect to Node 5
+		 - 2 connect to Node 6
+		 - 4 connect to Node 8
+		 - 3 connect to Node 9
+		 - 5 connect to Node 10
+		 - 4 connect to Node 11
+		 - 3 connect to Node 12
+	 - Needs 74 tributary ports:
+		 - Where 36 is the ODU1
+		 - Where 17 is the ODU2
+		 - Where 21 is the ODU3
+Node 8:
+	 - Needs 14 line ports.
+		 - 9 connect to Node 7 with 100 Gbit/s 
+		 - 5 connect to Node 9 with 100 Gbit/s 
+	 - Needs 44 add ports.
+		 - 5 connect to Node 1
+		 - 13 connect to Node 2
+		 - 3 connect to Node 3
+		 - 2 connect to Node 4
+		 - 3 connect to Node 5
+		 - 3 connect to Node 6
+		 - 4 connect to Node 7
+		 - 1 connect to Node 9
+		 - 3 connect to Node 10
+		 - 4 connect to Node 11
+		 - 3 connect to Node 12
+	 - Needs 122 tributary ports:
+		 - Where 82 is the ODU1
+		 - Where 18 is the ODU2
+		 - Where 22 is the ODU3
+Node 9:
+	 - Needs 28 line ports.
+		 - 8 connect to Node 7 with 100 Gbit/s 
+		 - 5 connect to Node 8 with 100 Gbit/s 
+		 - 15 connect to Node 10 with 100 Gbit/s 
+	 - Needs 37 add ports.
+		 - 6 connect to Node 1
+		 - 4 connect to Node 2
+		 - 2 connect to Node 3
+		 - 2 connect to Node 4
+		 - 2 connect to Node 5
+		 - 4 connect to Node 6
+		 - 3 connect to Node 7
+		 - 1 connect to Node 8
+		 - 5 connect to Node 10
+		 - 3 connect to Node 11
+		 - 5 connect to Node 12
+	 - Needs 118 tributary ports:
+		 - Where 72 is the ODU1
+		 - Where 17 is the ODU2
+		 - Where 29 is the ODU3
+Node 10:
+	 - Needs 47 line ports.
+		 - 17 connect to Node 3 with 100 Gbit/s 
+		 - 15 connect to Node 9 with 100 Gbit/s 
+		 - 15 connect to Node 11 with 100 Gbit/s 
+	 - Needs 36 add ports.
+		 - 3 connect to Node 1
+		 - 1 connect to Node 2
+		 - 2 connect to Node 3
+		 - 2 connect to Node 4
+		 - 2 connect to Node 5
+		 - 5 connect to Node 6
+		 - 4 connect to Node 7
+		 - 4 connect to Node 8
+		 - 6 connect to Node 9
+		 - 3 connect to Node 11
+		 - 4 connect to Node 12
+	 - Needs 122 tributary ports:
+		 - Where 85 is the ODU1
+		 - Where 18 is the ODU2
+		 - Where 19 is the ODU3
+Node 11:
+	 - Needs 25 line ports.
+		 - 15 connect to Node 10 with 100 Gbit/s 
+		 - 10 connect to Node 12 with 100 Gbit/s 
+	 - Needs 45 add ports.
+		 - 5 connect to Node 1
+		 - 2 connect to Node 2
+		 - 3 connect to Node 3
+		 - 9 connect to Node 4
+		 - 7 connect to Node 5
+		 - 3 connect to Node 6
+		 - 4 connect to Node 7
+		 - 4 connect to Node 8
+		 - 3 connect to Node 9
+		 - 2 connect to Node 10
+		 - 3 connect to Node 12
+	 - Needs 114 tributary ports:
+		 - Where 70 is the ODU1
+		 - Where 12 is the ODU2
+		 - Where 32 is the ODU3
+Node 12:
+	 - Needs 22 line ports.
+		 - 3 connect to Node 1 with 100 Gbit/s 
+		 - 9 connect to Node 2 with 100 Gbit/s 
+		 - 10 connect to Node 11 with 100 Gbit/s 
+	 - Needs 41 add ports.
+		 - 1 connect to Node 1
+		 - 3 connect to Node 2
+		 - 6 connect to Node 3
+		 - 4 connect to Node 4
+		 - 5 connect to Node 5
+		 - 4 connect to Node 6
+		 - 3 connect to Node 7
+		 - 3 connect to Node 8
+		 - 5 connect to Node 9
+		 - 4 connect to Node 10
+		 - 3 connect to Node 11
+	 - Needs 158 tributary ports:
+		 - Where 116 is the ODU1
+		 - Where 21 is the ODU2
+		 - Where 21 is the ODU3
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|                                                                                      ROUTING                                                                                     |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Source Node  |  Destination Node  |              Links              |        ODU0        |        ODU1        |        ODU2        |          ODU3         |        ODU4        |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	1		2			{(1,2)}				0			8			0			2			0			
+	1		2			{(1,2)}				0			8			0			2			0			
+	1		2			{(1,2)}				0			2			0			2			0			
+	1		2			{(1,2)}				0			0			0			2			0			
+	1		2			{(1,2)}				0			0			0			2			0			
+	1		2			{(1,2)}				0			0			0			2			0			
+	1		2			{(1,2)}				0			0			0			2			0			
+	1		2			{(1,2)}				0			0			1			2			0			
+	1		2			{(1,2)}				0			3			0			2			0			
+	1		2			{(1,2)}				0			0			2			2			0			
+	1		2			{(1,2)}				0			0			0			2			0			
+	1		2			{(1,2)}				0			0			0			2			0			
+	1		12			{(1,12)}				0			0			2			2			0			
+	1		12			{(1,12)}				0			0			0			2			0			
+	1		12			{(1,12)}				0			0			0			1			0			
+	2		1			{(2,1)}				0			8			0			2			0			
+	2		1			{(2,1)}				0			8			0			2			0			
+	2		1			{(2,1)}				0			5			0			2			0			
+	2		1			{(2,1)}				0			0			0			2			0			
+	2		1			{(2,1)}				0			0			0			2			0			
+	2		1			{(2,1)}				0			0			0			2			0			
+	2		1			{(2,1)}				0			0			0			2			0			
+	2		1			{(2,1)}				0			0			1			2			0			
+	2		1			{(2,1)}				0			0			0			2			0			
+	2		1			{(2,1)}				0			0			2			2			0			
+	2		1			{(2,1)}				0			0			0			2			0			
+	2		1			{(2,1)}				0			0			0			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			4			1			2			0			
+	2		3			{(2,3)}				0			8			0			2			0			
+	2		3			{(2,3)}				0			8			0			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			8			0			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			0			2			2			0			
+	2		3			{(2,3)}				0			8			0			2			0			
+	2		3			{(2,3)}				0			8			0			2			0			
+	2		3			{(2,3)}				0			8			0			2			0			
+	2		3			{(2,3)}				0			40			0			0			0			
+	2		3			{(2,3)}				0			40			0			0			0			
+	2		3			{(2,3)}				0			40			0			0			0			
+	2		3			{(2,3)}				0			40			0			0			0			
+	2		3			{(2,3)}				0			38			0			0			0			
+	2		12			{(2,12)}				0			0			2			2			0			
+	2		12			{(2,12)}				0			0			2			2			0			
+	2		12			{(2,12)}				0			0			2			2			0			
+	2		12			{(2,12)}				0			0			2			2			0			
+	2		12			{(2,12)}				0			0			2			2			0			
+	2		12			{(2,12)}				0			20			1			1			0			
+	2		12			{(2,12)}				0			40			0			0			0			
+	2		12			{(2,12)}				0			40			0			0			0			
+	2		12			{(2,12)}				0			14			0			0			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			4			1			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			8			0			2			0			
+	3		2			{(3,2)}				0			8			0			2			0			
+	3		2			{(3,2)}				0			4			1			2			0			
+	3		2			{(3,2)}				0			4			1			2			0			
+	3		2			{(3,2)}				0			8			0			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			8			0			2			0			
+	3		2			{(3,2)}				0			8			0			2			0			
+	3		2			{(3,2)}				0			0			2			2			0			
+	3		2			{(3,2)}				0			40			0			0			0			
+	3		2			{(3,2)}				0			40			0			0			0			
+	3		2			{(3,2)}				0			40			0			0			0			
+	3		2			{(3,2)}				0			40			0			0			0			
+	3		2			{(3,2)}				0			38			0			0			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			4			1			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			4			1			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			4			1			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			4			1			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			0			2			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			8			0			2			0			
+	3		4			{(3,4)}				0			40			0			0			0			
+	3		4			{(3,4)}				0			40			0			0			0			
+	3		4			{(3,4)}				0			11			0			0			0			
+	3		10			{(3,10)}				0			4			1			2			0			
+	3		10			{(3,10)}				0			8			0			2			0			
+	3		10			{(3,10)}				0			0			2			2			0			
+	3		10			{(3,10)}				0			8			0			2			0			
+	3		10			{(3,10)}				0			8			0			2			0			
+	3		10			{(3,10)}				0			0			2			2			0			
+	3		10			{(3,10)}				0			0			2			2			0			
+	3		10			{(3,10)}				0			8			0			2			0			
+	3		10			{(3,10)}				0			8			0			2			0			
+	3		10			{(3,10)}				0			0			2			2			0			
+	3		10			{(3,10)}				0			8			0			2			0			
+	3		10			{(3,10)}				0			8			0			2			0			
+	3		10			{(3,10)}				0			4			1			2			0			
+	3		10			{(3,10)}				0			8			0			2			0			
+	3		10			{(3,10)}				0			4			1			2			0			
+	3		10			{(3,10)}				0			3			0			2			0			
+	3		10			{(3,10)}				0			0			2			1			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			4			1			2			0			
+	4		3			{(4,3)}				0			4			1			2			0			
+	4		3			{(4,3)}				0			4			1			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			4			1			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			0			2			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			8			0			2			0			
+	4		3			{(4,3)}				0			4			1			2			0			
+	4		3			{(4,3)}				0			4			1			2			0			
+	4		3			{(4,3)}				0			40			0			0			0			
+	4		3			{(4,3)}				0			40			0			0			0			
+	4		3			{(4,3)}				0			11			0			0			0			
+	4		5			{(4,5)}				0			0			2			2			0			
+	4		5			{(4,5)}				0			0			2			2			0			
+	4		5			{(4,5)}				0			0			2			2			0			
+	4		5			{(4,5)}				0			0			2			2			0			
+	4		5			{(4,5)}				0			0			2			2			0			
+	4		5			{(4,5)}				0			0			2			2			0			
+	4		5			{(4,5)}				0			8			0			2			0			
+	4		5			{(4,5)}				0			24			0			1			0			
+	4		5			{(4,5)}				0			40			0			0			0			
+	4		5			{(4,5)}				0			21			0			0			0			
+	4		6			{(4,6)}				0			0			2			2			0			
+	4		6			{(4,6)}				0			0			2			2			0			
+	4		6			{(4,6)}				0			0			2			2			0			
+	4		6			{(4,6)}				0			8			0			2			0			
+	4		6			{(4,6)}				0			8			0			2			0			
+	4		6			{(4,6)}				0			8			0			2			0			
+	4		6			{(4,6)}				0			6			0			2			0			
+	4		6			{(4,6)}				0			0			0			2			0			
+	4		6			{(4,6)}				0			0			0			2			0			
+	4		6			{(4,6)}				0			0			0			2			0			
+	4		6			{(4,6)}				0			0			2			2			0			
+	4		6			{(4,6)}				0			0			1			2			0			
+	4		6			{(4,6)}				0			0			0			2			0			
+	4		6			{(4,6)}				0			0			2			2			0			
+	4		6			{(4,6)}				0			0			0			1			0			
+	4		7			{(4,7)}				0			0			2			2			0			
+	4		7			{(4,7)}				0			0			2			2			0			
+	4		7			{(4,7)}				0			0			2			2			0			
+	4		7			{(4,7)}				0			4			1			2			0			
+	4		7			{(4,7)}				0			0			2			2			0			
+	4		7			{(4,7)}				0			4			1			2			0			
+	4		7			{(4,7)}				0			0			2			2			0			
+	4		7			{(4,7)}				0			0			2			2			0			
+	4		7			{(4,7)}				0			4			1			2			0			
+	4		7			{(4,7)}				0			8			0			2			0			
+	4		7			{(4,7)}				0			8			0			2			0			
+	4		7			{(4,7)}				0			40			0			0			0			
+	4		7			{(4,7)}				0			15			0			0			0			
+	5		4			{(5,4)}				0			0			2			2			0			
+	5		4			{(5,4)}				0			0			2			2			0			
+	5		4			{(5,4)}				0			0			2			2			0			
+	5		4			{(5,4)}				0			0			2			2			0			
+	5		4			{(5,4)}				0			0			2			2			0			
+	5		4			{(5,4)}				0			0			2			2			0			
+	5		4			{(5,4)}				0			8			0			2			0			
+	5		4			{(5,4)}				0			24			0			1			0			
+	5		4			{(5,4)}				0			40			0			0			0			
+	5		4			{(5,4)}				0			21			0			0			0			
+	5		6			{(5,6)}				0			1			2			0			0			
+	6		4			{(6,4)}				0			0			2			2			0			
+	6		4			{(6,4)}				0			0			2			2			0			
+	6		4			{(6,4)}				0			0			2			2			0			
+	6		4			{(6,4)}				0			8			0			2			0			
+	6		4			{(6,4)}				0			8			0			2			0			
+	6		4			{(6,4)}				0			8			0			2			0			
+	6		4			{(6,4)}				0			6			0			2			0			
+	6		4			{(6,4)}				0			0			0			2			0			
+	6		4			{(6,4)}				0			0			0			2			0			
+	6		4			{(6,4)}				0			0			0			2			0			
+	6		4			{(6,4)}				0			0			2			2			0			
+	6		4			{(6,4)}				0			0			1			2			0			
+	6		4			{(6,4)}				0			0			0			2			0			
+	6		4			{(6,4)}				0			0			2			2			0			
+	6		4			{(6,4)}				0			0			0			1			0			
+	6		5			{(6,5)}				0			1			2			0			0			
+	6		7			{(6,7)}				0			0			2			2			0			
+	6		7			{(6,7)}				0			0			2			2			0			
+	6		7			{(6,7)}				0			0			2			2			0			
+	6		7			{(6,7)}				0			11			2			1			0			
+	7		4			{(7,4)}				0			0			2			2			0			
+	7		4			{(7,4)}				0			0			2			2			0			
+	7		4			{(7,4)}				0			0			2			2			0			
+	7		4			{(7,4)}				0			0			2			2			0			
+	7		4			{(7,4)}				0			0			2			2			0			
+	7		4			{(7,4)}				0			4			1			2			0			
+	7		4			{(7,4)}				0			4			1			2			0			
+	7		4			{(7,4)}				0			4			1			2			0			
+	7		4			{(7,4)}				0			8			0			2			0			
+	7		4			{(7,4)}				0			0			2			2			0			
+	7		4			{(7,4)}				0			8			0			2			0			
+	7		4			{(7,4)}				0			40			0			0			0			
+	7		4			{(7,4)}				0			15			0			0			0			
+	7		6			{(7,6)}				0			0			2			2			0			
+	7		6			{(7,6)}				0			0			2			2			0			
+	7		6			{(7,6)}				0			0			2			2			0			
+	7		6			{(7,6)}				0			11			2			1			0			
+	7		8			{(7,8)}				0			0			2			2			0			
+	7		8			{(7,8)}				0			4			1			2			0			
+	7		8			{(7,8)}				0			4			1			2			0			
+	7		8			{(7,8)}				0			4			1			2			0			
+	7		8			{(7,8)}				0			8			0			2			0			
+	7		8			{(7,8)}				0			0			2			2			0			
+	7		8			{(7,8)}				0			8			4			1			0			
+	7		8			{(7,8)}				0			40			0			0			0			
+	7		8			{(7,8)}				0			1			0			0			0			
+	7		9			{(7,9)}				0			0			2			2			0			
+	7		9			{(7,9)}				0			8			0			2			0			
+	7		9			{(7,9)}				0			8			0			2			0			
+	7		9			{(7,9)}				0			0			2			2			0			
+	7		9			{(7,9)}				0			4			1			2			0			
+	7		9			{(7,9)}				0			1			0			2			0			
+	7		9			{(7,9)}				0			0			0			2			0			
+	7		9			{(7,9)}				0			0			0			1			0			
+	8		7			{(8,7)}				0			0			2			2			0			
+	8		7			{(8,7)}				0			4			1			2			0			
+	8		7			{(8,7)}				0			4			1			2			0			
+	8		7			{(8,7)}				0			4			1			2			0			
+	8		7			{(8,7)}				0			8			0			2			0			
+	8		7			{(8,7)}				0			0			2			2			0			
+	8		7			{(8,7)}				0			8			4			1			0			
+	8		7			{(8,7)}				0			40			0			0			0			
+	8		7			{(8,7)}				0			1			0			0			0			
+	8		9			{(8,9)}				0			4			1			2			0			
+	8		9			{(8,9)}				0			0			2			2			0			
+	8		9			{(8,9)}				0			0			2			2			0			
+	8		9			{(8,9)}				0			0			2			2			0			
+	8		9			{(8,9)}				0			9			0			1			0			
+	9		7			{(9,7)}				0			0			2			2			0			
+	9		7			{(9,7)}				0			8			0			2			0			
+	9		7			{(9,7)}				0			4			0			2			0			
+	9		7			{(9,7)}				0			0			2			2			0			
+	9		7			{(9,7)}				0			3			1			2			0			
+	9		7			{(9,7)}				0			6			0			2			0			
+	9		7			{(9,7)}				0			0			0			2			0			
+	9		7			{(9,7)}				0			0			0			1			0			
+	9		8			{(9,8)}				0			4			1			2			0			
+	9		8			{(9,8)}				0			0			2			2			0			
+	9		8			{(9,8)}				0			0			2			2			0			
+	9		8			{(9,8)}				0			0			2			2			0			
+	9		8			{(9,8)}				0			9			0			1			0			
+	9		10			{(9,10)}				0			0			2			2			0			
+	9		10			{(9,10)}				0			8			0			2			0			
+	9		10			{(9,10)}				0			0			2			2			0			
+	9		10			{(9,10)}				0			0			2			2			0			
+	9		10			{(9,10)}				0			0			2			2			0			
+	9		10			{(9,10)}				0			4			1			2			0			
+	9		10			{(9,10)}				0			8			0			2			0			
+	9		10			{(9,10)}				0			8			0			2			0			
+	9		10			{(9,10)}				0			0			2			2			0			
+	9		10			{(9,10)}				0			8			0			2			0			
+	9		10			{(9,10)}				0			0			2			2			0			
+	9		10			{(9,10)}				0			0			2			2			0			
+	9		10			{(9,10)}				0			0			2			2			0			
+	9		10			{(9,10)}				0			24			0			1			0			
+	9		10			{(9,10)}				0			20			0			0			0			
+	10		3			{(10,3)}				0			4			1			2			0			
+	10		3			{(10,3)}				0			8			0			2			0			
+	10		3			{(10,3)}				0			0			2			2			0			
+	10		3			{(10,3)}				0			8			0			2			0			
+	10		3			{(10,3)}				0			0			2			2			0			
+	10		3			{(10,3)}				0			8			0			2			0			
+	10		3			{(10,3)}				0			8			0			2			0			
+	10		3			{(10,3)}				0			0			2			2			0			
+	10		3			{(10,3)}				0			0			2			2			0			
+	10		3			{(10,3)}				0			4			1			2			0			
+	10		3			{(10,3)}				0			8			0			2			0			
+	10		3			{(10,3)}				0			8			0			2			0			
+	10		3			{(10,3)}				0			8			0			2			0			
+	10		3			{(10,3)}				0			8			0			2			0			
+	10		3			{(10,3)}				0			4			1			2			0			
+	10		3			{(10,3)}				0			3			0			2			0			
+	10		3			{(10,3)}				0			0			2			1			0			
+	10		9			{(10,9)}				0			0			2			2			0			
+	10		9			{(10,9)}				0			4			1			2			0			
+	10		9			{(10,9)}				0			0			2			2			0			
+	10		9			{(10,9)}				0			8			0			2			0			
+	10		9			{(10,9)}				0			8			0			2			0			
+	10		9			{(10,9)}				0			0			2			2			0			
+	10		9			{(10,9)}				0			0			2			2			0			
+	10		9			{(10,9)}				0			8			0			2			0			
+	10		9			{(10,9)}				0			0			2			2			0			
+	10		9			{(10,9)}				0			0			2			2			0			
+	10		9			{(10,9)}				0			0			2			2			0			
+	10		9			{(10,9)}				0			0			2			2			0			
+	10		9			{(10,9)}				0			8			0			2			0			
+	10		9			{(10,9)}				0			24			0			1			0			
+	10		9			{(10,9)}				0			20			0			0			0			
+	10		11			{(10,11)}				0			0			2			2			0			
+	10		11			{(10,11)}				0			8			0			2			0			
+	10		11			{(10,11)}				0			8			0			2			0			
+	10		11			{(10,11)}				0			4			1			2			0			
+	10		11			{(10,11)}				0			8			0			2			0			
+	10		11			{(10,11)}				0			0			2			2			0			
+	10		11			{(10,11)}				0			8			0			2			0			
+	10		11			{(10,11)}				0			0			2			2			0			
+	10		11			{(10,11)}				0			0			2			2			0			
+	10		11			{(10,11)}				0			8			0			2			0			
+	10		11			{(10,11)}				0			0			2			2			0			
+	10		11			{(10,11)}				0			0			2			2			0			
+	10		11			{(10,11)}				0			4			1			2			0			
+	10		11			{(10,11)}				0			16			2			1			0			
+	10		11			{(10,11)}				0			6			0			0			0			
+	11		10			{(11,10)}				0			0			2			2			0			
+	11		10			{(11,10)}				0			8			0			2			0			
+	11		10			{(11,10)}				0			8			0			2			0			
+	11		10			{(11,10)}				0			4			1			2			0			
+	11		10			{(11,10)}				0			8			0			2			0			
+	11		10			{(11,10)}				0			0			2			2			0			
+	11		10			{(11,10)}				0			8			0			2			0			
+	11		10			{(11,10)}				0			0			2			2			0			
+	11		10			{(11,10)}				0			0			2			2			0			
+	11		10			{(11,10)}				0			4			1			2			0			
+	11		10			{(11,10)}				0			0			2			2			0			
+	11		10			{(11,10)}				0			0			2			2			0			
+	11		10			{(11,10)}				0			8			0			2			0			
+	11		10			{(11,10)}				0			16			2			1			0			
+	11		10			{(11,10)}				0			6			0			0			0			
+	11		12			{(11,12)}				0			0			2			2			0			
+	11		12			{(11,12)}				0			0			2			2			0			
+	11		12			{(11,12)}				0			0			2			2			0			
+	11		12			{(11,12)}				0			0			2			2			0			
+	11		12			{(11,12)}				0			4			1			2			0			
+	11		12			{(11,12)}				0			7			0			2			0			
+	11		12			{(11,12)}				0			0			1			2			0			
+	11		12			{(11,12)}				0			0			2			2			0			
+	11		12			{(11,12)}				0			1			0			2			0			
+	11		12			{(11,12)}				0			0			0			1			0			
+	12		1			{(12,1)}				0			0			2			2			0			
+	12		1			{(12,1)}				0			0			0			2			0			
+	12		1			{(12,1)}				0			0			0			1			0			
+	12		2			{(12,2)}				0			0			2			2			0			
+	12		2			{(12,2)}				0			0			2			2			0			
+	12		2			{(12,2)}				0			0			2			2			0			
+	12		2			{(12,2)}				0			0			2			2			0			
+	12		2			{(12,2)}				0			0			2			2			0			
+	12		2			{(12,2)}				0			20			1			1			0			
+	12		2			{(12,2)}				0			40			0			0			0			
+	12		2			{(12,2)}				0			40			0			0			0			
+	12		2			{(12,2)}				0			14			0			0			0			
+	12		11			{(12,11)}				0			0			2			2			0			
+	12		11			{(12,11)}				0			4			1			2			0			
+	12		11			{(12,11)}				0			4			1			2			0			
+	12		11			{(12,11)}				0			0			2			2			0			
+	12		11			{(12,11)}				0			0			2			2			0			
+	12		11			{(12,11)}				0			3			0			2			0			
+	12		11			{(12,11)}				0			0			2			2			0			
+	12		11			{(12,11)}				0			0			2			2			0			
+	12		11			{(12,11)}				0			1			0			2			0			
+	12		11			{(12,11)}				0			0			0			1			0			
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+----------------------------------------------------------------------------------------------------------------
+|                                              NETWORK CAPEX                                                   |
+----------------------------------------------------------------------------------------------------------------
+|                                               |  Quantity  | Unit price (€) |  Cost (€)  |    Total   (€)    |
+----------------------------------------------------------------------------------------------------------------
+|                |            OLTs              |	34	15000		510000
+|    Link Cost   |        Transponders          |	408	500000		204000000	205122000
+|                |         Amplifiers           |	306	2000		612000
+----------------------------------------------------------------------------------------------------------------
+|                |              |      EXCs     |	12	10000		120000
+|                |              |   ODU0 ports  |	0	1250		0
+|                |              |   ODU1 ports  |	1042	2500		2605000
+|                |   Electrical |   ODU2 ports  |	190	10000		1900000
+|    Node Cost   |     Part     |   ODU3 ports  |	298	40000		11920000		57345000
+|                |              |   ODU4 ports  |	0	100000		0
+|                |              |    Add ports  |	408	100000		40800000
+|                |------------------------------|                                                               
+|                |              |      OXCs     |	0	20000		0
+|                | Optical part |   Add ports   |	0	2500		0
+|                |              |  Line ports   |	0	2500		0
+----------------------------------------------------------------------------------------------------------------
+|                                 Total Network Cost                                       |	262467000
+----------------------------------------------------------------------------------------------------------------
