@@ -137,6 +137,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_parameters_values.txt" />
+    <Text Include="input_parameters_low_traffic.txt" />
+    <Text Include="input_parameters_medium_traffic.txt" />
+    <Text Include="input_parameters_high_traffic.txt" />
+    <Text Include="input_parameters_values_realistic.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
