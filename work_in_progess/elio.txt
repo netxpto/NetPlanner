@@ -6,6 +6,16 @@ avançarmos para o modo translucidio
 
 TO BE DONE
 
+	- escrever a dissertação
+		- resultados da rede de referência
+		- capítulo 2
+
+	- obter resultados para rede real
+
+next meeting: 17h, 15/10
+
+TO BE DONE
+
 	- começar a estruturar a tese (overleaf.com)
 
 	- resultados para a rede de referencia para o modo opaco + transparente (sem proteção) (usar os custos do Eduardo) (Heuristica/Analitico/ILP)(documentar)
