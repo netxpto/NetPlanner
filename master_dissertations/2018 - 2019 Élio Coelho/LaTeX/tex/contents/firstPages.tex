@@ -1,0 +1,172 @@
+% cover page
+\TitlePage
+  \HEADER{\BAR}{\ThesisYear}
+  \TITLE{Élio Tiago \newline Sousa Coelho}{Desenvolvimento de Heurísticas para o Dimensionamento de Redes Óticas Opacas e Transparentes}
+  \vspace*{7mm}
+  \TITLE{}{Development of Heuristics for Opaque and Transparent Optical Networks Dimensioning}
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+% initial thesis pages...
+\TitlePage
+  \HEADER{}{\ThesisYear}
+  \TITLE{Élio Tiago \newline Sousa Coelho}{Desenvolvimento de Heurísticas para o Dimensionamento de Redes Óticas Opacas e Transparentes}
+  \vspace*{7mm}
+  \TITLE{}{Development of Heuristics for Opaque and Transparent Optical Networks Dimensioning}
+  \vspace*{15mm}
+  \TEXT{}{Dissertação apresentada à Universidade de Aveiro para cumprimento
+dos requisitos necessários à obtenção do grau de Mestre em Engenharia
+Electrónica e Telecomunicações, realizada sob a orientação
+científica do Doutor Armando Humberto Moreira Nolasco Pinto, Professor
+Associado do Departamento de Eletrónica, Telecomunicações
+e Informática da Universidade de Aveiro e coorientação empresarial
+do Doutor Rui Manuel Dias Morais, Doutor em Engenharia Eletrotécnica
+pela Universidade de Aveiro, coordenador de atividades de investigação
+em optimização de redes na Infinera Portugal. Tendo como
+instituição de acolhimento o Instituto de Telecomunicações - Pólo de
+Aveiro.}
+
+  \vspace*{\fill}
+  \vspace{9cm}
+  %\includegraphics[width=0.3,height=1]{tex/contents/it.png}
+  \hspace{14cm}\includegraphics[width=6cm,height=3cm,keepaspectratio]{tex/contents/it.png}
+%\includegraphics[height=15.25mm]{ttex/contents/it.png}
+% TEXT{}{This work was supported by... (if applicable).} %% Logo IT
+
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+  \vspace*{55mm}
+  \TEXT{\textbf{o júri~/~the jury\newline}}
+       {}
+  \TEXT{presidente~/~president}
+       {\textbf{???? ???? ???? ????}\newline {\small
+         ???? ???? ???? ????}}
+  \vspace*{5mm}
+  \TEXT{vogais~/~examiners committee}
+       {\textbf{???? ???? ????}\newline {\small
+         ???? ???? ???? ????}}
+  \vspace*{5mm}
+  \TEXT{}
+       {\textbf{Armando Humberto Moreira Nolasco Pinto}\newline {\small
+        Professor Associado da Universidade de Aveiro}}
+
+\EndTitlePage
+
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+\hspace{75mm}\begin{minipage}{110mm} % no more than 120mm
+ 								\vspace{100mm}
+								\begin{flushright}
+            \begin{Large}\emph{\textbf{}}\end{Large}
+						\end{flushright}
+						 \end{minipage}
+						\vfill
+\EndTitlePage
+
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+  \vspace*{55mm}
+  \TEXT{\textbf{agradecimentos~/\newline acknowledgements}}
+       
+  \TEXT{}
+       
+  \TEXT{}
+       
+  \TEXT{}
+       
+  \TEXT{}
+      
+  \TEXT{}
+      
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+  \vspace*{55mm}
+  \TEXT{\textbf{Palavras-chave}}{}
+  \vspace*{5mm}
+  \TEXT{\textbf{Resumo}}{
+  }
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+\TitlePage
+  \vspace*{55mm}
+  \TEXT{\textbf{Keywords}}{}
+  \vspace*{5mm}
+  \TEXT{\textbf{Abstract}}{} 
+ 
+  
+\EndTitlePage
+% empty page
+\titlepage\ \endtitlepage
+
+% 1x vertical spacing between lines
+%\singlespacing
+% 1.5x vertical spacing between lines
+\onehalfspacing
+
+% tables of contents, of figures, ...
+% to count the following pages with roman numbering
+\pagenumbering{roman}
+
+\tableofcontents
+\cleardoublepage
+
+\listoffigures
+\cleardoublepage
+
+\listoftables
+\cleardoublepage
+
+% print the glossary
+\printnoidxglossary[%
+type=\acronymtype,%
+title={\acronymname},%
+nonumberlist,%
+]
+\cleardoublepage
+
+% 1x vertical spacing between lines
+%\singlespacing
+% 1.5x vertical spacing between lines
+\onehalfspacing
+
+% the chapters...
+% to count the following pages with arabic numerals
+\pagenumbering{arabic}
+
+% specifying header content - in this case it only shows chapter
+% information (left position at even pages, right position at odd pages)
+\setlength\headheight{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[RO,LE]{\fontsize{10}{12}\textsl{\leftmark}}
+\fancyhead[LO,RE]{\fontsize{10}{12}}
+
+% to change font of the page numbering in all pages
+\fancyfoot[C]{\small\thepage}
+
+% "Some LATEX commands, like \chapter, use the \thispagestyle command to
+% automatically switch to the plain page style, thus ignoring the page
+% style currently in effect." from:
+% https://ctan.org/pkg/fancyhdr
+% (page 7)
+\fancypagestyle{plain}{%
+  % clear all header and footer fields
+  \fancyhf{}
+  % except the center
+  \fancyfoot[C]{\small\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}

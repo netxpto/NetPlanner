@@ -1,0 +1,182 @@
+\chapter{Resultados}
+\label{chapter6}
+
+\section{Rede Referência}
+\label{ref}
+\vspace{11pt}
+
+\subsection{Modelo Analítico}
+\vspace{11pt}
+
+\subsubsection{Tráfego Baixo}
+
+\vspace{11pt}
+
+$D$ = ${\frac{1}{2}} \times {( 1 + 1 )} \times ( \frac{2000}{100} )$ \qquad \qquad $D$ = 20\\
+
+$<w>$ = $(\frac{20 \times 1.533}{16} ) \times ( 1 + 0)$ \qquad \qquad $<w>$ = 1.916\\
+%$<w>$ = $($ $\frac{22.5 x 1.533}{16}$ $)$ x $($ 1 + 0$)$ \qquad \qquad $<w>$ = 2.156\\
+
+$N^R$ = 16\\
+
+$C_L$ = $(2 \times 8 \times 15 000) + (2 \times 8 \times 5 000 \times 1.916) + (2 \times 16 \times 2000)$ = \textbf{457 280 \euro}\\
+
+
+$<d>$ = $\frac{20}{6}$ \qquad \qquad $<d>$ = 3.33\\
+
+$<P_{exc}>$ = $3.333 \times 1.533]$ \qquad \quad $<P_{exc}>$ = 5.1095 \\
+
+%$C_N$ = $(1000 \times 100 \times 3.75)$
+
+$C_N$ = $(6 \times (10 000 + (1 00 \times 100 \times 5.1095)) + (100 \times 1.25 \times 120) + (100 \times 2.5 \times 100) + (100 \times 10 \times 32) + (100 \times 40 \times 12) + (100 \times 100 \times 8)))$\\
+
+$C_N$ = 366 570 + 200 00 = \textbf{566 570 \euro}\\
+
+$CAPEX$ = 457 280 + 566 570 \qquad \qquad $CAPEX$ = \textbf{1 023 850 \euro}\\
+
+
+\subsubsection{Tráfego Médio}
+\vspace{11pt}
+
+$D$ = ${\frac{1}{2}} \times {( 1 + 1 )} \times ( \frac{10000}{100} )$ \qquad \qquad $D$ = 100\\
+
+$<w>$ = $(\frac{100 \times 1.533}{16} ) \times ( 1 + 0)$ \qquad \qquad $<w>$ = 9.581\\
+%$<w>$ = $($ $\frac{22.5 x 1.533}{16}$ $)$ x $($ 1 + 0$)$ \qquad \qquad $<w>$ = 2.156\\
+
+$N^R$ = 16\\
+
+$C_L$ = $(2 \times 8 \times 15 000) + (2 \times 8 \times 5 000 \times 9.581) + (2 \times 16 \times 2000)$ = \textbf{1 070 280 \euro}\\
+
+
+$<d>$ = $\frac{100}{6}$ \qquad \qquad $<d>$ = 16.6667\\
+
+$<P_{exc}>$ = $16.6667 \times 1.533]$ \qquad \quad $<P_{exc}>$ = 25.5501 \\
+
+%$C_N$ = $(1000 \times 100 \times 3.75)$
+
+$C_N$ = $(6 \times (10 000 + (1 00 \times 100 \times 22.5501)) + (100 \times 1.25 \times 120) + (100 \times 2.5 \times 100) + (100 \times 10 \times 32) + (100 \times 40 \times 12) + (100 \times 100 \times 8)))$\\
+
+$C_N$ = 1 359 006 + 1 000 000 = \textbf{2 359 006 \euro}\\
+
+$CAPEX$ = 1 070 480 + 2 359 006 \qquad \qquad $CAPEX$ = \textbf{3 429 486 \euro}\\
+
+$<P_{exc}>$ = 18.75\\
+
+$<P_{oxc}>$ = $18.75 \times [1 + (1 + 0 ) \times 1.533]$ \qquad \quad $<P_{oxc}>$ = 47.4938 \\
+
+
+\subsubsection{Tráfego Elevado}
+\vspace{11pt}
+
+\subsection{ILP}
+
+\subsubsection{Tráfego Baixo}
+
+\begin{table}[H]
+\centering
+\scalebox{0.81}{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{7}{|c|}{Network CAPEX} \\ \hline
+\multicolumn{3}{|c|}{} & Quantity & Unit Price & Cost & Total \\ \hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}Link\\ Cost\end{tabular}} & \multicolumn{2}{c|}{OLTs} & 16 & 15 000 \euro & 240 000 \euro & \multirow{3}{*}{584 000 \euro} \\ \cline{2-6}
+ & \multicolumn{2}{c|}{Optical Channels} & 56 & 5000 \euro & 280 000 \euro &  \\ \cline{2-6}
+ & \multicolumn{2}{c|}{Amplifiers} & 32 & 2000 \euro & 64 000 \euro &  \\ \hline
+\multirow{10}{*}{\begin{tabular}[c]{@{}c@{}}Node\\ Cost\end{tabular}} & \multirow{7}{*}{Electrical} & EXCs & 6 & 10 000 \euro & 60 000 \euro & \multirow{10}{*}{1 020 000 \euro} \\ \cline{3-6}
+ &  & ODU0 Ports & 120 & 100 \euro/Gbit/s & 15 000 \euro &  \\ \cline{3-6}
+ &  & ODU1 Ports & 100 & 100 \euro/Gbit/s & 25 000 \euro &  \\ \cline{3-6}
+ &  & ODU2 Ports & 32 & 100 \euro/Gbit/s & 32 000 \euro &  \\ \cline{3-6}
+ &  & ODU3 Ports & 12 & 100 \euro/Gbit/s & 48 000 \euro &  \\ \cline{3-6}
+ &  & ODU4 Ports & 8 & 100 \euro/Gbit/s & 80 000 \euro &  \\ \cline{3-6}
+ &  & LR Transponders & 40 & 100 \euro/Gbit/s & 400 000 \euro &  \\ \cline{2-6}
+ & \multirow{3}{*}{Optical} & OXCs & 6 & 20 000 \euro & 120 000 \euro &  \\ \cline{3-6}
+ &  & \multirow{2}{*}{OXC Ports} & \multirow{2}{*}{96} & \multirow{2}{*}{2 500 \euro} & \multirow{2}{*}{240 000 \euro} &  \\
+ &  &  &  &  &  &  \\ \hline
+\multicolumn{6}{|c|}{Total Network Cost} & 1 604 000 \euro \\ \hline
+\end{tabular}}
+%\caption{Detailed description of CAPEX for low traffic scenario using ILPs.}
+\end{table}
+
+\subsubsection{Tráfego Médio}
+
+\begin{table}[H]
+\centering
+\scalebox{0.81}{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{7}{|c|}{Network CAPEX} \\ \hline
+\multicolumn{3}{|c|}{} & Quantity & Unit Price & Cost & Total \\ \hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}Link\\ Cost\end{tabular}} & \multicolumn{2}{c|}{OLTs} & 16 & 15 000 \euro & 240 000 \euro & \multirow{3}{*}{1 004 000 \euro} \\ \cline{2-6}
+ & \multicolumn{2}{c|}{Optical Channels} & 140 & 5000 \euro & 700 000 \euro &  \\ \cline{2-6}
+ & \multicolumn{2}{c|}{Amplifiers} & 32 & 2000 \euro & 64 000 \euro &  \\ \hline
+\multirow{10}{*}{\begin{tabular}[c]{@{}c@{}}Node\\ Cost\end{tabular}} & \multirow{7}{*}{Electrical} & EXCs & 6 & 10 000 \euro & 60 000 \euro & \multirow{10}{*}{2 955 000 \euro} \\ \cline{3-6}
+ &  & ODU0 Ports & 600 & 100 \euro/Gbit/s & 75 000 \euro &  \\ \cline{3-6}
+ &  & ODU1 Ports & 500 & 100 \euro/Gbit/s & 125 000 \euro &  \\ \cline{3-6}
+ &  & ODU2 Ports & 160 & 100 \euro/Gbit/s & 160 000 \euro &  \\ \cline{3-6}
+ &  & ODU3 Ports & 60 & 100 \euro/Gbit/s & 240 000 \euro &  \\ \cline{3-6}
+ &  & ODU4 Ports & 40 & 100 \euro/Gbit/s & 400 000 \euro &  \\ \cline{3-6}
+ &  & LR Transponders & 114 & 100 \euro/Gbit/s & 1 140 000 \euro &  \\ \cline{2-6}
+ & \multirow{3}{*}{Optical} & OXCs & 6 & 20 000 \euro & 120 000 \euro &  \\ \cline{3-6}
+ &  & \multirow{2}{*}{OXC Ports} & \multirow{2}{*}{254} & \multirow{2}{*}{2 500 \euro} & \multirow{2}{*}{635 000 \euro} &  \\
+ &  &  &  &  &  &  \\ \hline
+\multicolumn{6}{|c|}{Total Network Cost} & 3 959 000 \euro \\ \hline
+\end{tabular}}
+%\caption{Detailed description of CAPEX for medium traffic scenario using ILPs.}
+\end{table}
+
+\subsubsection{Tráfego Elevado}
+
+\begin{table}[H]
+\centering
+\scalebox{0.8}{
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{7}{|c|}{Network CAPEX} \\ \hline
+\multicolumn{3}{|c|}{} & Quantity & Unit Price & Cost & Total \\ \hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}Link\\ Cost\end{tabular}} & \multicolumn{2}{c|}{OLTs} & 16 & 15 000 \euro & 240 000 \euro & \multirow{3}{*}{1 604 000 \euro} \\ \cline{2-6}
+ & \multicolumn{2}{c|}{Optical Channels} & 260 & 5000 \euro & 1 300 000 \euro &  \\ \cline{2-6}
+ & \multicolumn{2}{c|}{Amplifiers} & 32 & 2000 \euro & 64 000 \euro &  \\ \hline
+\multirow{10}{*}{\begin{tabular}[c]{@{}c@{}}Node\\ Cost\end{tabular}} & \multirow{7}{*}{Electrical} & EXCs & 6 & 10 000 \euro & 60 000 \euro & \multirow{10}{*}{5 505 000 \euro} \\ \cline{3-6}
+ &  & ODU0 Ports & 1200 & 100 \euro/Gbit/s & 150 000 \euro &  \\ \cline{3-6}
+ &  & ODU1 Ports & 1000 & 100 \euro/Gbit/s & 250 000 \euro &  \\ \cline{3-6}
+ &  & ODU2 Ports & 320 & 100 \euro/Gbit/s & 320 000 \euro &  \\ \cline{3-6}
+ &  & ODU3 Ports & 120 & 100 \euro/Gbit/s & 480 000 \euro &  \\ \cline{3-6}
+ &  & ODU4 Ports & 80 & 100 \euro/Gbit/s & 800 000 \euro &  \\ \cline{3-6}
+ &  & LR Transponders & 214 & 100 \euro/Gbit/s & 2 140 000 \euro &  \\ \cline{2-6}
+ & \multirow{3}{*}{Optical} & OXCs & 6 & 20 000 \euro & 120 000 \euro &  \\ \cline{3-6}
+ &  & \multirow{2}{*}{OXC Ports} & \multirow{2}{*}{474} & \multirow{2}{*}{2 500 \euro} & \multirow{2}{*}{1 185 000 \euro} &  \\
+ &  &  &  &  &  &  \\ \hline
+\multicolumn{6}{|c|}{Total Network Cost} & 7 109 000 \euro \\ \hline
+\end{tabular}}
+%\caption{Detailed description of CAPEX for high traffic scenario using ILPs.}
+\end{table}
+
+\vspace{11pt}
+
+\subsection{Heurísticas}
+\label{heuResults}
+\vspace{11pt}
+
+\subsubsection{Tráfego Baixo}
+
+\subsubsection{Tráfego Médio}
+
+\subsubsection{Tráfego Elevado}
+
+
+
+\subsection{Análise Comparativa}
+
+
+\clearpage
+\section{Rede Real}
+\label{heu}
+
+\subsection{Modelo Analítico}
+
+\subsection{Heurísticas}
+
+\subsection{Análise Comparativa}
+
+
+\cleardoublepage

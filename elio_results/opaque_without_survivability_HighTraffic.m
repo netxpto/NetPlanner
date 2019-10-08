@@ -22,12 +22,12 @@ NR=[3,0,0,0,1,3,0,0,1,2,0,0,1,0,5];
 cust_olt = 15000;
 cust_transp = 5000;
 cust_amplifier = 2000;
-cust_EXC_port = 1000;
-cust_EXC_port_ODU0 = 1000;
-cust_EXC_port_ODU1 = 1000;
-cust_EXC_port_ODU2 = 1000;
-cust_EXC_port_ODU3 = 1000;
-cust_EXC_port_ODU4 = 1000;
+cust_EXC_port = 100;
+cust_EXC_port_ODU0 = 100;
+cust_EXC_port_ODU1 = 100;
+cust_EXC_port_ODU2 = 100;
+cust_EXC_port_ODU3 = 100;
+cust_EXC_port_ODU4 = 100;
 cust_EXC = 10000;
 cust_OXC_port = 2500;
 cust_OXC = 20000;
@@ -315,7 +315,7 @@ num_amplifier = sum(real_NR);
 %Cost OLT
 olt = 2 * cust_olt * total_L;
 %Cost Transponder
-transponder = 2 * cust_transp * 100 * total_W;
+transponder = 2 * cust_transp * total_W;
 %Cost Amplifier
 amplifiers = 2 * num_amplifier * cust_amplifier;
 %Link Cost

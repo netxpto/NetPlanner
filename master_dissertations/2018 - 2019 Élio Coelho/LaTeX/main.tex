@@ -1,0 +1,89 @@
+%
+% Copyright 2018 Rui Antunes
+%
+
+% This document presents a UA thesis LaTeX example.
+
+% This example is based on the one developed by
+% professor Tomás Oliveira e Silva, which can be found in his home page:
+% - http://sweet.ua.pt/tos/
+
+% Author:
+%   Rui Antunes
+%
+% Last updated:
+%   November 26, 2018
+
+\documentclass[11pt,twoside,a4paper]{report}
+
+% UA thesis package
+\usepackage[DETI,engineering]{uaThesis}
+
+% thesis year
+\def\ThesisYear{2019}
+
+% font encoding
+\usepackage[T1]{fontenc}
+
+% to change tables size
+\usepackage{graphicx}
+
+% input encoding
+\usepackage[utf8]{inputenc}
+
+% select the language
+\usepackage[english]{babel}
+%\usepackage[portuguese]{babel}
+
+% additional packages
+\input{tex/options/packages}
+\usepackage{listings}
+% before begin document
+\input{tex/options/preBegin}
+
+\begin{document}
+
+% select the language
+%\input{tex/options/languages/english}
+\input{tex/options/languages/portuguese}
+
+% after begin document
+\input{tex/options/posBegin}
+
+% first pages
+\input{tex/contents/firstPages}
+
+% contents
+
+% chapter 1
+\input{tex/contents/Introduction.tex}
+
+% chapter 2
+\input{tex/contents/Optical_Transparent_Networks_Dimensioning.tex}
+
+% chapter 3
+\input{tex/contents/Generic_Heuristic_Frameworks.tex}
+
+% chapter 4
+\input{tex/contents/NetXPTO_Implementation.tex}
+
+
+% chapter 5
+\input{tex/contents/Heuristic_Algorithms.tex}
+
+% chapter 6
+\input{tex/contents/Results.tex}
+
+% chapter 7
+\input{tex/contents/Conclusion.tex}
+
+% bibliography
+
+% to cite all the references (uncomment for debugging purposes)
+%\nocite{*}
+
+% the bibliography using BibLaTeX
+\printbibliography
+%\cleardoublepage
+
+\end{document}

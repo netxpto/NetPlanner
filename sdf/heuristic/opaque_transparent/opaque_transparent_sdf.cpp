@@ -120,7 +120,7 @@ int main()
 {
 
 	//NetworkSimulatorInputParameters param(argc, argv);
-	NetworkSimulatorInputParameters param("input_parameters_values_realistic.txt");
+	NetworkSimulatorInputParameters param("input_parameters_high_traffic.txt");
 
 
 	/* Signals Declaration */
