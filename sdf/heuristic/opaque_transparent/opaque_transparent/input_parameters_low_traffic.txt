@@ -72,9 +72,9 @@ odu4=
 0 0 0 0 0 2
 0 2 0 0 2 0
 //################################### ORDERING RULE ################################################
-orderingRule=descendingOrder
+orderingRule=ascendingOrder
 //################################### TRANSPORT MODE ###############################################
-transportMode=opaque
+transportMode=transparent
 //############################ ROUTING CRITERION LOGICAL TOPOLOGY ##################################
 routingCriterionLogicalTopology=hops
 //############################ BLOCKING CRITERION LOGICAL TOPOLOGY #################################

@@ -50,9 +50,7 @@ public:
 	int OTU4portsCost{ 10000 };
 	int OXCsCost{ 20000 };
 	int addPortsCost{ 2500 };
-	int linePortsCost{ 2500 };
-
-
+	int linePortsCost{ 2500 };	
 
 	/* Initializes default input parameters*/
 	NetworkSimulatorInputParameters() : SystemInputParameters() {
@@ -120,7 +118,7 @@ int main()
 {
 
 	//NetworkSimulatorInputParameters param(argc, argv);
-	NetworkSimulatorInputParameters param("input_parameters_high_traffic.txt");
+	NetworkSimulatorInputParameters param("input_parameters_rede_real.txt");
 
 
 	/* Signals Declaration */
