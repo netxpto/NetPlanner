@@ -6,11 +6,23 @@ avançarmos para o modo translucidio
 
 TO BE DONE
 
+	- colocar os últimos resultados
+
+	- escrever texto, explicar
+
+next meeting: 17h, 22/10
+
+
+
+TO BE DONE
+
 	- colocar os resultados todos (rede referência e rede real, incluindo ILP) para o modo opáco
 
 	- escrever texto, explicar
 
 next meeting: 17h, 17/10
+
+
 
 
 TO BE DONE
