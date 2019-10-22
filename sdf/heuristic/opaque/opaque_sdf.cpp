@@ -112,32 +112,40 @@ public:
 int main()
 {
 	//SimulationInputParameters param(argc, argv);
-	SimulationInputParameters param("input_parameters_rede_real.txt");
+	SimulationInputParameters param("input_parameters_low_traffic.txt");
 
 	//Signals Declaration 
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };
 	Scheduler_Out.setSaveInAscii(true);
+	Scheduler_Out.setSaveSignal(false);
 
-	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn" };
+	LogicalTopology LogicalTopologyGenerator_Out{ "LogicalTopologyGenerator_Out.sgn",1 };
 	LogicalTopologyGenerator_Out.setSaveInAscii(true);
+	LogicalTopologyGenerator_Out.setSaveSignal(false);
 
-	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn" };
+	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn",1 };
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
+	PhysicalTopologyGenerator_Out.setSaveSignal(false);
 
 	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn" };
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
+	LogicalTopologyManager_PathRequest.setSaveSignal(false);
 
 	PathRequestRouted PhysicalTopologyManager_PathRequestRouted{ "PhysicalTopologyManager_PathRequestRouted.sgn" };
 	PhysicalTopologyManager_PathRequestRouted.setSaveInAscii(true);
+	PhysicalTopologyManager_PathRequestRouted.setSaveSignal(false);
 
-	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn" };
+	DemandRequestRouted ProcessedDemand{ "ProcessedDemand.sgn",1 };
 	ProcessedDemand.setSaveInAscii(true);
+	ProcessedDemand.setSaveSignal(false);
 
-	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn" };
+	LogicalTopology FinalLogicalTopology{ "FinalLogicalTopology.sgn",1 };
 	FinalLogicalTopology.setSaveInAscii(true);
+	FinalLogicalTopology.setSaveSignal(false);
 	
-	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn" };
+	PhysicalTopology FinalPhysicalTopology{ "FinalPhysicalTopology.sgn",1 };
 	FinalPhysicalTopology.setSaveInAscii(true);
+	FinalPhysicalTopology.setSaveSignal(false);
 
 
 	/* Blocks Declaration */
