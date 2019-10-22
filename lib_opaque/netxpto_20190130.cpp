@@ -2558,7 +2558,7 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	fileHandler << "|                                               |  Quantity  | Unit price (€) |  Cost (€)  |    Total   (€)    |\n";
 	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
 	fileHandler << "|                |            OLTs              |\t" << OLTsQuantity << "\t" << OLTsCost << "\t\t" << OLTsQuantity * OLTsCost << "\n";
-	fileHandler << "|    Link Cost   |        Transponders          |\t" << TranspondersQuantity << "\t" << TranspondersCost << "\t\t" << TranspondersQuantity * TranspondersCost * 100 << "\t" << (OLTsQuantity*OLTsCost) + (TranspondersQuantity*TranspondersCost * 100) + AmplifiersTotalCost << "\n";
+	fileHandler << "|    Link Cost   |        Transponders          |\t" << TranspondersQuantity << "\t" << TranspondersCost << "\t\t" << TranspondersQuantity * TranspondersCost  << "\t" << (OLTsQuantity*OLTsCost) + (TranspondersQuantity*TranspondersCost ) + AmplifiersTotalCost << "\n";
 	fileHandler << "|                |         Amplifiers           |\t" << AmplifiersQuantity << "\t" << AmplifiersCost << "\t\t" << AmplifiersCost * AmplifiersQuantity << "\n";
 	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
 	fileHandler << "|                |              |      EXCs     |\t" << EXCsQuantity << "\t" << EXCsCost << "\t\t" << EXCsCost * EXCsQuantity << "\n";
@@ -2573,7 +2573,7 @@ void System::writeReport(t_logical_topology logicalTopology, t_physical_topology
 	fileHandler << "|                | Optical part |   Add ports   |\t" << addPortsQuantity << "\t" << addPortsCost << "\t\t" << addPortsCost * addPortsQuantity << "\n";
 	fileHandler << "|                |              |  Line ports   |\t" << linePortsQuantity << "\t" << linePortsCost << "\t\t" << linePortsQuantity * linePortsCost << "\n";
 	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
-	fileHandler << "|                                 Total Network Cost                                       |\t" << ((OLTsQuantity*OLTsCost) + (TranspondersQuantity*TranspondersCost * 100) + AmplifiersTotalCost) + (EXCsCost * EXCsQuantity + ODU0portsCost * ODU0portsQuantity + ODU1portsCost * ODU1portsQuantity + ODU2portsCost * ODU2portsQuantity + ODU3portsCost * ODU3portsQuantity + ODU4portsCost * ODU4portsQuantity + OTU4portsCost * OTU4portsQuantity + opticalPartCost) << "\n";
+	fileHandler << "|                                 Total Network Cost                                       |\t" << ((OLTsQuantity*OLTsCost) + (TranspondersQuantity*TranspondersCost ) + AmplifiersTotalCost) + (EXCsCost * EXCsQuantity + ODU0portsCost * ODU0portsQuantity + ODU1portsCost * ODU1portsQuantity + ODU2portsCost * ODU2portsQuantity + ODU3portsCost * ODU3portsQuantity + ODU4portsCost * ODU4portsQuantity + OTU4portsCost * OTU4portsQuantity + opticalPartCost) << "\n";
 	fileHandler << "----------------------------------------------------------------------------------------------------------------\n";
 
 
