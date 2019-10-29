@@ -6,22 +6,48 @@ RESULTS FOR OPAQUE MODE WITHOUT SURVIVABILITY
 -------------------------------------------------------------
 |  Unidirectional link  |  Optical channels  |  Amplifiers  |
 -------------------------------------------------------------
- Node 1 -> 2			1		3
- Node 1 -> 6			1		1
- Node 2 -> 1			1		3
- Node 2 -> 3			2		3
- Node 2 -> 6			2		1
- Node 3 -> 2			2		3
- Node 3 -> 4			1		2
- Node 3 -> 5			1		0
- Node 4 -> 3			1		2
- Node 4 -> 5			1		1
- Node 5 -> 3			1		0
- Node 5 -> 4			1		1
- Node 5 -> 6			2		5
- Node 6 -> 1			1		1
- Node 6 -> 2			2		1
- Node 6 -> 5			2		5
+ Node 1 -> 2			7		10
+ Node 1 -> 3			5		15
+ Node 1 -> 8			6		27
+ Node 2 -> 1			7		10
+ Node 2 -> 3			12		5
+ Node 2 -> 4			21		9
+ Node 3 -> 1			5		15
+ Node 3 -> 2			12		5
+ Node 3 -> 6			11		19
+ Node 4 -> 2			22		9
+ Node 4 -> 5			20		5
+ Node 4 -> 11			12		23
+ Node 5 -> 4			21		5
+ Node 5 -> 6			6		10
+ Node 5 -> 7			18		7
+ Node 6 -> 3			11		19
+ Node 6 -> 5			6		10
+ Node 6 -> 10			9		11
+ Node 6 -> 14			9		19
+ Node 7 -> 5			19		7
+ Node 7 -> 8			19		6
+ Node 8 -> 1			7		27
+ Node 8 -> 7			20		6
+ Node 8 -> 9			27		6
+ Node 9 -> 8			27		6
+ Node 9 -> 10			9		8
+ Node 9 -> 12			22		4
+ Node 9 -> 13			5		4
+ Node 10 -> 6			9		11
+ Node 10 -> 9			9		8
+ Node 11 -> 4			12		23
+ Node 11 -> 12			11		7
+ Node 11 -> 13			3		7
+ Node 12 -> 9			22		4
+ Node 12 -> 11			11		7
+ Node 12 -> 14			19		2
+ Node 13 -> 9			5		4
+ Node 13 -> 11			3		7
+ Node 13 -> 14			5		2
+ Node 14 -> 6			9		19
+ Node 14 -> 12			19		2
+ Node 14 -> 13			5		2
 -------------------------------------------------------------
 
 
@@ -34,12 +60,20 @@ RESULTS FOR OPAQUE MODE WITHOUT SURVIVABILITY
 ---------------------------------------------------------------------------------------
 | Node | Nodal degree |  Tributary ports  |  Line ports  |  Add ports  |  Line ports  |
 ---------------------------------------------------------------------------------------
-  1		2		29		2		0		0
-  2		3		23		5		0		0
-  3		3		18		4		0		0
-  4		2		20		2		0		0
-  5		3		24		4		0		0
-  6		3		22		5		0		0
+  1		3		152		18		0		0
+  2		3		172		40		0		0
+  3		3		155		28		0		0
+  4		3		159		54		0		0
+  5		3		146		45		0		0
+  6		4		171		35		0		0
+  7		2		149		38		0		0
+  8		3		156		54		0		0
+  9		4		146		63		0		0
+  10		2		136		18		0		0
+  11		3		144		26		0		0
+  12		3		181		52		0		0
+  13		3		135		13		0		0
+  14		3		166		33		0		0
 ---------------------------------------------------------------------------------------
 
 
@@ -47,64 +81,145 @@ RESULTS FOR OPAQUE MODE WITHOUT SURVIVABILITY
 Detailed description of each node:
 
 Node 1:
-	 - Needs 2 line ports.
-		 - 1 connect to Node 2 with 100 Gbit/s 
-		 - 1 connect to Node 6 with 100 Gbit/s 
-	 - Needs 29 tributary ports:
-		 - Where 13 is the ODU0
-		 - Where 13 is the ODU1
-		 - Where 3 is the ODU2
+	 - Needs 18 line ports.
+		 - 7 connect to Node 2 with 100 Gbit/s 
+		 - 5 connect to Node 3 with 100 Gbit/s 
+		 - 6 connect to Node 8 with 100 Gbit/s 
+	 - Needs 152 tributary ports:
+		 - Where 108 is the ODU0
+		 - Where 28 is the ODU2
+		 - Where 6 is the ODU3
+		 - Where 10 is the ODU4
 Node 2:
-	 - Needs 5 line ports.
-		 - 1 connect to Node 1 with 100 Gbit/s 
-		 - 2 connect to Node 3 with 100 Gbit/s 
-		 - 2 connect to Node 6 with 100 Gbit/s 
-	 - Needs 23 tributary ports:
-		 - Where 11 is the ODU0
-		 - Where 7 is the ODU1
-		 - Where 2 is the ODU2
-		 - Where 2 is the ODU3
-		 - Where 1 is the ODU4
+	 - Needs 40 line ports.
+		 - 7 connect to Node 1 with 100 Gbit/s 
+		 - 12 connect to Node 3 with 100 Gbit/s 
+		 - 21 connect to Node 4 with 100 Gbit/s 
+	 - Needs 172 tributary ports:
+		 - Where 128 is the ODU0
+		 - Where 26 is the ODU2
+		 - Where 11 is the ODU3
+		 - Where 7 is the ODU4
 Node 3:
-	 - Needs 4 line ports.
-		 - 2 connect to Node 2 with 100 Gbit/s 
-		 - 1 connect to Node 4 with 100 Gbit/s 
-		 - 1 connect to Node 5 with 100 Gbit/s 
-	 - Needs 18 tributary ports:
-		 - Where 7 is the ODU0
-		 - Where 6 is the ODU1
-		 - Where 3 is the ODU2
-		 - Where 2 is the ODU3
+	 - Needs 28 line ports.
+		 - 5 connect to Node 1 with 100 Gbit/s 
+		 - 12 connect to Node 2 with 100 Gbit/s 
+		 - 11 connect to Node 6 with 100 Gbit/s 
+	 - Needs 155 tributary ports:
+		 - Where 114 is the ODU0
+		 - Where 30 is the ODU2
+		 - Where 4 is the ODU3
+		 - Where 7 is the ODU4
 Node 4:
-	 - Needs 2 line ports.
-		 - 1 connect to Node 3 with 100 Gbit/s 
-		 - 1 connect to Node 5 with 100 Gbit/s 
-	 - Needs 20 tributary ports:
-		 - Where 7 is the ODU0
-		 - Where 10 is the ODU1
-		 - Where 3 is the ODU2
+	 - Needs 54 line ports.
+		 - 22 connect to Node 2 with 100 Gbit/s 
+		 - 20 connect to Node 5 with 100 Gbit/s 
+		 - 12 connect to Node 11 with 100 Gbit/s 
+	 - Needs 159 tributary ports:
+		 - Where 116 is the ODU0
+		 - Where 32 is the ODU2
+		 - Where 2 is the ODU3
+		 - Where 9 is the ODU4
 Node 5:
-	 - Needs 4 line ports.
-		 - 1 connect to Node 3 with 100 Gbit/s 
-		 - 1 connect to Node 4 with 100 Gbit/s 
-		 - 2 connect to Node 6 with 100 Gbit/s 
-	 - Needs 24 tributary ports:
-		 - Where 14 is the ODU0
-		 - Where 4 is the ODU1
-		 - Where 4 is the ODU2
-		 - Where 1 is the ODU3
-		 - Where 1 is the ODU4
+	 - Needs 45 line ports.
+		 - 21 connect to Node 4 with 100 Gbit/s 
+		 - 6 connect to Node 6 with 100 Gbit/s 
+		 - 18 connect to Node 7 with 100 Gbit/s 
+	 - Needs 146 tributary ports:
+		 - Where 108 is the ODU0
+		 - Where 30 is the ODU2
+		 - Where 2 is the ODU3
+		 - Where 6 is the ODU4
 Node 6:
-	 - Needs 5 line ports.
-		 - 1 connect to Node 1 with 100 Gbit/s 
-		 - 2 connect to Node 2 with 100 Gbit/s 
-		 - 2 connect to Node 5 with 100 Gbit/s 
-	 - Needs 22 tributary ports:
-		 - Where 8 is the ODU0
-		 - Where 10 is the ODU1
-		 - Where 1 is the ODU2
-		 - Where 1 is the ODU3
-		 - Where 2 is the ODU4
+	 - Needs 35 line ports.
+		 - 11 connect to Node 3 with 100 Gbit/s 
+		 - 6 connect to Node 5 with 100 Gbit/s 
+		 - 9 connect to Node 10 with 100 Gbit/s 
+		 - 9 connect to Node 14 with 100 Gbit/s 
+	 - Needs 171 tributary ports:
+		 - Where 118 is the ODU0
+		 - Where 38 is the ODU2
+		 - Where 8 is the ODU3
+		 - Where 7 is the ODU4
+Node 7:
+	 - Needs 38 line ports.
+		 - 19 connect to Node 5 with 100 Gbit/s 
+		 - 19 connect to Node 8 with 100 Gbit/s 
+	 - Needs 149 tributary ports:
+		 - Where 104 is the ODU0
+		 - Where 34 is the ODU2
+		 - Where 6 is the ODU3
+		 - Where 5 is the ODU4
+Node 8:
+	 - Needs 54 line ports.
+		 - 7 connect to Node 1 with 100 Gbit/s 
+		 - 20 connect to Node 7 with 100 Gbit/s 
+		 - 27 connect to Node 9 with 100 Gbit/s 
+	 - Needs 156 tributary ports:
+		 - Where 96 is the ODU0
+		 - Where 40 is the ODU2
+		 - Where 11 is the ODU3
+		 - Where 9 is the ODU4
+Node 9:
+	 - Needs 63 line ports.
+		 - 27 connect to Node 8 with 100 Gbit/s 
+		 - 9 connect to Node 10 with 100 Gbit/s 
+		 - 22 connect to Node 12 with 100 Gbit/s 
+		 - 5 connect to Node 13 with 100 Gbit/s 
+	 - Needs 146 tributary ports:
+		 - Where 98 is the ODU0
+		 - Where 30 is the ODU2
+		 - Where 14 is the ODU3
+		 - Where 4 is the ODU4
+Node 10:
+	 - Needs 18 line ports.
+		 - 9 connect to Node 6 with 100 Gbit/s 
+		 - 9 connect to Node 9 with 100 Gbit/s 
+	 - Needs 136 tributary ports:
+		 - Where 98 is the ODU0
+		 - Where 26 is the ODU2
+		 - Where 6 is the ODU3
+		 - Where 6 is the ODU4
+Node 11:
+	 - Needs 26 line ports.
+		 - 12 connect to Node 4 with 100 Gbit/s 
+		 - 11 connect to Node 12 with 100 Gbit/s 
+		 - 3 connect to Node 13 with 100 Gbit/s 
+	 - Needs 144 tributary ports:
+		 - Where 104 is the ODU0
+		 - Where 28 is the ODU2
+		 - Where 2 is the ODU3
+		 - Where 10 is the ODU4
+Node 12:
+	 - Needs 52 line ports.
+		 - 22 connect to Node 9 with 100 Gbit/s 
+		 - 11 connect to Node 11 with 100 Gbit/s 
+		 - 19 connect to Node 14 with 100 Gbit/s 
+	 - Needs 181 tributary ports:
+		 - Where 132 is the ODU0
+		 - Where 40 is the ODU2
+		 - Where 4 is the ODU3
+		 - Where 5 is the ODU4
+Node 13:
+	 - Needs 13 line ports.
+		 - 5 connect to Node 9 with 100 Gbit/s 
+		 - 3 connect to Node 11 with 100 Gbit/s 
+		 - 5 connect to Node 14 with 100 Gbit/s 
+	 - Needs 135 tributary ports:
+		 - Where 98 is the ODU0
+		 - Where 28 is the ODU2
+		 - Where 2 is the ODU3
+		 - Where 7 is the ODU4
+Node 14:
+	 - Needs 33 line ports.
+		 - 9 connect to Node 6 with 100 Gbit/s 
+		 - 19 connect to Node 12 with 100 Gbit/s 
+		 - 5 connect to Node 13 with 100 Gbit/s 
+	 - Needs 166 tributary ports:
+		 - Where 114 is the ODU0
+		 - Where 30 is the ODU2
+		 - Where 14 is the ODU3
+		 - Where 8 is the ODU4
 
 
 
@@ -114,21 +229,21 @@ Node 6:
 ----------------------------------------------------------------------------------------------------------------
 |                                               |  Quantity  | Unit price (€) |  Cost (€)  |    Total   (€)    |
 ----------------------------------------------------------------------------------------------------------------
-|                |            OLTs              |	16	15000		240000
-|    Link Cost   |        Transponders          |	22	5000		110000	414000
-|                |         Amplifiers           |	32	2000		64000
+|                |            OLTs              |	42	15000		630000
+|    Link Cost   |        Transponders          |	517	5000		2585000	4039000
+|                |         Amplifiers           |	412	2000		824000
 ----------------------------------------------------------------------------------------------------------------
-|                |              |      EXCs     |	6	10000		60000
-|                |              |   ODU0 ports  |	60	1250		75000
-|                |              |   ODU1 ports  |	50	2500		125000
-|                |   Electrical |   ODU2 ports  |	16	10000		160000
-|    Node Cost   |     Part     |   ODU3 ports  |	6	40000		240000		3260000
-|                |              |   ODU4 ports  |	4	100000		400000
-|                |              |   Line ports  |	22	100000		2200000
+|                |              |      EXCs     |	14	10000		140000
+|                |              |   ODU0 ports  |	1536	125		192000
+|                |              |   ODU1 ports  |	0	250		0
+|                |   Electrical |   ODU2 ports  |	440	1000		440000
+|    Node Cost   |     Part     |   ODU3 ports  |	92	4000		368000		7310000
+|                |              |   ODU4 ports  |	100	10000		1000000
+|                |              |   Line ports  |	517	10000		5170000
 |                |------------------------------|                                                               
 |                |              |      OXCs     |	0	20000		0
 |                | Optical part |   Add ports   |	0	2500		0
 |                |              |  Line ports   |	0	2500		0
 ----------------------------------------------------------------------------------------------------------------
-|                                 Total Network Cost                                       |	3674000
+|                                 Total Network Cost                                       |	11349000
 ----------------------------------------------------------------------------------------------------------------
