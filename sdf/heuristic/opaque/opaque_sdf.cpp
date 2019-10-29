@@ -112,7 +112,7 @@ public:
 int main()
 {
 	//SimulationInputParameters param(argc, argv);
-	SimulationInputParameters param("input_parameters_low_traffic.txt");
+	SimulationInputParameters param("input_parameters_rede_real_medium_traffic.txt");
 
 	//Signals Declaration 
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };
