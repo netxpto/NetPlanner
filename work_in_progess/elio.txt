@@ -4,6 +4,17 @@ desenvolver novas heuristicas considerando novas restrições
 trabalhar no desenolvimento de heuristicas, considerando o modo opáco com proteção
 avançarmos para o modo translucidio
 
+
+TO BE DONE
+
+	- finalizar capítulo 1 e 2
+
+	- concluir o capítulo 3
+
+next meeting: 17h30, 19/11
+
+	
+
 TO BE DONE
 
 	- finalizar capítulo 1 e 2
