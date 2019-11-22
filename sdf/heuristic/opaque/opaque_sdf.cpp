@@ -112,7 +112,7 @@ public:
 int main()
 {
 	//SimulationInputParameters param(argc, argv);
-	SimulationInputParameters param("input_parameters_rede_real_medium_traffic.txt");
+	SimulationInputParameters param("input_parameters_low_traffic.txt");
 
 	//Signals Declaration 
 	DemandRequest Scheduler_Out{ "Scheduler_Out.sgn", 1 };
@@ -125,7 +125,7 @@ int main()
 
 	PhysicalTopology PhysicalTopologyGenerator_Out{ "PhysicalTopologyGenerator_Out.sgn",1 };
 	PhysicalTopologyGenerator_Out.setSaveInAscii(true);
-	PhysicalTopologyGenerator_Out.setSaveSignal(false);
+	PhysicalTopologyGenerator_Out.setSaveSignal(true);
 
 	PathRequest LogicalTopologyManager_PathRequest{ "LogicalTopologyManager_PathRequest.sgn" };
 	LogicalTopologyManager_PathRequest.setSaveInAscii(true);
