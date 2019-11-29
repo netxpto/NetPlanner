@@ -4,6 +4,12 @@ desenvolver novas heuristicas considerando novas restrições
 trabalhar no desenolvimento de heuristicas, considerando o modo opáco com proteção
 avançarmos para o modo translucidio
 
+TO BE DONE
+
+	acabar a dissertação
+
+next meeting: 5/12, 10h
+
 
 TO BE DONE
 
