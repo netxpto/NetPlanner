@@ -1,7 +1,7 @@
 # include "..\include\logical_topology_manager_20190420.h"
 # include "..\include\Dijkstra_20190503.h"
 
-using namespace std;
+//using namespace std;    //(commented by Romil 08/05/2020)
 
 
 void LogicalTopologyManager::initialize(void) {
@@ -51,9 +51,9 @@ bool LogicalTopologyManager::runBlock(void) {
 				}
 			}
 			if (transparent)
-				cout << "transparent" << endl;
+				std::cout << "transparent" << std::endl;
 			else
-				cout << "opaque" << endl;
+				std::cout << "opaque" << std::endl;
 		}
 		//outputSignals[0]->bufferPut((t_logical_topology)currentLogicalTopology);
 	}
@@ -225,7 +225,7 @@ bool LogicalTopologyManager::runBlock(void) {
 			int oduType = demand.oduType;
 			bool pathFound{false};
 			
-			//cout << demandProcessed.demandIndex << endl;
+			//cout << demandProcessed.demandIndex << std::endl;
 			//outputSignals[1]->bufferPut((t_demand)demandProcessed);
 
 			int numberOfPaths{ 0 };
@@ -445,7 +445,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						int sourceNode = demand.sourceNode - 1;
 						int destinationNode = demand.destinationNode - 1;
 						g.printAllPaths(sourceNode, destinationNode);
-						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+						std::vector<std::vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
 						
 						if (transparent)
 						{
@@ -493,7 +493,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						int sourceNode = demand.sourceNode - 1;
 						int destinationNode = demand.destinationNode - 1;
 						g.printAllPaths(sourceNode, destinationNode);
-						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+						std::vector<std::vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
 
 						if (transparent)
 						{
@@ -540,7 +540,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						int sourceNode = demand.sourceNode - 1;
 						int destinationNode = demand.destinationNode - 1;
 						g.printAllPaths(sourceNode, destinationNode);
-						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+						std::vector<std::vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
 
 						if (transparent)
 						{
@@ -587,7 +587,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						int sourceNode = demand.sourceNode - 1;
 						int destinationNode = demand.destinationNode - 1;
 						g.printAllPaths(sourceNode, destinationNode);
-						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+						std::vector<std::vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
 
 						if (transparent)
 						{
@@ -634,7 +634,7 @@ bool LogicalTopologyManager::runBlock(void) {
 						int sourceNode = demand.sourceNode - 1;
 						int destinationNode = demand.destinationNode - 1;
 						g.printAllPaths(sourceNode, destinationNode);
-						std::vector<vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
+						std::vector<std::vector<int>> possiblePaths = g.printFinalPaths(getBlockingCriterionLogicalTopology());
 						
 						
 						if (transparent)

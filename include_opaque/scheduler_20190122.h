@@ -26,7 +26,7 @@ public:
 
 	// Methods (Constructors)
 	Scheduler() {};
-	Scheduler(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
+	Scheduler(std::initializer_list<Signal *> inputSig, std::initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
 
 	void initialize(void);
 	bool runBlock(void); 

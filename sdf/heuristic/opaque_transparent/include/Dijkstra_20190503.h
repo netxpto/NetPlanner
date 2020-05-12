@@ -9,13 +9,13 @@
 //# include <algorithm> 
 //# include <chrono>
 
-using namespace std;
+//using namespace std;
 
 class Graph
 {
 	int V; // No. of vertices in graph 
-	list<int> *adj; // Pointer to an array containing adjacency lists 
-	vector<vector<int>> listOfAllPaths; // List containing all possible paths
+	std::list<int> *adj; // Pointer to an array containing adjacency lists 
+	std::vector<std::vector<int>> listOfAllPaths; // List containing all possible paths
 
 	// A recursive function used by printAllPaths() 
 	void printAllPathsUtil(int, int, bool[], int[], int &);
@@ -24,13 +24,13 @@ public:
 	Graph(int V); // Constructor 
 	void addEdge(int u, int v);
 	void printAllPaths(int s, int d);
-	vector<vector<int>> printFinalPaths(int numberOfPaths);
+	std::vector<std::vector<int>> printFinalPaths(int numberOfPaths);
 };
 
 Graph::Graph(int V)
 {
 	this->V = V;
-	adj = new list<int>[V];
+	adj = new std::list<int>[V];
 }
 
 void Graph::addEdge(int u, int v)
@@ -71,23 +71,23 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
 	// current path[] 
 	if (u == d)
 	{
-		vector<int> newPath;
+		std::vector<int> newPath;
 
 		for (int i = 0; i < path_index; i++)
 		{
-			//cout << path[i] << " ";
+			//std::cout << path[i] << " ";
 			newPath.push_back(path[i]);
 		}
 		listOfAllPaths.push_back(newPath);
 
-		//cout << endl;
+		//std::cout << std::endl;
 
 	}
 	//}
 	else // If current vertex is not destination 
 	{
 		// Recur for all the vertices adjacent to current vertex 
-		list<int>::iterator i;
+		std::list<int>::iterator i;
 		for (i = adj[u].begin(); i != adj[u].end(); ++i)
 			if (!visited[*i])
 				printAllPathsUtil(*i, d, visited, path, path_index);
@@ -100,12 +100,12 @@ void Graph::printAllPathsUtil(int u, int d, bool visited[],
 
 }
 
-vector<vector<int>> Graph::printFinalPaths(int numberOfPaths)
+std::vector<std::vector<int>> Graph::printFinalPaths(int numberOfPaths)
 {
 
 	int hops;
-	vector<int> temp;
-	vector<vector<int>> finalPaths;
+	std::vector<int> temp;
+	std::vector<std::vector<int>> finalPaths;
 
 
 	//sorting paths in ASCENDING ORDER of hops

@@ -22,9 +22,9 @@ bool Sink::runBlock(void)
 	if (numberOfSamples >= 0) numberOfSamples -= process;
 
 	if (displayNumberOfSamples) {
-		cout << "Samples to be processed now: " << process << "\n";
-		cout << "Samples to be processed later: " << numberOfSamples << "\n";
-		cout << "Samples already processed: " << processedSamples << "\n";
+		std::cout << "Samples to be processed now: " << process << "\n";
+		std::cout << "Samples to be processed later: " << numberOfSamples << "\n";
+		std::cout << "Samples already processed: " << processedSamples << "\n";
 	}
 
 	return true;

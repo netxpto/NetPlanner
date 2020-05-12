@@ -17,7 +17,7 @@ public:
 
 	// Methods (Constructors)
 	LogicalTopologyGenerator() {};
-	LogicalTopologyGenerator(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
+	LogicalTopologyGenerator(std::initializer_list<Signal *> inputSig, std::initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
 
 	void initialize(void);
 	bool runBlock(void);

@@ -51,7 +51,7 @@ public:
 		readSystemInputParameters();
 	}
 
-	NetworkSimulatorInputParameters(string fName) : SystemInputParameters(fName) {
+	NetworkSimulatorInputParameters(std::string fName) : SystemInputParameters(fName) {
 		initializeInputParameterMap();
 		readSystemInputParameters();
 	}

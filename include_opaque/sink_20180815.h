@@ -9,7 +9,7 @@ public:
 
 	// ###########################################################
 
-	Sink(initializer_list<Signal*> InputSig, initializer_list<Signal*> OutputSig) : Block(InputSig, OutputSig) {};
+	Sink(std::initializer_list<Signal*> InputSig, std::initializer_list<Signal*> OutputSig) : Block(InputSig, OutputSig) {};
 	bool runBlock(void);
 
 	// ###########################################################

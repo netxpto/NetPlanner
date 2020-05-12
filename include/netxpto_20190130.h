@@ -24,7 +24,7 @@
 # include <random>
 # include <sstream>
 # include <vector>
-# include <strstream>
+//# include <strstream>
 # include <string>
 # include <set>
 
@@ -64,7 +64,7 @@ const double SPEED_OF_LIGHT = 299792458;		// Speed of light in vaccum
 const double PLANCK_CONSTANT = 6.626070040e-34; // NIST
 const int MAX_NUMBER_OF_PATHS = 2;
 
-using namespace std;							// to be deleted 4/9/2018
+//using namespace std;							// to be deleted 4/9/2018 (commented by Romil 08/05/2020)
 
 // ####################################################################################################
 // #
@@ -83,14 +83,14 @@ using random_engine = std::default_random_engine;
 using t_binary = unsigned int;
 using t_integer = int;
 using t_real = double;
-using t_complex = complex<t_real>;
+using t_complex = std::complex<t_real>;
 using t_complex_xy = struct { t_complex x; t_complex y; };
 //using t_photon = struct { t_real probabilityAmplitude;  t_real polarization; }; // isto é para eliminar
 //using t_photon_mp = struct { t_photon path[MAX_NUMBER_OF_PATHS]; };				// isto é para eliminar
 using t_complex_xy_mp = struct { t_complex x; t_complex y; bool processed{ false }; };
 using t_photon_mp_xy = struct { t_complex_xy_mp path[MAX_NUMBER_OF_PATHS]; };
-using t_iqValues = complex<t_real>;
-using t_message = struct {	string messageType;	string messageDataLength; 	string messageData; int size() { return 3; }};
+using t_iqValues = std::complex<t_real>;
+using t_message = struct {	std::string messageType;	std::string messageDataLength; 	std::string messageData; int size() { return 3; }};
 
 typedef int vertex_t;
 typedef double weight_t;
@@ -232,7 +232,7 @@ enum class signal_value_type { t_binary, t_integer, t_real, t_complex, t_complex
 // #######################################################################################################
 
 template<typename T>
-std::ostream& operator<<(std::ostream &out, const complex<T> &cx) 
+std::ostream& operator<<(std::ostream &out, const std::complex<T> &cx) 
 { 
 	out << cx.real() << " + i " << cx.imag();
 	return out;
@@ -274,10 +274,10 @@ public:
 
 	// Signals constructors
 	explicit Signal() {};
-	explicit Signal(string fileName) : fileName{ fileName }, saveSignal{ true } {};
-	explicit Signal(string fileName, t_unsigned_long bLength) : fileName{ fileName }, bufferLength{ bLength }, saveSignal{ true } {};
-	explicit Signal(string fileName, string folderName) : fileName{ fileName }, folderName{ folderName }, saveSignal{ true } {};
-	explicit Signal(string fileName, string folderName, t_unsigned_long bLength) : fileName{ fileName }, folderName{ folderName }, bufferLength{ bLength }, saveSignal{ true } {};
+	explicit Signal(std::string fileName) : fileName{ fileName }, saveSignal{ true } {};
+	explicit Signal(std::string fileName, t_unsigned_long bLength) : fileName{ fileName }, bufferLength{ bLength }, saveSignal{ true } {};
+	explicit Signal(std::string fileName, std::string folderName) : fileName{ fileName }, folderName{ folderName }, saveSignal{ true } {};
+	explicit Signal(std::string fileName, std::string folderName, t_unsigned_long bLength) : fileName{ fileName }, folderName{ folderName }, bufferLength{ bLength }, saveSignal{ true } {};
 	explicit Signal(t_unsigned_long bLength) : bufferLength{ bLength } {};
 
 	// Signal destructors
@@ -292,7 +292,7 @@ public:
 
 	// File manipulation
 	void writeHeader();								// Opens the signal file in the default signals directory, \signals, and writes the signal header
-	void writeHeader(string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
+	void writeHeader(std::string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
 	
 	// Buffer and File manipulation
 	void close();									// Empty the signal buffer and close the signal file
@@ -304,9 +304,9 @@ public:
 	void setSaveSignal(bool sSignal) { saveSignal = sSignal; };
 	bool getSaveSignal() const { return saveSignal; };
 
-	void setType(string sType, signal_value_type vType) { type = sType; valueType = vType; };
-	void setType(string sType) { type = sType; };
-	string getType() const { return type; };
+	void setType(std::string sType, signal_value_type vType) { type = sType; valueType = vType; };
+	void setType(std::string sType) { type = sType; };
+	std::string getType() const { return type; };
 
 	void setInPosition(int iPosition) { inPosition = iPosition; };
 	int getInPosition() const { return inPosition; };
@@ -323,11 +323,11 @@ public:
 	//void setValueType(signal_value_type vType) { valueType = vType; };
 	signal_value_type getValueType() const { return valueType; };
 
-	void setFileName(string fName) { fileName = fName; };
-	string getFileName() const { return fileName; };
+	void setFileName(std::string fName) { fileName = fName; };
+	std::string getFileName() const { return fileName; };
 
-	void setFolderName(string fName) { folderName = fName; };
-	string getFolderName() const { return folderName; };
+	void setFolderName(std::string fName) { folderName = fName; };
+	std::string getFolderName() const { return folderName; };
 
 	//void setBufferLength(t_unsigned_long bLength) { bufferLength = bLength; };
 	int getBufferLength() const { return bufferLength; };
@@ -377,11 +377,11 @@ private:
 	t_unsigned_long firstValueToBeSaved{ 1 };						// First value (>= 1) to be saved
 	bool saveSignal{ false };
 
-	string type;											// Signal type
+	std::string type;											// Signal type
 	signal_value_type valueType;							// Signal samples type
 
-	string fileName{ "" };							// Name of the file where data values are going to be saved
-	string folderName{ "signals" };					// folder where signals are going to be saved by default
+	std::string fileName{ "" };							// Name of the file where data values are going to be saved
+	std::string folderName{ "signals" };					// folder where signals are going to be saved by default
 	bool headerWritten{ false };
 	
 	bool saveInAscii{ false };
@@ -404,10 +404,10 @@ public:
 	using value_type = T;
 
 	BaseSignal() : Signal() { setBuffer(); }
-	BaseSignal(string fileName) : Signal(fileName) { setBuffer(); }
-	BaseSignal(string fileName, t_unsigned_long bLength) : Signal(fileName, bLength) { setBuffer(); }
-	BaseSignal(string fileName, string folderName) : Signal(fileName, folderName) { setBuffer(); }
-	BaseSignal(string fileName, string folderName, t_unsigned_long bLength) : Signal(fileName, folderName, bLength) { setBuffer(); }
+	BaseSignal(std::string fileName) : Signal(fileName) { setBuffer(); }
+	BaseSignal(std::string fileName, t_unsigned_long bLength) : Signal(fileName, bLength) { setBuffer(); }
+	BaseSignal(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setBuffer(); }
+	BaseSignal(std::string fileName, std::string folderName, t_unsigned_long bLength) : Signal(fileName, folderName, bLength) { setBuffer(); }
 	BaseSignal(t_unsigned_long bLength) : Signal(bLength) { setBuffer(); }
 
 	value_type bufferGet()
@@ -450,7 +450,7 @@ public:
 				{
 					char *ptr = (char *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1) * sizeof(T);
-					ofstream fileHandler{ "./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app };
+					std::ofstream fileHandler{ "./" + folderName + "/" + fileName, std::ios::out | std::ios::binary | std::ios::app };
 					fileHandler.write(ptr, (bufferLength - (firstValueToBeSaved - 1)) * sizeof(T));
 					fileHandler.close();
 					firstValueToBeSaved = 1;
@@ -469,7 +469,7 @@ private:
 
 	void setBuffer() {
 
-		string typeName;
+		std::string typeName;
 		switch (sType) {
 			case signal_type::Binary:
 				typeName = "Binary";
@@ -508,7 +508,7 @@ private:
 				typeName = "DemandRequestRouted";
 				break;
 			default:
-				cout << "Error: netxpto_20180815.h - typeName not defined\n";
+				std::cout << "Error: netxpto_20180815.h - typeName not defined\n";
 				break;
 		}
 
@@ -534,33 +534,33 @@ using DemandRequestRouted = BaseSignal<t_demand_request_routed, signal_type::Dem
 /*
 class TimeDiscrete : public Signal {
 public:
-	TimeDiscrete(string fName) { setFileName(fName); }
-	TimeDiscrete(string fileName,string folderName) : Signal(fileName,folderName) { }
+	TimeDiscrete(std::string fName) { setFileName(fName); }
+	TimeDiscrete(std::string fileName,std::string folderName) : Signal(fileName,folderName) { }
 	TimeDiscrete(){}
 };
 
 
 class TimeDiscreteAmplitudeDiscrete : public Signal {
 public:
-	TimeDiscreteAmplitudeDiscrete(string fName) { setFileName(fName); }
-	TimeDiscreteAmplitudeDiscrete(string fileName, string folderName) : Signal(fileName, folderName) { }
+	TimeDiscreteAmplitudeDiscrete(std::string fName) { setFileName(fName); }
+	TimeDiscreteAmplitudeDiscrete(std::string fileName, std::string folderName) : Signal(fileName, folderName) { }
 	TimeDiscreteAmplitudeDiscrete(){}
 };
 
 
 class TimeDiscreteAmplitudeContinuous : public Signal {
 public:
-	TimeDiscreteAmplitudeContinuous(string fName) { setFileName(fName); }
-	TimeDiscreteAmplitudeContinuous(string fileName, string folderName) : Signal(fileName, folderName) { }
+	TimeDiscreteAmplitudeContinuous(std::string fName) { setFileName(fName); }
+	TimeDiscreteAmplitudeContinuous(std::string fileName, std::string folderName) : Signal(fileName, folderName) { }
 	TimeDiscreteAmplitudeContinuous(){}
 };
 
 
 class TimeDiscreteAmplitudeDiscreteReal : public Signal {
 public:
-	TimeDiscreteAmplitudeDiscreteReal(string fName) { setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-	TimeDiscreteAmplitudeDiscreteReal(string fileName, string folderName) : Signal(fileName,folderName){ setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-	TimeDiscreteAmplitudeDiscreteReal(string fName, t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); setFileName(fName); setBufferLength(bLength); }
+	TimeDiscreteAmplitudeDiscreteReal(std::string fName) { setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeDiscreteAmplitudeDiscreteReal(std::string fileName, std::string folderName) : Signal(fileName,folderName){ setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeDiscreteAmplitudeDiscreteReal(std::string fName, t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); setFileName(fName); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeDiscreteReal(t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeDiscreteReal(){ setType("TimeDiscreteAmplitudeDiscreteReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
 
@@ -571,8 +571,8 @@ public:
 class TimeDiscreteAmplitudeDiscreteComplex : public Signal {
 	
 public:
-	TimeDiscreteAmplitudeDiscreteComplex(string fName) { setFileName(fName); }
-	TimeDiscreteAmplitudeDiscreteComplex(string fileName, string folderName) : Signal(fileName, folderName) { }
+	TimeDiscreteAmplitudeDiscreteComplex(std::string fName) { setFileName(fName); }
+	TimeDiscreteAmplitudeDiscreteComplex(std::string fileName, std::string folderName) : Signal(fileName, folderName) { }
 	TimeDiscreteAmplitudeDiscreteComplex() {}
 };
 */
@@ -583,15 +583,15 @@ public:
 	using value_type = t_binary;
 
 	Binary() : Signal() { setBuffer(); }
-	Binary(string fileName) : Signal(fileName) { setBuffer(); }
-	Binary(string fileName, t_unsigned_long bLength) : Signal(fileName, bLength) { setBuffer(); }
-	Binary(string fileName, string folderName) : Signal(fileName, folderName) { setBuffer(); }
-	Binary(string fileName, string folderName, t_unsigned_long bLength) : Signal(fileName, folderName, bLength) { setBuffer(); }
+	Binary(std::string fileName) : Signal(fileName) { setBuffer(); }
+	Binary(std::string fileName, t_unsigned_long bLength) : Signal(fileName, bLength) { setBuffer(); }
+	Binary(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setBuffer(); }
+	Binary(std::string fileName, std::string folderName, t_unsigned_long bLength) : Signal(fileName, folderName, bLength) { setBuffer(); }
 	Binary(t_unsigned_long bLength) : Signal(bLength) { setBuffer(); }
-	Binary(string fileName, bool sSignal) : Signal(fileName, sSignal) { setBuffer(); }
-	Binary(string fileName, t_unsigned_long bLength, bool sSignal) : Signal(fileName, bLength, sSignal) { setBuffer(); }
-	Binary(string fileName, string folderName, bool sSignal) : Signal(fileName, folderName, sSignal) { setBuffer(); }
-	Binary(string fileName, string folderName, t_unsigned_long bLength, bool sSignal) : Signal(fileName, folderName, bLength, sSignal) { setBuffer(); }
+	Binary(std::string fileName, bool sSignal) : Signal(fileName, sSignal) { setBuffer(); }
+	Binary(std::string fileName, t_unsigned_long bLength, bool sSignal) : Signal(fileName, bLength, sSignal) { setBuffer(); }
+	Binary(std::string fileName, std::string folderName, bool sSignal) : Signal(fileName, folderName, sSignal) { setBuffer(); }
+	Binary(std::string fileName, std::string folderName, t_unsigned_long bLength, bool sSignal) : Signal(fileName, folderName, bLength, sSignal) { setBuffer(); }
 
 private:
 
@@ -602,9 +602,9 @@ private:
 /*
 class TimeDiscreteAmplitudeContinuousReal : public Signal {
 public:
-	TimeDiscreteAmplitudeContinuousReal(string fName) { setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-	TimeDiscreteAmplitudeContinuousReal(string fileName, string folderName) : Signal(fileName,folderName){ setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];}
-	TimeDiscreteAmplitudeContinuousReal(string fName, t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); setBufferLength(bLength); }
+	TimeDiscreteAmplitudeContinuousReal(std::string fName) { setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeDiscreteAmplitudeContinuousReal(std::string fileName, std::string folderName) : Signal(fileName,folderName){ setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];}
+	TimeDiscreteAmplitudeContinuousReal(std::string fName, t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousReal(t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousReal(){ setType("TimeDiscreteAmplitudeContinuousReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
 
@@ -614,9 +614,9 @@ public:
 
 class TimeDiscreteAmplitudeContinuousComplex : public Signal {
 public:
-	TimeDiscreteAmplitudeContinuousComplex(string fName) { setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-	TimeDiscreteAmplitudeContinuousComplex(string fileName, string folderName) : Signal(fileName,folderName){ setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
-	TimeDiscreteAmplitudeContinuousComplex(string fName, t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
+	TimeDiscreteAmplitudeContinuousComplex(std::string fName) { setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	TimeDiscreteAmplitudeContinuousComplex(std::string fileName, std::string folderName) : Signal(fileName,folderName){ setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
+	TimeDiscreteAmplitudeContinuousComplex(std::string fName, t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousComplex(t_unsigned_long bLength) { setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousComplex(){ setType("TimeDiscreteAmplitudeContinuousComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
 
@@ -626,24 +626,24 @@ public:
 
 class TimeContinuous : public Signal {
 public:
-	TimeContinuous(string fileName) : Signal(fileName) { }
-	TimeContinuous(string fileName, string folderName) : Signal(fileName, folderName) { }
+	TimeContinuous(std::string fileName) : Signal(fileName) { }
+	TimeContinuous(std::string fileName, std::string folderName) : Signal(fileName, folderName) { }
 	TimeContinuous(){}
 };
 
 class TimeContinuousAmplitudeDiscrete : public Signal {
 public:
-	TimeContinuousAmplitudeDiscrete(string fileName) : Signal(fileName) { }
-	TimeContinuousAmplitudeDiscrete(string fileName, string folderName) : Signal(fileName, folderName) { }
+	TimeContinuousAmplitudeDiscrete(std::string fileName) : Signal(fileName) { }
+	TimeContinuousAmplitudeDiscrete(std::string fileName, std::string folderName) : Signal(fileName, folderName) { }
 	TimeContinuousAmplitudeDiscrete(){}
 };
 
 
 class TimeContinuousAmplitudeContinuous : public Signal {
 public:
-	TimeContinuousAmplitudeContinuous(string fName) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-	TimeContinuousAmplitudeContinuous(string fileName, string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];	}
-	TimeContinuousAmplitudeContinuous(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue);  setFileName(fName); setBufferLength(bLength); }
+	TimeContinuousAmplitudeContinuous(std::string fName) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeContinuousAmplitudeContinuous(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];	}
+	TimeContinuousAmplitudeContinuous(std::string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue);  setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuous(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue);  setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuous() { setType("TimeContinuousAmplitudeContinuous", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
 
@@ -653,9 +653,9 @@ public:
 
 class TimeContinuousAmplitudeDiscreteReal : public Signal {
 public:
-	TimeContinuousAmplitudeDiscreteReal(string fName) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-	TimeContinuousAmplitudeDiscreteReal(string fileName, string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];}
-	TimeContinuousAmplitudeDiscreteReal(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue);  setFileName(fName); setBufferLength(bLength); }
+	TimeContinuousAmplitudeDiscreteReal(std::string fName) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeContinuousAmplitudeDiscreteReal(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];}
+	TimeContinuousAmplitudeDiscreteReal(std::string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue);  setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteReal(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue);  setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteReal(){ setType("TimeContinuousAmplitudeDiscreteReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
 
@@ -665,9 +665,9 @@ public:
 
 class TimeContinuousAmplitudeDiscreteComplex : public Signal {
 public:
-	TimeContinuousAmplitudeDiscreteComplex(string fName) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-	TimeContinuousAmplitudeDiscreteComplex(string fileName, string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
-	TimeContinuousAmplitudeDiscreteComplex(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
+	TimeContinuousAmplitudeDiscreteComplex(std::string fName) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	TimeContinuousAmplitudeDiscreteComplex(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
+	TimeContinuousAmplitudeDiscreteComplex(std::string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteComplex(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteComplex(){ setType("TimeContinuousAmplitudeDiscreteComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
 
@@ -677,9 +677,9 @@ public:
 
 class TimeContinuousAmplitudeContinuousReal : public Signal {
 public:
-	TimeContinuousAmplitudeContinuousReal(string fName) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
-	TimeContinuousAmplitudeContinuousReal(string fileName,string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];}
-	TimeContinuousAmplitudeContinuousReal(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); setBufferLength(bLength); }
+	TimeContinuousAmplitudeContinuousReal(std::string fName) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeContinuousAmplitudeContinuousReal(std::string fileName,std::string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];}
+	TimeContinuousAmplitudeContinuousReal(std::string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousReal(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousReal(){ setType("TimeContinuousAmplitudeContinuousReal", signal_value_type::RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
 
@@ -690,9 +690,9 @@ public:
 
 class TimeContinuousAmplitudeContinuousComplex : public Signal {
 public:
-	TimeContinuousAmplitudeContinuousComplex(string fName) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-	TimeContinuousAmplitudeContinuousComplex(string fileName, string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
-	TimeContinuousAmplitudeContinuousComplex(string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
+	TimeContinuousAmplitudeContinuousComplex(std::string fName) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	TimeContinuousAmplitudeContinuousComplex(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
+	TimeContinuousAmplitudeContinuousComplex(std::string fName, t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousComplex(t_unsigned_long bLength) { setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousComplex(){ setType("TimeContinuousAmplitudeContinuousComplex", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
 
@@ -701,9 +701,9 @@ public:
 
 class BandpassSignal : public Signal {
 public:
-	BandpassSignal(string fName) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-	BandpassSignal(string fileName, string folderName) : Signal(fileName, folderName) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fileName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
-	BandpassSignal(string fName, t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
+	BandpassSignal(std::string fName) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	BandpassSignal(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fileName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
+	BandpassSignal(std::string fName, t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	BandpassSignal(t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	BandpassSignal(){ setType("BandpassSignal", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
 
@@ -714,9 +714,9 @@ public:
 // the setType is BandpassSignal to garantee the compatibility with the Visualizer
 class OpticalSignal : public Signal {
 public:
-	OpticalSignal(string fName) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
-	OpticalSignal(string fileName, string folderName) : Signal(fileName,folderName) { setType("BandpassSignal", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
-	OpticalSignal(string fName, t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
+	OpticalSignal(std::string fName) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	OpticalSignal(std::string fileName, std::string folderName) : Signal(fileName,folderName) { setType("BandpassSignal", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
+	OpticalSignal(std::string fName, t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	OpticalSignal(t_unsigned_long bLength) { setType("BandpassSignal", signal_value_type::ComplexValue); setBufferLength(bLength); }
 	OpticalSignal() { setType("BandpassSignal", signal_value_type::ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
 
@@ -727,9 +727,9 @@ public:
 
 class OpticalSignalXY : public Signal {
 public:
-	OpticalSignalXY(string fName) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
-	OpticalSignalXY(string fileName, string folderName) : Signal(fileName, folderName) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()];}
-	OpticalSignalXY(string fName, t_unsigned_long bLength) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); setFileName(fName); setBufferLength(bLength); }
+	OpticalSignalXY(std::string fName) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
+	OpticalSignalXY(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()];}
+	OpticalSignalXY(std::string fName, t_unsigned_long bLength) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); setFileName(fName); setBufferLength(bLength); }
 	OpticalSignalXY(t_unsigned_long bLength) { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); setBufferLength(bLength); }
 	OpticalSignalXY() { setType("OpticalSignalXY", signal_value_type::ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
 
@@ -745,14 +745,14 @@ public:
 private:
 	int numberOfBandpassSignals;
 	vector<BandpassSignal> bandpasslSignals;
-	vector<double> centralWavelengths;
-	vector<double> centralFrequencies;
+	std::vector<double> centralWavelengths;
+	std::vector<double> centralFrequencies;
 };*/
 /*
 class PhotonStream : public Signal {
 
 public:
-	PhotonStream(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStream", signal_value_type::PhotonValue); if (buffer == nullptr) buffer = new t_photon[getBufferLength()];}
+	PhotonStream(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("PhotonStream", signal_value_type::PhotonValue); if (buffer == nullptr) buffer = new t_photon[getBufferLength()];}
 	PhotonStream(t_unsigned_long bLength) { setType("PhotonStream", signal_value_type::PhotonValue); setBufferLength(bLength); }
 	PhotonStream() { setType("PhotonStream", signal_value_type::PhotonValue); if (buffer == nullptr) buffer = new t_photon[getBufferLength()]; }
 
@@ -762,9 +762,9 @@ public:
 class PhotonStreamXY : public Signal {
 
 public:
-	PhotonStreamXY(string fName) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
-	PhotonStreamXY(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()];	}
-	PhotonStreamXY(string fName, t_unsigned_long bLength) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); setFileName(fName); setBufferLength(bLength); }
+	PhotonStreamXY(std::string fName) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
+	PhotonStreamXY(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()];	}
+	PhotonStreamXY(std::string fName, t_unsigned_long bLength) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); setFileName(fName); setBufferLength(bLength); }
 	PhotonStreamXY(t_unsigned_long bLength) { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); setBufferLength(bLength); }
 	PhotonStreamXY() { setType("PhotonStreamXY", signal_value_type::ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
 
@@ -774,7 +774,7 @@ public:
 class PhotonStreamMP : public Signal {
 
 public:
-	PhotonStreamMP(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStreamMP", signal_value_type::PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[getBufferLength()]; }
+	PhotonStreamMP(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("PhotonStreamMP", signal_value_type::PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[getBufferLength()]; }
 	PhotonStreamMP(t_unsigned_long bLength) { setType("PhotonStreamMP", signal_value_type::PhotonValueMP); setBufferLength(bLength); }
 	PhotonStreamMP() { setType("PhotonStreamMP", signal_value_type::PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[getBufferLength()]; }
 
@@ -785,9 +785,9 @@ public:
 class PhotonStreamMPXY : public Signal {
 
 public:
-	PhotonStreamMPXY(string fName) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); setFileName(fName); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()]; }
-	PhotonStreamMPXY(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()];}
-	PhotonStreamMPXY(string fName, t_unsigned_long bLength) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); setFileName(fName); setBufferLength(bLength); }
+	PhotonStreamMPXY(std::string fName) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); setFileName(fName); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()]; }
+	PhotonStreamMPXY(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()];}
+	PhotonStreamMPXY(std::string fName, t_unsigned_long bLength) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); setFileName(fName); setBufferLength(bLength); }
 	PhotonStreamMPXY(t_unsigned_long bLength) { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); setBufferLength(bLength); }
 	PhotonStreamMPXY() { setType("PhotonStreamMPXY", signal_value_type::PhotonValueMPXY); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()]; }
 
@@ -796,9 +796,9 @@ public:
 
 class Messages : public Signal {
 public:
-	Messages(string fName) { setType("Message", signal_value_type::Message); setFileName(fName); if (buffer == nullptr) buffer = new t_message[getBufferLength()]; }
-	Messages(string fileName, string folderName) : Signal(fileName, folderName) { setType("Message", signal_value_type::Message); if (buffer == nullptr) buffer = new t_message[getBufferLength()];}
-	Messages(string fName, t_unsigned_long bLength) { setType("Message", signal_value_type::Message); setFileName(fName); setBufferLength(bLength); }
+	Messages(std::string fName) { setType("Message", signal_value_type::Message); setFileName(fName); if (buffer == nullptr) buffer = new t_message[getBufferLength()]; }
+	Messages(std::string fileName, std::string folderName) : Signal(fileName, folderName) { setType("Message", signal_value_type::Message); if (buffer == nullptr) buffer = new t_message[getBufferLength()];}
+	Messages(std::string fName, t_unsigned_long bLength) { setType("Message", signal_value_type::Message); setFileName(fName); setBufferLength(bLength); }
 	Messages(t_unsigned_long bLength) { setType("Message", signal_value_type::Message); setBufferLength(bLength); }
 	Messages() { setType("Message", signal_value_type::Message); if (buffer == nullptr) buffer = new t_message[getBufferLength()]; }
 
@@ -819,11 +819,11 @@ public:
 
 	/* Methods */
 	Block(){};
-	Block(vector<Signal*> &InputSig, vector<Signal*> &OutputSig);
-	Block(initializer_list<Signal*> InputSig, initializer_list<Signal*> OutputSig);
+	Block(std::vector<Signal*> &InputSig, std::vector<Signal*> &OutputSig);
+	Block(std::initializer_list<Signal*> InputSig, std::initializer_list<Signal*> OutputSig);
 
 
-	//void initializeBlock(vector<Signal*> InputSig, vector<Signal*> OutputSig);
+	//void initializeBlock(std::vector<Signal*> InputSig, std::vector<Signal*> OutputSig);
 	void initializeBlock();
 
 	virtual void initialize(void){};
@@ -843,8 +843,8 @@ public:
 	void setNumberOfOutputSignals(int nOfOutputSignal) { numberOfOutputSignals = nOfOutputSignal; };
 	int getNumberOfOutputSignals() { return numberOfOutputSignals; };
 
-	vector<Signal *> inputSignals;
-	vector<Signal *> outputSignals;
+	std::vector<Signal *> inputSignals;
+	std::vector<Signal *> outputSignals;
 
 	int numberOfInputSignals;	// passar para private, 2018/07/15
 	int numberOfOutputSignals;  // passar para private, 2018/07/15
@@ -864,16 +864,16 @@ public:
 	//######################################################################################################
 
 	System() {};
-	void setSystem(initializer_list<Block *> MainSystem);
+	void setSystem(std::initializer_list<Block *> MainSystem);
 
-	System(initializer_list<Block *> MainSystem);
-	//System(initializer_list<Block> MainSystme);
-	//System(vector<Block *> MainSystem);
-	System(initializer_list<Block *> MainSystem, string signalsFolderName, vector<string> list);
-	//System(vector<Block *> MainSystem, string signalsFolderName, vector<string> list);
+	System(std::initializer_list<Block *> MainSystem);
+	//System(std::initializer_list<Block> MainSystme);
+	//System(std::vector<Block *> MainSystem);
+	System(std::initializer_list<Block *> MainSystem, std::string signalsFolderName, std::vector<std::string> list);
+	//System(std::vector<Block *> MainSystem, std::string signalsFolderName, std::vector<std::string> list);
 
 	bool run();
-	bool run(string signalPath);
+	bool run(std::string signalPath);
 	void terminate();
 	void writeReport(t_logical_topology finalLogicalTopology, t_physical_topology finalPhysicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, ordering_rule orderingRule);
 	void terminateSuperBlock();
@@ -884,30 +884,30 @@ public:
 	bool getLogValue() { return logValue; };
 	void setOpenFile(bool value);
 	bool getOpenFile() { return openFile; };
-	void setLogFileName(string newName);
-	string getLogFileName() { return logFileName; };
-	void setSignalsFolderName(string newName);
-	string getSignalsFolderName() { return signalsFolder; };
-	void setLoadedInputParameters(vector<string> loadedInputParams);
-	vector<string> getLoadedInputParameters() { return loadedInputParameters; };
+	void setLogFileName(std::string newName);
+	std::string getLogFileName() { return logFileName; };
+	void setSignalsFolderName(std::string newName);
+	std::string getSignalsFolderName() { return signalsFolder; };
+	void setLoadedInputParameters(std::vector<std::string> loadedInputParams);
+	std::vector<std::string> getLoadedInputParameters() { return loadedInputParameters; };
 	size_t getSystemBlocksSize() { return SystemBlocks.size(); };
-	vector<Block *> getSystemBlocks() { return SystemBlocks; };
+	std::vector<Block *> getSystemBlocks() { return SystemBlocks; };
 	
 	//########################################################################################################
 
 private:
-	string signalsFolder{ "signals" };
+	std::string signalsFolder{ "signals" };
 	char fileName[MAX_NAME_SIZE];  // Name of the file with system description (.sdf)
 	char name[MAX_NAME_SIZE];  // System Name
 	int numberOfBlocks;  // Number of system Blocks
 	int(*topology)[MAX_TOPOLOGY_SIZE];  // Relationship matrix
-	vector<Block *> SystemBlocks;  // Pointer to an array of pointers to Block objects
+	std::vector<Block *> SystemBlocks;  // Pointer to an array of pointers to Block objects
 								   //Log File Inputs
-	string logFileName{ "log.txt" }; // The name of the file where the debug info will be written
+	std::string logFileName{ "log.txt" }; // The name of the file where the debug info will be written
 	bool logValue{ true }; // Will write debug info if true
 	bool openFile{ true };
-	ofstream logFile;
-	vector<string> loadedInputParameters;
+	std::ofstream logFile;
+	std::vector<std::string> loadedInputParameters;
 };
 
 //########################################################################################################################################################
@@ -919,8 +919,8 @@ class SuperBlock : public Block {
 
 	/* State Variables */
 
-	vector<Block*> moduleBlocks;
-	vector<Block*> blocks;
+	std::vector<Block*> moduleBlocks;
+	std::vector<Block*> blocks;
 	System superBlockSystem;
 
 	/* Input Parameters */
@@ -932,30 +932,30 @@ public:
 
 	/* Methods */
 	//SuperBlock() {};
-	//SuperBlock(vector<Signal *> &inputSignals, vector<Signal *> &outputSignal) : Block(inputSignals, outputSignals) { superBlockSystem.setLogValue(false); };
-	SuperBlock(initializer_list<Signal *> inputSignals, initializer_list<Signal *> outputSignals) : Block(inputSignals, outputSignals) { superBlockSystem.setLogValue(false); };
+	//SuperBlock(std::vector<Signal *> &inputSignals, std::vector<Signal *> &outputSignal) : Block(inputSignals, outputSignals) { superBlockSystem.setLogValue(false); };
+	SuperBlock(std::initializer_list<Signal *> inputSignals, std::initializer_list<Signal *> outputSignals) : Block(inputSignals, outputSignals) { superBlockSystem.setLogValue(false); };
 
 	void initialize(void);
 
-	virtual bool runBlock(string signalPath);
+	virtual bool runBlock(std::string signalPath);
 
 	void terminate(void);
 
 	/* Set Methods */
 
-	//void setBlocks(vector<Block*> blks) { blocks = blks; };
-	void setSuperBlockSystem(initializer_list<Block*> blks) { superBlockSystem.setSystem(blks); };
+	//void setBlocks(std::vector<Block*> blks) { blocks = blks; };
+	void setSuperBlockSystem(std::initializer_list<Block*> blks) { superBlockSystem.setSystem(blks); };
 
 	void setSaveInternalSignals(bool sSignals);
 	bool const getSaveInternalSignals(void) { return saveInternalSignals; };
 
 	void setLogValue(bool value) { superBlockSystem.setLogValue(value);	};
 	void setOpenFile(bool value) { superBlockSystem.setOpenFile(value); };
-	void setLogFileName(string newName) { superBlockSystem.setLogFileName(newName); };
-	void setSignalsFolderName(string newName) { superBlockSystem.setSignalsFolderName(newName); };
-	void setLoadedInputParameters(vector<string> loadedInputParams) { superBlockSystem.setLoadedInputParameters(loadedInputParams); };
+	void setLogFileName(std::string newName) { superBlockSystem.setLogFileName(newName); };
+	void setSignalsFolderName(std::string newName) { superBlockSystem.setSignalsFolderName(newName); };
+	void setLoadedInputParameters(std::vector<std::string> loadedInputParams) { superBlockSystem.setLoadedInputParameters(loadedInputParams); };
 private:
-	ofstream logFileSP;
+	std::ofstream logFileSP;
 };
 
 //########################################################################################################################################################
@@ -966,10 +966,10 @@ private:
 class FIR_Filter : public Block {
 
 	/* State Variable */
-	vector<t_real> delayLine;
+	std::vector<t_real> delayLine;
 
 	bool saveImpulseResponse{ true };
-	string impulseResponseFilename{ "impulse_response.imp" };
+	std::string impulseResponseFilename{ "impulse_response.imp" };
 
 	/* Input Parameters */
 	bool seeBeginningOfImpulseResponse{ true };
@@ -977,15 +977,15 @@ class FIR_Filter : public Block {
 public:
 
 	/* State Variable */
-	vector<t_real> impulseResponse;
+	std::vector<t_real> impulseResponse;
 
 	/* Input Parameters */
 	int impulseResponseLength;							// filter order + 1 (filter order = number of delays)
 
 
 	/* Methods */
-	FIR_Filter(initializer_list<Signal *> InputSig, initializer_list<Signal *> OutputSig) :Block(InputSig, OutputSig) {};
-	FIR_Filter(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig) {};
+	FIR_Filter(std::initializer_list<Signal *> InputSig, std::initializer_list<Signal *> OutputSig) :Block(InputSig, OutputSig) {};
+	FIR_Filter(std::vector<Signal *> &InputSig, std::vector<Signal *> &OutputSig) :Block(InputSig, OutputSig) {};
 	FIR_Filter() {};
 
 	void initializeFIR_Filter(void);
@@ -1000,8 +1000,8 @@ public:
 	void setImpulseResponseLength(int iResponseLength) { impulseResponseLength = iResponseLength; };
 	int const getImpulseResponseLength(){ return impulseResponseLength; }
 
-	void setImpulseResponseFilename(string fName) { impulseResponseFilename = fName; };
-	string getImpulseResponseFilename() { return impulseResponseFilename; };
+	void setImpulseResponseFilename(std::string fName) { impulseResponseFilename = fName; };
+	std::string getImpulseResponseFilename() { return impulseResponseFilename; };
 
 	void setSeeBeginningOfImpulseResponse(bool sBeginning){ seeBeginningOfImpulseResponse = sBeginning; };
 	bool const getSeeBeginningOfImpulseResponse(){ return seeBeginningOfImpulseResponse; };
@@ -1013,15 +1013,15 @@ class FD_Filter : public Block {
 	
 	/* State Variable */
 	
-	vector<t_real> inputBufferTimeDomain;
-	vector<t_real> outputBufferTimeDomain;
+	std::vector<t_real> inputBufferTimeDomain;
+	std::vector<t_real> outputBufferTimeDomain;
 
 	int inputBufferPointer{ 0 };
 	int outputBufferPointer{ 0 };
 	
 	/* Input Parameters */
 	bool saveTransferFunction{ true };
-	string transferFunctionFilename{ "transfer_function.tfn" };
+	std::string transferFunctionFilename{ "transfer_function.tfn" };
 	int transferFunctionLength{ 128 };
 
 	int inputBufferTimeDomainLength{ transferFunctionLength };
@@ -1029,12 +1029,12 @@ class FD_Filter : public Block {
 
 public:
 	/* State Variable */
-	vector<t_complex> transferFunction;
+	std::vector<t_complex> transferFunction;
 
 	/* Methods */
 	FD_Filter() {};
-	FD_Filter(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig) {};
-	FD_Filter(initializer_list<Signal *> InputSig, initializer_list<Signal *> OutputSig) :Block(InputSig, OutputSig) {};
+	FD_Filter(std::vector<Signal *> &InputSig, std::vector<Signal *> &OutputSig) :Block(InputSig, OutputSig) {};
+	FD_Filter(std::initializer_list<Signal *> InputSig, std::initializer_list<Signal *> OutputSig) :Block(InputSig, OutputSig) {};
 
 	void initializeFD_Filter(void);
 
@@ -1066,7 +1066,7 @@ public:
 // Generates a complex signal knowing the real part and the complex part.
 class RealToComplex : public Block {
  public:
-	 RealToComplex(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
+	 RealToComplex(std::vector<Signal *> &InputSig, std::vector<Signal *> &OutputSig);
 	 bool runBlock(void);
  //private:
 };
@@ -1074,7 +1074,7 @@ class RealToComplex : public Block {
 // Separates the complex signal into two parts: real and imaginary.
 /*class ComplexToReal : public Block {
  public:
-	 ComplexToReal(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
+	 ComplexToReal(std::vector<Signal *> &InputSig, std::vector<Signal *> &OutputSig);
 	 bool runBlock(void);
  //private:
 };*/
@@ -1093,11 +1093,11 @@ class RealToComplex : public Block {
 
 public:
 
-	void overlapSaveSymComplexIn(vector<complex <double>> &v_in, vector<complex <double>> &v_out, vector<complex <double>> Hf, int NFFT);
-	void overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_out, vector<double> Hf, int NFFT);
-	void overlapSaveAsym(vector<double> &real_in, vector<double> &imag_in, vector<double> &real_out, vector<double> &imag_out, vector<double> h_real, vector<double> h_imag, int M, int L, int N);
-	void overlapSaveSym(vector<double> &real_in, vector<double> &imag_in, vector<double> &real_out, vector<double> &imag_out, vector<double> h_real, vector<double> h_imag, int NFFT);
-	void checkSize(vector<double> &real_in, vector<double> &imag_in, int L);
+	void overlapSaveSymComplexIn(std::vector<std::complex <double>> &v_in, std::vector<std::complex <double>> &v_out, std::vector<std::complex <double>> Hf, int NFFT);
+	void overlapSaveSyRealIn(std::vector<double> &v_in, std::vector<double> &v_out, std::vector<double> Hf, int NFFT);
+	void overlapSaveAsym(std::vector<double> &real_in, std::vector<double> &imag_in, std::vector<double> &real_out, std::vector<double> &imag_out, std::vector<double> h_real, std::vector<double> h_imag, int M, int L, int N);
+	void overlapSaveSym(std::vector<double> &real_in, std::vector<double> &imag_in, std::vector<double> &real_out, std::vector<double> &imag_out, std::vector<double> h_real, std::vector<double> h_imag, int NFFT);
+	void checkSize(std::vector<double> &real_in, std::vector<double> &imag_in, int L);
 
 };
 
@@ -1108,34 +1108,34 @@ class Fft
 {
 
 public:
-	vector<complex <double>> directTransformInReal(vector<double> real);
+	std::vector<std::complex <double>> directTransformInReal(std::vector<double> real);
 
-	vector<double> inverseTransformInCP(vector<complex <double>> &In);
+	std::vector<double> inverseTransformInCP(std::vector<std::complex <double>> &In);
 	
-	void directTransform(vector<double> &real, vector<double> &imag);
-	void inverseTransform(vector<double> &real, vector<double> &imag);
-	void transformRadix2(vector<double> &real, vector<double> &imag);
-	void transformBluestein(vector<double> &real, vector<double> &imag);
-	void convolve(const vector<double> &x, const vector<double> &y, vector<double> &out);
-	void convolve(const vector<double> &xreal, const vector<double> &ximag, const vector<double> &yreal, const vector<double> &yimag, vector<double> &outreal, vector<double> &outimag);
+	void directTransform(std::vector<double> &real, std::vector<double> &imag);
+	void inverseTransform(std::vector<double> &real, std::vector<double> &imag);
+	void transformRadix2(std::vector<double> &real, std::vector<double> &imag);
+	void transformBluestein(std::vector<double> &real, std::vector<double> &imag);
+	void convolve(const std::vector<double> &x, const std::vector<double> &y, std::vector<double> &out);
+	void convolve(const std::vector<double> &xreal, const std::vector<double> &ximag, const std::vector<double> &yreal, const std::vector<double> &yimag, std::vector<double> &outreal, std::vector<double> &outimag);
 	
-	void Radix2(vector<double> &real, vector<double> &imag, int m);
-	void Bluestein(vector<double> &real, vector<double> &imag, int m);
+	void Radix2(std::vector<double> &real, std::vector<double> &imag, int m);
+	void Bluestein(std::vector<double> &real, std::vector<double> &imag, int m);
 };*/
 
 
 class ComplexMult
 {
 public:
-	void CMultVector(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag);
-	void CMultVector_Loop(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag);
-	vector<complex <double>> CMultVectorInCP(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
-	void ComplexVect2ReImVect(vector<complex <double>> &v_in, vector<double> &v1_real, vector<double> &v1_imag);
-	void CMultVector_InComplex(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
-	void ReImVect2ComplexVect(vector<double> &v1_real, vector<double> &v1_imag, vector<complex <double>> &v_out);
+	void CMultVector(std::vector<double> &v1_real, std::vector<double> &v1_imag, std::vector<double> v2_real, std::vector<double> v2_imag);
+	void CMultVector_Loop(std::vector<double> &v1_real, std::vector<double> &v1_imag, std::vector<double> v2_real, std::vector<double> v2_imag);
+	std::vector<std::complex <double>> CMultVectorInCP(std::vector<std::complex <double>> &v1_in, std::vector<std::complex <double>> &v2_in);
+	void ComplexVect2ReImVect(std::vector<std::complex <double>> &v_in, std::vector<double> &v1_real, std::vector<double> &v1_imag);
+	void CMultVector_InComplex(std::vector<std::complex <double>> &v1_in, std::vector<std::complex <double>> &v2_in);
+	void ReImVect2ComplexVect(std::vector<double> &v1_real, std::vector<double> &v1_imag, std::vector<std::complex <double>> &v_out);
 
-	vector<complex<double>> ReImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag);
-	vector<complex <double>> complexVectorMultiplication(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
+	std::vector<std::complex<double>> ReImVect2ComplexVector(std::vector<double> &v1_real, std::vector<double> &v1_imag);
+	std::vector<std::complex <double>> complexVectorMultiplication(std::vector<std::complex <double>> &v1_in, std::vector<std::complex <double>> &v2_in);
 };
 
 
@@ -1145,9 +1145,9 @@ class FourierTransform {
 
 public:
 
-	vector<complex<double>> fft(vector<complex<double> > &vec, int sign);
-	vector<complex<double>> fft(std::vector<std::complex<double> > &vec);
-	vector<complex<double>> ifft(std::vector<std::complex<double> > &vec);
+	std::vector<std::complex<double>> fft(std::vector<std::complex<double> > &vec, int sign);
+	std::vector<std::complex<double>> fft(std::vector<std::complex<double> > &vec);
+	std::vector<std::complex<double>> ifft(std::vector<std::complex<double> > &vec);
 	void transformRadix2(std::vector<std::complex<double> > &vec);
 	void transformBluestein(std::vector<std::complex<double> > &vec);
 	void convolve(
@@ -1160,9 +1160,9 @@ public:
 
 class SystemInputParameters {
 private:
-	vector<string> loadedInputParameters;
-	string inputParametersFileName{ "input_parameters_values.txt" }; //name of the file from where the input parameters will be read
-	string outputFolderName{ "signals" };
+	std::vector<std::string> loadedInputParameters;
+	std::string inputParametersFileName{ "input_parameters_values.txt" }; //name of the file from where the input parameters will be read
+	std::string outputFolderName{ "signals" };
 	enum ParameterType { INT, DOUBLE, BOOL, MATRIX, ORDERING, TRANSPORT, ROUTING_CRITERION_LOGICAL, ROUTING_CRITERION_PHYSICAL }; //types of parameters
 											  //A parameter can only be of 1 type
 	class Parameter {
@@ -1209,38 +1209,38 @@ private:
 		Parameter(t_routing_criterion_physical_topology* elem);
 	};
 
-	int parseInt(string str);
-	double parseDouble(string str);
-	bool parseBool(string str);
-	t_matrix parseMatrix(ifstream &inputFile);
-	transport_mode parseTransportMode(string str);
-	ordering_rule parseOrderingRule(string str);
-	t_routing_criterion_logical_topology parseRoutingCriterionLogicalTopology(string str);
-	t_routing_criterion_physical_topology parseRoutingCriterionPhysicalTopology(string str);
+	int parseInt(std::string str);
+	double parseDouble(std::string str);
+	bool parseBool(std::string str);
+	t_matrix parseMatrix(std::ifstream &inputFile);
+	transport_mode parseTransportMode(std::string str);
+	ordering_rule parseOrderingRule(std::string str);
+	t_routing_criterion_logical_topology parseRoutingCriterionLogicalTopology(std::string str);
+	t_routing_criterion_physical_topology parseRoutingCriterionPhysicalTopology(std::string str);
 	
-	vector<string> split(const string & text, char sep);
-	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
+	std::vector<std::string> split(const std::string & text, char sep);
+	std::map<std::string, Parameter*> parameters = std::map<std::string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
 
 public:
-	string getInputParametersFileName() { return inputParametersFileName; }
-	string getOutputFolderName() { return outputFolderName; }
-	vector<string> getLoadedInputParameters() { return loadedInputParameters; }
+	std::string getInputParametersFileName() { return inputParametersFileName; }
+	std::string getOutputFolderName() { return outputFolderName; }
+	std::vector<std::string> getLoadedInputParameters() { return loadedInputParameters; }
 	void readSystemInputParameters();
 	//Adds the parameter to the map
-	void addInputParameter(string name, int* variable);
-	void addInputParameter(string name, double* variable);
-	void addInputParameter(string name, bool* variable);
-	void addInputParameter(string name, t_matrix* variable);
-	void addInputParameter(string name, ordering_rule* variable);
-	void addInputParameter(string name, transport_mode* variable);
-	void addInputParameter(string name, t_routing_criterion_logical_topology* variable);
-	void addInputParameter(string name, t_routing_criterion_physical_topology* variable);
+	void addInputParameter(std::string name, int* variable);
+	void addInputParameter(std::string name, double* variable);
+	void addInputParameter(std::string name, bool* variable);
+	void addInputParameter(std::string name, t_matrix* variable);
+	void addInputParameter(std::string name, ordering_rule* variable);
+	void addInputParameter(std::string name, transport_mode* variable);
+	void addInputParameter(std::string name, t_routing_criterion_logical_topology* variable);
+	void addInputParameter(std::string name, t_routing_criterion_physical_topology* variable);
 
 
 	/* Default empty constructor. Initializes the map */
 	SystemInputParameters() {};
 	SystemInputParameters(int argc,char*argv[]);
-	SystemInputParameters(string fName);
+	SystemInputParameters(std::string fName);
 	/* Deletes all heap memory occupied by the parameters */
 	~SystemInputParameters();
 };
@@ -1257,7 +1257,7 @@ class UniformRandomIntegerNumbers {
 	UniformRandomIntegerNumbers(long int seed, int low, int high) : r(bind(uniform_int_distribution<>(low, high), T(seed))) { };
 	int operator()() const { return r(); }
 private:
-	function<int()> r;
+	std::function<int()> r;
 };
 
 // Generates real numbers (double) uniformely distribuited in the interval [lo,hi)
@@ -1268,7 +1268,7 @@ public:
 	UniformRandomRealNumbers(long int seed, double low, double high) :r(bind(uniform_real_distribution<>(low, high), T(seed))) { };
 	double operator()() { return r(); };
 private:
-	function<double()> r;
+	std::function<double()> r;
 };
 
 

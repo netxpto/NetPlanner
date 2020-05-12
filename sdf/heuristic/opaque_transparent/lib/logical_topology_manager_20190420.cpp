@@ -1,7 +1,7 @@
 # include "..\include\logical_topology_manager_20190420.h"
 # include "..\include\Dijkstra_20190503.h"
 
-using namespace std;
+//using namespace std;    // (commented by Romil 08/05/2020)
 
 
 void LogicalTopologyManager::initialize(void) {
@@ -430,7 +430,7 @@ bool LogicalTopologyManager::runBlock(void) {
 			int oduType = demand.oduType;
 			bool pathFound{false};
 			
-			//cout << demandProcessed.demandIndex << endl;
+			//std::cout << demandProcessed.demandIndex << std::endl;
 			//outputSignals[1]->bufferPut((t_demand)demandProcessed);
 
 			int numberOfPaths{ 0 };

@@ -30,7 +30,7 @@ bool LogicalTopologyGenerator::runBlock(void) {
 
 //######### CREATES A TRANSPARENT LOGICAL TOPOLOGY ADJACENCY MATRIX ########################
 
-		Transparent.logicalTopologyAdjacencyMatrix.resize(physicalTopologyAdjacencyMatrix[0].size(), vector<int>(physicalTopologyAdjacencyMatrix[0].size(), 1));
+		Transparent.logicalTopologyAdjacencyMatrix.resize(physicalTopologyAdjacencyMatrix[0].size(), std::vector<int>(physicalTopologyAdjacencyMatrix[0].size(), 1));
 		for (size_t k = 0; k < physicalTopologyAdjacencyMatrix[0].size(); k++) { Transparent.logicalTopologyAdjacencyMatrix[k][k] = 0; }
 
 // CREATE A PATH, LIGHTPATH AND OPTICAL CHANNEL FOR TEST PURPOSES
@@ -74,7 +74,7 @@ bool LogicalTopologyGenerator::runBlock(void) {
 	}
 	else
 	{
-		cout << "Error: logical_Top_Gen_20190216.h - Transport Mode not defined\n";
+		std::cout << "Error: logical_Top_Gen_20190216.h - Transport Mode not defined\n";
 	}
 
 	return true;

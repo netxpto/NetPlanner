@@ -48,7 +48,7 @@ public:
 		readSystemInputParameters();
 	}
 
-	SimulationInputParameters(string fName) : SystemInputParameters(fName) 
+	SimulationInputParameters(std::string fName) : SystemInputParameters(fName) 
 	{
 		initializeInputParameterMap();
 		readSystemInputParameters();

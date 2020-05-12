@@ -3,7 +3,7 @@
 # include "..\include\Dijkstra_20190309.h"
 
 
-using namespace std;
+//using namespace std;    // (commented by Romil 08/05/2020)
 
 
 void PhysicalTopologyManager::initialize(void) {

@@ -1,7 +1,7 @@
 # include "..\include\scheduler_20190122.h"
 
 
-using namespace std;
+//using namespace std;    // (commented by Romil 08/05/2020)
 
 //	Global variables needed to generate a demand signal
 

@@ -16,7 +16,7 @@
 # include "..\include\netxpto_20190130.h"
 
 
-using namespace std;
+//using namespace std;     // (commented by Romil 08/05/2020)
 
 #ifndef M_PI
 #define M_PI  3.14159265358979323846
@@ -79,7 +79,7 @@ void Signal::bufferPut(T value)
 				{
 					char *ptr = (char *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1) * sizeof(T);
-					ofstream fileHandler{ "./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app };
+					std::ofstream fileHandler{ "./" + folderName + "/" + fileName, std::ios::out | std::ios::binary | std::ios::app };
 					fileHandler.write(ptr, (bufferLength - (firstValueToBeSaved - 1)) * sizeof(T));
 					fileHandler.close();
 					firstValueToBeSaved = 1;
@@ -90,7 +90,7 @@ void Signal::bufferPut(T value)
 						t_demand *ptr = (t_demand *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
 
-						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+						std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++) {
 							fileHandler << "\t\t";
 							fileHandler << ptr->demandIndex;
@@ -123,7 +123,7 @@ void Signal::bufferPut(T value)
 					else if (type == "LogicalTopology") {
 						t_logical_topology *ptr = (t_logical_topology *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
-						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+						std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
 						{
 							//################### PRINT LOGICAL TOPOLOGY ADJACENCY MATRIX #################
@@ -268,7 +268,7 @@ void Signal::bufferPut(T value)
 					{
 						t_physical_topology *ptr = (t_physical_topology *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
-						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+						std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 
 						
 						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
@@ -351,7 +351,7 @@ void Signal::bufferPut(T value)
 					{
 						t_path_request *ptr = (t_path_request *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
-						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+						std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 
 						//################### PRINT PATH REQUEST SIGNAL #####################
 						
@@ -389,7 +389,7 @@ void Signal::bufferPut(T value)
 					{
 					t_path_request_routed *ptr = (t_path_request_routed *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
-					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+					std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 
 					//################### PRINT PATH REQUEST SIGNAL #####################
 
@@ -478,7 +478,7 @@ void Signal::bufferPut(T value)
 					{
 					t_demand_request_routed *ptr = (t_demand_request_routed *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
-					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+					std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 
 
 						for (auto dmd = firstValueToBeSaved; dmd <= bufferLength; dmd++)
@@ -545,11 +545,11 @@ void Signal::writeHeader(){
 
 	if (headerWritten) return;
 
-	ofstream headerFile;
+	std::ofstream headerFile;
 
 	if (saveSignal && (!fileName.empty())) {
 
-		headerFile.open("./" + folderName + "/" + fileName, ios::out);
+		headerFile.open("./" + folderName + "/" + fileName, std::ios::out);
 
 		
 //######################### TENTAR MUDAR PARA UM SWITCH #########################################
@@ -624,15 +624,15 @@ void Signal::writeHeader(){
 	}
 };
 
-void Signal::writeHeader(string signalPath){
+void Signal::writeHeader(std::string signalPath){
 
 	if (headerWritten) return;
 
-	ofstream headerFile;
+	std::ofstream headerFile;
 
 	if (saveSignal && (!fileName.empty())) {
 
-		headerFile.open("./" + signalPath + "/" + fileName, ios::out);
+		headerFile.open("./" + signalPath + "/" + fileName, std::ios::out);
 
 		headerFile << "Signal type: " << getType() << "\n";
 		headerFile << "Symbol Period (s): " << getSymbolPeriod() << "\n";
@@ -654,15 +654,15 @@ void Signal::close() {
 		if (!(type == "Message")) {
 			char* ptr = (char *)buffer;
 
-			ofstream fileHandler;
-			fileHandler.open("./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app);
+			std::ofstream fileHandler;
+			fileHandler.open("./" + folderName + "/" + fileName, std::ios::out | std::ios::binary | std::ios::app);
 
 //################## Changed 19-02-1019 ##################################		
 			if (type == "DemandRequest") {
 				t_demand *ptr = (t_demand *)buffer;
 				ptr = ptr + (firstValueToBeSaved - 1);
 				//bool stop {false};
-				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+				std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 				for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++) {
 						fileHandler << "\t\t";
 						fileHandler << ptr->demandIndex;
@@ -695,7 +695,7 @@ void Signal::close() {
 			else if (type == "LogicalTopology") {
 				t_logical_topology *ptr = (t_logical_topology *)buffer;
 						ptr = ptr + (firstValueToBeSaved - 1);
-						ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+						std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 						for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
 						{
 							//################### PRINT LOGICAL TOPOLOGY ADJACENCY MATRIX #################
@@ -817,7 +817,7 @@ void Signal::close() {
 					{
 					t_physical_topology *ptr = (t_physical_topology *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
-					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+					std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 
 
 					for (auto dmd = firstValueToBeSaved; dmd <= outPosition; dmd++)
@@ -880,7 +880,7 @@ void Signal::close() {
 			{
 					t_path_request *ptr = (t_path_request *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
-					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+					std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 
 					//################### PRINT PATH REQUEST SIGNAL ###################
 					
@@ -910,7 +910,7 @@ void Signal::close() {
 					{
 					t_path_request_routed *ptr = (t_path_request_routed *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
-					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+					std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 
 					//################### PRINT PATH REQUEST SIGNAL #####################
 
@@ -971,7 +971,7 @@ void Signal::close() {
 					{
 					t_demand_request_routed *ptr = (t_demand_request_routed *)buffer;
 					ptr = ptr + (firstValueToBeSaved - 1);
-					ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+					std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 
 
 					for (auto dmd = firstValueToBeSaved; dmd <= inPosition; dmd++)
@@ -1013,7 +1013,7 @@ void Signal::close() {
 				t_message *ptr = (t_message *)buffer;
 				ptr = ptr + (fValueToBeSaved - 1);
 
-				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+				std::ofstream fileHandler("./" + folderName + "/" + fileName, std::ios::out | std::ios::app);
 
 				for (auto msg = fValueToBeSaved; msg < (inPosition + 1); msg++) {
 					for (auto fld = 0; fld < (*ptr).size(); fld++) {
@@ -1036,7 +1036,7 @@ void Signal::closeFinalReport() {
 //###################################################### GENERAL BLOCKS FUNCTIONS IMPLEMENTATION #########################################################
 //########################################################################################################################################################
 
-Block::Block(initializer_list<Signal*> InputSig, initializer_list<Signal*> OutputSig) {
+Block::Block(std::initializer_list<Signal*> InputSig, std::initializer_list<Signal*> OutputSig) {
 
 	numberOfInputSignals = (int) InputSig.size();
 	numberOfOutputSignals = (int) OutputSig.size();
@@ -1045,7 +1045,7 @@ Block::Block(initializer_list<Signal*> InputSig, initializer_list<Signal*> Outpu
 	outputSignals = OutputSig;
 }
 
-Block::Block(vector<Signal*> &InputSig, vector<Signal*> &OutputSig) {
+Block::Block(std::vector<Signal*> &InputSig, std::vector<Signal*> &OutputSig) {
 
 	numberOfInputSignals = (int)InputSig.size();
 	numberOfOutputSignals = (int)OutputSig.size();
@@ -1107,30 +1107,30 @@ void SuperBlock::initialize(void){
 	*/
 };
 
-bool SuperBlock::runBlock(string signalPath) {
+bool SuperBlock::runBlock(std::string signalPath) {
 
 //	bool alive = superBlockSystem.run();
 
 	/////////////////////////////////
 	/*2018-04-18*/
 	//Creates the signals folder if it doesn't exist
-	if (!experimental::filesystem::is_directory(signalPath) || !experimental::filesystem::exists(signalPath)) {
-		experimental::filesystem::create_directory(signalPath);
+	if (!std::filesystem::is_directory(signalPath) || !std::filesystem::exists(signalPath)) {
+		std::filesystem::create_directory(signalPath);
 	}
 	//Debug information
 	clock_t start;
-	string separator = "|";
+	std::string separator = "|";
 	if (superBlockSystem.getLogValue() && superBlockSystem.getOpenFile())
 		logFileSP.open("./" + signalPath + "/" + superBlockSystem.getLogFileName());
 	//Writes which input parameters have been 
-	logFileSP << "The following input parameters were loaded from the configuration file:" << endl;
-	for (string p : superBlockSystem.getLoadedInputParameters()) {
-		logFileSP << p << endl;
+	logFileSP << "The following input parameters were loaded from the configuration file:" << std::endl;
+	for (std::string p : superBlockSystem.getLoadedInputParameters()) {
+		logFileSP << p << std::endl;
 	}
-	//logFile << "-------------------------------------------------------" << endl;
+	//logFile << "-------------------------------------------------------" << std::endl;
 
 	bool systemAlive{ false };
-	vector<Block *> SystemBlocks = superBlockSystem.getSystemBlocks();
+	std::vector<Block *> SystemBlocks = superBlockSystem.getSystemBlocks();
 
 	for (unsigned int i = 0; i < SystemBlocks.size(); i++) {
 			// Writes debug information
@@ -1141,23 +1141,23 @@ bool SuperBlock::runBlock(string signalPath) {
 				char buffer[20];
 				snprintf(buffer, 20, "%04d-%02d-%02d %02d:%02d:%02d", 1900 + now.tm_year, now.tm_mon + 1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec);
 				logFileSP << "-----------------------------------------------------------------\n";
-				logFileSP << "########## " << string(typeid(*SystemBlocks[i]).name()).substr(6) << " ##########" << endl; // Prints block name e.g. "Add"
-				logFileSP << "Block start time: " << buffer << endl;
+				logFileSP << "########## " << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << " ##########" << std::endl; // Prints block name e.g. "Add"
+				logFileSP << "Block start time: " << buffer << std::endl;
 				// Prints line for each input signal in the current block being executed
-				logFileSP << "Input Signals: " << endl;
+				logFileSP << "Input Signals: " << std::endl;
 				for (Signal *b : SystemBlocks[i]->inputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFileSP << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					std::string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFileSP << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-						<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
+						<< "ready=" << (*b).ready() << std::endl; // Prints the amount of bits ready to be processed 
 				}
 				// Prints line for each output signal in the current block being executed
-				logFileSP << "Output Signals: " << endl;
+				logFileSP << "Output Signals: " << std::endl;
 				for (Signal *b : SystemBlocks[i]->outputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFileSP << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					std::string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFileSP << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
+						<< "space=" << (*b).space() << std::endl; // Prints the amount of bits ready to be processed 
 				}
 				start = clock(); //Counts the time taken to run the current block
 			}
@@ -1170,25 +1170,25 @@ bool SuperBlock::runBlock(string signalPath) {
 
 			{
 				logFileSP << "-----------------------------------------------------------------\n";
-				logFileSP << "Elapsed time: " << (float)(clock() - start) << " milliseconds" << endl;
+				logFileSP << "Elapsed time: " << (float)(clock() - start) << " milliseconds" << std::endl;
 				logFileSP << "-----------------------------------------------------------------\n";
 				// Prints line for each input signal in the current block being executed
-				logFileSP << "Input Signals: " << endl;
+				logFileSP << "Input Signals: " << std::endl;
 				for (Signal *b : SystemBlocks[i]->inputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFileSP << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					std::string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFileSP << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-						<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
+						<< "ready=" << (*b).ready() << std::endl; // Prints the amount of bits ready to be processed 
 				}
 				// Prints line for each output signal in the current block being executed
-				logFileSP << "Output Signals: " << endl;
+				logFileSP << "Output Signals: " << std::endl;
 				for (Signal *b : SystemBlocks[i]->outputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFileSP << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					std::string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFileSP << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
+						<< "space=" << (*b).space() << std::endl; // Prints the amount of bits ready to be processed 
 				}
-				logFileSP << endl << endl;
+				logFileSP << std::endl << std::endl;
 			}
 		}
 
@@ -1306,7 +1306,7 @@ bool SuperBlock::runBlock(string signalPath) {
 					break;
 
 			default:
-				cerr << "ERRO: netxpto_20190130.cpp (SuperBlock)" << "\n";
+				std::cerr << "ERRO: netxpto_20190130.cpp (SuperBlock)" << "\n";
 				return false;
 			}
 		}
@@ -1362,7 +1362,7 @@ void FIR_Filter::initializeFIR_Filter(void) {
 	delayLine.resize(impulseResponseLength, 0);
 
 	if (saveImpulseResponse) {
-		ofstream fileHandler("./signals/" + impulseResponseFilename, ios::out);
+		std::ofstream fileHandler("./signals/" + impulseResponseFilename, std::ios::out);
 		fileHandler << "// ### HEADER TERMINATOR ###\n";
 
 		t_real t;
@@ -1383,17 +1383,23 @@ bool FIR_Filter::runBlock(void) {
 	int ready = inputSignals[0]->ready();
 	int space = outputSignals[0]->space();
 
-	int process = min(ready, space);
+	int process = std::min(ready, space);
 
 	if (process == 0) return false;
 
 	for (int i = 0; i < process; i++) {
 		t_real val;
 		(inputSignals[0])->bufferGet(&val);
-		if (val != 0) {
-			vector<t_real> aux(impulseResponseLength, 0.0);
-			transform(impulseResponse.begin(), impulseResponse.end(), aux.begin(), bind1st(multiplies<t_real>(), val));
-			transform(aux.begin(), aux.end(), delayLine.begin(), delayLine.begin(), plus<t_real>());
+		/*if (val != 0) {
+			std::vector<t_real> aux(impulseResponseLength, 0.0);
+			transform(impulseResponse.begin(), impulseResponse.end(), aux.begin(), bind1st(std::multiplies<t_real>(), val));
+			transform(aux.begin(), aux.end(), delayLine.begin(), delayLine.begin(), std::plus<t_real>());
+		}*/
+		if (val != 0)
+		{
+			std::vector<t_real> aux(impulseResponseLength, 0.0);
+			transform(impulseResponse.begin(), impulseResponse.end(), aux.begin(), std::bind(std::multiplies<t_real>(), val, std::placeholders::_1));
+			transform(aux.begin(), aux.end(), delayLine.begin(), delayLine.begin(), std::plus<t_real>());
 		}
 		outputSignals[0]->bufferPut((t_real)(delayLine[0]));
 		rotate(delayLine.begin(), delayLine.begin() + 1, delayLine.end());
@@ -1427,7 +1433,7 @@ void FD_Filter::initializeFD_Filter(void) {
 	//raisedCosineTF(transferFunction, transferFunctionLength, rollOffFactor, samplingPeriod, symbolPeriod);
 
 	if (saveTransferFunction) {
-		ofstream fileHandler("./signals/" + transferFunctionFilename, ios::out);
+		std::ofstream fileHandler("./signals/" + transferFunctionFilename, std::ios::out);
 		fileHandler << "// ### HEADER TERMINATOR ###\n";
 
 		double samplingPeriod = inputSignals[0]->getSamplingPeriod();
@@ -1447,12 +1453,12 @@ void FD_Filter::initializeFD_Filter(void) {
 /*void FD_Filter::OverlapSaveMethod(void) {
 	int NFFT = transferFunctionLength;
 	int Nblocks = 2 * (inputBufferTimeDomain.size() / NFFT);
-	vector<double> real_temp(NFFT, 0);
-	vector<double> imag_temp(NFFT, 0);
-	vector<double> real_temp_copy(NFFT, 0);
-	vector<double> imag_temp_copy(NFFT, 0);
-	vector<t_real> H_real(NFFT, 0);
-	vector<t_real> H_imag(NFFT, 0);
+	std::vector<double> real_temp(NFFT, 0);
+	std::vector<double> imag_temp(NFFT, 0);
+	std::vector<double> real_temp_copy(NFFT, 0);
+	std::vector<double> imag_temp_copy(NFFT, 0);
+	std::vector<t_real> H_real(NFFT, 0);
+	std::vector<t_real> H_imag(NFFT, 0);
 	Fft fft;
 	ComplexMult CMult;
 	CMult.ComplexVect2ReImVect(transferFunction, H_real, H_imag);
@@ -1493,13 +1499,13 @@ void FD_Filter::initializeFD_Filter(void) {
 void FD_Filter::overlapSaveZPRealIn(void) {
 	int NFFT = transferFunctionLength;
 	int Nblocks = 2 * (inputBufferTimeDomain.size() / NFFT);
-	vector<double> var_temp(NFFT, 0);
-	vector<double> real_temp_copy(NFFT, 0);
-	vector<double> imag_temp_copy(NFFT, 0);
-	vector<double> H_real(NFFT, 0);
-	vector<double> H_imag(NFFT, 0);
-	vector<double> v_in_temp(NFFT / 2, 0);
-	vector<double> v_out_temp(NFFT / 2, 0);
+	std::vector<double> var_temp(NFFT, 0);
+	std::vector<double> real_temp_copy(NFFT, 0);
+	std::vector<double> imag_temp_copy(NFFT, 0);
+	std::vector<double> H_real(NFFT, 0);
+	std::vector<double> H_imag(NFFT, 0);
+	std::vector<double> v_in_temp(NFFT / 2, 0);
+	std::vector<double> v_out_temp(NFFT / 2, 0);
 	Fft fft;
 	ComplexMult CMult;
 	CMult.ComplexVect2ReImVect(transferFunction, H_real, H_imag);
@@ -1529,7 +1535,7 @@ void FD_Filter::overlapSaveZPRealIn(void) {
 	//inputBufferTimeDomain.resize(ready);
 	//outputBufferTimeDomain.resize(ready);
 	int space = (int) inputBufferTimeDomain.size() - inputBufferPointer;
-	int process1 = min(ready, space);
+	int process1 = std::min(ready, space);
 	//int process1 = ready;
 	if (process1 > 0) alive = true;
 	// read incoming samples to the input buffer
@@ -1550,7 +1556,7 @@ void FD_Filter::overlapSaveZPRealIn(void) {
 	};
 	//space = outputSignals[0]->space();
 	//ready = outputBufferTimeDomain.size() - outputBufferPointer;
-	int process2 = min(ready, space);
+	int process2 = std::min(ready, space);
 	if (process2 > 0) alive = true;
 	//int process2 = outputBufferTimeDomain.size();
 	for (int k = 0; k < process2; k++) {
@@ -1564,7 +1570,7 @@ void FD_Filter::overlapSaveZPRealIn(void) {
 */    
 
 /*2016-08-03
-DiscreteToContinuousTime::DiscreteToContinuousTime(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
+DiscreteToContinuousTime::DiscreteToContinuousTime(std::vector<Signal *> &InputSig, std::vector<Signal *> &OutputSig) {
   numberOfInputSignals = InputSig.size();
   numberOfOutputSignals = OutputSig.size();
   inputSignals = InputSig;
@@ -1577,7 +1583,7 @@ DiscreteToContinuousTime::DiscreteToContinuousTime(vector<Signal *> &InputSig, v
 
 
 
-RealToComplex::RealToComplex(vector <Signal *> &InputSig, vector <Signal *> &OutputSig) {
+RealToComplex::RealToComplex(std::vector <Signal *> &InputSig, std::vector <Signal *> &OutputSig) {
 
 	setNumberOfInputSignals((int) InputSig.size());
 	setNumberOfOutputSignals((int) OutputSig.size());
@@ -1593,11 +1599,11 @@ bool RealToComplex::runBlock(void) {
 
 	int ready0 = inputSignals[0]->ready();
 	int ready1 = inputSignals[1]->ready();
-	int ready = min(ready0, ready1);
+	int ready = std::min(ready0, ready1);
 
 	int space = outputSignals[0]->space();
 
-	int process = min(ready, space);
+	int process = std::min(ready, space);
 
 	if (process == 0) return false;
 
@@ -1608,7 +1614,7 @@ bool RealToComplex::runBlock(void) {
 		inputSignals[0]->bufferGet(&re);
 		inputSignals[1]->bufferGet(&im);
 
-		complex<t_real> myComplex( re, im);
+		std::complex<t_real> myComplex( re, im);
 
 		outputSignals[0]->bufferPut(myComplex);
 
@@ -1617,7 +1623,7 @@ bool RealToComplex::runBlock(void) {
 	return true;
 }
 //
-//ComplexToReal::ComplexToReal(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
+//ComplexToReal::ComplexToReal(std::vector<Signal *> &InputSig, std::vector<Signal *> &OutputSig) {
 //
 //  numberOfInputSignals = 1;
 //  numberOfOutputSignals = 2;
@@ -1658,8 +1664,8 @@ bool RealToComplex::runBlock(void) {
 //      if (outputSignals[0]->inPosition < length_out1 &&
 //          outputSignals[1]->inPosition < length_out2) {
 //
-//        auxil1[i] = static_cast<complex<double>*>(InputSignals[0]->buffer)[i].real();
-//        auxil2[i] = static_cast<complex<double>*>(InputSignals[0]->buffer)[i].imag();
+//        auxil1[i] = static_cast<std::complex<double>*>(InputSignals[0]->buffer)[i].real();
+//        auxil2[i] = static_cast<std::complex<double>*>(InputSignals[0]->buffer)[i].imag();
 //
 //        InputSignals[0]->outPosition++;
 //        outputSignals[0]->inPosition++;
@@ -1719,7 +1725,7 @@ bool RealToComplex::runBlock(void) {
 //
 //}
 //
-//ContinuousToDiscreteTime::ContinuousToDiscreteTime(vector<Signal *> &InputSig, vector<Signal *> &OutputSig, double time){
+//ContinuousToDiscreteTime::ContinuousToDiscreteTime(std::vector<Signal *> &InputSig, std::vector<Signal *> &OutputSig, double time){
 //
 //  numberOfInputSignals = 1;
 //  numberOfOutputSignals = 1;
@@ -1804,7 +1810,7 @@ bool RealToComplex::runBlock(void) {
 
 
 
-System::System(initializer_list<Block *> Blocks) 
+System::System(std::initializer_list<Block *> Blocks) 
 {
 	SystemBlocks = Blocks;
 
@@ -1814,7 +1820,7 @@ System::System(initializer_list<Block *> Blocks)
 	}
 }
 
-System::System(initializer_list<Block *> Blocks, string signalsFolderName, vector<string> list)
+System::System(std::initializer_list<Block *> Blocks, std::string signalsFolderName, std::vector<std::string> list)
 {
 	SystemBlocks = Blocks;
 	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
@@ -1824,7 +1830,7 @@ System::System(initializer_list<Block *> Blocks, string signalsFolderName, vecto
 	setLoadedInputParameters(list);
 }
 
-void System::setSystem(initializer_list<Block *> Blocks)
+void System::setSystem(std::initializer_list<Block *> Blocks)
 {
 	SystemBlocks = Blocks;
 
@@ -1838,26 +1844,26 @@ bool System::run() {
 	return run(signalsFolder);
 }
 
-bool System::run(string signalPath) {
+bool System::run(std::string signalPath) {
 
 	bool systemAlive{ false };
 
 	/*2018-04-18*/
 	//Creates the signals folder if it doesn't exist
-	if (!experimental::filesystem::is_directory(signalPath) || !experimental::filesystem::exists(signalPath)) {
-		experimental::filesystem::create_directory(signalPath);
+	if (!std::filesystem::is_directory(signalPath) || !std::filesystem::exists(signalPath)) {
+		std::filesystem::create_directory(signalPath);
 	}
 	//Debug information
 	clock_t start;
-	string separator = "|";
+	std::string separator = "|";
 	if (logValue && openFile)
 		logFile.open("./" + signalPath + "/" + logFileName);
 	//Writes which input parameters have been 
-	logFile << "The following input parameters were loaded from the configuration file:" << endl;
-	for (string p : loadedInputParameters) {
-		logFile << p << endl;
+	logFile << "The following input parameters were loaded from the configuration file:" << std::endl;
+	for (std::string p : loadedInputParameters) {
+		logFile << p << std::endl;
 	}
-	//logFile << "-------------------------------------------------------" << endl;
+	//logFile << "-------------------------------------------------------" << std::endl;
 
 	int l = 0;
 	bool Alive;
@@ -1872,23 +1878,23 @@ bool System::run(string signalPath) {
 				char buffer[20];
 				snprintf(buffer, 20, "%04d-%02d-%02d %02d:%02d:%02d", 1900 + now.tm_year, now.tm_mon + 1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec);
 				logFile << "-----------------------------------------------------------------\n";
-				logFile << "########## " << string(typeid(*SystemBlocks[i]).name()).substr(6) << " ##########" << endl; // Prints block name e.g. "Add"
-				logFile << "Block start time: " << buffer << endl; 
+				logFile << "########## " << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << " ##########" << std::endl; // Prints block name e.g. "Add"
+				logFile << "Block start time: " << buffer << std::endl; 
 				// Prints line for each input signal in the current block being executed
-				logFile << "Input Signals: " << endl;
+				logFile << "Input Signals: " << std::endl;
 				for (Signal *b : SystemBlocks[i]->inputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					std::string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-						<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
+						<< "ready=" << (*b).ready() << std::endl; // Prints the amount of bits ready to be processed 
 				}
 				// Prints line for each output signal in the current block being executed
-				logFile << "Output Signals: " << endl;
+				logFile << "Output Signals: " << std::endl;
 				for (Signal *b : SystemBlocks[i]->outputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					std::string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
+						<< "space=" << (*b).space() << std::endl; // Prints the amount of bits ready to be processed 
 				}
 				start = clock(); //Counts the time taken to run the current block
 			}
@@ -1900,25 +1906,25 @@ bool System::run(string signalPath) {
 			if (logValue)
 			{
 				logFile << "-----------------------------------------------------------------\n";
-				logFile << "Elapsed time: " << (float)(clock() - start) << " milliseconds" << endl;
+				logFile << "Elapsed time: " << (float)(clock() - start) << " milliseconds" << std::endl;
 				logFile << "-----------------------------------------------------------------\n";
 				// Prints line for each input signal in the current block being executed
-				logFile << "Input Signals: " << endl;
+				logFile << "Input Signals: " << std::endl;
 				for (Signal *b : SystemBlocks[i]->inputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					std::string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-						<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
+						<< "ready=" << (*b).ready() << std::endl; // Prints the amount of bits ready to be processed 
 				}
 				// Prints line for each output signal in the current block being executed
-				logFile << "Output Signals: " << endl;
+				logFile << "Output Signals: " << std::endl;
 				for (Signal *b : SystemBlocks[i]->outputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+					std::string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << std::string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
+						<< "space=" << (*b).space() << std::endl; // Prints the amount of bits ready to be processed 
 				}
-				logFile << endl << endl;
+				logFile << std::endl << std::endl;
 			}
 		}
 		l++;
@@ -1941,7 +1947,7 @@ void System::terminate()
 
 void System::writeReport(t_logical_topology finalLogicalTopology, t_physical_topology finalPhysicalTopology, t_matrix odu0, t_matrix odu1, t_matrix odu2, t_matrix odu3, t_matrix odu4, ordering_rule orderingRule)
 {
-	ofstream fileHandler;
+	std::ofstream fileHandler;
 	fileHandler.open("FinalReport.txt");
 	fileHandler << "RESULTS FOR TRANSPARENT MODE WITHOUT SURVIVABILITY\n";
 	fileHandler << "\n";
@@ -2516,11 +2522,11 @@ void System::setLogValue(bool value){
 	logValue = value;
 }
 
-void System::setLogFileName(string newName){
+void System::setLogFileName(std::string newName){
 	logFileName = newName;
 }
 
-void System::setSignalsFolderName(string newName)
+void System::setSignalsFolderName(std::string newName)
 {
 	signalsFolder = newName;
 
@@ -2536,7 +2542,7 @@ void System::setSignalsFolderName(string newName)
 	}
 }
 
-void System::setLoadedInputParameters(vector<string> loadedInputParams)
+void System::setLoadedInputParameters(std::vector<std::string> loadedInputParams)
 {
 	loadedInputParameters = loadedInputParams;
 }
@@ -2547,13 +2553,13 @@ void System::setLoadedInputParameters(vector<string> loadedInputParams)
 //########################################################################################################################################################
 
 /*
-void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_out, vector<double> Hf, int NFFT) {
+void OverlapMethod::overlapSaveSyRealIn(std::vector<double> &v_in, std::vector<double> &v_out, std::vector<double> Hf, int NFFT) {
 	int Nblocks = 2 * ((int) v_in.size() / NFFT);
-	vector<double> var_temp(NFFT, 0);
-	vector<double> real_temp_copy(NFFT, 0);
-	vector<double> imag_temp_copy(NFFT, 0);
-	vector<double> H_real(NFFT, 0);
-	vector<double> H_imag(NFFT, 0);
+	std::vector<double> var_temp(NFFT, 0);
+	std::vector<double> real_temp_copy(NFFT, 0);
+	std::vector<double> imag_temp_copy(NFFT, 0);
+	std::vector<double> H_real(NFFT, 0);
+	std::vector<double> H_imag(NFFT, 0);
 	Fft fft;
 	ComplexMult CMult;
 	H_real = Hf;
@@ -2590,13 +2596,13 @@ void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_
 /*
 // Private function prototypes
 static size_t reverseBits(size_t x, unsigned int n);
-vector<complex <double>> Fft::directTransformInReal(std::vector<double> real)
+std::vector<std::complex <double>> Fft::directTransformInReal(std::vector<double> real)
 {
 	//if (In.real.size() != imag.size())
 	//throw "Mismatched lengths";
 	ComplexMult CMult;
-	vector<double> im(real.size(), 0);
-	vector<complex <double>> v_out(real.size(), 0);
+	std::vector<double> im(real.size(), 0);
+	std::vector<std::complex <double>> v_out(real.size(), 0);
 	size_t n = real.size();
 	if (n == 0)
 		return v_out;
@@ -2607,11 +2613,11 @@ vector<complex <double>> Fft::directTransformInReal(std::vector<double> real)
 	CMult.ReImVect2ComplexVect(real, im, v_out);
 	return v_out;
 }
-std::vector<double> Fft::inverseTransformInCP(std::vector<complex <double>> &In)
+std::vector<double> Fft::inverseTransformInCP(std::vector<std::complex <double>> &In)
 {
 	ComplexMult CMult;
-	vector<double> real(In.size(), 0);
-	vector<double> im(In.size(), 0);
+	std::vector<double> real(In.size(), 0);
+	std::vector<double> im(In.size(), 0);
 	CMult.ComplexVect2ReImVect(In, real, im);
 	directTransform(im, real);
 	for (int x = 0; x != real.size(); ++x)
@@ -2619,12 +2625,12 @@ std::vector<double> Fft::inverseTransformInCP(std::vector<complex <double>> &In)
 		real[x] = real[x] / real.size();
 		  im[x] =   im[x] / real.size();
 	}
-	vector<double> v_out(real.size(), 0);
+	std::vector<double> v_out(real.size(), 0);
 	v_out = real;
 	//CMult.ReImVect2ComplexVect(real, imag, v_out);
 	return v_out;
 }
-void Fft::directTransform(vector<double> &real, vector<double> &imag)
+void Fft::directTransform(std::vector<double> &real, std::vector<double> &imag)
 {
 	if (real.size() != imag.size())
 		throw "Mismatched lengths";
@@ -2636,7 +2642,7 @@ void Fft::directTransform(vector<double> &real, vector<double> &imag)
 	else									// More complicated algorithm for arbitrary sizes
 		transformBluestein(real, imag);
 }
-void Fft::inverseTransform(vector<double> &real, vector<double> &imag)
+void Fft::inverseTransform(std::vector<double> &real, std::vector<double> &imag)
 {
 	directTransform(imag, real);					// Inverse function
 	for (int x = 0; x != real.size(); ++x)
@@ -2645,7 +2651,7 @@ void Fft::inverseTransform(vector<double> &real, vector<double> &imag)
 		imag[x] = imag[x] / real.size();
 	}
 }
-void Fft::transformRadix2(vector<double> &real, vector<double> &imag) 
+void Fft::transformRadix2(std::vector<double> &real, std::vector<double> &imag) 
 {
 	// Compute levels = floor(log2(n))
 	if (real.size() != imag.size())
@@ -2664,8 +2670,8 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag)
 			throw "Length is not a power of 2";
 	}
 	// Trignometric tables
-	vector<double> cosTable(n / 2);
-	vector<double> sinTable(n / 2);
+	std::vector<double> cosTable(n / 2);
+	std::vector<double> sinTable(n / 2);
 	for (size_t i = 0; i < n / 2; i++)
 	{
 		cosTable[i] = cos(2 * M_PI * i / n);
@@ -2706,7 +2712,7 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag)
 			break;
 	}
 }
-void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
+void Fft::Radix2(std::vector<double> &real, std::vector<double> &imag, int s)
 {
 	// Compute levels = floor(log2(n))
 	if (real.size() != imag.size())
@@ -2725,8 +2731,8 @@ void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
 			throw "Length is not a power of 2";
 	}
 	// Trignometric tables
-	vector<double> cosTable(n / 2);
-	vector<double> sinTable(n / 2);
+	std::vector<double> cosTable(n / 2);
+	std::vector<double> sinTable(n / 2);
 	for (size_t i = 0; i < n / 2; i++)
 	{
 		cosTable[i] = cos(-s*2 * M_PI * i / n);
@@ -2767,7 +2773,7 @@ void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
 			break;
 	}
 }
-void Fft::transformBluestein(vector<double> &real, vector<double> &imag) 
+void Fft::transformBluestein(std::vector<double> &real, std::vector<double> &imag) 
 {
 	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
 	if (real.size() != imag.size())
@@ -2786,7 +2792,7 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag)
 		}
 	}
 	// Trignometric tables
-	vector<double> cosTable(n), sinTable(n);
+	std::vector<double> cosTable(n), sinTable(n);
 	for (size_t i = 0; i < n; i++) {
 		double temp = M_PI * (size_t)((unsigned long long)i * i % ((unsigned long long)n * 2)) / n;
 		// Less accurate version if long long is unavailable: double temp = M_PI * i * i / n;
@@ -2794,12 +2800,12 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag)
 		sinTable[i] = sin(temp);
 	}
 	// Temporary vectors and preprocessing
-	vector<double> areal(m), aimag(m);
+	std::vector<double> areal(m), aimag(m);
 	for (size_t i = 0; i < n; i++) {
 		areal[i] = real[i] * cosTable[i] + imag[i] * sinTable[i];
 		aimag[i] = -real[i] * sinTable[i] + imag[i] * cosTable[i];
 	}
-	vector<double> breal(m), bimag(m);
+	std::vector<double> breal(m), bimag(m);
 	breal[0] = cosTable[0];
 	bimag[0] = sinTable[0];
 	for (size_t i = 1; i < n; i++) {
@@ -2807,7 +2813,7 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag)
 		bimag[i] = bimag[m - i] = sinTable[i];
 	}
 	// Convolution
-	vector<double> creal(m), cimag(m);
+	std::vector<double> creal(m), cimag(m);
 	convolve(areal, aimag, breal, bimag, creal, cimag);
 	// Postprocessing
 	for (size_t i = 0; i < n; i++) {
@@ -2815,7 +2821,7 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag)
 		imag[i] = -creal[i] * sinTable[i] + cimag[i] * cosTable[i];
 	}
 }
-void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
+void Fft::Bluestein(std::vector<double> &real, std::vector<double> &imag, int s)
 {
 	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
 	if (real.size() != imag.size())
@@ -2834,7 +2840,7 @@ void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 		}
 	}
 	// Trignometric tables
-	vector<double> cosTable(n), sinTable(n);
+	std::vector<double> cosTable(n), sinTable(n);
 	for (size_t i = 0; i < n; i++) {
 		double temp = M_PI * (size_t)((unsigned long long)i * i % ((unsigned long long)n * 2)) / n;
 		// Less accurate version if long long is unavailable: double temp = M_PI * i * i / n;
@@ -2842,12 +2848,12 @@ void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 		sinTable[i] =    sin(-s*temp);
 	}
 	// Temporary vectors and preprocessing
-	vector<double> areal(m), aimag(m);
+	std::vector<double> areal(m), aimag(m);
 	for (size_t i = 0; i < n; i++) {
 		areal[i] = real[i] * cosTable[i] + imag[i] * sinTable[i];
 		aimag[i] = -real[i] * sinTable[i] + imag[i] * cosTable[i];
 	}
-	vector<double> breal(m), bimag(m);
+	std::vector<double> breal(m), bimag(m);
 	breal[0] = cosTable[0];
 	bimag[0] = sinTable[0];
 	for (size_t i = 1; i < n; i++) {
@@ -2855,7 +2861,7 @@ void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 		bimag[i] = bimag[m - i] = sinTable[i];
 	}
 	// Convolution
-	vector<double> creal(m), cimag(m);
+	std::vector<double> creal(m), cimag(m);
 	convolve(areal, aimag, breal, bimag, creal, cimag);
 	// Postprocessing
 	for (size_t i = 0; i < n; i++) {
@@ -2866,21 +2872,21 @@ void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 */
 
 /*
-void Fft::convolve(const vector<double> &x, const vector<double> &y, vector<double> &out) {
+void Fft::convolve(const std::vector<double> &x, const std::vector<double> &y, std::vector<double> &out) {
 	if (x.size() != y.size() || x.size() != out.size())
 		throw "Mismatched lengths";
 	size_t n = x.size();
-	vector<double> ximag(n), yimag(n), zimag(n);
+	std::vector<double> ximag(n), yimag(n), zimag(n);
 	convolve(x, ximag, y, yimag, out, zimag);
 }
-void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, const vector<double> &yreal, const vector<double> &yimag, vector<double> &outreal, vector<double> &outimag) {
+void Fft::convolve(const std::vector<double> &xreal, const std::vector<double> &ximag, const std::vector<double> &yreal, const std::vector<double> &yimag, std::vector<double> &outreal, std::vector<double> &outimag) {
 	if (xreal.size() != ximag.size() || xreal.size() != yreal.size() || yreal.size() != yimag.size() || xreal.size() != outreal.size() || outreal.size() != outimag.size())
 		throw "Mismatched lengths";
 	size_t n = xreal.size();
-	vector<double> xr(xreal);
-	vector<double> xi(ximag);
-	vector<double> yr(yreal);
-	vector<double> yi(yimag);
+	std::vector<double> xr(xreal);
+	std::vector<double> xi(ximag);
+	std::vector<double> yr(yreal);
+	std::vector<double> yi(yimag);
 	directTransform(xr, xi);
 	directTransform(yr, yi);
 	for (size_t i = 0; i < n; i++) {
@@ -2895,29 +2901,29 @@ void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, con
 	}
 }*/
 
-void ComplexMult::CMultVector(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag) {
+void ComplexMult::CMultVector(std::vector<double> &v1_real, std::vector<double> &v1_imag, std::vector<double> v2_real, std::vector<double> v2_imag) {
 
 
-	vector<double> ac_v(v1_real.size(), 0);
-	vector<double> bd_v(v1_real.size(), 0);
-	vector<double> bc_v(v1_real.size(), 0);
-	vector<double> ad_v(v1_real.size(), 0);
+	std::vector<double> ac_v(v1_real.size(), 0);
+	std::vector<double> bd_v(v1_real.size(), 0);
+	std::vector<double> bc_v(v1_real.size(), 0);
+	std::vector<double> ad_v(v1_real.size(), 0);
 
-	transform(v1_real.begin(), v1_real.end(), v2_real.begin(), ac_v.begin(), multiplies<double>()); // ac
+	transform(v1_real.begin(), v1_real.end(), v2_real.begin(), ac_v.begin(), std::multiplies<double>()); // ac
 
-	transform(v1_imag.begin(), v1_imag.end(), v2_imag.begin(), bd_v.begin(), multiplies<double>()); // bd
+	transform(v1_imag.begin(), v1_imag.end(), v2_imag.begin(), bd_v.begin(), std::multiplies<double>()); // bd
 
-	transform(v1_imag.begin(), v1_imag.end(), v2_real.begin(), bc_v.begin(), multiplies<double>()); // bc
+	transform(v1_imag.begin(), v1_imag.end(), v2_real.begin(), bc_v.begin(), std::multiplies<double>()); // bc
 
-	transform(v1_real.begin(), v1_real.end(), v2_imag.begin(), ad_v.begin(), multiplies<double>()); // ad
+	transform(v1_real.begin(), v1_real.end(), v2_imag.begin(), ad_v.begin(), std::multiplies<double>()); // ad
 
-	transform(ac_v.begin(), ac_v.end(), bd_v.begin(), v1_real.begin(), minus<double>()); // ac - bd
+	transform(ac_v.begin(), ac_v.end(), bd_v.begin(), v1_real.begin(), std::minus<double>()); // ac - bd
 
-	transform(bc_v.begin(), bc_v.end(), ad_v.begin(), v1_imag.begin(), plus<double>()); // bc + ad
+	transform(bc_v.begin(), bc_v.end(), ad_v.begin(), v1_imag.begin(), std::plus<double>()); // bc + ad
 
 }
 
-void ComplexMult::CMultVector_Loop(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag) {
+void ComplexMult::CMultVector_Loop(std::vector<double> &v1_real, std::vector<double> &v1_imag, std::vector<double> v2_real, std::vector<double> v2_imag) {
 
 
 	double Real_temp = 0.0;
@@ -2935,7 +2941,7 @@ void ComplexMult::CMultVector_Loop(vector<double> &v1_real, vector<double> &v1_i
 
 }
 
-void ComplexMult::CMultVector_InComplex(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in) {
+void ComplexMult::CMultVector_InComplex(std::vector<std::complex <double>> &v1_in, std::vector<std::complex <double>> &v2_in) {
 
 	for (size_t k = 0; k < v1_in.size(); ++k)
 	{
@@ -2945,9 +2951,9 @@ void ComplexMult::CMultVector_InComplex(vector<complex <double>> &v1_in, vector<
 
 }
 
-vector<complex <double>> ComplexMult::CMultVectorInCP(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in) {
+std::vector<std::complex <double>> ComplexMult::CMultVectorInCP(std::vector<std::complex <double>> &v1_in, std::vector<std::complex <double>> &v2_in) {
 
-	vector<complex <double>> v_out(v1_in.size(), 0);
+	std::vector<std::complex <double>> v_out(v1_in.size(), 0);
 	for (unsigned int k = 0; k < v1_in.size(); ++k)
 	{
 		v_out.at(k) = v1_in.at(k)*v2_in.at(k);
@@ -2955,7 +2961,7 @@ vector<complex <double>> ComplexMult::CMultVectorInCP(vector<complex <double>> &
 	return v_out;
 }
 
-void ComplexMult::ComplexVect2ReImVect(vector<complex <double>> &v_in, vector<double> &v1_real, vector<double> &v1_imag) {
+void ComplexMult::ComplexVect2ReImVect(std::vector<std::complex <double>> &v_in, std::vector<double> &v1_real, std::vector<double> &v1_imag) {
 
 	for (size_t k = 0; k < v_in.size(); k++) {
 		v1_real.at(k) = real(v_in.at(k));
@@ -2964,33 +2970,33 @@ void ComplexMult::ComplexVect2ReImVect(vector<complex <double>> &v_in, vector<do
 
 }
 
-void ComplexMult::ReImVect2ComplexVect(vector<double> &v1_real, vector<double> &v1_imag, vector<complex <double>> &v_out) {
+void ComplexMult::ReImVect2ComplexVect(std::vector<double> &v1_real, std::vector<double> &v1_imag, std::vector<std::complex <double>> &v_out) {
 
 	for (size_t i = 0; i < v1_real.size(); ++i) {
-		complex<double> iNum(v1_real[i], v1_imag[i]);
+		std::complex<double> iNum(v1_real[i], v1_imag[i]);
 		v_out.at(i) = iNum;
 	}
 
 }
 
 
-vector<complex<double>> ComplexMult::ReImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag)
+std::vector<std::complex<double>> ComplexMult::ReImVect2ComplexVector(std::vector<double> &v1_real, std::vector<double> &v1_imag)
 {
-	vector<complex<double>> v_out(v1_real.size());
+	std::vector<std::complex<double>> v_out(v1_real.size());
 
 	for (size_t i = 0; i < v1_real.size(); ++i)
 	{
-		complex<double> iNum(v1_real[i], v1_imag[i]);
+		std::complex<double> iNum(v1_real[i], v1_imag[i]);
 		v_out.at(i) = iNum;
 	}
 
 	return v_out;
 }
 
-vector<complex <double>> ComplexMult::complexVectorMultiplication(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in)
+std::vector<std::complex <double>> ComplexMult::complexVectorMultiplication(std::vector<std::complex <double>> &v1_in, std::vector<std::complex <double>> &v2_in)
 {
 
-	vector<complex <double>> v_out(v1_in.size(), 0);
+	std::vector<std::complex <double>> v_out(v1_in.size(), 0);
 	for (unsigned int k = 0; k < v1_in.size(); ++k)
 	{
 		v_out.at(k) = v1_in.at(k)*v2_in.at(k);
@@ -3015,7 +3021,7 @@ static size_t reverseBits(size_t x, unsigned int n)
 	return result;
 }
 
-vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec)
+std::vector<std::complex<double>> FourierTransform::fft(std::vector<std::complex<double> > &vec)
 {
 	size_t n = vec.size();
 
@@ -3036,17 +3042,17 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec)
 }
 
 
-vector<complex<double>> FourierTransform::ifft(vector<complex<double> > &vec)
+std::vector<std::complex<double>> FourierTransform::ifft(std::vector<std::complex<double> > &vec)
 {
-	vector<complex<double>> OUT(vec.size());
-	vector<complex<double>> OUT_intermediate(vec.size());
-	vector<double> temp_real(vec.size());
-	vector<double> temp_imag(vec.size());
+	std::vector<std::complex<double>> OUT(vec.size());
+	std::vector<std::complex<double>> OUT_intermediate(vec.size());
+	std::vector<double> temp_real(vec.size());
+	std::vector<double> temp_imag(vec.size());
 
 
-	std::transform(vec.cbegin(), vec.cend(), vec.begin(), static_cast<complex<double>(*)(const complex<double> &)>(std::conj));
+	std::transform(vec.cbegin(), vec.cend(), vec.begin(), static_cast<std::complex<double>(*)(const std::complex<double> &)>(std::conj));
 	fft(vec);
-	std::transform(vec.cbegin(), vec.cend(), vec.begin(), static_cast<complex<double>(*)(const complex<double> &)>(std::conj));
+	std::transform(vec.cbegin(), vec.cend(), vec.begin(), static_cast<std::complex<double>(*)(const std::complex<double> &)>(std::conj));
 
 	for (int i = 0; i != vec.size(); ++i)
 	{
@@ -3068,7 +3074,7 @@ vector<complex<double>> FourierTransform::ifft(vector<complex<double> > &vec)
 }
 
 
-void FourierTransform::transformRadix2(vector<complex<double> > &vec)
+void FourierTransform::transformRadix2(std::vector<std::complex<double> > &vec)
 {
 	// Length variables
 	size_t n = vec.size();
@@ -3079,9 +3085,9 @@ void FourierTransform::transformRadix2(vector<complex<double> > &vec)
 		throw "Length is not a power of 2";
 
 	// Trignometric table
-	vector<complex<double> > expTable(n / 2);
+	std::vector<std::complex<double> > expTable(n / 2);
 	for (size_t i = 0; i < n / 2; i++)
-		expTable[i] = std::exp(complex<double>(0, -2 * M_PI * i / n));
+		expTable[i] = std::exp(std::complex<double>(0, -2 * M_PI * i / n));
 
 	// Bit-reversed addressing permutation
 	for (size_t i = 0; i < n; i++)
@@ -3102,7 +3108,7 @@ void FourierTransform::transformRadix2(vector<complex<double> > &vec)
 			for (size_t j = i, k = 0; j < i + halfsize; j++, k += tablestep)
 			{
 
-				complex<double> temp = vec[j + halfsize] * expTable[k];
+				std::complex<double> temp = vec[j + halfsize] * expTable[k];
 				vec[j + halfsize] = vec[j] - temp;
 				vec[j] += temp;
 			}
@@ -3113,7 +3119,7 @@ void FourierTransform::transformRadix2(vector<complex<double> > &vec)
 }
 
 
-void FourierTransform::transformBluestein(vector<complex<double> > &vec) {
+void FourierTransform::transformBluestein(std::vector<std::complex<double> > &vec) {
 	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
 	size_t n = vec.size();
 	size_t m = 1;
@@ -3124,27 +3130,27 @@ void FourierTransform::transformBluestein(vector<complex<double> > &vec) {
 	}
 
 	// Trignometric table
-	vector<complex<double> > expTable(n);
+	std::vector<std::complex<double> > expTable(n);
 	for (size_t i = 0; i < n; i++)
 	{
 		unsigned long long temp = static_cast<unsigned long long>(i) * i;
 		temp %= static_cast<unsigned long long>(n) * 2;				// Modulo operation ==> temp = temp % static_cast<unsigned long long>(n) * 2
 		double angle = M_PI * temp / n;
 		// Less accurate alternative if long long is unavailable: double angle = M_PI * i * i / n;
-		expTable[i] = std::exp(complex<double>(0, angle));
+		expTable[i] = std::exp(std::complex<double>(0, angle));
 	}
 
 	// Temporary vectors and preprocessing
-	vector<complex<double> > av(m);
+	std::vector<std::complex<double> > av(m);
 	for (size_t i = 0; i < n; i++)
 		av[i] = vec[i] * expTable[i];
-	vector<complex<double> > bv(m);
+	std::vector<std::complex<double> > bv(m);
 	bv[0] = expTable[0];
 	for (size_t i = 1; i < n; i++)
 		bv[i] = bv[m - i] = std::conj(expTable[i]);
 
 	// Convolution
-	vector<complex<double> > cv(m);
+	std::vector<std::complex<double> > cv(m);
 	convolve(av, bv, cv);					// Here size of cv equal to m
 
 	// Postprocessing
@@ -3153,13 +3159,13 @@ void FourierTransform::transformBluestein(vector<complex<double> > &vec) {
 }
 
 
-void FourierTransform::convolve(const vector<complex<double> > &xvec, const vector<complex<double> > &yvec, vector<complex<double> > &outvec)
+void FourierTransform::convolve(const std::vector<std::complex<double> > &xvec, const std::vector<std::complex<double> > &yvec, std::vector<std::complex<double> > &outvec)
 {
 	size_t n = xvec.size();
 	if (n != yvec.size() || n != outvec.size())
 		throw "Mismatched lengths";
-	vector<complex<double> > xv = xvec;
-	vector<complex<double> > yv = yvec;
+	std::vector<std::complex<double> > xv = xvec;
+	std::vector<std::complex<double> > yv = yvec;
 	fft(xv);
 	fft(yv);
 	for (size_t i = 0; i < n; i++)
@@ -3180,11 +3186,11 @@ static size_t reverseBits(size_t x, int n)
 
 
 
-vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec, int sign)
+std::vector<std::complex<double>> FourierTransform::fft(std::vector<std::complex<double> > &vec, int sign)
 {
-	vector<complex<double>> OUT(vec.size());
-	vector<complex<double>> fftData(vec.size());
-	vector<complex<double>> ifftData(vec.size());
+	std::vector<std::complex<double>> OUT(vec.size());
+	std::vector<std::complex<double>> fftData(vec.size());
+	std::vector<std::complex<double>> ifftData(vec.size());
 
 	
 	if (sign == -1)
@@ -3205,27 +3211,27 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec, int
 
 // ################################### FUNCTION TO READ SQUARE MATRICES #######################################
 
-t_matrix readSquareMatrix(int lines, ifstream &inputFile){
-	string line;
-	string str;
+t_matrix readSquareMatrix(int lines, std::ifstream &inputFile){
+	std::string line;
+	std::string str;
 	t_matrix finalMatrix;
-	vector<int> vector;
+	std::vector<int> vec;
 
 	for (int i = 0; i < lines; i++)
 	{
 		getline(inputFile, line);
-		stringstream s(line);
+		std::stringstream s(line);
 
 		for (size_t j = 0; j < lines - 1; j++)
 		{
 			getline(s, str, ' ');
-			vector.push_back(stoi(str));
+			vec.push_back(stoi(str));
 		}
 		getline(s, str, '\n');
-		vector.push_back(stoi(str));
+		vec.push_back(stoi(str));
 
-		finalMatrix.push_back(vector);
-		vector.clear();
+		finalMatrix.push_back(vec);
+		vec.clear();
 	}
 	return finalMatrix;
 }
@@ -3235,26 +3241,38 @@ t_matrix readSquareMatrix(int lines, ifstream &inputFile){
 // #####################################################################################################
 
 /* Auxiliary method to split string by a delimiter. Returns a vector of string */
-static inline std::string &ltrim(std::string &s) { 
-  s.erase(s.begin(), std::find_if(s.begin(), s.end(), 
-    std::not1(std::ptr_fun<int, int>(std::isspace)))); 
-  return s; 
-} 
- 
-static inline std::string &rtrim(std::string &s) { 
-  s.erase(std::find_if(s.rbegin(), s.rend(), 
-    std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end()); 
-  return s; 
-} 
+/*static inline std::string &ltrim(std::string &s) {
+  s.erase(s.begin(), std::find_if(s.begin(), s.end(),
+	std::not1(std::ptr_fun<int, int>(std::isspace))));
+  return s;
+}
+
+static inline std::string &rtrim(std::string &s) {
+  s.erase(std::find_if(s.rbegin(), s.rend(),
+	std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+  return s;
+}*/
+
+static inline std::string& ltrim(std::string& s) {
+	s.erase(s.begin(), std::find_if(s.begin(), s.end(),
+		[](int c) {return !std::isspace(c); }));
+	return s;
+}
+
+static inline std::string& rtrim(std::string& s) {
+	s.erase(std::find_if(s.rbegin(), s.rend(),
+		[](int c) {return !std::isspace(c); }).base(), s.end());
+	return s;
+}
  
 static inline std::string &trim(std::string &s) { 
   return ltrim(rtrim(s)); 
 } 
 
-vector<string> SystemInputParameters::split(const string &text, char sep) {
-	vector<string> tokens;
+std::vector<std::string> SystemInputParameters::split(const std::string &text, char sep) {
+	std::vector<std::string> tokens;
 	size_t start = 0, end = 0;
-	while ((end = text.find(sep, start)) != string::npos) {
+	while ((end = text.find(sep, start)) != std::string::npos) {
 		tokens.push_back(text.substr(start, end - start));
 		start = end + 1;
 	}
@@ -3265,14 +3283,14 @@ vector<string> SystemInputParameters::split(const string &text, char sep) {
 void SystemInputParameters::readSystemInputParameters()
 {
 	if (inputParametersFileName == "") return;
-	ifstream inputFile("./" + inputParametersFileName);
+	std::ifstream inputFile("./" + inputParametersFileName);
 	if (!inputFile) {
-		cerr << "ERROR: Could not open " << inputParametersFileName;
+		std::cerr << "ERROR: Could not open " << inputParametersFileName;
 		exit(1);
 	}
 	int errorLine = 1;
 	//Reads each line
-	string line;
+	std::string line;
 
 	while (getline(inputFile, line)) {
 
@@ -3280,8 +3298,8 @@ void SystemInputParameters::readSystemInputParameters()
 		try {
 			if (line != "")
 			{
-				if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
-					vector<string> splitline = split(line, '=');
+				if (std::string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+					std::vector<std::string> splitline = split(line, '=');
 					splitline[0] = trim(splitline[0]);
 					splitline[1] = trim(splitline[1]);
 					if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
@@ -3317,9 +3335,9 @@ void SystemInputParameters::readSystemInputParameters()
 				errorLine++;
 			
 		}
-		catch (const exception& e) {
+		catch (const std::exception& e) {
 			(void)e;
-			cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputParametersFileName << endl;
+			std::cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputParametersFileName << std::endl;
 			system("pause");
 			exit(1);
 		}
@@ -3327,37 +3345,37 @@ void SystemInputParameters::readSystemInputParameters()
 	inputFile.close();
 }
 
-void SystemInputParameters::addInputParameter(string name, int * variable)
+void SystemInputParameters::addInputParameter(std::string name, int * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
 
-void SystemInputParameters::addInputParameter(string name, double * variable)
+void SystemInputParameters::addInputParameter(std::string name, double * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
 
-void SystemInputParameters::addInputParameter(string name, bool * variable)
+void SystemInputParameters::addInputParameter(std::string name, bool * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
-void SystemInputParameters::addInputParameter(string name, t_matrix * variable)
+void SystemInputParameters::addInputParameter(std::string name, t_matrix * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
-void SystemInputParameters::addInputParameter(string name, ordering_rule * variable)
+void SystemInputParameters::addInputParameter(std::string name, ordering_rule * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
-void SystemInputParameters::addInputParameter(string name, transport_mode * variable)
+void SystemInputParameters::addInputParameter(std::string name, transport_mode * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
-void SystemInputParameters::addInputParameter(string name, t_routing_criterion_logical_topology * variable)
+void SystemInputParameters::addInputParameter(std::string name, t_routing_criterion_logical_topology * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
-void SystemInputParameters::addInputParameter(string name, t_routing_criterion_physical_topology * variable)
+void SystemInputParameters::addInputParameter(std::string name, t_routing_criterion_physical_topology * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
@@ -3376,41 +3394,41 @@ SystemInputParameters::SystemInputParameters(int argc, char * argv[])
 	}
 }
 
-SystemInputParameters::SystemInputParameters(string fName)
+SystemInputParameters::SystemInputParameters(std::string fName)
 {
 	inputParametersFileName = fName;
 }
 
 SystemInputParameters::~SystemInputParameters()
 {	
-	for (map<string, Parameter*>::iterator itr = parameters.begin(); itr != parameters.end();itr++) {
+	for (std::map<std::string, Parameter*>::iterator itr = parameters.begin(); itr != parameters.end();itr++) {
 		delete (itr->second);
 	}
 }
 
 /* Allows for the recognition of scientific notation. Ex: parseDouble("6.23e+1") will return 62*/
-int SystemInputParameters::parseInt(string str)
+int SystemInputParameters::parseInt(std::string str)
 {
 	return (int) parseDouble(str);
 }
 /* Allows for the recognition of scientific notation. Ex: parseDouble("1.83e-2") will return 0.0183*/
-double SystemInputParameters::parseDouble(string str) {
-	istringstream os(str);
+double SystemInputParameters::parseDouble(std::string str) {
+	std::istringstream os(str);
 	double d;
 	os >> d;
 	return d;
 }
 
-bool SystemInputParameters::parseBool(string str)
+bool SystemInputParameters::parseBool(std::string str)
 {
 	if (str == "true")
 		return true;
 	else if (str == "false")
 		return false;
 	else //Incorrect input
-		throw exception();
+		throw std::exception();
 }
-transport_mode SystemInputParameters::parseTransportMode(string str)
+transport_mode SystemInputParameters::parseTransportMode(std::string str)
 {
 	transport_mode transportMode;
 
@@ -3421,9 +3439,9 @@ transport_mode SystemInputParameters::parseTransportMode(string str)
 	else if (str == "translucent")
 		return transportMode = transport_mode::translucent;
 	else //Incorrect input
-		throw exception();
+		throw std::exception();
 }
-ordering_rule SystemInputParameters::parseOrderingRule(string str)
+ordering_rule SystemInputParameters::parseOrderingRule(std::string str)
 {
 	ordering_rule orderingRule;
 
@@ -3432,10 +3450,10 @@ ordering_rule SystemInputParameters::parseOrderingRule(string str)
 	else if (str == "descendingOrder")
 		return orderingRule = ordering_rule::descendingOrder;
 	else //Incorrect input
-		throw exception();
+		throw std::exception();
 }
 
-t_routing_criterion_logical_topology SystemInputParameters::parseRoutingCriterionLogicalTopology(string str) {
+t_routing_criterion_logical_topology SystemInputParameters::parseRoutingCriterionLogicalTopology(std::string str) {
 	t_routing_criterion_logical_topology routingCriterionLogicalTopology;
 
 	if (str == "hops")
@@ -3443,9 +3461,9 @@ t_routing_criterion_logical_topology SystemInputParameters::parseRoutingCriterio
 	else if (str == "distance")
 		return routingCriterionLogicalTopology = t_routing_criterion_logical_topology::distance;
 	else //Incorrect input
-		throw exception();
+		throw std::exception();
 }
-t_routing_criterion_physical_topology SystemInputParameters::parseRoutingCriterionPhysicalTopology(string str) {
+t_routing_criterion_physical_topology SystemInputParameters::parseRoutingCriterionPhysicalTopology(std::string str) {
 	t_routing_criterion_physical_topology routingCriterionPhysicalTopology;
 
 	if (str == "hops")
@@ -3453,48 +3471,48 @@ t_routing_criterion_physical_topology SystemInputParameters::parseRoutingCriteri
 	else if (str == "distance")
 		return routingCriterionPhysicalTopology = t_routing_criterion_physical_topology::distance;
 	else //Incorrect input
-		throw exception();
+		throw std::exception();
 }
 void SystemInputParameters::Parameter::setValue(int value)
 {
-	if (type != INT) throw invalid_argument("Parameter is not of type INT");
+	if (type != INT) throw std::invalid_argument("Parameter is not of type INT");
 	*i = value;
 }
 
 void SystemInputParameters::Parameter::setValue(double value)
 {
-	if (type != DOUBLE) throw invalid_argument("Parameter is not of type DOUBLE");
+	if (type != DOUBLE) throw std::invalid_argument("Parameter is not of type DOUBLE");
 	*d = value;
 }
 
 void SystemInputParameters::Parameter::setValue(bool value)
 {
-	if (type != BOOL) throw invalid_argument("Parameter is not of type BOOL");
+	if (type != BOOL) throw std::invalid_argument("Parameter is not of type BOOL");
 	*b = value;
 }
 void SystemInputParameters::Parameter::setValue(t_matrix value)
 {
-	if (type != MATRIX) throw invalid_argument("Parameter is not of type MATRIX");
+	if (type != MATRIX) throw std::invalid_argument("Parameter is not of type MATRIX");
 	*m = value;
 }
 void SystemInputParameters::Parameter::setValue(ordering_rule value)
 {
-	if (type != ORDERING) throw invalid_argument("Parameter is not of type ORDERING_RULE");
+	if (type != ORDERING) throw std::invalid_argument("Parameter is not of type ORDERING_RULE");
 	*o = value;
 }
 void SystemInputParameters::Parameter::setValue(transport_mode value)
 {
-	if (type != TRANSPORT) throw invalid_argument("Parameter is not of type TRANSPORT_MODE");
+	if (type != TRANSPORT) throw std::invalid_argument("Parameter is not of type TRANSPORT_MODE");
 	*t = value;
 }
 void SystemInputParameters::Parameter::setValue(t_routing_criterion_logical_topology value)
 {
-	if (type != ROUTING_CRITERION_LOGICAL) throw invalid_argument("Parameter is not of type ROUTING_CRITERION_LOGICAL");
+	if (type != ROUTING_CRITERION_LOGICAL) throw std::invalid_argument("Parameter is not of type ROUTING_CRITERION_LOGICAL");
 	*l = value;
 }
 void SystemInputParameters::Parameter::setValue(t_routing_criterion_physical_topology value)
 {
-	if (type != ROUTING_CRITERION_PHYSICAL) throw invalid_argument("Parameter is not of type ROUTING_CRITERION_PHYSICAL");
+	if (type != ROUTING_CRITERION_PHYSICAL) throw std::invalid_argument("Parameter is not of type ROUTING_CRITERION_PHYSICAL");
 	*p = value;
 }
 
