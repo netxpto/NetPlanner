@@ -138,7 +138,7 @@
     <ClInclude Include="..\include\sink_20180815.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="input_parameters_values.txt" />
+    <Text Include="..\input_parameters_values.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

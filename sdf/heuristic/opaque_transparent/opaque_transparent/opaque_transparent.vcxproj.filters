@@ -70,7 +70,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="input_parameters_values.txt">
+    <Text Include="..\input_parameters_values.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
