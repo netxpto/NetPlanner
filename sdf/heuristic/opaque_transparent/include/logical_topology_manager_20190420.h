@@ -3,7 +3,7 @@
 
 # include "..\include\netxpto_20190130.h"
 
-using namespace std;
+// using namespace std;    // (commented by Romil 08/05/2020)
 
 class LogicalTopologyManager : public Block {
 	
@@ -34,7 +34,7 @@ public:
 
 	// Methods (Constructors)
 	LogicalTopologyManager() {};
-	LogicalTopologyManager(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
+	LogicalTopologyManager(std::initializer_list<Signal *> inputSig, std::initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
 	
 	void initialize(void);
 	bool runBlock(void);

@@ -82,4 +82,4 @@ blockingCriterionLogicalTopology=1
 //############################ ROUTING CRITERION PHYSICAL TOPOLOGY #################################
 routingCriterionPhysicalTopology=hops
 //############################ BLOCKING CRITERION PHYSICAL TOPOLOGY ################################
-blockingCriterionPhysicalTopology=3
+blockingCriterionPhysicalTopology=1

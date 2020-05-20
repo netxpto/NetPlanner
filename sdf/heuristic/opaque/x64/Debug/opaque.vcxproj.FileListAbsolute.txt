@@ -1,0 +1,2 @@
+C:\Users\Romil\NetPlanner\sdf\heuristic\opaque\x64\Debug\opaque.exe
+C:\Users\Romil\NetPlanner\sdf\heuristic\opaque\x64\Debug\opaque.pdb

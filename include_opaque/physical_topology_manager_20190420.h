@@ -15,7 +15,7 @@ class PhysicalTopologyManager : public Block {
 public:
 	// Methods (Constructors)
 	PhysicalTopologyManager() {};
-	PhysicalTopologyManager(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
+	PhysicalTopologyManager(std::initializer_list<Signal *> inputSig, std::initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
 
 	void initialize(void);
 	bool runBlock(void);

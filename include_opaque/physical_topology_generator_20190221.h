@@ -24,7 +24,7 @@ public:
 
 	// Methods (Constructors)
 	PhysicalTopologyGenerator() {};
-	PhysicalTopologyGenerator(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
+	PhysicalTopologyGenerator(std::initializer_list<Signal *> inputSig, std::initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
 
 	void initialize(void);
 	bool runBlock(void);

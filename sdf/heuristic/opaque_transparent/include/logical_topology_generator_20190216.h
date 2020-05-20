@@ -5,7 +5,7 @@
 # include "..\include\netxpto_20190130.h"
 
 
-using namespace std;
+//using namespace std;    // (commented by Romil 08/05/2020)
 
 class LogicalTopologyGenerator : public Block {
 
@@ -21,7 +21,7 @@ public:
 
 	// Methods (Constructors)
 	LogicalTopologyGenerator() {};
-	LogicalTopologyGenerator(initializer_list<Signal *> inputSig, initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
+	LogicalTopologyGenerator(std::initializer_list<Signal *> inputSig, std::initializer_list<Signal *> outputSig) :Block(inputSig, outputSig) {};
 
 
 	void initialize(void);

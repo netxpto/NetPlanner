@@ -51,7 +51,7 @@ public:
 		readSystemInputParameters();
 	}
 
-	NetworkSimulatorInputParameters(string fName) : SystemInputParameters(fName) {
+	NetworkSimulatorInputParameters(std::string fName) : SystemInputParameters(fName) {
 		initializeInputParameterMap();
 		readSystemInputParameters();
 	}
@@ -92,7 +92,7 @@ int main()
 {
 
 	//NetworkSimulatorInputParameters param(argc, argv);
-	NetworkSimulatorInputParameters param("input_parameters_values.txt");
+	NetworkSimulatorInputParameters param("input_parameters_values_TF.txt");
 
 
 	/* Signals Declaration */

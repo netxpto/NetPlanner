@@ -66,12 +66,12 @@ public:
 		readSystemInputParameters();
 	}
 
-	NetworkSimulatorInputParameters(string fName) : SystemInputParameters(fName) {
+	NetworkSimulatorInputParameters(std::string fName) : SystemInputParameters(fName) {
 		initializeInputParameterMap();
 		readSystemInputParameters();
 	}
 
-	// Each parameter must be added to the parameter map by calling this function
+	// Each parameter must be added to the parameter std::map by calling this function
 	void initializeInputParameterMap() {
 		addInputParameter("numberOfNodes", &numberOfNodes);
 		addInputParameter("odu0", &odu0);
