@@ -92,7 +92,7 @@ int main()
 {
 
 	//NetworkSimulatorInputParameters param(argc, argv);
-	NetworkSimulatorInputParameters param("input_parameters_values_TF.txt");
+	NetworkSimulatorInputParameters param("input_parameters_values_JS_VC.txt");
 
 
 	/* Signals Declaration */

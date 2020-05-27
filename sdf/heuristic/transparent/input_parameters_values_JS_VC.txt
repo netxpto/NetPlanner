@@ -1,7 +1,7 @@
 //################################## NUMBER OF NODES ###############################################
 numberOfNodes=6
 //########################### PHYSICAL TOPOLOGY ADJACENCY MATRIX ###################################
-physicalTopologyAdjacencyMatrix=
+physicalTopologyAdjacencyMatrix=6
 0 1 0 0 0 1
 1 0 1 0 0 1
 0 1 0 1 1 0
@@ -9,7 +9,7 @@ physicalTopologyAdjacencyMatrix=
 0 0 1 1 0 1
 1 1 0 0 1 0
 //################################## DISTANCES BETWEEN NODES #######################################
-distancesBetweenNodes=
+distancesBetweenNodes=6
 0 100 0 0 0 150
 100 0 600 0 0 200
 0 600 0 200 125 0
@@ -32,7 +32,7 @@ opticalChannelCapacity=100
 //################################### TRAFFIC MATRIX ###############################################
 //##################################################################################################
 //####################################### ODU0 #####################################################
-odu0=
+odu0=6
 0 1 1 8 8 9
 1 0 4 6 8 5
 1 4 0 2 2 8
@@ -40,7 +40,7 @@ odu0=
 8 8 2 6 0 5
 9 5 8 9 5 0
 //####################################### ODU1 #####################################################
-odu1=
+odu1=6
 0 0 8 7 5 0
 0 0 3 8 1 1
 8 3 0 6 5 5
@@ -48,7 +48,7 @@ odu1=
 5 1 5 1 0 5
 0 1 5 8 5 0
 //####################################### ODU2 #####################################################
-odu2=
+odu2=6
 0 5 9 2 10 10
 5 0 7 4 0 6
 9 7 0 3 1 7
@@ -56,7 +56,7 @@ odu2=
 10 0 1 2 0 1
 10 6 7 7 1 0
 //####################################### ODU3 #####################################################
-odu3=
+odu3=6
 0 8 12 10 5 0
 8 0 3 0 1 2
 12 3 0 1 2 4
@@ -64,7 +64,7 @@ odu3=
 5 1 2 5 0 8
 0 2 4 7 8 0
 //####################################### ODU4 #####################################################
-odu4=
+odu4=6
 0 10 9 0 7 0
 10 0 0 7 9 8
 9 0 0 8 13 0
@@ -74,12 +74,12 @@ odu4=
 //################################### ORDERING RULE ################################################
 orderingRule=descendingOrder
 //################################### TRANSPORT MODE ###############################################
-transportMode=transparent
+transportMode=opaque
 //############################ ROUTING CRITERION LOGICAL TOPOLOGY ##################################
 routingCriterionLogicalTopology=hops
 //############################ BLOCKING CRITERION LOGICAL TOPOLOGY #################################
-blockingCriterionLogicalTopology=3
+blockingCriterionLogicalTopology=1
 //############################ ROUTING CRITERION PHYSICAL TOPOLOGY #################################
 routingCriterionPhysicalTopology=hops
 //############################ BLOCKING CRITERION PHYSICAL TOPOLOGY ################################
-blockingCriterionPhysicalTopology=3
+blockingCriterionPhysicalTopology=1

@@ -27,7 +27,7 @@ initialWavelenght=1550
 //############################## WAVELENGHT SPACING IN NANOMETERS ##################################
 wavelenghtSpacing=0.8
 //############################# OPTICAL CHANNEL CAPACITY IN ODU0 ###################################
-opticalChannelCapacity=80
+opticalChannelCapacity=100
 //##################################################################################################
 //################################### TRAFFIC MATRIX ###############################################
 //##################################################################################################
@@ -74,7 +74,7 @@ odu4=6
 //################################### ORDERING RULE ################################################
 orderingRule=descendingOrder
 //################################### TRANSPORT MODE ###############################################
-transportMode=transparent
+transportMode=opaque
 //############################ ROUTING CRITERION LOGICAL TOPOLOGY ##################################
 routingCriterionLogicalTopology=hops
 //############################ BLOCKING CRITERION LOGICAL TOPOLOGY #################################
@@ -82,4 +82,4 @@ blockingCriterionLogicalTopology=1
 //############################ ROUTING CRITERION PHYSICAL TOPOLOGY #################################
 routingCriterionPhysicalTopology=hops
 //############################ BLOCKING CRITERION PHYSICAL TOPOLOGY ################################
-blockingCriterionPhysicalTopology=3
+blockingCriterionPhysicalTopology=1

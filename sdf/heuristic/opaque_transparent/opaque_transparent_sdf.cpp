@@ -40,14 +40,14 @@ public:
 	int blockingCriterionPhysicalTopology{ 3 };
 	int OLTsCost{ 15000 };
 	int TranspondersCost{ 5000 };
-	int AmplifiersCost{ 2000 };
+	int AmplifiersCost{ 10000 };//2000
 	int EXCsCost{ 10000 };
-	int ODU0portsCost{ 125 };
-	int ODU1portsCost{ 250 };
-	int ODU2portsCost{ 1000 };
-	int ODU3portsCost{ 4000 };
-	int ODU4portsCost{ 10000 };
-	int OTU4portsCost{ 10000 };
+	int ODU0portsCost{ 12 }; //125
+	int ODU1portsCost{ 25 }; //250
+	int ODU2portsCost{ 100 }; //1000
+	int ODU3portsCost{ 400 }; //4000
+	int ODU4portsCost{ 1000 }; //1000
+	int OTU4portsCost{ 1000 }; //10000
 	int OXCsCost{ 20000 };
 	int addPortsCost{ 2500 };
 	int linePortsCost{ 2500 };
@@ -120,7 +120,7 @@ int main()
 {
 
 	//NetworkSimulatorInputParameters param(argc, argv);
-	NetworkSimulatorInputParameters param("input_parameters_values.txt");
+	NetworkSimulatorInputParameters param("input_parameters_values_TF.txt");
 
 
 	/* Signals Declaration */
